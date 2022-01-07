@@ -206,7 +206,7 @@ metadata_tabs: []
 news:
   category_links: false
 non_global_metadata: indicator.national_metadata
-remote_data_prefix: 'https://open-sdg.org/open-sdg-data-starter'
+remote_data_prefix: 'https://uk-sdmx-api-platform.github.io/data'
 reporting_status:
   title: status.reporting_status
   description: status.description
