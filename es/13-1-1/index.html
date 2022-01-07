@@ -138,7 +138,7 @@ var translations = {
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107164657">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107165150">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -562,7 +562,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SDG Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Number of deaths and missing persons attributed to disasters [1.5.1, 11.5.1, 13.1.1]&quot;,&quot;Number of deaths due to disaster [1.5.1, 11.5.1, 13.1.1]&quot;,&quot;Number of deaths and missing persons attributed to disasters per 100,000 population [1.5.1, 11.5.1, 13.1.1]&quot;,&quot;&quot;]},&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;Unit of measure&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Number&quot;,&quot;Per 100,000 population&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit of measure&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SERIES&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;UNIT_MEASURE&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -599,8 +599,924 @@ data-event-label="high"
       <caption>Número de personas muertas, desaparecidas y afectadas directamente atribuido a desastres por cada 100.000 personas</caption>
       <thead>
         
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col">UNIT_MEASURE</th>
+        
+        
+        
+        <th scope="col" class="table-value">SERIES</th>
+        
+        
       </thead>
       <tbody>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>63.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>50.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>46.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>48.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>70.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>49.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>49.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>45.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>58.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>32.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>80.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>44.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>62.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>88.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2019</td>
+          
+          
+          
+          <td>41.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MMHN</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>63.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>50.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>46.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>48.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>70.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>49.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>49.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>45.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>58.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>32.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>80.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>44.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>62.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>88.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2019</td>
+          
+          
+          
+          <td>41.0</td>
+          
+          
+          
+          <td>NUMBER</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MORT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>0.10428</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>0.08276</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>0.07502</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>0.07764</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>0.11243</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>0.07808</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>0.07743</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>0.07064</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>0.09048</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>0.04954</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>0.12287</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>0.06702</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>0.09388</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>0.13246</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2019</td>
+          
+          
+          
+          <td>0.06138</td>
+          
+          
+          
+          <td>PER_100000_POP</td>
+          
+          
+          
+          <td class="table-value">VC_DSR_MTMP</td>
+          
+          
+        </tr>
         
       </tbody>
     </table>
@@ -1645,12 +2561,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220107164657'></script>
+<script src='/site/assets/js/sdg.js?v=20220107165150'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220107164657"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220107165150"></script><script>
 $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();

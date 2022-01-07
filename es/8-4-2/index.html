@@ -138,7 +138,7 @@ var translations = {
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107164657">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107165150">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -562,7 +562,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SDG Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]&quot;,&quot;Domestic material consumption per unit of GDP [8.4.2,12.2.2]&quot;,&quot;Domestic material consumption [8.4.2,12.2.2]&quot;,&quot;&quot;]},&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;Type of product&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Non-metallic minerals - construction dominant (material flows)&quot;,&quot;Non-metallic minerals - industrial or agricultural dominant (material flows)&quot;,&quot;Biomass (material flows)&quot;,&quot;Crops (material flows)&quot;,&quot;Crop residues (material flows)&quot;,&quot;Grazed biomass and fodder crops (material flows)&quot;,&quot;Wood (material flows)&quot;,&quot;Wild catch and harvest (material flows)&quot;,&quot;Metal ores (material flows)&quot;,&quot;Ferrous ores (material flows)&quot;,&quot;Non-ferrous ores (material flows)&quot;,&quot;Non-metallic minerals (material flows)&quot;,&quot;Fossil fuels (material flows)&quot;,&quot;Coal (material flows)&quot;,&quot;Petroleum (material flows)&quot;,&quot;Natural gas (material flows)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Type of product&quot;},{&quot;name&quot;:&quot;Unit of measure&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Metric Tons&quot;,&quot;Kilograms per constant USD&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit of measure&quot;},{&quot;name&quot;:&quot;BASE_PER&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;2010&quot;,&quot;&quot;]},&quot;title&quot;:&quot;BASE_PER&quot;},{&quot;name&quot;:&quot;Base period&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;2010&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Base period&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SERIES&quot;},{&quot;name&quot;:&quot;PRODUCT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;MF_AGG3A&quot;,&quot;MF_AGG3B&quot;,&quot;MF1&quot;,&quot;MF11&quot;,&quot;MF121&quot;,&quot;MF122&quot;,&quot;MF13&quot;,&quot;MF14&quot;,&quot;MF2&quot;,&quot;MF21&quot;,&quot;MF22&quot;,&quot;MF3&quot;,&quot;MF4&quot;,&quot;MF41&quot;,&quot;MF421&quot;,&quot;MF422&quot;,&quot;&quot;]},&quot;title&quot;:&quot;PRODUCT&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;UNIT_MEASURE&quot;},{&quot;name&quot;:&quot;BASE_PER&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;2010&quot;,&quot;&quot;]},&quot;title&quot;:&quot;BASE_PER&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -599,8 +599,744 @@ data-event-label="high"
       <caption>Consumo material interno en términos absolutos, consumo material interno per cápita y consumo material interno por PIB</caption>
       <thead>
         
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col">UNIT_MEASURE</th>
+        
+        
+        
+        <th scope="col" class="table-value">SERIES</th>
+        
+        
       </thead>
       <tbody>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>12.37611</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>12.62861</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>12.1559</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>11.98774</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>12.25269</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>12.01986</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>12.08438</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>11.78107</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>11.03813</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>9.41631</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>9.09247</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>9.14647</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>8.76987</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>8.87034</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>8.88404</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>8.40725</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>8.12198</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>7.84017</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPC</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>729581972.519</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>746973883.941</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>721439946.411</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>714231950.78</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>733741902.905</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>724638260.689</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>734764069.78</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>723530426.8204</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>685205230.1477</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>590615761.73771</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>575615877.98256</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>583653248.276</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>563466867.334</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>573388522.57502</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>577602217.1403</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>549809679.889</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>534333433.0021</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>518875116.8222</td>
+          
+          
+          
+          <td>T</td>
+          
+          
+          
+          <td class="table-value">EN_MAT_DOMCMPT</td>
+          
+          
+        </tr>
         
       </tbody>
     </table>
@@ -1645,12 +2381,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220107164657'></script>
+<script src='/site/assets/js/sdg.js?v=20220107165150'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220107164657"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220107165150"></script><script>
 $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();

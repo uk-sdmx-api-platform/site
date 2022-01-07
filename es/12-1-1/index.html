@@ -138,7 +138,7 @@ var translations = {
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107164657">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107165150">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -562,7 +562,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SDG Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Countries with sustainable consumption and production (SCP) national action plans or SCP mainstreamed as a priority or target into national policies (1 = YES; 0 = NO) [12.1.1]&quot;,&quot;Countries with policy instrument for sustainable consumption and production (1 = YES; 0 = NO) [12.1.1]&quot;,&quot;Number of policies, instruments and mechanism in place for sustainable consumption and production [12.1.1]&quot;,&quot;&quot;]},&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;Composite breakdown&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Policy instruments: Economic and fiscal instruments (taxes and tax incentives, grants, preferential loans, etc.)&quot;,&quot;Policy instruments: Macro policies (e.g. national strategies/action plans, new institutions/entities)&quot;,&quot;Policy instruments: Regulatory and legal instruments (e.g. laws, standards, enforcement measures)&quot;,&quot;Policy instruments: Voluntary and self-regulation schemes (e.g. sectoral partnerships, codes of conduct, CSR initiatives)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Composite breakdown&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SERIES&quot;},{&quot;name&quot;:&quot;COMPOSITE_BREAKDOWN&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;POL_ECONFIS&quot;,&quot;POL_MACRO&quot;,&quot;POL_REGLEG&quot;,&quot;POL_VOLSRG&quot;,&quot;&quot;]},&quot;title&quot;:&quot;COMPOSITE_BREAKDOWN&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -599,8 +599,52 @@ data-event-label="high"
       <caption>Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles</caption>
       <thead>
         
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col" class="table-value">SERIES</th>
+        
+        
       </thead>
       <tbody>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>1</td>
+          
+          
+          
+          <td class="table-value">SG_SCP_CNTRY</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>12</td>
+          
+          
+          
+          <td class="table-value">SG_SCP_TOTLN</td>
+          
+          
+        </tr>
         
       </tbody>
     </table>
@@ -1645,12 +1689,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220107164657'></script>
+<script src='/site/assets/js/sdg.js?v=20220107165150'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220107164657"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220107165150"></script><script>
 $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();

@@ -138,7 +138,7 @@ var translations = {
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107164657">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220107165150">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -562,7 +562,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;COMMENT_OBS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;&quot;,&quot;Data reference period: April | Population coverage: Excluding both institutional population and armed forces and/or conscripts | Reference group coverage: Employees | Local currency: GBR - British pound(GBP) | Working time arrangement coverage: Full-time and part time workers&quot;,&quot;Data reference period: April | Reference group coverage: Employees | Local currency: GBR - British pound(GBP) | Working time arrangement coverage: Full-time and part time workers&quot;,&quot;Repository: Eurostat | Economic activity coverage: Excluding agriculture, public administration, and activities of households as employers and of extraterritorial organisations and bodies | Establishment size coverage: All establishments with at least 10 employees | Local currency: GBR - British pound(GBP)&quot;]},&quot;title&quot;:&quot;COMMENT_OBS&quot;},{&quot;name&quot;:&quot;Occupation&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;&quot;,&quot;Clerical support workers&quot;,&quot;Craft and related trades workers&quot;,&quot;Elementary occupations&quot;,&quot;Managers&quot;,&quot;Plant and machine operators, and assemblers&quot;,&quot;Professionals&quot;,&quot;Service and sales workers&quot;,&quot;Skilled agricultural, forestry and fishery workers&quot;,&quot;Technicians and associate professionals&quot;]},&quot;title&quot;:&quot;Occupation&quot;},{&quot;name&quot;:&quot;Sex&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;&quot;,&quot;Female&quot;,&quot;Male&quot;]},&quot;title&quot;:&quot;Sex&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;},{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;OCCUPATION&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;&quot;,&quot;Managers&quot;,&quot;Professionals&quot;,&quot;Technicians and associate professionals&quot;,&quot;Clerical support workers&quot;,&quot;Service and sales workers&quot;,&quot;Skilled agricultural, forestry and fishery workers&quot;,&quot;Craft and related trades workers&quot;,&quot;Plant and machine operators, and assemblers&quot;,&quot;Elementary occupations&quot;]},&quot;title&quot;:&quot;Occupation&quot;},{&quot;name&quot;:&quot;SEX&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;&quot;,&quot;Female&quot;,&quot;Male&quot;]},&quot;title&quot;:&quot;Sex&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;},{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Year&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -599,8 +599,88 @@ data-event-label="high"
       <caption>Average hourly earnings of employees, by sex, age, occupation and persons with disabilities</caption>
       <thead>
         
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col" class="table-value">Value</th>
+        
+        
       </thead>
       <tbody>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td class="table-value">15.1</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td class="table-value">14.9</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td class="table-value">15.4</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td class="table-value">15.9</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td class="table-value">16.4</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2019</td>
+          
+          
+          
+          <td class="table-value">17.0</td>
+          
+          
+        </tr>
         
       </tbody>
     </table>
@@ -1645,12 +1725,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220107164657'></script>
+<script src='/site/assets/js/sdg.js?v=20220107165150'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220107164657"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220107165150"></script><script>
 $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();
