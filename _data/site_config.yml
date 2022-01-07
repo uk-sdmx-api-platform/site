@@ -61,7 +61,7 @@ custom_js:
 data_edit_url: data
 data_fields:
   units: UNIT_MEASURE
-  series: SERIES
+  series: SDG Series
 date_formats: []
 disclaimer:
   phase: ''
