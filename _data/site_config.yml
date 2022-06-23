@@ -55,8 +55,8 @@ date_formats:
     language: en
     format: "%d %B %Y"
 disclaimer:
-  phase: ''
-  message: ''
+  phase: BETA
+  message: This is a development website. We welcome your <a href="mailto:%email_contacts.suggestions">feedback</a>.
 email_contacts:
   questions: test@example.com
   suggestions: test@example.com
