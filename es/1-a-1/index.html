@@ -130,7 +130,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220624010714">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220624084757">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -415,7 +415,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;OBS_STATUS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;A&quot;,&quot;&quot;]},&quot;title&quot;:&quot;OBS_STATUS&quot;},{&quot;name&quot;:&quot;UNIT_MULT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;0&quot;,&quot;&quot;]},&quot;title&quot;:&quot;UNIT_MULT&quot;},{&quot;name&quot;:&quot;NATURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;C&quot;,&quot;&quot;]},&quot;title&quot;:&quot;NATURE&quot;},{&quot;name&quot;:&quot;COMMENT_OBS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Gross disbursements; Based on OECD, CRS database, 2021; Constant 2019 USD million; As percentage of GNI&quot;,&quot;&quot;]},&quot;title&quot;:&quot;COMMENT_OBS&quot;},{&quot;name&quot;:&quot;SOURCE_DETAIL&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;The Organisation for Economic Co-operation and Development (OECD).&quot;,&quot;&quot;]},&quot;title&quot;:&quot;SOURCE_DETAIL&quot;},{&quot;name&quot;:&quot;FREQ&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;A&quot;,&quot;&quot;]},&quot;title&quot;:&quot;FREQ&quot;},{&quot;name&quot;:&quot;REPORTING_TYPE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;G&quot;,&quot;&quot;]},&quot;title&quot;:&quot;REPORTING_TYPE&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SERIES&quot;},{&quot;name&quot;:&quot;REF_AREA&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;826&quot;,&quot;&quot;]},&quot;title&quot;:&quot;REF_AREA&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;UNIT_MEASURE&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -446,275 +446,15 @@ data-event-label="high"
   <div id="datatables">
 
     
-    <a href="https://uk-sdmx-api-platform.github.io/data/es/headline/1-a-1.csv" class="btn btn-primary btn-download" download="indicator_1-a-1.csv" tabindex="0" role="button">Descargar CSV global</a>
-    
     <a href="https://uk-sdmx-api-platform.github.io/data/es/data/1-a-1.csv" class="btn btn-primary btn-download" download='indicator_1-a-1.csv' tabindex='0' role='button'>Descargar CSV fuente</a>
 
     <p class="no-js-disaggregation-hint">Descargar el CSV de origen para los desgloses</p>
 
     
-    <h3>Datos principales</h3>
-    <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>Total de las subvenciones de asistencia oficial para el desarrollo de todos los donantes que se centran en la reducción de la pobreza como porcentaje del ingreso nacional bruto del país receptor</caption>
-      <thead>
-        
-        
-        <th scope="col">Year</th>
-        
-        
-        
-        <th scope="col" class="table-value">Value</th>
-        
-        
-      </thead>
-      <tbody>
-        
-        <tr>
-          
-          
-          <td>2000</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2001</td>
-          
-          
-          
-          <td class="table-value">0.02</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2002</td>
-          
-          
-          
-          <td class="table-value">0.02</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2003</td>
-          
-          
-          
-          <td class="table-value">0.02</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2004</td>
-          
-          
-          
-          <td class="table-value">0.02</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2005</td>
-          
-          
-          
-          <td class="table-value">0.03</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2006</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2007</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2008</td>
-          
-          
-          
-          <td class="table-value">0.02</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2009</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2010</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2011</td>
-          
-          
-          
-          <td class="table-value">0.06</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2012</td>
-          
-          
-          
-          <td class="table-value">0.06</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2013</td>
-          
-          
-          
-          <td class="table-value">0.07</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2014</td>
-          
-          
-          
-          <td class="table-value">0.06</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2015</td>
-          
-          
-          
-          <td class="table-value">0.05</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2016</td>
-          
-          
-          
-          <td class="table-value">0.06</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2017</td>
-          
-          
-          
-          <td class="table-value">0.05</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2018</td>
-          
-          
-          
-          <td class="table-value">0.04</td>
-          
-          
-        </tr>
-        
-      </tbody>
-    </table>
+    <h3>No se dispone de datos de cabecera</h3>
     
   </div>
 
-  
-  <div id="datatableFooter">
-    
-    
-    <p>Área geográfica: </p>
-    
-    
-    <p>Unidad de medida: </p>
-    
-    
-    <p>Nota: </p>
-    
-  </div>
   
 
 </div>
@@ -1598,12 +1338,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220624010714'></script>
+<script src='/site/assets/js/sdg.js?v=20220624084757'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220624010714"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220624084757"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
