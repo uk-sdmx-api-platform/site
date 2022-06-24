@@ -124,6 +124,7 @@ ignored_disaggregations:
   - Nature of data points
   - Source details
   - Frequency of observation
+  - Observation-level footnotes
 indicator_config_form:
   enabled: true
   dropdowns: []
