@@ -2536,7 +2536,7 @@ function getPrecision(precisions, selectedUnit, selectedSeries) {
 function inputData(data) {
   var dropKeys = [];
   
-  dropKeys = ["Observation status","Unit multiplier","Nature of data points","Source details","Frequency of observation"];
+  dropKeys = ["Observation status","Unit multiplier","Nature of data points","Source details","Frequency of observation","Observation-level footnotes"];
   
   return convertJsonFormatToRows(data, dropKeys);
 }
@@ -2548,7 +2548,7 @@ function inputData(data) {
 function inputEdges(edges) {
   var edgesData = convertJsonFormatToRows(edges);
   
-  var ignoredDisaggregations = ["Observation status","Unit multiplier","Nature of data points","Source details","Frequency of observation"];
+  var ignoredDisaggregations = ["Observation status","Unit multiplier","Nature of data points","Source details","Frequency of observation","Observation-level footnotes"];
   edgesData = edgesData.filter(function(edge) {
     if (ignoredDisaggregations.includes(edge.To) || ignoredDisaggregations.includes(edge.From)) {
       return false;
