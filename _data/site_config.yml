@@ -118,13 +118,7 @@ header_language_toggle: dropdown
 hide_empty_metadata: true
 hide_single_series: true
 hide_single_unit: true
-ignored_disaggregations:
-  - Observation status
-  - Unit multiplier
-  - Nature of data points
-  - Source details
-  - Frequency of observation
-  - Observation-level footnotes
+ignored_disaggregations: ''
 indicator_config_form:
   enabled: true
   dropdowns: []
