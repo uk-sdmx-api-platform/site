@@ -2510,3 +2510,10 @@ body.contrast-high #search-bar-on-page button:hover {
 
 body.contrast-high.layout-search form input, body.contrast-high.layout-search form label {
   color: black; }
+
+.toggle {
+  background-color: #8d8d8d;
+  border-radius: 0.75rem;
+  height: 1.5rem;
+  position: relative;
+  width: 3rem; }
