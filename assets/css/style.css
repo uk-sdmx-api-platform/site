@@ -2516,15 +2516,30 @@ input[type="checkbox"].toggle {
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer; }
-
-input[type="checkbox"].toggle {
-  width: 2em;
-  height: 1em;
+  cursor: pointer;
+  width: 4rem;
+  height: 2rem;
   background-color: #8d8d8d;
   border-radius: 1em;
   margin-right: .25em;
   transition: background-color 200ms ease-in-out; }
+
+#units,
+#serieses,
+#toggles {
+  clear: left;
+  margin-bottom: 20px; }
+
+#units label,
+#serieses label,
+#toggles label {
+  font-weight: normal;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 100%; }
 
 input[type="checkbox"].toggle::after {
   display: flex;
