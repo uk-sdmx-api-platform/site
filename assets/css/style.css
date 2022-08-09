@@ -2521,7 +2521,7 @@ input[type="checkbox"].toggle {
   width: 4rem;
   height: 2rem;
   background-color: #ccc;
-  border-radius: 1em;
+  border-radius: 0.75rem;
   margin-right: .25em;
   transition: background-color 200ms ease-in-out; }
 
@@ -2535,7 +2535,7 @@ input[type="checkbox"].toggle::after {
   height: 1rem;
   background-color: #eb4747;
   color: white;
-  border-radius: 1em;
+  border-radius: 0.75rem;
   transition: background-color 200ms ease-in-out, transform 200ms ease-in-out; }
 
 input[type="checkbox"].toggle:checked {
