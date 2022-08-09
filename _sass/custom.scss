@@ -1,50 +1,41 @@
 // Enter any custom Sass in this file.
 
-.toggle {
+input[type="checkbox"].toggle {
+  appearance: none;
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.toggle span {
-  position: absolute;
-  border-radius: 34px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
 }
 
-.toggle span:before {
-  position: absolute;
-  border-radius: 50%;
+input[type="checkbox"].toggle {
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  width: 2em;
+  height: 1em;
+  background-color: #ccc;
+  border-radius: 1em;
+  margin-right: .25em;
+  transition: background-color 200ms ease-in-out;
 }
 
-input:checked + .toggle span {
+input[type="checkbox"].toggle::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  content: "\2715";
+  font-size: .5em;
+  height: .9em;
+  left: .2em;
+  width: 1.8em;
+  height: 1.8em;
+  background-color: hsl(0, 80%, 60%);
+  color: white;
+  border-radius: 1em;
+  transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle:checked {
   background-color: #2196F3;
 }
 
-input:checked + .toggle span:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
