@@ -42,7 +42,7 @@ input[type="checkbox"].toggle::after {
   left: .2em;
   width: 1.8em;
   height: 1.8em;
-  background-color: white;
+  background-color: hsl(0, 80%, 60%);
   color: white;
   border-radius: 1em;
   transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
