@@ -1,6 +1,6 @@
 // Enter any custom Sass in this file.
 
-.toggle {
+label {
   --width: 80px;
   --height: calc(var(--width) / 3);
 
@@ -13,11 +13,11 @@
   cursor: pointer;
 }
 
-.toggle input {
+label .input {
   display: none;
 }
 
-.toggle .slider {
+label .toggle-wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +28,7 @@
   transition: all 0.4s ease-in-out;
 }
 
-.toggle .slider::before {
+label .selector {
   content: '';
   position: absolute;
   top: 0;
@@ -41,18 +41,18 @@
   transition: all 0.4s ease-in-out;
 }
 
-.toggle input:checked+.slider {
+label .input:checked+.slider {
   background-color: #2196F3;
 }
 
-.toggle input:checked+.slider::before {
+label .input:checked+.selector {
   transform: translateX(calc(var(--width) - var(--height)));
 }
 
-.label .selected::before {
+.label .selected:before {
   content: attr(data-off);
 }
 
-.label input:checked .selected::before {
+.label .input:checked .selected:before {
   content: attr(data-on);
 }
