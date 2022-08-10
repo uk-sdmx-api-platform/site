@@ -2552,3 +2552,9 @@ body.contrast-high.layout-search form input, body.contrast-high.layout-search fo
 
 .toggle input:checked + .slider::before {
   transform: translateX(calc(var(--width) - var(--height))); }
+
+.label .selected::before {
+  content: attr(data-off); }
+
+.label input:checked .selected::before {
+  content: attr(data-on); }
