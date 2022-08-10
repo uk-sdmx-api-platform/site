@@ -8,6 +8,7 @@
     position: absolute;
     width: 60px;
     z-index: 2;
+}
 
 .toggle-switch-check:checked ~ .toggle-switch-bar::before {
     background-color: #0B5FFF;
