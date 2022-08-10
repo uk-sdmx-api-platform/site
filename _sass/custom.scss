@@ -46,13 +46,7 @@ label .toggle-wrapper .selector {
   border-radius: 50%;
 }
 
-label .notification {
-  font-size: 20px;
-  width: 100%;
-}
-
 label .selected:before {
   content: "No";
   font-size: 20px;
-  border-bottom: 2px solid;
 }
