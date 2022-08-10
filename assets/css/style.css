@@ -2550,11 +2550,6 @@ label .toggle-wrapper .selector {
   transition: left 0.25s ease;
   border-radius: 50%; }
 
-label .notification {
-  font-size: 20px;
-  width: 100%; }
-
 label .selected:before {
   content: "No";
-  font-size: 20px;
-  border-bottom: 2px solid; }
+  font-size: 20px; }
