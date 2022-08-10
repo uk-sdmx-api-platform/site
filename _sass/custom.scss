@@ -8,45 +8,63 @@ label .input {
   display: none;
 }
 
-label .input:checked + .toggle-wrapper {
-  box-shadow: 0 8px 14px 0 rgba(18, 51, 215, 0.12);
-  background-color: #3957EE;
+.toggle-switch-check:checked ~ .toggle-switch-bar::before {
+    background-color: #0B5FFF;
+    border-color: #0B5FFF;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
 }
 
-label .input:checked + .toggle-wrapper > .selector {
-  left: calc(100% - 50px);
-  background-color: #ffffff;
+.toggle-switch-check:checked ~ .toggle-switch-bar::after {
+    background-color: #FFF;
+    border-color: #FFF;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    left: 32px;
 }
 
-label .input:checked > .selected:before {
-  content: "Yes";
+.toggle-switch-check:empty ~ .toggle-switch-bar::after {
+    background-color: #FFF;
+    border-color: #FFF;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    bottom: 4px;
+    content: '';
+    display: block;
+    height: 24px;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+    transition: background-color 100ms ease-in, border-color 100ms ease-in, box-shadow 150ms ease-in-out, color 100ms ease-in, left 100ms ease-in, right 100ms ease-in;
+    width: 24px;
 }
 
-label .toggle-wrapper {
-  position: relative;
-  width: 120px;
-  height: 60px;
-  background-color: #858585;
-  border-radius: 999px;
-  margin: auto;
-  cursor: pointer;
-  pointer-events: all;
-  box-shadow: 0 8px 14px 0 rgba(215, 60, 18, 0.12);
+.toggle-switch-check:checked ~ .toggle-switch-bar .toggle-switch-handle::after {
+    content: '\FEFF' attr(data-label-on);
 }
 
-label .toggle-wrapper .selector {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  background-color: #ffffff;
-  transition: left 0.25s ease;
-  border-radius: 50%;
-}
+.toggle-switch-check:empty ~ .toggle-switch-bar::before {
+    background-color: #A7A9BC;
+    border-color: #A7A9BC;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    bottom: 0;
+    content: ' ';
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: background-color 100ms ease-in, border-color 100ms ease-in, box-shadow 150ms ease-in-out, color 100ms ease-in, left 100ms ease-in, right 100ms ease-in;
+    width: 60px;
 
-label .selected:before {
-  content: "No";
-  font-size: 20px;
+
+.toggle-switch-check:empty ~ .toggle-switch-bar .toggle-switch-handle::after {
+    content: '\FEFF' attr(data-label-off);
+    margin-left: 68px;
+    transition: background-color 100ms ease-in, border-color 100ms ease-in, box-shadow 150ms ease-in-out, color 100ms ease-in, left 100ms ease-in, right 100ms ease-in;
+    white-space: nowrap;
 }
