@@ -61,7 +61,7 @@
     top: 0;
     transition: background-color 100ms ease-in, border-color 100ms ease-in, box-shadow 150ms ease-in-out, color 100ms ease-in, left 100ms ease-in, right 100ms ease-in;
     width: 60px;
-
+}
 
 .toggle-switch-check:empty ~ .toggle-switch-bar .toggle-switch-handle::after {
     content: '\FEFF' attr(data-label-off);
