@@ -2518,20 +2518,21 @@ label .input {
   display: none; }
 
 label .input:checked + .toggle-wrapper {
-  box-shadow: 0 8px 14px 0 rgba(18, 51, 215, 0.12); }
+  box-shadow: 0 8px 14px 0 rgba(18, 51, 215, 0.12);
+  background-color: #3957EE; }
 
 label .input:checked + .toggle-wrapper > .selector {
   left: calc(100% - 50px);
-  background-color: #3957ee; }
+  background-color: #ffffff; }
 
-label .input:checked ~ .notification > .selected:before {
+label .input:checked > .selected:before {
   content: "Yes"; }
 
 label .toggle-wrapper {
   position: relative;
   width: 120px;
   height: 60px;
-  background-color: #eaeaea;
+  background-color: #858585;
   border-radius: 999px;
   margin: auto;
   cursor: pointer;
@@ -2545,7 +2546,7 @@ label .toggle-wrapper .selector {
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-  background-color: #ee5f39;
+  background-color: #ffffff;
   transition: left 0.25s ease;
   border-radius: 50%; }
 
@@ -2553,7 +2554,7 @@ label .notification {
   font-size: 20px;
   width: 100%; }
 
-label .notification .selected:before {
+label .selected:before {
   content: "No";
   font-size: 20px;
   border-bottom: 2px solid; }
