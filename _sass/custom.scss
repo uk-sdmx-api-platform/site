@@ -1,12 +1,13 @@
 // Enter any custom Sass in this file.
 
-label {
-  pointer-events: none;
-}
-
-label .input {
-  display: none;
-}
+.toggle-switch-check {
+    bottom: 0;
+    font-size: 62.5%;
+    height: 32px;
+    opacity: 0;
+    position: absolute;
+    width: 60px;
+    z-index: 2;
 
 .toggle-switch-check:checked ~ .toggle-switch-bar::before {
     background-color: #0B5FFF;
