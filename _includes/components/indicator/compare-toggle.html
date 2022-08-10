@@ -5,10 +5,11 @@
       Global data refers to data reported for the UK by the custodian agency.<br><br>
       Turning this on will limit the amount of subcategories you can view at one time.
   </p>
-  <label for="toggle">
-    <input class="input" type="checkbox" id="toggle" role="switch" aria-checked="false" />
-    <div class="toggle-wrapper"><span class="selector"></span></div>
-    <span class="selected" toggle-on="ON" toggle-off="OFF"</span>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
   </label>
 </div>
   
