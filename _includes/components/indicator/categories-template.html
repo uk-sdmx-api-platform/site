@@ -1,11 +1,8 @@
 <script type="text/template" id="categories_template">
-  { %>
-  <h4>Category</h4>
   <select class="select" id="category-select" name="category-select">
-  <option value="total" selected>Headline</option>
-  <% _.each(fields, function(fieldItem) { %>
-    <option value="<%=fieldItem.field%>"><%=translations.t(fieldItem.label)%></option>
-  <% }); %>
+    <option value="total" selected>Headline</option>
+    <% _.each(fields, function(fieldItem) { %>
+      <option value="<%=fieldItem.field%>"><%=translations.t(fieldItem.label)%></option>
+    <% }); %>
   </select>
-  <% }
 </script>
