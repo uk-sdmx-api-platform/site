@@ -3120,6 +3120,22 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
  * @param {Object} args
  * @return null
  */
+
+function initialiseCategories(args) {
+
+  var template = _.template($('#categories_template').html());
+  
+	$('#categories').html(template({
+        fields: args.fields
+    }));
+
+}
+                          
+
+  /**
+ * @param {Object} args
+ * @return null
+ */
 function initialiseUnits(args) {
     var template = _.template($('#units_template').html()),
         units = args.units || [],
