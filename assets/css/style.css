@@ -2512,6 +2512,9 @@ body.contrast-high #search-bar-on-page button:hover {
 body.contrast-high.layout-search form input, body.contrast-high.layout-search form label {
   color: black; }
 
+select {
+  width: 100%; }
+
 label.toggle-switch {
   cursor: pointer; }
 
