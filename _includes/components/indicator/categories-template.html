@@ -5,7 +5,7 @@
     <% _.each(fields, function(fieldItem) { %>
       <option value="<%=fieldItem.field%>" disabled><%=fieldItem.field%></option>
       <% _.each(fieldItem.values, function(item) { %>
-						<option value="<%=item%>">- <%=item%></option>
+	<option value="<%=item%>">- <%=translations.t(item.value)%></option>
       <% }); %>
     <% }); %>
   </select>  
