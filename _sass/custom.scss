@@ -9,6 +9,11 @@ select {
   padding-left: 3px;
 }
 
+select option:disabled {
+  color: black !important;
+  font-weight: bold;
+}
+
 select:focus {
     background-color: white !important;
     box-shadow: none !important;
