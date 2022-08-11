@@ -2521,7 +2521,7 @@ select {
   padding-left: 3px; }
 
 select option:disabled {
-  color: black !important;
+  color: #0b0c0c;
   font-weight: bold; }
 
 select:focus {
