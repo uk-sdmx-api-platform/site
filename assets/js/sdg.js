@@ -1127,6 +1127,7 @@ var indicatorModel = function (options) {
  */
 var UNIT_COLUMN = 'UNIT_MEASURE';
 var SERIES_COLUMN = 'SERIES';
+var REPORTINGTYPE_COLUMN = 'Reporting type';
 var GEOCODE_COLUMN = 'GeoCode';
 var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
