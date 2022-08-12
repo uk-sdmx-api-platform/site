@@ -2724,7 +2724,7 @@ function getTimeSeriesAttributes(rows) {
   this.initialiseReportingType = function() {
     if (this.hasReportingType) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.dataHasGlobalValues = this.reportingTypes.includes("Global")
+      this.dataHasGlobalValues = this.reportingTypes.includes("Global");
     }
   }
 
