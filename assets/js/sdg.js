@@ -1988,6 +1988,18 @@ function sortFieldValueNames(fieldName, fieldValues, dataSchema) {
 }
 
   /**
+ * Model helper functions related to units.
+ */
+
+/**
+ * @param {Array} rows
+ * @return {boolean}
+ */
+function dataHasReportingType(columns) {
+  return columns.includes(REPORTINGTYPE_COLUMN);
+}
+
+  /**
  * Model helper functions related to charts and datasets.
  */
 
