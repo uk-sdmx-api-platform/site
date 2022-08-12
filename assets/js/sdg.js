@@ -4527,6 +4527,11 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
             );
         }
     });
+    
+    MODEL.onReportingTypeComplete.attach(function(sender, args) {
+        
+        helpers.initialiseReportingType(args);
+    });
 
     MODEL.onUnitsComplete.attach(function (sender, args) {
 
