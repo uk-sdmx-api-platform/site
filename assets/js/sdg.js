@@ -3225,6 +3225,22 @@ function initialiseUnits(args) {
  * @param {Object} args
  * @return null
  */
+function initialiseReportingType(args) {
+    var template = _.template($('#comparison_template').html()),
+        dataHasGlobalValues = args.dataHasGlobalValues || false;
+  
+    $('#comparison').html(template({
+        dataHasGlobalValues: dataHasGlobalValues
+    }));
+  
+}
+  
+  
+
+  /**
+ * @param {Object} args
+ * @return null
+ */
 function initialiseSerieses(args) {
     var templateElement = $('#series_template');
     if (templateElement.length > 0) {
