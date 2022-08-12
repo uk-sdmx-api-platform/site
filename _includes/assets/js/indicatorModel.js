@@ -112,6 +112,8 @@ var indicatorModel = function (options) {
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
+  this.hasReportingType = helpers.dataHasReportingType(this.allColumns);
+  this.initialiseReportingType();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
