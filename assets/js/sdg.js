@@ -2927,6 +2927,11 @@ function getTimeSeriesAttributes(rows) {
         units: this.units,
         selectedUnit: this.selectedUnit
       });
+      
+      this.onReportingTypeComplete.notify({
+        reportingTypes: this.reportingTypes
+        dataHasGlobalValues: this.dataHasGlobalValues
+      }):
 
       this.onSeriesesComplete.notify({
         serieses: this.serieses,
