@@ -66,6 +66,8 @@
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
+    dataHasReportingType: dataHasReportingType,
+    dataHasGlobalValues: dataHasGlobalValues,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
