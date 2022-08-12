@@ -1,5 +1,5 @@
 /**
- * Model helper functions related to units.
+ * Model helper functions related to comparing national and global data.
  */
 
 /**
