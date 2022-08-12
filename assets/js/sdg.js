@@ -4410,6 +4410,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     initialiseFields: initialiseFields,
     initialiseCategories: initialiseCategories,
     initialiseUnits: initialiseUnits,
+    initialiseReportingType: initialiseReportingType,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
     alterTableConfig: alterTableConfig,
