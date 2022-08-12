@@ -262,7 +262,7 @@ var indicatorModel = function (options) {
       });
       
       this.onReportingTypeComplete.notify({
-        reportingTypes: this.reportingTypes
+        reportingTypes: this.reportingTypes,
         dataHasGlobalValues: this.dataHasGlobalValues
       });
 
