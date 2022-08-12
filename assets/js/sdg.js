@@ -2675,6 +2675,7 @@ function getTimeSeriesAttributes(rows) {
   this.onDataComplete = new event(this);
   this.onFieldsComplete = new event(this);
   this.onUnitsComplete = new event(this);
+  this.onReportingTypeComplete = new event(this);
   this.onUnitsSelectedChanged = new event(this);
   this.onSeriesesComplete = new event(this);
   this.onSeriesesSelectedChanged = new event(this);
@@ -2931,7 +2932,7 @@ function getTimeSeriesAttributes(rows) {
       this.onReportingTypeComplete.notify({
         reportingTypes: this.reportingTypes
         dataHasGlobalValues: this.dataHasGlobalValues
-      }):
+      });
 
       this.onSeriesesComplete.notify({
         serieses: this.serieses,
