@@ -2615,6 +2615,7 @@ function getTimeSeriesAttributes(rows) {
   return {
     UNIT_COLUMN: UNIT_COLUMN,
     SERIES_COLUMN: SERIES_COLUMN,
+    REPORTINGTYPE_COLUMN: REPORTINGTYPE_COLUMN,
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
@@ -2625,7 +2626,6 @@ function getTimeSeriesAttributes(rows) {
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
     dataHasReportingType: dataHasReportingType,
-    dataHasGlobalValues: dataHasGlobalValues,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
