@@ -2617,6 +2617,7 @@ function getTimeSeriesAttributes(rows) {
     fieldsUsedBySeries: fieldsUsedBySeries,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
+    dataHasGlobalValues: dataHasGlobalValues,
     getInitialFieldItemStates: getInitialFieldItemStates,
     validParentsByChild: validParentsByChild,
     getFieldNames: getFieldNames,
