@@ -2683,7 +2683,7 @@ function getTimeSeriesAttributes(rows) {
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
-  this.indicatorHasGlobalData = false;
+  this.dataHasGlobalValues = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
@@ -2711,7 +2711,7 @@ function getTimeSeriesAttributes(rows) {
   this.initialiseReportingType = function() {
     if (this.hasReportingType) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.indicatorHasGlobalData = this.reportingTypes.includes("Global")
+      this.dataHasGlobalValues = this.reportingTypes.includes("Global")
     }
   }
 
@@ -2921,6 +2921,7 @@ function getTimeSeriesAttributes(rows) {
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
+          this.dataHasGlobalValues,
           this.selectedFields,
           this.edgesData,
           this.compositeBreakdownLabel
