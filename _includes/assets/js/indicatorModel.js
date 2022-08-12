@@ -38,7 +38,7 @@ var indicatorModel = function (options) {
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
-  this.indicatorHasGlobalData = false;
+  this.dataHasGlobalValues = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
@@ -66,7 +66,7 @@ var indicatorModel = function (options) {
   this.initialiseReportingType = function() {
     if (this.hasReportingType) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.indicatorHasGlobalData = this.reportingTypes.includes("Global")
+      this.dataHasGlobalValues = this.reportingTypes.includes("Global")
     }
   }
 
@@ -276,6 +276,7 @@ var indicatorModel = function (options) {
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
+          this.dataHasGlobalValues,
           this.selectedFields,
           this.edgesData,
           this.compositeBreakdownLabel
