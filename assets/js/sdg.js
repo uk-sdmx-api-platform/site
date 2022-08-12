@@ -2930,7 +2930,7 @@ function getTimeSeriesAttributes(rows) {
       });
       
       this.onReportingTypeComplete.notify({
-        reportingTypes: this.reportingTypes
+        reportingTypes: this.reportingTypes,
         dataHasGlobalValues: this.dataHasGlobalValues
       });
 
