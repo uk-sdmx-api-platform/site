@@ -9,6 +9,7 @@
   {% include assets/js/view/fieldHelpers.js %}
   {% include assets/js/view/categoryHelpers.js %}
   {% include assets/js/view/unitHelpers.js %}
+  {% include assets/js/view/comparisonHelpers.js %}
   {% include assets/js/view/seriesHelpers.js %}
   {% include assets/js/view/chartHelpers.js %}
   {% include assets/js/view/chartTypeBase.js %}
