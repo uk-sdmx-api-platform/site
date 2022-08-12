@@ -2646,6 +2646,7 @@ function getTimeSeriesAttributes(rows) {
   }
 })();
 
+  this.helpers = helpers;
 
   // events:
   this.onDataComplete = new event(this);
@@ -2682,6 +2683,7 @@ function getTimeSeriesAttributes(rows) {
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
+  this.indicatorHasGlobalData = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
@@ -2703,6 +2705,13 @@ function getTimeSeriesAttributes(rows) {
       this.selectedUnit = this.units[0];
       this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data, this.allColumns);
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
+    }
+  }
+  
+  this.initialiseReportingType = function() {
+    if (this.hasReportingType) {
+      this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
+      this.indicatorHasGlobalData = this.reportingTypes.includes("Global")
     }
   }
 
@@ -2920,7 +2929,9 @@ function getTimeSeriesAttributes(rows) {
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
+        precisionItems: this.precision,
         dataSchema: this.dataSchema,
+        chartTitles: this.chartTitles,
       });
     }
 
