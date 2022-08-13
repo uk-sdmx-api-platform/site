@@ -2695,7 +2695,6 @@ function getTimeSeriesAttributes(rows) {
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
-  this.hasGlobalValues = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
@@ -2759,8 +2758,6 @@ function getTimeSeriesAttributes(rows) {
   }
 
   // calculate some initial values:
-  this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-  this.hasGlobalValues = helpers.dataHasGlobalValues(this.reportingTypes);
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
@@ -2933,7 +2930,6 @@ function getTimeSeriesAttributes(rows) {
         allowedFields: this.allowedFields,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
-        hasGlobalValues: this.hasGlobalValues,
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
@@ -4509,11 +4505,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
             );
         }
     });
-    
-    MODEL.onReportingTypeComplete.attach(function(sender, args) {
-        
-        helpers.initialiseReportingType(args);
-    });
+
 
     MODEL.onUnitsComplete.attach(function (sender, args) {
 
