@@ -43,7 +43,6 @@
   {% include assets/js/model/unitHelpers.js %}
   {% include assets/js/model/seriesHelpers.js %}
   {% include assets/js/model/fieldHelpers.js %}
-  {% include assets/js/model/comparisonHelpers.js %}
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
