@@ -1166,6 +1166,15 @@ function dataHasGeoCodes(columns) {
   return columns.includes(GEOCODE_COLUMN);
 }
 
+
+/**
+ * @param {Array} reportingTypes
+ * @return {boolean}
+ */
+function dataHasGlobalValues(reportingTypes) {
+  return reportingTypes.includes("Global");
+}
+
 /**
  * @param {Array} rows
  * @return {Array} Columns from first row
