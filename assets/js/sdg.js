@@ -1997,26 +1997,6 @@ function sortFieldValueNames(fieldName, fieldValues, dataSchema) {
 }
 
   /**
- * Model helper functions related to comparing national and global data.
- */
-
-/**
- * @param {Array} rows
- * @return {boolean}
- */
-function dataHasReportingType(columns) {
-  return columns.includes(REPORTINGTYPE_COLUMN);
-}
-
-/**
- * @param {Array} reportingTypes
- * @return {boolean}
- */
-function dataHasGlobalValues(reportingTypes) {
-  return reportingTypes.includes("Global")
-}
-
-  /**
  * Model helper functions related to charts and datasets.
  */
 
@@ -3234,16 +3214,6 @@ function initialiseUnits(args) {
  * @param {Object} args
  * @return null
  */
-function initialiseReportingType(args) {
-    dataHasGlobalValues: dataHasGlobalValues
-}
-  
-  
-
-  /**
- * @param {Object} args
- * @return null
- */
 function initialiseSerieses(args) {
     var templateElement = $('#series_template');
     if (templateElement.length > 0) {
@@ -4429,7 +4399,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     initialiseFields: initialiseFields,
     initialiseCategories: initialiseCategories,
     initialiseUnits: initialiseUnits,
-    initialiseReportingType: initialiseReportingType,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
     alterTableConfig: alterTableConfig,
