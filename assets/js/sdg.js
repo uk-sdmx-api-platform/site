@@ -2695,7 +2695,7 @@ function getTimeSeriesAttributes(rows) {
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
-  this.dataHasGlobalValues = false;
+  this.hasGlobalValues = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
