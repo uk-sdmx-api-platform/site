@@ -7,7 +7,6 @@ var indicatorModel = function (options) {
   this.onDataComplete = new event(this);
   this.onFieldsComplete = new event(this);
   this.onUnitsComplete = new event(this);
-  this.onReportingTypeComplete = new event(this);
   this.onUnitsSelectedChanged = new event(this);
   this.onSeriesesComplete = new event(this);
   this.onSeriesesSelectedChanged = new event(this);
@@ -63,13 +62,6 @@ var indicatorModel = function (options) {
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
     }
   }
-  
-  this.initialiseReportingType = function() {
-    if (this.hasReportingType) {
-      this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.reportingTypes)
-    }
-  }
 
   this.refreshSeries = function() {
     if (this.hasSerieses) {
@@ -110,11 +102,11 @@ var indicatorModel = function (options) {
   }
 
   // calculate some initial values:
+  this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
+  this.hasGlobalValues = helpers.dataHasGlobalValues(this.reportingTypes);
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
-  this.hasReportingType = helpers.dataHasReportingType(this.allColumns);
-  this.initialiseReportingType();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
@@ -260,11 +252,6 @@ var indicatorModel = function (options) {
         units: this.units,
         selectedUnit: this.selectedUnit
       });
-      
-      this.onReportingTypeComplete.notify({
-        reportingTypes: this.reportingTypes,
-        dataHasGlobalValues: this.dataHasGlobalValues
-      });
 
       this.onSeriesesComplete.notify({
         serieses: this.serieses,
@@ -282,7 +269,6 @@ var indicatorModel = function (options) {
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
-          this.dataHasGlobalValues,
           this.selectedFields,
           this.edgesData,
           this.compositeBreakdownLabel
@@ -290,6 +276,7 @@ var indicatorModel = function (options) {
         allowedFields: this.allowedFields,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
+        hasGlobalValues: this.hasGlobalValues,
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
