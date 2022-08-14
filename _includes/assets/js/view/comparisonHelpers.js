@@ -3,12 +3,12 @@
  * @return null
  */
 
-function initialiseFieldsWithGlobalData(args) {
+function initialiseFieldsWithGlobalValues(args) {
 
   var template = _.template($('#categories_template').html());
   
 	$('#categories').html(template({
-        fieldsWithGlobalData: args.fieldsWithGlobalData
+        fieldsWithGlobalValues: args.fieldsWithGlobalValues
     }));
 
 }
