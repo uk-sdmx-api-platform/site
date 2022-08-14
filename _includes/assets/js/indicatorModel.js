@@ -64,7 +64,7 @@ var indicatorModel = function (options) {
     }
   }
   
-  this.initialiseFieldsWithGlobalData = function() {
+  this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
       this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
