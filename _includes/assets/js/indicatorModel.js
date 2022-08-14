@@ -64,12 +64,12 @@ var indicatorModel = function (options) {
     }
   }
   
-  this.initialiseFieldsWithGlobalValues = function() {
+  this.initialiseFieldsWithGlobalData = function() {
     if (this.hasReportingTypes) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
       this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
-      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.fieldsByReportingType);
-      if (this.dataHasGlobalValues) {
+      this.dataHasGlobalData = helpers.dataHasGlobalData(this.fieldsByReportingType);
+      if (this.dataHasGlobalData) {
         this.fieldsWithGlobalData = helpers.fieldsWithGlobalData(this.fieldsByReportingType);
       }
     }
@@ -167,7 +167,7 @@ var indicatorModel = function (options) {
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
-    this.initialiseFieldsWithGlobalValues();
+    this.initialiseFieldsWithGlobalData();
     this.initialiseFields();
     this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
@@ -278,7 +278,7 @@ var indicatorModel = function (options) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
-          this.dataHasGlobalValues,
+          this.dataHasGlobalData,
           this.fieldsWithGlobalData,
           this.fieldsBySeries,
           this.selectedSeries,
