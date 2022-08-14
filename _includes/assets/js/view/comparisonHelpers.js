@@ -3,12 +3,12 @@
  * @return null
  */
 
-function initialiseCategories(args) {
+function initialiseComparison(args) {
 
   var template = _.template($('#categories_template').html());
   
 	$('#categories').html(template({
-        fields: args.fields
+        fieldsWithGlobalData: args.fieldsWithGlobalData
     }));
 
 }
