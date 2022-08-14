@@ -14,7 +14,7 @@ function dataHasReportingTypes(columns) {
  * @param {Array} fieldsUsedByReportingType
  * @return {Array} Field names
  */
-function fieldsWithGlobalData(fieldsUsedByReportingType) {
+function fieldsWithGlobalValues(fieldsUsedByReportingType) {
   return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global')[0].fields
 }
 
