@@ -36,7 +36,7 @@ var indicatorModel = function (options) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.fieldsByReportingType = undefined;
-  this.dataHasGlobalData = false;
+  this.dataHasGlobalValues = false;
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -64,13 +64,13 @@ var indicatorModel = function (options) {
     }
   }
   
-  this.initialiseFieldsWithGlobalData = function() {
+  this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
       this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
-      this.dataHasGlobalData = helpers.dataHasGlobalData(this.fieldsByReportingType);
-      if (this.dataHasGlobalData) {
-        this.fieldsWithGlobalData = helpers.fieldsWithGlobalData(this.fieldsByReportingType);
+      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.fieldsByReportingType);
+      if (this.dataHasGlobalValues) {
+        this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
       }
     }
 
@@ -117,7 +117,7 @@ var indicatorModel = function (options) {
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
   this.hasReportingTypes = helpers.dataHasReportingTypes(this.allColumns);
-  this.initialiseFieldsWithGlobalData();
+  this.initialiseFieldsWithGlobalValues();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
@@ -167,7 +167,7 @@ var indicatorModel = function (options) {
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
-    this.initialiseFieldsWithGlobalData();
+    this.initialiseFieldsWithGlobalValues();
     this.initialiseFields();
     this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
@@ -278,8 +278,8 @@ var indicatorModel = function (options) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
-          this.dataHasGlobalData,
-          this.fieldsWithGlobalData,
+          this.dataHasGlobalValues,
+          this.fieldsWithGlobalValues,
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
