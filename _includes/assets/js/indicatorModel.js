@@ -6,7 +6,6 @@ var indicatorModel = function (options) {
   // events:
   this.onDataComplete = new event(this);
   this.onFieldsComplete = new event(this);
-  this.onFieldsWithGlobalValuesComplete = new event(this);
   this.onUnitsComplete = new event(this);
   this.onUnitsSelectedChanged = new event(this);
   this.onSeriesesComplete = new event(this);
