@@ -3,7 +3,7 @@
  * @return null
  */
 
-function initialiseComparison(args) {
+function initialiseFieldsWithGlobalData(args) {
 
   var template = _.template($('#categories_template').html());
   
