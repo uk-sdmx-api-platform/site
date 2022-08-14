@@ -3,7 +3,7 @@
   <select class="select" id="category-select" name="category-select">
     <option value="total" selected>Headline</option>
     <% _.each(fieldsWithGlobalValues, function(fieldItem) { %>
-      <option value="<%=fieldItem.field%>" disabled><%=fieldItem.field%></option>
+      <option value="<%=fieldItem%>" disabled><%=fieldItem%></option>
     <% }); %>
   </select>  
 </script>
