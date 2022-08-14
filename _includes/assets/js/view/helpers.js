@@ -23,7 +23,6 @@
     HIDE_SINGLE_SERIES: HIDE_SINGLE_SERIES,
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
-    initialiseFields: initialiseComparison,
     initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
