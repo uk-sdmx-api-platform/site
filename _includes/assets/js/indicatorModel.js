@@ -36,7 +36,7 @@ var indicatorModel = function (options) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.fieldsByReportingType = undefined;
-  this.dataHasGlobalValues = false;
+  this.dataHasGlobalData = false;
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -117,7 +117,7 @@ var indicatorModel = function (options) {
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
   this.hasReportingTypes = helpers.dataHasReportingTypes(this.allColumns);
-  this.initialiseFieldsWithGlobalValues();
+  this.initialiseFieldsWithGlobalData();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
