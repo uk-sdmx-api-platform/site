@@ -3010,6 +3010,8 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
         ),
         allowedFields: this.allowedFields,
         reportingTypes: this.reportingTypes,
+        dataHasGlobalValues: this.dataHasGlobalValues,
+        fieldsWithGlobalValues: this.fieldsWithGlobalValues,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
