@@ -2790,6 +2790,7 @@ function fieldIsUsedInDataWithGlobalValues(field, reportingType, rows) {
         this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
       }
     }
+  }
 
   this.refreshSeries = function() {
     if (this.hasSerieses) {
