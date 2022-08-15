@@ -2594,6 +2594,65 @@ function getTimeSeriesAttributes(rows) {
   return timeSeriesAttributes;
 }
 
+  /** 
+* Model helper functions related to comparing national and global data.
+ */
+
+/**
+ * @param {Array} columns
+ * @return {boolean}
+ */
+function dataHasReportingTypes(columns) {
+  return columns.includes(REPORTINGTYPE_COLUMN);
+}
+
+/**
+ * @param {Array} fieldsUsedByReportingType
+ * @return {Array} Field names
+ */
+function fieldsWithGlobalValues(fieldsUsedByReportingType) {
+  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global')[0].fields
+}
+
+
+/**
+ * @param {Array} fieldsUsedByReportingType
+ * @return {boolean}
+ */
+function dataHasGlobalValues(fieldsUsedByReportingType) {
+  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global').length > 0
+}
+
+/**
+ * @param {Array} reportingTypes
+ * @param {Array} rows
+ * @return {Array} Field names
+ */
+function fieldsUsedByReportingType(reportingTypes, rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
+  return reportingTypes.map(function(reportingType) {
+    return {
+      reportingType: reportingType,
+      fields: fields.filter(function(field) {
+        return fieldIsUsedInDataWithReportingType(field, reportingType, rows);
+      }, this),
+    }
+  }, this);
+}
+
+
+/**
+ * @param {string} field
+ * @param {string} reportingType
+ * @param {Array} rows
+ */
+function fieldIsUsedInDataWithGlobalValues(field, reportingType, rows) {
+  return rows.some(function(row) {
+    return row[field] && row[REPORTINGTYPE_COLUMN] === reportingType;
+  }, this);
+}
+
+
 
   function deprecated(name) {
     return function() {
@@ -2614,6 +2673,7 @@ function getTimeSeriesAttributes(rows) {
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
+    dataHasGlobalValues: dataHasGlobalValues,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -2625,6 +2685,7 @@ function getTimeSeriesAttributes(rows) {
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
+    fieldsWithGlobalValues: fieldsWithGlobalValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
@@ -2690,6 +2751,9 @@ function getTimeSeriesAttributes(rows) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
+  this.fieldsByReportingType = undefined;
+  this.dataHasGlobalValues = false;
+  this.fieldsWithGlobalValues = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -2716,6 +2780,16 @@ function getTimeSeriesAttributes(rows) {
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
     }
   }
+  
+  this.initialiseFieldsWithGlobalValues = function() {
+    if (this.hasReportingTypes) {
+      this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
+      this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
+      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.fieldsByReportingType);
+      if (this.dataHasGlobalValues) {
+        this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
+      }
+    }
 
   this.refreshSeries = function() {
     if (this.hasSerieses) {
@@ -2759,6 +2833,8 @@ function getTimeSeriesAttributes(rows) {
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
+  this.hasReportingTypes = helpers.dataHasReportingTypes(this.allColumns);
+  this.initialiseFieldsWithGlobalValues();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
@@ -2808,6 +2884,7 @@ function getTimeSeriesAttributes(rows) {
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
+    this.initialiseFieldsWithGlobalValues();
     this.initialiseFields();
     this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
@@ -2918,6 +2995,8 @@ function getTimeSeriesAttributes(rows) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
+          this.dataHasGlobalValues,
+          this.fieldsWithGlobalValues,
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
@@ -3136,16 +3215,17 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
  * @return null
  */
 
-function initialiseCategories(args) {
+function initialiseFieldsWithGlobalValues(args) {
 
   var template = _.template($('#categories_template').html());
   
 	$('#categories').html(template({
-        fields: args.fields
+	fields: args.fields,
+        fieldsWithGlobalValues: args.fieldsWithGlobalValues
     }));
 
 }
-                          
+        
 
   /**
  * @param {Object} args
@@ -4378,7 +4458,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     HIDE_SINGLE_SERIES: HIDE_SINGLE_SERIES,
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
-    initialiseCategories: initialiseCategories,
+    initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
@@ -4486,7 +4566,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
     
-        helpers.initialiseCategories(args);
+        helpers.initialiseFieldsWithGlobalValues(args);
         helpers.initialiseFields(args);
 
         if (args.hasGeoData && args.showMap) {
