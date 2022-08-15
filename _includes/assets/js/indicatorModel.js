@@ -280,6 +280,7 @@ var indicatorModel = function (options) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
+          this.fieldsByReportingType,
           this.dataHasGlobalValues,
           this.fieldsWithGlobalValues,
           this.fieldsBySeries,
