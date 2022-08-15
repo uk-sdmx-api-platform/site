@@ -50,7 +50,7 @@ function fieldsUsedByReportingType(reportingTypes, rows, columns) {
  * @param {string} reportingType
  * @param {Array} rows
  */
-function fieldIsUsedInDataWithGlobalValues(field, reportingType, rows) {
+function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
   return rows.some(function(row) {
     return row[field] && row[REPORTINGTYPE_COLUMN] === reportingType;
   }, this);
