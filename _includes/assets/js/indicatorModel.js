@@ -354,6 +354,8 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
+      dataHasGlobalValues: this.dataHasGlobalValues,
+      fieldsWithGlobalValues: this.fieldsWithGlobalValues,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
