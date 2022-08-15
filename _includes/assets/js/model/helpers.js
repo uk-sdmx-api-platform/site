@@ -81,6 +81,7 @@
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
+    fieldsUsedByReportingType: fieldsUsedByReportingType,
     fieldsWithGlobalValues: fieldsWithGlobalValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
