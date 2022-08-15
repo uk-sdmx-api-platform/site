@@ -2686,6 +2686,7 @@ function fieldIsUsedInDataWithGlobalValues(field, reportingType, rows) {
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
+    fieldsUsedByReportingType: fieldsUsedByReportingType,
     fieldsWithGlobalValues: fieldsWithGlobalValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
