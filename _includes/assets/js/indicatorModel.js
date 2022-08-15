@@ -74,6 +74,7 @@ var indicatorModel = function (options) {
         this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
       }
     }
+  }
 
   this.refreshSeries = function() {
     if (this.hasSerieses) {
