@@ -292,6 +292,8 @@ var indicatorModel = function (options) {
         ),
         allowedFields: this.allowedFields,
         reportingTypes: this.reportingTypes,
+        dataHasGlobalValues: this.dataHasGlobalValues,
+        fieldsWithGlobalValues: this.fieldsWithGlobalValues,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
