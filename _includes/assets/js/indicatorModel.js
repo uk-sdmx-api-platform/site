@@ -37,6 +37,7 @@ var indicatorModel = function (options) {
   this.dataHasUnitSpecificFields = false;
   this.fieldsByReportingType = undefined;
   this.dataHasGlobalValues = false;
+  this.fieldsWithGlobalValues = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
