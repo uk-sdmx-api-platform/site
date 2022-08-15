@@ -46,6 +46,8 @@
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
+  {% include assets/js/model/comparisonHelpers.js %}
+
 
   function deprecated(name) {
     return function() {
@@ -66,6 +68,7 @@
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
+    dataHasGlobalValues: dataHasGlobalValues,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -77,6 +80,7 @@
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
+    fieldsWithGlobalValues: fieldsWithGlobalValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,

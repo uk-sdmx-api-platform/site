@@ -7,7 +7,7 @@
 
   {% include assets/js/view/constants.js %}
   {% include assets/js/view/fieldHelpers.js %}
-  {% include assets/js/view/categoryHelpers.js %}
+  {% include assets/js/view/comparisonHelpers.js %}
   {% include assets/js/view/unitHelpers.js %}
   {% include assets/js/view/seriesHelpers.js %}
   {% include assets/js/view/chartHelpers.js %}
@@ -23,7 +23,7 @@
     HIDE_SINGLE_SERIES: HIDE_SINGLE_SERIES,
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
-    initialiseCategories: initialiseCategories,
+    initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
