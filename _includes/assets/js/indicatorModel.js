@@ -291,6 +291,7 @@ var indicatorModel = function (options) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
+        reportingTypes: this.reportingTypes,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
