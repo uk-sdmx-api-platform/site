@@ -3,7 +3,7 @@
   <select class="select" id="category-select" name="category-select">
     <option value="total" selected>Headline</option>
     <% _.each(fields, function(fieldItem) { %>
-      <% if(_.contains(fieldsWithGlobalData, fieldItem) { %>
+      <% if(_.contains(fieldsWithGlobalValues, fieldItem) { %>
         <option value="<%=fieldItem.field%>" disabled><%=fieldItem.field%></option>
         <% _.each(fieldItem.values, function(item) { %>
 	        <option value="<%=item.value%>">- <%=translations.t(item.value)%></option>
