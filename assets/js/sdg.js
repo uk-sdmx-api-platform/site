@@ -2998,6 +2998,7 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
+          this.fieldsByReportingType,
           this.dataHasGlobalValues,
           this.fieldsWithGlobalValues,
           this.fieldsBySeries,
