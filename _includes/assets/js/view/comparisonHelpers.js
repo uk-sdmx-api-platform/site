@@ -20,8 +20,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				fields: args.fields,
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
-		}
-		if (this.checked === false) {
+		} else {
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
