@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,875 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment</p>
-<p>and decent work for all</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 8.1: Sustain per capita economic growth in accordance with national circumstances and, in particular, at least 7 per cent gross domestic product growth per annum in the least developed countries</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 8.1.1: Annual growth rate of real GDP per capita</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Annual growth rate of real GDP per capita (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>Any economic statistics related SDG indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>United Nations Statistics Division (UNSD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>United Nations Statistics Division (UNSD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p>Annual growth rate of real Gross Domestic Product (GDP) per capita is calculated as the percentage</p>
-<p>change in the real GDP per capita between two consecutive years. Real GDP per capita is calculated by</p>
-<p>dividing GDP at constant prices by the population of a country or area. The data for real GDP are</p>
-<p>measured in constant US dollars to facilitate the calculation of country growth rates and aggregation of</p>
-<p>the country data.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Annual growth rate of real GDP per capita: Percent (%)</p>
-<p>GDP: US dollars</p>
-<p>Population: Number</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>Different versions of The System of National Accounts (1968, 1993 and 2008 SNA)</p>
-<p>International Standard Industrial Classification (ISIC 3) of all Economic Activities</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>The underlying annual GDP estimates in domestic currency are collected from countries or areas annually through a national accounts questionnaire (NAQ), while the underlying population estimates are obtained from the UN Population Division on <a href="https://population.un.org/wpp/Download/Standard/Population/" target="_blank"><u>https://population.un.org/wpp/Download/Standard/Population/</u></a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>Each year, the national accounts section of the UNSD sends a pre-filled NAQ to countries or areas to collect the latest data on official annual national accounts in domestic currency. In order to lighten the reporting burden of countries to different international and regional organizations, the UNSD receives data from the Organisation for Economic Co-operation and Development (OECD), the United Nations Economic Commission for Europe (ECE) and the Caribbean Community (CARICOM) on behalf of their constituents. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>The exercise to collect official annual national accounts estimates from countries or areas using the national accounts questionnaire starts in February of each year for the data available up to the end of the previous year. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>December of each year </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>National statistics offices, central banks or national agencies responsible for compiling official national accounts estimates for a country or area. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>United Nations Statistics Division (UNSD) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>The National Accounts Section of the United Nations Statistics Division:</p>
-<p> </p>
-<p>Contributes to the international coordinated development and updating of the System of National Accounts (SNA); and undertakes methodological research on issues on the research agenda of the SNA in collaboration with the Intersecretariat Working Group on National Accounts (ISWGNA).</p>
-<p> </p>
-<p>Supports the implementation programme of the SNA by developing and updating supporting normative standards, training material and compilation guidance for the implementation of national accounts and supporting economic statistics and maintaining a knowledge base on economic statistics.</p>
-<p> </p>
-<p>Delivers a statistical capacity building programme for the implementation of the 2008 SNA and supporting statistics through a series of regional and interregional workshops and seminars in collaboration with the regional commissions and regional agencies and through a limited number of individual country technical assistance missions.</p>
-<p>Collects and disseminates annual national accounts statistics from countries and provides substantive service to the Committee on Contributions of the Fifth Committee of the United Nations on technical aspects of the elements of scale methodology for assessing the contributions to the United Nations by Member States.</p>
-<p> </p>
-<p>Publishes the outputs of the Section in various publications of UNSD.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Real Gross Domestic Product (GDP) per capita is a proxy for the average standard of living of residents in</p>
-<p>a country or area.</p>
-<p>A positive percentage change in annual real GDP per capita can be interpreted as an increase in the average standard of living of the residents in a country or area.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>Although countries or areas calculate GDP using the common principles and recommendations in the United Nations System of National Accounts (SNA), there are still problems in international comparability of GDP estimates. These include:</p>
-<ol>
-  <li>Different versions of the SNA (for example, 1968, 1993 or 2008) countries or areas use in calculating their GDP estimates.</li>
-  <li>Different degree of coverage of informal and non-observed economic activities in the GDP estimates.</li>
-</ol>
-<p>Further, as a necessary condition to being a key economic performance indicator of sustainable development, one of the often-cited limitations of GDP is that it does not account for the social and environmental costs of production. It is designed as a measure of the level of overall well-being. For example, growth in real GDP per capita reveals nothing concerning energy and material interactions with the environment.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>The annual growth rate of real Gross Domestic Product (GDP) per capita is calculated as follows:</p>
-<ol>
-  <li>Convert annual real GDP in domestic currency at 2015 prices for a country or area to US dollars at 2015 prices using the 2015 exchange rates.</li>
-  <li>Divide the result by the population of the country or area to obtain annual real GDP per capita in constant US dollars at 2015 prices.</li>
-  <li>Calculate the annual growth rate of real GDP per capita in year t+1 using the following formula: <math xmlns="http://www.w3.org/1998/Math/MathML">
-      <mfrac>
-        <mrow>
-          <msub>
-            <mrow>
-              <mi>G</mi>
-            </mrow>
-            <mrow>
-              <mi>t</mi>
-              <mo>+</mo>
-              <mn>1</mn>
-            </mrow>
-          </msub>
-          <mo>-</mo>
-          <msub>
-            <mrow>
-              <mi>G</mi>
-            </mrow>
-            <mrow>
-              <mi>t</mi>
-            </mrow>
-          </msub>
-        </mrow>
-        <mrow>
-          <msub>
-            <mrow>
-              <mi>G</mi>
-            </mrow>
-            <mrow>
-              <mi>t</mi>
-            </mrow>
-          </msub>
-        </mrow>
-      </mfrac>
-      <mo>&#xD7;</mo>
-      <mn>100</mn>
-    </math>, where G<sub>t+1</sub> is the real GDP per capita in 2015 US dollars in year t+1 and G<sub>t</sub> is the real GDP per capita in 2015 US dollars in year t.</li>
-</ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>The official national accounts data in domestic currency are validated to check for errors. The validation procedure involves ensuring that aggregates are equal to the sum of their components and that data series which are provided in multiple tables are represented consistently.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p>The current and constant price GDP series are converted into US dollars by applying the corresponding market exchange rates as reported by the International Monetary Fund (IMF). When these conversion rates are not available, other IMF rates are used (official rates or principal rates). For countries whose exchange rates are not reported by the IMF, the annual average of United Nations operational rates of exchange (UNOPs) is applied. The UNOPs are conversion rates that are applied in official transactions of the United Nations with these countries. These exchange rates are based on official, commercial and/or tourist rates of exchange. </p>
-<p>In cases where a country experiences considerable distortion in the conversion rates, the UNSD uses price-adjusted rates of exchange (PARE) as an alternative to the exchange rates reported by the IMF or UN operational rates of exchange. The conversion based on PARE corrects the distorting effects of uneven price changes that are not well reflected in the other conversion rates. Consequently, unrealistic levels in GDP and other national accounts aggregates expressed in US Dollars may have been adjusted for certain time periods to improve the economic analysis at national, regional and local levels. </p>
-<p>The constant-price GDP series for each country is then divided by its population to obtain its real GDP per capita. </p>
-<p> </p>
-<p>More information on the methodology to estimate the data is available on <a href="https://unstats.un.org/unsd/snaama/assets/pdf/methodology.pdf">https://unstats.un.org/unsd/snaama/assets/pdf/methodology.pdf</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <ul>
-  <li><strong>At country level</strong></li>
-</ul>
-<p>When a full set of official annual GDP data is not available, estimation procedures are employed to obtain estimates for the entire time series. When full data are not available, a hierarchy of other data sources is used to gather information on the national accounts of a country or area. The data gathered are then either used directly or estimation procedures are applied to obtain the annual GDP data.</p>
-<p>If official data are not available, the selection of data sources is based on following hierarchy:</p>
-<ul>
-  <li>
-    <ol>
-      <li>Official publications and websites of national statistical offices, central banks or relevant government ministries;</li>
-      <li>Official statistics disseminated by Eurostat, European Central Bank and the Organization for Economic Cooperation and Development (OECD) for their members;</li>
-      <li>Information provided by Permanent Missions to the United Nations;</li>
-      <li>Economic surveys and estimates prepared by United Nations&#x2019; Regional Economic Commissions (i.e. UNECE, ECLAC, ESCAP, UNECA and ESCWA);</li>
-      <li>Publications of international organizations with a strong focus on statistical data collection (including regional development banks). The most common sources used for their respective countries are listed below: Asia: Asian Development Bank, ASEAN, Arab Monetary Fund, Secretariat of the Pacific Community (SPC) Africa: African Development Bank, Afristat, Banque des &#xC9;tats de l&#x2019;Afrique Centrale (BEAC), Union &#xC9;conomique Mon&#xE9;taire Ouest Africain (UEMOA) Americas: CARICOM, Caribbean Development Bank, Eastern Caribbean Central Bank (ECCB) Other: OECD for non-member countries Statistical Committee of the Commonwealth of Independent States.</li>
-      <li>Estimates and indicators from other international organizations. The most common sources used are: the International Monetary Fund (IMF) and the World Bank;</li>
-      <li>Publications or websites of specialized groups, the most common sources used are: the Gulf Cooperation Council, the Asia-Pacific Economic Cooperation (APEC), the Committee of Central Bank Governors in SADC; the Islamic Development Bank, and the Statistical Training Centre for Islamic Countries;</li>
-      <li>Economic data from commercial providers and other sources, the most common sources used are: the Economic Intelligence Unit and the United States Central Intelligence Agency;</li>
-      <li>Information from neighbouring countries where no alternative source is available (Switzerland for Liechtenstein; France for Monaco; Italy for San Marino; Spain for Andorra; and some Pacific Islands for other Pacific Islands);</li>
-    </ol>
-  </li>
-</ul>
-<p>The estimation methods involved in preparing the GDP estimates using sources other than official data include trend extrapolation, using appropriate indices for inflating or deflating relevant data series, and share distribution of GDP. A hierarchical assessment is followed to determine which method should be used. Effort is made to keep data estimation methods consistent from year to year.</p>
-<ul>
-  <li><strong>At regional and global levels</strong></li>
-</ul>
-<p>After the missing real GDP country or area data are imputed using the methods as described above, they are summed up to derive the respective regional or global aggregates and then divided by the corresponding population data to obtain the regional or global real GDP per capita. After that, annual growth rates in regional or global real GDP per capita are calculated using the formula described above.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>For each year, the real GDP and population estimates for each country or area are summed up to derive the regional and global aggregates. The regional and global aggregates are then divided by the corresponding population to derive the regional and global real GDP per capita estimates. These estimates are then used to calculate the annual growth rates in regional and global real GDP per capita using the formula described above.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <ul>
-  <li>GDP: National Accounts Statistics: Main Aggregates and Detailed Tables, 2020 See <a href="https://unstats.un.org/unsd/nationalaccount/pubsDB.asp?pType=3" target="_blank">https://unstats.un.org/unsd/nationalaccount/pubsDB.asp?pType=3</a> </li>
-</ul>
-<p> </p>
-<ul>
-  <li>Population: United Nations Demographic Yearbook </li>
-</ul>
-<p>See: https://unstats.un.org/unsd/demographic-social/products/dyb/dybsets/2020.pdf</p>
-<p> </p>
-<ul>
-  <li>GDP: 2008 SNA </li>
-</ul>
-<p>See <a href="https://unstats.un.org/unsd/nationalaccount/docs/SNA2008.pdf" target="_blank">https://unstats.un.org/unsd/nationalaccount/docs/SNA2008.pdf</a> </p>
-<p> </p>
-<ul>
-  <li>Population: Principles and Recommendations for Population and Housing Censuses See <a href="https://unstats.un.org/unsd/publication/seriesM/Series_M67rev3en.pdf" target="_blank">https://unstats.un.org/unsd/publication/seriesM/Series_M67rev3en.pdf</a> </li>
-</ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p>All official data received by the United Nations Statistics Division are checked for errors prior to incorporation in the United Nations official data database. The checking involves ensuring that aggregate indicators are equal to the sum of their components and that indicators which are provided in multiple tables are represented consistently. Footnotes are added to the data when necessary.</p>
-<p>Similarly, the estimated data are checked for consistency by ensuring that aggregate indicators are equal to the sum of their components and that indicators which are represented in multiple tables are represented consistently. The estimates derived for each year are compared to previous years to ensure that estimates are prepared consistently from year to year. Additionally, the growth rate from year to year is analyzed to identify anomalies in the data.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>Data are validated in accordance with the international statistical standards. Discrepancies are resolved through written communication with countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>The estimates derived for each year are compared to previous years to ensure that estimates are prepared consistently from year to year. Additionally, the growth rate from year to year is analysed to identify anomalies in the data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>National statistics offices, central banks or national agencies responsible for compiling official national accounts estimates for a country or area.</p>
-<p><strong>Time series:</strong></p>
-<p>Annual data from 1970 to 2020 are available. </p>
-<p><strong>Disaggregation:</strong></p>
-<p>It is possible to disaggregate the country data by region, if countries can make available the underlying</p>
-<p>regional data which are consistent with the national accounts data to perform the disaggregation.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies: </strong></p>
-<p>The differences with country data include the following: </p>
-<p>Official country data are typically available in domestic currency only. The data estimates for this indicator are in US dollars. </p>
-<p>Countries or areas may not have a full set of official GDP data. The GDP data estimated by UNSD include imputations using various estimation procedures as described above to obtain estimates for the entire time series. </p>
-<p>Official country data are often reported as multiple sets of time series versions, with each version representing a unique methodology used to compile the national accounts data (for example, a difference between two time series versions could reflect a change in currency, a switch from 1968 SNA to 1993 SNA, a change in the office responsible for compiling national accounts, etc.). These time series versions may not be comparable, especially when a country has shifted from the 1968 SNA to 1993 SNA or 2008 SNA. When a single time series version does not exist for the entire period (1970 to t-1), UNSD uses estimation procedures to backcast the most recently reported time series version. </p>
-<p>Backcasting is only performed when time series overlap for at least one year. The overlapping year is used to create a ratio; this ratio is then applied backwards to the previous time series version. If there is a change of fiscal year between two official data time series, the older series are converted to the fiscal year type of the most recent time series prior to backcasting. UNSD uses the same backcasting methods when official country constant price time series versions include multiple base years or when constant price time series versions are reported as constant prices of the previous year (CPPY). CPPY data are backcasted by using the officially reported current price data and the officially reported constant price data. The data are backcasted into a single series with a fixed base year. </p>
-<p>The population estimates from the United Nations Population Division may be different from country-produce estimates as the former include analysis carried out to take into account deficiencies such as incompleteness of coverage, lack of timeliness and errors in the reporting or coding of the basic information and to establish past population trends by resolving the inconsistencies affecting the basic data.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
-<p><a href="https://unstats.un.org/unsd/snaama/Index">https://unstats.un.org/unsd/snaama/Index</a> </p>
-<p><strong>References:</strong></p>
-<p><a href="http://unstats.un.org/unsd/nationalaccount/sna.asp">http://unstats.un.org/unsd/nationalaccount/sna.asp</a> <a href="http://unstats.un.org/unsd/nationalaccount/data.asp">http://unstats.un.org/unsd/nationalaccount/data.asp</a> </p>
-<p><a href="https://unstats.un.org/unsd/snaama/Index">https://unstats.un.org/unsd/snaama/Index</a> </p>
-<p><a href="http://data.un.org/Explorer.aspx?d=SNAAMA">http://data.un.org/Explorer.aspx?d=SNAAMA</a> </p>
-<p><a href="https://population.un.org/wpp/">https://population.un.org/wpp/</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2101,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2187,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

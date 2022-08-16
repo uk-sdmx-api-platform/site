@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->National Metadata</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Global Metadata</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Sources</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from Australia statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from Australian statistics, this table should be consulted for information on national methodology and other Australian-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Goal </th>
+        <th scope="row">Indicator information</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Target </th>
+        <th scope="row">Goal</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicator </th>
+        <th scope="row">Target</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicator</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Metadata update </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Related indicators </th>
+        <th scope="row">Metadata update</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data reporter </th>
+        <th scope="row">Related indicators</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organisation </th>
+        <th scope="row">Data reporter</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact person(s) </th>
+        <th scope="row">Organisation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact organisation unit </th>
+        <th scope="row">Contact person(s)</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact person function </th>
+        <th scope="row">Contact organisation unit</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact phone </th>
+        <th scope="row">Contact person function</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact mail </th>
+        <th scope="row">Contact phone</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact email </th>
+        <th scope="row">Contact mail</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
+        <th scope="row">Contact email</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definition and concepts </th>
+        <th scope="row">Definition, concepts, and classifications</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unit of measure </th>
+        <th scope="row">Definition and concepts</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Classifications </th>
+        <th scope="row">Unit of measure</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data source type and collection method </th>
+        <th scope="row">Classifications</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data sources </th>
+        <th scope="row">Data source type and collection method</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data collection method </th>
+        <th scope="row">Data sources</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data collection calendar </th>
+        <th scope="row">Data collection method</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data release calendar </th>
+        <th scope="row">Data collection calendar</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data providers </th>
+        <th scope="row">Data release calendar</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data compilers </th>
+        <th scope="row">Data providers</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Institutional mandate </th>
+        <th scope="row">Data compilers</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Other methodological considerations </th>
+        <th scope="row">Institutional mandate</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Rationale </th>
+        <th scope="row">Other methodological considerations</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comment and limitations </th>
+        <th scope="row">Rationale</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Method of computation </th>
+        <th scope="row">Comment and limitations</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validation </th>
+        <th scope="row">Method of computation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <th scope="row">Validation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality management </th>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality assurance </th>
+        <th scope="row">Quality management</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality assessment </th>
+        <th scope="row">Quality assurance</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data availability and disaggregation </th>
+        <th scope="row">Quality assessment</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
+        <th scope="row">Data availability and disaggregation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">References and Documentation </th>
+        <th scope="row">Comparability/deviation from international standards</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data last updated </th>
+        <th scope="row">References and Documentation</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadata last updated </th>
+        <th scope="row">Data last updated</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadata last updated</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,999 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 17.14: Enhance policy coherence for sustainable development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 17.14.1: Number of countries with mechanisms in place to enhance policy coherence of sustainable development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-03-01</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>N/A</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <ul>
-  <li><strong>Definition: </strong></li>
-</ul>
-<p>For the purpose of this methodology &#x2018;policy coherence of sustainable development&#x2019; has been interpreted as the coherence between policies in general that cover the dimensions of sustainable development. This indicator is a composite indicator which covers mechanisms related to </p>
-<ol>
-  <li>Institutionalization of Political Commitment </li>
-  <li>Long-term considerations in decision-making</li>
-  <li>Inter-ministerial and cross-sectoral coordination </li>
-  <li>Participatory processes</li>
-  <li>Policy linkages</li>
-  <li>Alignment across government levels</li>
-  <li>Monitoring and reporting for policy coherence</li>
-  <li>Financing for policy coherence</li>
-</ol>
-<p><strong>Concepts:</strong></p>
-<p><em>Scope of &#x201C;Sustainable Development&#x201D; </em>For the purpose of this methodology &#x2018;policy coherence of sustainable development&#x2019; has been interpreted as the coherence between policies in general that cover the dimensions of sustainable development, rather than adopting a narrower definition of mechanisms put in place to support the coherent implementation of Agenda 2030 and the SDGs, so as to promote coherent policy for sustainable development well beyond the current agenda&#x2019;s timeframe. The policy coherence mechanisms set out in this methodology may therefore include mechanisms already in place before the adoption of the 2030 Agenda in 2015, and any mechanisms established during the next decade leading up to 2030 should aim to continue well beyond that timeframe. However, given the role of Agenda 2030 and the individual goals in defining the specific parameters of sustainable development, it is likely that governments will focus, in implementing this methodology, on bringing coherence in their policy approaches to implement the goals. </p>
-<p><em>The concept of Policy Coherence: </em>The textual formulation of the indicator covers &#x201C;policy coherence&#x201D;. In order to make the indicator universally applicable and adaptable to various national contexts, the mechanisms measured by the methodology cover a wide range of mechanisms that, although aiming to achieve the same objective, use slightly different language. In order to properly assess and report on this indicator similar concepts such as &#x201C;whole of government approach or &#x201C;integrated approach&#x201D; will be interpreted in the same spirit as the concept of &#x201C;policy coherence&#x201D;. However, it is important that the used concept considers policies that cover the various dimensions of sustainable development. Hence, a mechanism focusing solely on the concept of policy coherence for development (which is often limited to coherence between Official Development Assistance (ODA) and other policies, in the spirit of the Millennium Development Goals) will not be considered by this framework. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Percent</p>
-<p>Number</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Data provided by national governments, including entities responsible for SDG implementation</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Through a Government Survey (self-scoring by Governments according to the above table). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>First data collection: Expected in early 2021. Biennially thereafter.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>First reporting cycle: 2021. Biennially thereafter.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Data will be provided by countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Enhancing policy coherence for sustainable development is important for achieving sustainable development in its three dimensions (economic, social and environmental) in a balanced and integrated manner; for ensuring coherence between policies at various levels of government; and for ensuring that policies in different sectors are mutually supportive and do not work against each other. It is also important in addressing the impacts of domestic policy internationally. </p>
-<p>Policy coherence aims, as a minimum, to identify trade-offs and mitigate negative impacts between policies. At a more ambitious level, it should also aim to foster synergies and produce policies that mutually reinforce each other. </p>
-<p>At a more ambitious level, it should also aim to foster synergies and produce policies that mutually reinforce each other, and to ensure that policies put in place are implementable and sustainable as they are inclusive of the concerned stakeholders&#x2019; perspectives.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>There are many mechanisms that could be useful to assess at the national level which would be relevant to enhance policy coherence for sustainable development. This methodology aims to provide a basis for countries to engage in discussions around what policy coherence means at the national level and how it could be improved. Such discussions and strategies to improve policy coherence that may results from it could feed into a country Voluntary National Review (VNR) or National Development Strategy or Plan development, to inform further efforts by the country to improve its ability to implement Agenda 2030 through better policy coherence. This document should be considered a living document which is regularly updated with the country experiences in putting in place and assessing mechanisms for policy coherence. These experiences, and related challenges, lessons learned and solutions, can be shared so that UNEP as custodian agency, with partners, can further refine this methodology and disseminated it not only as a tool to enable effective reporting but also to support national efforts toward policy coherence.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>UNEP has developed a composite indicator framework for SDG 17.14.1 based on initial research on existing work, literature, partners and existing indicators on similar issues. This indicator includes 8 domains. Each is scored on a 0-10 point scale. The percentage of points out of the total 80 points is then computed for each country. It is recommended that Governments convene a stakeholder group for self-scoring. The below table can be used for scoring. Full details are in the document &#x201C;Methodology for SDG-indicator 17.14.1: Mechanisms in place to enhance policy coherence for sustainable development&#x201D;.</p>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <p><strong>Theme </strong></p>
-      </td>
-      <td>
-        <p><strong>Domain</strong></p>
-      </td>
-      <td>
-        <p><strong>Points </strong></p>
-      </td>
-      <td>
-        <p><strong>Score</strong></p>
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-        <p>1. Institutionalized political commitment</p>
-      </td>
-      <td>
-        <p>Political commitment expressed/endorsed by the highest level</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Additional specific commitments (1 point each, maximum of 5 points): </p>
-        <p>&#x2022; Set timelines for the achievement of policy coherence objectives;</p>
-        <p>&#x2022; A dedicated budget;</p>
-        <p>&#x2022; Defined roles and responsibilities;</p>
-        <p>&#x2022; Regular reporting mechanism;</p>
-        <p>&#x2022; Explicit consideration of international commitments; </p>
-        <p>&#x2022; Other nationally relevant commitment.</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-        <p>2. Long-term considerations </p>
-      </td>
-      <td>
-        <p>Long-term objectives going beyond the current electoral cycle included in national strategies</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Additional specific mechanisms (1 point each, maximum of 5 points): </p>
-        <p>&#x2022; A commissioner, council or ombudsperson for future generations; </p>
-        <p>&#x2022; Other mechanisms of scrutiny or oversight on possible future effects; </p>
-        <p>&#x2022; Mechanisms for regular appraisal of policies; </p>
-        <p>&#x2022; Impact assessment mechanisms; and </p>
-        <p>&#x2022; Other nationally relevant factors.</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-        <p>3. Inter-ministerial and cross-sectoral coordination</p>
-      </td>
-      <td>
-        <p>National mechanism for regular coordination </p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Additional elements (scored as follows): </p>
-        <p>&#x2022; A mandate to make decisions regarding trade-offs (2 points);</p>
-        <p>&#x2022; Coordination body is convened by a centralized government body (1 point);</p>
-        <p>&#x2022; Coordination at both political level and technical level (1 point);</p>
-        <p>&#x2022; Mandate for aligning internal and external policies (1 point).</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-        <p>4. Participatory processes</p>
-      </td>
-      <td>
-        <p>Relevant stakeholders are consulted at the early stages of development of laws, policies, plans, etc.</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Additional elements (scored as follows): </p>
-        <p>&#x2022; Consultations take place in a comprehensive manner at various stages of the policy cycle (1 point);</p>
-        <p>&#x2022; Institutions disclose the rationale for not including inputs from consultations (2 points);</p>
-        <p>&#x2022; An accountability mechanism that allows public intervention (2 points).</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-        <p>5. Integration of the three dimensions of Sustainable Development, assessment of policy effects and linkages</p>
-      </td>
-      <td>
-        <p>A mechanism for assessing and addressing issues in terms of the contribution of a policy (new or existing) to broader sustainable development, including transboundary elements.</p>
-        <p> </p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Additional mechanisms (1 point each, maximum of 5 points): </p>
-        <p>&#x2022; The application of the above mechanisms at all levels of government;</p>
-        <p>&#x2022; An indicator framework for tracking policy effectiveness towards sustainable development; </p>
-        <p>&#x2022; Cost-benefit analysis of policy impacts across all sectors;</p>
-        <p>&#x2022; The identification of measures to mitigate potentially negative effects and to optimize synergies as part of policy and planning;</p>
-        <p>&#x2022; The consideration of international spill-overs, such as cross-border and international impacts; and </p>
-        <p>&#x2022; Other nationally relevant mechanisms.</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>6. Consultation and coordination across government levels</p>
-      </td>
-      <td>
-        <p>Any of following mechanisms (5 points each, 10 points total &#x2013; two mechanisms is enough for 10 points):</p>
-        <p>&#x2022; Mechanisms to systematically collect the inputs of sub-national government entities; </p>
-        <p>&#x2022; Arrangements for regular formal exchange between central government and subnational levels;</p>
-        <p>&#x2022; Mechanisms to ensure enhance substantive coherence (templates &amp; checklists);&#x2022; Planning cycle timeframes that facilitate alignment.</p>
-      </td>
-      <td>
-        <p>10</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="3">
-        <p>7. Monitoring and reporting for policy coherence</p>
-      </td>
-      <td>
-        <p>Monitoring and evaluation framework for policy coherence for sustainable development.</p>
-      </td>
-      <td>
-        <p>5</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Aspects of policy coherence for sustainable development are integrated into reporting processes.</p>
-      </td>
-      <td>
-        <p>2</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>Data and information management system for sustainable development data.</p>
-      </td>
-      <td>
-        <p>3</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <p>8. Financial resources and tools</p>
-      </td>
-      <td>
-        <p>Any of following (5 points each, 10 points total):</p>
-        <p>&#x2022; Check-lists to ensure that plans and budgets reflect policy coherence for sustainable development;</p>
-        <p>&#x2022; Integrated financial information systems.</p>
-        <p>&#x2022; Mechanisms to ensure that cooperation funds are aligned with national policies and priorities.</p>
-      </td>
-      <td>
-        <p>10</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <p><strong>TOTAL</strong></p>
-      </td>
-      <td>
-        <p>80</p>
-      </td>
-      <td>
-        <p>Sum</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <p><strong>Mechanisms in place to enhance policy coherence for sustainable development (%)</strong></p>
-      </td>
-      <td></td>
-      <td>
-        <p>100* Sum/80</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p>&#x2022; <strong>At country level</strong></p>
-<p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Data will be made available for all member states that report data.</p>
-<p><strong>Time series:</strong></p>
-<p>The reporting on this indicator will be biennial.</p>
-<p><strong>Disaggregation:</strong></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Methodology for SDG-indicator 17.14.1: Mechanisms in place to enhance policy coherence for sustainable development, UNEP (forthcoming)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2225,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2311,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

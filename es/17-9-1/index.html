@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,770 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 17.9: Enhance international support for implementing effective and targeted capacity-building in developing countries to support national plans to implement all the Sustainable Development Goals, including through North-South, South-South and triangular cooperation</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 17.9.1: Dollar value of financial and technical assistance (including through North-South, South&#x2011;South and triangular cooperation) committed to developing countries</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2017-07-09</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>Organisation for Economic Co-operation and Development (OECD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>Organisation for Economic Co-operation and Development (OECD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>Gross disbursements of total ODA and other official flows from all donors for capacity building and national planning.</p>
-<p><strong>Concepts:</strong></p>
-<p>ODA: The DAC defines ODA as &#x201C;those flows to countries and territories on the DAC List of ODA Recipients and to multilateral institutions which are </p>
-<p>i) provided by official agencies, including state and local governments, or by their executive agencies; and </p>
-<p>ii) each transaction is administered with the promotion of the economic development and welfare of developing countries as its main objective; and</p>
-<p>is concessional in character and conveys a grant element of at least 25 per cent (calculated at a rate of discount of 10 per cent). </p>
-<p>(See http://www.oecd.org/dac/stats/officialdevelopmentassistancedefinitionandcoverage.htm)</p>
-<p>Other official flows (OOF): Other official flows (excluding officially supported export credits) are defined as transactions by the official sector which do not meet the conditions for eligibility as ODA, either because they are not primarily aimed at development, or because they are not sufficiently concessional.</p>
-<p>(See http://www.oecd.org/dac/stats/documentupload/DCDDAC(2016)3FINAL.pdf, Para 24).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>The OECD/DAC has been collecting data on official and private resource flows from 1960 at an aggregate level and 1973 at an activity level through the Creditor Reporting System (CRS data are considered complete from 1995 for commitments at an activity level and 2002 for disbursements). </p>
-<p>The data are reported by donors according to the same standards and methodologies (see here: http://www.oecd.org/dac/stats/methodology.htm). </p>
-<p>Data are reported on an annual calendar year basis by statistical reporters in national administrations (aid agencies, Ministries of Foreign Affairs or Finance, etc.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>A statistical reporter is responsible for the collection of DAC statistics in each providing country/agency. This reporter is usually located in the national aid agency, Ministry of Foreign Affairs or Finance etc. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>Data are published on an annual basis in December for flows in the previous year.</p>
-<p>Detailed 2015 flows was published in December 2016.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>Data are reported on an annual calendar year basis by statistical reporters in national administrations (aid agencies, Ministries of Foreign Affairs or Finance, etc.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>OECD</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Total ODA and OOF flows to developing countries quantify the public effort (excluding export credits) that donors provide to developing countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>Data in the Creditor Reporting System are available from 1973. However, the data coverage is considered complete since 1995 for commitments at an activity level and 2002 for disbursements.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>The sum of ODA and OOF flows from all donors to developing countries for capacity building and national planning.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
-<p>None</p>
-<p><strong>&#x2022; At regional and global levels</strong></p>
-<p>None</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Global and regional figures are based on the sum of ODA and OOF flows.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>On a recipient basis for all developing countries eligible for ODA.</p>
-<p><strong>Time series:</strong></p>
-<p><strong>Disaggregation:</strong></p>
-<p>This indicator can be disaggregated by type of flow (ODA or OOF), by donor, recipient country, type of finance, type of aid, sector, etc.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>DAC statistics are standardized on a calendar year basis for all donors and may differ from fiscal year data available in budget documents for some countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
-<p>www.oecd.org/dac/stats</p>
-<p><strong>References:</strong></p>
-<p>See all links here: http://www.oecd.org/dac/stats/methodology.htm</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1996,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2082,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,771 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 17.8: Fully operationalize the technology bank and science, technology and innovation capacity-building mechanism for least developed countries by 2017 and enhance the use of enabling technology, in particular information and communications technology</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 17.8.1: Proportion of individuals using the Internet</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Not Applicable </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2021-08-20</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>1.4, 2.c, 4.3, 4.4, 5.b, 9.c, 10.3, 12.8, 16.10, 16.6, 16.7, 16.10, 17.6</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>International Telecommunication Union (ITU)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>International Telecommunication Union (ITU)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>The indicator proportion of individuals using the Internet is defined as the proportion of individuals who used the Internet from any location in the last three months.</p>
-<p><strong>Concepts:</strong></p>
-<p>The Internet is a worldwide public computer network. It provides access to a number of communication services including the World Wide Web and carries e-mail, news, entertainment and data files, irrespective of the device used (not assumed to be only via a computer - it may also be by mobile telephone, tablet, PDA, games machine, digital TV etc.). Access can be via a fixed or mobile network.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Percentage of individuals</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>For countries that collect this data on the proportion of individuals using the Internet through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (urban/rural), by sex, by age group, by educational level (ISCED), by labour force status (ILO), and by occupation (ISCO). ITU collects data for all of these breakdowns from countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>The indicator proportion of individuals using the Internet is based on an internationally agreed definition and methodology, which have been developed under the coordination of ITU, through its Expert Groups and following an extensive consultation process with countries. It is also a core indicator of the Partnership on Measuring ICT for Development&apos;s Core List of Indicators, which has been endorsed by the UN Statistical Commission (last time in 2014). Data on individuals using the Internet are collected through an annual questionnaire that ITU sends to national statistical offices (NSO). In this questionnaire ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and situation of the country for other related indicators (ICT and economic).</p>
-<p>For most developed and an increasing number of developing countries, the percentage of individuals using the Internet data are based on methodologically sound household surveys conducted by national statistical agencies. If the NSO has not collected Internet user statistics, then ITU estimates the percentage of individuals using the Internet.</p>
-<p>Data are usually not adjusted, but discrepancies in the definition, age scope of individuals, reference period or the break in comparability between years are noted in a data note. For this reason, data are not always strictly comparable.</p>
-<p>Some countries conduct a household survey where the question on Internet use is included every year. For others, the frequency is every two or three years. </p>
-<p>ITU makes the indicator available for each year for 200 economies by using survey data and estimates for almost all countries of the world.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>Data on individuals using the Internet are collected through an annual questionnaire that ITU sends to national statistical offices (NSO). In this questionnaire ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and situation of the country for other related indicators (ICT and economic).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>Data are released twice a year, In July and December, in the <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/wtid.aspx">Wor&#x200B;ld Telecommun&#x200B;ic&#x200B;ation/ICT Indicators Database&#x200B;</a>&#x200B;.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>National Statistical Office (NSO).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>ITU</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>The Internet has become an increasingly important tool to access public information, which is a relevant means to protect fundamental freedoms. The number of Internet users has increased substantially over the last decade and access to the Internet has changed the way people live, communicate, work and do business. Internet uptake is a key indicator tracked by policy makers and others to measure the development of the information society and the growth of Internet content &#x2013; including user-generated content &#x2013; provides access to increasing amounts of information and services.</p>
-<p>Despite growth in networks, services and applications, information and communication technology (ICT) access and use is still far from equally distributed, and many people cannot yet benefit from the potential of the Internet. This indicator highlights the importance of Internet use as a development enabler and helps to measure the digital divide, which, if not properly addressed, will aggravate inequalities in all development domains. Classificatory variables for individuals using the Internet &#x2013;such as age, sex, education level or labour force status &#x2013; can help identify digital divides in individuals using the Internet. This information can contribute to the design of targeted policies to overcome those divides.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>While the data on the percentage of individuals using the Internet are very reliable for countries that have collected the data through official household surveys, they are less reliable in cases where the number of Internet users is estimated by ITU. ITU is encouraging all countries to collect data on this indicator through official surveys and the number of countries with official data for this indicator is increasing.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>For countries that collect data on this indicator through an official survey, this indicator is calculated by dividing the total number of in-scope individuals using the Internet (from any location) in the last 3 months by the total number of in-scope individuals. For countries that have not carried out a survey, data are estimated (by ITU) based on the number of Internet subscriptions and other socioeconomic indicators (GNI per capita) and on the time series data.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>Data are submitted by Member States to ITU. ITU checks and validates the data, in consultation with the Member States. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p>No adjustments are made to the data submitted by countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
-<p>In the absence of official household surveys, ITU estimates the percentage of individuals using the Internet (Internet users as a percentage of total population) using various techniques, such as hot-deck imputation, regression models and time series forecast, using data such as income, education and other ICT indicators.</p>
-<p><strong>&#x2022; At regional and global levels</strong></p>
-<p>In the absence of official household surveys, ITU estimates the percentage of individuals using the Internet (Internet users as a percentage of total population) using various techniques, such as hot-deck imputation, regression models and time series forecast, using data such as income, education and other ICT indicators.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Country-level data on the percentage of individuals using the Internet (Internet users as a percentage of total population) are first estimated using various techniques, such as hot-deck imputation, regression models and time series forecast. Hot-deck imputation uses data from countries with &#x201C;similar&#x201D; characteristics, such as GNI per capita and geographic location. In cases when it is not possible to find an adequate imputation based on similar cases, regression models based on a set of countries with relatively similar characteristics are applied.</p>
-<p>Once the country-level percentages are available for all countries, the number of Internet users are calculated by multiplying the percentages to the population of the country. The regional and world total Internet users were calculated by summing the country-level data. The aggregate percentages were calculated by dividing the regional totals by the population of respective groups.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
-<p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Overall, the indicator is available for more than 130 countries at least from one survey.</p>
-<p>ITU makes the indicator available for each year for 200 economies by using survey data and estimates for almost all countries of the world.</p>
-<p><strong>Time series:</strong></p>
-<p>2000 onwards</p>
-<p><strong>Disaggregation:</strong></p>
-<p>For countries that collect this data on the proportion of individuals using the Internet through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (geographic and/or urban/rural), by sex, by age group, by educational level, by labour force status, and by occupation. ITU collects data for all of these breakdowns from countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>Differences between global and national figures may arise when countries use a different definition than the one agreed internationally and used by ITU. Discrepancies may also arise in cases where the age scope of the surveys differs, or when the country only provides data for a certain age group and not the total population.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
-<p>http://www.itu.int/en/ITU-D/Statistics/Pages/default.aspx</p>
-<p><strong>References:</strong></p>
-<p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
-<p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1997,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2083,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

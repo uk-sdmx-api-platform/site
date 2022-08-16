@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->National Metadata</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Global Metadata</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Sources</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from Australia statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from Australian statistics, this table should be consulted for information on national methodology and other Australian-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Goal </th>
+        <th scope="row">Indicator information</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Target </th>
+        <th scope="row">Goal</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicator </th>
+        <th scope="row">Target</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicator</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Metadata update </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Related indicators </th>
+        <th scope="row">Metadata update</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data reporter </th>
+        <th scope="row">Related indicators</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organisation </th>
+        <th scope="row">Data reporter</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact person(s) </th>
+        <th scope="row">Organisation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact organisation unit </th>
+        <th scope="row">Contact person(s)</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact person function </th>
+        <th scope="row">Contact organisation unit</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact phone </th>
+        <th scope="row">Contact person function</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact mail </th>
+        <th scope="row">Contact phone</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Contact email </th>
+        <th scope="row">Contact mail</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
+        <th scope="row">Contact email</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definition and concepts </th>
+        <th scope="row">Definition, concepts, and classifications</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unit of measure </th>
+        <th scope="row">Definition and concepts</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Classifications </th>
+        <th scope="row">Unit of measure</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data source type and collection method </th>
+        <th scope="row">Classifications</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data sources </th>
+        <th scope="row">Data source type and collection method</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data collection method </th>
+        <th scope="row">Data sources</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data collection calendar </th>
+        <th scope="row">Data collection method</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data release calendar </th>
+        <th scope="row">Data collection calendar</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data providers </th>
+        <th scope="row">Data release calendar</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data compilers </th>
+        <th scope="row">Data providers</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Institutional mandate </th>
+        <th scope="row">Data compilers</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Other methodological considerations </th>
+        <th scope="row">Institutional mandate</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Rationale </th>
+        <th scope="row">Other methodological considerations</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comment and limitations </th>
+        <th scope="row">Rationale</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Method of computation </th>
+        <th scope="row">Comment and limitations</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validation </th>
+        <th scope="row">Method of computation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <th scope="row">Validation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality management </th>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality assurance </th>
+        <th scope="row">Quality management</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Quality assessment </th>
+        <th scope="row">Quality assurance</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data availability and disaggregation </th>
+        <th scope="row">Quality assessment</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
+        <th scope="row">Data availability and disaggregation</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">References and Documentation </th>
+        <th scope="row">Comparability/deviation from international standards</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Data last updated </th>
+        <th scope="row">References and Documentation</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadata last updated </th>
+        <th scope="row">Data last updated</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadata last updated</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,769 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 17.19: By 2030, build on existing initiatives to develop measurements of progress on sustainable development that complement gross domestic product, and support statistical capacity-building in developing countries</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 17.19.2: Proportion of countries that (a) have conducted at least one population and housing census in the last 10 years; and (b) have achieved 100 per cent birth registration and 80 per cent death registration</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-03-01</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>United Nations Statistics Division (UNSD), Department of Economic and Social Affairs, United Nations</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>United Nations Statistics Division (UNSD), Department of Economic and Social Affairs, United Nations</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>This information refers only to 17.19.02b: Proportion of countries that have achieved 100 per cent birth registration and 80 per cent death registration</p>
-<p>According to the Principles and Recommendations for a Vital Statistics System, Revision 3 (https://unstats.un.org/unsd/demographic/standmeth/principles/M19Rev3en.pdf), a complete civil registration is defined as: &#x201C;The registration in the civil registration system of every vital event that has occurred to the members of the population of a particular country (or area), within a specified period as a result of which every such event has a vital registration record and the system has attained 100 per cent coverage.&#x201D;</p>
-<p>In a given country or area, the level of completeness of birth registration can be different from the level of completeness of death registration. </p>
-<p>There exist several methods for the evaluation of completeness of birth or death registration systems. </p>
-<p>An elaboration of these methods is available at Principles and Recommendations for a Vital Statistics System, Revision 3. The evaluation and monitoring of quality and completeness of birth and death registration systems are addressed in Part three, sub-Chapters: D. Quality assessment methods; E. Direct versus indirect assessment, and F. Choosing appropriate methods for assessing completeness and qualitative accuracy of registration and register-based vital statistics (para 579 to 622).</p>
-<p>Indicator 17.19.02b has two parts; the first concerning the birth registration and the second concerning the death registration of each individual country or area. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>The national level of completeness of birth and death registration is provided by the National Statistical Offices of all countries and areas to the United Nations Statistics Division as part of the annual data collection for the United Nations Demographic Yearbook. This information is usually reported as part of the metadata worksheets of the Vital Statistics questionnaire. The template of this questionnaire is available at: https://unstats.un.org/unsd/demographic-social/products/dyb/index.cshtml#questionnaires </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>The first quarter of each year</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Annually</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>National Statistical Offices of all countries and areas.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>United Nations Statistics Division, Department of Economic and Social Affairs, United Nations</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The introduction of indicator 17.19.02b as part of the SDG global framework reflects the recognition of the fundamental role of the civil registration system to the functioning of societies, and the legal and protective advantages that it offers to individuals. The essential purpose of civil registration system is to furnish legal documents of direct interest to individuals. Aside from the direct and overarching importance of civil registration to the public authorities, in that the information compiled using the registration method provides essential data for national and regional preparation and planning for medical and health-care programmes, the role played by civil registration in proving, establishing, implementing and realizing many of the human rights embodied in international declarations and conventions reflects one of its most important contributions to the normal functioning of societies.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>The two sub-indicators of the indicator 17.19.02b are expressed as proportions: at the global level, the proportion of countries that have achieved 100 per cent birth registration is measured as the number of countries that have achieved 100 per cent birth registration divided by the total number of countries. The computation is done in an analogous manner for the death registration part as well as for the regional measurements of both birth and death registration sub-indicators. </p>
-<p>The latest compiled data for this indicator are part of the Statistical Annex to the annual SG&#x2019;s progress report, available at https://unstats.un.org/sdgs. These data are compiled using the country-reported information on availability and completeness of birth and death registration data at the country level, to the United Nations Demographic Yearbook, via the Demographic Yearbook Vital Statistics questionnaire and accompanying metadata. United Nations Demographic Yearbook collection and associated online compilations are published by the United Nations Statistics Division of the Department of Economic and Social Affairs. Please refer to: https://unstats.un.org/unsd/demographic-social/products/dyb/index.cshtml#overview</p>
-<p>At the present time, the thresholds used for compiling the data for the indicator 17.19.02b are 90 per cent for birth registration and 75 per cent for death registration, due to the classification that has been used in the Demographic Yearbook metadata questionnaire on vital statistics. This classification is modified to enable reporting according to the exact formulation of the indicator 17.19.02b.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
-<p>No attempts are made to provide estimates of completeness of birth and death registration, when such information is not reported via the United Nations Demographic Yearbook data collection.</p>
-<p><strong>&#x2022; At regional and global levels</strong></p>
-<p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>The regional values of this indicator are compiled as follows:</p>
-<p>17.19.2 (b.1) Number and proportion of countries with birth registration data that are at least 90 per cent complete: The number of countries or areas on each of the listed regions with birth registration data that are at least 90 per cent complete, and the proportion of such countries or areas to the total number of countries or areas in the respective region.</p>
-<p>17.19.2 (b.2) Number and proportion of countries with death registration data that are at least 75 per cent complete: The number of countries or areas on each of the listed regions with death registration data that are at least 75 per cent complete, and the proportion of such countries or areas to the total number of countries or areas in the respective region.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p><em>Principles and Recommendations for a Vital Statistics System, Revision 3 , </em>United Nations, New York, 2014 <a href="https://unstats.un.org/unsd/demographic/standmeth/principles/M19Rev3en.pdf">https://unstats.un.org/unsd/demographic/standmeth/principles/M19Rev3en.pdf</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Principles and Recommendations for a Vital Statistics System, Revision 3, Part three, I, &#x201C;Quality assurance and assessment of civil registration and register based vital statistics&#x201D; </p>
-<p>Follow up with National Statistical Offices as part of the annual United Nations Demographic Yearbook data collection, validation and processing.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>For the current availability please refer to the Statistical Annex SG&#x2019;s progress reports, available at https://unstats.un.org/sdgs.</p>
-<p><strong>Time series:</strong></p>
-<p><strong>Disaggregation:</strong></p>
-<p>By their definition, the sub-indicators of the indicator 17.19.02b refer to the national levels of completeness of birth and death registration. </p>
-<p>However, knowledge of the birth and death registration completeness at sub-national administrative areas, as well as by income, sex, age group, disability status, etc. is very important for monitoring and improving the functioning of birth and death registration systems.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>Not applicable since the information is derived from country reporting.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Principles and Recommendations for a Vital Statistics System, Revision 3, United Nations, New York, 2014 https://unstats.un.org/unsd/demographic/standmeth/principles/M19Rev3en.pdf</p>
-<p>United Nation Demographic Yearbook, United Nations, New York, annual</p>
-<p>https://unstats.un.org/unsd/demographic-social/products/dyb/index.cshtml </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1995,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2081,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

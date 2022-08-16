@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,777 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 3.9: By 2030, substantially reduce the number of deaths and illnesses from hazardous chemicals and air, water and soil pollution and contamination</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 3.9.3: Mortality rate attributed to unintentional poisoning</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Mortality rate attributed to unintentional poisonings, by sex (deaths per 100,000 population) SH_STA_POISN</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>Indicator 7.1.2: Proportion of population with primary reliance on clean fuels and technology </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>World Health Organization (WHO)</p>
-<p> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>World Health Organization (WHO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong> </p>
-<p>The mortality rate attributed to unintentional poisoning as defined as the number of deaths of unintentional poisonings in a year, divided by the population, and multiplied by 100,000. </p>
-<p> </p>
-<p><strong>Concepts:</strong> </p>
-<p>Mortality rate in the country from unintentional poisonings per year. The International Classification of Diseases, Tenth Revision (ICD-10) codes corresponding to the indicator includes X40, X43, X46-X48, X49. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Rate per 100,000 population </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>Poisonings are defined in terms of the International Classification of Diseases, Tenth Revision (ICD-10) (See 2.a).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>Data inputs to the estimate include (a) data on Water, Sanitation, and Hygiene services and practices, and (b) cause-of-death data, of which the preferred data source is death registration systems with complete coverage and medical certification of cause of death. Other possible data sources include household surveys with verbal autopsy, sample or sentinel registration systems, special studies and surveillance systems. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>WHO collects data directly from country sources, and following established method, estimates are shared with countries to receive their feedback before publication. See Indicator 6.1 for more details. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>WHO sends an e-mail twice annually requesting tabulated death registration data (including all causes of death) from Member States. Countries may submit annual cause-of-death statistics to WHO on an ongoing basis.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>End of 2020</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>National statistics offices, various line ministries and databases covering civil registration with complete coverage and medical certification of cause of death. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>World Health Organization (WHO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>According to Article 64 of its constitution, WHO is mandated to request each Member State to provide statistics on mortality. Furthermore, the WHO Nomenclature Regulations of 1967 affirms the importance of compiling and publishing statistics of mortality and morbidity in comparable form. Member States started to report mortality data to WHO since the early fifties and this reporting activity is continuing until today. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>The measure of mortality rate from unintentional poisonings provides an indication of the extent of inadequate management of hazardous chemicals and pollution, and of the effectiveness of a country&#x2019;s health system. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>Data on deaths are widely available from countries from death registration data or sample registration systems, which are feasible systems, but good quality data are not yet available in all countries. Such data are crucial for improving health and reducing preventable deaths in countries. For countries that do not have such registration systems, data need to be completed with other types of information. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>The methods with agreed international standards have been developed, reviewed and published in various documents. </p>
-<p> </p>
-<p>For countries with a high-quality vital registration system including information on cause of death, the vital registration that member states submit to the WHO Mortality Database were used, with adjustments where necessary, e.g. for under-reporting of deaths, unknown age and sex, and ill-defined causes of deaths. </p>
-<p> </p>
-<p>For countries without high-quality death registration data, cause of death estimates are calculated using other data, including household surveys with verbal autopsy, sample or sentinel registration systems, special studies. Complete methodology may be found here: <a href="https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf">https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>The number of deaths were country consulted with country designated focal points (usually at the Ministry of Health or National Statistics Office) as part of the full set of causes of death prior to the release.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p>Deaths of unknown sex were redistributed pro-rata within cause-age groups of known sexes, and then deaths of unknown age were redistributed pro-rata within cause-sex groups of known ages.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <ul>
-  <li><strong>At country level </strong></li>
-</ul>
-<p>For countries with high-quality cause-of-death statistics, interpolation/extrapolation was done for missing country-years; for countries with only low-quality or no data on causes of death, modelling was used. Complete methodology may be found here: </p>
-<p>WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
-<ul>
-  <li><strong>At regional and global levels </strong></li>
-</ul>
-<p>Not applicable </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Country estimates of number of deaths by cause are summed to obtain regional and global aggregates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <p>The cause of death categories (including unintentional poisoning follow the definitions in terms of the International Classification of Diseases, Tenth Revision (ICD-10). Please see Annex Table A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p>The World Health Organization (WHO) established a Reference Group on Health Statistics in 2013 to provide advice to it on population health statistics with a focus on methodological and data issues related to the measurement of mortality and cause-of-death patterns. The group facilitated interaction between multilateral development institutions and other independent academic groups with WHO expert groups in specific subject areas including methods to the estimation on causes of death.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>The data principles of the World Health Organization (WHO) provide a foundation for continually reaffirming trust in its information and evidence on public health. The five principles are designed to provide a framework for data governance for the organization. The principles are intended primarily for use by all staff in order to help define the values and standards that govern how data that flows into, across and out of the organization is collected, processed, shared and used. These principles are made publicly available so that they may be used and referred to by Member States and non-state actors collaborating with the organization.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>All statements and claims made officially by WHO headquarters about population-level (country, regional, global) estimates of health status (e.g. mortality, incidence, prevalence, burden of disease), are cleared by the Department of Data and Analytics (DNA) through the executive clearance process. These include the Guidelines for Accurate and Transparent Health Estimates Reporting (GATHER) statement. GATHER promotes best practices in reporting health estimates using a checklist of 18 items that should be reported every time new global health estimates are published, including descriptions of input data and estimation methods. Developed by a working group convened by the World Health Organization, the guidelines aim to define and promote good practice in reporting health estimates.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Almost 70 countries currently provide WHO with regular high-quality data on mortality by age, sex and causes of death, and another 58 countries submit data of lower quality. However, comprehensive cause-of-death estimates are calculated by WHO systematically for all of its Member States (with a certain population threshold) every 3 years. </p>
-<p><strong>Time series:</strong></p>
-<p>From 2000 to 2019</p>
-<p><strong>Disaggregation:</strong></p>
-<p>Data can be disaggregated by age group, sex and disease. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>WHO is required by World Health Assembly resolution to consult on all its statistics, and seek feedback from countries on data about countries and territories before publishing all estimates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong> </p>
-<p><a href="https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates">https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates</a></p>
-<p> </p>
-<p><strong>References:</strong> </p>
-<p>WHO indicator definition (http://apps.who.int/gho/data/node.imr.SDGPOISON?lang=en) </p>
-<p> </p>
-<p>WHO methods and data sources for global causes of death, 2000&#x2013;2019 </p>
-<p>(https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2003,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2089,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

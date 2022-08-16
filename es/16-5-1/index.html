@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,786 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 16.5: Substantially reduce corruption and bribery in all their forms</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 16.5.1: Proportion of persons who had at least one contact with a public official and who paid a bribe to a public official, or were asked for a bribe by those public officials, during the previous 12 months</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2016-07-19</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>16.3</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>United Nations Office on Drugs and Crime (UNODC)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>United Nations Office on Drugs and Crime (UNODC)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>This indicator is defined as the percentage of persons who paid at least one bribe (gave a public official money, a gift or counter favour) to a public official, or were asked for a bribe by these public officials, in the last 12 months, as a percentage of persons who had at least one contact with a public official in the same period.</p>
-<p><strong>Concepts:</strong></p>
-<p>In the International Classification of Crime for Statistical Purposes (ICCS), bribery is defined as: &#x2018;Promising, offering, giving, soliciting, or accepting an undue advantage to or from a public official or a person who directs or works in a private sector entity, directly or indirectly, in order that the person act or refrain from acting in the exercise of his or her official duties&#x2019;. This definition is based on definitions of bribery of national public officials, bribery of foreign public officials and official of international organisations and bribery in the private sector that are contained in the United Nations Convention against Corruption (articles 15, 16, and 21).</p>
-<p>While the concept of bribery is broader, as it includes also actions such as promising or offering, and it covers both public and private sector, this indicator focuses on specific forms of bribery that are more measurable (the giving and/or requesting of bribes) and it limits the scope to the public sector.</p>
-<p>The concept of undue advantage is operationalized by reference to giving of money, gifts or provision of a service requested/offered by/to a public official in exchange for a special treatment.</p>
-<p>This indicator captures the often called &#x2018;administrative bribery&#x2019;, which is often intended as the type of bribery affecting citizens in their dealings with public administrations and/or civil servants.</p>
-<p>For this indicator, public official refers to persons holding a legislative, executive, administrative or judicial office. In the operationalization of the indicator, a list of selected officials and civil servants is used.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>This indicator is derived from household surveys on corruption experience and/or victimisation surveys with a module on bribery.</p>
-<p>The indicator refers to individual experience of the respondent, who is randomly selected among the household members, while experience of bribery by other members is not to be included. Experience of bribery is collected through a series of questions on concrete contacts and experiences of bribery with a list of public official and civil servants.</p>
-<p>The denominator refers only to those persons that had at least one direct interaction with a public official/civil servant as they form the population group at risk of experiencing bribery.</p>
-<p>UNODC collects data on the prevalence of bribery through its annual data collection (UN-CTS). The data collection through the UN-CTS is facilitated by a network of over 130 national Focal Points appointed by responsible authorities.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>At international level, data are collected by UNODC through the annual UN-CTS data collection. Data are on bribery indicator are sent to UNODC by member states, usually through national UN-CTS Focal Points (around 130 appointed Focal Points as of 2016) which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). When necessary, other data sources are used, including from websites, publications, other forms of communication.</p>
-<p>Data for SDG monitoring will be sent to countries for consultation prior to publication. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>III-IV quarter 2016 </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>II quarter 2017 </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>Data on bribery are sent to UNODC by member states, usually through national UN-CTS Focal Points which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). The primary source of data on the indicator of bribery experience is usually the institution responsible for surveys on corruption/victimisation surveys (National Statistical Office, Anti-Corruption Agency, etc.).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p><strong>Name:</strong></p>
-<p>UNODC</p>
-<p><strong>Description:</strong></p>
-<p>UNODC, through the annual UN Crime Trends Survey (UN-CTS)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Corruption is an antonym of equal accessibility to public services and of correct functioning of the economy; as such, it has a negative impact on fair distribution of resources and development opportunities. Besides, corruption erodes public trust in authorities and the rule of law; when administrative bribery becomes a recurrent experience of large sectors of the population and businesses, its negative effects have an enduring negative impact on the rule of law, democratic processes and justice. By providing a direct measure of the experience of bribery, this indicator provides an objective metric of corruption, a yardstick to monitor progress in the fight against corruption</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>In the experience of several surveys conducted at national and international level, the so-called bribery prevalence rate is defined as the percentage of persons who paid at least one bribe (gave a public official money, a gift or counter favour) to a public official in the last 12 months, as a percentage of persons who had at least one contact with a public official in the same period. In this formulation the share of population who was asked a bribe but did not give it is not included. Available data at national and international level usually refers to this formulation, while the collection of data according to the formulation included in the SDG framework will depend on the adaptation of relevant survey tools and the calculation by national authorities. It is expected that data according to the current definition will become available gradually.</p>
-<p>On a more general level, it should be noted that this indicator provides solid information on the experience of bribery occurring in the interaction between citizens and the public sector in the context of service delivery/transactions, while it does not cover other forms of corruption, such as &#xB4;grand corruption&#xB4;, trading in influence or abuse of power</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>The indicator is calculated as the total number of persons who paid at least one bribe to a public official in the last 12 months, or were asked for a bribe in the same period, over the total number of persons who had at least one contact with a public official in the same period, multiplied by 100.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
-<p>Missing values are not imputed</p>
-<p><strong>&#x2022; At regional and global levels</strong></p>
-<p>Missing values are not imputed. Global and regional estimates will be produced when data availability will improve.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Global and regional estimates will be produced when data availability will improve.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Countries that have at least 1 data point after 2010 for the indicator on bribery prevalence (see point 7.1) are:</p>
-<p>Asia and Pacific: 2</p>
-<p>Africa: 8</p>
-<p>Latin America and the Caribbean: 2</p>
-<p>Europe, North America, Australia, New Zealand and Japan: 9</p>
-<p>Countries have at least 1 data point between 2000 and 2009 for this indicator:</p>
-<p>Asia and Pacific: 0</p>
-<p>Africa: 0</p>
-<p>Latin America and the Caribbean: 4</p>
-<p>Europe, North America, Australia, New Zealand and Japan: 2&quot;</p>
-<p><strong>Time series:</strong></p>
-<p><strong>Disaggregation:</strong></p>
-<p>Recommended disaggregation for this indicator are:</p>
-<p>age and sex of bribe-givers</p>
-<p>type of official</p>
-<p>income level of bribe-givers</p>
-<p>education attainment of bribe-givers</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>For the time being, only data from national sources are used.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
-<p>www.unodc.org</p>
-<p><strong>References:</strong></p>
-<p>UNODC, International Classification of Crime for Statistical Purposes, 2015</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2012,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2098,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

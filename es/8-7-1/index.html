@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,808 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 8.7: Take immediate and effective measures to eradicate forced labour, end modern slavery and human trafficking and secure the prohibition and elimination of the worst forms of child labour, including recruitment and use of child soldiers, and by 2025 end child labour in all its forms</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 8.7.1: Proportion and number of children aged 5&#x2013;17 years engaged in child labour, by sex and age</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Proportion of children engaged in economic activity, by sex and age (%)</p>
-<p>Proportion of children engaged in economic activity and household chores, by sex and age (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>Many other SDG indicators have links and are relevant to child labour.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>United Nations Children&apos;s Fund (UNICEF)</p>
-<p>International Labour Organization (ILO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>United Nations Children&apos;s Fund (UNICEF)</p>
-<p>International Labour Organization (ILO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>The number of children engaged in child labour corresponds to the number of children reported to be in child labour during the reference period (usually the week prior to the survey). The proportion of children in child labour is calculated as the number of children in child labour divided by the total number of children in the population. For the purposes of this indicator, children include all persons aged 5 to 17. </p>
-<p> </p>
-<p><strong>Concepts:</strong></p>
-<p>Three principal international legal instruments &#x2013; ILO Convention No. 138 (Minimum Age) (C138), United Nations Convention on the Rights of the Child (CRC), ILO Convention No. 182 (Worst Forms) (C182) together set the legal boundaries for child labour, and provide the legal basis for national and international actions against it. In accordance with these instruments, child labour is work that children should <em>not </em>be doing because (a) they are too young or (b) is likely to harm their health, safety or morals, due to its nature or the conditions in which it is carried out.</p>
-<p> </p>
-<p>The resolutions adopted by the International Conference of Labour Statisticians (ICLS), the world&#x2019;s acknowledged standard-setting body in the area of labour statistics, provide the basis for translating the legal standards governing the concept of child labour into statistical terms for the purpose of child labour measurement. </p>
-<p> </p>
-<p>In accordance with the ICLS resolutions<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>, child labour can be measured on the basis of the production boundary set by the United Nations System of National Accounts (UN SNA) or on the basis of the general production boundary. The former limits the frame of reference to economic activity, while the latter extends it to include both economic activity <em>and</em> unpaid household services, that is, the production of domestic and personal services by a household member for consumption within their own household, commonly called &#x201C;household chores&#x201D;. </p>
-<p> </p>
-<p>Following from this, two indicators are used for measuring child labour for the purpose of SDG reporting, the first based on the production boundary set by the UN SNA and the second based on the general production boundary.</p>
-<p> </p>
-<p>Indicator 1: Proportion and number of children aged 5-17 years engaged in economic activities at or above age-specific hourly thresholds (<strong>SNA production boundary basis</strong>)</p>
-<p><em>Child labour for the 5 to 11 age range</em>: children working for 1 hour or more per week in economic activity; </p>
-<p><em>Child labour for the 12 to 14 age range</em>: children working for 14 hours or more per week in economic activity;</p>
-<p><em>Child labour for the 15 to 17 age range</em>: children working for 43 hours or more per week in economic activity.</p>
-<p> </p>
-<p>Indicator 2: Proportion and number of children aged 5-17 years engaged in economic activities and household chores at or above age-specific hourly thresholds (<strong>general production boundary basis</strong>): </p>
-<p><em>Child labour for the 5 to 11 age range</em>: children working for 1 hour or more per week in economic activity and/or involved in unpaid household services for 21 hours or more per week; </p>
-<p><em>Child labour for the 12 to 14 age range</em>: children working for 14 hours or more per week in economic activity and/or involved in unpaid household services for 21 hours or more per week; </p>
-<p><em>Child labour for the 15 to 17 age range</em>: children working for 43 hours or more per week in economic activity.<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup> </p>
-<p> </p>
-<p>The concept of child labour also includes the worst forms of child labour other than hazardous (18<sup>th</sup> ICLS paragraphs 33 to 34) as well as hazardous work (18<sup>th</sup> ICLS paragraphs 21 to 32). The worst forms of child labour include all forms of slavery or similar practices such as trafficking and the recruitment and use of child soldiers, the use or procurement of children for prostitution or other illicit activities, and other work that is likely to harm children&#x2019;s health, safety or well-being. </p>
-<p> </p>
-<div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> 20th International Conference of Labour Statisticians. Resolution to amend the 18th ICLS Resolution concerning statistics of child labour. ILO. Geneva, October 2019. <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> No hourly threshold is set for household chores for ages 15-17. <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Percent (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>The definition of child labour is in line with the standard set by the latest 20<sup>th</sup> International Conference of Labour Statisticians. Resolution to amend the 18th ICLS Resolution concerning statistics of child labour. ILO. Geneva, October 2019</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>Household surveys such as National Labour Force Surveys, National Multipurpose Household Surveys, UNICEF-supported Multiple Indicator Cluster Surveys (MICS), Demographic and Health Surveys (DHS), ILO-supported Statistical Information and Monitoring Programme on Child Labour (SIMPOC), and World Bank Living Standard Measurement surveys (LSMS) are among the most important instruments for generating information on child labour in developing countries. Estimates of child labour generated by these survey instruments are increasingly relied on by countries to monitor progress towards national and global child labour elimination targets. Many countries also produce national labour estimates and reports that often include data on child labour and/or employment among children. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>UNICEF undertakes a wide consultative process of compiling and assessing data from national sources for the purposes of updating its global databases on the situation of children. Up until 2017, the mechanism UNICEF used to collaborate with national authorities on ensuring data quality and international comparability on key indicators of relevance to children was known as Country Data Reporting on the Indicators for the Goals (CRING). </p>
-<p>As of 2018, UNICEF launched a new country consultation process with national authorities on selected child-related global SDG indicators it is custodian or co-custodian to, to meet emerging standards and guidelines on data flows for global reporting of SDG indicators, which place strong emphasis on technical rigour, country ownership and use of official data and statistics. The consultation process solicited feedback directly from National Statistical Offices (NSOs), as well as other government agencies responsible for official statistics, on the compilation of the indicators, including the data sources used, and the application of internationally agreed definitions, classification and methodologies to the data from that source. The results of this country consultation are reviewed and discussed with ILO. Once reviewed, feedback is made available to countries on whether or not specific data points are accepted, and if not, the reasons why. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>UNICEF will undertake an annual country consultation likely between December and January every year to allow for review and processing of the feedback received in order to meet global SDG reporting deadlines. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>Updated data on 8.7.1 will be available in the SDG reporting period every February/March.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>National Statistical Offices (for the most part) and line ministries/other government agencies and International agencies that have conducted labour force surveys or other household surveys through which data on child labour were collected. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>United Nations Children&apos;s Fund (UNICEF) and International Labour Organization (ILO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>The ILO is the UN focal point for labour statistics. It sets international standards for labour statistics through the International Conference of Labour Statisticians. It also compiles and produces labour statistics with the goal of disseminating internationally comparable datasets, and provides technical assistance and training to ILO member States to support their efforts to produce high quality labour market data, including child labour data.</p>
-<p>UNICEF provides technical and financial assistance to Member States to support their efforts to collect high quality data on child labour, including through UNICEF-supported MICS household survey programme. UNICEF also compiles child labour statistics with the goal of making internationally comparable datasets publicly available, and it analyzes child labour statistics, which are included in relevant data-driven publications, including in its flagship publication, <em>The State of the World&#x2019;s Children</em>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Far too many children in the world remain trapped in child labour, compromising their individual future and our collective futures. According to the latest ILO global estimates, about 152 million children worldwide &#x2013; 64 million girls and 88 million boys - are child labourers, accounting for almost 10 percent of the child population. These stark figures underscore the need for accelerated progress against child labour in the lead up to the 2025 target date for ending child labour in all its forms, and the accompanying need for child labour statistics to monitor and guide efforts in this regard. Reliable, comprehensive and timely data on the nature and extent of child labour provide a basis for determining priorities for national global action against child labour. Statistical information on child labour, and more broadly on all working children, also provide a basis for increasing public awareness of the situation of working children and for the development of appropriate regulatory frameworks and policies. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>While the concept of child labour includes working in activities that are hazardous in nature, to ensure comparability of estimates over time and to minimize data quality issues, work beyond age-specific hourly thresholds are used as a proxy for hazardous work for the purpose of reporting on SDG indicator 8.7.1. Further methodological work is needed to validate questions specifically aimed at identifying children in hazardous working conditions. </p>
-<p> </p>
-<p>Similarly, while the worst forms of child labour other than hazardous also form part of the concept of child labour more broadly, data on the worst forms of child labour are not currently captured in regular household surveys given difficulties with accurately and reliably measuring it. Therefore, this element of child labour is not captured by the indicators used for reporting on SDG 8.7.1. </p>
-<p> </p>
-<p>In addition, &#x2018;own use production of goods&#x2019;, including activities such as fetching water and collecting firewood, falls within the production boundary set by the United Nations System of National Accounts (SNA). However, for the purpose of SDG reporting of indicator 8.7.1, and with the goal of facilitating international comparability, fetching water and collecting firewood have been classified as unpaid household services (i.e., household chores), a form of production that lies outside the SNA production boundary. </p>
-<p> </p>
-<p>More broadly, child labour estimates based on the statistical standards set out in the ICLS resolution represent useful benchmarks for international comparative purposes but are <u>not</u> necessarily consistent with estimates based on national child labour legislation. ILO Convention No. 138 contains a number of flexibility clauses left to the discretion of the competent national authority in consultation (where relevant) with workers&#x2019; and employers&#x2019; organizations (e.g., minimum ages, scope of application).<sup><a href="#footnote-4" id="footnote-ref-4">[3]</a></sup> This means that there is no single legal definition of child labour across countries, and thus, no single statistical measure of child labour consistent with national legislation across countries. </p>
-<div class="footnotes"><div><sup class="footnote-number" id="footnote-4">3</sup><p> Principal areas of flexibility in the Convention include: (a)<em>minimum ages</em>: Members whose economy and educational facilities are insufficiently developed may specify a lower general minimum age of 14 years (Art. 2.4) and a lower age range for light work of 12 to 14 years (Art 7.4); and (b) <em>scope of application</em>: Members may exclude from the application of the Convention limited (non-hazardous) categories of employment or work in respect of which special and substantial problems of application arise (Art. 4.1). Members whose economy and administrative facilities are insufficiently developed may also initially limit the scope of application of the Convention (Art. 5.1) beyond a core group of economic activities or undertakings (Art. 5.3). <a href="#footnote-ref-4">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>Children aged 5-17: Number of children aged 5-17 reported in child labour during the week prior to the survey divided by the total number of children aged 5-17 in the population, multiplied by 100. </p>
-<p> </p>
-<p>Children aged 5-14: Number of children aged 5-14 reported in child labour during the week prior to the survey divided by the total number of children aged 5-14 in the population, multiplied by 100. </p>
-<p> </p>
-<p>Children aged 15-17: Number of children aged 15-17 reported child labour during the week prior to the survey divided by the total number of children aged 15-17 in the population, multiplied by 100. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>A wide consultative process is undertaken to compile, assess and validate data from national sources. </p>
-<p>The consultation process solicited feedback directly from National Statistical Offices, as well as other government agencies responsible for official statistics, on the compilation of the indicators, including the data sources used, and the application of internationally agreed definitions, classification and methodologies to the data from that source. The results of this country consultation are reviewed and discussed between the co-custodian agencies, UNICEF and ILO. Once reviewed, feedback is made available to countries on whether or not specific data points are accepted, and if not, the reasons why. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p>While the concept of child labour includes working in activities that are hazardous in nature, to ensure</p>
-<p>comparability of estimates over time and to minimize data quality issues, work beyond age-specific hourly thresholds are used as a proxy for hazardous work for the purpose of reporting on SDG indicator 8.7.1. Similarly, while the worst forms of child labour other than hazardous also form part of the concept of child labour more broadly, data on the worst forms of child labour are not currently captured in regular household surveys given difficulties with accurately and reliably measuring it. Therefore, this element of child labour is not captured by the indicators used for reporting on SDG 8.7.1. In addition, &#x2018;own use production of goods&#x2019;, including activities such as fetching water and collecting firewood,</p>
-<p>falls within the production boundary set by the United Nations System of National Accounts (SNA). However, for the purpose of SDG reporting of indicator 8.7.1, and with the goal of facilitating international comparability, fetching water and collecting firewood have been classified as unpaid household services (i.e., household chores), a form of production that lies outside the SNA production boundary.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <ul>
-  <li><strong>At country level </strong></li>
-</ul>
-<p>Country data are not published when data for a country are entirely missing. </p>
-<p> </p>
-<ul>
-  <li><strong>At regional and global levels </strong></li>
-</ul>
-<p>For details on the methodology for treatment of missing data in the calculation of regional and global aggregates see, <a href="https://data.unicef.org/resources/child-labour-2020-global-estimates-trends-and-the-road-forward/">Child Labour: Global estimates 2020, trends and the road forward</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>For details on the methodology for calculation of regional aggregates, see <a href="https://data.unicef.org/resources/child-labour-2020-global-estimates-trends-and-the-road-forward/">Child Labour: Global estimates 2020, trends and the road forward</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <p>See Section 3.a. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p>The process behind the production of reliable statistics on child labour is well established within UNICEF and the ILO. The quality and process leading to the production of the SDG indicator 8.7.1 is ensured by working closely with the statistical offices and other relevant stakeholders through a consultative process. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>UNICEF and ILO maintain the global database on child labour that is used for official SDG reporting. Before the inclusion of any data point in the database, it is reviewed by technical focal points at UNICEF and ILO to check for consistency and overall data quality. This review is based on a set of objective criteria to ensure that only the most recent and reliable information are included in the databases. These criteria include the following: data sources must include proper documentation; data values must be representative at the national population level; data are collected using an appropriate methodology (e.g., sampling); data values are based on a sufficiently large sample; data conform to the standard indicator definition including age group and concepts, to the extent possible; data are plausible, based on trends and consistency with previously published/reported estimates for the indicator. </p>
-<p> </p>
-<p>As of 2018, UNICEF undertakes an annual consultation with government authorities on 10 of the child-related SDG indicators in its role of sole or joint custodian, and in line with its global monitoring mandate and normative commitments to advancing the 2030 Agenda for children. This includes indicator 8.7.1. More details on the process for the country consultation are outlined below. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>Data consistency and quality checks are regularly conducted for validation of the data before dissemination. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Nationally representative and comparable data are currently available for around 100 low-and middle-income countries. </p>
-<p><strong>Time series:</strong></p>
-<p>Not available. </p>
-<p><strong>Disaggregation:</strong></p>
-<p>Sex. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong> </p>
-<p>The country estimates compiled and presented in the global SDG database have been re-analyzed by UNICEF and ILO in accordance with the definitions and criteria detailed above (see &#x2018;Concepts&#x2019;). This means that the country data values included in the global SDG database will differ from those published and presented in national survey reports. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p>UNICEF statistics on child labour: https://data.unicef.org/topic/child-protection/child-labour/ </p>
-<p>ILO statistics on child labour: <a href="http://www.ilo.org/ipec/ChildlabourstatisticsSIMPOC/Questionnairessurveysandreports/lang--en/index.htm">http://www.ilo.org/ipec/ChildlabourstatisticsSIMPOC/Questionnairessurveysandreports/lang--en/index.htm</a> </p>
-<p>Child Labour: Global estimates 2020, trends and the road forward: <a href="https://data.unicef.org/resources/child-labour-2020-global-estimates-trends-and-the-road-forward/">https://data.unicef.org/resources/child-labour-2020-global-estimates-trends-and-the-road-forward/</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2034,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2120,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

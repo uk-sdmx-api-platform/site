@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,793 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 2.5: By 2020, maintain the genetic diversity of seeds, cultivated plants and farmed and domesticated animals and their related wild species, including through soundly managed and diversified seed and plant banks at the national, regional and international levels, and promote access to and fair and equitable sharing of benefits arising from the utilization of genetic resources and associated traditional knowledge, as internationally agreed</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 2.5.1: Number of (a) plant and (b) animal genetic resources for food and agriculture secured in either medium- or long-term conservation facilities</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Plant genetic resources accessions stored ex situ (number)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>Indicator 2.5.1b on animal genetic resources.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>The conservation of plant and animal genetic resources for food and agriculture (GRFA) in medium- or long-term conservation facilities (<em>ex situ</em>, in genebanks) represents the most trusted means of conserving genetic resources worldwide. Plant and animal GRFA conserved in these facilities can be easily used in breeding programmes as well, even directly on-farm.</p>
-<p>The measure of trends in <em>ex situ</em> conserved materials provides an overall assessment of the extent to which we are managing to maintain and/or increase the total genetic diversity available for future use and thus protected from any permanent loss of genetic diversity which may occur in the natural habitat, i.e. <em>in situ</em>, or on-farm.</p>
-<p>The two components of the indicator 2.5.1, plant (a) and animal (b) GRFA, are separately counted.</p>
-<p>The plant component is calculated as the number of accessions of plant genetic resources secured in conservation facilities under medium- or long-term conditions, where an &#x2018;accession&#x2019; is defined as a distinct sample of seeds, planting materials or plants which is maintained in a genebank. Genebank Standards for Plant Genetic Resources for Food and Agriculture (accessible at <a href="http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/">http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/</a>), set the benchmark for current scientific and technical best practices for conserving plant genetic resources, and support key international policy instruments for the conservation and use of plant genetic resources. These voluntary standards have been endorsed by the FAO Commission on Genetic Resources for Food and Agriculture at its Fourteenth Regular Session (<a href="http://www.fao.org/docrep/meeting/028/mg538e.pdf">http://www.fao.org/docrep/meeting/028/mg538e.pdf</a>). </p>
-<p><strong>Concepts:</strong></p>
-<p>Plant genetic resources for food and agriculture (PGRFA): Any genetic material of plant origin of actual or potential value for food and agriculture.</p>
-<p>Accession: An accession is defined as a sample of seeds, planting materials or plants representing either a wild population, a landrace, a breeding line or an improved cultivar, which is conserved in a genebank. Each accession should be distinct and, in terms of genetic integrity, as close as possible to the sample provided originally.</p>
-<p>Base collection: A base collection is defined as a set of unique accessions to be preserved for a medium to long-term period.</p>
-<p>Active collection: An active collection is defined as a set of distinct accessions that is used for regeneration, multiplication, distribution, characterization and evaluation. Active collections are maintained in short to medium-term storage and usually duplicated in a base collection. </p>
-<p>Medium- or long-term conservation facilities: Biological diversity is often conserved <em>ex situ</em>, outside its natural habitat, in facilities called genebanks. In the case of plant genetic resources, genebanks conserve base collections under medium- or long-term storage conditions, in the form of seeds in cold rooms, plants in the field and tissues <em>in vitro</em> and/or cryoconserved. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Number of unique accessions of plant genetic resources secured in medium to long-term conservation facilities, where an &#x2018;accession&#x2019; is defined as a distinct sample of seeds, planting materials or plants which is maintained in a genebank.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>Genebank Standards for Plant Genetic Resources for Food and Agriculture (accessible at <a href="http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/">http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/</a>), set the benchmark for current scientific and technical best practices for conserving plant genetic resources, and support key international policy instruments for the conservation and use of plant genetic resources. These voluntary standards have been endorsed by the FAO Commission on Genetic Resources for Food and Agriculture at its Fourteenth Regular Session (<a href="http://www.fao.org/docrep/meeting/028/mg538e.pdf">http://www.fao.org/docrep/meeting/028/mg538e.pdf</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>Data are sourced from officially appointed National Focal Points (NFPs) (see <a href="http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/">http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/</a>) and regional and international agricultural research centres holding PGRFA <em>ex situ</em> collections. Data providers report either (i) directly to FAO by using the spreadsheet contained in document List of descriptors for reporting on the Plant Component of SDG indicator 2.5.1 (see References) accessible from the WIEWS home page (<a href="http://www.fao.org/wiews">http://www.fao.org/wiews</a>) or (ii) through published information systems which comply with the standard of the FAO/Bioversity Multi-crop Passport Descriptor List (MCPD) v. 2 (see References), e.g. EURISCO (<a href="http://eurisco.ipk-gatersleben.de/">http://eurisco.ipk-gatersleben.de/</a>) and Genesys (<a href="https://www.genesys-pgr.org">https://www.genesys-pgr.org</a>). </p>
-<p>Data are stored in the World Information and Early Warning System for plant genetic resources for food and agriculture (WIEWS - <a href="http://www.fao.org/wiews">http://www.fao.org/wiews</a>), the FAO platform established to facilitate information exchange as well as periodic assessments of the state of the world&#x2019;s plant genetic resources for food and agriculture. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>The indicator is related to a monitoring framework endorsed by the FAO Commission on Genetic Resources for Food and Agriculture in which the status and trends of plant and animal genetic resources are described through globally agreed indicators and regular country-driven assessments. Officially appointed National Focal Points report directly to FAO, using a format agreed by the FAO Commission on Genetic Resources for Food and Agriculture.</p>
-<p>Sessions of the intergovernmental technical working groups on plant genetic resources for food and agriculture allow for formal consultation processes. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>Data collection is undertaken on an annual basis in the context of the FAO Commission on Genetic resources for Food and Agriculture.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>First quarter of the year.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p>The officially nominated National Focal Points and managers of regional/international genebanks. For information by country see for plant genetic resources <a href="http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/">http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>The National Focal Points for Plant Genetic Resources are responsible for the provision of national data on the indicator. Their Terms of Reference have been detailed in Circular State Letters asking country to report through their National Focal Points (see <a href="http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/">http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Genetic resources for food and agriculture provide the building blocks of food security and, directly or indirectly, support the livelihoods of every person on earth. As the conservation and accessibility to these resources are of vital importance, medium- or long- term conservation facilities (genebanks) to preserve and make these resources and their associated information accessible for breeding and research have been established at country, regional and global levels. Inventories of genebank holdings provide a dynamic measure of the existing plant and animal diversity and its level of preservation. Data relevant to this indicator facilitate the monitoring of diversity secured and accessible through genebanks and support the development and updating of strategies for the conservation and sustainable use of genetic resources.</p>
-<p>The indicator is related to a monitoring framework endorsed by the FAO Commission on Genetic Resources for Food and Agriculture in which the status and trends of plant and animal genetic resources are described through globally agreed indicators and regular country-driven assessments. </p>
-<p>The number of materials conserved under medium- or long-term storage conditions provides an indirect measurement of the total genetic diversity, which are managed to secure for future use. Overall, positive variations are therefore approximated to an increase in the agro-biodiversity secured, while negative variations to a loss of it. </p>
-<p>Caution needs to be paid in the reporting and interpretation of the indicator. In the case of plant genetic resources, an uncontrolled addition of accessions that are in fact duplicates of samples already conserved and accounted for, or, <em>vice versa</em>, the deletion from the reported collections of redundant duplicates may lead to wrong interpretations. In order to avoid duplicate counting at the national level, primarily base collections should be reported. An active collection could be reported, only when, in the absence of a base collection, it also serves the function of the base collection. Another example that needs to be monitored both while reporting and interpreting the results include the grouping or splitting of accessions, as in both cases the variation in the accounted number does not reflect a variation in the genetic diversity conserved and secured. Therefore, it is crucial that reporting countries and regional/international centres together with the accession level information requested explain also the reason for the decrease or increase in the number of accessions, in particular when this does not reflect a real loss or gain in the genetic diversity conserved and secured.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>Broadly, two issues are of concern in using the &#x201C;number of accessions&#x201D; as an indicator of diversity in <em>ex situ</em> collections:</p>
-<p>Undetected duplicates of accessions may contribute to an increase of the indicator, as each accession is a managed unit, kept and recorded as distinct. The detection of such duplicates will therefore result in a reduction in the number of accessions previously reported. This can occur at different levels, for example within genebank collections and also at international level.</p>
-<p>A loss of viability of the material(s) conserved that is not promptly detected may similarly not be reflected in the number of accessions, contributing to an overestimate of the actual number of accessions.</p>
-<p>Additional information could be provided by other indicators measuring <em>ex situ</em> conservation, which are part of the monitoring of the implementation of the Global Plan of Action for PGRFA under the FAO Commission on Genetic Resources for Food and Agriculture. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>The plant component of the indicator is calculated as the total number of unique accessions of plant genetic resources secured in medium to long term conservation facilities. This should include all the accessions in base collections, and unique accessions stored in medium term conservation facilities, as active collections, only when these accessions are considered to become part of the national base collections. Base collections may include both seed, field, cryo-preserved or <em>in vitro</em> collections depending on the species conserved and the available facilities in the country.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>There is no validation process in place.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p> Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <ul>
-  <li><strong>At country level</strong></li>
-</ul>
-<p>Missing values are treated as such and not replaced by estimates. </p>
-<ul>
-  <li><strong>At regional and global levels</strong></li>
-</ul>
-<p>Missing values are treated as such and not replaced by estimates.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Aggregates are the sum of country values.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <p>Officially appointed National Focal Points and managers of regional or international genebanks are requested to provide the list of accessions conserved in medium or long term conservation facilities by filling a spreadsheet contained in document <em>List of descriptors for reporting on the Plant Component of SDG indicator 2.5.1</em> (see References) accessible from the World Information and Early Warning System for plant genetic resources for food and agriculture (WIEWS) home page (<a href="http://www.fao.org/wiews">http://www.fao.org/wiews</a>). Out of the 13 passport descriptors which can be used to characterize each accession, four are mandatory: (i) the name of the genebank (or <em>holding institute code</em>); (ii) the <em>accession number</em><sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>; (iii) the scientific name of the accession (<em>name of taxon</em>, including genus, species and lower taxonomic ranking); and (iv) the type of storage. </p>
-<p>Reporting on the remaining descriptors is highly recommended, as it allows the analysis of changes in different types of diversity concerned, including changes in the type and origin of the material secured (e.g. <em>biological status</em>; <em>country of origin</em>; <em>locations of safety duplications</em>; etc.) and better describes the composition of the secured materials. The descriptors have been agreed by the FAO Commission on Genetic Resources for Food and Agriculture (see question 6.2 in the <em>Reporting format for monitoring the implementation of the Second global Plan of Action for Plant Genetic Resources for Food and Agriculture</em> <a href="http://www.fao.org/3/a-mm294e.pdf">http://www.fao.org/3/a-mm294e.pdf</a>). Genebank holdings are counted based on the list of accessions reported. National Focal Points are invited to provide a brief analysis to highlight and explain changes occurred since the previous report.</p>
-<div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p> FAO provides regular training to National Focal Points related to data collection and reporting.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets.</p>
-<p>FAO 2014. Genebank Standards for Plant Genetic Resources for Food and Agriculture. Rome. (<a href="http://www.fao.org/3/a-i3704e.pdf">http://www.fao.org/3/a-i3704e.pdf</a>)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>Each second year FAO is organizing a global National Coordinators&#x2019; Workshops to assess and discuss the collection of data the indicator is based on. The indicators itself is automatically calculated in DAD-IS. Meetings are held as necessary with National Focal Points to assess and discuss data for the indicator and their collection processes.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>The data collected as part of the first monitoring cycle of the implementation of the Second Global Plan of Action for PGRFA serve as baseline (number of accessions as of June 2014). </p>
-<p>Data for over 100 countries and 17 international/regional centres are being published. The data collection is carried out annually in January. Continued efforts are made to improve the coverage of countries and international/regional centres, as well as the quality of the information.</p>
-<p><strong>Time series:</strong></p>
-<p>Data are available in WIEWS since 2014 with either a two-year or one-year periodicity.</p>
-<p><strong>Disaggregation:</strong></p>
-<p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>There are no internationally estimated data. Data on this indicator are all produced by countries and regional or international centres. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p>National Focal Points for the monitoring of the Second Global Plan of Action for Plant Genetic Resources for Food and Agriculture and the preparation of country reports for The Third Report on the State of the World&apos;s Plant Genetic Resources for Food and Agriculture. <a href="http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/">http://www.fao.org/agriculture/crops/thematic-sitemap/theme/seeds-pgr/gpa/national-focal-points/en/</a></p>
-<p>List of descriptors for reporting on the Plant Component of SDG indicator 2.5.1, FAO 2017. <a href="http://www.fao.org/fileadmin/user_upload/wiews/docs/SDG_251_data_requirement_sheet_table_EN.docx">http://www.fao.org/fileadmin/user_upload/wiews/docs/SDG_251_data_requirement_sheet_table_EN.docx</a> </p>
-<p>Second Global Plan of Action for Plant Genetic Resources for Food and Agriculture. <a href="http://www.fao.org/docrep/015/i2624e/i2624e00.htm">http://www.fao.org/docrep/015/i2624e/i2624e00.htm</a></p>
-<p>Second Report on the State of the World&#x2019;s Plant Genetic Resources for Food and Agriculture.</p>
-<p><a href="http://www.fao.org/docrep/013/i1500e/i1500e00.htm">http://www.fao.org/docrep/013/i1500e/i1500e00.htm</a></p>
-<p>Genebank Standards for Plant Genetic Resources for Food and Agriculture, FAO, 2014.</p>
-<p><a href="http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/">http://www.fao.org/documents/card/en/c/7b79ee93-0f3c-5f58-9adc-5d4ef063f9c7/</a></p>
-<p>Targets and Indicators for Plant Genetic Resources for Food and Agriculture, In: Report of the Fourteenth Regular Session of the Commission on Genetic Resources for Food and Agriculture, </p>
-<p>CGRFA-14/13/Report, Appendix C. <a href="http://www.fao.org/docrep/meeting/028/mg538e.pdf">http://www.fao.org/docrep/meeting/028/mg538e.pdf</a></p>
-<p>Reporting Format for Monitoring the Implementation of the Second Global Plan of Action for Plant Genetic Resources for Food and Agriculture, CGRFA-15/15/Inf.9. <a href="http://www.fao.org/3/a-mm294e.pdf">http://www.fao.org/3/a-mm294e.pdf</a></p>
-<p>FAO/Bioversity Multi-Crop Passport Descriptor (MCPD) v. 2. </p>
-<p><a href="http://www.bioversityinternational.org/fileadmin/user_upload/online_library/publications/pdfs/FAO-Bioversity_multi_crop_passport_descriptors_V_2_Final_rev_1526.pdf">http://www.bioversityinternational.org/fileadmin/user_upload/online_library/publications/pdfs/FAO-Bioversity_multi_crop_passport_descriptors_V_2_Final_rev_1526.pdf</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2019,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2105,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

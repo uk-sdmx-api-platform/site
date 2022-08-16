@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816230843">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,30 +450,28 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
+    
+        
+        
+        
+        
         <li role="presentation" class="nav-item">
-    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+            <button
+                type="button"
+                class="nav-link active"
+                data-bs-toggle="tab"
+                id="tab-metadata"
+                data-bs-target="#metadata"
+                aria-controls="metadata"
+                role="tab"
+                data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to National Metadata tab"
->Metadatos nacionales</button>
-</li>
+data-event-label="Change to Metadata tab"
 
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Global Metadata tab"
->Metadatos globales</button>
-</li>
-
-<li role="presentation" class="nav-item">
-    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to Sources tab"
->Fuentes</button>
-</li>
-  
+            >Metadata</button>
+        </li>
+    
     
     
         <li role="presentation" class="nav-item">
@@ -484,651 +482,451 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
+          
+          
+          <div role="tabpanel" class="tab-pane active" id="metadata">
+              <article>
+                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+
+                  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
   
-      
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       <tr>
-        <th scope="row">Objetivo </th>
+        <th scope="row">Información sobre los indicadores</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Destino </th>
+        <th scope="row">Objetivo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicador </th>
+        <th scope="row">Destino</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Series </th>
+        <th scope="row">Indicador</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Actualización de metadatos </th>
+        <th scope="row">Series</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Indicadores relacionados </th>
+        <th scope="row">Actualización de metadatos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Reportero de datos </th>
+        <th scope="row">Indicadores relacionados</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Organización </th>
+        <th scope="row">Reportero de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Persona(s) de contacto </th>
+        <th scope="row">Organización</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de organización de contactos </th>
+        <th scope="row">Persona(s) de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Función de la persona de contacto </th>
+        <th scope="row">Unidad de organización de contactos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Teléfono de contacto </th>
+        <th scope="row">Función de la persona de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Teléfono de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Correo electrónico de contacto </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <th scope="row">Correo electrónico de contacto</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Definición y conceptos </th>
+        <th scope="row">Definición, conceptos y clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Unidad de medida </th>
+        <th scope="row">Definición y conceptos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Clasificaciones </th>
+        <th scope="row">Unidad de medida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <th scope="row">Clasificaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fuentes de datos </th>
+        <th scope="row">Tipo de fuente de datos y método de recogida</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de recogida de datos </th>
+        <th scope="row">Fuentes de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de recogida de datos </th>
+        <th scope="row">Método de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Calendario de publicación de datos </th>
+        <th scope="row">Calendario de recogida de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Proveedores de datos </th>
+        <th scope="row">Calendario de publicación de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Compiladores de datos </th>
+        <th scope="row">Proveedores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Mandato institucional </th>
+        <th scope="row">Compiladores de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
+        <th scope="row">Mandato institucional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Fundamentos </th>
+        <th scope="row">Otras consideraciones metodológicas</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comentarios y limitaciones </th>
+        <th scope="row">Fundamentos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Método de cálculo </th>
+        <th scope="row">Comentarios y limitaciones</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Validación </th>
+        <th scope="row">Método de cálculo</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <th scope="row">Validación</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Gestión de la calidad </th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Seguro de calidad </th>
+        <th scope="row">Gestión de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Evaluación de la calidad </th>
+        <th scope="row">Seguro de calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
+        <th scope="row">Evaluación de la calidad</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <th scope="row">Disponibilidad y desglose de datos</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Referencias y documentación </th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
         <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
       <tr>
-        <th scope="row">Datos actualizados por última vez </th>
+        <th scope="row">Referencias y documentación</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
-  
-      
-      
       <tr>
-        <th scope="row">Metadatos actualizados por última vez </th>
+        <th scope="row">Datos actualizados por última vez</th>
         <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
+</td>
+        <td>
+</td>
+      </tr>
+    
   
-      
-      
-      
+      <tr>
+        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
+  
+      <tr>
+        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
+        <td>
+</td>
+        <td>
+</td>
+      </tr>
+    
   
   
   
@@ -1205,794 +1003,9 @@ data-event-label="Change to Sources tab"
   
 </table>
 
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Información sobre los indicadores </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
+              </article>
+          </div>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Objetivo </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Destino </th>
-        <td>
-          
-            <p>Target 17.15: Respect each country&#x2019;s policy space and leadership to establish and implement policies for poverty eradication and sustainable development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicador </th>
-        <td>
-          
-            <p>Indicator 17.15.1: Extent of use of country-owned results frameworks and planning tools by providers of development cooperation</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Actualización de metadatos </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicadores relacionados </th>
-        <td>
-          
-            <p>17.16.1 and 5.c.1</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
-        <td>
-          
-            <p>Organisation for Economic Co-operation and Development (OECD)</p>
-<p>United Nations Development Programme (UNDP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Reportero de datos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organización </th>
-        <td>
-          
-            <p>Organisation for Economic Co-operation and Development (OECD)</p>
-<p>United Nations Development Programme (UNDP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Persona(s) de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de organización de contactos </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Función de la persona de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Teléfono de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Correo electrónico de contacto </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición, conceptos y clasificaciones </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definición y conceptos </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
-<p>This indicator measures the extent to which, and the ways in which, all concerned development partners use country-owned results frameworks (CRFs) to plan development cooperation efforts and assess their performance. </p>
-<p>The indicator assesses the degree to which providers of development cooperation (i.e. development partners) design their interventions by relying on objectives and results indicators that are drawn from country government-owned results frameworks reflecting the country&#x2019;s development priorities and goals. </p>
-<p><strong>Concepts:</strong></p>
-<p>Country-owned results frameworks (CRFs) define a country&#x2019;s approach to results and its associated monitoring and evaluation systems focusing on performance and achievement of development results. Using a minimal definition, these results frameworks include agreed objectives and results indicators (i.e. output, outcome, and/or impact). They also set targets to measure progress in achieving the objectives defined in the government&#x2019;s planning documents. </p>
-<p>The definition of country-owned results framework used for this indicator allows the possibility to use equivalent priority-setting mechanisms at the country level since not all countries articulate their priorities through consistent, integrated CRFs.</p>
-<p>In practice, country-owned results frameworks defined at the country level are often broadly stated (e.g. long-term vision plans, national development strategies) and operationalised in more detail at the sector level (e.g. sector strategies), where specific targets and indicators are set for a given timeframe.</p>
-<p>Some examples of CRFs are long-term vision plans; national development strategies; joint government-multi-donor plans; government&#x2019;s sector strategies, policies and plans; subnational planning instruments, as well as other frameworks (e.g. budget support performance matrices &amp; sector-wide approaches). In contrast, planning and priority setting documents produced outside the government, such as country strategies prepared by development partners, are not considered CRFs.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unidad de medida </th>
-        <td>
-          
-            <p>Percent (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Clasificaciones </th>
-        <td>
-          
-            <p>For developing countries, classification is based on SDG grouping provided by the UN Statistical Office (regional classification, Least Developed Countries (LDCs), Landlocked Developing Countries (LLDCs), Small Island Developing States (SIDS)). </p>
-<p>For development partners, classification is based on SDG grouping. In addition, bilateral partners can be distinguished between members of the Development Assistance Committee (DAC) and non-members. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fuentes de datos </th>
-        <td>
-          
-            <p>The monitoring is a voluntary and country-led process. Country governments lead and coordinate data collection and validation. At country level, data are reported by relevant government entities (e.g. the Ministry of Finance/budget department for national budget information) and by development partners and stakeholders. OECD and UNDP support countries in collecting relevant data through the Global Partnership monitoring exercise, and these organisations lead data aggregation and quality assurance at the global level.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de recogida de datos </th>
-        <td>
-          
-            <p>(i) For the data collection process of the Global Partnership&apos;s monitoring exercise, a national coordinator is assigned by the country government. S/he typically comes from the Ministry of Finance, the Ministry of Planning, or the Ministry of Foreign Affairs, a Ministry that has a role for managing development cooperation and partnerships in accordance with the respective institutional structure of each country. </p>
-<p>(ii) The national coordinator collects inputs from development partners. The data is submitted to the OECD and UNDP and subsequently undergoes a review round with the headquarters offices of development partners. </p>
-<p>(iii) No adjustments are made to the data after they have undergone the validation process. However, inconsistencies or possible problematic values are highlighted and sent back to national coordinators for revision.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de recogida de datos </th>
-        <td>
-          
-            <p>The data collection calendar was on a biennial cycle prior to 2020. Data has been reported based on the data collected in 2016 and 2018. The next monitoring round will take place starting from 2023 with data collection occurring on a rolling basis. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Calendario de publicación de datos </th>
-        <td>
-          
-            <p>Data release is scheduled for the first quarter in the year that immediately follows the national data gathering processes.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Proveedores de datos </th>
-        <td>
-          
-            <p><strong>Name:</strong></p>
-<p>Leading central ministry from reporting countries. Typically, the Ministry of Finance, the Ministry of Planning, or the Ministry of Foreign Affairs, depending on the division of labour within each government.</p>
-<p><strong>Description:</strong></p>
-<p>Representatives from the leading ministry in country governments are responsible for leading the national data gathering process and country-level validation. These representatives coordinate the data collection process at the national level by consolidating data and inputs from providers of development co-operation, civil society organisations, the private sector, and trade unions. For calculation of indicator 17.15.1, country governments submit the data to the OECD/UNDP Joint Support Team of the Global Partnership.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Compiladores de datos </th>
-        <td>
-          
-            <p>Organisation for Economic Co-operation and Development (OECD) and United Nations Development Programme (UNDP) jointly compile and report the data at the global level.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Mandato institucional </th>
-        <td>
-          
-            <p>As custodians of this SDG indicator, OECD and UNDP are responsible for providing technical guidance and supporting countries to collect data, compiling and verifying country data, and for submitting the country data and aggregate data for this indicator. Drawing on their institutional support provided to the Global Partnership for Effective Development Co-operation, OECD and UNDP leverage country participation in the Global Partnership monitoring exercise, which since 2013 has tracked progress towards the effectiveness principles and is the recognised source of data and evidence on upholding effectiveness commitments, to aggregate global data for this indicator. Countries not participating in the Global Partnership monitoring exercise are able to submit their country data directly to OECD and UNDP. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Otras consideraciones metodológicas </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Fundamentos </th>
-        <td>
-          
-            <p>Measuring the alignment of development partners&#x2019; support to country priorities in terms of intervention design and type of results-reporting mechanisms provides a relevant assessment regarding the degree of &#x201C;respect for each country&#x2019;s policy space and leadership to establish and implement country-owned policies for poverty eradication and sustainable development&#x201D;. </p>
-<p>In particular, for interventions approved in the year of reference (i.e. most recent behaviour), the assessment measures the extent to which support from other countries and international organizations set exogenous priorities and conditions to partner countries receiving development co-operation that are not reflected in existing country-led priority-setting mechanisms or planning tools.</p>
-<p>The information collected throughout the indicator provides a &#x201C;two-way mirror&#x201D;, providing both a country-level estimate on a country&#x2019;s existing policy space, and a development partner-level estimate on its degree of alignment with existing results frameworks and priority-setting mechanisms in partner countries where it operates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comentarios y limitaciones </th>
-        <td>
-          
-            <p>The Global Partnership monitoring exercise collects data beyond the scope of the proposed indicator, including additional aspects such as quality of national development planning, the enabling environment of civil society organisations, the quality of public-private dialogue, the predictability of development co-operation, and the use of country public financial management systems by providers of development co-operation. Data generated from the Global Partnership monitoring provide evidence for two additional SDG indicators: 17.16.1 and 5.c.1. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Método de cálculo </th>
-        <td>
-          
-            <p>To provide a comprehensive measure on the extent of use of country-owned results frameworks and other government-led planning tools, the indicator calculates the degree to which objectives, results, indicators and monitoring frameworks associated with new development interventions are drawn from government sources &#x2013; including national, sector and subnational planning tools.</p>
-<p>For each development intervention of significant size (US$ 100,000 and above) approved during the year of reference, the following dimensions are assessed:</p>
-<ul>
-  <li>Q1. Whether objectives are drawn from country-owned results frameworks, plans and strategies 0/1</li>
-  <li>Q2. Share of results (outcome) indicators that are drawn from country-owned results frameworks, plans and strategies %</li>
-  <li>Q3. Share of results (outcome) indicators that will rely on sources of data provided by existing country-led monitoring systems or national statistical services to track project progress %</li>
-</ul>
-<p>Global aggregates for the indicator (for partner countries and providers) are obtained by averaging the three dimensions of alignment with country&#x2019;s priorities and goals across all new interventions for the reporting year. </p>
-<p>Aggregated averages per partner country will provide the extent to which CRFs and planning tools are used by providers of development co-operation operating in that specific country in the design and monitoring of new development projects. </p>
-<p>All formulas are available at: <a href="http://unstats.un.org/sdgs/files/metadata-compilation/Metadata-Goal-17.pdf">http://unstats.un.org/sdgs/files/metadata-compilation/Metadata-Goal-17.pdf</a></p>
-<p>Aggregated averages per development partner will indicate the extent to which that development partner uses CRFs and planning tools in the design and monitoring of new development projects in countries in which it operates. Formulas are available at: <a href="http://unstats.un.org/sdgs/files/metadata-compilation/Metadata-Goal-17.pdf">http://unstats.un.org/sdgs/files/metadata-compilation/Metadata-Goal-17.pdf</a></p>
-<p>When aggregating, the size (budget amount) of the project/ intervention is not considered as weight in order to give the same level of importance to the extent of use of country-owned results frameworks and planning tools in medium-sized vs. larger projects, as the indicator tries to capture the overall behaviour of development partners in designing new interventions in a given country. Weighting by project size would otherwise overrepresent infrastructure projects and underrepresent interventions focused on influencing policies and institutional arrangements. Nevertheless, data on project size is available.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validación </th>
-        <td>
-          
-            <p>The national coordinator has the main responsibility to validate the project level data reported by respective government institutions development partners and stakeholders. </p>
-<p>At the global level, the OECD and UNDP review the project level data submitted by partner countries in consultation and coordination with countries&#x2019; national coordinators and with providers of development co-operation.</p>
-<p>Details on the validation process can be found at <a href="https://www.effectivecooperation.org/content/2018-monitoring-guide-national-co-ordinators">https://www.effectivecooperation.org/content/2018-monitoring-guide-national-co-ordinators</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Ajustes </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
-        <td>
-          
-            <p><strong>&#x2022;</strong> <strong>At country level</strong></p>
-<p>There is no treatment of missing values. However, a validation process involving representatives of country governments and country offices as well as headquarters offices of development partners takes place. Missing values are highlighted during this validation process, and attempts are made to fill in these gaps.</p>
-<p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
-<p>There is no imputation of missing values. Attempts are made to minimize gaps in data submissions during the data validation process including triangulation with headquarters offices of development partners.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Agregaciones regionales </th>
-        <td>
-          
-            <p>Global and regional estimates are constructed by making a simple average across all countries/providers globally and for a specific region. It was decided not to use a weighted average to give equal consideration to small and large projects (although project amounts and type are captured in the data to allow for more advanced tabulations).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
-        <td>
-          
-            <p>A monitoring guide is available to national coordinators in English, French and Spanish. A separate guide in English is also available to providers of development cooperation. The guidance is updated regularly. The guide for national coordinators is available at https://www.effectivecooperation.org/content/2018-monitoring-guide-national-co-ordinators. The guide for providers is available at https://www.effectivecooperation.org/content/2018-monitoring-round-mini-guide-development-partners. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Gestión de la calidad </th>
-        <td>
-          
-            <p>The national coordinator has the main responsibility to ensure the quality and comprehensiveness of data for this indicator. OECD and UNDP provide helpdesk and guidance materials to support the national coordinator managing the quality of data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Seguro de calidad </th>
-        <td>
-          
-            <p>The national coordinator has the main responsibility to ensure the quality and comprehensiveness of data for this indicator. OECD and UNDP support the quality assurance through joint review of data with the national coordinator and by engaging development partners at HQ level, UN development system and UNDP country offices as needed, and cross checking with data set submitted for previous monitoring rounds.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Evaluación de la calidad </th>
-        <td>
-          
-            <p>OECD and UNDP support the quality assessment through joint review of data with the national coordinator and by engaging development partners at HQ level, UN development system and UNDP country offices as needed, and cross checking with data set submitted for previous monitoring rounds.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Disponibilidad y desglose de datos </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
-<p>Data collected in the 2016 and 2018 monitoring round generated data for a total of 96 recipient countries and for above 100 development partners &#x2013;including the 29 countries that are members of the OECD&#x2019;s Development Assistance Committee and the six major multilateral organizations in terms of development finance (i.e. the World Bank, the International Monetary Fund, the United Nations Development Programme, African Development Bank, Asian Development Bank, and the Inter-American Development Bank). </p>
-<p><strong>Time series:</strong></p>
-<p>Data for countries have been compiled in 2016 and 2018. From 2023, data will be available on a rolling basis with all countries encouraged to report at least once within a four-year cycle.</p>
-<p><strong>Disaggregation:</strong></p>
-<p>Given the bottom-up approach in generating the indicator, disaggregation is possible at the country level and at the development partner level.</p>
-<p>While data collection is led at the country level, in a bottom-up approach, global and regional aggregates can be used for monitoring internationally-agreed commitments related to strengthening country ownership and better partner alignment with nationally-set development goals. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>NA</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Referencias y documentación </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
-<p><a href="http://effectivecooperation.org/">http://effectivecooperation.org/</a></p>
-<p>Internationally agreed methodology and guideline URL: https://www.effectivecooperation.org/system/files/2020-09/2018_Monitoring_Guide_National_Coordinator.pdf</p>
-<p><strong>References:</strong></p>
-<p>Ocampo, Jose Antonio (2015). A Post-2015 Monitoring and Accountability Framework. UNDESA: CDP Background Paper No. 27. ST/ESA/2015/CDP/27.</p>
-<p>Espey, Jessica; K. Walecik and M. K&#xFC;hner (2015). Follow-up and Review of the SDGs: Fulfilling our Commitments. Sustainable Development Solutions Network: A Global Initiative for the United Nations. New York: SDSN.</p>
-<p>Coppard, D. and C. Culey (2015). The Global Partnership for Effective Development Co-operation&#x2019;s Contribution to the 2030 Agenda for Sustainable Development. Plenary Session 1 Background Paper. Busan Global Partnership Forum, Korea.</p>
-<p>GPEDC (2018). 2018 Monitoring Guide. /Paris/New York. Available at: https://www.effectivecooperation.org/system/files/2020-09/2018_Monitoring_Guide_National_Coordinator.pdf</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
-
-
-
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2020,7 +1033,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -2106,12 +1119,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816230843'></script>
+<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816230843"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
