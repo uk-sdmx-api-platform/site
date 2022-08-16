@@ -2627,7 +2627,25 @@ function fieldValuesWithGlobalReportingType(rows, columns) {
     return {
       field: field,
       values: values.filter(function(fieldValue) {
-        return fieldValueHasGlobalValues(field, fieldValue, rows);
+        return fieldValueHasGlobalReportingType(field, fieldValue, rows);
+      }, this),
+    };
+  }, this);
+}
+
+/**
+ * @param {Array} rows
+ * @param {Array} columns
+ * @return {Array} Field items and values with global data
+ */
+function fieldValuesWithNationalReportingType(rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
+  return fields.map(function(field) {
+  var values = getUniqueValuesByProperty(field, rows);
+    return {
+      field: field,
+      values: values.filter(function(fieldValue) {
+        return fieldValueHasNationalReportingType(field, fieldValue, rows);
       }, this),
     };
   }, this);
@@ -2644,6 +2662,18 @@ function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
     return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'Global';
   }, this);
 }
+
+/**
+ * @param {string} field
+ * @param {string} reportingType
+ * @param {Array} rows
+ */
+function fieldValueHasNationalReportingType(field, fieldValue, rows) {
+  return rows.some(function(row) {
+    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'National';
+  }, this);
+}
+
 
 
 
