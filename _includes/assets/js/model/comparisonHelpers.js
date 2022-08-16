@@ -30,7 +30,7 @@ function fieldValuesWithGlobalReportingType(rows, columns) {
   var values = getUniqueValuesByProperty(field, rows);
     return {
       field: field,
-      values: fieldValues.filter(function(fieldValue) {
+      values: values.filter(function(fieldValue) {
         return fieldValueHasGlobalValues(field, fieldValue, rows);
       }, this),
     };
