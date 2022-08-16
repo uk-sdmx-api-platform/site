@@ -1154,9 +1154,11 @@ body.contrast-high .breadcrumb {
 #indicatorData.no-fields #fields,
 #indicatorData.no-fields #clear {
   display: none; }
-#indicatorData.no-units.no-serieses.no-fields > .col-md-3 {
+#indicatorData.no-global-data #toggles {
   display: none; }
-#indicatorData.no-units.no-serieses.no-fields > .col-md-9 {
+#indicatorData.no-units.no-serieses.no-fields.no-global-data > .col-md-3 {
+  display: none; }
+#indicatorData.no-units.no-serieses.no-fields.no-global-data > .col-md-9 {
   width: 100%; }
 
 #toolbar button {
@@ -1904,10 +1906,6 @@ body.contrast-high.layout-goals #main-content .goal-tiles .global-goals-extra-ic
 .layout-config-builder.contrast-high .btn-group .btn span {
   color: black; }
 
-#main-content #mapFooter .data-controlled-footer-field,
-#main-content #mapFooter [data-for-unit]:not([data-for-unit=""]),
-#main-content #mapFooter [data-for-series]:not([data-for-series=""]) {
-  display: none !important; }
 #main-content #map {
   height: 500px;
   width: 100%; }
