@@ -11,6 +11,18 @@ function dataHasReportingTypes(columns) {
 }
 
 /**
+ * @param {Array} Headline data
+ * @return {boolean} 
+ */
+function headlineHasGlobalReportingType(headlineRows) {
+	return headlineRows.some(function(row) {
+  	return row[REPORTINGTYPE_COLUMN] === 'Global';
+  }, this)
+
+}
+
+
+/**
  * @param {Array} Field items and values with global data
  * @return {boolean} 
  */
