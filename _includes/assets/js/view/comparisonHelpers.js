@@ -7,8 +7,11 @@ function initialiseFieldsWithGlobalValues(args) {
 
 	if (args.dataHasGlobalReportingType === false) {
 		$('#toggles').hide()
-		return
+		$(OPTIONS.rootElement).addClass('no-global-data');
 	}
+	else {
+        	$(OPTIONS.rootElement).removeClass('no-global-data');
+    	}
 	
 	var template = _.template($('#categories_template').html());
 	$('#categories').html(template({
