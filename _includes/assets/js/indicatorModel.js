@@ -35,9 +35,8 @@ var indicatorModel = function (options) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
-  this.fieldsByReportingType = undefined;
-  this.dataHasGlobalValues = false;
-  this.fieldsWithGlobalValues = [];
+  this.dataHasGlobalReportingType = false;
+  this.fieldValuesWithGlobalReportingType = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -67,12 +66,8 @@ var indicatorModel = function (options) {
   
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
-      this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
-      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.fieldsByReportingType);
-      if (this.dataHasGlobalValues) {
-        this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
-      }
+      this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
+      this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
     }
   }
 
@@ -288,10 +283,8 @@ var indicatorModel = function (options) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
-        reportingTypes: this.reportingTypes,
-        fieldsByReportingTypes: this.fieldsByReportingType,
-        dataHasGlobalValues: this.dataHasGlobalValues,
-        fieldsWithGlobalValues: this.fieldsWithGlobalValues,
+        dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+        fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -354,8 +347,8 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      dataHasGlobalValues: this.dataHasGlobalValues,
-      fieldsWithGlobalValues: this.fieldsWithGlobalValues,
+      dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+      fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),

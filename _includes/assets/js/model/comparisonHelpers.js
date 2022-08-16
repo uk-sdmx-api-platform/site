@@ -11,36 +11,29 @@ function dataHasReportingTypes(columns) {
 }
 
 /**
- * @param {Array} fieldsUsedByReportingType
- * @return {Array} Field names
+ * @param {Array} Field items and values with global data
+ * @return {boolean} 
  */
-function fieldsWithGlobalValues(fieldsUsedByReportingType) {
-  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global')[0].fields
+function dataHasGlobalReportingType(fieldValuesWithGlobalReportingType) {
+  _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
 }
-
+  
 
 /**
- * @param {Array} fieldsUsedByReportingType
- * @return {boolean}
- */
-function dataHasGlobalValues(fieldsUsedByReportingType) {
-  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global').length > 0
-}
-
-/**
- * @param {Array} reportingTypes
  * @param {Array} rows
- * @return {Array} Field names
+ * @param {Array} columns
+ * @return {Array} Field items and values with global data
  */
-function fieldsUsedByReportingType(reportingTypes, rows, columns) {
+function fieldValuesWithGlobalReportingType(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
-  return reportingTypes.map(function(reportingType) {
+  return fields.map(function(field) {
+  var values = getUniqueValuesByProperty(field, rows);
     return {
-      reportingType: reportingType,
-      fields: fields.filter(function(field) {
-        return fieldIsUsedInDataWithReportingType(field, reportingType, rows);
+      field: field,
+      values: fieldValues.filter(function(fieldValue) {
+        return fieldValueHasGlobalValues(field, fieldValue, rows);
       }, this),
-    }
+    };
   }, this);
 }
 
@@ -50,8 +43,9 @@ function fieldsUsedByReportingType(reportingTypes, rows, columns) {
  * @param {string} reportingType
  * @param {Array} rows
  */
-function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
+function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
   return rows.some(function(row) {
-    return row[field] && row[REPORTINGTYPE_COLUMN] === reportingType;
+    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'Global';
   }, this);
 }
+
