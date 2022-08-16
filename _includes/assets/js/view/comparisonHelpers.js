@@ -5,7 +5,7 @@
 
 function initialiseFieldsWithGlobalValues(args) {
 
-  if args.dataHasGlobalReportingType === False {
+  if (args.dataHasGlobalReportingType === False) {
 		$('#toggles').hide()
 		return
   }
