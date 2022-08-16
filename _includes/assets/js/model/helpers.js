@@ -70,6 +70,7 @@
     dataHasSerieses: dataHasSerieses,
     dataHasReportingTypes: dataHasReportingTypes,
     dataHasGlobalReportingType: dataHasGlobalReportingType,
+    fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
