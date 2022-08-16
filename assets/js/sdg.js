@@ -2778,6 +2778,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
+  this.fieldValuesWithNationalReportingType = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -2809,6 +2810,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     if (this.hasReportingTypes) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
+      this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
     }
   }
 
@@ -3026,6 +3028,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+        fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -3090,6 +3093,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       selectedSeries: this.selectedSeries,
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+      fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
