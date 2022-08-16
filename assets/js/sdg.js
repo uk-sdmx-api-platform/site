@@ -3247,10 +3247,12 @@ function initialiseFieldsWithGlobalValues(args) {
 
   var template = _.template($('#categories_template').html());
   
-	$('#categories').html(template({
-	fields: args.fields,
-        fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
-    }));
+		$('#categories').html(template({
+		fields: args.fields,
+		fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType,
+		dataHasGlobalReportingType: args.dataHasGlobalReportingType
+		})
+	);
 
 }
         
