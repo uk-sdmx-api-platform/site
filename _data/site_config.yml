@@ -195,7 +195,10 @@ menu:
     translation_key: menu.updates
     dropdown: []
 metadata_edit_url: metadata
-metadata_tabs: []
+metadata_tabs:
+  - scope: metadata
+    title: Metadata
+    description: This tab contains metadata for the national and global data for this indicator.
 news:
   category_links: false
 remote_data_prefix: 'https://uk-sdmx-api-platform.github.io/data'

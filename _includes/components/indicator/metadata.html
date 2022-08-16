@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">National metadata</th>
+      <th scope="col">Global metadata</th>
+    </tr>
+  </thead>
+  {% for indicator_metadata in site.data.schema %}
+    {%- assign metadata_label = indicator_metadata.name | translate_metadata_field -%}
+    {% if indicator_metadata.field.scope == 'national' %}
+      <tr>
+        <th scope="row">{{ metadata_label }}</th>
+        <td>{{ page.indicator[indicator_metadata.name] | markdownify }}</td>
+        <td>{{ page.indicator[indicator_metadata.name+'__GLOBAL'] | markdownify }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
