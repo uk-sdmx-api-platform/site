@@ -36,7 +36,7 @@ function headlineHasGlobalReportingType(headlineRows) {
  * @return {boolean} 
  */
 function fieldsHaveGlobalReportingType(fieldValuesWithGlobalReportingType) {
-  _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
+ 	return _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
 }
   
 
