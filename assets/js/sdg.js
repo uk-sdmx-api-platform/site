@@ -2607,36 +2607,29 @@ function dataHasReportingTypes(columns) {
 }
 
 /**
- * @param {Array} fieldsUsedByReportingType
- * @return {Array} Field names
+ * @param {Array} Field items and values with global data
+ * @return {boolean} 
  */
-function fieldsWithGlobalValues(fieldsUsedByReportingType) {
-  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global')[0].fields
+function dataHasGlobalReportingType(fieldValuesWithGlobalReportingType) {
+  _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
 }
-
+  
 
 /**
- * @param {Array} fieldsUsedByReportingType
- * @return {boolean}
- */
-function dataHasGlobalValues(fieldsUsedByReportingType) {
-  return fieldsUsedByReportingType.filter(obj => obj.reportingType == 'Global').length > 0
-}
-
-/**
- * @param {Array} reportingTypes
  * @param {Array} rows
- * @return {Array} Field names
+ * @param {Array} columns
+ * @return {Array} Field items and values with global data
  */
-function fieldsUsedByReportingType(reportingTypes, rows, columns) {
+function fieldValuesWithGlobalReportingType(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
-  return reportingTypes.map(function(reportingType) {
+  return fields.map(function(field) {
+  var values = getUniqueValuesByProperty(field, rows);
     return {
-      reportingType: reportingType,
-      fields: fields.filter(function(field) {
-        return fieldIsUsedInDataWithReportingType(field, reportingType, rows);
+      field: field,
+      values: fieldValues.filter(function(fieldValue) {
+        return fieldValueHasGlobalValues(field, fieldValue, rows);
       }, this),
-    }
+    };
   }, this);
 }
 
@@ -2646,11 +2639,12 @@ function fieldsUsedByReportingType(reportingTypes, rows, columns) {
  * @param {string} reportingType
  * @param {Array} rows
  */
-function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
+function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
   return rows.some(function(row) {
-    return row[field] && row[REPORTINGTYPE_COLUMN] === reportingType;
+    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'Global';
   }, this);
 }
+
 
 
 
@@ -2674,7 +2668,7 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
     dataHasReportingTypes: dataHasReportingTypes,
-    dataHasGlobalValues: dataHasGlobalValues,
+    dataHasGlobalReportingType:dataHasGlobalReportingType,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -2686,8 +2680,7 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
-    fieldsUsedByReportingType: fieldsUsedByReportingType,
-    fieldsWithGlobalValues: fieldsWithGlobalValues,
+    fieldValuesWithGlobalReportingType: fieldValuesWithGlobalReportingType,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
@@ -2753,9 +2746,8 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
-  this.fieldsByReportingType = undefined;
-  this.dataHasGlobalValues = false;
-  this.fieldsWithGlobalValues = [];
+  this.dataHasGlobalReportingType = false;
+  this.fieldValuesWithGlobalReportingType = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -2785,12 +2777,8 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
   
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
-      this.reportingTypes = helpers.getUniqueValuesByProperty(helpers.REPORTINGTYPE_COLUMN, this.data);
-      this.fieldsByReportingType = helpers.fieldsUsedByReportingType(this.reportingTypes, this.data, this.allColumns);
-      this.dataHasGlobalValues = helpers.dataHasGlobalValues(this.fieldsByReportingType);
-      if (this.dataHasGlobalValues) {
-        this.fieldsWithGlobalValues = helpers.fieldsWithGlobalValues(this.fieldsByReportingType);
-      }
+      this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
+      this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
     }
   }
 
@@ -3006,10 +2994,8 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
-        reportingTypes: this.reportingTypes,
-        fieldsByReportingTypes: this.fieldsByReportingType,
-        dataHasGlobalValues: this.dataHasGlobalValues,
-        fieldsWithGlobalValues: this.fieldsWithGlobalValues,
+        dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+        fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -3072,8 +3058,8 @@ function fieldIsUsedInDataWithReportingType(field, reportingType, rows) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      dataHasGlobalValues: this.dataHasGlobalValues,
-      fieldsWithGlobalValues: this.fieldsWithGlobalValues,
+      dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+      fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
@@ -3228,7 +3214,7 @@ function initialiseFieldsWithGlobalValues(args) {
   
 	$('#categories').html(template({
 	fields: args.fields,
-        fieldsWithGlobalValues: args.fieldsWithGlobalValues
+        fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
     }));
 
 }
