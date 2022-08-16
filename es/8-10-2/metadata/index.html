@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,106 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 8.10: Strengthen the capacity of domestic financial institutions to encourage and expand access to banking, insurance and financial services for all</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 8.10.2: Proportion of adults (15 years and older) with an account at a bank or other financial institution or with a mobile-money-service provider </p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2016-07-19</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_RELATED_INDICATORS__GLOBAL', "<p>1.4, 5.a, 2.3 </p>");
+        var propertyEditor = editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_RELATED_INDICATORS__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>World Bank (WB) </p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>World Bank (WB) </p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,6 +597,18 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definition:</strong> </p>\n<p>The percentage of adults (ages 15+) who report having an account (by themselves or together with someone else) at a bank or another type of financial institution or personally using a mobile money service in the past 12 months. </p>\n<p> </p>\n<p><strong>Concepts:</strong> </p>\n<p>Account at a financial institution includes respondents who report having an account at a bank or at another type of financial institution, such as a credit union, microfinance institution, cooperative, or the post office (if applicable), or having a debit card in their own name. In addition, it includes respondents who report receiving wages, government transfers, or payments for agricultural products into an account at a financial institution in the past 12 months; paying utility bills or school fees from an account at a financial institution in the past 12 months; or receiving wages or government transfers into a card in the past 12 months. Mobile money account includes respondents who report personally using GSM Association (GSMA) Mobile Money for the Unbanked (MMU) services in the past 12 months to pay bills or to send or receive money. In addition, it includes respondents who report receiving wages, government transfers, or payments for agricultural products through a mobile phone in the past 12 months. </p>\n<p> </p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
@@ -521,34 +617,166 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>The indicators in the 2014 Global Financial Inclusion (Global Findex) database are drawn from survey data covering almost 150,000 people in more than 140 economies&#x2014;representing more than 97 percent of the world&#x2019;s population. The survey was carried out over the 2014 calendar year by Gallup, Inc. as part of its Gallup World Poll, which since 2005 has continually conducted surveys of approximately 1,000 people in each of more than 160 economies and in over 140 languages, using randomly selected, nationally representative samples. The target population is the entire civilian, noninstitutionalized population age 15 and above. </p>\n<p> </p>\n<p>Methodology, including interview procedures, data preparation, margin of error and notes by country are all available at http://www.worldbank.org/content/dam/Worldbank/Research/GlobalFindex/PDF/Methodology.pdf </p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>Data are comparable across countries by design. </p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>Next collection round: 2017. Data are collected every three years. </p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>2017 </p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>n/a </p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPILING_ORG__GLOBAL', "<p>World Bank </p>");
+        var propertyEditor = editor.getEditor('root.COMPILING_ORG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPILING_ORG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.INST_MANDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p>Access to formal financial services such as savings, insurance, payments, credit and remittances is essential to the ability of people&#x2014;regardless of income level, gender, age, education or where they live&#x2014;to manage their lives, build their futures, and grow their businesses. Having access to an account is an important starting point for people to access arrange of financial services. </p>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p> </p>\n<p>World Bank&#x2019;s Global Findex database is based on individual level surveys worldwide, conducted every three years. The first round of the survey was done in 2011, and the second in 2014. The third round will be done in 2017. The database covers about 140 countries. </p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>The indicator is based on data collected through individual level surveys in each country with representative samples. Appropriate sampling weights are used in calculating country-level aggregates. </p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<ul>\n  <li><strong>At country level </strong></li>\n</ul>\n<p> n/a </p>\n<p> </p>\n<ul>\n  <li><strong>At regional and global levels </strong></li>\n</ul>\n<p><strong> </strong>n/a </p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>Country level; the percentage of adults owning accounts is multiplied by the number of adults in the country. Then for regional values, sum across all countries in the region is taken and divided by the total adults living in the region. Similarly, for global figures, the same calculation is repeated for all countries. </p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
@@ -559,10 +787,46 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability: </strong></p>\n<p>Countries that have at least 1 data point after 2010 for this indicator: </p>\n<p> </p>\n<p>Asia and Pacific: 35 </p>\n<p>Africa: 38 </p>\n<p>Latin America and the Caribbean: 21 </p>\n<p>Europe, North America, Australia, New Zealand and Japan: 47 </p>\n<p><strong>Time series:</strong></p>\n<p>2011 and 2014. To be collected every 3 years. </p>\n<p><strong>Disaggregation:</strong></p>\n<p>Disaggregation by Income; Age; Education level; Urban/rural; Gender </p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>Global Findex is an individual level survey, measuring individual&#x2019;s ownership of accounts. As financial inclusion is an individual-level concept, this is the appropriate measure. Other surveys that are done at household level may measure the access to finance through another member of the household which may overestimate financial inclusion. </p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p><strong>URL:</strong> </p>\n<p>www.worldbank.org </p>\n<p> </p>\n<p><strong>References:</strong> </p>\n<p>http://www.worldbank.org/globalfindex </p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1052,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

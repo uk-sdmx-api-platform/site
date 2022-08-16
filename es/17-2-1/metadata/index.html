@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,94 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 17.2: Developed countries to implement fully their official development assistance commitments, including the commitment by many developed countries to achieve the target of 0.7 per cent of gross national income for official development assistance (ODA/GNI) to developing countries and 0.15 to 0.20 per cent of ODA/GNI to least developed countries; ODA providers are encouraged to consider setting a target to provide at least 0.20 per cent of ODA/GNI to least developed countries</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 17.2.1: Net official development assistance, total and to least developed countries, as a proportion of the Organization for Economic Cooperation and Development (OECD) Development Assistance Committee donors&#x2019; gross national income (GNI)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2020-07-08</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>Organisation for Economic Co-operation and Development (OECD)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>Organisation for Economic Co-operation and Development (OECD)</p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,6 +585,18 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definition:</strong></p>\n<p>The indicator Net official development assistance, total and to least developed countries, as a proportion of the Organization for Economic Cooperation and Development (OECD) Development Assistance Committee donors&apos; gross national income (GNI) is defined as Net ODA disbursements as a per cent of GNI.</p>\n<p><strong>Concepts:</strong></p>\n<p>ODA: The DAC defines ODA as &#x201C;those flows to countries and territories on the DAC List of ODA Recipients and to multilateral institutions which are i) provided by official agencies, including state and local governments, or by their executive agencies; and ii) each transaction is administered with the promotion of the economic development and welfare of developing countries as its main objective; and</p>\n<p>is concessional in character and conveys a grant element of at least 25 per cent (calculated at a rate of discount of 10 per cent). (See http://www.oecd.org/dac/stats/officialdevelopmentassistancedefinitionandcoverage.htm)</p>\n<p>GNI is obtained by DAC reporters from their national statistical offices.</p>\n<p>Note: Since 2018, the Development Assistance Committee (DAC) of the OECD measures the headline ODA data as of 2018 on a grant equivalent basis. See references for more details.</p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
@@ -521,34 +605,166 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>The OECD/DAC has been collecting data on official and private resource flows from 1960 at an aggregate level and 1973 at an activity level through the Creditor Reporting System (CRS data are considered complete from 1995 for commitments at an activity level and 2002 for disbursements).</p>\n<p>The data are reported by donors according to the same standards and methodologies (see here: http://www.oecd.org/dac/stats/methodology.htm).</p>\n<p>Data are reported on an annual calendar year basis by statistical reporters in national administrations (aid agencies, Ministries of Foreign Affairs or Finance, etc.</p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>A statistical reporter is responsible for the collection of DAC statistics in each providing country/agency. This reporter is usually located in the national aid agency, Ministry of Foreign Affairs or Finance etc.</p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>Data are published on an annual basis in December for flows in the previous year. Detailed 2015 flows will be published in December 2016.</p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>December 2016</p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>Data are reported on an annual calendar year basis by statistical reporters in national administrations (aid agencies, Ministries of Foreign Affairs or Finance, etc.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPILING_ORG__GLOBAL', "<p>OECD</p>");
+        var propertyEditor = editor.getEditor('root.COMPILING_ORG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPILING_ORG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.INST_MANDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p>Total ODA flows to developing countries quantify the public effort that donors provide to developing countries.</p>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p>Data are available from 1960.</p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>Net ODA disbursements as a per cent of GNI.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<p><strong>&#x2022; At country level</strong></p>\n<p>None</p>\n<p><strong>&#x2022; At regional and global levels</strong></p>\n<p>None</p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>Total net ODA as per cent of GNI is a total donor figure.</p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
@@ -559,10 +775,46 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability:</strong></p>\n<p>On a donor basis for all DAC countries and many non-DAC providers (bilateral and multilateral) that report to the DAC.</p>\n<p><strong>Time series:</strong></p>\n<p><strong>Disaggregation:</strong></p>\n<p>This indicator can be disaggregated by donor, recipient country, type of finance, type of aid, sub-sector, etc.</p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>DAC statistics are standardized on a calendar year basis for all donors and may differ from fiscal year data available in budget documents for some countries.</p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p><strong>URL:</strong></p>\n<p>www.oecd.org/dac/stats</p>\n<p><strong>References:</strong></p>\n<p>See all links here: http://www.oecd.org/dac/stats/methodology.htm</p>\n<p>In addition, see: http://www.oecd.org/dac/financing-sustainable-development/development-financestandards/officialdevelopmentassistancedefinitionandcoverage.htm</p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1040,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

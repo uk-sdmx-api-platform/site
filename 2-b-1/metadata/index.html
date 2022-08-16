@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,94 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 2.b: Correct and prevent trade restrictions and distortions in world agricultural markets, including through the parallel elimination of all forms of agricultural export subsidies and all export measures with equivalent effect, in accordance with the mandate of the Doha Development Round</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 2.b.1: Agricultural export subsidies</p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2020-03-01</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>The World Trade Organization (WTO)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>The World Trade Organization (WTO)</p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,6 +585,18 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definition:</strong></p>\n<p>Agricultural export subsidies are defined as export subsidies budgetary outlays and quantities as notified by WTO Members in Tables ES:1 and supporting Tables ES:2 (following templates in document G/AG/2 dated 30 June 1995).</p>\n<p>Data cover:</p>\n<p>&#x2022; Notifications by WTO Members with export subsidy reduction commitments included in part IV of their Schedules;</p>\n<p>&#x2022; Notifications of export subsidies by developing country Members pursuant to the provisions of article 9.4 of the Agreement on Agriculture.</p>\n<p>Other WTO Members are not entitled to use export subsidies and their notifications are therefore not recorded in the indicator series.</p>\n<p>Budgetary outlays and quantities are expressed in a currency (national or other) and in quantity units as per Member&apos;s notification practices. For Members with export subsidy reduction commitments included in part IV of their Schedules, the currency used in the notifications is similar to the one used in the Schedules.</p>\n<p>Data are available by country and by products or groups of products, according to Members&apos; schedules for Members with export subsidy reduction commitments included in part IV of their Schedules and according to Member&apos;s notification practices in the case of developing country Members using export subsidies under the provisions of article 9.4 of the Agreement on Agriculture.&quot;</p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
@@ -521,14 +605,74 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>The sources of data are WTO Members&apos; notifications in their Table ES:1 and supporting table ES:2 notifications, pursuant to the notification requirements and formats adopted by the WTO Committee on Agriculture and contained in document G/AG/2.</p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>Not relevant. Cf. previous replies </p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>Data are collected on a regular basis, following the timing of WTO Members&apos; notification submissions.</p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>Cf. above</p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>WTO Members</p>\n<p>The WTO is receiving WTO Members notifications and compiling the information contained in these notifications to report on this indicator.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
@@ -537,18 +681,78 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p>The purpose of this indicator is to give detailed information on the level of export subsidies applied annually per product or group of products, as notified by WTO Members.</p>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p>The quality of the indicator depends on WTO Members&apos; timeliness and accuracy of their notifications.</p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>The country level data come directly from Members&apos; notifications to the WTO and are not subject to any computation by the WTO. Each WTO Member collects data following his own national practice to prepare his notification.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<ul>\n  <li><strong>At country level</strong></li>\n</ul>\n<p>Values are missing when a WTO Member has not submitted their notification. Missing values cannot be estimated.</p>\n<ul>\n  <li><strong>At regional and global levels</strong></li>\n</ul>\n<p>Not relevant. </p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>The WTO does not calculate regional aggregates.</p>\n<p>An overall global indicator measuring the total annual applied export subsidies budgetary outlays is calculated by summing all the available data after having converted them into a single currency (US$). </p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
@@ -559,10 +763,46 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability:</strong></p>\n<p>Cf. latest revision of WTO document series G/AG/GEN/86 (table under section 2.4 &#x2013; Members with shaded cells) for a detailed description of data availability for export subsidies notified by Members with export subsidy reduction commitments.</p>\n<p>In addition, 10 developing country Members notified since 1995 the use of export subsidies, pursuant to the provisions of article 9.4 of the Agreement on Agriculture.</p>\n<p>Contrary to the information for developed country Members with export subsidy reduction commitments that is available for all notified years, information for developing country Members using export subsidies, pursuant to the provisions of article 9.4 of the Agreement on Agriculture is available only for the years during which these export subsidies were used.</p>\n<p><strong>Time series:</strong></p>\n<p>Since 1995 </p>\n<p><strong>Disaggregation:</strong></p>\n<p>The indicator gives country and product based information on the level of applied export subsidies, both in terms of budgetary outlays and quantities.</p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>The WTO does not estimate data. Only data contained in WTO Members&apos; notifications are used. Therefore, there is no difference between country produced data and data available at the WTO.</p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p><strong>URL:</strong></p>\n<p>www.wto.org</p>\n<p><strong>References:</strong></p>\n<p>http://agims.wto.org/Pages/ES/ESSearchAnalyse.aspx?ReportId=1403&amp;Reset=True</p>\n<p>https://www.wto.org/english/tratop_e/agric_e/transparency_toolkit_e.htm</p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1028,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

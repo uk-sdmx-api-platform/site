@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,106 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 16.1: Significantly reduce all forms of violence and related death rates everywhere</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 16.1.3: Proportion of population subjected to (a) physical violence, (b) psychological violence and (c) sexual violence in the previous 12 months</p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2016-07-19</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_RELATED_INDICATORS__GLOBAL', "<p>16.2, 16.3, 16.a, 5.2</p>");
+        var propertyEditor = editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_RELATED_INDICATORS__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>United Nations Office on Drugs and Crime (UNODC)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>United Nations Office on Drugs and Crime (UNODC)</p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,6 +597,18 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definition:</strong></p>\n<p>The total number of persons who have been victim of physical, psychological or sexual violence in the previous 12 months, as a share of the total population.</p>\n<p><strong>Concepts:</strong></p>\n<p>This indicator measures the prevalence of victimization from physical, psychological or sexual violence</p>\n<p>Physical violence: This concept is equivalent to the concept of physical assault, as defined in the International Classification of Crime for Statistical Purposes (ICCS): the intentional or reckless application of physical force inflicted upon the body of a person. This includes serious and minor bodily injuries and serious and minor physical force. According to the ICCS, these are defined as:</p>\n<p>Serious bodily injury, at minimum, includes gunshot or bullet wounds; knife or stab wounds; severed limbs; broken bones or teeth knocked out; internal injuries; being knocked unconscious; and other severe or critical injuries.</p>\n<p>Serious physical force, at minimum, includes being shot; stabbed or cut; hit by an object; hit by a thrown object; poisoning and other applications of force with the potential to cause serious bodily injury.</p>\n<p>Minor bodily injury, at minimum, includes bruises, cuts, scratches, chipped teeth, swelling, black eye and other minor injuries.</p>\n<p>Minor physical force, at minimum, includes hitting, slapping, pushing, tripping, knocking down and other applications of force with the potential to cause minor bodily injury.</p>\n<p>Sexual violence (ICCS): Unwanted sexual act, attempt to obtain a sexual act, or contact or communication with unwanted sexual attention without valid consent or with consent as a result of intimidation, force, fraud, coercion, threat, deception, use of drugs or alcohol, or abuse of power or of a position of vulnerability. This includes rape and other forms of sexual assault.</p>\n<p>Psychological violence: There is as yet no consensus at the international level of the precise definition of psychological violence and there is as yet no generally well-established methodology to measure psychological violence.</p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
@@ -521,34 +617,166 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>This indicator is derived from surveys on crime victimization or from other household surveys with a module on crime victimization.</p>\n<p>The indicator refers to individual experience of the respondent, who is randomly selected among the household members, while experience of other members is not to be included. Experience of violent victimization is collected through a series of questions on concrete acts of violence suffered by the respondent.</p>\n<p>UNODC collects data on the prevalence of physical and sexual assault through its annual data collection (UN-CTS). The data collection through the UN-CTS is facilitated by a network of over 130 national Focal Points appointed by responsible authorities.</p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>There is a consolidated system of annual data collection on crime and criminal justice (UN- Crime Trends Survey, UN-CTS) which represents the basis of data on intentional homicide. The UN-CTS data collection is largely based on the network of national Focal Points, which are institutions/officials appointed by countries and having the technical capacity and role to produce data on crime and criminal justice (around 130 appointed Focal Points as of 2016).</p>\n<p>The UN-CTS collects data on reporting rate by victims of &#x201C;physical assault&#x201D; and &#x201C;sexual assault&#x201D;. The current data collection will be reviewed to collect more precise data on this indicator.</p>\n<p>Data for SDG monitoring will be sent to countries for consultation prior to publication.</p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>III &#x2013; IV quarter 2016 </p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>II quarter 2017 </p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>National Statistical Offices, Police, Ministry of Justice, Ministry of Interior, Prosecutor&#x2019;s Office</p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPILING_ORG__GLOBAL', "<p>UNODC</p>");
+        var propertyEditor = editor.getEditor('root.COMPILING_ORG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPILING_ORG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.INST_MANDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p>This indicator measures the prevalence of victimization from physical, sexual (and, possibly, psychological) violence. It is globally relevant as violence in various forms occurs in all regions and countries of the world. Given that acts of violence are heavily underreported to the authorities, this indicator needs to be based on data collected through sample surveys of the adult population.</p>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p>Crime victimization surveys are able to capture experience of violence suffered by adult population of both sexes; however, due to the complexity of collecting information on experiences of violence, it is likely that not all experiences of violence are duly covered by these surveys, which aim to cover several types of crime experience. Other dedicated surveys on violence usually focus on selected population groups (typically women, children or the elderly) or in specific contexts (domestic violence, schools, prisons, etc.), but they are not able to portray levels and trends of violence in the entire population.</p>\n<p>While there are already international standards on measuring physical and sexual violence through survey instruments, there is currently no international standard on the measurement of psychological violence. One practical option could be to limit psychological violence to threatening behaviour, which does have an established methodology of measurement in victimization surveys. Threatening behaviour, at minimum, is an intentional behaviour that causes fear of injury or harm.</p>\n<p>Finally, indicators on prevalence of physical and sexual violence are usually produced and reported separately; the production of data on the prevalence of physical or sexual violence requires ad-hoc data collection.</p>\n<p>Victimization surveys (as dedicated surveys or as modules of household surveys) are usually restricted to the general population living in households above a certain age (typically 15 or 18 years of age), while sometimes an upper age limit is also applied (typically 65, 70 or 75 years of age).</p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>Number of survey respondents who have been victim of physical, psychological or sexual violence in the previous 12 months, divided by the total number of survey respondents.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<p><strong>&#x2022; At country level</strong></p>\n<p>Missing values are left blank</p>\n<p><strong>&#x2022; At regional and global levels</strong></p>\n<p>Missing values are left blank. Global estimates are currently not produced.</p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>Global estimates are currently not produced.</p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
@@ -559,10 +787,46 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability:</strong></p>\n<p>Data Availability refers to country reporting in UN-CTS only: (phys = prevalence of physical assault; (sex) = prevalence rate of sexual assault</p>\n<p>Data Availability (2010 to present)</p>\n<p>Asia and Pacific: 1 (phys) + 3 (sex) 4</p>\n<p>Africa: 0 (phys) + 2 (sex) 2</p>\n<p>Latin America and the Caribbean: 1 (phys) + 4 (sex) 5</p>\n<p>Europe, North America, Australia, New Zealand and Japan: 10 (phys) + 12 (sex) 22</p>\n<p>Data Availability (2000-2009)</p>\n<p>Asia and Pacific: 1 (phys) + 2 (sex) 3</p>\n<p>Africa: 2 (phys) + 0 (sex) 2</p>\n<p>Latin America and the Caribbean: 1 (phys) + 4 (sex) 5</p>\n<p>Europe, North America, Australia, New Zealand and Japan: 8 (phys) + 14 (sex) 22</p>\n<p>See also available data and metadata at:</p>\n<p>https://www.unodc.org/unodc/en/data-and-analysis/crime-and-criminal-justice.html&quot;</p>\n<p><strong>Time series:</strong></p>\n<p>2006-2014 </p>\n<p><strong>Disaggregation:</strong></p>\n<p>By sex and age</p>\n<p>Income level</p>\n<p>Education</p>\n<p>Citizenship</p>\n<p>Ethnicity</p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>UNODC currently compiles data from national sources.</p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p><strong>URL:</strong></p>\n<p>www.unodc.org</p>\n<p><strong>References:</strong></p>\n<p>UNODC collects data on the prevalence of crime and violence in its annual data collection on crime and criminal justice (UN- Crime Trends Survey, UN-CTS).</p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1052,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

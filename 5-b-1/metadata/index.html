@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,118 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 5: Achieve gender equality and empower all women and girls</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 5.b: Enhance the use of enabling technology, in particular information and communications technology, to promote the empowerment of women</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 5.b.1: Proportion of individuals who own a mobile telephone, by sex</p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_SERIES_DESCR__GLOBAL', "<p>Not Applicable </p>");
+        var propertyEditor = editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_SERIES_DESCR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2021-08-20</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_RELATED_INDICATORS__GLOBAL', "<p>1.4, 2.c, 11.b, 12.8, 13.1, 16.10, 17.8</p>");
+        var propertyEditor = editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_RELATED_INDICATORS__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>International Telecommunication Union (ITU)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>International Telecommunication Union (ITU)</p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,56 +609,344 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definition:</strong></p>\n<p>The proportion of individuals who own a mobile telephone, by sex is defined as the &#x2018;proportion of individuals who own a mobile telephone, by sex&#x2019;.</p>\n<p><strong>Concepts:</strong></p>\n<p>An individual owns a mobile cellular phone if he/she has a mobile cellular phone device with at least one active SIM card for personal use. Mobile cellular phones supplied by employers that can be used for personal reasons (to make personal calls, access the Internet, etc.) are included. Individuals who have only active SIM card(s) and not a mobile phone device are excluded. Individuals who have a mobile phone for personal use that is not registered under his/her name are also included. An active SIM card is a SIM card that has been used in the last three months.</p>\n<p>A mobile (cellular) telephone refers to a portable telephone subscribing to a public mobile telephone service using cellular technology, which provides access to the PSTN. This includes analogue and digital cellular systems and technologies such as IMT-2000 (3G) and IMT-Advanced. Users of both postpaid subscriptions and prepaid accounts are included.</p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('UNIT_MEASURE__GLOBAL', "<p>Percentage of individuals</p>");
+        var propertyEditor = editor.getEditor('root.UNIT_MEASURE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: UNIT_MEASURE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CLASS_SYSTEM__GLOBAL', "<p>For countries that collect this data through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (urban/rural), by sex, by age group, by educational level (ISCED), by labour force status (ILO), and by occupation (ISCO). ITU collects data for all of these breakdowns from countries.</p>");
+        var propertyEditor = editor.getEditor('root.CLASS_SYSTEM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CLASS_SYSTEM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CLASS_SYSTEM__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>This indicator is a newly developed ITU indicator that was approved by the World Telecommunication/ICT Indicators Symposium (WTIS) in 2014. The indicator&#x2019;s definition and methodology were developed under the coordination of ITU, through its Expert Groups and following an extensive consultation process with countries. Data for the proportion of individuals owning a mobile phone were first collected in 2015, through an annual questionnaire that ITU sends to national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic).</p>\n<p>Data are usually not adjusted, but discrepancies in the definition, age scope of individuals, reference period or the break in comparability between years are noted in a data note. For this reason, data are not always strictly comparable.</p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>ITU collects data on this indicator through an annual questionnaire that it sends to the heads of the national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic). </p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>Data are released twice a year, In July and December, in the <a href=\"https://www.itu.int/en/ITU-D/Statistics/Pages/publications/wtid.aspx\">Wor&#x200B;ld Telecommun&#x200B;ic&#x200B;ation/ICT Indicators Database&#x200B;</a>&#x200B;.</p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>National Statistical Offices (NSOs).</p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPILING_ORG__GLOBAL', "<p>ITU</p>");
+        var propertyEditor = editor.getEditor('root.COMPILING_ORG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPILING_ORG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('INST_MANDATE__GLOBAL', "<p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p>");
+        var propertyEditor = editor.getEditor('root.INST_MANDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: INST_MANDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.INST_MANDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p>Mobile phone networks have spread rapidly over the last decade and the number of mobile-cellular subscriptions is quasi equal to the number of the people living on earth. However, not every person uses, or owns a mobile-cellular telephone. Mobile phone ownership, in particular, is important to track gender equality since the mobile phone is a personal device that, if owned and not just shared, provides women with a degree of independence and autonomy, including for professional purposes. A number of studies have highlighted the link between mobile phone ownership and empowerment, and productivity growth.</p>\n<p>Existing data on the proportion of women owning a mobile phone suggest that less women than men own a mobile phone. This indicator highlights the importance of mobile phone ownership to track and to improve gender equality, and monitoring will help design targeted policies to overcome the gender divide. The collection of this indicator was proposed by the Task Group on Gender of the Partnership on Measuring ICT for Development.</p>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p>While the data on the &#x2018;proportion of individuals who own a mobile telephone&#x2019; currently only exist for very few countries, ITU is encouraging all countries to collect data on this indicator through national household surveys and the indicator is expected to be added to the Partnership on Measuring ICT for Development&#x2019;s Core List of Indicators. The number of countries with official data for this indicator is expected to increase in the near future.</p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>Countries can collect data on this indicator through national household surveys. This indicator is calculated by dividing the total number of in-scope individuals who own a mobile phone by the total number of in-scope individuals.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_VALIDATION__GLOBAL', "<p>Data are submitted by Member States to ITU. ITU checks and validates the data, in consultation with the Member States. </p>");
+        var propertyEditor = editor.getEditor('root.DATA_VALIDATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_VALIDATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('ADJUSTMENT__GLOBAL', "<p>No adjustments are made to the data submitted by countries.</p>");
+        var propertyEditor = editor.getEditor('root.ADJUSTMENT__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: ADJUSTMENT__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<p><strong>&#x2022; At country level</strong></p>\n<p>Missing values are not estimated. </p>\n<p><strong>&#x2022; At regional and global levels</strong></p>\n<p>Missing values are not estimated.</p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>ITU has not produced any global estimates but is working on a methodology to produce global estimates for this indicator.</p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DOC_METHOD__GLOBAL', "<p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>\n<p><a href=\"https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx\">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p>");
+        var propertyEditor = editor.getEditor('root.DOC_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DOC_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('QUALITY_MGMNT__GLOBAL', "<p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p>");
+        var propertyEditor = editor.getEditor('root.QUALITY_MGMNT__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: QUALITY_MGMNT__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_MGMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('QUALITY_ASSURE__GLOBAL', "<p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p>");
+        var propertyEditor = editor.getEditor('root.QUALITY_ASSURE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: QUALITY_ASSURE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSURE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('QUALITY_ASSMNT__GLOBAL', "<p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p>");
+        var propertyEditor = editor.getEditor('root.QUALITY_ASSMNT__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: QUALITY_ASSMNT__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability:</strong></p>\n<p>Overall, the indicator is available for more than 80 countries at least from one survey.</p>\n<p><strong>Time series:</strong></p>\n<p>2015 onwards</p>\n<p><strong>Disaggregation:</strong></p>\n<p>For countries that collect this indicator through a national household survey, and if data allow breakdown and disaggregation, the indicator can be broken down not only by sex but also by region (urban/rural), by age group, by educational level, by labour force status, and by occupation.</p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>None. ITU uses the data provided by countries, including the in-scope population that is used to calculate the percentages.</p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p><strong>URL:</strong></p>\n<p>http://www.itu.int/en/ITU-D/Statistics/Pages/default.aspx</p>\n<p><strong>References:</strong></p>\n<p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>\n<p><a href=\"https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx\">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1172,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

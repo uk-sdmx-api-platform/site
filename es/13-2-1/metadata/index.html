@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816223231">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816224551">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -481,22 +481,94 @@ data-event-label="high"
     // Set values according to this site's configuration.
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_GOAL__GLOBAL', "<p>Goal 13: Take urgent action to combat climate change and its impacts</p>");
+        var propertyEditor = editor.getEditor('root.SDG_GOAL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_GOAL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_GOAL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_TARGET__GLOBAL', "<p>Target 13.2: Integrate climate change measures into national policies, strategies and planning</p>");
+        var propertyEditor = editor.getEditor('root.SDG_TARGET__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_TARGET__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_TARGET__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_INDICATOR__GLOBAL', "<p>Indicator 13.2.1: Number of countries with nationally determined contributions, long-term strategies, national adaptation plans and adaptation communications, as reported to the secretariat of the United Nations Framework Convention on Climate Change</p>");
+        var propertyEditor = editor.getEditor('root.SDG_INDICATOR__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_INDICATOR__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_SERIES_DESCR__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('META_LAST_UPDATE__GLOBAL', "<p>2021-03-01</p>");
+        var propertyEditor = editor.getEditor('root.META_LAST_UPDATE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: META_LAST_UPDATE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.META_LAST_UPDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_RELATED_INDICATORS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SDG_CUSTODIAN_AGENCIES__GLOBAL', "<p>UN Climate Change (UNFCCC Secretariat)</p>");
+        var propertyEditor = editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SDG_CUSTODIAN_AGENCIES__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_CUSTODIAN_AGENCIES__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('CONTACT_ORGANISATION__GLOBAL', "<p>UN Climate Change (UNFCCC Secretariat)</p>");
+        var propertyEditor = editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: CONTACT_ORGANISATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_ORGANISATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CONTACT_NAME__GLOBAL'));
@@ -513,56 +585,272 @@ data-event-label="high"
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.IND_DEF_CON_CLASS__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('STAT_CONC_DEF__GLOBAL', "<p><strong>Definitions:</strong></p>\n<p>NDCs</p>\n<p>The Paris Agreement requires each Party to prepare, communicate and maintain successive <em>nationally determined contributions (NDCs)</em> including mitigation, adaptation and support measures. </p>\n<p>The <a href=\"https://unfccc.int/node/617\" target=\"_blank\">Paris Agreement</a> (Article 4, paragraph 2) requires each Party to prepare, communicate and maintain successive nationally determined contributions (NDCs) that it intends to achieve. Parties shall pursue domestic mitigation measures, with the aim of achieving the objectives of such contributions.</p>\n<p>Starting in 2023 and then every five years, governments will take stock of the implementation of the Agreement to assess the collective progress towards achieving the purpose of the Agreement and its long-term goals. The outcome of the global stocktake (GST) will inform the preparation of subsequent NDCs, in order to allow for increased ambition and climate action to achieve the purpose of the Paris Agreement and its long-term goals. <a href=\"https://unfccc.int/process-and-meetings/the-paris-agreement/nationally-determined-contributions-ndcs\">https://unfccc.int/process-and-meetings/the-paris-agreement/nationally-determined-contributions-ndcs</a></p>\n<p>NDC interim registry <a href=\"https://www4.unfccc.int/sites/ndcstaging/Pages/Home.aspx\">https://www4.unfccc.int/sites/ndcstaging/Pages/Home.aspx</a> </p>\n<p><strong>NAPs</strong></p>\n<p>The <em>national adaptation plan (NAP)</em> process was established under the <a href=\"https://unfccc.int/adaptation/items/5852.php\">Cancun Adaptation Framework</a> (CAF). It enables Parties to formulate and implement <em>national adaptation plans (NAPs)</em> as a means of identifying medium- and long-term adaptation needs and developing and implementing strategies and programmes to address those needs. It is a continuous, progressive and iterative process which follows a country-driven, gender-sensitive, participatory and fully transparent approach supported by technical guidelines and up to USD 3 million per developing country through the Green Climate Fund Readiness and Preparatory Support Programme, intended to support the formulation of NAPs. Technical guidelines for the NAP process are available at &lt;<a href=\"https://unfccc.int/topics/adaptation-and-resilience/workstreams/national-adaptation-plans-naps/guidelines-for-national-adaptation-plans-naps\">unfccc.int</a>&gt;; NAPs received by the UNFCCC secretariat are posted at &lt;<a href=\"https://www4.unfccc.int/sites/NAPC/News/Pages/national_adaptation_plans.aspx\">unfccc.int</a>&gt;.</p>\n<p><strong>Long term strategies </strong></p>\n<p>Under the Paris Agreement, all Parties should further strive to formulate and <em>communicate long-term low greenhouse gas emission development strategies</em> to provide a context and integrated long-term view to their NDCs. </p>\n<p>In accordance with Article 4, paragraph 19, of the Paris Agreement, all Parties should strive to formulate and communicate long-term low greenhouse gas emission development strategies, mindful of Article 2 taking into account their common but differentiated responsibilities and respective capabilities, in the light of different national circumstances.</p>\n<p>The COP, by its decision 1/CP 21, paragraph 35, invited Parties to communicate, by 2020, to the secretariat mid-century, long-term low greenhouse gas emission development strategies in accordance with Article 4, paragraph 19, of the Agreement. Further information is available at &lt;<a href=\"https://unfccc.int/process/the-paris-agreement/long-term-strategies\">unfccc.int</a>&gt;</p>\n<p><strong>Adaptation communications</strong></p>\n<p>Under the Paris Agreement&#x2019;s Article 7, paragraphs 10 and 11, each Party should, as appropriate, submit and update periodically an adaptation communication, which may include its priorities, implementation and support needs, plans and actions. The purpose of the adaptation communication is to strengthen the visibility and profile of adaptation, balance with mitigation, actions, support, learning and understanding. Parties may include information on e.g. their circumstances, institutions, vulnerabilities, adaptation priorities, plans, needs, progress achieved, co-benefits, other frameworks, gender aspects, and indigenous knowledge. The adaptation communications will be recorded in a public registry maintained by the secretariat, and they will provide input to the process of global stocktake every five years. The adaptation communications received so far are currently available at: <a href=\"https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications\">https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications</a>. </p>\n<p><strong>National communications</strong></p>\n<p>The Convention established several processes to foster transparency and accountability of countries&#x2019; actions to address climate change. Under Article 12, all Parties are asked to submit national inventories and national communications (NCs) to report on the implementation of the Convention. This reporting is required at different levels of stringency and with varying frequency for different Parties. National Communications received by the UNFCCC secretariat are available at &lt;<a href=\"https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/seventh-national-communications-annex-i\">unfccc.int</a>&gt;.</p>");
+        var propertyEditor = editor.getEditor('root.STAT_CONC_DEF__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: STAT_CONC_DEF__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.STAT_CONC_DEF__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('UNIT_MEASURE__GLOBAL', "<p>Number of submissions received from Parties to UNFCCC</p>");
+        var propertyEditor = editor.getEditor('root.UNIT_MEASURE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: UNIT_MEASURE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.UNIT_MEASURE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.CLASS_SYSTEM__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SRC_TYPE_COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('SOURCE_TYPE__GLOBAL', "<p>Official documents and registries, as reported by Parties to the UNFCCC and the Paris Agreement, and published on &lt;unfccc.int&gt;.</p>\n<p>NDC interim registry available at &lt; https://www4.unfccc.int/sites/NDCStaging/Pages/Home.aspx &gt; </p>\n<p>Long term strategies received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>\n<p>NAPs received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>\n<p>Adaptation communications will be recorded in the future in a public registry maintained by the secretariat. Until the finalization of the design of the registry, the adaptation communications received so far are available at: <a href=\"https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications\">https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications</a></p>");
+        var propertyEditor = editor.getEditor('root.SOURCE_TYPE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: SOURCE_TYPE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.SOURCE_TYPE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COLL_METHOD__GLOBAL', "<p>Submission of documents to the UNFCCC Secretariat from Parties to the UNFCCC and Paris Agreement.</p>");
+        var propertyEditor = editor.getEditor('root.COLL_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COLL_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COLL_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('FREQ_COLL__GLOBAL', "<p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; in advance of the global stocktake.</p>");
+        var propertyEditor = editor.getEditor('root.FREQ_COLL__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: FREQ_COLL__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.FREQ_COLL__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REL_CAL_POLICY__GLOBAL', "<p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; in advance of the global stocktake.</p>");
+        var propertyEditor = editor.getEditor('root.REL_CAL_POLICY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REL_CAL_POLICY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REL_CAL_POLICY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_SOURCE__GLOBAL', "<p>Parties to the UNFCCC and Paris Agreement, aggregate, UN Climate Change (UNFCCC Secretariat); Further analysis on linkages across other SDGs may be undertaken in collaboration with other UN organisations, as relevant, to show how countries are utilising these tools for implementation of climate action and SDGs more broadly.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_SOURCE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_SOURCE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_SOURCE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPILING_ORG__GLOBAL', "<p>UN Climate Change (UNFCCC Secretariat).</p>");
+        var propertyEditor = editor.getEditor('root.COMPILING_ORG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPILING_ORG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPILING_ORG__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.INST_MANDATE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_METHOD__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('RATIONALE__GLOBAL', "<p><strong>Rationale and concepts, comments and limitations:</strong></p>\n<p>Under the United Nations Framework Convention on Climate Change (UNFCCC), all Parties shall formulate, implement, publish and regularly update national/regional programmes containing measures to mitigate climate change and to facilitate adequate adaptation, while taking into account their common but differentiated responsibilities and their specific national and regional development priorities, objectives and circumstances. These policies and measures should be appropriate for the specific conditions of each Party and should be integrated with national development programmes.</p>\n<p>The Convention established several processes to foster transparency and accountability of countries&#x2019; actions to address climate change.</p>\n<p>The Paris Agreement<sup><a href=\"#footnote-2\" id=\"footnote-ref-2\">[1]</a></sup> builds upon the Convention and brings all nations into a common cause to undertake ambitious efforts to combat climate change and adapt to its effects, with enhanced support to assist developing countries to do so, charting a new course in the global climate effort. The Paris Agreement&#x2019;s central aim is to strengthen the global response to the threat of climate change by keeping a global temperature rise this century well below 2 degrees Celsius above pre-industrial levels and to pursue efforts to limit the temperature increase even further to 1.5 degrees Celsius. Additionally, the agreement aims to strengthen the ability of countries to deal with the impacts of climate change. </p>\n<p>Materials are received from Parties on an ongoing basis. </p><div class=\"footnotes\"><div><sup class=\"footnote-number\" id=\"footnote-2\">1</sup><p> The Paris Agreement entered into force on 4 November 2016. Further information about the Paris Agreement may be found at &lt;http://unfccc.int/paris_agreement/items/9485.php&gt; <a href=\"#footnote-ref-2\">&#x2191;</a></p></div></div>");
+        var propertyEditor = editor.getEditor('root.RATIONALE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: RATIONALE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.RATIONALE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REC_USE_LIM__GLOBAL', "<p>See 4.a</p>");
+        var propertyEditor = editor.getEditor('root.REC_USE_LIM__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REC_USE_LIM__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REC_USE_LIM__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DATA_COMP__GLOBAL', "<p>Count of submitted reports annually in advance of preparation of SDG progress reports, based on most recent data.</p>");
+        var propertyEditor = editor.getEditor('root.DATA_COMP__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DATA_COMP__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_COMP__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.DATA_VALIDATION__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.ADJUSTMENT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('IMPUTATION__GLOBAL', "<p><strong>At country level</strong></p>\n<p>n/a</p>\n<p><strong>At regional and global levels</strong></p>\n<p>n/a</p>");
+        var propertyEditor = editor.getEditor('root.IMPUTATION__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: IMPUTATION__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.IMPUTATION__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('REG_AGG__GLOBAL', "<p>n/a</p>");
+        var propertyEditor = editor.getEditor('root.REG_AGG__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: REG_AGG__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.REG_AGG__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('DOC_METHOD__GLOBAL', "<p>&#x2022; Data is compiled globally</p>");
+        var propertyEditor = editor.getEditor('root.DOC_METHOD__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: DOC_METHOD__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.DOC_METHOD__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_MGMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('QUALITY_ASSURE__GLOBAL', "<p>Data reported is based on official information as documented and reported on at &lt;unfccc.int&gt;.</p>");
+        var propertyEditor = editor.getEditor('root.QUALITY_ASSURE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: QUALITY_ASSURE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSURE__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.QUALITY_ASSMNT__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COVERAGE__GLOBAL', "<p><strong>Data availability:</strong></p>\n<p>Number of Parties to the UNFCCC and Paris Agreement</p>\n<p>Currently, there are 197 Parties (196 States and 1 regional economic integration organization) to the United Nations Framework Convention on Climate Change.</p>\n<p>https://unfccc.int/process-and-meetings/the-convention/status-of-ratification/status-of-ratification-of-the-convention</p>\n<p>To this date, 191 Parties have ratified the Paris Agreement, of 197 Parties to the Convention.</p>\n<p>https://unfccc.int/process/the-paris-agreement/status-of-ratification </p>\n<p><strong>Time series:</strong></p>\n<p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; NDCs are submitted in advance of the global stocktake (starting in 2023) every five years, with the next round of NDCs (new or updated) being submitted by 2020. </p>\n<p>https://unfccc.int/topics/science/workstreams/global-stocktake-referred-to-in-article-14-of-the-paris-agreement</p>\n<p><strong>Disaggregation:</strong></p>\n<p>n/a. Some analysis on linkages across other SDGs may be undertaken in collaboration with other UN organisations, as relevant, to show how countries are utilising these tools for implementation of climate action and SDGs more broadly.</p>");
+        var propertyEditor = editor.getEditor('root.COVERAGE__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COVERAGE__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COVERAGE__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('COMPARABILITY__GLOBAL', "<p><strong>Sources of discrepancies:</strong></p>\n<p>n/a</p>");
+        var propertyEditor = editor.getEditor('root.COMPARABILITY__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: COMPARABILITY__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.COMPARABILITY__GLOBAL'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('OTHER_DOC__GLOBAL', "<p>As included in links above;</p>\n<p>NDC interim registry available at &lt; https://www4.unfccc.int/sites/NDCStaging/Pages/Home.aspx &gt; </p>\n<p>Long term strategies received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>\n<p>NAPs received by the UNFCCC secretariat are posted at &lt;unfccc.int&gt;.</p>\n<p>Adaptation communications will be recorded in the future in a public registry maintained by the secretariat. Until the finalization of the design of the registry, the adaptation communications received so far are available <a href=\"https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications\">at:</a> https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications. </p>");
+        var propertyEditor = editor.getEditor('root.OTHER_DOC__GLOBAL');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: OTHER_DOC__GLOBAL');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.OTHER_DOC__GLOBAL'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.SDG_INDICATOR_INFO'));
@@ -788,12 +1076,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816223231'></script>
+<script src='/site/assets/js/sdg.js?v=20220816224551'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816223231"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220816224551"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
