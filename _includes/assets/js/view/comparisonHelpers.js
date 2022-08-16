@@ -11,12 +11,18 @@ function initialiseFieldsWithGlobalValues(args) {
   }
 	
 	let compareGlobalData = $('.toggle-switch-check').is(':checked');
-
-  var template = _.template($('#categories_template').html());
-  	$('#categories').html(template({
+	
+	if (compareGlobalData) {
+		var template = _.template($('#categories_template').html());
+		
+		$('#categories').html(template({
 			fields: args.fields,
 			fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
-	}));
+		}));
+	
+	}
+
+
 
 }
         
