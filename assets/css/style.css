@@ -2512,6 +2512,21 @@ body.contrast-high #search-bar-on-page button:hover {
 body.contrast-high.layout-search form input, body.contrast-high.layout-search form label {
   color: black; }
 
+#indicatorData.no-units #units {
+  display: none; }
+#indicatorData.no-serieses #serieses {
+  display: none; }
+#indicatorData.no-fields #series-help,
+#indicatorData.no-fields #fields,
+#indicatorData.no-fields #clear {
+  display: none; }
+#indicatorData.no-global-data #toggles {
+  display: none; }
+#indicatorData.no-units.no-serieses.no-fields.no-global-data > .col-md-3 {
+  display: none; }
+#indicatorData.no-units.no-serieses.no-fields.no-global-data > .col-md-9 {
+  width: 100%; }
+
 select {
   width: 100%;
   height: 2.5rem;
