@@ -2800,6 +2800,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
+  this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
@@ -2833,11 +2834,12 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
-      this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
+      this.fieldsHaveGlobalReportingType = helpers.fieldsHaveGlobalReportingType(this.fieldValuesWithGlobalReportingType);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
+      this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.headlineHasGlobalReportingType, this.fieldsHaveGlobalReportingType);
     }
   }
 
@@ -3054,6 +3056,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         ),
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+        fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
@@ -3120,6 +3123,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+      fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
