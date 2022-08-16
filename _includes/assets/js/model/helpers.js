@@ -82,6 +82,7 @@
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
     fieldValuesWithGlobalReportingType: fieldValuesWithGlobalReportingType,
+    fieldValuesWithNationalReportingType: fieldValuesWithNationalReportingType,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
