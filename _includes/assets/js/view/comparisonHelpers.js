@@ -15,6 +15,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			console.log(this.checked);
+			console.log('fieldsHaveGlobalReportingType'+args.fieldsHaveGlobalReportingType);
 			$('#toolbar').hide();
 			if (args.fieldsHaveGlobalReportingType) {
 				var template = _.template($('#categories_template').html());
