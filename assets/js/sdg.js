@@ -3287,6 +3287,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
+			console.log(this.checked);
 			$('#toolbar').hide();
 			if (args.fieldsHaveGlobalReportingType === true) {
 				var template = _.template($('#categories_template').html());
