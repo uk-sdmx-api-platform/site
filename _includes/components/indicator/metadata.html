@@ -8,13 +8,12 @@
   </thead>
   {% for indicator_metadata in site.data.schema %}
     {%- assign metadata_label = indicator_metadata.name | translate_metadata_field -%}
-    <tr>
-      <th scope="row">{{ metadata_label }}</th>
-      {% if indicator_metadata.field.scope == 'national' %}
+    {% if indicator_metadata.field.scope == 'national' %}
+      <tr>
+        <th scope="row">{{ metadata_label }}</th>
         <td>{{ page.indicator[indicator_metadata.name] | markdownify }}</td>
-      {% endif %}
-      {% if indicator_metadata.field.scope == 'global' %}
-        <td>{{ page.indicator[indicator_metadata.name] | markdownify }}</td>
-      {% endif %}
+        <td>{{ page.indicator[indicator_metadata.name+'__GLOBAL'] | markdownify }}</td>
+      </tr>
+    {% endif %}
   {% endfor %}
 </table>
