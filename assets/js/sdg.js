@@ -3249,8 +3249,7 @@ function initialiseFieldsWithGlobalValues(args) {
   
 		$('#categories').html(template({
 		fields: args.fields,
-		fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType,
-		dataHasGlobalReportingType: args.dataHasGlobalReportingType
+		fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 		})
 	);
 
