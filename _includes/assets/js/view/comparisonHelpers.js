@@ -22,7 +22,7 @@ function initialiseFieldsWithGlobalValues(args) {
 			}));
 		}
 		if (this.checked === false) {
-			$('#toggles').hide();
+			$('#categories').hide();
 			$('#toolbar').show()
 			return
 		}
