@@ -10,6 +10,11 @@ function initialiseFieldsWithGlobalValues(args) {
 		return
 	}
 	
+	$('#categories').html(template({
+		fields: args.fields,
+		fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
+	}));
+	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			console.log(this.checked);
@@ -17,13 +22,8 @@ function initialiseFieldsWithGlobalValues(args) {
 			$('#toolbar').hide();
 			if (args.fieldsHaveGlobalReportingType) {
 				var template = _.template($('#categories_template').html());
-				$('#categories').html(template({
-				fields: args.fields,
-				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
-			}));
-			}
-			
-			
+				$('#categories').show();
+			}	
 		} else {
 			console.log(this.checked);
 			$('#categories').hide();
