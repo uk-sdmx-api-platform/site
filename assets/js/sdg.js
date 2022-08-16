@@ -2720,6 +2720,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     dataHasSerieses: dataHasSerieses,
     dataHasReportingTypes: dataHasReportingTypes,
     dataHasGlobalReportingType: dataHasGlobalReportingType,
+    fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
@@ -3287,11 +3288,15 @@ function initialiseFieldsWithGlobalValues(args) {
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			$('#toolbar').hide();
-			var template = _.template($('#categories_template').html());
-			$('#categories').html(template({
+			if (args.fieldsHaveGlobalReportingType === true) {
+				var template = _.template($('#categories_template').html());
+				$('#categories').html(template({
 				fields: args.fields,
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
+			}
+			
+			
 		} else {
 			$('#categories').hide();
 			$('#toolbar').show()
