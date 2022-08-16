@@ -3293,12 +3293,12 @@ function initialiseFieldsWithGlobalValues(args) {
 			console.log(this.checked);
 			console.log('fieldsHaveGlobalReportingType: '+args.fieldsHaveGlobalReportingType);
 			$('#toolbar').hide();
-			var template = _.template($('#categories_template').html());
-			$('#categories').html(template({
+			if (args.fieldsHaveGlobalReportingType) {
+				var template = _.template($('#categories_template').html());
+				$('#categories').html(template({
 				fields: args.fields,
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
-			if (args.fieldsHaveGlobalReportingType) {
 				$('#categories').show();
 			}	
 		} else {
