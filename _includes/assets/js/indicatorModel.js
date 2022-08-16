@@ -37,6 +37,7 @@ var indicatorModel = function (options) {
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
+  this.fieldValuesWithNationalReportingType = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -68,6 +69,7 @@ var indicatorModel = function (options) {
     if (this.hasReportingTypes) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
+      this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
     }
   }
 
@@ -285,6 +287,7 @@ var indicatorModel = function (options) {
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+        fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -349,6 +352,7 @@ var indicatorModel = function (options) {
       selectedSeries: this.selectedSeries,
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+      fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
