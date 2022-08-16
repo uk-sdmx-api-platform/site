@@ -11,6 +11,7 @@ function initialiseFieldsWithGlobalValues(args) {
   }
 	
 	let compareGlobalData = $('.toggle-switch-check').is(':checked');
+	console.log(compareGlobalData);
 	
 	if (compareGlobalData) {
 		var template = _.template($('#categories_template').html());
