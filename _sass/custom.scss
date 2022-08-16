@@ -1,38 +1,5 @@
 // Enter any custom Sass in this file.
 
-#indicatorData {
-    &.no-units {
-        #units {
-            display: none;
-        }
-    }
-    &.no-serieses {
-        #serieses {
-            display: none;
-        }
-    }
-    &.no-fields {
-        #series-help,
-        #fields,
-        #clear {
-            display: none;
-        }
-    }
-    &.no-global-data {
-        #toggles {
-            display:none;
-        }
-    }
-    &.no-units.no-serieses.no-fields.no-global-data {
-        > .col-md-3 {
-            display: none;
-        }
-        > .col-md-9 {
-            width: 100%;
-        }
-    }
-}
-
 select {
   width: 100%;
   height: 2.5rem;
