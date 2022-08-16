@@ -10,6 +10,7 @@ function initialiseFieldsWithGlobalValues(args) {
 		return
 	}
 	
+	var template = _.template($('#categories_template').html());
 	$('#categories').html(template({
 		fields: args.fields,
 		fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
@@ -21,7 +22,6 @@ function initialiseFieldsWithGlobalValues(args) {
 			console.log('fieldsHaveGlobalReportingType: '+args.fieldsHaveGlobalReportingType);
 			$('#toolbar').hide();
 			if (args.fieldsHaveGlobalReportingType) {
-				var template = _.template($('#categories_template').html());
 				$('#categories').show();
 			}	
 		} else {
