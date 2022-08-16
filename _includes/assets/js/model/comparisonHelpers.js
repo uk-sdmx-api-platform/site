@@ -11,6 +11,15 @@ function dataHasReportingTypes(columns) {
 }
 
 /**
+ * @param {boolean} headlineHasGlobalReportingType
+ * @param {boolean} fieldsHaveGlobalReportingType
+ * @return {boolean} 
+ */
+function dataHasGlobalReportingType(headlineHasGlobalReportingType, fieldsHaveGlobalReportingType) {
+	return headlineHasGlobalReportingType || fieldsHaveGlobalReportingType
+}
+
+/**
  * @param {Array} Headline data
  * @return {boolean} 
  */
@@ -26,7 +35,7 @@ function headlineHasGlobalReportingType(headlineRows) {
  * @param {Array} Field items and values with global data
  * @return {boolean} 
  */
-function dataHasGlobalReportingType(fieldValuesWithGlobalReportingType) {
+function fieldsHaveGlobalReportingType(fieldValuesWithGlobalReportingType) {
   _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
 }
   
