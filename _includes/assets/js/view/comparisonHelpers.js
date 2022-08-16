@@ -15,11 +15,15 @@ function initialiseFieldsWithGlobalValues(args) {
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			$('#toolbar').hide();
-			var template = _.template($('#categories_template').html());
-			$('#categories').html(template({
+			if (args.fieldsHaveGlobalReportingType === true) {
+				var template = _.template($('#categories_template').html());
+				$('#categories').html(template({
 				fields: args.fields,
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
+			}
+			
+			
 		} else {
 			$('#categories').hide();
 			$('#toolbar').show()
