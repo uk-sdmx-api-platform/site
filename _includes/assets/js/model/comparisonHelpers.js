@@ -11,6 +11,15 @@ function dataHasReportingTypes(columns) {
 }
 
 /**
+ * @param {Array} Field items and values with global data
+ * @return {boolean} 
+ */
+function dataHasGlobalReportingType(fieldValuesWithGlobalReportingType) {
+  _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
+}
+  
+
+/**
  * @param {Array} rows
  * @param {Array} columns
  * @return {Array} Field items and values with global data
