@@ -4,8 +4,8 @@
     <option value="total" selected>Headline</option>
 		<% _.each(fields, function(fieldItem) { %>
 			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(fieldValuesWithGlobalReportingType, {'field': fieldItem.field}), 'values')[0], item)) { %>
-					<option value="<%=item.value%>"><%=translations.t(fieldItem.field)%>: <%=translations.t(item)%></option>
+				<% if(_.includes(_.map(_.filter(fieldValuesWithGlobalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>"><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
 				<% }; %>
 			<% }); %>
 		<% }); %>
