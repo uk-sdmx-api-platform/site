@@ -3298,6 +3298,7 @@ function initialiseFieldsWithGlobalValues(args) {
 			
 			
 		} else {
+			console.log(this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
