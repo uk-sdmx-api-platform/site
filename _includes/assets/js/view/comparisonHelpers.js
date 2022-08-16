@@ -9,7 +9,7 @@ function initialiseFieldsWithGlobalValues(args) {
   
 	$('#categories').html(template({
 	fields: args.fields,
-        fieldsWithGlobalValues: args.fieldsWithGlobalValues
+        fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
     }));
 
 }
