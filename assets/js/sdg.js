@@ -2790,6 +2790,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
+  this.headlineHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
   this.selectedSeries = undefined;
@@ -2824,6 +2825,9 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.fieldValuesWithGlobalReportingType);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
+      this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
+      this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
+      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
     }
   }
 
@@ -3040,6 +3044,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         ),
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+        headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         edges: this.edgesData,
@@ -3105,6 +3110,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+      headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
