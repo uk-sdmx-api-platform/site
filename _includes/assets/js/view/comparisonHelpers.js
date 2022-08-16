@@ -25,7 +25,7 @@ function initialiseFieldsWithGlobalValues(args) {
 			
 			
 		} else {
-			this.checked = false;
+			console.log(this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
