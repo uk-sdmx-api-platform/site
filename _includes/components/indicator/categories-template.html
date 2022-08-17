@@ -5,7 +5,7 @@
 		<% _.each(fields, function(fieldItem) { %>
 			<% _.each(fieldItem.values, function(item) { %>
 				<% if(_.includes(_.map(_.filter(fieldValuesWithGlobalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>"><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+					<option value="<%=item.value%>" <%=data-field=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
 				<% }; %>
 			<% }); %>
 		<% }); %>
