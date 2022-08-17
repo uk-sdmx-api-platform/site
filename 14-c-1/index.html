@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from Australia statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from Australian statistics, this table should be consulted for information on national methodology and other Australian-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Indicator information</th>
+        <th scope="row">Goal </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Goal</th>
+        <th scope="row">Target </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Target</th>
+        <th scope="row">Indicator </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicator</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Metadata update </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Metadata update</th>
+        <th scope="row">Related indicators </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Related indicators</th>
+        <th scope="row">Data reporter </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data reporter</th>
+        <th scope="row">Organisation </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organisation</th>
+        <th scope="row">Contact person(s) </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact person(s)</th>
+        <th scope="row">Contact organisation unit </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact organisation unit</th>
+        <th scope="row">Contact person function </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact person function</th>
+        <th scope="row">Contact phone </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact phone</th>
+        <th scope="row">Contact mail </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact mail</th>
+        <th scope="row">Contact email </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Contact email</th>
+        <th scope="row">Definition, concepts, and classifications </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definition, concepts, and classifications</th>
+        <th scope="row">Definition and concepts </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definition and concepts</th>
+        <th scope="row">Unit of measure </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unit of measure</th>
+        <th scope="row">Classifications </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Classifications</th>
+        <th scope="row">Data source type and collection method </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data source type and collection method</th>
+        <th scope="row">Data sources </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data sources</th>
+        <th scope="row">Data collection method </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data collection method</th>
+        <th scope="row">Data collection calendar </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data collection calendar</th>
+        <th scope="row">Data release calendar </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data release calendar</th>
+        <th scope="row">Data providers </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data providers</th>
+        <th scope="row">Data compilers </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data compilers</th>
+        <th scope="row">Institutional mandate </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Institutional mandate</th>
+        <th scope="row">Other methodological considerations </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Other methodological considerations</th>
+        <th scope="row">Rationale </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Rationale</th>
+        <th scope="row">Comment and limitations </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comment and limitations</th>
+        <th scope="row">Method of computation </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Method of computation</th>
+        <th scope="row">Validation </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validation</th>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+        <th scope="row">Quality management </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Quality management</th>
+        <th scope="row">Quality assurance </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Quality assurance</th>
+        <th scope="row">Quality assessment </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Quality assessment</th>
+        <th scope="row">Data availability and disaggregation </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Data availability and disaggregation</th>
+        <th scope="row">Comparability/deviation from international standards </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparability/deviation from international standards</th>
+        <th scope="row">References and Documentation </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">References and Documentation</th>
+        <th scope="row">Data last updated </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Data last updated</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadata last updated </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadata last updated</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,777 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 14.c: Enhance the conservation and sustainable use of oceans and their resources by implementing international law as reflected in the United Nations Convention on the Law of the Sea, which provides the legal framework for the conservation and sustainable use of oceans and their resources, as recalled in paragraph 158 of &#x201C;The future we want&#x201D;</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 14.c.1: Number of countries making progress in ratifying, accepting and implementing through legal, policy and institutional frameworks, ocean-related instruments that implement international law, as reflected in the United Nations Convention on the Law of the Sea, for the conservation and sustainable use of the oceans and their resources</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-02-01</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>Implementation of target 14.c is linked to progress in all other targets of Sustainable Development Goal 14, and the other ocean-related Goals of the 2030 Agenda.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>Division for Ocean Affairs and the Law of the Sea, Office of Legal Affairs, United Nations Secretariat</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Division for Ocean Affairs and the Law of the Sea, Office of Legal Affairs, United Nations Secretariat</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>Sustainable Development Goal (SDG) indicator 14.c.1 measures the number of countries making progress in the ratification of, accession to and implementation of ocean-related instruments that implement international law, as reflected in the United Nations Convention on the Law of the Sea (UNCLOS), for the conservation and sustainable use of the oceans and their resources.</p>
+<p>There are two aspects to this indicator:</p>
+<p>&#x2022; the number of countries making progress in ratifying and acceding to ocean-related instruments that implement international law as reflected in UNCLOS for the conservation and sustainable use of the oceans and their resources, and </p>
+<p>&#x2022; the number of countries making progress in implementing such instruments through legal, policy and institutional frameworks.</p>
+<p><strong>Concepts:</strong></p>
+<p>N/A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>A score for the ratification of and accession to UNCLOS and its two implementing agreements and a score for the implementation of these instruments, expressed as percentages.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>N.A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Data will be collected through a questionnaire, which has been developed to facilitate measurement of the number of countries making progress in ratifying, accepting and implementing through legal, policy and institutional frameworks, ocean-related instruments that implement international law, as reflected in UNCLOS, for the conservation and sustainable use of the oceans and their resources, as called for under indicator 14.c.1.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>OLA/DOALOS will coordinate distribution/completion of the indicator 14.c.1 questionnaire through the Permanent Missions of Member States to the United Nations in New York and through other appropriate channels to other States. The focal points of National Statistical Offices will also be informed of the distribution of the questionnaire. The Permanent Missions would coordinate distribution of the questionnaire amongst relevant government ministries, departments and agencies, and submit the completed questionnaires to OLA/DOALOS, as necessary. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Baseline data collection was administered in 2020-2021. Data collection will be repeated every two to three years.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>2021.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Data will be provided by relevant government ministries, departments and agencies.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>OLA/DOALOS.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>N.A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Target 14.c seeks to enhance the conservation and sustainable use of oceans and their resources by implementing international law as reflected in UNCLOS.</p>
+<p>UNCLOS sets out the legal framework within which all activities in the oceans and seas must be carried out, including the conservation and sustainable use of oceans and their resources. It is a framework instrument, which provides for the development of other instruments that conform to the provisions of the Convention. Therefore, progress in the implementation of international law as reflected in UNCLOS can only be comprehensively measured if progress in the implementation of ocean-related instruments that in turn implement international law as reflected in UNCLOS, is also measured. </p>
+<p>Such instruments include, in particular, UNCLOS&#x2019;s two implementing agreements - the Agreement relating to the implementation of Part XI of the United Nations Convention on the Law of the Sea of 10 December 1982 (Part XI Agreement) and the Agreement for the Implementation of the Provisions of the United Nations Convention on the Law of the Sea of 10 December 1982 relating to the Conservation and Management of Straddling Fish Stocks and Highly Migratory Fish Stocks (UNFSA). </p>
+<p>Accordingly, following extensive consultation with Member States and other stakeholders, the methodology for indicator 14.c.1 measures the number of countries making progress in ratifying, acceding to and implementing UNCLOS, the Part XI Agreement and UNFSA through legal, policy and institutional frameworks. </p>
+<p>Data collected through the first administration of the questionnaire, which is based on the indicator, will provide a baseline of the current state of ratification of, accession to and implementation of UNCLOS and its two implementing agreements. Subsequent indicator-based data will then show progress made by countries.</p>
+<p>Countries that do not respond to the questionnaire, or do not approve the use of their responses to the questionnaire, will not receive indicator scores.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Implementation of UNCLOS and its implementing agreements through legal frameworks (for example, through national legislation or executive acts) as well as policy and institutional frameworks will be scored on the basis of a self-analysis by countries of the extent of implementation. Countries will be invited in the questionnaire to share information regarding their methods of implementation.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The indicator measures the number of countries making progress in ratifying, acceding to and implementing UNCLOS and its two implementing agreements through legal, policy and institutional frameworks. </p>
+<p>This measurement of progress is computed on the basis of countries&#x2019; responses to the questionnaire, which contains three questions in respect to each of the three instruments. </p>
+<p>Countries will be invited to respond to questions which relate to ratification of or accession to UNCLOS and its two implementing agreements (Questions 1.1, 2.1 and 3.1). They are coded with simple &#x201C;Yes/No&#x201D; answers, with a score of &#x201C;1&#x201D; for &#x201C;Yes&#x201D; and &#x201C;0&#x201D; for &#x201C;No&#x201D;. Each country&#x2019;s overall score for ratification of or accession to these instruments will therefore be a number between 0 and 3, which will be reported as a percentage (with &#x201C;100&#x201D; representing a score of &#x201C;3&#x201D;, and &#x201C;0&#x201D; representing a score of &#x201C;0&#x201D;).</p>
+<p>Countries will also be invited to respond to questions which relate to implementation of UNCLOS and its two implementing agreements through legal frameworks (Questions 1.2, 2.2 and 3.2) by evaluating their own national implementation and assigning a score of between 1 and 9 &#x2013; with &#x201C;1&#x201D; being &#x201C;not at all&#x201D; and &#x201C;9&#x201D; being &#x201C;fully&#x201D; &#x2013; or indicating that the question of implementation is not applicable (&#x201C;N/A&#x201D;). </p>
+<p>Countries will further be invited to indicate whether they have a national policy and/or a national institution or another mechanism, such as a national focal point or an inter-agency or inter-departmental working group, with responsibility for ensuring that the problems of ocean space, matters related to the Part XI Agreement and matters related to UNFSA are considered through an integrated, interdisciplinary and inter-sectoral approach (Questions 1.3, 2.3 and 3.3). These questions are coded with simple &#x201C;Yes&#x201D;, &#x201C;No&#x201D; and &#x201C;N/A&#x201D; answers, with a score of &#x201C;1&#x201D; for &#x201C;Yes&#x201D; and &#x201C;0&#x201D; for &#x201C;No&#x201D;. </p>
+<p>The scoring methodology regarding implementation is the total of the scores reported by States regarding implementation through legal frameworks for UNCLOS and each of its two implementing agreements (in response to Questions 1.2, 2.2 and 3.2), added to the relevant scores achieved regarding implementation through national policy and/or national institutions for UNCLOS and each of its implementing agreements (in respect to Questions 1.3, 2.3 and 3.3). Pursuant to this scoring methodology, each State could achieve a maximum score of 30 points for implementation. These scores which will be reported as a percentage (with 100 representing a score of 30, 80 representing a score of 24, and so on). </p>
+<p>&#x201C;N/A&#x201D; responses will not be included as part of the overall score calculation.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>The completed questionnaire is expected to be submitted through Permanent Missions. If other government ministries, departments and agencies submit data, Permanent Missions will be informed and provided with a copy of the completed questionnaire. In case there are ambiguities or the need for a correction, Permanent Missions will be requested to clarify or confirm, or otherwise informed of the relevant query. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>N.A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level</strong></p>
+<p>Not imputed. </p>
+<p><strong>&#x2022; At regional and global levels</strong></p>
+<p>Not imputed. Data will only be aggregated from responding countries.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Regional and global data regarding ratification of, accession to and implementation of UNCLOS and its implementing agreements would be aggregated by calculating the unweighted average of the scores of each country in that region (or globally) with respect to ratification/accession and with respect to implementation.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>A questionnaire, with accompanying instructions regarding its completion is used to collect national-level data.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Data on ratification of and accession to UNCLOS and its two implementing agreements is available, and may be verified. OLA/DOALOS will verify data on ratification of and accession to UNCLOS and its two implementing agreements submitted by countries, in light of information available to Secretary-General as the depositary for those instruments. </p>
+<p>UNCLOS and UNFSA do not provide for a secretariat. OLA/DOALOS performs the role of secretariat for these instruments <em>de facto</em>. It has received no mandate from the General Assembly to review or assess the status of implementation of these instruments. </p>
+<p>Respondent countries will be invited to assess the level of implementation and share relevant information regarding the implementation of UNCLOS and its implementing agreements in their responses to the questionnaire.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>If the verification mentioned above indicates any discrepancy between the data submitted and information available to the depositary, OLA/DOALOS will contact the country concerned to update the information received so as to ensure that accurate data will be included in the SDG Indicators Database.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>N.A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>Indicator 14.c.1 is a new indicator. The initial administration of the indicator 14.c.1 questionnaire will establish baseline data for this indicator. The only information that is currently publicly available is the number of parties to UNCLOS and its implementing agreements, since those treaties are deposited with the Secretary-General of the United Nations.</p>
+<p><strong>Time series:</strong></p>
+<p>N/A.</p>
+<p><strong>Disaggregation:</strong></p>
+<p>Data will not be disaggregated within each country. Two scores per country &#x2013; one score for the ratification of or accession to UNCLOS and its implementing agreements, and one score for the implementation of these instruments &#x2013; will be aggregated regionally or globally.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>N/A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>URL: https://www.un.org/Depts/los/convention_agreements/convention_overview_convention.htm</p>
+<p>https://www.un.org/Depts/los/convention_agreements/convention_overview_part_xi.htm</p>
+<p>https://www.un.org/Depts/los/convention_agreements/convention_overview_fish_stocks.htm</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2003,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2089,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

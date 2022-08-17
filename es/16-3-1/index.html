@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,782 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 16.3: Promote the rule of law at the national and international levels and ensure equal access to justice for all</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 16.3.1: Proportion of victims of violence in the previous 12 months who reported their victimization to competent authorities or other officially recognized conflict resolution mechanisms</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2016-07-19</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            <p>16.6</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>United Nations Office on Drugs and Crime (UNODC)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>United Nations Office on Drugs and Crime (UNODC)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>Number of victims of violent crime in the previous 12 months who reported their victimization to competent authorities or other officially recognized conflict resolution mechanisms, as a percentage of all victims of violent crime in the previous 12 months</p>
+<p><strong>Concepts:</strong></p>
+<p>Competent authorities includes police, prosecutors or other authorities with competencies to investigate relevant crimes, while &#x2018;other officially recognized conflict resolution mechanisms&#xB4; may include a variety of institutions with a role in the informal justice or dispute resolution process (e.g. tribal or religious leaders, village elders, community leaders), provided their role is officially recognized by state authorities</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Victimisation surveys provide direct information on this indicator, as they collect information on the experience of violent crime and on whether the victim has reported it to competent authorities.</p>
+<p>UNODC collects data on reporting rates for violent crime through its annual data collection (UN-CTS). The data collection through the UN-CTS is facilitated by a network of over 130 national Focal Points appointed by responsible authorities.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p>There is a consolidated system of annual data collection on crime and criminal justice (UN- Crime Trends Survey, UN-CTS) which represents the basis of data on intentional homicide, criminal justice outputs, penitentiary statistics and prevalence of victimization. The UN-CTS data collection is largely based on the network of national Focal Points, which are institutions/officials appointed by countries and have the technical capacity and role to produce data on crime and criminal justice (around 130 appointed Focal Points as of 2016).</p>
+<p>The UN-CTS collects data on reporting rate by victims respectively of &#x201C;physical assault&#x201D; and &#x201C;sexual assault&#x201D;. The current data collection is currently reviewed to collect data on this indicator.</p>
+<p>Data for SDG monitoring will be sent to countries for consultation prior to publication </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>III-IV quarter 2016 </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>III-IV quarter 2016 </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>National Statistical Offices, Police, Ministry of Justice, Ministry of Interior, Prosecutor&#x2019;s Office</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>UNODC</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p>Reporting to competent authorities is the first step for crime victims to seek justice: if competent authorities are not alerted they are not in a condition to conduct proper investigations and administer justice. However, lack of trust and confidence in the ability of the police or other authorities to provide effective redress, or objective and subjective difficulties in accessing them, can influence negatively the reporting behaviour of crime victims. As such, reporting rates provide a direct measure of the confidence of victims of crime in the ability of the police or other authorities to provide assistance and bring perpetrators to justice. Reporting rates provide also a measure of the &#x2018;dark figure&#x2019; of crime, that is the proportion of crimes not reported to the police. Trends in reporting rates of violent crime can be used to monitor public trust and confidence in competent authorities on the basis of actual behaviours and not perceptions.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>The target relates to the multidimensional concepts of rule of law and access to justice and at least two indicators are required to cover the main elements of access to justice and efficiency of the justice system. The indicator 16.3.1 covers an important aspect of victim&#x2019;s access to criminal justice, while it doesn&#xB4;t cover civil or administrative disputes. The indicator as formulated is a standard indicator widely published when a victimization survey is undertaken, but further work is required to enhance a consistent interpretation and application of this indicator. In particular, some important elements of this indicator needs methodological guidance, such as the type of violent crime to include beyond physical assault; counting rules regarding reporting rates (e.g. prevalence-based, incidence-based, based on last victimization experience) and the type of competent authorities to consider.</p>
+<p>Methodological guidance on these issues is currently under development.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p>Number of victims of violent crime in the previous 12 months who reported their victimization to competent authorities or other officially recognized conflict resolution mechanisms, divided by the number of all victims of violent crime in the previous 12 months (also called the &#x2018;crime reporting rate&#x2019;)</p>
+<p>Both the number of victims of violent crime as well as the number of all victims of violent crime are measured through sample surveys of the general population, most often dedicated crime victimization surveys.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level</strong></p>
+<p>Missing values are left blank</p>
+<p><strong>&#x2022; At regional and global levels</strong></p>
+<p>Missing values are left blank. Global estimates are currently not made.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>Global estimates are currently not made</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>&quot;Countries have at least 1 data point after 2010 for this indicator</p>
+<p>Asia and Pacific: 6</p>
+<p>Africa: 2</p>
+<p>Latin America and the Caribbean: 10</p>
+<p>Europe, North America, Australia, New Zealand and Japan: 15</p>
+<p>Countries have at least 1 data point between 2000 and 2010 for this indicator</p>
+<p>Asia and Pacific: 2</p>
+<p>Africa: 1</p>
+<p>Latin America and the Caribbean: 8</p>
+<p>Europe, North America, Australia, New Zealand and Japan: 17&quot;</p>
+<p><strong>Time series:</strong></p>
+<p>2006-2014 </p>
+<p><strong>Disaggregation:</strong></p>
+<p>Recommended disaggregations for this indicator are:</p>
+<p>- sex</p>
+<p>- type of crime</p>
+<p>- ethnicity</p>
+<p>- migration background</p>
+<p>- citizenship</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>UNODC compiles data from national sources.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
+<p>www.unodc.org</p>
+<p><strong>References:</strong></p>
+<p>In 2010 UNODC-UNECE published a Manual on Victimization Surveys, that provides technical guidance on the implementation of such surveys, on the basis of good practices developed at country level.</p>
+<p>UNODC, International Classification of Crime for Statistical Purposes, 2015</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2008,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2094,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

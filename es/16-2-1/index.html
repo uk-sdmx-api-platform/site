@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,778 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 16.2: End abuse, exploitation, trafficking and all forms of violence against and torture of children</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 16.2.1: Proportion of children aged 1&#x2013;17 years who experienced any physical punishment and/or psychological aggression by caregivers in the past month</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>United Nations Children&apos;s Fund (UNICEF)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>United Nations Children&apos;s Fund (UNICEF)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>Proportion of children aged 1-17 years who experienced any physical punishment and/or psychological aggression by caregivers in the past month is currently being measured by the Proportion of children aged 1-14 years who experienced any physical punishment and/or psychological aggression by caregivers in the past month.</p>
+<p><strong>Concepts:</strong></p>
+<p>In Multiple Indicator Cluster Surveys (MICS), psychological aggression refers to the action of shouting, yelling or screaming at a child, as well as calling a child offensive names, such as &#x2018;dumb&#x2019; or &#x2018;lazy&#x2019;. Physical (or corporal) punishment is an action intended to cause physical pain or discomfort, but not injuries. Physical punishment is defined as shaking the child, hitting or slapping him/her on the hand/arm/leg, hitting him/her on the bottom or elsewhere on the body with a hard object, spanking or hitting him/her on the bottom with a bare hand, hitting or slapping him/her on the face, head or ears, and beating him/her over and over as hard as possible.</p>
+<p>&apos;Past month&apos; typically refers to the 30 days prior to the interview/data collection (in other words, has the child experienced violent discipline at any point in the 30 days prior to data collection). &apos;Caregiver&apos; refers to any adult household member with caregiving responsibilities for the child (not just the primary caregiver or the respondent to the questionnaire).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p>Proportion</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Household surveys such as UNICEF-supported MICS and DHS that have been collecting data on this indicator in low- and middle-income countries since around 2005. In some countries, such data are also collected through other national household surveys.</p>
+<p>MICS, the source of the majority of comparable data, includes a module on disciplinary methods. The module, developed for use in MICS, is adapted from the parent-child version of the Conflict Tactics Scale (CTSPC), a standardized and validated epidemiological measurement tool that is widely accepted and has been implemented in a large number of countries, including high-income countries. The MICS module includes a standard set of questions covering non-violent forms of discipline, psychological aggression and physical means of punishing children. Data are collected for children ranging from age 1 to age 14. Some DHS have included the standard, or an adapted version of, the MICS module on child discipline.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <ul>
+  <li>
+    <ol>
+      <li>UNICEF undertakes a wide consultative process of compiling and assessing data from national sources for the purposes of updating its global databases on the situation of children. Up until 2017, the mechanism UNICEF used to collaborate with national authorities on ensuring data quality and international comparability on key indicators of relevance to children was known as Country Data Reporting on the Indicators for the Goals (CRING).</li>
+      <li>As of 2018, UNICEF launched a new country consultation process with national authorities on selected child-related global SDG indicators it is custodian or co-custodian to meet emerging standards and guidelines on data flows for global reporting of SDG indicators, which place strong emphasis on technical rigour, country ownership and use of official data and statistics. The consultation process solicited feedback directly from National Statistical Offices, as well as other government agencies responsible for official statistics, on the compilation of the indicators, including the data sources used, and the application of internationally agreed definitions, classification and methodologies to the data from that source. Once reviewed, feedback is made available to countries on whether or not specific data points are accepted, and if not, the reasons why. </li>
+    </ol>
+  </li>
+</ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>UNICEF will undertake an annual country consultation likely between December and January every year to allow for review and processing of the feedback received in order to meet global SDG reporting deadlines.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>March 2021</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>National Statistical Offices (for the most part)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>UNICEF</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            <p>UNICEF is responsible for global monitoring and reporting on the wellbeing of children. It provides technical and financial assistance to Member States to support their efforts to collect quality data on violence, including through the UNICEF-supported MICS household survey programme. UNICEF also compiles violence statistics with the goal of making internationally comparable datasets publicly available, and it analyses violence statistics which are included in relevant data-driven publications, including in its flagship publication, <em>The State of the World&#x2019;s Children.</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p>All too often, children are raised using methods that rely on physical force or verbal intimidation to punish unwanted behaviours and encourage desired ones. The use of violent discipline with children represent a violation of their rights. Physical discipline and psychological aggression tend to overlap and frequently occur together, exacerbating the short- and long-term harm they inflict. The consequences of violent discipline range from immediate effects to long-term damage that children carry well into adulthood. Violent discipline is the most widespread, and socially accepted, type of violence against children.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>In the third and fourth rounds of MICS, the standard indicator referred to the percentage of children</p>
+<p>aged 2-14 years who experienced any form of violent discipline (physical punishment and/or psychological aggression) within the past month. Beginning with the fifth round of MICS (MICS5), the age group covered was expanded to capture children&#x2019;s experiences with disciplinary practices between the ages of 1 and 14 years. Therefore, current data availability does not capture the full age range specified in the SDG indicator since data are not collected for adolescents aged 15-17 years and further methodological work is needed to identify additional items on disciplinary practices relevant for older adolescents.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p>Number of children aged 1-17 years who are reported to have experienced any physical punishment and/or psychological aggression by caregivers in the past month divided by the total number of children aged 1-17 in the population multiplied by 100</p>
+<p>Proxy indicator:</p>
+<p>Number of children aged 1-14 years who are reported to have experienced any physical punishment and/or psychological aggression by caregivers in the past month divided by the total number of children aged 1-14 in the population multiplied by 100</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            <p>A wide consultative process is undertaken to compile, assess and validate data from national sources. </p>
+<p>The consultation process solicited feedback directly from National Statistical Offices, as well as other government agencies responsible for official statistics, on the compilation of the indicators, including the data sources used, and the application of internationally agreed definitions, classification and methodologies to the data from that source. The results of this country consultation are reviewed by UNICEF as the custodian agency. Once reviewed, feedback is made available to countries on whether or not specific data points are accepted, and if not, the reasons why. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level</strong></p>
+<p>When data for a country are entirely missing, UNICEF does not publish any country-level estimate.</p>
+<p><strong>&#x2022; At regional and global levels</strong></p>
+<p>The regional average is applied to those countries within the region with missing values for the purposes of calculating regional aggregates only, but are not published as country-level estimates. Regional aggregates are only published when at least 50 per cent of the regional population for the relevant age group are covered by the available data.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>The global aggregate is a weighted average of all countries with available data. Global aggregates are published regardless of population coverage, but the number of countries and the proportion of the relevant population group represented by the available data are clearly indicated.</p>
+<p>Regional aggregates are weighted averages of all the countries within the region.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p>Countries gather data on child discipline through household surveys such as UNICEF-supported MICS or Demographic and Health Surveys. In some countries, such data are also collected through other national household surveys.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            <p>The process behind the production of reliable statistics on violence is well established within UNICEF. The quality and process leading to the production of the SDG indicator 16.2.1 is ensured by working closely with the statistical offices and other relevant stakeholders through a consultative process.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p>UNICEF maintains the global database on child discipline that is used for SDG and other official reporting. Before the inclusion of any data point in the database, it is reviewed by technical focal points at UNICEF headquarters to check for consistency and overall data quality. This review is based on a set of objective criteria to ensure that only the most recent and reliable information are included in the databases. These criteria include the following: data sources must include proper documentation; data values must be representative at the national population level; data are collected using an appropriate methodology (e.g., sampling); data values are based on a sufficiently large sample; data conform to the standard indicator definition including age group and concepts, to the extent possible; data are plausible based on trends and consistency with previously published/reported estimates for the indicator. </p>
+<p>As of 2018, UNICEF undertakes an annual consultation with government authorities on 10 of the child-related SDG indicators in its role of sole or joint custodian, and in line with its global monitoring mandate and normative commitments to advancing the 2030 Agenda for children. This includes indicator 16.2.1. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            <p>Data consistency and quality checks are regularly conducted for validation of the data before dissemination </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>Nationally representative and comparable prevalence data are currently available for a sub-sample of children aged 1-14 years for 90 mostly low- and middle-income countries</p>
+<p><strong>Time series:</strong></p>
+<p>Not available</p>
+<p><strong>Disaggregation:</strong></p>
+<p>None</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>The estimates compiled and presented at global level come directly from nationally produced data and are not adjusted or recalculated.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
+<p>data.unicef.org</p>
+<p><strong>References:</strong></p>
+<p><a href="http://data.unicef.org/child-protection/violent-discipline.html">http://data.unicef.org/child-protection/violent-discipline.html</a></p>
+<p>https://data.unicef.org/resources/a-generation-to-protect/</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2004,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2090,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

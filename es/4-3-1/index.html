@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,814 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 4.3: By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 4.3.1: Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, by sex</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Not applicable. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            <p>1.4, 4.4, 4.5, 5.b, 8.5, 9.2</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>UNESCO Institute for Statistics (UIS)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>UNESCO Institute for Statistics (UIS)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>The percentage of youth and adults in a given age range (e.g. 15-24 years, 25-64 years, etc.) participating in formal or non-formal education or training in a given time period (e.g. last 12 months).</p>
+<p><strong>Concepts:</strong></p>
+<p>Formal education and training is defined as education provided by the system of schools, colleges, universities and other formal educational institutions that normally constitutes a continuous &#x2018;ladder&#x2019; of full-time education for children and young people, generally beginning at the age of 5 to 7 and continuing to up to 20 or 25 years old. In some countries, the upper parts of this &#x2018;ladder&#x2019; are organized programmes of joint part-time employment and part-time participation in the regular school and university system.</p>
+<p>Non-formal education and training is defined as any organized and sustained learning activities that do not correspond exactly to the above definition of formal education. Non-formal education may therefore take place both within and outside educational institutions and cater to people of all ages. Depending on national contexts, it may cover educational programmes to impart adult literacy, life-skills, work-skills, and general culture.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p>Percent (%) </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Household survey data on participants in formal and non-formal education and training by single year of age; population censuses and surveys for population estimates by single year of age (if using administrative data on enrolment). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p>Data are collected from the respective organizations responsible for each survey. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>Various depending on survey and country.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>Various depending on survey and country.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>Ministries of Education and /or National Statistical Offices (NSOs).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>UNESCO Institute for Statistics (UIS)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            <p>The UNESCO Institute for Statistics (UIS) is the statistical branch of the United Nations Educational, Scientific and Cultural Organization (UNESCO). The Institute produces internationally comparable data and methodologies in the fields of education, science, culture and communication for countries at all stages of development.</p>
+<p>The <a href="https://www.moe.gov.bn/DocumentDownloads/Education%202030/Education2030.pdf"><u>Education 2030 Framework for Action &#xA7;100</u></a> has clearly stated that: &#x201C;<em>In recognition of the importance of harmonization of monitoring and reporting, the UIS will remain the official source of cross-nationally comparable data on education. It will continue to produce international monitoring indicators based on its annual education survey and on other data sources that guarantee international comparability for more than 200 countries and territories. In addition to collecting data, the UIS will work with partners to develop new indicators, statistical approaches and monitoring tools to better assess progress across the targets related to UNESCO&#x2019;s mandate, working in coordination with the SDG-Education 2030 SC&#x201D;.</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p>To show the level of participation of youth and adults in education and training of all types. A high value indicates a large share of the population in the relevant age group is participating in formal and non-formal education and training.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>Formal and non-formal education and training can be offered in a variety of settings including schools and universities, workplace environments and others and can have a variety of durations. Administrative data often capture only provision in formal settings such as schools and universities. Participation rates do not capture the intensity or quality of the provision nor the outcomes of the education and training on offer.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p>The number of people in selected age groups participating in formal or non-formal education or training is expressed as a percentage of the population of the same age.</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <msub>
+      <mrow>
+        <mi>P</mi>
+        <mi>R</mi>
+      </mrow>
+      <mrow>
+        <mi>A</mi>
+        <mi>G</mi>
+        <mi>i</mi>
+      </mrow>
+    </msub>
+    <mo>=</mo>
+    <mi>&amp;nbsp;</mi>
+    <mfrac>
+      <mrow>
+        <msub>
+          <mrow>
+            <mi>E</mi>
+          </mrow>
+          <mrow>
+            <mi>A</mi>
+            <mi>G</mi>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+      </mrow>
+      <mrow>
+        <msub>
+          <mrow>
+            <mi>P</mi>
+          </mrow>
+          <mrow>
+            <mi>A</mi>
+            <mi>G</mi>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+      </mrow>
+    </mfrac>
+  </math></p>
+<p>where:</p>
+<p><em>PR<sub>AGi</sub></em> = participation rate of the population in age group <em>i</em> in formal and non-formal education and training</p>
+<p><em>E<sub>AGi</sub></em> = enrolment of the population in age group <em>i</em> in formal and non-formal education and training</p>
+<p><em>P<sub>AGi</sub></em> = population in age group <em>i</em></p>
+<p><em>i</em> = 15-24, 15 and above, 25-64, etc.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            <p>The UNESCO Institute for Statistics shares all indicator values and notes on methodology with National Statistical Offices, Ministries of Education, or other relevant agencies in individual countries for their review, feedback and validation before the publication of the data. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            <p>Not applicable.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level:</strong></p>
+<p>None by data compiler.</p>
+<p><strong>&#x2022; At regional and global levels:</strong></p>
+<p>None by data compiler.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>Regional and global aggregates are not currently available for this indicator.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p>The UIS has elaborated guidance for the countries on the methodology that should be used to calculate this indicator. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            <p>The UIS maintains the global database used to produce this indicator. For transparency purposes, the inclusion of a data point in the database is completed by following a protocol and is reviewed by UIS technical focal points to ensure consistency and overall data quality, based on objective criteria to ensure that only the most recent and reliable information are included in the database. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p>The process for quality assurance includes review of survey documentation, review of the indicator values across time, calculation of measures of reliability, examination of consistency of indicator values derived from different sources and, if necessary, consultation with data providers.</p>
+<p>Before its annual data release and the addition of any indicators to the global SDG Indicators Database, the UNESCO Institute for Statistics submits all indicator values and notes on methodology to National Statistical Offices, Ministries of Education or other relevant agencies in individual countries for their review and feedback.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            <p>Accurate data on participation in formal and non-formal education and training by age or specific age-groups and by sex, and the corresponding population data from all types of educational institutions (public and private), formal and non-formal, are essential for calculating this indicator. Criteria for quality assessment include: data sources must include proper documentation; data values must be representative at the national population level and, if not, should be footnoted; data are plausible and based on trends and consistency with previously published/reported values for the indicator.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>99 countries with at least one data point for the period 2010-2018.</p>
+<p><strong>Time series:</strong></p>
+<p>1994-2018 in UIS database; 2000-2018 in SDG global database.</p>
+<p><strong>Disaggregation:</strong></p>
+<p>By age and sex from administrative sources, and by age, sex, location and income from household surveys.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>None</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
+<p><a href="file:///\\uissv3\teams\LO\Learning%20Outcomes\Metadata\IAEG-SDG-reviewed%20metadata_121_13022022\Revised%2013022022\uis.unesco.org">uis.unesco.org</a></p>
+<p><strong>References:</strong></p>
+<p>European Adult Education Survey (AES): <a href="http://www.eui.eu/Research/Library/ResearchGuides/Economics/Statistics/DataPortal/AES.aspx">http://www.eui.eu/Research/Library/ResearchGuides/Economics/Statistics/DataPortal/AES.aspx</a> </p>
+<p>European Continuing Vocational Training Survey: </p>
+<p><a href="https://ec.europa.eu/eurostat/web/microdata/continuing-vocational-training-survey">https://ec.europa.eu/eurostat/web/microdata/continuing-vocational-training-survey</a></p>
+<p>European Labour Force Survey: <a href="http://ec.europa.eu/eurostat/cache/metadata/en/trng_lfs_4w0_esms.htm">http://ec.europa.eu/eurostat/cache/metadata/en/trng_lfs_4w0_esms.htm</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2040,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2126,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

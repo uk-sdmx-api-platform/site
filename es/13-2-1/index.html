@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,789 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 13: Take urgent action to combat climate change and its impacts</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 13.2: Integrate climate change measures into national policies, strategies and planning</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 13.2.1: Number of countries with nationally determined contributions, long-term strategies, national adaptation plans and adaptation communications, as reported to the secretariat of the United Nations Framework Convention on Climate Change</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2021-03-01</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>UN Climate Change (UNFCCC Secretariat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>UN Climate Change (UNFCCC Secretariat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definitions:</strong></p>
+<p>NDCs</p>
+<p>The Paris Agreement requires each Party to prepare, communicate and maintain successive <em>nationally determined contributions (NDCs)</em> including mitigation, adaptation and support measures. </p>
+<p>The <a href="https://unfccc.int/node/617" target="_blank">Paris Agreement</a> (Article 4, paragraph 2) requires each Party to prepare, communicate and maintain successive nationally determined contributions (NDCs) that it intends to achieve. Parties shall pursue domestic mitigation measures, with the aim of achieving the objectives of such contributions.</p>
+<p>Starting in 2023 and then every five years, governments will take stock of the implementation of the Agreement to assess the collective progress towards achieving the purpose of the Agreement and its long-term goals. The outcome of the global stocktake (GST) will inform the preparation of subsequent NDCs, in order to allow for increased ambition and climate action to achieve the purpose of the Paris Agreement and its long-term goals. <a href="https://unfccc.int/process-and-meetings/the-paris-agreement/nationally-determined-contributions-ndcs">https://unfccc.int/process-and-meetings/the-paris-agreement/nationally-determined-contributions-ndcs</a></p>
+<p>NDC interim registry <a href="https://www4.unfccc.int/sites/ndcstaging/Pages/Home.aspx">https://www4.unfccc.int/sites/ndcstaging/Pages/Home.aspx</a> </p>
+<p><strong>NAPs</strong></p>
+<p>The <em>national adaptation plan (NAP)</em> process was established under the <a href="https://unfccc.int/adaptation/items/5852.php">Cancun Adaptation Framework</a> (CAF). It enables Parties to formulate and implement <em>national adaptation plans (NAPs)</em> as a means of identifying medium- and long-term adaptation needs and developing and implementing strategies and programmes to address those needs. It is a continuous, progressive and iterative process which follows a country-driven, gender-sensitive, participatory and fully transparent approach supported by technical guidelines and up to USD 3 million per developing country through the Green Climate Fund Readiness and Preparatory Support Programme, intended to support the formulation of NAPs. Technical guidelines for the NAP process are available at &lt;<a href="https://unfccc.int/topics/adaptation-and-resilience/workstreams/national-adaptation-plans-naps/guidelines-for-national-adaptation-plans-naps">unfccc.int</a>&gt;; NAPs received by the UNFCCC secretariat are posted at &lt;<a href="https://www4.unfccc.int/sites/NAPC/News/Pages/national_adaptation_plans.aspx">unfccc.int</a>&gt;.</p>
+<p><strong>Long term strategies </strong></p>
+<p>Under the Paris Agreement, all Parties should further strive to formulate and <em>communicate long-term low greenhouse gas emission development strategies</em> to provide a context and integrated long-term view to their NDCs. </p>
+<p>In accordance with Article 4, paragraph 19, of the Paris Agreement, all Parties should strive to formulate and communicate long-term low greenhouse gas emission development strategies, mindful of Article 2 taking into account their common but differentiated responsibilities and respective capabilities, in the light of different national circumstances.</p>
+<p>The COP, by its decision 1/CP 21, paragraph 35, invited Parties to communicate, by 2020, to the secretariat mid-century, long-term low greenhouse gas emission development strategies in accordance with Article 4, paragraph 19, of the Agreement. Further information is available at &lt;<a href="https://unfccc.int/process/the-paris-agreement/long-term-strategies">unfccc.int</a>&gt;</p>
+<p><strong>Adaptation communications</strong></p>
+<p>Under the Paris Agreement&#x2019;s Article 7, paragraphs 10 and 11, each Party should, as appropriate, submit and update periodically an adaptation communication, which may include its priorities, implementation and support needs, plans and actions. The purpose of the adaptation communication is to strengthen the visibility and profile of adaptation, balance with mitigation, actions, support, learning and understanding. Parties may include information on e.g. their circumstances, institutions, vulnerabilities, adaptation priorities, plans, needs, progress achieved, co-benefits, other frameworks, gender aspects, and indigenous knowledge. The adaptation communications will be recorded in a public registry maintained by the secretariat, and they will provide input to the process of global stocktake every five years. The adaptation communications received so far are currently available at: <a href="https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications">https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications</a>. </p>
+<p><strong>National communications</strong></p>
+<p>The Convention established several processes to foster transparency and accountability of countries&#x2019; actions to address climate change. Under Article 12, all Parties are asked to submit national inventories and national communications (NCs) to report on the implementation of the Convention. This reporting is required at different levels of stringency and with varying frequency for different Parties. National Communications received by the UNFCCC secretariat are available at &lt;<a href="https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/seventh-national-communications-annex-i">unfccc.int</a>&gt;.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p>Number of submissions received from Parties to UNFCCC</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Official documents and registries, as reported by Parties to the UNFCCC and the Paris Agreement, and published on &lt;unfccc.int&gt;.</p>
+<p>NDC interim registry available at &lt; https://www4.unfccc.int/sites/NDCStaging/Pages/Home.aspx &gt; </p>
+<p>Long term strategies received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>
+<p>NAPs received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>
+<p>Adaptation communications will be recorded in the future in a public registry maintained by the secretariat. Until the finalization of the design of the registry, the adaptation communications received so far are available at: <a href="https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications">https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications</a></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p>Submission of documents to the UNFCCC Secretariat from Parties to the UNFCCC and Paris Agreement.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; in advance of the global stocktake.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; in advance of the global stocktake.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>Parties to the UNFCCC and Paris Agreement, aggregate, UN Climate Change (UNFCCC Secretariat); Further analysis on linkages across other SDGs may be undertaken in collaboration with other UN organisations, as relevant, to show how countries are utilising these tools for implementation of climate action and SDGs more broadly.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>UN Climate Change (UNFCCC Secretariat).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p><strong>Rationale and concepts, comments and limitations:</strong></p>
+<p>Under the United Nations Framework Convention on Climate Change (UNFCCC), all Parties shall formulate, implement, publish and regularly update national/regional programmes containing measures to mitigate climate change and to facilitate adequate adaptation, while taking into account their common but differentiated responsibilities and their specific national and regional development priorities, objectives and circumstances. These policies and measures should be appropriate for the specific conditions of each Party and should be integrated with national development programmes.</p>
+<p>The Convention established several processes to foster transparency and accountability of countries&#x2019; actions to address climate change.</p>
+<p>The Paris Agreement<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup> builds upon the Convention and brings all nations into a common cause to undertake ambitious efforts to combat climate change and adapt to its effects, with enhanced support to assist developing countries to do so, charting a new course in the global climate effort. The Paris Agreement&#x2019;s central aim is to strengthen the global response to the threat of climate change by keeping a global temperature rise this century well below 2 degrees Celsius above pre-industrial levels and to pursue efforts to limit the temperature increase even further to 1.5 degrees Celsius. Additionally, the agreement aims to strengthen the ability of countries to deal with the impacts of climate change. </p>
+<p>Materials are received from Parties on an ongoing basis. </p>
+<div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> The Paris Agreement entered into force on 4 November 2016. Further information about the Paris Agreement may be found at &lt;http://unfccc.int/paris_agreement/items/9485.php&gt; <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>See 4.a</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p>Count of submitted reports annually in advance of preparation of SDG progress reports, based on most recent data.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <p><strong>At country level</strong></p>
+<p>n/a</p>
+<p><strong>At regional and global levels</strong></p>
+<p>n/a</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>n/a</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p>&#x2022; Data is compiled globally</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p>Data reported is based on official information as documented and reported on at &lt;unfccc.int&gt;.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>Number of Parties to the UNFCCC and Paris Agreement</p>
+<p>Currently, there are 197 Parties (196 States and 1 regional economic integration organization) to the United Nations Framework Convention on Climate Change.</p>
+<p>https://unfccc.int/process-and-meetings/the-convention/status-of-ratification/status-of-ratification-of-the-convention</p>
+<p>To this date, 191 Parties have ratified the Paris Agreement, of 197 Parties to the Convention.</p>
+<p>https://unfccc.int/process/the-paris-agreement/status-of-ratification </p>
+<p><strong>Time series:</strong></p>
+<p>Ongoing as Parties submit reports. Will be compiled annually in advance of preparation of annual SDG progress reports; NDCs are submitted in advance of the global stocktake (starting in 2023) every five years, with the next round of NDCs (new or updated) being submitted by 2020. </p>
+<p>https://unfccc.int/topics/science/workstreams/global-stocktake-referred-to-in-article-14-of-the-paris-agreement</p>
+<p><strong>Disaggregation:</strong></p>
+<p>n/a. Some analysis on linkages across other SDGs may be undertaken in collaboration with other UN organisations, as relevant, to show how countries are utilising these tools for implementation of climate action and SDGs more broadly.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>n/a</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p>As included in links above;</p>
+<p>NDC interim registry available at &lt; https://www4.unfccc.int/sites/NDCStaging/Pages/Home.aspx &gt; </p>
+<p>Long term strategies received by the UNFCCC secretariat are available at &lt;unfccc.int&gt;.</p>
+<p>NAPs received by the UNFCCC secretariat are posted at &lt;unfccc.int&gt;.</p>
+<p>Adaptation communications will be recorded in the future in a public registry maintained by the secretariat. Until the finalization of the design of the registry, the adaptation communications received so far are available <a href="https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications">at:</a> https://unfccc.int/topics/adaptation-and-resilience/workstreams/adaptation-communications. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2015,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2101,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

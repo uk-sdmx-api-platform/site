@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -714,28 +714,30 @@ data-event-label="Change to Table tab"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -746,451 +748,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1267,9 +1469,3409 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 2.a: Increase investment, including through enhanced international cooperation, in rural infrastructure, agricultural research and extension services, technology development and plant and livestock gene banks in order to enhance agricultural productive capacity in developing countries, in particular least developed countries</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 2.a.1: The agriculture orientation index for government expenditures</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Primary series: Agriculture orientation index for government expenditures</p>
+<p>Complementary series: Agriculture value added share of GDP (%)</p>
+<p>Complementary series: Agriculture share of Government Expenditure (%). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            <p>Indicators 17.1.1 and 17.1.2 also apply IMF GFS methodology.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>The Agriculture Orientation Index (AOI) for Government Expenditures is defined as the Agriculture share of Government Expenditure, divided by the Agriculture value added share of GDP, where Agriculture refers to the agriculture, forestry, fishing and hunting sector. The measure is a currency-free index, calculated as the ratio of these two shares. National governments are requested to compile Government Expenditures according to the Government Finance Statistics (GFS) and the Classification of the Functions of Government (COFOG), and Agriculture value added share of GDP according to the System of National Accounts (SNA).</p>
+<p><strong>Concepts:</strong></p>
+<p>Agriculture refers to the agriculture, forestry, fishing and hunting sector, or Division A of ISIC Rev 4 (equal to Division A+B of ISIC Rev 3.2). </p>
+<p>Government Expenditure comprise all expense and acquisition of non-financial assets associated with supporting a particular sector, as defined in the Government Finance Statistics Manual (GFSM) 2014 developed by the International Monetary Fund (IMF). NOTE: Transactions in assets and liabilities, such as loans by general government units (disbursement and repayment), are excluded when compiling COFOG data for GFS reporting purposes.</p>
+<p>Government Expenditure are classified according to the Classification of the Functions of Government (COFOG), a classification developed by the Organisation for Economic Co-operation and Development (OECD) and published by the United Nations Statistical Division (UNSD). </p>
+<p>Agriculture value-added and GDP are based on the System of National Accounts (SNA). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p>Index </p>
+<p>See 4.c. Method of computation, below.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            <p>The Classification of the Functions of Government (COFOG) is a detailed classification of the functions, or socioeconomic objectives, that general government units aim to achieve through various kinds of expenditure. Functions are classified using a three-level scheme, consistent with the International Standard Industrial Classification of All Economic Activities (ISIC), Rev.4. In particular, the scheme includes: </p>
+<ol>
+  <li>10 first-level, or two digit, categories, referred to as divisions, including Economic Affairs (04) and Environmental Protection (05); </li>
+  <li>within each division, 2 or more 3-digit three-digit categories, referred to as groups, such as Agriculture, Forestry, Fishing, and Hunting (042) and Protection of Biodiversity and Landscapes (054); and </li>
+  <li>within each group, one or more four-digit categories, referred to as classes, such as Agriculture (0421), Forestry (0422) and Fishing and hunting (0423), as well as related Research and Development (0482), covering the administration and operation of government agencies engaged in applied research and experimental development related to the sector, including that undertaken by nongovernment bodies, such as research institutes and universities funded by government grants and subsidies.</li>
+</ol>
+<p>The International Monetary Fund (IMF) questionnaire on Government Finance Statistics (GFS) collects annual data on the first two levels (divisions and groups). The FAO questionnaire aims at collecting information on classes, as well as a breakdown of the related expenditure in recurrent and capital expenditures. The three classification levels and the contents of each class are described in the GFSM 2014, accessible at https://www.imf.org/external/np/sta/gfsm/. </p>
+<p>FAOSTAT geographic classification is used to aggregate indicators across country groups (<a href="http://www.fao.org/faostat/en/#definitions">http://www.fao.org/faostat/en/#definitions</a>).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Data on government expenditures is collected from countries through an annual questionnaire administered by FAO. These data are not affected by sampling error, given that countries typically compile the questionnaires administered by FAO on the basis of their financial and accounting systems, using administrative information on government expenditures based on the availability and comprehensiveness of source data. For some countries that do not report directly data to FAO, key expenditure aggregates needed to calculate Indicator 2.a.1 are obtained either from the IMF GFS database, from other regional organizations, or from official national governmental websites. </p>
+<p>Data on agriculture value-added and GDP are retrieved from the UN Statistics Division, which provides national accounts estimates for 220 countries and territories.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p>Data for the denominator are annually collected from countries using the FAO questionnaire on Government Expenditure on Agriculture (GEA), developed in collaboration with the IMF., For countries with missing information, data is supplemented with data collected by the IMF, regional organizations or published on official national governmental websites. The official counterpart(s) at country level are, depending on the country, from the national statistics office, the ministry of finance (or other central planning agency), or the ministry of agriculture. Validation and consultation were conducted through various FAO commissions and committees, including its two agricultural statistics commissions in Africa and the Asia and Pacific, its Committee on Agriculture and Livestock Statistics in Latin America and the Caribbean, and its Committee on Agriculture. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>The t-1 reference year data collection cycle for Government Expenditure on Agriculture (GEA) will start in March/April of year t. Due to the time required to collect, compile and publish national data, countries may experience delays in reporting timely data. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>As the COFOG data is largely compiled annually, this indicator is released every year in March, covering data up to reference year t-2 (for the countries for which data collection, compilation, release is more timely).</p>
+<p> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>Ministry of Finance, Central Planning Agency, Central Banks, National Statistics Office, and/or Ministry of Agriculture.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            <p>Article I of the FAO Constitution requires the Organization to &quot;collect, analyse, interpret and disseminate information relating to nutrition, food and agriculture.&quot; (http://www.fao.org/docrep/x5584e/x5584e00.htm). Member countries reaffirmed this mandate in 2000. Within the FAO&apos;s statistical program of work, member countries endorsed the development of an investment statistics domain, including ongoing work on government expenditure on agriculture, during meetings of three statutory bodies: the Asia and Pacific Commission on Agricultural Statistics (APCAS) held in Vietnam in February 2014; the African Commission on Agricultural Statistics (AFCAS) held in Morocco in December 2013; and the IICA working group on agricultural and livestock statistics for Latin America and the Caribbean, held in Trinidad and Tobago in June 2013. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p>An Agriculture Orientation Index (AOI) greater than 1 reflects a higher orientation towards the agriculture sector, which receives a higher share of government spending relative to its contribution to economic value-added. An AOI less than 1 reflects a lower orientation to agriculture, while an AOI equal to 1 reflects neutrality in a government&#x2019;s orientation to the agriculture sector.</p>
+<p>Government spending in agriculture includes spending on sector policies and programs; soil improvement and soil degradation control; irrigation and reservoirs for agricultural use; animal health management, livestock research and training in animal husbandry; marine/freshwater biological research; afforestation and other forestry projects; etc.</p>
+<p>Spending in these agricultural activities helps to increase sector efficiency, productivity and income growth by increasing physical or human capital and/or reducing inter-temporal budget constraints. </p>
+<p>However, the private sector typically under-invests in these activities due to the presence of market failure (e.g. the public good nature of research and development; the positive externalities from improved soil and water conditions; lack of access to competitive credit due to asymmetric information between producers and financial institutions, etc.). Similarly, the high risk faced by agricultural producers, particular smallholders unable to hedge against risk, often requires government intervention in terms of income redistribution to support smallholders in distress following crop failures and livestock loss from pests, droughts, floods, infrastructure failure, or severe price changes. </p>
+<p>Government spending in agriculture is essential to address these market failures and the periodic need for income redistribution. This leads to several potential indicators for the SDGs, which include: a) the level of Government Expenditure on Agriculture (GEA); b) the Agriculture share of Government Expenditure, and c) the AOI for Government Expenditures.</p>
+<p>An indicator that measures GEA levels fails to take into account the size of an economy. If two countries, A and B, have the same level of GEA, and the same agriculture contribution to GDP, but country A&#x2019;s economy is 10 times that of country B, setting the same target levels for GEA fails to take economic size into account. </p>
+<p>An indicator that measures the Agriculture share of Government Expenditure fails to take into account the relative contributions of the agricultural sector to a country&#x2019;s GDP. Consider two countries with the same economic size, C and D, where agriculture contributes 2 percent to C&#x2019;s GDP, and 10 per cent to country D&#x2019;s GDP. If total Government Expenditures were equal in both countries, C would experience greater relative investment in Agriculture than D. If total Government Expenditures differed, the result could be magnified or diluted.</p>
+<p>The AOI index takes into account a country&#x2019;s economic size, Agriculture&#x2019;s contribution to GDP, and the total amount of Government Expenditure. While the indicator does not allow setting of a universal and achievable target, it is useful to interpret the AOI in combination with its numerator and denominator separately: the Agriculture share of Government Expenditure and the Agriculture value-added Share of GDP.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>Since the numerator of this data is based on financial and accounting systems and administrative sources, there is no confidence interval or standard error associated with government expenditure data. For the denominator, national accounts data typically do not provide any standard error or confidence interval information.</p>
+<p>The key limitation with this indicator is that Consolidated General Government expenditure &#x2013; the best measure for cross-country comparisons &#x2013; is not available for all reporting countries. While most advanced economies &#x2013; and many emerging market economies &#x2013; do report these data, many smaller and/or low-income economies either do not have significant fiscal interventions in agriculture at the state/provincial and local/municipal levels; or do not have adequate source data to compile meaningful general government estimates for each subsector, as relevant. Given that in several countries, significant intervention in agriculture is implemented by sub-national governments, the Indicator 2.a.1 is calculated using the highest level of government available for the reporting country. For some countries, such as India, where the general government sector is defined for fiscal policy purposes as budgetary central government plus state government, the Indicator will take this into account.</p>
+<p>Annex I lists the reporting countries, their M49 code, the latest year for which data are available and the level of government for which data has been reported. The level of government notation used is as follows: GG: Consolidated General Government; CG Consolidated Central Government (excluding Social Security Funds): CGI: Consolidated Central Government (including Social Security Funds); BA: Budgetary Central Government.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>A</mi>
+    <mi>O</mi>
+    <mi>I</mi>
+    <mi>&amp;nbsp;</mi>
+    <mo>=</mo>
+    <mi>&amp;nbsp;</mi>
+    <mfrac>
+      <mrow>
+        <mi>A</mi>
+        <mi>g</mi>
+        <mi>r</mi>
+        <mi>i</mi>
+        <mi>c</mi>
+        <mi>u</mi>
+        <mi>l</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>S</mi>
+        <mi>h</mi>
+        <mi>a</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>o</mi>
+        <mi>f</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>G</mi>
+        <mi>o</mi>
+        <mi>v</mi>
+        <mi>e</mi>
+        <mi>r</mi>
+        <mi>n</mi>
+        <mi>m</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>t</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>E</mi>
+        <mi>x</mi>
+        <mi>p</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>d</mi>
+        <mi>i</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>s</mi>
+      </mrow>
+      <mrow>
+        <mi>A</mi>
+        <mi>g</mi>
+        <mi>r</mi>
+        <mi>i</mi>
+        <mi>c</mi>
+        <mi>u</mi>
+        <mi>l</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>v</mi>
+        <mi>a</mi>
+        <mi>l</mi>
+        <mi>u</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>a</mi>
+        <mi>d</mi>
+        <mi>d</mi>
+        <mi>e</mi>
+        <mi>d</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>S</mi>
+        <mi>h</mi>
+        <mi>a</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>o</mi>
+        <mi>f</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>G</mi>
+        <mi>D</mi>
+        <mi>P</mi>
+      </mrow>
+    </mfrac>
+  </math></p>
+<p>where: </p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>A</mi>
+    <mi>g</mi>
+    <mi>r</mi>
+    <mi>i</mi>
+    <mi>c</mi>
+    <mi>u</mi>
+    <mi>l</mi>
+    <mi>t</mi>
+    <mi>u</mi>
+    <mi>r</mi>
+    <mi>e</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>S</mi>
+    <mi>h</mi>
+    <mi>a</mi>
+    <mi>r</mi>
+    <mi>e</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>o</mi>
+    <mi>f</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>G</mi>
+    <mi>o</mi>
+    <mi>v</mi>
+    <mi>e</mi>
+    <mi>r</mi>
+    <mi>n</mi>
+    <mi>m</mi>
+    <mi>e</mi>
+    <mi>n</mi>
+    <mi>t</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>E</mi>
+    <mi>x</mi>
+    <mi>p</mi>
+    <mi>e</mi>
+    <mi>n</mi>
+    <mi>d</mi>
+    <mi>i</mi>
+    <mi>t</mi>
+    <mi>u</mi>
+    <mi>r</mi>
+    <mi>e</mi>
+    <mi>s</mi>
+  </math></p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mo>=</mo>
+    <mi>&amp;nbsp;</mi>
+    <mfrac>
+      <mrow>
+        <mi>G</mi>
+        <mi>o</mi>
+        <mi>v</mi>
+        <mi>e</mi>
+        <mi>r</mi>
+        <mi>n</mi>
+        <mi>m</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>t</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>E</mi>
+        <mi>x</mi>
+        <mi>p</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>d</mi>
+        <mi>i</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>s</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>o</mi>
+        <mi>n</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>A</mi>
+        <mi>g</mi>
+        <mi>r</mi>
+        <mi>i</mi>
+        <mi>c</mi>
+        <mi>u</mi>
+        <mi>l</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+      </mrow>
+      <mrow>
+        <mi>T</mi>
+        <mi>o</mi>
+        <mi>t</mi>
+        <mi>a</mi>
+        <mi>l</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>G</mi>
+        <mi>o</mi>
+        <mi>v</mi>
+        <mi>e</mi>
+        <mi>r</mi>
+        <mi>n</mi>
+        <mi>m</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>t</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>E</mi>
+        <mi>x</mi>
+        <mi>p</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>d</mi>
+        <mi>i</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>s</mi>
+      </mrow>
+    </mfrac>
+    <mo>&#xD7;</mo>
+    <mn>100</mn>
+  </math></p>
+<p>Agriculture refers to COFOG category 042 (agriculture, forestry, fishing and hunting); and</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>A</mi>
+    <mi>g</mi>
+    <mi>r</mi>
+    <mi>i</mi>
+    <mi>c</mi>
+    <mi>u</mi>
+    <mi>l</mi>
+    <mi>t</mi>
+    <mi>u</mi>
+    <mi>r</mi>
+    <mi>e</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>v</mi>
+    <mi>a</mi>
+    <mi>l</mi>
+    <mi>u</mi>
+    <mi>e</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>a</mi>
+    <mi>d</mi>
+    <mi>d</mi>
+    <mi>e</mi>
+    <mi>d</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>S</mi>
+    <mi>h</mi>
+    <mi>a</mi>
+    <mi>r</mi>
+    <mi>e</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>o</mi>
+    <mi>f</mi>
+    <mi>&amp;nbsp;</mi>
+    <mi>G</mi>
+    <mi>D</mi>
+    <mi>P</mi>
+  </math></p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mo>=</mo>
+    <mi>&amp;nbsp;</mi>
+    <mfrac>
+      <mrow>
+        <mi>A</mi>
+        <mi>g</mi>
+        <mi>r</mi>
+        <mi>i</mi>
+        <mi>c</mi>
+        <mi>u</mi>
+        <mi>l</mi>
+        <mi>t</mi>
+        <mi>u</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>v</mi>
+        <mi>a</mi>
+        <mi>l</mi>
+        <mi>u</mi>
+        <mi>e</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>a</mi>
+        <mi>d</mi>
+        <mi>d</mi>
+        <mi>e</mi>
+        <mi>d</mi>
+      </mrow>
+      <mrow>
+        <mi>G</mi>
+        <mi>D</mi>
+        <mi>P</mi>
+      </mrow>
+    </mfrac>
+    <mo>&#xD7;</mo>
+    <mn>100</mn>
+  </math></p>
+<p>Agriculture refers to the Division A of ISIC Rev 4 (agriculture, forestry, fishing and hunting), equal to Division A+B of ISIC Rev 3.2.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            <p>Countries are asked to validate and update historical questionnaire data that pre-populates their questionnaire. FAO validates data against the historical series, as well as data submitted to IMF, regional organizations and from country&apos;s websites.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            <p>FAO revises data only when historical revisions or missing historical data are provided by countries, the IMF or regional organizations or when they become available through the national authorities&#x2019; websites. For example, prefilled questionnaires are sent out with reported data for t-2 through t-5, which countries are asked to review, revise where needed, and - to the extent possible &#x2013; fill-in missing information. Conversion of values into millions is done as well.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <h5><strong>At country level</strong></h5>
+<p>Missing values of government expenditure in agriculture were forecasted using trends in GDP and 3 to 5 year moving averages of the share of agriculture in total expenditure. Forecasted values are employed to compute regional and global aggregates, but not presented at the national level.</p>
+<h5><strong>At regional and global levels</strong></h5>
+<p>Regional and global aggregates of were based on a mixture of data directly reported by countries (to FAO or IMF) and forecasts of missing values. For time series period, regional and global aggregates are computed on the basis of based on data as reported by countries and interpolations of missing values.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>Global and regional estimates are compiled by first separately summing across countries the four individual components of the index: government expenditure on agriculture, total government expenditure, agriculture value-added, and GDP. These are added only for those countries in a region (or globally) for which all components are available, and the index is then calculated for this larger region.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p>Countries are requested to reference the IMF&apos;s Government Finance Statistics Manual (GFSM 2014), particularly Chapter 6 - Annex: Classification of the Functions of Government and Chapter 2 &#x2013; Institutional Units and Sectors, available at <a href="https://www.imf.org/external/np/sta/gfsm">https://www.imf.org/external/np/sta/gfsm</a>.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            <p>Comparisons of key aggregates reported in both the FAO GEA and IMF GFS questionnaires are periodically conducted in order to ensure consistency.<br /></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p>The FAO Statistics Quality Assurance Framework is available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            <p>The quality of the data may vary considerably among countries, as not all of them apply the COFOG classification. In such cases, FAO seeks to validate reported aggregates against fiscal data published by national authorities&apos; websites. Since 2012, the FAO Statistics Division also fields a detailed annual questionnaire on Government Expenditure on Agriculture that is pre-populated with key major aggregates reported to the IMF or identified by FAO. Where reported details diverge significantly from the pre-populated aggregates, queries are sent to national counterparts, to ensure the methodological quality, objectivity and reliability of the data submitted by countries.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>Data are reported for the highest level of government available (Consolidated general government, consolidated central government or budgetary central government) and are available for about 100 countries on a regular basis. In some cases (for example, India and Pakistan), data may reflect the general government sector as per national norm. That is, budgetary central government combined with state government. </p>
+<p><strong>Time series:</strong></p>
+<p>From 2001 forward</p>
+<p><strong>Disaggregation:</strong></p>
+<p>Since this indicator is based on national accounts data and total government expenditures, it does not allow for disaggregation by demographic characteristics or geographic location. However, where countries report expenditure data for the consolidated general government and it subsectors, disaggregation by level of government is possible.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>When in-country compilation errors are identified and FAO has modified government expenditure data reported by countries, or where errors are found in comparison with the IMF GFS COFOG data or fiscal data published on national authorities&apos; websites after querying to national respondents, there may be some difference between data reported by FAO and unrevised national figures.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
+<p>www.fao.org</p>
+<p><strong>References:</strong></p>
+<ul>
+  <li>FAOSTAT domain of Government Expenditure on Agriculture http://www.fao.org/faostat/en/#data/IG;</li>
+  <li>IMF Government Finance Statistics Manual 2014 <br />https://www.imf.org/external/np/sta/gfsm/.</li>
+</ul>
+<p><strong>2.a.1 metadata ANNEX I: Highest Level of Government Available &#x2013; last updated 01 March 2022</strong></p>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p><strong>Latest year</strong></p>
+      </td>
+      <td>
+        <p><strong>M49 code</strong></p>
+      </td>
+      <td>
+        <p><strong>Area</strong></p>
+      </td>
+      <td>
+        <p><strong>Level of government </strong></p>
+      </td>
+      <td>
+        <p><strong>Latest year</strong></p>
+      </td>
+      <td>
+        <p><strong>M49 code</strong></p>
+      </td>
+      <td>
+        <p><strong>Area</strong></p>
+      </td>
+      <td>
+        <p><strong>Level of government </strong></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2017</p>
+      </td>
+      <td>
+        <p>4</p>
+      </td>
+      <td>
+        <p>Afghanistan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>214</p>
+      </td>
+      <td>
+        <p>Dominican Republic</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>8</p>
+      </td>
+      <td>
+        <p>Albania</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>218</p>
+      </td>
+      <td>
+        <p>Ecuador</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>12</p>
+      </td>
+      <td>
+        <p>Algeria</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>818</p>
+      </td>
+      <td>
+        <p>Egypt</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>24</p>
+      </td>
+      <td>
+        <p>Angola</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>222</p>
+      </td>
+      <td>
+        <p>El Salvador</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>28</p>
+      </td>
+      <td>
+        <p>Antigua and Barbuda</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>226</p>
+      </td>
+      <td>
+        <p>Equatorial Guinea</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>32</p>
+      </td>
+      <td>
+        <p>Argentina</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>233</p>
+      </td>
+      <td>
+        <p>Estonia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>51</p>
+      </td>
+      <td>
+        <p>Armenia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>748</p>
+      </td>
+      <td>
+        <p>Eswatini</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>36</p>
+      </td>
+      <td>
+        <p>Australia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>231</p>
+      </td>
+      <td>
+        <p>Ethiopia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>40</p>
+      </td>
+      <td>
+        <p>Austria</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>242</p>
+      </td>
+      <td>
+        <p>Fiji</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>31</p>
+      </td>
+      <td>
+        <p>Azerbaijan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>246</p>
+      </td>
+      <td>
+        <p>Finland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>44</p>
+      </td>
+      <td>
+        <p>Bahamas</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>250</p>
+      </td>
+      <td>
+        <p>France</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>48</p>
+      </td>
+      <td>
+        <p>Bahrain</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>270</p>
+      </td>
+      <td>
+        <p>Gambia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2016</p>
+      </td>
+      <td>
+        <p>50</p>
+      </td>
+      <td>
+        <p>Bangladesh</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>268</p>
+      </td>
+      <td>
+        <p>Georgia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2005</p>
+      </td>
+      <td>
+        <p>52</p>
+      </td>
+      <td>
+        <p>Barbados</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>276</p>
+      </td>
+      <td>
+        <p>Germany</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>112</p>
+      </td>
+      <td>
+        <p>Belarus</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>288</p>
+      </td>
+      <td>
+        <p>Ghana</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>56</p>
+      </td>
+      <td>
+        <p>Belgium</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>300</p>
+      </td>
+      <td>
+        <p>Greece</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>84</p>
+      </td>
+      <td>
+        <p>Belize</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>308</p>
+      </td>
+      <td>
+        <p>Grenada</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>204</p>
+      </td>
+      <td>
+        <p>Benin</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>320</p>
+      </td>
+      <td>
+        <p>Guatemala</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>64</p>
+      </td>
+      <td>
+        <p>Bhutan</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>324</p>
+      </td>
+      <td>
+        <p>Guinea</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2014</p>
+      </td>
+      <td>
+        <p>68</p>
+      </td>
+      <td>
+        <p>Bolivia (Plurinational State of)</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2017</p>
+      </td>
+      <td>
+        <p>624</p>
+      </td>
+      <td>
+        <p>Guinea-Bissau</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>72</p>
+      </td>
+      <td>
+        <p>Botswana</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>328</p>
+      </td>
+      <td>
+        <p>Guyana</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>76</p>
+      </td>
+      <td>
+        <p>Brazil</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>340</p>
+      </td>
+      <td>
+        <p>Honduras</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>100</p>
+      </td>
+      <td>
+        <p>Bulgaria</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>348</p>
+      </td>
+      <td>
+        <p>Hungary</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>854</p>
+      </td>
+      <td>
+        <p>Burkina Faso</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>352</p>
+      </td>
+      <td>
+        <p>Iceland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>108</p>
+      </td>
+      <td>
+        <p>Burundi</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>356</p>
+      </td>
+      <td>
+        <p>India</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>132</p>
+      </td>
+      <td>
+        <p>Cabo Verde</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>360</p>
+      </td>
+      <td>
+        <p>Indonesia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>124</p>
+      </td>
+      <td>
+        <p>Canada</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2009</p>
+      </td>
+      <td>
+        <p>364</p>
+      </td>
+      <td>
+        <p>Iran (Islamic Republic of)</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>140</p>
+      </td>
+      <td>
+        <p>Central African Republic</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>372</p>
+      </td>
+      <td>
+        <p>Ireland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>152</p>
+      </td>
+      <td>
+        <p>Chile</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>376</p>
+      </td>
+      <td>
+        <p>Israel</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>156</p>
+      </td>
+      <td>
+        <p>China</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>380</p>
+      </td>
+      <td>
+        <p>Italy</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>344</p>
+      </td>
+      <td>
+        <p>China, Hong Kong SAR</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>388</p>
+      </td>
+      <td>
+        <p>Jamaica</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>170</p>
+      </td>
+      <td>
+        <p>Colombia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>392</p>
+      </td>
+      <td>
+        <p>Japan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>178</p>
+      </td>
+      <td>
+        <p>Congo</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>400</p>
+      </td>
+      <td>
+        <p>Jordan</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>184</p>
+      </td>
+      <td>
+        <p>Cook Islands</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>398</p>
+      </td>
+      <td>
+        <p>Kazakhstan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>188</p>
+      </td>
+      <td>
+        <p>Costa Rica</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>404</p>
+      </td>
+      <td>
+        <p>Kenya</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>384</p>
+      </td>
+      <td>
+        <p>C&#xF4;te d&apos;Ivoire</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>412</p>
+      </td>
+      <td>
+        <p>Kosovo (Serbia)</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>191</p>
+      </td>
+      <td>
+        <p>Croatia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>414</p>
+      </td>
+      <td>
+        <p>Kuwait</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>192</p>
+      </td>
+      <td>
+        <p>Cuba</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>417</p>
+      </td>
+      <td>
+        <p>Kyrgyzstan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>196</p>
+      </td>
+      <td>
+        <p>Cyprus</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>418</p>
+      </td>
+      <td>
+        <p>Lao PDR</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>203</p>
+      </td>
+      <td>
+        <p>Czechia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>428</p>
+      </td>
+      <td>
+        <p>Latvia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>180</p>
+      </td>
+      <td>
+        <p>Dem. Rep. of the Congo</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>422</p>
+      </td>
+      <td>
+        <p>Lebanon</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>208</p>
+      </td>
+      <td>
+        <p>Denmark</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>426</p>
+      </td>
+      <td>
+        <p>Lesotho</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>212</p>
+      </td>
+      <td>
+        <p>Dominica</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>430</p>
+      </td>
+      <td>
+        <p>Liberia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p><strong>Latest year</strong></p>
+      </td>
+      <td>
+        <p><strong>M49 code</strong></p>
+      </td>
+      <td>
+        <p><strong>Area</strong></p>
+      </td>
+      <td>
+        <p><strong>Level of government </strong></p>
+      </td>
+      <td>
+        <p><strong>Latest year</strong></p>
+      </td>
+      <td>
+        <p><strong>M49 code</strong></p>
+      </td>
+      <td>
+        <p><strong>Area</strong></p>
+      </td>
+      <td>
+        <p><strong>Level of government </strong></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>440</p>
+      </td>
+      <td>
+        <p>Lithuania</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>662</p>
+      </td>
+      <td>
+        <p>Saint Lucia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>442</p>
+      </td>
+      <td>
+        <p>Luxembourg</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>670</p>
+      </td>
+      <td>
+        <p>Saint Vincent and the Grenadines</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>450</p>
+      </td>
+      <td>
+        <p>Madagascar</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>882</p>
+      </td>
+      <td>
+        <p>Samoa</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>454</p>
+      </td>
+      <td>
+        <p>Malawi</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>678</p>
+      </td>
+      <td>
+        <p>Sao Tome and Principe</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>458</p>
+      </td>
+      <td>
+        <p>Malaysia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>682</p>
+      </td>
+      <td>
+        <p>Saudi Arabia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>462</p>
+      </td>
+      <td>
+        <p>Maldives</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>686</p>
+      </td>
+      <td>
+        <p>Senegal</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>466</p>
+      </td>
+      <td>
+        <p>Mali</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>688</p>
+      </td>
+      <td>
+        <p>Serbia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>470</p>
+      </td>
+      <td>
+        <p>Malta</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>690</p>
+      </td>
+      <td>
+        <p>Seychelles</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>584</p>
+      </td>
+      <td>
+        <p>Marshall Islands</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>694</p>
+      </td>
+      <td>
+        <p>Sierra Leone</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>478</p>
+      </td>
+      <td>
+        <p>Mauritania</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>702</p>
+      </td>
+      <td>
+        <p>Singapore</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>480</p>
+      </td>
+      <td>
+        <p>Mauritius</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>703</p>
+      </td>
+      <td>
+        <p>Slovakia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>484</p>
+      </td>
+      <td>
+        <p>Mexico</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>705</p>
+      </td>
+      <td>
+        <p>Slovenia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>583</p>
+      </td>
+      <td>
+        <p>Micronesia (Federated States of)</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>90</p>
+      </td>
+      <td>
+        <p>Solomon Islands</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>496</p>
+      </td>
+      <td>
+        <p>Mongolia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>706</p>
+      </td>
+      <td>
+        <p>Somalia</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2015</p>
+      </td>
+      <td>
+        <p>499</p>
+      </td>
+      <td>
+        <p>Montenegro</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>710</p>
+      </td>
+      <td>
+        <p>South Africa</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>504</p>
+      </td>
+      <td>
+        <p>Morocco</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>728</p>
+      </td>
+      <td>
+        <p>South Sudan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>508</p>
+      </td>
+      <td>
+        <p>Mozambique</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>724</p>
+      </td>
+      <td>
+        <p>Spain</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>104</p>
+      </td>
+      <td>
+        <p>Myanmar</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>144</p>
+      </td>
+      <td>
+        <p>Sri Lanka</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>516</p>
+      </td>
+      <td>
+        <p>Namibia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>275</p>
+      </td>
+      <td>
+        <p>State of Palestine</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>524</p>
+      </td>
+      <td>
+        <p>Nepal</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>729</p>
+      </td>
+      <td>
+        <p>Sudan</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>528</p>
+      </td>
+      <td>
+        <p>Netherlands</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>740</p>
+      </td>
+      <td>
+        <p>Suriname</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>554</p>
+      </td>
+      <td>
+        <p>New Zealand</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>752</p>
+      </td>
+      <td>
+        <p>Sweden</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>558</p>
+      </td>
+      <td>
+        <p>Nicaragua</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>756</p>
+      </td>
+      <td>
+        <p>Switzerland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>562</p>
+      </td>
+      <td>
+        <p>Niger</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>762</p>
+      </td>
+      <td>
+        <p>Tajikistan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>566</p>
+      </td>
+      <td>
+        <p>Nigeria</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>764</p>
+      </td>
+      <td>
+        <p>Thailand</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>807</p>
+      </td>
+      <td>
+        <p>North Macedonia</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>626</p>
+      </td>
+      <td>
+        <p>Timor-Leste</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>578</p>
+      </td>
+      <td>
+        <p>Norway</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>768</p>
+      </td>
+      <td>
+        <p>Togo</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>512</p>
+      </td>
+      <td>
+        <p>Oman</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>780</p>
+      </td>
+      <td>
+        <p>Trinidad and Tobago</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>586</p>
+      </td>
+      <td>
+        <p>Pakistan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2017</p>
+      </td>
+      <td>
+        <p>788</p>
+      </td>
+      <td>
+        <p>Tunisia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>585</p>
+      </td>
+      <td>
+        <p>Palau</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>792</p>
+      </td>
+      <td>
+        <p>Turkey</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2018</p>
+      </td>
+      <td>
+        <p>591</p>
+      </td>
+      <td>
+        <p>Panama</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>800</p>
+      </td>
+      <td>
+        <p>Uganda</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>598</p>
+      </td>
+      <td>
+        <p>Papua New Guinea</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>804</p>
+      </td>
+      <td>
+        <p>Ukraine</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>600</p>
+      </td>
+      <td>
+        <p>Paraguay</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>784</p>
+      </td>
+      <td>
+        <p>United Arab Emirates</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>604</p>
+      </td>
+      <td>
+        <p>Peru</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>826</p>
+      </td>
+      <td>
+        <p>UK of Great Britain and Northern Ireland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>608</p>
+      </td>
+      <td>
+        <p>Philippines</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>834</p>
+      </td>
+      <td>
+        <p>United Republic of Tanzania</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>616</p>
+      </td>
+      <td>
+        <p>Poland</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>840</p>
+      </td>
+      <td>
+        <p>United States of America</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>620</p>
+      </td>
+      <td>
+        <p>Portugal</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>858</p>
+      </td>
+      <td>
+        <p>Uruguay</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2005</p>
+      </td>
+      <td>
+        <p>634</p>
+      </td>
+      <td>
+        <p>Qatar</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>860</p>
+      </td>
+      <td>
+        <p>Uzbekistan</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>410</p>
+      </td>
+      <td>
+        <p>Republic of Korea</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>548</p>
+      </td>
+      <td>
+        <p>Vanuatu</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>498</p>
+      </td>
+      <td>
+        <p>Republic of Moldova</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2014</p>
+      </td>
+      <td>
+        <p>862</p>
+      </td>
+      <td>
+        <p>Venezuela (Bolivarian Republic of)</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>642</p>
+      </td>
+      <td>
+        <p>Romania</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>704</p>
+      </td>
+      <td>
+        <p>Viet Nam</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>643</p>
+      </td>
+      <td>
+        <p>Russian Federation</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2014</p>
+      </td>
+      <td>
+        <p>887</p>
+      </td>
+      <td>
+        <p>Yemen</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>646</p>
+      </td>
+      <td>
+        <p>Rwanda</p>
+      </td>
+      <td>
+        <p>GG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>894</p>
+      </td>
+      <td>
+        <p>Zambia</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2019</p>
+      </td>
+      <td>
+        <p>659</p>
+      </td>
+      <td>
+        <p>Saint Kitts and Nevis</p>
+      </td>
+      <td>
+        <p>CG</p>
+      </td>
+      <td>
+        <p>2020</p>
+      </td>
+      <td>
+        <p>716</p>
+      </td>
+      <td>
+        <p>Zimbabwe</p>
+      </td>
+      <td>
+        <p>BA</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1297,7 +4899,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1383,12 +4985,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

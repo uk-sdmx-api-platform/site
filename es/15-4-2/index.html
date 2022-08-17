@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220816234832">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220817000323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -450,28 +450,30 @@ data-event-label="high"
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
     
-    
-        
-        
-        
-        
         <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link active"
-                data-bs-toggle="tab"
-                id="tab-metadata"
-                data-bs-target="#metadata"
-                aria-controls="metadata"
-                role="tab"
-                data-on="click"
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to Metadata tab"
+data-event-label="Change to National Metadata tab"
+>Metadatos nacionales</button>
+</li>
 
-            >Metadata</button>
-        </li>
-    
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Metadatos globales</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Fuentes</button>
+</li>
+  
     
     
         <li role="presentation" class="nav-item">
@@ -482,451 +484,651 @@ data-event-label="Change to Metadata tab"
 
 <div class="tab-content">
     
-        
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                Esta tabla proporciona metadatos para el indicador real disponible a partir de las estadísticas de Australia más cercanas al correspondiente indicador global de SDG. Tenga en cuenta que incluso cuando el indicador global de ODS esté totalmente disponible a partir de las estadísticas de Australian, se debe consultar esta tabla para obtener información sobre la metodología nacional y otra información de metadatos específicos de Australian.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
           
-          
-          <div role="tabpanel" class="tab-pane active" id="metadata">
-              <article>
-                  <p>This tab contains metadata for the national and global data for this indicator.</p>
+            
 
-                  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Field</th>
-      <th scope="col">National metadata</th>
-      <th scope="col">Global metadata</th>
-    </tr>
-  </thead>
+          
+        </td>
+        </tr>
+        
+      
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      
+      
       <tr>
-        <th scope="row">Información sobre los indicadores</th>
+        <th scope="row">Objetivo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Objetivo</th>
+        <th scope="row">Destino </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Destino</th>
+        <th scope="row">Indicador </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicador</th>
+        <th scope="row">Series </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Series</th>
+        <th scope="row">Actualización de metadatos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Actualización de metadatos</th>
+        <th scope="row">Indicadores relacionados </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Indicadores relacionados</th>
+        <th scope="row">Reportero de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Reportero de datos</th>
+        <th scope="row">Organización </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Organización</th>
+        <th scope="row">Persona(s) de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Persona(s) de contacto</th>
+        <th scope="row">Unidad de organización de contactos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de organización de contactos</th>
+        <th scope="row">Función de la persona de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Función de la persona de contacto</th>
+        <th scope="row">Teléfono de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Teléfono de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Correo electrónico de contacto </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Correo electrónico de contacto</th>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición, conceptos y clasificaciones</th>
+        <th scope="row">Definición y conceptos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Definición y conceptos</th>
+        <th scope="row">Unidad de medida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Unidad de medida</th>
+        <th scope="row">Clasificaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Clasificaciones</th>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Tipo de fuente de datos y método de recogida</th>
+        <th scope="row">Fuentes de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fuentes de datos</th>
+        <th scope="row">Método de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de recogida de datos</th>
+        <th scope="row">Calendario de recogida de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de recogida de datos</th>
+        <th scope="row">Calendario de publicación de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Calendario de publicación de datos</th>
+        <th scope="row">Proveedores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Proveedores de datos</th>
+        <th scope="row">Compiladores de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Compiladores de datos</th>
+        <th scope="row">Mandato institucional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Mandato institucional</th>
+        <th scope="row">Otras consideraciones metodológicas </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Otras consideraciones metodológicas</th>
+        <th scope="row">Fundamentos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Fundamentos</th>
+        <th scope="row">Comentarios y limitaciones </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comentarios y limitaciones</th>
+        <th scope="row">Método de cálculo </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Método de cálculo</th>
+        <th scope="row">Validación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Validación</th>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional</th>
+        <th scope="row">Gestión de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Gestión de la calidad</th>
+        <th scope="row">Seguro de calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Seguro de calidad</th>
+        <th scope="row">Evaluación de la calidad </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Evaluación de la calidad</th>
+        <th scope="row">Disponibilidad y desglose de datos </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Disponibilidad y desglose de datos</th>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Comparabilidad/desviación de las normas internacionales</th>
+        <th scope="row">Referencias y documentación </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
+      
+      
       <tr>
-        <th scope="row">Referencias y documentación</th>
+        <th scope="row">Datos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Datos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
+      
+      
       <tr>
-        <th scope="row">metadata_fields.national_data_update_url_text</th>
+        <th scope="row">Metadatos actualizados por última vez </th>
         <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
   
-      <tr>
-        <th scope="row">Metadatos actualizados por última vez</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
-  
-      <tr>
-        <th scope="row">metadata_fields.national_metadata_update_url_text</th>
-        <td>
-</td>
-        <td>
-</td>
-      </tr>
-    
+      
+      
+      
   
   
   
@@ -1003,9 +1205,1029 @@ data-event-label="Change to Metadata tab"
   
 </table>
 
-              </article>
-          </div>
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>Esta tabla proporciona información sobre los metadatos para los indicadores de los ODS tal como los define la Comisión de Estadística de la ONU. La <a href="https://unstats.un.org/sdgs/metadata/">División de Estadística de las Naciones Unidas proporciona</a> los metadatos globales completos .</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Información sobre los indicadores </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
         
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p>Goal 15: Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Destino </th>
+        <td>
+          
+            <p>Target 15.4: By 2030, ensure the conservation of mountain ecosystems, including their biodiversity, in order to enhance their capacity to provide benefits that are essential for sustainable development</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p>Indicator 15.4.2: Mountain Green Cover Index</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Mountain Green Cover Index</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            <p>6.6.1, 15.1.1, 15.2.1</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">0.g. Organizaciones internacionales responsables del seguimiento global </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
+<p>The Mountain Green Cover Index (MGCI) is designed to measure the extent and the changes of green vegetation in mountain areas - i.e. forest, shrubs, trees, pasture land, cropland, etc. &#x2013; in order to monitor progress towards the mountain target. MGCI is defined as the percentage of green cover over the total surface of the mountain region of a given country and for given reporting year. The aim of the index is to monitor the evolution of the green cover and thus assess the status of conservation of mountain ecosystems.</p>
+<p><strong>Concepts:</strong></p>
+<p>The Mountain Green Cover index is based on two descriptor layers of information:</p>
+<p>1. <u>A mountain descriptor layer</u>: mountains can be defined with reference to a variety of parameters, such as climate, elevation, ecology (K&#xF6;rner <em>et al.</em>, 2011) (Karagulle <em>et al</em>., 2017). This methodology adheres to the UNEP- WCMC mountain definition, relying in turn on the mountain description proposed by Kapos <em>et al.</em> (2000).</p>
+<p>This description classifies mountains according altitude, slope and elevation range into 6 categories.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>Mountain Class </p>
+      </td>
+      <td>
+        <p>Description </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>1</p>
+      </td>
+      <td>
+        <p>Elevation &gt; 4.500 meters</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2</p>
+      </td>
+      <td>
+        <p>Elevation 3.500&#x2013;4.500 meters</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>3</p>
+      </td>
+      <td>
+        <p>Elevation 2.500&#x2013;3.500 meters</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>4</p>
+      </td>
+      <td>
+        <p>Elevation 1.500&#x2013;2.500 meters and slope &gt; 2</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>5</p>
+      </td>
+      <td>
+        <p>Elevation 1.000&#x2013;1.500 meters and slope &gt; 5 or local elevation range (LER 7 kilometer radius) &gt; 300 meters</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>6</p>
+      </td>
+      <td>
+        <p>Elevation 300&#x2013;1.000 meters and local elevation range (7 kilometer radius) &gt; 300 meters</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>2. <u>A vegetation descriptor layer</u>: The vegetation descriptor layer categorizes land cover into green and non-green areas. Green vegetation includes both natural vegetation and vegetation resulting from anthropic activity (e.g. crops, afforestation, etc.). Non-green areas include very sparsely vegetated areas, bare land, water, permanent ice/snow and urban areas. The vegetation description layer can be derived in different ways, but remote sensing based land cover maps are the most convenient data source for this purpose, as they provide the required information on green and non-green areas in a spatially explicit manner and allow for comparison over time through land cover change analysis. </p>
+<p>Currently, FAO uses land cover time series produced by the European Space Agency (ESA) under the Climate Change Initiative (CCI) as a general solution. The original CCI classes are re-classified into six IPCC classes and further into binary green/non-green cover classes as follows:</p>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>ESA CCI class</p>
+      </td>
+      <td>
+        <p>IPCC class</p>
+      </td>
+      <td>
+        <p>Green / Non green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>50, 60, 61, 62, 70, 71, 72, 80, 81, 82, 90, 100</p>
+      </td>
+      <td>
+        <p>Forest<sup><sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup></sup></p>
+      </td>
+      <td>
+        <p>Green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>110, 120, 121, 122, 130, 140, </p>
+      </td>
+      <td>
+        <p>Grassland</p>
+      </td>
+      <td>
+        <p>Green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>10,11, 12, 20, 30, 40</p>
+      </td>
+      <td>
+        <p>Cropland</p>
+      </td>
+      <td>
+        <p>Green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>160, 170, 180</p>
+      </td>
+      <td>
+        <p>Wetland</p>
+      </td>
+      <td>
+        <p>Green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>190</p>
+      </td>
+      <td>
+        <p>Settlement</p>
+      </td>
+      <td>
+        <p>Non Green</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>150, 151, 152, 153, 200, 201, 202, 210, 220</p>
+      </td>
+      <td>
+        <p>Other land</p>
+      </td>
+      <td>
+        <p>Non Green</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> Please note, that here the term &#x201C;Forest&#x201D; refers to land cover, not necessarily land use. <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p>Percent (%)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            <p>This indicator uses two established classifications: (1) the land categories classification for greenhouse gas (GHG) inventory reporting defined by the Intergovernmental Panel on Climate Change (IPCC) (Penman <em>et al</em>. 2003), and (2) the global mountain classification established by the UN Environment World Conservation Monitoring Centre (UNEP-WCMC) (Kapos et al. 2000).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p>Global estimates computed by FAO are derived using the following data sources:</p>
+<ol>
+  <li><strong> Vegetation descriptor layer: ESA CCI Land Cover data (ESA, 2017)</strong></li>
+</ol>
+<p>The European Space Agency Climate Change Initiative (ESA CCI) is a programme aiming at exploiting the full potential of the earth observation data collected by ESA to contribute to the Essential Climate Variables databases required by the United Nations Framework Convention on Climate Change (UNFCCC). </p>
+<p>The CCI Land Cover products have been produced using a combination of remote sensing data such as the 300 m MERIS, 1km SPOT &#x2013;VEGETATION, 1km PROBA &#x2013;V and 1km AVHRR. The CCI product consists of a series of annual Land Cover maps at 300 m resolution spanning the period 1992 to 2018. The period from 1992-2015 is available in raster format, whereas the 2016-2018 is available in netCDF format and a transformation to GTIFF is required to make these datasets available for processing in a GIS environment. The land cover data is updated every year by the European Space Agency. </p>
+<p>The ESA CCI adheres to the Cover Classification System of the United Nations Food and Agriculture Organization (UN FAO) (Santoro <em>et al</em>., 2015). </p>
+<ol>
+  <li><strong>Mountain descriptor layer:</strong></li>
+</ol>
+<p>The global mountain descriptor layer is based on the mountain classification proposed by Kapos <em>et al.</em> (2000):</p>
+<ul>
+  <li>Class 1: elevation &gt; 4500 meters </li>
+  <li>Class 2: elevation 3500 - 4500 meters</li>
+  <li>Class 3: elevation 2500 &#x2013; 3500 meters </li>
+  <li>Class 4: elevation 1500 &#x2013; 2500 meters and slope &#x2265; 2</li>
+  <li>Class 5: elevation 1,000&#x2013;1,500 meters and slope &#x2265; 5 or local elevation range (7 kilometers radius) &#x2265; 300 meters</li>
+  <li>Class 6: elevation 300&#x2013;1,000 meters and local elevation range (7 kilometres radius) &#x2265; 300 meters outside 23&#xB0;N&#x2014;19&#xB0;S </li>
+  <li>Class 0: Defined to represent the non-mountainous areas. </li>
+</ul>
+<p>The mountain description layer used to derive the global estimates was created by the US Geological Survey from a 250 m DEM (Sayre <em>et al.</em> 2018).</p>
+<p>These datasets may be replaced by nationally relevant data sources when available.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p>The indicator is generated for all countries and regions having mountain areas by FAO using the geospatial data layers described in this document. FAO shares country figures with NSO SDG focal points for their validation before publication, in accordance to the IAEG-SDG guidelines of Global Data Flows and Reporting. On the same occasion, FAO requests countries to provide their own estimates for the indicator in case these are available. </p>
+<p> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de recogida de datos </th>
+        <td>
+          
+            <p>ESA CCI Land Cover is available from 1992 and updated every year. Nonetheless, SDG indicator 15.4.2 will be updated every two years</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p>March of every year, in line with the annual SDG reporting cycle</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p>European Space Agency (ESA)</p>
+<p>United States Geological Survey (USGS) </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            <p>Article 1 of FAO&#x2019;s constitution specifies that, &#x201C;The Organization shall collect, analyze, interpret, and disseminate information related to nutrition, food and agriculture.&#x201D; In this regard, FAO collects national level data from member countries, which it then standardizes and disseminates through corporate statistical databases. FAO is the custodian UN agency for 21 SDG indicators, including 15.4.2.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Fundamentos </th>
+        <td>
+          
+            <p>Mountain ecosystems are important biodiversity centres that provide valuable ecosystem services to upstream and downstream areas. Yet, mountains are very fragile and impacted easily by both natural and anthropogenic factors. These can include climate change, natural hazards such as landslides and flooding, unplanned agricultural expansion, unplanned urbanization, timber extraction and recreational activities. The degradation of mountain ecosystems such as loss of the glacial cover, mountain biodiversity and green cover will affect the ability of the ecosystem to supply water downstream. The loss of forest and vegetative cover will reduce the ability of the ecosystem to retain soil and prevent landslides and flooding downstream. </p>
+<p>Therefore, monitoring mountain vegetation changes provides information on the status of mountain ecosystems. Monitoring the MGCI over time can provide information on the extent of vegetation change and of the general health of the mountain ecosystem. Assessing the change of green cover differentiated by elevation is important in understanding the role that environmental factors, such as climate, play in explaining variations of mountain green cover across regions. </p>
+<p>However, the MGCI values should be interpreted with care. It does not provide the details on species change, change in the tree line or rain shadow areas. Understanding the variation in the species composition and the tree line will be important in identifying the long-term impacts of climate change in mountain regions. Analysing the vegetative variations in each of the elevation zones over time will assist in determining the appropriate management and adaption measures. </p>
+<p>In some cases, an increase in the indicator value in high elevation classes may also signify the encroachment of vegetation on areas previously covered by glaciers or other permanent or semi-permanent ice or snow layers, as a result of global warming due to climate change. Such a change can be tracked with the current methodology and flagged accordingly at the level of disaggregated data by land cover type and elevation class, to distinguish this case from the general desired trend of increasing mountain green cover.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p>The indicator can be calculated using freely available Earth Observation data and simple GIS operations that can be processed in free and open source software (FOSS) GIS. </p>
+<p>Potential limitations of the above describe methodology are related mainly to the quality of the land cover data. The ESA CCI land cover maps are currently available at 300 meter resolution which limits their applicability in the monitoring of small and highly heterogeneous landscapes. Therefore, if countries have national land cover maps of higher spatial resolution and comparable or better quality, FAO advises using them, following the same methodology presented here, for the generation of MGCI values. </p>
+<p>Regarding the interpretation of the indicator, although in the great majority of cases the desired direction is an increase in green mountain cover which reflects restriction of damage to natural ecosystems and possibly even the expansion of forest, shrubland and grasslands through conservation efforts, in more limited cases, an increase in the indicator value in high elevation classes may also signify the encroachment of vegetation on areas previously covered by glaciers or other permanent or semi-permanent ice or snow layers, as a result of global warming due to climate change. Such a change can be tracked with the current methodology and flagged accordingly at the level of disaggregated data by land cover type and elevation class, to distinguish this case from the general desired trend of increasing mountain green cover.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p>The Mountain Green Cover Index is defined as </p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>M</mi>
+    <mi>G</mi>
+    <mi>C</mi>
+    <mi>I</mi>
+    <mo>=</mo>
+    <mi>&amp;nbsp;</mi>
+    <mfrac>
+      <mrow>
+        <mi>M</mi>
+        <mi>o</mi>
+        <mi>u</mi>
+        <mi>n</mi>
+        <mi>t</mi>
+        <mi>a</mi>
+        <mi>i</mi>
+        <mi>n</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>G</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>e</mi>
+        <mi>n</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>C</mi>
+        <mi>o</mi>
+        <mi>v</mi>
+        <mi>e</mi>
+        <mi>r</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>A</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>a</mi>
+      </mrow>
+      <mrow>
+        <mi>T</mi>
+        <mi>o</mi>
+        <mi>t</mi>
+        <mi>a</mi>
+        <mi>l</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>M</mi>
+        <mi>o</mi>
+        <mi>u</mi>
+        <mi>n</mi>
+        <mi>t</mi>
+        <mi>a</mi>
+        <mi>i</mi>
+        <mi>n</mi>
+        <mi>&amp;nbsp;</mi>
+        <mi>A</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>a</mi>
+      </mrow>
+    </mfrac>
+    <mo>&#xD7;</mo>
+    <mn>100</mn>
+  </math></p>
+<p>Where Mountain Green Cover area = Sum of areas covered by Cropland, Grassland, Forest and Wetland land cover classes.</p>
+<p>The vegetation descriptor is calculated from a land cover map using basic GIS functions. </p>
+<p>If the country/region has no mountain area, it will be assigned value N/A.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            <p>Country figures generated by FAO are sent to official NSO SDG focal points for validation before publication. Indicator values provided by countries are considered validated. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Ajustes </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Tratamiento de los valores perdidos (i) a nivel de país y (ii) a nivel regional </th>
+        <td>
+          
+            <ul>
+  <li><strong>At country level</strong></li>
+</ul>
+<p>Not applicable, as the indicator has a universal coverage.</p>
+<ul>
+  <li><strong>At regional and global levels</strong></li>
+</ul>
+<p>Not applicable, as the indicator has a universal coverage.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Agregaciones regionales </th>
+        <td>
+          
+            <p>Using spatially explicit data allows straightforward calculation of the indicator value for any delineated area. However, giving the spatial resolution of 300 meters of the CCI layer, calculation of the indicator values for smallest regions consisting of only few pixels may results in abrupt changes in the indicator values due to the relatively higher impact of classification errors. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p>The indicator value can be calculated as follows: </p>
+<ol>
+  <li> The ESA CCI land cover classes are reclassified into six IPCC classes and Green/Non-Green cover map. </li>
+  <li> The Kapos Elevation Ranges map is overlaid on top of the map resulting from step 1. </li>
+  <li> Zonal histogram is calculated for each country and regional grouping in such a way that the number of pixels belonging to green and non-green classes are counted within each elevation range. </li>
+  <li> The ratio (%) between the sum of the green pixels and the total number of pixels (green plus non green) falling within each Kapos is calculated to obtain MGCI values per each Kapos class. </li>
+  <li>The same procedure is used to calculate the distribution of the land cover classes as defined by IPCC within each elevation range. </li>
+</ol>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            <p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a>, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p>Date reported by countries to FAO are subject to a rigorous review process to ensure correct use of definitions and methodology as well as internal consistency. A comparison is made with past assessments and other existing data sources. Regular contacts between national correspondents and FAO staff by e-mail form part of this review process.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            <p>Quality of statistics produced and disseminated by the FAO is evaluated in terms of fitness for use i.e. the degree to which statistics meet the user&#x2019;s requirements. The quality dimensions assessed are: Relevance; Accuracy and Reliability; Timeliness and Punctuality; Coherence and Comparability; Accessibility and Clarity. Quality dimensions definitions are provided in the FAO Statistical Quality Assurance Framework (SQAF), which provides the definition of quality and describes quality principles for statistical outputs; statistical processes; institutional environment (http://www.fao.org/docrep/019/i3664e/i3664e.pdf). The SQAF is based on the Fundamental Principles of Official Statistics and the Principles Governing International Statistical Activities (CCSA). Adherence to these principles ensures the quality of FAO statistical production processes and of statistical outputs. Regular quality assessments are conducted through the FAO Quality Assessment and Planning Survey (QAPS), a bi-annual survey designed to gather information on all of FAO&#x2019;s statistical activities, which is used to assess the extent to which quality standards are being met with a view to increasing compliance with the SQAF, and to document best practices and provide guidance for improvement where necessary.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
+<p>The indicator is generated by geospatial data and therefore has universal coverage. Countries with no values on the global SDG database are either A) countries with no mountains where the indicator is not applicable or B) countries that have not validated FAO&#x2019;s estimates and yet have not provided figures of their own.</p>
+<ol>
+  <li>ESA CCI Land Cover Data is freely available at: <a href="https://www.esa-landcover-cci.org/?q=node/164">https://www.esa-landcover-cci.org/?q=node/164</a></li>
+  <li>Kapos data is freely available at the below links:</li>
+</ol>
+<ul>
+  <li>The USGS Mountain Explorer Kapos classification can be found as GME_K1classes.zip in: <a href="https://rmgsc.cr.usgs.gov/outgoing/ecosystems/Global/">https://rmgsc.cr.usgs.gov/outgoing/ecosystems/Global/</a>.</li>
+</ul>
+<ol>
+  <li>Administrative boundaries are available from various global databases at the links below:</li>
+</ol>
+<ul>
+  <li>FAO Global Administrative Units Layer (GAUL) <a href="https://data.europa.eu/euodp/data/dataset/jrc-10112-10004">https://data.europa.eu/euodp/data/dataset/jrc-10112-10004</a></li>
+  <li>Divas-GIS <a href="https://www.diva-gis.org/gdata">https://www.diva-gis.org/gdata</a> </li>
+  <li>UN Second Administrative Level Boundaries (SALB) <a href="https://www.unsalb.org/">https://www.unsalb.org/</a></li>
+</ul>
+<p><strong>Time series:</strong></p>
+<p>Country, regional and global figures are available for the years 2000, 2010, 2015 and 2018.</p>
+<p><strong>Disaggregation:</strong></p>
+<p>In the global SDG database, the indicator is disaggregated by mountain elevation class (mountain descriptor). An additional disaggregation dimension, the IPCC land cover class, is available in FAO&#x2019;s SDG indicators portal. The combination of six elevation classes and six main land cover types following the IPCC classification yields 36 different disaggregations per country per reporting year. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
+<p>The default methodology presented here is based on the use of the global ESA CCI Land Cover product, which has been reported to have an overall accuracy of 73.2%. However, the accuracy estimate was calculated using the original 22 land cover classes. As the methodology presented here is based on use of aggregate classes, the accuracy can be expected to be higher. </p>
+<p>The accuracy of the global land cover products can vary regionally. For the same reason, the presented indicator values may differ from those derived using national land cover maps. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p>ESA (2017) Land Cover CCI Product User Guide Version 2. Tech. Rep. Available at:<strong> </strong><a href="http://maps.elie.ucl.ac.be/CCI/viewer/download/ESACCI-LC-Ph2-PUGv2_2.0.pdf"><u>maps.elie.ucl.ac.be/CCI/viewer/download/ESACCI-LC-Ph2-PUGv2_2.0.pdf</u></a></p>
+<p>Kapos, V., Rhind, J., Edwards, M., Prince, M., &amp; Ravillous, C. (2000). Developing a map of the world&#x2019;s mountain forests. In M. F. Price , &amp; N. Butt (Eds.), <em>Forests in Sustainable Mountain Development: A State-of-Knowledge Report for 2000</em> (pp. 4-9). Wallingford: CAB International.</p>
+<p>Karagulle, D., Frye, C., Breyer, S., Aniello, P., Vaughan, R., &amp; Wright, D. (2017). Modeling global Hammond landform regions from 250-m elevation data. <em>Transactions in GIS</em>. https://doi.org/10.1111/tgis.12265</p>
+<p>K&#xF6;rner, C., Paulsen, J., &amp; Spehn, E. (2011). A definition of mountains and their bioclimatic belts for global comparisons of biodiversity data. <em>Alpine Botany, 121</em>, 73-78.</p>
+<p>Penman, J., Gytarsky, M., Hiraishi, T., Krug, T., Kruger, D., Pipatti, R., Buendia, L., Miwa, K., Ngara, T., Tanabe, K. (2003). <em>Good Practice Guidance for Land Use, Land-use Change and Forestry. Good Practice Guidance for Land Use, Land-use Change and Forestry.</em></p>
+<p>Santoro, M., Kirches, G., Wevers, J., Boettcher, M., Brockmann, C., Lamarche, C., . . . Defourny, P. (2015). <em>Land Cover CCI PRODUCT USER GUIDE VERSION 2.0.</em> European Spatial Agency. European Spatial Agency. Retrieved from http://maps.elie.ucl.ac.be/CCI/viewer/download/ESACCI-LC-Ph2-PUGv2_2.0.pdf</p>
+<p>Sayre, R., Frye, C. Karagulle, D., Krauer, J, Breyer, S., Aniello, P., Wright, D.J., Payne, D., Adler, C. Warner, H., VanSistine, D.P. &amp; Cress, J. (2018). A New High-Resolution Map of World Mountains and an Online Tool for Visualizing and Comparing Characterizations of Global Mountain Distributions. <em>Mountain Research and Development</em>, 38(3), 240-249. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -1033,7 +2255,7 @@ data-event-label="Change to Metadata tab"
         </div>
     
 </div>
-
+  
 </div>
   <div>
   <h1>VARIABLE PRINTER</h1>
@@ -1119,12 +2341,12 @@ data-event-label="Change to Metadata tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220816234832'></script>
+<script src='/site/assets/js/sdg.js?v=20220817000323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220816234832"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220817000323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
