@@ -2964,7 +2964,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       selectedFields: this.selectedFields,
       allowedFields: this.allowedFields
     });
-    console.log('selectedFields: '+this.selectedFields)
   }
 
   this.updateSelectedFields = function (selectedFields) {
@@ -3113,6 +3112,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
           this.edgesData,
           this.compositeBreakdownLabel
         ),
+        console.log('selectedFields: '+this.selectedFields)
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
