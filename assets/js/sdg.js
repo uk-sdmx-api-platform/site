@@ -3112,7 +3112,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
           this.edgesData,
           this.compositeBreakdownLabel
         ),
-        console.log('selectedFields: '+this.selectedFields)
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
@@ -3129,6 +3128,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         chartTitles: this.chartTitles,
       });
     }
+    console.log('selectedFields: '+this.selectedFields)
 
     if (selectionUpdateNeeded || options.updateFields) {
       this.updateFieldStates(this.selectedFields);
@@ -3195,6 +3195,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
     });
+    console.log('selectedFields: '+this.selectedFields)
   };
 };
 
