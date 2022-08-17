@@ -148,6 +148,11 @@ var indicatorModel = function (options) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
+  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    
+    this.getData();
+  };
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
