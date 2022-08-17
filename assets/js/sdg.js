@@ -2964,6 +2964,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       selectedFields: this.selectedFields,
       allowedFields: this.allowedFields
     });
+    console.log('selectedFields: '+this.selectedFields)
   }
 
   this.updateSelectedFields = function (selectedFields) {
