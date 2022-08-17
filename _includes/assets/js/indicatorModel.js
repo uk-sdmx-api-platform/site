@@ -142,6 +142,7 @@ var indicatorModel = function (options) {
       selectedFields: this.selectedFields,
       allowedFields: this.allowedFields
     });
+    console.log('selectedFields: '+this.selectedFields)
   }
 
   this.updateSelectedFields = function (selectedFields) {
