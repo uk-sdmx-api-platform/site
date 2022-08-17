@@ -210,6 +210,10 @@ var indicatorView = function (model, options) {
     $(OPTIONS.rootElement).on('change', '#serieses input', function () {
         MODEL.updateSelectedSeries($(this).val());
     });
+    
+    $(OPTIONS.rootElement).on('change', '#categories input', function () {
+        MODEL.updateSelectedComparisonValue($(this).val());
+    });
 
     $(OPTIONS.rootElement).on('click', '.variable-options button', function (e) {
         var type = $(this).data('type');
