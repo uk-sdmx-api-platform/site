@@ -211,7 +211,7 @@ var indicatorView = function (model, options) {
         MODEL.updateSelectedSeries($(this).val());
     });
     
-    $(OPTIONS.rootElement).on('change', '#categories input', function () {
+    $(OPTIONS.rootElement).on('change', '#categories option', function () {
         MODEL.updateSelectedComparisonValue($(this).val());
     });
 
