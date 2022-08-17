@@ -142,7 +142,6 @@ var indicatorModel = function (options) {
       selectedFields: this.selectedFields,
       allowedFields: this.allowedFields
     });
-    console.log('selectedFields: '+this.selectedFields)
   }
 
   this.updateSelectedFields = function (selectedFields) {
@@ -291,6 +290,7 @@ var indicatorModel = function (options) {
           this.edgesData,
           this.compositeBreakdownLabel
         ),
+        console.log('selectedFields: '+this.selectedFields)
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
