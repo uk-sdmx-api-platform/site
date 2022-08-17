@@ -290,7 +290,6 @@ var indicatorModel = function (options) {
           this.edgesData,
           this.compositeBreakdownLabel
         ),
-        console.log('selectedFields: '+this.selectedFields)
         allowedFields: this.allowedFields,
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
@@ -307,6 +306,7 @@ var indicatorModel = function (options) {
         chartTitles: this.chartTitles,
       });
     }
+    console.log('selectedFields: '+this.selectedFields)
 
     if (selectionUpdateNeeded || options.updateFields) {
       this.updateFieldStates(this.selectedFields);
@@ -373,6 +373,7 @@ var indicatorModel = function (options) {
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
     });
+    console.log('selectedFields: '+this.selectedFields)
   };
 };
 
