@@ -2845,7 +2845,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     getAllowedFieldsWithChildren: getAllowedFieldsWithChildren,
     getUpdatedFieldItemStates: getUpdatedFieldItemStates,
     fieldItemStatesForView: fieldItemStatesForView,
-    updateSelectedFieldsFromSelectedValue
+    updateSelectedFieldsFromSelectedValue: updateSelectedFieldsFromSelectedValue,
     getChartTitle: getChartTitle,
     getChartType: getChartType,
     getCombinationData: getCombinationData,
