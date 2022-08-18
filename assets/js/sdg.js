@@ -2655,6 +2655,34 @@ function getTimeSeriesAttributes(rows) {
 * Model helper functions related to comparing national and global data.
  */
 
+function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
+  var selectedFields = [{
+    field: "Reporting type",
+    values: ["National", "Global"]}]
+  if (selectedValue === "total") {
+    // do nothing
+  } else {
+    selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
+      return {
+        values: [$(fieldValue).val()],
+        field: $(fieldValue).data('field')
+      };
+    })[0])
+  }
+  return selectedFields
+}
+
+function getReportingTypes(hasNationalReportingType, hasGlobalReportingType) {
+  if (hasNationalReportingType && hasGlobalReportingType) {
+    var reportingTypes = ["National", "Global"]
+  } else if (hasNationalReportingType && hasGlobalReportingType === false) {
+    var reportingTypes = ["National"]
+  } else if (hasNationalReportingType === false && hasGlobalReportingType) {
+    var reportingTypes = ["Global"]
+  }
+  return reportingTypes
+}
+
 /**
  * @param {Array} columns
  * @return {boolean}
@@ -2670,6 +2698,17 @@ function dataHasReportingTypes(columns) {
  */
 function dataHasGlobalReportingType(headlineHasGlobalReportingType, fieldsHaveGlobalReportingType) {
 	return headlineHasGlobalReportingType || fieldsHaveGlobalReportingType
+}
+
+/**
+ * @param {Array} Headline data
+ * @return {boolean} 
+ */
+function headlineHasNationalReportingType(headlineRows) {
+	return headlineRows.some(function(row) {
+  	return row[REPORTINGTYPE_COLUMN] === 'National';
+  }, this)
+
 }
 
 /**
@@ -2858,6 +2897,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
+  this.hasNationalReportingType = false;
+  this.hasGlobalReportingType = false;
   this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
@@ -2972,9 +3013,10 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   };
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    // this.selectedFields = updateSelectedFieldsFromSelectedValue(selectedValue)
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
     // this.getData();
     console.log('selectedComparisonValue: '+selectedComparisonValue)
+    console.log('selectedFields: '+this.selectedFields)
   };
 
   this.updateChartTitle = function() {
