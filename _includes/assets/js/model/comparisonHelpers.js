@@ -105,7 +105,7 @@ function fieldValuesWithGlobalReportingType(rows, columns) {
 function fieldValuesWithNationalReportingType(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
   return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows);
+  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
     return {
       field: field,
       values: values.filter(function(fieldValue) {
@@ -123,7 +123,7 @@ function fieldValuesWithNationalReportingType(rows, columns) {
 function comparableFieldValues(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
   return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows);
+  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
     return {
       field: field,
       values: values.filter(function(fieldValue) {
