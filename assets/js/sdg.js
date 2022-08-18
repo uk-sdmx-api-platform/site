@@ -3287,18 +3287,6 @@ function updateWithSelectedFields() {
             values: _.map(value, 'value')
         };
     }).value());
-  
-  console.log(_.chain(_.map($('#fields input:checked'), function (fieldValue) {
-        return {
-            value: $(fieldValue).val(),
-            field: $(fieldValue).data('field')
-        };
-    })).groupBy('field').map(function (value, key) {
-        return {
-            field: key,
-            values: _.map(value, 'value')
-        };
-    }).value())
 }
 
 /**
