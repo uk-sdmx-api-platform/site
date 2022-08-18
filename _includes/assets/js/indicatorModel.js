@@ -150,8 +150,9 @@ var indicatorModel = function (options) {
   };
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    this.selectedFields = "" //TBC
-    this.getData();
+    // this.selectedFields = "" //TBC
+    // this.getData();
+    console.log(this.selectedFields)
   };
 
   this.updateChartTitle = function() {
