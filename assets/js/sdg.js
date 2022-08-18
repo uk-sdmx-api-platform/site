@@ -2970,6 +2970,12 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
+  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    // this.selectedFields = "" //TBC
+    // this.getData();
+    console.log(this.selectedFields)
+  };
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
@@ -3341,7 +3347,7 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
 
 function initialiseFieldsWithGlobalValues(args) {
 
-	var dataHasGlobalReportingType = args.dataHasGlobalReportingType	
+	var dataHasGlobalReportingType = args.dataHasGlobalReportingType
 	if (dataHasGlobalReportingType === false) {
 		$('#toggles').hide()
 		$(OPTIONS.rootElement).addClass('no-global-data');
@@ -3370,9 +3376,26 @@ function initialiseFieldsWithGlobalValues(args) {
 			$('#toolbar').show()
 		}
 	});
+}
 
-
-
+function getSelectedComparisonFields() {
+	var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
+	$('#category-select').on('change', function() {
+		var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
+		if ($(this).val() === "total") {
+			//do nothing
+		} else {
+			selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
+				return {
+					value: $(fieldValue).val(),
+					field: $(fieldValue).data('field')
+				};
+			}))
+		}
+		return selectedFields
+	});
+	
+	
 }
 
   /**
@@ -4880,6 +4903,10 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     $(OPTIONS.rootElement).on('change', '#serieses input', function () {
         MODEL.updateSelectedSeries($(this).val());
+    });
+    
+    $(OPTIONS.rootElement).on('change', '#categories option', function () {
+        MODEL.updateSelectedComparisonValue($(this).val());
     });
 
     $(OPTIONS.rootElement).on('click', '.variable-options button', function (e) {
