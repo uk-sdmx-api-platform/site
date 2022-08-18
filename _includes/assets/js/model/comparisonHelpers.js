@@ -49,6 +49,10 @@ function dataHasGlobalReportingType(headlineHasGlobalReportingType, fieldsHaveGl
 	return headlineHasGlobalReportingType || fieldsHaveGlobalReportingType
 }
 
+function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
+  	return headlineHasGlobalData && headlineHasNationalData;
+}
+
 /**
  * @param {Array} Headline data
  * @return {boolean} 
