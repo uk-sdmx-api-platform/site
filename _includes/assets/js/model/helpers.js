@@ -70,7 +70,6 @@
     dataHasSerieses: dataHasSerieses,
     dataHasReportingTypes: dataHasReportingTypes,
     dataIsComparable: dataIsComparable,
-    fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
     headlineHasNationalReportingType: headlineHasNationalReportingType,
     headlineIsComparable: headlineIsComparable,
