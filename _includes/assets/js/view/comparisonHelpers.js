@@ -28,7 +28,7 @@ function initialiseFieldsWithGlobalValues(args) {
 			}));
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
-                                MODEL.updateSelectedComparisonValue($(this).val()+);
+                                MODEL.updateSelectedComparisonValue($(this).val().concat("|",$(this).val()));
                                 });
 			}	
 		} else {
