@@ -115,6 +115,25 @@ function fieldValuesWithNationalReportingType(rows, columns) {
   }, this);
 }
 
+/**
+ * @param {Array} rows
+ * @param {Array} columns
+ * @return {Array} Field items and values with national and global data
+ */
+function comparableFieldValues(rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
+  return fields.map(function(field) {
+  var values = getUniqueValuesByProperty(field, rows);
+    return {
+      field: field,
+      values: values.filter(function(fieldValue) {
+        return fieldValueHasNationalReportingType(field, fieldValue, rows) && fieldValueHasGlobalReportingType(field, fieldValue, rows);
+      }, this),
+    };
+  }, this);
+}
+
+
 
 /**
  * @param {string} field
