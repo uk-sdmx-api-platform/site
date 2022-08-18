@@ -3379,7 +3379,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
 				$('#categories').show();
-                                $(OPTIONS.rootElement).on('change', '#category-select option', function () {
+                                $(OPTIONS.rootElement).on('change', '#category-select', function () {
                                 MODEL.updateSelectedComparisonValue($(this).val());
                                 });
 			}	
