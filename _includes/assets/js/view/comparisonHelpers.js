@@ -24,11 +24,11 @@ function initialiseFieldsWithGlobalValues(args) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
 				fields: args.fields,
-				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
+				comparableFieldValues: args.comparableFieldValues
 			}));
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
-                                MODEL.updateSelectedComparisonValue($(this).val());
+                                MODEL.updateSelectedComparisonValue($(this).val()+);
                                 });
 			}	
 		} else {
@@ -37,28 +37,4 @@ function initialiseFieldsWithGlobalValues(args) {
 			$('#toolbar').show()
 		}
 	});
-}
-
-function getSelectedComparisonFields() {
-	var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
-	$('#category-select').on('change', function() {
-		var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
-		console.log('from comparisonHelpers: '+selectedFields)
-		if ($(this).val() === "total") {
-			//do nothing
-			console.log('from comparisonHelpers: '+selectedFields)
-		} else {
-			selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
-				return {
-					values: [$(fieldValue).val()],
-					field: $(fieldValue).data('field')
-				};
-			}))
-			console.log('from comparisonHelpers: '+selectedFields)
-		}
-	});
-	
-	
-	
-	
 }
