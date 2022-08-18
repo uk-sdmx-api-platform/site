@@ -4,14 +4,6 @@
  */
 
 function initialiseFieldsWithGlobalValues(args) {
-	
-	  var defaultSelectedFields = [{
-		  field: "Reporting type",
-		  value: "National"
-	  },{
-		  field: "Reporting type",
-		  value: "Global"
-	  }]
 
 	var dataHasGlobalReportingType = args.dataHasGlobalReportingType
 	if (dataHasGlobalReportingType === false) {
@@ -42,24 +34,24 @@ function initialiseFieldsWithGlobalValues(args) {
 			$('#toolbar').show()
 		}
 	});
-	
+}
+
+function getSelectedComparisonFields() {
+	var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
 	$('#category-select').on('change', function() {
-		var defaultSelectedFields = [{
-			field: "Reporting type",
-			value: "National"
-		}, {
-			field: "Reporting type",
-			value: "Global"
-		}]
+		var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
 		if ($(this).val() === "total") {
+			//do nothing
 		} else {
-			defaultSelectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
+			selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
 				return {
 					value: $(fieldValue).val(),
 					field: $(fieldValue).data('field')
 				};
 			}))
 		}
-		return defaultSelectedFields
+		return selectedFields
 	});
+	
+	
 }
