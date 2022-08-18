@@ -4,6 +4,7 @@
  */
 
 function initialiseFieldsWithGlobalValues(args) {
+	MODEL.updateSelectedComparisonValue()
 
 	var dataHasGlobalReportingType = args.dataHasGlobalReportingType
 	if (dataHasGlobalReportingType === false) {
