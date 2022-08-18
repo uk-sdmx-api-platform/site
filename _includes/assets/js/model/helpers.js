@@ -72,6 +72,8 @@
     dataHasGlobalReportingType: dataHasGlobalReportingType,
     fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
+    headlineHasNationalReportingType: headlineHasNationalReportingType,
+    headlineIsComparable: headlineHasNationalReportingType,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
