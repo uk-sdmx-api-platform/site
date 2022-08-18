@@ -148,6 +148,12 @@ var indicatorModel = function (options) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
+  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    // this.selectedFields = "" //TBC
+    // this.getData();
+    console.log(this.selectedFields)
+  };
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
