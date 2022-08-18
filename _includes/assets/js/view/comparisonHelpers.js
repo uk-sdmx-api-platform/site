@@ -41,8 +41,10 @@ function getSelectedComparisonFields() {
 	var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
 	$('#category-select').on('change', function() {
 		var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
+		console.log('from comparisonHelpers: '+selectedFields)
 		if ($(this).val() === "total") {
 			//do nothing
+			console.log('from comparisonHelpers: '+selectedFields)
 		} else {
 			selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
 				return {
@@ -50,9 +52,8 @@ function getSelectedComparisonFields() {
 					field: $(fieldValue).data('field')
 				};
 			}))
+			console.log('from comparisonHelpers: '+selectedFields)
 		}
-		
-		console.log('from comparisonHelpers: '+selectedFields)
 	});
 	
 	
