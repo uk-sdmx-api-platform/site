@@ -40,6 +40,8 @@ var indicatorModel = function (options) {
   this.hasGlobalReportingType = false;
   this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
+  this.headlineHasNationalReportingType = false;
+  this.headlineIsComparable = false;
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
   this.comparableFieldValues = [];
@@ -79,7 +81,9 @@ var indicatorModel = function (options) {
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
+      this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
       this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.headlineHasGlobalReportingType, this.fieldsHaveGlobalReportingType);
+      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
     }
   }
 
@@ -305,6 +309,8 @@ var indicatorModel = function (options) {
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+        headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+        headlineIsComparable: this.headlineIsComparable,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         comparableFieldValues: this.comparableFieldValues,
@@ -373,6 +379,8 @@ var indicatorModel = function (options) {
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
       fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+      headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+      headlineIsComparable: this.headlineIsComparable,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       comparableFieldValues: this.comparableFieldValues,
