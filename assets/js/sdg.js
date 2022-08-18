@@ -2702,6 +2702,10 @@ function dataHasGlobalReportingType(headlineHasGlobalReportingType, fieldsHaveGl
 	return headlineHasGlobalReportingType || fieldsHaveGlobalReportingType
 }
 
+function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
+  	return headlineHasGlobalData && headlineHasNationalData;
+}
+
 /**
  * @param {Array} Headline data
  * @return {boolean} 
@@ -2924,6 +2928,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.hasGlobalReportingType = false;
   this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
+  this.headlineHasNationalReportingType = false;
+  this.headlineIsComparable = false;
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
   this.comparableFieldValues = [];
@@ -2963,7 +2969,9 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
+      this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
       this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.headlineHasGlobalReportingType, this.fieldsHaveGlobalReportingType);
+      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
     }
   }
 
@@ -3189,6 +3197,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         dataHasGlobalReportingType: this.dataHasGlobalReportingType,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+        headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+        headlineIsComparable: this.headlineIsComparable,
         fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
         fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         comparableFieldValues: this.comparableFieldValues,
@@ -3257,6 +3267,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       dataHasGlobalReportingType: this.dataHasGlobalReportingType,
       fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+      headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+      headlineIsComparable: this.headlineIsComparable,
       fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
       fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       comparableFieldValues: this.comparableFieldValues,
@@ -3445,7 +3457,8 @@ function initialiseFieldsWithGlobalValues(args) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
 				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues
+				comparableFieldValues: args.comparableFieldValues,
+				console.log(comparableFieldValues)
 			}));
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
