@@ -2971,10 +2971,10 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.getData();
   };
   
-  this.updateSelectedComparisonValue = function () {
-    // this.selectedFields = "" //TBC
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    // this.selectedFields = updateSelectedFieldsFromSelectedValue(selectedValue)
     // this.getData();
-    //console.log('selectedComparisonValue: '+selectedComparisonValue)
+    console.log('selectedComparisonValue: '+selectedComparisonValue)
   };
 
   this.updateChartTitle = function() {
@@ -4921,10 +4921,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     $(OPTIONS.rootElement).on('change', '#serieses input', function () {
         MODEL.updateSelectedSeries($(this).val());
-    });
-    
-    $(OPTIONS.rootElement).on('change', '#categories option', function () {
-        MODEL.updateSelectedComparisonValue($(this).val());
     });
 
     $(OPTIONS.rootElement).on('click', '.variable-options button', function (e) {
