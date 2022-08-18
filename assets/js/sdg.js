@@ -3403,7 +3403,7 @@ function getSelectedComparisonFields() {
 				};
 			}))
 		}
-		return selectedFields
+		
 		console.log('from comparisonHelpers: '+selectedFields)
 	});
 	
