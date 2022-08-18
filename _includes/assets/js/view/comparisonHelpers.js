@@ -6,7 +6,7 @@
 function initialiseFieldsWithGlobalValues(args) {
 
 	var dataIsComparable = args.dataIsComparable
-	if (dataHasGlobalReportingType === false) {
+	if (dataIsComparable === false) {
 		$('#toggles').hide()
 		$(OPTIONS.rootElement).addClass('no-global-data');
 	}
@@ -20,12 +20,13 @@ function initialiseFieldsWithGlobalValues(args) {
 			console.log(this.checked);
 			console.log('dataIsComparable: '+args.dataIsComparable);
 			$('#toolbar').hide();
-			if (args.fieldsHaveGlobalReportingType) {
+			if (args.fieldsAreComparable) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
 				fields: args.fields,
 				comparableFieldValues: args.comparableFieldValues
 			}));
+				console.log(fieldsAreComparable)
 				console.log(comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
