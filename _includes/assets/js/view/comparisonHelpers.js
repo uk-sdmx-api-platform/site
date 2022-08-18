@@ -4,7 +4,6 @@
  */
 
 function initialiseFieldsWithGlobalValues(args) {
-	MODEL.updateSelectedComparisonValue()
 
 	var dataHasGlobalReportingType = args.dataHasGlobalReportingType
 	if (dataHasGlobalReportingType === false) {
@@ -28,6 +27,9 @@ function initialiseFieldsWithGlobalValues(args) {
 				fieldValuesWithGlobalReportingType: args.fieldValuesWithGlobalReportingType
 			}));
 				$('#categories').show();
+                                $(OPTIONS.rootElement).on('change', '#categories option', function () {
+                                MODEL.updateSelectedComparisonValue($(this).val());
+                                });
 			}	
 		} else {
 			console.log(this.checked);
