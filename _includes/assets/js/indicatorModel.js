@@ -36,6 +36,8 @@ var indicatorModel = function (options) {
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
   this.dataHasGlobalReportingType = false;
+  this.hasNationalReportingType = false;
+  this.hasGlobalReportingType = false;
   this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
   this.fieldValuesWithGlobalReportingType = [];
@@ -150,9 +152,10 @@ var indicatorModel = function (options) {
   };
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    // this.selectedFields = updateSelectedFieldsFromSelectedValue(selectedValue)
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
     // this.getData();
     console.log('selectedComparisonValue: '+selectedComparisonValue)
+    console.log('selectedFields: '+this.selectedFields)
   };
 
   this.updateChartTitle = function() {
