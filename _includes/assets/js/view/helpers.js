@@ -24,7 +24,6 @@
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
     initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
-    getSelectedComparisonFields: getSelectedComparisonFields,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
