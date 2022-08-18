@@ -2974,7 +2974,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     // this.selectedFields = "" //TBC
     // this.getData();
-    console.log(this.selectedFields)
+    console.log('selectedFields: '+this.selectedFields)
   };
 
   this.updateChartTitle = function() {
@@ -3134,7 +3134,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
         chartTitles: this.chartTitles,
       });
     }
-    console.log('selectedFields: '+this.selectedFields)
 
     if (selectionUpdateNeeded || options.updateFields) {
       this.updateFieldStates(this.selectedFields);
@@ -3201,7 +3200,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
     });
-    console.log('selectedFields: '+this.selectedFields)
   };
 };
 
