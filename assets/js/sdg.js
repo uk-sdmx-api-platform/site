@@ -2958,6 +2958,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
 
   this.updateFieldStates = function(selectedFields) {
     this.selectedFields = helpers.removeOrphanSelections(selectedFields, this.edgesData);
+    console.log('selectedFields: '+this.selectedFields)
     this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields);
     this.fieldItemStates = helpers.getUpdatedFieldItemStates(this.fieldItemStates, this.edgesData, selectedFields, this.validParentsByChild);
     this.onSelectionUpdate.notify({
@@ -2969,6 +2970,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.updateSelectedFields = function (selectedFields) {
     this.updateFieldStates(selectedFields);
     this.getData();
+    console.log('selectedFields: '+this.selectedFields)
   };
   
   this.updateSelectedComparisonValue = function () {
