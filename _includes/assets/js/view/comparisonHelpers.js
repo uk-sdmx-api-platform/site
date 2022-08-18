@@ -24,9 +24,9 @@ function initialiseFieldsWithGlobalValues(args) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
 				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues,
-				console.log(comparableFieldValues)
+				comparableFieldValues: args.comparableFieldValues
 			}));
+				console.log(comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
                                 MODEL.updateSelectedComparisonValue($(this).val().concat("|",$(this).val()));
