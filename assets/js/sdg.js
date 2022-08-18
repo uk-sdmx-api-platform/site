@@ -2659,7 +2659,7 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   var selectedFields = [{
     field: "Reporting type",
     values: ["National", "Global"]}]
-  if (selectedValue === "total") {
+  if (selectedComparisonValue === "total") {
     // do nothing
   } else {
     selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
