@@ -35,7 +35,6 @@ var indicatorModel = function (options) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
-  this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
   this.headlineHasNationalReportingType = false;
   this.headlineIsComparable = false;
@@ -74,7 +73,6 @@ var indicatorModel = function (options) {
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
-      this.fieldsHaveGlobalReportingType = helpers.fieldsHaveGlobalReportingType(this.fieldValuesWithGlobalReportingType);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
@@ -308,7 +306,6 @@ var indicatorModel = function (options) {
         allowedFields: this.allowedFields,
         dataIsComparable: this.dataIsComparable,
         fieldsAreComparable: this.fieldsAreComparable,
-        fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
         headlineHasNationalReportingType: this.headlineHasNationalReportingType,
         headlineIsComparable: this.headlineIsComparable,
@@ -379,7 +376,6 @@ var indicatorModel = function (options) {
       selectedSeries: this.selectedSeries,
       dataIsComparable: this.dataIsComparable,
       fieldsAreComparable: this.fieldsAreComparable,
-      fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
       headlineHasNationalReportingType: this.headlineHasNationalReportingType,
       headlineIsComparable: this.headlineIsComparable,
