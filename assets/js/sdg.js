@@ -2840,11 +2840,12 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
     dataHasReportingTypes: dataHasReportingTypes,
-    dataHasGlobalReportingType: dataHasGlobalReportingType,
+    dataIsComparable: dataIsComparable,
     fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
     headlineHasNationalReportingType: headlineHasNationalReportingType,
-    headlineIsComparable: headlineHasNationalReportingType,
+    headlineIsComparable: headlineIsComparable,
+    fieldsAreComparable: fieldsAreComparable,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -3442,7 +3443,7 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
 
 function initialiseFieldsWithGlobalValues(args) {
 
-	var dataHasGlobalReportingType = args.dataHasGlobalReportingType
+	var dataIsComparable = args.dataIsComparable
 	if (dataHasGlobalReportingType === false) {
 		$('#toggles').hide()
 		$(OPTIONS.rootElement).addClass('no-global-data');
@@ -3455,15 +3456,15 @@ function initialiseFieldsWithGlobalValues(args) {
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			console.log(this.checked);
-			console.log('fieldsHaveGlobalReportingType: '+args.fieldsHaveGlobalReportingType);
+			console.log('dataIsComparable: '+args.dataIsComparable);
 			$('#toolbar').hide();
 			if (args.fieldsHaveGlobalReportingType) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
 				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues,
-				console.log(comparableFieldValues)
+				comparableFieldValues: args.comparableFieldValues
 			}));
+				console.log(comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
                                 MODEL.updateSelectedComparisonValue($(this).val().concat("|",$(this).val()));
