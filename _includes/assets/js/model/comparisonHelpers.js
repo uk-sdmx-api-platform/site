@@ -9,10 +9,12 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   if (selectedComparisonValue === "total") {
     // do nothing
   } else {
-    selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
+    selectedFields.push(_.map($('#category-select option:selected'), function(selectedComparisonValue) {
+      var field = selectedComparisonValue.split("|")[0]
+      var value = selectedComparisonValue.split("|")[1]	
       return {
-        values: [$(fieldValue).val()],
-        field: $(fieldValue).data('field')
+	field: field,
+        values: [value]
       };
     })[0])
   }
