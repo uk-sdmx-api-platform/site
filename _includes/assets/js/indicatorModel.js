@@ -35,13 +35,12 @@ var indicatorModel = function (options) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
-  this.dataHasGlobalReportingType = false;
-  this.hasNationalReportingType = false;
-  this.hasGlobalReportingType = false;
   this.fieldsHaveGlobalReportingType = false;
   this.headlineHasGlobalReportingType = false;
   this.headlineHasNationalReportingType = false;
   this.headlineIsComparable = false;
+  this.fieldsAreComparable = false;
+  this.dataIsComparable = false;
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
   this.comparableFieldValues = [];
@@ -82,8 +81,9 @@ var indicatorModel = function (options) {
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
       this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
-      this.dataHasGlobalReportingType = helpers.dataHasGlobalReportingType(this.headlineHasGlobalReportingType, this.fieldsHaveGlobalReportingType);
+      this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
+      this.dataIsComparable = helpers.dataHasGlobalReportingType(this.headlineIsComparable, this.fieldsAreComparable);
     }
   }
 
@@ -306,7 +306,8 @@ var indicatorModel = function (options) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
-        dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+        dataIsComparable: this.dataIsComparable,
+        fieldsAreComparable: this.fieldsAreComparable,
         fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
         headlineHasNationalReportingType: this.headlineHasNationalReportingType,
@@ -376,7 +377,8 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      dataHasGlobalReportingType: this.dataHasGlobalReportingType,
+      dataIsComparable: this.dataIsComparable,
+      fieldsAreComparable: this.fieldsAreComparable,
       fieldsHaveGlobalReportingType: this.fieldsHaveGlobalReportingType,
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
       headlineHasNationalReportingType: this.headlineHasNationalReportingType,
