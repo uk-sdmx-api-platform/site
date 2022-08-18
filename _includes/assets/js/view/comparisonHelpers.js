@@ -38,15 +38,15 @@ function initialiseFieldsWithGlobalValues(args) {
 }
 
 function getSelectedComparisonFields() {
-	var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
+	var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
 	$('#category-select').on('change', function() {
-		var selectedFields = [{field: "Reporting type", value: "National"}, {field: "Reporting type",value: "Global"}];
+		var selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
 		if ($(this).val() === "total") {
 			//do nothing
 		} else {
 			selectedFields.push(_.map($('#category-select option:selected'), function(fieldValue) {
 				return {
-					value: $(fieldValue).val(),
+					values: [$(fieldValue).val()],
 					field: $(fieldValue).data('field')
 				};
 			}))
