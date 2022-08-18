@@ -2698,8 +2698,8 @@ function dataHasReportingTypes(columns) {
  * @param {boolean} fieldsHaveGlobalReportingType
  * @return {boolean} 
  */
-function dataHasGlobalReportingType(headlineHasGlobalReportingType, fieldsHaveGlobalReportingType) {
-	return headlineHasGlobalReportingType || fieldsHaveGlobalReportingType
+function dataIsComparable(headlineIsComparable, fieldsAreComparable) {
+	return headlineIsComparable || fieldsAreComparable
 }
 
 function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
@@ -2733,8 +2733,8 @@ function headlineHasGlobalReportingType(headlineRows) {
  * @param {Array} Field items and values with global data
  * @return {boolean} 
  */
-function fieldsHaveGlobalReportingType(fieldValuesWithGlobalReportingType) {
- 	return _.map(fieldValuesWithGlobalReportingType, 'values').some(element => element.length > 0);
+function fieldsAreComparable(comparableFieldValues) {
+ 	return _.map(comparableFieldValues, 'values').some(element => element.length > 0);
 }
   
 
@@ -2843,6 +2843,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     dataHasGlobalReportingType: dataHasGlobalReportingType,
     fieldsHaveGlobalReportingType: fieldsHaveGlobalReportingType,
     headlineHasGlobalReportingType: headlineHasGlobalReportingType,
+    headlineHasNationalReportingType: headlineHasNationalReportingType,
+    headlineIsComparable: headlineHasNationalReportingType,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
