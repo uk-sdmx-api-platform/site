@@ -2850,6 +2850,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     fieldsUsedBySeries: fieldsUsedBySeries,
     fieldValuesWithGlobalReportingType: fieldValuesWithGlobalReportingType,
     fieldValuesWithNationalReportingType: fieldValuesWithNationalReportingType,
+    comparableFieldValues: comparableFieldValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
