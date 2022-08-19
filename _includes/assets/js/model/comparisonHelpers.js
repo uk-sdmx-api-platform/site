@@ -8,14 +8,14 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   var selectedFields = [{
     field: "Reporting type",
     values: ["National", "Global"]}]
-  if (selectedComparisonValue === "total") {
+  var field = selectedComparisonValue.split("|")[0];
+  var value = selectedComparisonValue.split("|")[1]	;
+  if (value === "total") {
     // do nothing
   } else {
-    selectedFields.push(_.map($('#category-select option:selected'), function(selectedComparisonValue) {
+    selectedFields.push(_.map($('#category-select option:selected'), function(option) {
       console.log(typeof selectedComparisonValue);
       console.log(selectedComparisonValue);
-      var field = selectedComparisonValue.split("|")[0];
-      var value = selectedComparisonValue.split("|")[1]	;
       return {
 	field: field,
         values: [value]
