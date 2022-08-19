@@ -2594,6 +2594,9 @@ input, button, select, optgroup, textarea {
   font-size: inherit;
   line-height: inherit; }
 
+#toggles {
+  margin-bottom: 20px; }
+
 .toggle-switch-label {
   display: block;
   margin-bottom: 2px; }
