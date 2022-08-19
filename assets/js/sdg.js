@@ -2656,6 +2656,8 @@ function getTimeSeriesAttributes(rows) {
  */
 
 function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
+  console.log(typeof selectedComparisonValue);
+  console.log('!!!'+selectedComparisonValue);
   var selectedFields = [{
     field: "Reporting type",
     values: ["National", "Global"]}]
