@@ -2666,7 +2666,7 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   if (value === "total") {
     // do nothing
   } else {
-    selectedFields.push(_.map($('#category-select'), function(option) {
+    selectedFields.push(_.map($('#category-select option'), function(option) {
       console.log(typeof selectedComparisonValue);
       console.log(selectedComparisonValue);
       return {
@@ -3469,7 +3469,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				console.log(args.fieldsAreComparable)
 				console.log(args.comparableFieldValues)
 				$('#categories').show();
-                                $(OPTIONS.rootElement).on('change', '#category-select option', function () {
+                                $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					console.log($(this).data('field'))
 					console.log($(this).val())
 					MODEL.updateSelectedComparisonValue($(this).data('field').concat("|",$(this).val()));
