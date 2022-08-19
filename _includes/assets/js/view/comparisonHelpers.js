@@ -28,7 +28,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				fields: args.fields,
 				comparableFieldValues: args.comparableFieldValues
 			}));
-				console.log(fieldsAreComparable)
+				console.log(args.fieldsAreComparable)
 				console.log(comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
