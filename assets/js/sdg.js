@@ -3437,7 +3437,8 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
  */
 
 function initialiseFieldsWithGlobalValues(args) {
-
+	
+	console.log('headlineIsComparable: '+args.headlineIsComparable);
 	var dataIsComparable = args.dataIsComparable
 	if (dataIsComparable === false) {
 		$('#toggles').hide()
@@ -3452,7 +3453,7 @@ function initialiseFieldsWithGlobalValues(args) {
 		if (this.checked) {
 			console.log(this.checked);
 			console.log('dataIsComparable: '+args.dataIsComparable);
-			console.log('fieldsAreComparable :'+args.fieldsAreComparable)
+			console.log('fieldsAreComparable: '+args.fieldsAreComparable)
 			$('#toolbar').hide();
 			if (args.fieldsAreComparable) {
 				var template = _.template($('#categories_template').html());
