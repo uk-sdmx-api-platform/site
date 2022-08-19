@@ -13,7 +13,7 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   if (value === "total") {
     // do nothing
   } else {
-    selectedFields.push(_.map($('#category-select'), function(option) {
+    selectedFields.push(_.map($('#category-select option'), function(option) {
       console.log(typeof selectedComparisonValue);
       console.log(selectedComparisonValue);
       return {
