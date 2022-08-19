@@ -19,6 +19,7 @@ function initialiseFieldsWithGlobalValues(args) {
 		if (this.checked) {
 			console.log(this.checked);
 			console.log('dataIsComparable: '+args.dataIsComparable);
+			console.log('fieldsAreComparable :'+args.fieldsAreComparable)
 			$('#toolbar').hide();
 			if (args.fieldsAreComparable) {
 				var template = _.template($('#categories_template').html());
