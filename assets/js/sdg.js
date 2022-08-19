@@ -3459,7 +3459,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
 			if (args.headlineIsComparable) {
-				 MODEL.updateHeadlineSelectedFields
+				 MODEL.updateHeadlineSelectedFields()
 			}
 			
 			console.log(this.checked);
