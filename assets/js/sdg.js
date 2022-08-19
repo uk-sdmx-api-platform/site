@@ -3047,10 +3047,16 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-    // this.getData();
+    this.getData();
     console.log('selectedComparisonValue: '+selectedComparisonValue)
     console.log('selectedFields: '+this.selectedFields)
   };
+  
+  this.updateHeadlineSelectedFields = function () {
+    this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
+    this.getData();
+  }
+    
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
