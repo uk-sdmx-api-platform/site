@@ -164,6 +164,7 @@ var indicatorModel = function (options) {
   
   this.updateHeadlineSelectedFields = function () {
     this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
+    console.log('selectedFields: '+this.selectedFields)
     this.getData();
   }
     
