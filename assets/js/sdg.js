@@ -3451,6 +3451,12 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
+			if (args.headlineIsComparable) {
+				this.selectedFields = [{
+					field: "Reporting type",
+					values: ["National", "Global"]}]
+				console.log(this.selectedFields)
+			}
 			console.log(this.checked);
 			console.log('dataIsComparable: '+args.dataIsComparable);
 			console.log('fieldsAreComparable: '+args.fieldsAreComparable)
