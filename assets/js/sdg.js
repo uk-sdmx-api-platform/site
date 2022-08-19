@@ -2663,8 +2663,10 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
     // do nothing
   } else {
     selectedFields.push(_.map($('#category-select option:selected'), function(selectedComparisonValue) {
-      var field = selectedComparisonValue.split("|")[0]
-      var value = selectedComparisonValue.split("|")[1]	
+      console.log(typeof selectedComparisonValue);
+      console.log(selectedComparisonValue);
+      var field = selectedComparisonValue.split("|")[0];
+      var value = selectedComparisonValue.split("|")[1]	;
       return {
 	field: field,
         values: [value]
@@ -2674,16 +2676,6 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   return selectedFields
 }
 
-function getReportingTypes(hasNationalReportingType, hasGlobalReportingType) {
-  if (hasNationalReportingType && hasGlobalReportingType) {
-    var reportingTypes = ["National", "Global"]
-  } else if (hasNationalReportingType && hasGlobalReportingType === false) {
-    var reportingTypes = ["National"]
-  } else if (hasNationalReportingType === false && hasGlobalReportingType) {
-    var reportingTypes = ["Global"]
-  }
-  return reportingTypes
-}
 
 /**
  * @param {Array} columns
