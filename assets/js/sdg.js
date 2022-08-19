@@ -2971,7 +2971,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
-      this.dataIsComparable = helpers.dataHasGlobalReportingType(this.headlineIsComparable, this.fieldsAreComparable);
+      this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
     }
   }
 
