@@ -33,7 +33,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				comparableFieldValues: args.comparableFieldValues
 			}));
 				console.log(args.fieldsAreComparable)
-				console.log(comparableFieldValues)
+				console.log(args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
                                 MODEL.updateSelectedComparisonValue($(this).val().concat("|",$(this).val()));
