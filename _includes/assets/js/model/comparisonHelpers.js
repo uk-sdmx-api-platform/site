@@ -2,6 +2,20 @@
 * Model helper functions related to comparing national and global data.
  */
 
+function getCombinationDataForReportingTypeComparison(selectedComparisonValue) {
+  var field = selectedComparisonValue.split("|")[0];
+  var value = selectedComparisonValue.split("|")[1];
+  var combinations = [{ReportingType: 'National'}, {ReportingType: 'Global'}]
+  if (value === "total") {
+    // do nothing
+  } else {
+    combinations.forEach(object => {object[field] = value;});
+  }
+  return combinations
+}
+	
+
+
 function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
   console.log(typeof selectedComparisonValue);
   console.log('!!!'+selectedComparisonValue);
@@ -9,7 +23,7 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
     field: "Reporting type",
     values: ["National", "Global"]}]
   var field = selectedComparisonValue.split("|")[0];
-  var value = selectedComparisonValue.split("|")[1]	;
+  var value = selectedComparisonValue.split("|")[1];
   if (value === "total") {
     // do nothing
   } else {
