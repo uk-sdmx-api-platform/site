@@ -2967,7 +2967,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
       this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
-      console.log('fieldColumns: ', getFieldColumnsFromData(this.allColumns))
+      console.log('fieldColumns: ', helpers.getFieldColumnsFromData(this.allColumns))
       console.log('allColumns: ', this.allColumns)
     }
   }
