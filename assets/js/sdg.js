@@ -2676,7 +2676,6 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
     })[0])
   }
   return selectedFields
-  console.log(selectedFields)
 }
 
 
