@@ -72,14 +72,15 @@ var indicatorModel = function (options) {
   
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
+      var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
       console.log('comparableFieldValues: ',this.comparableFieldValues)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(this.data);
-      this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(this.data);
+      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
+      this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
       this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
