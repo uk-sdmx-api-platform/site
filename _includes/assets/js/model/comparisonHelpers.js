@@ -51,7 +51,7 @@ function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
  * @param {Array} Headline data
  * @return {boolean} 
  */
-function headlineHasNationalReportingType(headlineRows) {
+function headlineHasNationalReportingType(rows) {
 	return rows.some(function(row) {
   	return row[REPORTINGTYPE_COLUMN] === 'National';
   }, this)
@@ -62,7 +62,7 @@ function headlineHasNationalReportingType(headlineRows) {
  * @param {Array} Headline data
  * @return {boolean} 
  */
-function headlineHasGlobalReportingType(headlineRows) {
+function headlineHasGlobalReportingType(rows) {
 	return rows.some(function(row) {
   	return row[REPORTINGTYPE_COLUMN] === 'Global';
   }, this)
