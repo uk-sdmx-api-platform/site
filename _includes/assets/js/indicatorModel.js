@@ -40,8 +40,6 @@ var indicatorModel = function (options) {
   this.headlineIsComparable = false;
   this.fieldsAreComparable = false;
   this.dataIsComparable = false;
-  this.fieldValuesWithGlobalReportingType = [];
-  this.fieldValuesWithNationalReportingType = [];
   this.comparableFieldValues = [];
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
@@ -73,8 +71,6 @@ var indicatorModel = function (options) {
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
-      this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
-      this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
       console.log('comparableFieldValues: ',this.comparableFieldValues)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
@@ -319,8 +315,6 @@ var indicatorModel = function (options) {
         headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
         headlineHasNationalReportingType: this.headlineHasNationalReportingType,
         headlineIsComparable: this.headlineIsComparable,
-        fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
-        fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
         comparableFieldValues: this.comparableFieldValues,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
@@ -389,8 +383,6 @@ var indicatorModel = function (options) {
       headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
       headlineHasNationalReportingType: this.headlineHasNationalReportingType,
       headlineIsComparable: this.headlineIsComparable,
-      fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
-      fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
       comparableFieldValues: this.comparableFieldValues,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
