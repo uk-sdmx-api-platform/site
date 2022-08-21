@@ -38,7 +38,7 @@ function initialiseFieldsWithGlobalValues(args) {
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					console.log($(this).find(':selected').data('field'))
 					console.log($(this).val())
-					MODEL.updateSelectedComparisonValue($(this).data('field').concat("|",$(this).val()));
+					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                                 });
 			}	
 		} else {
