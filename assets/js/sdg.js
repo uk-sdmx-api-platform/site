@@ -2963,6 +2963,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       console.log('comparableFieldValues: ',this.comparableFieldValues)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
+      console.log('selectableFields: ', this.selectableFields)
+      var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
       this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
