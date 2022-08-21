@@ -72,7 +72,6 @@ var indicatorModel = function (options) {
   
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
-      var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
