@@ -2959,10 +2959,11 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
+      console.log('comparableFieldValues: ',this.comparableFieldValues)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
-      this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(helpers.getHeadline(this.selectableFields, this.data));
+      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(this.data);
+      this.headlineHasNationalReportingType = helpers.headlineHasGlobalReportingType(this.data);
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
       this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
