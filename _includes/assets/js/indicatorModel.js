@@ -106,7 +106,7 @@ var indicatorModel = function (options) {
     this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-    this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
+    this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData).filter(e => (e != 'Reporting type'));
     console.log('allowedFields: ',  this.allowedFields)
   }
 
