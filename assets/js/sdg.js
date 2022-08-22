@@ -3480,7 +3480,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
-			comparisonToggle = true;
+			this.comparisonToggle = true;
 			if (args.headlineIsComparable) {
 				 MODEL.updateHeadlineSelectedFields()
 			}
@@ -3505,7 +3505,7 @@ function initialiseFieldsWithGlobalValues(args) {
                                 });
 			}	
 		} else {
-			comparisonToggle = false;
+			this.comparisonToggle = false;
 			console.log(this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
