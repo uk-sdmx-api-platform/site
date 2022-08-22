@@ -357,11 +357,6 @@ var indicatorModel = function (options) {
     }
     
     if (this.comparisonToggle) {
-      this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-        this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-        this.getData();
-        console.log('selectedFields: ',this.selectedFields)
-      };
       var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
     }
     else {
