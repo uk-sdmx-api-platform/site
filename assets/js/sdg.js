@@ -3253,11 +3253,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     }
     
     if (this.comparisonToggle) {
-      this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-        this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-        this.getData();
-        console.log('selectedFields: ',this.selectedFields)
-      };
       var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
     }
     else {
@@ -3469,8 +3464,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
-			this.comparisonToggle = true;
-			console.log('comparisonToggle: ', this.comparisonToggle)
+			MODEL.comparisonToggle = true;
 			if (args.headlineIsComparable) {
 				 MODEL.updateHeadlineSelectedFields()
 			}
@@ -3489,13 +3483,11 @@ function initialiseFieldsWithGlobalValues(args) {
 				console.log('comparableFieldValues: ', args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
-					this.comparisonToggle = true;
-					console.log('comparisonToggle: ', this.comparisonToggle)
 					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                                 });
 			}	
 		} else {
-			this.comparisonToggle = false;
+			MODEL.comparisonToggle = false;
 			console.log('comparisonToggle: ', this.comparisonToggle)
 			console.log('Toggle on: ', this.checked);
 			$('#categories').hide();
