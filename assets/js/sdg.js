@@ -2655,9 +2655,10 @@ function getTimeSeriesAttributes(rows) {
 * Model helper functions related to comparing national and global data.
  */
 
-function getCombinationDataForReportingTypeComparison(selectedComparisonValue) {
-  var field = selectedComparisonValue.split("|")[0];
-  var value = selectedComparisonValue.split("|")[1];
+function getCombinationDataForReportingTypeComparison(selectedFields) {
+  var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
+  var field = selectedComparisonValue[0]['field'];
+  var value = selectedComparisonValue[0]['values'][0];
   var combinations = [{ReportingType: 'National'}, {ReportingType: 'Global'}]
   if (value === "total") {
     // do nothing
