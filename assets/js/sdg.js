@@ -3062,7 +3062,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
     this.getData();
-    console.log(selectedComparisonValue)
     console.log('selectedFields: ',this.selectedFields)
   };
   
@@ -3401,18 +3400,6 @@ function updateWithSelectedFields() {
             values: _.map(value, 'value')
         };
     }).value());
-
-  console.log(_.chain(_.map($('#fields input:checked'), function (fieldValue) {
-        return {
-            value: $(fieldValue).val(),
-            field: $(fieldValue).data('field')
-        };
-    })).groupBy('field').map(function (value, key) {
-        return {
-            field: key,
-            values: _.map(value, 'value')
-        };
-    }).value())
 }
 
 /**
@@ -3486,7 +3473,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				 MODEL.updateHeadlineSelectedFields()
 			}
 			
-			console.log(this.checked);
+			console.log('Toggle on: ', this.checked);
 			console.log('dataIsComparable: '+args.dataIsComparable);
 			console.log('fieldsAreComparable: '+args.fieldsAreComparable)
 			$('#toolbar').hide();
@@ -3496,8 +3483,8 @@ function initialiseFieldsWithGlobalValues(args) {
 				fields: args.fields,
 				comparableFieldValues: args.comparableFieldValues
 			}));
-				console.log(args.fieldsAreComparable)
-				console.log(args.comparableFieldValues)
+				console.log('fieldsAreComparable: ', args.fieldsAreComparable)
+				console.log('comparableFieldValues: ', args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					this.comparisonToggle = true;
@@ -3508,7 +3495,7 @@ function initialiseFieldsWithGlobalValues(args) {
 		} else {
 			this.comparisonToggle = false;
 			console.log('comparisonToggle: ', this.comparisonToggle)
-			console.log('Toggle on: ',this.checked);
+			console.log('Toggle on: ', this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
