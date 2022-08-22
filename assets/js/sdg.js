@@ -3253,6 +3253,11 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     }
     
     if (this.comparisonToggle) {
+      this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+        this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+        this.getData();
+        console.log('selectedFields: ',this.selectedFields)
+      };
       var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
     }
     else {
@@ -3484,9 +3489,9 @@ function initialiseFieldsWithGlobalValues(args) {
 				console.log('comparableFieldValues: ', args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
-					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
 					this.comparisonToggle = true;
 					console.log('comparisonToggle: ', this.comparisonToggle)
+					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                                 });
 			}	
 		} else {
