@@ -3004,6 +3004,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
     this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
+    console.log('allowedFields: ',  this.allowedFields)
   }
 
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
