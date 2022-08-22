@@ -3056,7 +3056,11 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.getData();
   };
   
-  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    this.getData();
+    console.log('selectedFields: ',this.selectedFields)
+  };
   
   this.updateHeadlineSelectedFields = function () {
     this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
@@ -3485,9 +3489,9 @@ function initialiseFieldsWithGlobalValues(args) {
 				console.log('comparableFieldValues: ', args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
+					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
 					this.comparisonToggle = true;
 					console.log('comparisonToggle: ', this.comparisonToggle)
-					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                                 });
 			}	
 		} else {
