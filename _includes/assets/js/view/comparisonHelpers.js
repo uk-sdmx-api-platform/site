@@ -38,6 +38,7 @@ function initialiseFieldsWithGlobalValues(args) {
 				console.log(args.comparableFieldValues)
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
+					this.comparisonToggle = true;
 					console.log('comparisonToggle: ', this.comparisonToggle)
 					console.log($(this).find(':selected').data('field'))
 					console.log($(this).val())
