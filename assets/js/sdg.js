@@ -3377,6 +3377,7 @@ function initialiseFields(args) {
             allowedFields: args.allowedFields,
             childFields: _.uniq(args.edges.map(function (edge) { return edge.To })),
             edges: args.edges
+            fieldValuesWithNationalReportingType: args.fieldValuesWithNationalReportingType
         }));
 
         $(OPTIONS.rootElement).removeClass('no-fields');
