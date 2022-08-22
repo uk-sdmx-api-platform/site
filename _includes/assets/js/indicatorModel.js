@@ -355,8 +355,15 @@ var indicatorModel = function (options) {
     if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
+    
+    if (this.comparisonToggle) {
+      var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
+    }
+    else {
+      var combinations = helpers.getCombinationData(this.selectedFields);
+    }
 
-    var combinations = helpers.getCombinationData(this.selectedFields);
+    
     console.log('combinations: ', combinations)
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
