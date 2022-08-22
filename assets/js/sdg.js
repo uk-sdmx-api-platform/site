@@ -3003,7 +3003,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-    this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData).filter(e => (e != 'Reporting type'));
+    this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
     console.log('allowedFields: ',  this.allowedFields)
   }
 
@@ -3261,7 +3261,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       var combinations = helpers.getCombinationData(this.selectedFields);
     }
 
-    
+    console.log('filteredData: ', filteredData)
     console.log('combinations: ', combinations)
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
