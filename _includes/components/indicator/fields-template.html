@@ -3,7 +3,7 @@
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
-      <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field) { %> disallowed <% }%>
+      <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %> disallowed <% }%>
       "
       data-field="<%=fieldItem.field%>"
     >
