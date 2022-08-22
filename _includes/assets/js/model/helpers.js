@@ -103,6 +103,7 @@
     getUpdatedFieldItemStates: getUpdatedFieldItemStates,
     fieldItemStatesForView: fieldItemStatesForView,
     updateSelectedFieldsFromSelectedValue: updateSelectedFieldsFromSelectedValue,
+    getCombinationDataForReportingTypeComparison: getCombinationDataForReportingTypeComparison,
     getChartTitle: getChartTitle,
     getChartType: getChartType,
     getCombinationData: getCombinationData,
