@@ -2656,13 +2656,13 @@ function getTimeSeriesAttributes(rows) {
  */
 
 function getCombinationDataForReportingTypeComparison(selectedFields) {
-  var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
-  var field = selectedComparisonValue[0]['field'];
-  var value = selectedComparisonValue[0]['values'][0];
   var combinations = [{'Reporting type': 'National'}, {'Reporting type': 'Global'}]
-  if (value === "total") {
-    // do nothing
+  if (selectedFields.length === 1) {
+    // do nothing  
   } else {
+    var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
+    var field = selectedComparisonValue[0]['field'];
+    var value = selectedComparisonValue[0]['values'][0];
     combinations.forEach(object => {object[field] = value;});
   }
   return combinations
