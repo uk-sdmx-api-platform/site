@@ -111,7 +111,14 @@ var indicatorModel = function (options) {
   }
 
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
-  this.allData = helpers.prepareData(this.data);
+  
+   if (this.comparisonToggle) {
+      this.allData = helpers.prepareData(this.data);
+    }
+    else {
+      this.allData = helpers.prepareData(this.data).filter(key => (key['Reporting type'] != 'Global'))
+    }
+  
   console.log('allData: ', this.allData)
   this.allColumns = helpers.getColumnsFromData(this.allData);
   this.hasSerieses = helpers.dataHasSerieses(this.allColumns);
