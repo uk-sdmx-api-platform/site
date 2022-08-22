@@ -2671,8 +2671,7 @@ function getCombinationDataForReportingTypeComparison(selectedFields) {
 
 
 function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
-  console.log(typeof selectedComparisonValue);
-  console.log('!!!'+selectedComparisonValue);
+
   var selectedFields = [{
     field: "Reporting type",
     values: ["National", "Global"]}]
@@ -2682,8 +2681,6 @@ function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
     // do nothing
   } else {
     selectedFields.push(_.map($('#category-select option'), function(option) {
-      console.log(typeof selectedComparisonValue);
-      console.log(selectedComparisonValue);
       return {
 	field: field,
         values: [value]
