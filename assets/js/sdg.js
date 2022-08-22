@@ -3009,14 +3009,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
 
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
   
-   if (this.comparisonToggle) {
-      this.allData = helpers.prepareData(this.data);
-    }
-    else {
-      this.allData = helpers.prepareData(this.data).filter(key => (key['Reporting type'] != 'Global'))
-    }
-  
-  console.log('allData: ', this.allData)
+
+  this.allData = helpers.prepareData(this.data);
   this.allColumns = helpers.getColumnsFromData(this.allData);
   this.hasSerieses = helpers.dataHasSerieses(this.allColumns);
   this.serieses = this.hasSerieses ? helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.allData) : [];
