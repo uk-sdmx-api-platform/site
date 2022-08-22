@@ -3056,11 +3056,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.getData();
   };
   
-  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-    this.getData();
-    console.log('selectedFields: ',this.selectedFields)
-  };
+  
   
   this.updateHeadlineSelectedFields = function () {
     this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
@@ -3253,6 +3249,11 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     }
     
     if (this.comparisonToggle) {
+      this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+        this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+        this.getData();
+        console.log('selectedFields: ',this.selectedFields)
+      };
       var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
     }
     else {
