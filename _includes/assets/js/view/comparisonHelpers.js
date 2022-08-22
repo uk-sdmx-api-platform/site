@@ -42,7 +42,7 @@ function initialiseFieldsWithGlobalValues(args) {
 			}	
 		} else {
 			MODEL.comparisonToggle = false;
-			console.log('comparisonToggle: ', this.comparisonToggle)
+			console.log('comparisonToggle: ', MODEL.comparisonToggle)
 			console.log('Toggle on: ', this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
