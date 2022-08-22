@@ -40,14 +40,13 @@ function initialiseFieldsWithGlobalValues(args) {
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					this.comparisonToggle = true;
 					console.log('comparisonToggle: ', this.comparisonToggle)
-					console.log($(this).find(':selected').data('field'))
-					console.log($(this).val())
 					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                                 });
 			}	
 		} else {
 			this.comparisonToggle = false;
-			console.log(this.checked);
+			console.log('comparisonToggle: ', this.comparisonToggle)
+			console.log('Toggle on: ',this.checked);
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
