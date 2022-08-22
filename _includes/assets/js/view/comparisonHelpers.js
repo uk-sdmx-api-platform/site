@@ -18,8 +18,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
-			this.comparisonToggle = true;
-			console.log('comparisonToggle: ', this.comparisonToggle)
+			MODEL.comparisonToggle = true;
 			if (args.headlineIsComparable) {
 				 MODEL.updateHeadlineSelectedFields()
 			}
@@ -39,12 +38,10 @@ function initialiseFieldsWithGlobalValues(args) {
 				$('#categories').show();
                                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
-					this.comparisonToggle = true;
-					console.log('comparisonToggle: ', this.comparisonToggle)
                                 });
 			}	
 		} else {
-			this.comparisonToggle = false;
+			MODEL.comparisonToggle = false;
 			console.log('comparisonToggle: ', this.comparisonToggle)
 			console.log('Toggle on: ', this.checked);
 			$('#categories').hide();
