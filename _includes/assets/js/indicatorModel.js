@@ -160,7 +160,11 @@ var indicatorModel = function (options) {
     this.getData();
   };
   
-  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    this.getData();
+    console.log('selectedFields: ',this.selectedFields)
+  };
   
   this.updateHeadlineSelectedFields = function () {
     this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
