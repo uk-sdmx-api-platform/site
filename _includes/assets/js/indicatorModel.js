@@ -43,6 +43,7 @@ var indicatorModel = function (options) {
   this.fieldValuesWithGlobalReportingType = [];
   this.fieldValuesWithNationalReportingType = [];
   this.comparableFieldValues = [];
+  this.comparisonToggle = false;
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
