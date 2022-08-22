@@ -4,7 +4,7 @@
 
 function getCombinationDataForReportingTypeComparison(selectedFields) {
   var combinations = [{'Reporting type': 'National'}, {'Reporting type': 'Global'}]
-  if (selectedFields.length === 1) {
+  if (selectedFields.length < 2) {
     // do nothing  
   } else {
     var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
