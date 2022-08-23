@@ -3494,8 +3494,8 @@ function initialiseFieldsWithGlobalValues(args) {
 			}	
 		} else {
 			MODEL.comparisonToggle = false;
-			console.log('comparisonToggle: ', MODEL.comparisonToggle)
-			console.log('Toggle on: ', this.checked);
+			MODEL.startValues = [{"field":"Reporting type","value":"National"}]
+			console.log('startValues: ', MODEL.startValues)
 			$('#categories').hide();
 			$('#toolbar').show()
 		}
