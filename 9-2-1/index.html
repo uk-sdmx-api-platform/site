@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823233622">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -462,45 +462,35 @@ data-event-label="Change to Sources tab"
         <article>
             <p>
             </p>
-            <div class="accordion__section">
-  <div class="accordion__section-header">
-    <h2 class="accordion__section-heading">
-      <button class="accordion__section-button">
-        <span class="accordion__section-heading-text">
-          <span class="accordion__section-heading-text-focus">Indicator information</span>
-        </span>
-        <span class="visuallyhidden accordion__section-heading-divider">, </span>
-        <span class="accordion__section-toggle">
-          <span class="accordion__section-toggle-focus">
-            <span class="accordion-nav__chevron"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-            <span class="accordion__section-toggle-text">
-              "Show"
-              <span class="visuallyhidden"> this section</span>
-            </span>
-          </span>
-        </span>
+            <div class="accordion">
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Indicator information
       </button>
     </h2>
-    <div class="accordion__section-content">
-      <dl>
-      <dt>Goal</dt>
-      <dd><p>Goal 9: Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation</p></dd>
-      <dt>Target</dt>
-      <dd><p>Target 9.2: Promote inclusive and sustainable industrialization and, by 2030, significantly raise industry&#x2019;s share of employment and gross domestic product, in line with national circumstances, and double its share in least developed countries</p></dd>
-      <dt>Indicator</dt>
-      <dd><p>Indicator 9.2.1: Manufacturing value added as a proportion of GDP and per capita</p></dd>
-      <dt>Series</dt>
-      <dd><p>Manufacturing value added as a proportion of GDP (in constant 2015 USD)</p>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 9: Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation</p></dd>
+          <dt>Target</dt>
+          <dd><p>Target 9.2: Promote inclusive and sustainable industrialization and, by 2030, significantly raise industry&#x2019;s share of employment and gross domestic product, in line with national circumstances, and double its share in least developed countries</p></dd>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 9.2.1: Manufacturing value added as a proportion of GDP and per capita</p></dd>
+          <dt>Series</dt>
+          <dd><p>Manufacturing value added as a proportion of GDP (in constant 2015 USD)</p>
 <p>Manufacturing value added as a proportion of GDP (in current USD)</p>
 <p>Manufacturing value added per capita</p></dd>
-      <dt>Related indicators</dt>
-      <dd><p>1.1.1: Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)</p>
+          <dt>Related indicators</dt>
+          <dd><p>1.1.1: Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)</p>
 <p>8.1.1: Annual growth rate of real GDP per capita</p>
 <p>10.2.1: Proportion of people living below 50 per cent of median income, by sex, age and persons with disabilities</p>
 <p>10.4.1: Labour share of GDP</p></dd>
-      <dt>Custodian agencies</dt>
-      <dd><p>United Nations Industrial Development Organization (UNIDO)</p></dd>
-      </dl>
+          <dt>Custodian agencies</dt>
+          <dd><p>United Nations Industrial Development Organization (UNIDO)</p></dd>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
@@ -877,29 +867,6 @@ data-event-label="Change to Sources tab"
   </table>
 </div>
 
-
-
-<script>
-var acc = document.getElementsByClassName("accordion__section-button");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var accordion__section = this.nextElementSibling;
-    if (accordion__section.style.display === "block") {
-      accordion__section.style.display = "none";
-    } else {
-      accordion__section.style.display = "block";
-    }
-  });
-}
-</script>
-
         </article>
     </div>
 </div>
@@ -1010,12 +977,12 @@ for (i = 0; i < acc.length; i++) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823233622'></script>
+<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823233622"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

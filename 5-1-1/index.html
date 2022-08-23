@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823233622">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -462,47 +462,37 @@ data-event-label="Change to Sources tab"
         <article>
             <p>
             </p>
-            <div class="accordion__section">
-  <div class="accordion__section-header">
-    <h2 class="accordion__section-heading">
-      <button class="accordion__section-button">
-        <span class="accordion__section-heading-text">
-          <span class="accordion__section-heading-text-focus">Indicator information</span>
-        </span>
-        <span class="visuallyhidden accordion__section-heading-divider">, </span>
-        <span class="accordion__section-toggle">
-          <span class="accordion__section-toggle-focus">
-            <span class="accordion-nav__chevron"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-            <span class="accordion__section-toggle-text">
-              "Show"
-              <span class="visuallyhidden"> this section</span>
-            </span>
-          </span>
-        </span>
+            <div class="accordion">
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Indicator information
       </button>
     </h2>
-    <div class="accordion__section-content">
-      <dl>
-      <dt>Goal</dt>
-      <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
-      <dt>Target</dt>
-      <dd><p>Target 5.1: End all forms of discrimination against all women and girls everywhere</p></dd>
-      <dt>Indicator</dt>
-      <dd><p>Indicator 5.1.1: Whether or not legal frameworks are in place to promote, enforce and monitor equality and non&#x2011;discrimination on the basis of sex</p></dd>
-      <dt>Series</dt>
-      <dd><p>SG_LGL_GENEQLFP, Legal frameworks that promote, enforce and monitor gender equality (percentage of achievement, 0 - 100) -- Area 1: overarching legal frameworks and public life </p>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
+          <dt>Target</dt>
+          <dd><p>Target 5.1: End all forms of discrimination against all women and girls everywhere</p></dd>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 5.1.1: Whether or not legal frameworks are in place to promote, enforce and monitor equality and non&#x2011;discrimination on the basis of sex</p></dd>
+          <dt>Series</dt>
+          <dd><p>SG_LGL_GENEQLFP, Legal frameworks that promote, enforce and monitor gender equality (percentage of achievement, 0 - 100) -- Area 1: overarching legal frameworks and public life </p>
 <p>SG_LGL_GENEQVAW, Legal frameworks that promote, enforce and monitor gender equality (percentage of achievement, 0 - 100) -- Area 2: violence against women </p>
 <p>SG_LGL_GENEQEMP, Legal frameworks that promote, enforce and monitor gender equality (percentage of achievement, 0 - 100) -- Area 3: employment and economic benefits </p>
 <p>SG_LGL_GENEQMAR, Legal frameworks that promote, enforce and monitor gender equality (percentage of achievement, 0 - 100) -- Area 4: marriage and family </p></dd>
-      <dt>Related indicators</dt>
-      <dd><p>There are other legal SDGs indicators: </p>
+          <dt>Related indicators</dt>
+          <dd><p>There are other legal SDGs indicators: </p>
 <p>&#x2022; Indicator 5.a.2, &#x2018;Proportion of countries where the legal framework (including customary law) guarantees women&#x2019;s equal rights to land ownership and/or control&#x2019;; and </p>
 <p>&#x2022; Indicator 5.6.2, &#x2018;Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education&#x2019;. </p>
 <p>To avoid duplication, indicator 5.1.1 does not cover areas of law that are addressed under indicators 5.a.2 and 5.6.2. Indicator 5.1.1 complements these other indicators.</p>
 <p>Legal frameworks that advance gender equality generally relate to all of Goal 5 as well as other Goals since gender equality is central to the achievement of all SDGs. See UN Women and UN Statistics Division&#x2019;s annual <a href="https://unstats.un.org/sdgs/gender-snapshot/2021/"><em>Progress on the Sustainable Development Goals: The Gender Snapshot</em></a> which each year uses latest available data to demonstrate how gender equality, including progress on Target 5.1, is fundamental to achievement of all 17 Goals. </p></dd>
-      <dt>Custodian agencies</dt>
-      <dd><p>UN Women, World Bank Group, OECD Development Centre</p></dd>
-      </dl>
+          <dt>Custodian agencies</dt>
+          <dd><p>UN Women, World Bank Group, OECD Development Centre</p></dd>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
@@ -952,29 +942,6 @@ data-event-label="Change to Sources tab"
   </table>
 </div>
 
-
-
-<script>
-var acc = document.getElementsByClassName("accordion__section-button");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var accordion__section = this.nextElementSibling;
-    if (accordion__section.style.display === "block") {
-      accordion__section.style.display = "none";
-    } else {
-      accordion__section.style.display = "block";
-    }
-  });
-}
-</script>
-
         </article>
     </div>
 </div>
@@ -1085,12 +1052,12 @@ for (i = 0; i < acc.length; i++) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823233622'></script>
+<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823233622"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
