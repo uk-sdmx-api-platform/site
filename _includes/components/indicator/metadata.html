@@ -18,13 +18,54 @@
 
 <button class="accordion">Data reporter</button>
 <div class="panel">
-  <p>Lorem ipsum...</p>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Organisation</th>
+        <td>{{ page.indicator['CONTACT_ORGANISATION'] }}</td>
+        <td>{{ page.indicator['CONTACT_ORGANISATION__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact person(s)</th>
+        <td>{{ page.indicator['CONTACT_NAME'] }}</td>
+        <td>{{ page.indicator['CONTACT_NAME__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact organisation unit</th>
+        <td>{{ page.indicator['ORGANISATION_UNIT'] }}</td>
+        <td>{{ page.indicator['ORGANISATION_UNIT__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact person function</th>
+        <td>{{ page.indicator['CONTACT_FUNCT'] }}</td>
+        <td>{{ page.indicator['CONTACT_FUNCT__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact phone</th>
+        <td>{{ page.indicator['CONTACT_PHONE'] }}</td>
+        <td>{{ page.indicator['CONTACT_PHONE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact mail address</th>
+        <td>{{ page.indicator['CONTACT_MAIL'] }}</td>
+        <td>{{ page.indicator['CONTACT_MAIL__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact email address</th>
+        <td>{{ page.indicator['CONTACT_EMAIL'] }}</td>
+        <td>{{ page.indicator['CONTACT_EMAIL__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<button class="accordion">Definitions, concepts and classifications</button>
-<div class="panel">
-  <p>Lorem ipsum...</p>
-</div>
 
 <script>
 var acc = document.getElementsByClassName("accordion");
