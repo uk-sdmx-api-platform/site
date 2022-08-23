@@ -3,6 +3,7 @@
  * @return null
  */
 function initialiseFields(args) {
+    console.log('FIELDS INITIALISED!!!'
     var fieldsContainValues = args.fields.some(function (field) {
         return field.values.length > 0;
     });
