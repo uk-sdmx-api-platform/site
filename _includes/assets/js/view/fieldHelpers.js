@@ -29,7 +29,7 @@ function initialiseFields(args) {
         $(OPTIONS.rootElement).addClass('no-fields');
     }
     
-    if (args.allowedFields === ['Reporting type']) {
+    if (args.allowedFields == 'Reporting type') {
          $(OPTIONS.rootElement).addClass('no-fields');
     }
 }
