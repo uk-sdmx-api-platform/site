@@ -1,37 +1,27 @@
-<div class="accordion__section">
-  <div class="accordion__section-header">
-    <h2 class="accordion__section-heading">
-      <button class="accordion__section-button">
-        <span class="accordion__section-heading-text">
-          <span class="accordion__section-heading-text-focus">Indicator information</span>
-        </span>
-        <span class="visuallyhidden accordion__section-heading-divider">, </span>
-        <span class="accordion__section-toggle">
-          <span class="accordion__section-toggle-focus">
-            <span class="accordion-nav__chevron"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-            <span class="accordion__section-toggle-text">
-              "Show"
-              <span class="visuallyhidden"> this section</span>
-            </span>
-          </span>
-        </span>
+<div class="accordion">
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Indicator information
       </button>
     </h2>
-    <div class="accordion__section-content">
-      <dl>
-      <dt>Goal</dt>
-      <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] }}</dd>
-      <dt>Target</dt>
-      <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] }}</dd>
-      <dt>Indicator</dt>
-      <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] }}</dd>
-      <dt>Series</dt>
-      <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] }}</dd>
-      <dt>Related indicators</dt>
-      <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] }}</dd>
-      <dt>Custodian agencies</dt>
-      <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] }}</dd>
-      </dl>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] }}</dd>
+          <dt>Target</dt>
+          <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] }}</dd>
+          <dt>Indicator</dt>
+          <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] }}</dd>
+          <dt>Series</dt>
+          <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] }}</dd>
+          <dt>Related indicators</dt>
+          <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] }}</dd>
+          <dt>Custodian agencies</dt>
+          <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] }}</dd>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
@@ -288,26 +278,3 @@
     </tbody>
   </table>
 </div>
-
-
-
-<script>
-var acc = document.getElementsByClassName("accordion__section-button");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var accordion__section = this.nextElementSibling;
-    if (accordion__section.style.display === "block") {
-      accordion__section.style.display = "none";
-    } else {
-      accordion__section.style.display = "block";
-    }
-  });
-}
-</script>
