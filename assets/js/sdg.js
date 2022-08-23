@@ -3042,7 +3042,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.clearSelectedFields = function() {
     this.selectedFields = [{field: "Reporting type", values: ["National"]}];
     console.log('selectedFields before getData: ', this.selectedFields)
-    this.getData();
+    this.getData(updateFields: true);
     console.log('selectedFields after getData: ',this.selectedFields)
     this.onFieldsCleared.notify();
   };
@@ -3390,7 +3390,7 @@ function initialiseFields(args) {
         $(OPTIONS.rootElement).addClass('no-fields');
     }
     
-    if (args.allowedFields === ['Reporting type']) {
+    if (args.allowedFields == 'Reporting type') {
          $(OPTIONS.rootElement).addClass('no-fields');
     }
 }
