@@ -2984,7 +2984,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
       this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
       this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
-      console.log('allColumns: ', this.allColumns)
     }
   }
 
@@ -3367,7 +3366,7 @@ var HIDE_SINGLE_UNIT = true;
 function initialiseFields(args) {
     console.log('FIELDS INITIALISED!!!')
     console.log('allowedFields: ', args.allowedFields)
-    console.log("args.allowedFields === ['Reporting type']: ",args.allowedFields === ['Reporting type'])
+    console.log("args.allowedFields == 'Reporting type': ",args.allowedFields == 'Reporting type')
     var fieldsContainValues = args.fields.some(function (field) {
         return field.values.length > 0;
     });
