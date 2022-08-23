@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823220744">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823225323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -462,22 +462,42 @@ data-event-label="Change to Sources tab"
         <article>
             <p>
             </p>
-            <button class="accordion">Indicator information</button>
-<div class="panel">
-<dl>
-<dt>Goal</dt>
-<dd><p>Goal 12: Ensure sustainable consumption and production patterns</p></dd>
-<dt>Target</dt>
-<dd><p>Target 12.4: By 2020, achieve the environmentally sound management of chemicals and all wastes throughout their life cycle, in accordance with agreed international frameworks, and significantly reduce their release to air, water and soil in order to minimize their adverse impacts on human health and the environment</p></dd>
-<dt>Indicator</dt>
-<dd><p>Indicator 12.4.1: Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement</p></dd>
-<dt>Series</dt>
-<dd><p>N/A </p></dd>
-<dt>Related indicators</dt>
-<dd><p>Indicators 12.4.2, 12.5.1, 3.9.1, 3.9.2 and 3.9.3.</p></dd>
-<dt>Custodian agencies</dt>
-<dd><p>United Nations Environment Programme (UNEP)</p></dd>
-</dl>
+            <div class="accordion__section">
+  <div class="accordion__section-header">
+    <h2 class="accordion__section-heading">
+      <button class="accordion__section-button">
+        <span class="accordion__section-heading-text">
+          <span class="accordion__section-heading-text-focus">Indicator information</span>
+        </span>
+        <span class="visuallyhidden accordion__section-heading-divider">, </span>
+        <span class="accordion__section-toggle">
+          <span class="accordion__section-toggle-focus">
+            <span class="accordion-nav__chevron"></span>
+            <span class="accordion__section-toggle-text">
+              "Show"
+              <span class="visuallyhidden"> this section</span>
+            </span>
+          </span>
+        </span>
+      </button>
+    </h2>
+    <div class="accordion__section-content">
+      <dl>
+      <dt>Goal</dt>
+      <dd><p>Goal 12: Ensure sustainable consumption and production patterns</p></dd>
+      <dt>Target</dt>
+      <dd><p>Target 12.4: By 2020, achieve the environmentally sound management of chemicals and all wastes throughout their life cycle, in accordance with agreed international frameworks, and significantly reduce their release to air, water and soil in order to minimize their adverse impacts on human health and the environment</p></dd>
+      <dt>Indicator</dt>
+      <dd><p>Indicator 12.4.1: Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement</p></dd>
+      <dt>Series</dt>
+      <dd><p>N/A </p></dd>
+      <dt>Related indicators</dt>
+      <dd><p>Indicators 12.4.2, 12.5.1, 3.9.1, 3.9.2 and 3.9.3.</p></dd>
+      <dt>Custodian agencies</dt>
+      <dd><p>United Nations Environment Programme (UNEP)</p></dd>
+      </dl>
+    </div>
+  </div>
 </div>
 
 <button class="accordion">Data reporter</button>
@@ -1150,12 +1170,12 @@ for (i = 0; i < acc.length; i++) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823220744'></script>
+<script src='/site/assets/js/sdg.js?v=20220823225323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823220744"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220823225323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

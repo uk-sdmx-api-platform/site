@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823220744">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823225323">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -462,22 +462,42 @@ data-event-label="Change to Sources tab"
         <article>
             <p>
             </p>
-            <button class="accordion">Indicator information</button>
-<div class="panel">
-<dl>
-<dt>Goal</dt>
-<dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
-<dt>Target</dt>
-<dd><p>Target 5.3: Eliminate all harmful practices, such as child, early and forced marriage and female genital mutilation</p></dd>
-<dt>Indicator</dt>
-<dd><p>Indicator 5.3.2: Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>, by age</p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> The official indicator name refers to &#x2018;female genital mutilation/cutting&#x2019;, or FGM/C. In recent years the convention within UNICEF and partner organizations has shifted to referring to &#x2018;female genital mutilation&#x2019;, or FGM, a term which is now used interchangeably with FGM/C throughout the metadata. Other common terms for the practice include &#x2018;female circumcision&#x2019; and &#x2018;excision&#x2019;. The custodian will request the IAEG-SDGs to consider a refinement of the indicator name to reflect this change for consideration at the UN Statistical Commission in 2023. <a href="#footnote-ref-2">&#x2191;</a></p></div></div></dd>
-<dt>Series</dt>
-<dd></dd>
-<dt>Related indicators</dt>
-<dd><p>The prevalence of female genital mutilation can be interpreted alongside other indicators about women&#x2019;s well-being, including those on women&#x2019;s health under Goal 3, those on the status of women under Goal 5, and those around violence against women under Goal 16. </p></dd>
-<dt>Custodian agencies</dt>
-<dd><p>United Nations Children&apos;s Fund (UNICEF)</p></dd>
-</dl>
+            <div class="accordion__section">
+  <div class="accordion__section-header">
+    <h2 class="accordion__section-heading">
+      <button class="accordion__section-button">
+        <span class="accordion__section-heading-text">
+          <span class="accordion__section-heading-text-focus">Indicator information</span>
+        </span>
+        <span class="visuallyhidden accordion__section-heading-divider">, </span>
+        <span class="accordion__section-toggle">
+          <span class="accordion__section-toggle-focus">
+            <span class="accordion-nav__chevron"></span>
+            <span class="accordion__section-toggle-text">
+              "Show"
+              <span class="visuallyhidden"> this section</span>
+            </span>
+          </span>
+        </span>
+      </button>
+    </h2>
+    <div class="accordion__section-content">
+      <dl>
+      <dt>Goal</dt>
+      <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
+      <dt>Target</dt>
+      <dd><p>Target 5.3: Eliminate all harmful practices, such as child, early and forced marriage and female genital mutilation</p></dd>
+      <dt>Indicator</dt>
+      <dd><p>Indicator 5.3.2: Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>, by age</p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> The official indicator name refers to &#x2018;female genital mutilation/cutting&#x2019;, or FGM/C. In recent years the convention within UNICEF and partner organizations has shifted to referring to &#x2018;female genital mutilation&#x2019;, or FGM, a term which is now used interchangeably with FGM/C throughout the metadata. Other common terms for the practice include &#x2018;female circumcision&#x2019; and &#x2018;excision&#x2019;. The custodian will request the IAEG-SDGs to consider a refinement of the indicator name to reflect this change for consideration at the UN Statistical Commission in 2023. <a href="#footnote-ref-2">&#x2191;</a></p></div></div></dd>
+      <dt>Series</dt>
+      <dd></dd>
+      <dt>Related indicators</dt>
+      <dd><p>The prevalence of female genital mutilation can be interpreted alongside other indicators about women&#x2019;s well-being, including those on women&#x2019;s health under Goal 3, those on the status of women under Goal 5, and those around violence against women under Goal 16. </p></dd>
+      <dt>Custodian agencies</dt>
+      <dd><p>United Nations Children&apos;s Fund (UNICEF)</p></dd>
+      </dl>
+    </div>
+  </div>
 </div>
 
 <button class="accordion">Data reporter</button>
@@ -892,12 +912,12 @@ for (i = 0; i < acc.length; i++) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823220744'></script>
+<script src='/site/assets/js/sdg.js?v=20220823225323'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823220744"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220823225323"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
