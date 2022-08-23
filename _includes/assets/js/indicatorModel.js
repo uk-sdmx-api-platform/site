@@ -145,7 +145,9 @@ var indicatorModel = function (options) {
 
   this.clearSelectedFields = function() {
     this.selectedFields = [{field: "Reporting type", values: ["National"]}];
+    console.log('selectedFields before getData: ', this.selectedFields)
     this.getData();
+    console.log('selectedFields after getData: ',this.selectedFields)
     this.onFieldsCleared.notify();
   };
 
@@ -166,9 +168,8 @@ var indicatorModel = function (options) {
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-    console.log('selectedFields before getData: ', this.selectedFields)
     this.getData();
-    console.log('selectedFields after getData: ',this.selectedFields)
+    
   };
   
   this.updateHeadlineSelectedFields = function () {
