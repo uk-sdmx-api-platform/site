@@ -2514,7 +2514,7 @@ body.contrast-high.layout-search form input, body.contrast-high.layout-search fo
   display: none; }
 
 /* Style the buttons that are used to open and close the accordion panel */
-.accordion {
+accordion__section-button {
   background-color: #eee;
   color: #444;
   cursor: pointer;
