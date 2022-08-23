@@ -3063,8 +3063,9 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    console.log('selectedFields before getData: ', this.selectedFields)
     this.getData();
-    console.log('selectedFields: ',this.selectedFields)
+    console.log('selectedFields after getData: ',this.selectedFields)
   };
   
   this.updateHeadlineSelectedFields = function () {
@@ -4993,6 +4994,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     $(OPTIONS.rootElement).on('click', '#clear', function () {
         MODEL.clearSelectedFields();
+        MODEL.selectedFields = [{field: "Reporting type", values: ["National"]}];
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
