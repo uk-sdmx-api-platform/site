@@ -5,7 +5,7 @@
 function initialiseFields(args) {
     console.log('FIELDS INITIALISED!!!')
     console.log('allowedFields: ', args.allowedFields)
-    console.log("args.allowedFields === ['Reporting type']: ",args.allowedFields === ['Reporting type'])
+    console.log("args.allowedFields == 'Reporting type': ",args.allowedFields == 'Reporting type')
     var fieldsContainValues = args.fields.some(function (field) {
         return field.values.length > 0;
     });
