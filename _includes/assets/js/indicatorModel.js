@@ -166,8 +166,9 @@ var indicatorModel = function (options) {
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    console.log('selectedFields before getData: ', this.selectedFields)
     this.getData();
-    console.log('selectedFields: ',this.selectedFields)
+    console.log('selectedFields after getData: ',this.selectedFields)
   };
   
   this.updateHeadlineSelectedFields = function () {
