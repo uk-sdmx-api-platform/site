@@ -3365,13 +3365,14 @@ var HIDE_SINGLE_UNIT = true;
  * @return null
  */
 function initialiseFields(args) {
-    console.log('FIELDS INITIALISED!!!'
+    console.log('FIELDS INITIALISED!!!')
+    console.log('allowedFields: ', args.allowedFields)
+    console.log("args.allowedFields === ['Reporting type']: ",args.allowedFields === ['Reporting type'])
     var fieldsContainValues = args.fields.some(function (field) {
         return field.values.length > 0;
     });
     if (fieldsContainValues) {
         var template = _.template($("#item_template").html());
-        console.log("args.allowedFields === ['Reporting type']: ",args.allowedFields === ['Reporting type'])
         if (!$('button#clear').length) {
             $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
         }
