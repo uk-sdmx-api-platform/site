@@ -66,6 +66,210 @@
   </table>
 </div>
 
+<button class="accordion">Definition, concepts, and classifications</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Definition and concepts</th>
+        <td>{{ page.indicator['STAT_CONC_DEF'] }}</td>
+        <td>{{ page.indicator['STAT_CONC_DEF__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Unit of measure</th>
+        <td>{{ page.indicator['UNIT_MEASURE'] }}</td>
+        <td>{{ page.indicator['UNIT_MEASURE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Classifications</th>
+        <td>{{ page.indicator['CLASS_SYSTEM'] }}</td>
+        <td>{{ page.indicator['CLASS_SYSTEM__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="accordion">Data source type and data collection method</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Data sources</th>
+        <td>{{ page.indicator['SOURCE_TYPE'] }}</td>
+        <td>{{ page.indicator['SOURCE_TYPE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Data collection method</th>
+        <td>{{ page.indicator['COLL_METHOD'] }}</td>
+        <td>{{ page.indicator['COLL_METHOD__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Data collection calendar</th>
+        <td>{{ page.indicator['FREQ_COLL'] }}</td>
+        <td>{{ page.indicator['FREQ_COLL__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Data release calendar</th>
+        <td>{{ page.indicator['REL_CAL_POLICY'] }}</td>
+        <td>{{ page.indicator['REL_CAL_POLICY__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Data providers</th>
+        <td>{{ page.indicator['DATA_SOURCE'] }}</td>
+        <td>{{ page.indicator['DATA_SOURCE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Data compilers</th>
+        <td>{{ page.indicator['COMPILING_ORG'] }}</td>
+        <td>{{ page.indicator['COMPILING_ORG__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Institutional mandate</th>
+        <td>{{ page.indicator['INST_MANDATE'] }}</td>
+        <td>{{ page.indicator['INST_MANDATE__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="accordion">Other methodological considerations</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Rationale</th>
+        <td>{{ page.indicator['RATIONALE'] }}</td>
+        <td>{{ page.indicator['RATIONALE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Comments and limitations</th>
+        <td>{{ page.indicator['REC_USE_LIM'] }}</td>
+        <td>{{ page.indicator['REC_USE_LIM__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Method of computation</th>
+        <td>{{ page.indicator['DATA_COMP'] }}</td>
+        <td>{{ page.indicator['DATA_COMP__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Adjustments</th>
+        <td>{{ page.indicator['ADJUSTMENT'] }}</td>
+        <td>{{ page.indicator['ADJUSTMENT__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+        <td>{{ page.indicator['IMPUTATION'] }}</td>
+        <td>{{ page.indicator['IMPUTATION__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Regional aggregations</th>
+        <td>{{ page.indicator['REG_AGG'] }}</td>
+        <td>{{ page.indicator['REG_AGG__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+        <td>{{ page.indicator['DOC_METHOD'] }}</td>
+        <td>{{ page.indicator['DOC_METHOD__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Quality management</th>
+        <td>{{ page.indicator['QUALITY_MGMNT'] }}</td>
+        <td>{{ page.indicator['QUALITY_MGMNT__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Quality assurance</th>
+        <td>{{ page.indicator['QUALITY_ASSURE'] }}</td>
+        <td>{{ page.indicator['QUALITY_ASSURE__GLOBAL'] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Quality assessment</th>
+        <td>{{ page.indicator['QUALITY_ASSMNT'] }}</td>
+        <td>{{ page.indicator['QUALITY_ASSMNT__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<button class="accordion">Data availability and disaggregation</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>{{ page.indicator['COVERAGE'] }}</td>
+        <td>{{ page.indicator['COVERAGE__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="accordion">Comparability/deviation from international standards</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>{{ page.indicator['COMPARABILITY'] }}</td>
+        <td>{{ page.indicator['COMPARABILITY__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="accordion">References and documentation</button>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">National</th>
+        <th scope="col">Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>{{ page.indicator['OTHER_DOC'] }}</td>
+        <td>{{ page.indicator['OTHER_DOC__GLOBAL'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 
 <script>
 var acc = document.getElementsByClassName("accordion");
