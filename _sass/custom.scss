@@ -1,5 +1,7 @@
 // Enter any custom Sass in this file.
 
+@import "../node_modules/bootstrap/scss/accordion";
+
 #fields .variable-selector[data-field="Reporting type"] {
   display: none;
 }
