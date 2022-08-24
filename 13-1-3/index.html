@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,235 +488,266 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>United Nations Office for Disaster Reduction (UNISDR)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>United Nations Office for Disaster Reduction (UNISDR)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The Sendai Framework for Disaster Risk Reduction 2015-2030 was adopted by UN Member States in March 2015 as a global policy of disaster risk reduction. One of the targets is: &#x201C;Substantially increase the number of countries with national and local disaster risk reduction strategies by 2020&#x201D;.</p>
 <p>In line with the Sendai Framework for Disaster Risk Reduction 2015-2030, disaster risk reduction strategies and policies should mainstream and integrate disaster risk reduction within and across all sectors, across different timescales and with targets, indicators and time frames. These strategies should be aimed at preventing the creation of disaster risk, the reduction of existing risk and the strengthening of economic, social, health and environmental resilience.</p>
 <p>The open-ended intergovernmental expert working group on indicators and terminology relating to disaster risk reduction (OIEWG) established by the General Assembly (resolution 69/284) has developed a set of indicators to measure global progress in the implementation of the Sendai Framework, which was endorsed by the UNGA (OIEWG <a href="http://www.preventionweb.net/publications/view/51748">report A/71/644</a>). The relevant SDG indicators reflect the Sendai Framework indicators.</p>
 <p><strong>Concepts:</strong></p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Sendai Framework Monitor, reported to UNISDR</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The national Sendai Framework Focal Points will compile all inputs from their line ministries, NSO, and other entities, if appropriate, and report through the Sendai Framework Monitoring System.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Sendai Framework Monitor, reported to UNISDR</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The national Sendai Framework Focal Points will compile all inputs from their line ministries, NSO, and other entities, if appropriate, and report through the Sendai Framework Monitoring System.</p>
 <p> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>2015 &#x2013;</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Every year from Q2 2018</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National Sendai Framework Focal Points usually represent the coordinating lead institution chairing the National DRR platform which is comprised of special purpose agencies including national disaster agencies, civil protection agencies, and meteorological agencies.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>UNISDR</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Increasing the proportion of local governments that adopt and implement local disaster risk reduction strategies, which the Sendai Framework calls for, will contribute to sustainable development and strengthen economic, social, health and environmental resilience. Their economic, environmental and social perspectives would include poverty eradication, urban resilience, and climate change adaptation.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>The Hyogo Framework for Action Monitor (HFA Monitor) started in 2007 and over time, the number of countries reporting to UNISDR increased from 60 in 2007 to approximately 100 countries in 2015 undertaking voluntary self-assessment of progress in implementing the HFA. During the four reporting cycles the HFA Monitor has generated the world&#x2019;s largest repository of information on national disaster risk reduction policy inter alia. In 2018 the Sendai Framework Monitor system will launch and all Member States are expected to report data of the previous year(s).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>Member States count the number of local governments that adopt and implement local DRR strategies in line with the national strategy and express it as a percentage of the total number of local governments in the country.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>2015 &#x2013;</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Every year from Q2 2018</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National Sendai Framework Focal Points usually represent the coordinating lead institution chairing the National DRR platform which is comprised of special purpose agencies including national disaster agencies, civil protection agencies, and meteorological agencies.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>UNISDR</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Increasing the proportion of local governments that adopt and implement local disaster risk reduction strategies, which the Sendai Framework calls for, will contribute to sustainable development and strengthen economic, social, health and environmental resilience. Their economic, environmental and social perspectives would include poverty eradication, urban resilience, and climate change adaptation.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>The Hyogo Framework for Action Monitor (HFA Monitor) started in 2007 and over time, the number of countries reporting to UNISDR increased from 60 in 2007 to approximately 100 countries in 2015 undertaking voluntary self-assessment of progress in implementing the HFA. During the four reporting cycles the HFA Monitor has generated the world&#x2019;s largest repository of information on national disaster risk reduction policy inter alia. In 2018 the Sendai Framework Monitor system will launch and all Member States are expected to report data of the previous year(s).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>Member States count the number of local governments that adopt and implement local DRR strategies in line with the national strategy and express it as a percentage of the total number of local governments in the country.</p>
 <p>Local governments are determined by the reporting country for this indicator, considering sub-national public administrations with responsibility to develop local disaster risk reduction strategies. It is recommended that countries report on progress made by the lowest level of government accorded the mandate for disaster risk reduction, as the Sendai Framework promotes the adoption and implementation of local disaster risk reduction strategies in every local authority.</p>
 <p>Each Member State will calculate the ratio of the number of local governments with local DRR strategies in line with national strategies and the total number of local governments.</p>
 <p>Global Average will then be calculated as below through arithmetic average of the data from each Member State.</p>
 <p> Further information of the methodology can be obtained in the Technical Guidance (see reference).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>If a country does not report (missing Value), it will be considered to be 0 or null as same as the HFA Monitor.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>NA</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>It could be calculated as an arithmetic average of reports by Member States.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>It could be calculated as an arithmetic average of reports by Member States.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><ul>
   <li>Technical guidance for monitoring and reporting on progress in achieving the global targets of the Sendai Framework for Disaster Risk Reduction </li>
 </ul>
 <p><a href="http://www.preventionweb.net/events/view/55594">http://www.preventionweb.net/events/view/55594</a> </p>
 <p>(The latest version will be uploaded on this site in early November)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>&#x2022; Description of practices and guidelines for quality assurance followed at your agency. </p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>&#x2022; Description of practices and guidelines for quality assurance followed at your agency. </p>
 <p>&#x2022; UNISDR Regional Office will have a regular contact with National Sendai Framework Focal Points (data providers). </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>UNISDR conducted the Sendai Framework Data Readiness Review which 87 Member States responded between February and April in 2017. </p>
 <p>In Q1 2018 all Member States will be invited to start reporting. Since in the previous monitoring approximately 100 countries reported their National HFA Monitor in each cycle, we expect the similar number of reporting.</p>
 <p> </p>
@@ -725,45 +756,59 @@ data-event-label="Change to Sources tab"
 <p><strong>Disaggregation:</strong></p>
 <p>By country</p>
 <p>By local government (applying sub-national administrative unit)</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>N/A (There is no global database collecting DRR policy information besides the HFA Monitor and the succeeding Sendai Framework Monitor.)</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong></p>
 <p>1) http://www.preventionweb.net/files/50683_oiewgreportenglish.pdf</p>
 <p>2) http://www.preventionweb.net/english/hyogo/progress/</p>
 <p>3) http://www.preventionweb.net/events/view/55594 &lt;uploaded soon&gt;</p>
@@ -774,9 +819,12 @@ data-event-label="Change to Sources tab"
 <p>During the four reporting cycles the HFA Monitor has generated the world&#x2019;s largest repository of information on national DRR policy inter alia.</p>
 <p>3) Technical guidance for monitoring and reporting on progress in achieving the global targets of the Sendai Framework for Disaster Risk Reduction (Draft)</p>
 <p>The latest version will be available on-line in early November</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -889,12 +937,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -495,73 +495,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR) United Nations Educational, Scientific and Cultural Organization (UNESCO) International Labour Organization (ILO)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR) United Nations Educational, Scientific and Cultural Organization (UNESCO) International Labour Organization (ILO)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>This indicator is defined as the number of verified cases of killing, enforced disappearance, torture, arbitrary detention, kidnapping and other harmful acts committed against journalists, trade unionists and human rights defenders on an annual basis.</p>
 <p><em>&#x2018;Journalists&#x2019; </em>refers to everyone who observes, describes, documents and analyses events, statements, policies, and any propositionsthat can affect society, with the purpose of systematizing such information and gathering of facts and analyses to inform sectors of society or soci ety as a whole, and others who share these journalistic functions, including all media workers and support</p>
 <p>staff, as well as community media workers and so-called &#x201C;citizen journalists&#x201D; when they momentarily play that role,2 professional full-time reporters and analysts, as well as bloggers and others who engage in forms of self-publication in print, on the internet or elsewhere.3</p>
@@ -599,36 +610,43 @@ data-event-label="Change to Sources tab"
 </ul>
 <p>This conceptual approach is necessitated by the confluence of three factors. First is the principle that all the violent acts tracked by the indicator are motivated by the exercise of fundamental freedoms that are guaranteed by human rights law to all persons. Second, while human rights abuses are not always explicitly criminalized in domestic jurisdictions, ICCS has achieved a certain level of success in terms of integrating human rights elements in the classification of crimes.</p>
 <p>Third, irrespective of definitions provided by national legislation or practices, all events &#x2013; whether ordinary crimes or human rights violations &#x2013; that meet the elements provided in the definitional framework will be counted for statistical purposes.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Data will be collected from global, regional and national mandated bodies, mechanisms and institutions that generate and maintain administrative data whether in aggregated form or at micro-level:</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Data will be collected from global, regional and national mandated bodies, mechanisms and institutions that generate and maintain administrative data whether in aggregated form or at micro-level:</p>
 <ul>
   <li>Global mechanisms<ul>
       <li>OHCHR<ul>
@@ -667,11 +685,11 @@ data-event-label="Change to Sources tab"
   </li>
 </ul>
 <p>Integration of data from all possible sources for this indicator will be made possible through the use of standard definitions, data collection methods, reference period, counting units and counting rules.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>Data will be compiled from administrative data produced by OHCHR, ILO, UNESCO and other UN agencies or entities in accordance with their respective mandates and procedures.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>Data will be compiled from administrative data produced by OHCHR, ILO, UNESCO and other UN agencies or entities in accordance with their respective mandates and procedures.</p>
 <p>For example, with the support of OHCHR, the various Special Procedures of the UN Human Rights Council undertake country visits and act on individual cases by sending communications to States and occasionally, to non-State actors, in which they bring alleged violations or abuses to their attention for action, among other functions. Special Procedures report annually to the Human Rights Council and the majority of the mandate-holders also report to the General Assembly.</p>
 <p>According to Section 40 of the Manual of Operations of Special Procedures, a decision to take action on a case or situation rests on the discretion of the mandate-holder. That discretion should be exercised in light of the mandate entrusted to him or her as well as criteria generally relating to the reliability of the source; the credibility of information received; the details provid ed; and</p>
 <p> </p>
@@ -687,76 +705,83 @@ data-event-label="Change to Sources tab"
 <p>violations and abuses brought to their attention. Several NHRIs have also institutionalized the</p>
 <p>provision of legal advice and other forms of support to victims of abuses who wish to access international mechanisms. NSOs, on the other hand, can complement this work by ensuring the implementation of internationally-accepted statistical standards, including on data exchange and dissemination for this indicator.</p>
 <p>OHCHR, UNESCO and ILO will work jointly with national stakeholders to build capacity, harmonize data collection procedures and produce globally comparable results. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>I-III quarter 2017, for 2015 data</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>I-III quarter 2017, for 2015 data</p>
 <p>III-IV quarter 2017, for 2016 data</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>II quarter 2016 and 2017, for 2015 and 2016 (UNESCO data)</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>II quarter 2016 and 2017, for 2015 and 2016 (UNESCO data)</p>
 <p>II quarter 2018, for 2015, 2016, 2017 data (UNESCO, OHCHR, ILO data)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>Name:</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>Name:</p>
 <p>International data providers: OHCHR, UNESCO and ILO</p>
 <p>National data providers: </p>
 <p>national human rights institutions compliant with the Paris Principles and other relevant institutions at national level.</p>
 <p>Description:</p>
 <p>Global data on violence against journalists, trade unionists and other human rights defenders are collected by OHCHR, UNESCO and ILO using a common template and integrated into a single dataset, eliminating risks of double-counting. Complementary national data will be provided to OHCHR, UNESCO and ILO, as relevant, by member states, through their national human rights institutions, in collaboration with NSOs. At country level, the primary sources will be generally NHRIs working with civil society organizations and networks.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>Name:</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>Name:</p>
 <p>A troika composed of OHCHR, UNESCO, ILO</p>
 <p>Description:</p>
 <p>At international level, data on violence against journalists, trade unionists and other human rights defenders will be regularly compiled and disseminated by the troika (OHCHR, UNESCO and ILO)</p>
 <p>through the Secretary General&#x2019;s Annual SDG Report and the proposed Annual Global Report on Violence Against Human Rights Defenders. The troika will seek to work with further partners, to</p>
 <p>enhance dissemination of the indicator.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>This indicator seeks to measure enjoyment of fundamental freedoms (e.g. freedom of opinion, freedom of expression and access to information, the right to peaceful assembly and freedom of association) on the premise that killing, enforced disappearance, torture, arbitrary detention, kidnapping and other harmful act against journalists, trade unionists and human rights defenders have a chilling effect on the exercise of these fundamental freedoms. What distinguishes this</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>This indicator seeks to measure enjoyment of fundamental freedoms (e.g. freedom of opinion, freedom of expression and access to information, the right to peaceful assembly and freedom of association) on the premise that killing, enforced disappearance, torture, arbitrary detention, kidnapping and other harmful act against journalists, trade unionists and human rights defenders have a chilling effect on the exercise of these fundamental freedoms. What distinguishes this</p>
 <p> </p>
 <p>indicator from Indicator 16.1.1 (number of victims of intentional homicide per 100,000 population by sex and age) aside from the broader scope of violent incidents, is the motivation or causal factor, i.e. that the violation was motivated by the victim having stood up to defend the rights of others, exercise fundamental freedoms, or have occurred while the victim was engaged in such activities. Alongside indicator 16.10.2 (number of countries that adopt and implement constitutional, statutory and/or policy guarantees for public access to information) this indicator provides both a micro and macro-level snapshot of the state of the aforementioned fundamental freedoms in various contexts, as well as a link to the processes and structures required to meet human rights obligations with respect to those fundamental freedoms.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>As for other crime statistics and other statistics based on administrative sources, this indicator is sensitive to the completeness of reporting of individual events. There is a real but manageable risk of underreporting. Moreover, reporting rates and statistical accuracy are influenced by various factors, including changes and biases in victim reporting behaviour, changes in police and recording practices or rules, new laws, processing errors and non-responsive institutions.</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>As for other crime statistics and other statistics based on administrative sources, this indicator is sensitive to the completeness of reporting of individual events. There is a real but manageable risk of underreporting. Moreover, reporting rates and statistical accuracy are influenced by various factors, including changes and biases in victim reporting behaviour, changes in police and recording practices or rules, new laws, processing errors and non-responsive institutions.</p>
 <p>Regional and global aggregates may underestimate the true incidence and volume of victimization, overcompensate for robust and inclusive national data collection systems . In most instances, the number of cases reported will depend on the access to information, motivation and perseverance of national stakeholders, of human rights defenders themselves, and the corresponding support of the international community.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The indicator is calculated as the total count of victims of reported incidents occurring within the preceding 12 months.</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The indicator is calculated as the total count of victims of reported incidents occurring within the preceding 12 months.</p>
 <p>Drawing on the ICCS, which is an incidents-based international classification system, the indicator counts victims on the basis of cases of violations or abuses using a classification framework developed for the purposes of the indicator.</p>
 <p>For reporting purposes, the recorded offences will be ordered taking into account a hierarchy of violations or abuses drawing on the &#x201C;most serious offence&#x201D; rule commonly applied in crime statistics:</p>
 <ol>
@@ -768,64 +793,70 @@ data-event-label="Change to Sources tab"
   <li>Other harmful acts</li>
 </ol>
 <p>If an incident incorporates elements of more than one category, it is coded to the higher category. Thus for an incident in which the victim was subjected to prolonged incommunicado detention without medical access in the course of an unlawful detainment, the violation would be counted under torture.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>Estimates will not be produced for missing values.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Estimates will not be produced for missing values.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Regional aggregates will be produced but will not be estimated in respect of missing data.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Regional aggregates will be produced but will not be estimated in respect of missing data.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>Global and regional aggregates on the component relating to the killing of journalists have already been reported upon on an annual basis and included in the UN SDG progress reports. Data on the killings of journalists is potentially covering all 195 Member States of UNESCO. Data on the status of judicial enquiries carried out on the killings was provided by 32 out of 62 concerned countries in 2016.</p>
 <p>Data on violations against human rights defenders have been made available globally in reports and communications from international human rights mechanisms for many years. Data on the killings of journalists is available on an ongoing basis. Data on the status of judicial enquiries into the killings of journalists is available on an annual basis.</p>
 <p>All these data, however, have not been collated for global SDG indicators reporting purposes. By 2018, the production of global and regional aggregates on killings for indicator 16.10.1 will be prioritized, with 2015 as baseline year.</p>
@@ -843,46 +874,60 @@ data-event-label="Change to Sources tab"
 <p>In some cases, desirable or additional data requirements may be used in order to show intersectionality and vulnerability within the main functional categories. Given sufficient dat a, for example, the indicator may provide disaggregated data on specific groups of human rights defenders according to the issues, peoples and communities they support which entail specific risks and socio-legal barriers.</p>
 <p>With proper data disaggregation, the impact of gender-based violence such as femicide can be quantified using this indicator. Moreover, additional data categories can also be added to show intersectionality and vulnerability and provide empirical evidence on differentiated risks and difficult contexts experienced by specific categories of human rights defenders , journalists or</p>
 <p>trade unionists. This is because gender significantly influences the way they may experience risks and threats. Gender-based discrimination may also be influenced by other factors, such as race, disability and other socially-constructed disadvantages. The intersection of these factors produces different vulnerabilities. It would therefore be useful to compile available data on protected grounds or the characteristics of an individual that should not be considered relevant to the differential treatment or enjoyment of a particular benefit. Disaggregation by the sexual orientation and gender identity of victims, and by any other prohibited grounds of discrimination, should be carried out in accordance with OHCHR guidance on a Human Rights-Based Approach to Data.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Considering common challenges in the field of other crime statistics and administrative data sources, it is anticipated that the indicator will suffer from underreporting in some countries/contexts. Global data providers rely on reports from national sources with varying capacities to document incidents and to engage with international mechanisms. With the development of robust national data collection frameworks comprised of national human rights institutions, national statistical offices and civil society organizations supporting global data collection, supported by capacity building programmes and a periodic assessment of relevant networks, it is expected that discrepancies will be mitigated gradually.</p>
 <p>While national data may still be compiled according to national legal systems rather than ICCS, OHCHR and its partner agencies will support UNODC as it undertakes special efforts to ensure the gradual implementation of ICCS by countries. Over time, this should help improve quality and consistency of national and international data.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong></p>
 <p><a href="http://www.ohchr.org/EN/Issues/Indicators/Pages/HRIndicatorsIndex.aspx"><u>http://www.ohchr.org/EN/Issues/Indicators/Pages/HRIndicatorsIndex.aspx</u></a></p>
 <p><strong>References:</strong></p>
 <p>Declaration on the Right and Responsibility of Individuals, Groups and Organs of Society to Promote and Protect Universally Recognized Human Rights and Fundamental Freedoms (frequently abbreviated &#x201C;The Declaration on human rights defenders&#x201D;):<a href="http://www.ohchr.org/EN/Issues/SRHRDefenders/Pages/Declaration.aspx"> http://www.ohchr.org/EN/Issues/SRHRDefenders/Pages/Declaration.aspx</a></p>
@@ -892,9 +937,12 @@ data-event-label="Change to Sources tab"
 <p>UNITED NATIONS (2015) World Trends in Freedom of Expression and Media Development. Paris. Available from: <a href="http://www.unesco.org/new/en/world-media-trends">http://www.unesco.org/new/en/world-media-trends</a></p>
 <p>UNITED NATIONS (2015) International Classification of Crime for Statistical Purposes (ICCS), Version 1.0. Vienna. Available from: <a href="https://www.unodc.org/unodc/en/data-and-analysis/statistics/iccs.html"><u>https://www.unodc.org/unodc/en/data-and-analysis/statistics/iccs.html</u></a></p>
 <p>United Nations (2012). Manual on Human Rights Monitoring. Available from: <a href="http://www.ohchr.org/EN/PublicationsResources/Pages/MethodologicalMaterials.aspx"><u>http://www.ohchr.org/EN/PublicationsResources/Pages/MethodologicalMaterials.aspx</u></a></p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -1007,12 +1055,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -489,74 +489,85 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>World Health Organization (WHO)</p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>World Health Organization (WHO)</p>
 <p>United Nations Children&apos;s Fund (UNICEF)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The proportion of the population using safely managed drinking water services is defined as the proportion of population using an improved drinking water source which is accessible on premises, available when needed and free from faecal and priority chemical contamination. &#x2018;Improved&#x2019; drinking water sources include: piped supplies, boreholes and tubewells, protected dug wells, protected springs, rainwater, water kiosks, and packaged and delivered water. </p>
 <p><strong>Concepts:</strong></p>
 <p>The term &#x2018;drinking water source&#x2019; refers to the point where people collect water for drinking and not the origin of the water supplied. For example, water collected from a distribution network that draws water from a surface water reservoir would be classified as piped water, while water collected directly from a lake or river would be classified as surface water.</p>
@@ -567,36 +578,43 @@ data-event-label="Change to Sources tab"
 <p>&#x2018;Free from faecal and priority chemical contamination&#x2019; requires that drinking water meets international standards for microbiological and chemical water quality specified in the WHO Guidelines for Drinking Water Quality. For the purposes of global monitoring the priority indicator of microbiological contamination is <em>E. coli</em> (or thermotolerant coliforms), and the priority chemical contaminants are arsenic and fluoride.</p>
 <p>For detailed guidance on water quality, please refer to the most recent version of the WHO Guidelines for drinking water quality:</p>
 <p><a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/water-safety-and-quality/drinking-water-quality-guidelines">https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/water-safety-and-quality/drinking-water-quality-guidelines</a> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Proportion of population</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene has established international standards for classification of drinking water facilities and service levels to benchmark and compare progress across countries (see washdata.org).</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Data sources included in the JMP database are: </p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Proportion of population</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene has established international standards for classification of drinking water facilities and service levels to benchmark and compare progress across countries (see washdata.org).</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Data sources included in the JMP database are: </p>
 <ul>
   <li>Censuses, which in principle collect basic data from all people living within a country and are led by national statistical offices. </li>
   <li>Household surveys, which collect data from a subset of households. These may target national, rural, or urban populations, or more limited project or sub-national areas. An appropriate sample design is necessary for survey results to be representative, and surveys are often led by or reviewed and approved by national statistical organizations. </li>
@@ -607,68 +625,75 @@ data-event-label="Change to Sources tab"
 <p>Data on availability and quality of drinking water are currently available from both household surveys and from government departments responsible for drinking water supply and regulators. In many low- and middle-income countries, existing water quality data from regulatory authorities is limited, especially for rural areas and populations using non-piped supplies. To complement regulatory data, an increasing number of low- and middle-income countries are collecting nationally representative data on drinking water quality through multi-topic household surveys. Beginning in 2012, a water quality module was developed standardized by the JMP in collaboration with UNICEF&#x2019;s Multiple Indicator Cluster Survey (MICS) programme. Integration of water quality testing has become a feasible option due to the increased availability of affordable and accurate testing procedures and their adaptation for use by household survey experts. The growing interest in ensuring the implementation of water quality testing in these surveys can, to a large extent, be attributed to the incorporation of drinking water quality in the SDG global indicator for &#x2018;safely managed drinking water services&#x2019;. Data gaps will be reduced even more as regulation becomes more widespread in low- and middle-income countries.</p>
 <p>Some datasets available to the JMP are not representative of national, rural or urban populations, or may be representative of only a subset of these populations (e.g. the population using piped water supplies). The JMP enters datasets into the global database when they represent at least 20% of the national, urban or rural populations. However, datasets representing less than 80% of the relevant population, or which are considered unreliable or inconsistent with other datasets covering similar populations, are not used in the production of estimates (see section 2.6, Data Acceptance in JMP Methodology: 2017 update and SDG baselines).</p>
 <p>The population data used by the JMP, including the proportion of the population living in urban and rural areas, are those routinely updated by the UN Population Division (World Population Prospects: <a href="https://population.un.org/wpp/">https://population.un.org/wpp/</a>; World Urbanization Projects: <a href="https://population.un.org/wup">https://population.un.org/wup</a>))</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The JMP team conducts regular data searches by systematically visiting the websites of national statistical offices, and key sector institutions such as ministries of water and sanitation, regulators of drinking water and sanitation services, etc. Other regional and global databases are also reviewed for new datasets. UNICEF and WHO regional and country offices provides support to identify newly available household surveys, censuses and administrative datasets.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The JMP team conducts regular data searches by systematically visiting the websites of national statistical offices, and key sector institutions such as ministries of water and sanitation, regulators of drinking water and sanitation services, etc. Other regional and global databases are also reviewed for new datasets. UNICEF and WHO regional and country offices provides support to identify newly available household surveys, censuses and administrative datasets.</p>
 <p>Before publishing, all JMP estimates undergo rigorous country consultations facilitated by WHO and UNICEF country offices. Often these consultations give rise to in-country visits or virtual meetings about data on drinking water, sanitation and hygiene services and the monitoring systems that collect these data. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>The JMP begins its biennial data collection cycle in October of even years and publishes estimates during the following year. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>The SDG Progress Report and relevant data are published every two years since the publication of the baseline report in 2017, usually between March and July of odd years.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National statistics offices; ministries of water, health, and environment; regulators of drinking water service providers.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>The WHO/UNICEF JMP was established in 1990 to monitor global progress on drinking water, sanitation and hygiene (see washdata.org).</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Access to safe drinking water is essential for good health, welfare and productivity and is widely recognized as a human right. Drinking water may be contaminated with human or animal faeces containing pathogens or with chemical and physical contaminants, leading to harmful effects on health. While improving water quality is critical to prevent the transmission of many diseases (such as diarrhoea which exacerbates malnutrition and remains a leading global cause of child deaths), improving the accessibility and availability of drinking water is equally important for health and welfare, particularly for women and girls who often bear the primary responsibility for collecting drinking water from distant sources. </p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>The JMP begins its biennial data collection cycle in October of even years and publishes estimates during the following year. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>The SDG Progress Report and relevant data are published every two years since the publication of the baseline report in 2017, usually between March and July of odd years.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National statistics offices; ministries of water, health, and environment; regulators of drinking water service providers.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>The WHO/UNICEF JMP was established in 1990 to monitor global progress on drinking water, sanitation and hygiene (see washdata.org).</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Access to safe drinking water is essential for good health, welfare and productivity and is widely recognized as a human right. Drinking water may be contaminated with human or animal faeces containing pathogens or with chemical and physical contaminants, leading to harmful effects on health. While improving water quality is critical to prevent the transmission of many diseases (such as diarrhoea which exacerbates malnutrition and remains a leading global cause of child deaths), improving the accessibility and availability of drinking water is equally important for health and welfare, particularly for women and girls who often bear the primary responsibility for collecting drinking water from distant sources. </p>
 <p>The WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP) uses a simple improved/unimproved facility type classification that has been refined over time. &#x2018;Improved&#x2019; water sources are those that have the potential to deliver safe water by nature of their design and construction, and this metric was used beginning in 2000 to track progress towards MDG target 7c. International consultations since 2011 have established consensus on the need to build on and address the shortcomings of this indicator; specifically, to address normative criteria of the human rights to water and sanitation (UN General Assembly Resolution A/RES/64/292) and concluded that global monitoring should go beyond the basic level of access. As a result, the SDG indicator 6.1.1 is designed to address safe management of drinking water services, including dimensions of accessibility, availability and quality.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>Data are widely available on the type and location of drinking water sources used by households. Data on availability and safety of drinking water are increasingly available through a combination of household surveys and administrative sources including regulators, but definitions have yet to be standardized. The JMP has been collaborating with international survey programmes (such as the UNICEF Multiple Indicator Cluster Survey programme) and national survey programmes to develop standardized questions that address the SDG criteria for service levels, as well as a module for testing water quality in household surveys. The JMP gives high importance to extending these collaborations to reduce data gaps, ensure consistency and to progressively improve the quality and comparability of data used for national, regional and global estimates.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The production of estimates follows a consistent series of steps, which are explained in this and following sections: </p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>Data are widely available on the type and location of drinking water sources used by households. Data on availability and safety of drinking water are increasingly available through a combination of household surveys and administrative sources including regulators, but definitions have yet to be standardized. The JMP has been collaborating with international survey programmes (such as the UNICEF Multiple Indicator Cluster Survey programme) and national survey programmes to develop standardized questions that address the SDG criteria for service levels, as well as a module for testing water quality in household surveys. The JMP gives high importance to extending these collaborations to reduce data gaps, ensure consistency and to progressively improve the quality and comparability of data used for national, regional and global estimates.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The production of estimates follows a consistent series of steps, which are explained in this and following sections: </p>
 <p>1. Identification of appropriate national datasets </p>
 <p>2. Extraction of data from national datasets into harmonized tables of data inputs </p>
 <p>3. Use of the data inputs to model country estimates </p>
@@ -678,16 +703,16 @@ data-event-label="Change to Sources tab"
 <p>The JMP uses original microdata to produce its own tabulations by using populations weights (or household weights multiplied by de jure household size), where possible. However, in many cases microdata are not readily accessible so relevant data are transcribed from reports available in various formats (PDFs, Word files, Excel spreadsheets, etc.) if data are tabulated for the proportion of the population, or household/dwelling. National data from each country, area, or territory are recorded in the JMP country files, with water, sanitation, and hygiene data recorded on separate sheets. Country files can be downloaded from the JMP website: <a href="https://washdata.org/data/downloads"></a>https://washdata.org/data/downloads</p>
 <p>The JMP calculates the proportion of population using improved water sources by fitting a linear regression line to all available data inputs within the reference period, starting from the year 2000. To calculate the proportion of the population using safely managed drinking water services, three ratios must be calculated: the proportion of the population using improved water supplies which are accessible on premises, have water available when needed, and are free from contamination. Those ratios are then multiplied with the proportion of the population using improved water sources, respectively. Safely managed drinking water services is taken as the minimum of these three indicators for any given year. National estimates are generated as weighted averages of the separate estimates for urban and rural areas, using population data from the most recent report of the United Nations Population Division.</p>
 <p>For more details on JMP rules and methods, please refer to recent JMP progress reports and &#x201C;JMP Methodology: 2017 update and SDG baselines&#x201D;: <a href="https://washdata.org/report/jmp-methodology-2017-update">https://washdata.org/report/jmp-methodology-2017-update</a></p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>See method of computation.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>See method of computation.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>The JMP method uses a simple regression model to generate time series estimates for all years including for years without data points. The JMP then shares all its estimates using its country consultation mechanism to get consensus from countries before publishing its estimates.</p>
@@ -695,98 +720,118 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>Regional and global estimates for individual elements of safely managed services are calculated provided (non-imputed) data are available for at least 30% of the population using improved drinking water sources within the region. In order to produce estimates for regional or global levels, imputed estimates are produced for countries lacking data. Imputed country estimates are not published and only used for aggregation. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>For safely managed drinking water services, the proportions of the regional population using improved drinking water sources that are accessible on premises, available when needed and free from contamination are calculated as weighted averages amongst populations using improved drinking water sources. The resulting ratios are multiplied by the proportion of the population using improved drinking water sources in each region. Following the approach taken for countries, the proportion of the population using safely managed drinking water services is then calculated at regional and global levels by taking a minimum of the three elements, or of two elements if either accessibility or availability is missing. These proportions are calculated separately for urban and rural areas and, where possible, a weighted average is made of rural and urban populations to produce total estimates for the region or world.</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>For safely managed drinking water services, the proportions of the regional population using improved drinking water sources that are accessible on premises, available when needed and free from contamination are calculated as weighted averages amongst populations using improved drinking water sources. The resulting ratios are multiplied by the proportion of the population using improved drinking water sources in each region. Following the approach taken for countries, the proportion of the population using safely managed drinking water services is then calculated at regional and global levels by taking a minimum of the three elements, or of two elements if either accessibility or availability is missing. These proportions are calculated separately for urban and rural areas and, where possible, a weighted average is made of rural and urban populations to produce total estimates for the region or world.</p>
 <p>For more details on JMP rules and methods: JMP Methodology: 2017 update and SDG baselines:</p>
 <p><a href="https://washdata.org/report/jmp-methodology-2017-update">https://washdata.org/report/jmp-methodology-2017-update</a></p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>The JMP has published guidance on core questions and indicators for monitoring WASH in households, schools and health care facilities (see https://washdata.org/monitoring/methods/core-questions) and provides technical support through WHO and UNICEF regional and country offices to strengthen national monitoring of SDG indicators relating to drinking water, sanitation and hygiene. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>The JMP has been instrumental in developing global norms to benchmark progress on drinking water, sanitation and hygiene, and has produced regular updates on country, regional, and global trends. The JMP regularly convenes expert task forces to provide technical advice on specific issues and methodological challenges related to WASH monitoring. WHO and UNICEF have also established a Strategic Advisory Group to provide independent advice on the continued development of the JMP as a trusted custodian of global WASH data (see https://washdata.org/how-we-work/about-jmp). </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>National statistical offices are primarily responsible for assuring the quality of national data sources. A key objective of JMP country consultations is to establish whether data sources are considered reliable and suitable for use as official national statistics. The JMP has established criteria for acceptance of national data sources based on representativeness, quality and comparability. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>See quality assurance. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>The JMP has published guidance on core questions and indicators for monitoring WASH in households, schools and health care facilities (see https://washdata.org/monitoring/methods/core-questions) and provides technical support through WHO and UNICEF regional and country offices to strengthen national monitoring of SDG indicators relating to drinking water, sanitation and hygiene. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>The JMP has been instrumental in developing global norms to benchmark progress on drinking water, sanitation and hygiene, and has produced regular updates on country, regional, and global trends. The JMP regularly convenes expert task forces to provide technical advice on specific issues and methodological challenges related to WASH monitoring. WHO and UNICEF have also established a Strategic Advisory Group to provide independent advice on the continued development of the JMP as a trusted custodian of global WASH data (see https://washdata.org/how-we-work/about-jmp). </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>National statistical offices are primarily responsible for assuring the quality of national data sources. A key objective of JMP country consultations is to establish whether data sources are considered reliable and suitable for use as official national statistics. The JMP has established criteria for acceptance of national data sources based on representativeness, quality and comparability. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>See quality assurance. </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>As of 1 July 2021, national estimates could be produced for 138 countries, areas and territories, including 114 UN member states, and covering 45% of the global population. Estimates were available for rural areas in countries representing 55% of the global rural population, and for urban areas in countries representing 56% of the global urban population.</p>
 <p><strong>Time series:</strong></p>
 <p>Time series data are available for the basic level of drinking water service since 2000. These serve as the foundation for the safely managed drinking water service indicator. Some elements of safe management (e.g. water quality) were not collected during the MDG period (from 2000 to 2015) and for some countries and regions trend analysis is not possible for all years from 2000 to 2020.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Disaggregation by geographic location (urban/rural, sub-national regions, etc.) and by socioeconomic characteristics (wealth, education, ethnicity, etc) is possible in a growing number of countries. Drinking water services can also be disaggregated by service level (i.e. no services/surface water, unimproved, limited, basic, and safely managed services). Disaggregated data are more widely available for basic and lower levels of service than for safely managed services.</p>
 <p>Disaggregation by individual characteristics (e.g. age, sex, disability, etc.) may also be made where data permit. Many of the datasets used for producing estimates are household surveys and censuses which collect information on drinking water at the household level. Such data cannot be disaggregated to provide information on intra-household variability (e.g. differential use of services by gender, age, or disability). The JMP seeks to highlight individual datasets which do allow assessment of intra-household variability, but these are not numerous enough to integrate into the main indicators estimated in JMP reports.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>JMP estimates are based on national sources of data approved as official statistics. Differences between global and national figures arise due to differences in indicator definitions and methods used in calculating national coverage estimates. In some cases, national estimates are based on the most recent data point rather than from regression on all data points as done by the JMP. In order to generate national estimates, the JMP uses data that are representative of urban and rural populations and UN population estimates and projections (UN DESA World Population Prospects: <a href="https://population.un.org/wpp/">https://population.un.org/wpp/</a>; World Urbanization Projects: <a href="https://population.un.org/wup">https://population.un.org/wup</a>) which may differ from national population estimates. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p>JMP Website: https://www.washdata.org/</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p>JMP Website: https://www.washdata.org/</p>
 <p>JMP Data: <a href="https://washdata.org/data">https://washdata.org/data</a></p>
 <p>JMP Reports: <a href="https://washdata.org/reports">https://washdata.org/reports</a></p>
 <p>JMP Methods: <a href="https://washdata.org/monitoring/methods">https://washdata.org/monitoring/methods</a></p>
@@ -821,9 +866,12 @@ data-event-label="Change to Sources tab"
 <p>The Human Right to Water and Sanitation Milestones:</p>
 <p><a href="https://www.un.org/waterforlifedecade/pdf/human_right_to_water_and_sanitation_milestones.pdf">https://www.un.org/waterforlifedecade/pdf/human_right_to_water_and_sanitation_milestones.pdf</a></p>
 <p>For queries: info@washdata.org</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -936,12 +984,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -489,74 +489,85 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>United Nations Conference on Trade and Development (UNCTAD)</p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>United Nations Conference on Trade and Development (UNCTAD)</p>
 <p>United Nations Environment Programme(UNEP)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definitions:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definitions:</strong></p>
 <p><u>Sustainability Reports</u>: </p>
 <p>For the purposes of this indicator, &#x2018;sustainability reports&#x2019; will not be limited to stand-alone sustainability reports produced by companies, but will be considered as &#x2018;reporting sustainability information&#x2019; and expanded to other forms of reporting sustainability information, such as publishing sustainability information as part of the company&#x2019;s annual reports or reporting sustainability information to the national government. This is to ensure that the focus of the indicator is on tracking the publishing of sustainability information, rather than on the practice of publishing stand-alone sustainability reports. It also ensures that the indicator interpretation is aligned with the wording of Target 12.6 which refers to promoting &#x201C;the integration of sustainability information into the annual reporting cycle of companies&#x201D;. </p>
 <p>Not every report called &#x2018;Sustainability Report&#x2019; will be counted towards the indicator. In order to be counted, they will have to comply with a &#x2018;minimum requirement&#x2019; in terms of sustainability disclosures reported on (see below).</p>
@@ -569,44 +580,51 @@ data-event-label="Change to Sources tab"
 <p>While establishing a minimum requirement in terms of reporting ensures that only companies disclosing meaningful information on all aspects of sustainability are counted towards the indicator, it could be perceived as giving the message that the minimum suffices and that companies do not need to go beyond it. </p>
 <p>Therefore, it is proposed that the methodology include an advanced level, with a further set of disclosure elements which would further provide impetus for examining and reporting on the sustainability practices and impacts of the company. These include: 1) stakeholder engagement, 2) assessing impacts beyond the company boundaries and along the supply chain; 3) supplier and consumer engagement on sustainability issues; 4) procurement and sourcing practices; and 5) environmental performance information in the form of intensity values to be monitored over time, such as consumption of energy, water or materials per unit of production or per unit of profit.</p>
 <p>Having different levels will also allow for information to be collected on the degree of reporting of different companies, including whether the same companies produce more ambitious reports, and go further in their sustainability practices with time, such as through supplier engagement. It would allow for companies who are beginning to produce sustainability reports to be counted towards the indicator once they achieve the minimum level, but provide incentive, through their inclusion in the indicator count, for them to work towards more ambitious reporting and demonstrate their progress over time.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Number of companies</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><ol>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Number of companies</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><ol>
   <li>Existing global and national repositories of sustainability reports (see tentative list in Annex II)</li>
   <li>Data provided by national governments </li>
 </ol></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><ul>
   <li>The custodian agencies propose to establish a global platform or database which would: </li>
   <li>Collate and analyse sustainability reports through advanced analytics to determine coherence with the minimum requirement and advanced level</li>
   <li>Provide country specific information </li>
@@ -623,75 +641,82 @@ data-event-label="Change to Sources tab"
   <li>While the platform will provide data for each country, this will be sent to each government for review and verification. Each government will be able to propose amendments to the data should they have further information to complement that provided by the database.</li>
   <li>While common definitions of company size, industries (defined below), etc. are required to be used by the custodian agencies for analysis and aggregation at regional and global levels and reporting to the SDGs Report, national governments may choose to use different definitions for their own analysis and reporting, such as for their Voluntary National Reviews (VNRs). Filters will be included on the online platform for the database which will allow governments and other users to filter information according to their own national definitions.</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><ol>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><ol>
   <li>First data collection: Expected in early 2020 for 2019 company reports</li>
 </ol>
 <p>Annually thereafter</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><ol>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><ol>
   <li>First reporting cycle: 2020</li>
 </ol>
 <p>Annually thereafter</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>See list of repositories and databases in Annex II, plus governments that have complementary information.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><ol>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>See list of repositories and databases in Annex II, plus governments that have complementary information.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><ol>
   <li>United Nations Conference on Trade and Development (UNCTAD) and United Nations Environment Programme (UNEP) </li>
 </ol></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>While the private sector has a critical role to play in the attainment of the SDGs, Target 12.6 and Indicator 12.6.1 are the only ones specifically monitoring the practices of private sector entities. While Indicator 12.6.1 counts the number of companies producing &#x201C;sustainability reports&#x201D;, the custodian agencies consider the indicator an important opportunity not only to monitor and promote the growth in sustainability reporting globally, but also to monitor and promote high quality reporting, promote the integration of sustainability information into the annual reporting cycle of companies, and promote sustainability practices by companies (as mentioned in the Target under which the indicator falls). Attempts have therefore been made to integrate all of these aspects into the methodology, to the extent possible.</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>While the private sector has a critical role to play in the attainment of the SDGs, Target 12.6 and Indicator 12.6.1 are the only ones specifically monitoring the practices of private sector entities. While Indicator 12.6.1 counts the number of companies producing &#x201C;sustainability reports&#x201D;, the custodian agencies consider the indicator an important opportunity not only to monitor and promote the growth in sustainability reporting globally, but also to monitor and promote high quality reporting, promote the integration of sustainability information into the annual reporting cycle of companies, and promote sustainability practices by companies (as mentioned in the Target under which the indicator falls). Attempts have therefore been made to integrate all of these aspects into the methodology, to the extent possible.</p>
 <p>Given the above, the custodian agencies propose an approach whereby:</p>
 <ul>
   <li>Rather than simply counting the number of companies publishing stand-alone sustainability reports, the indicator methodology will focus on the sustainability information published by a company, whether in the form of a stand-alone sustainability report, or integrated within other company reports, such as the annual report. Therefore, in this respect, for the purposes of this indicator, &#x2018;sustainability report&#x2019; can refer to a stand-alone sustainability report, or sustainability information reported under other formats, such as integrated into the company&#x2019;s annual report.</li>
   <li>Not every document entitled &#x2018;sustainability report&#x2019; will be counted towards the indicator, given that the quality of these reports varies greatly, and that many may not contain meaningful information on all aspects of sustainability (governance, economic, social and environmental).</li>
   <li>A minimum requirement is therefore proposed, whereby for a company to be counted towards the indicator, it must have published information on a set of key disclosure elements covering the company&#x2019;s governance practices as well as economic, social and environment impacts. This will ensure that companies who produce sustainability reports that are weak in terms of their disclosure will not be counted and should promote more rigorous reporting.</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>N/A</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>Companies will be counted towards the indicator if they publish sustainability information covering the following sustainability disclosures:</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>N/A</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>Companies will be counted towards the indicator if they publish sustainability information covering the following sustainability disclosures:</p>
 <p><strong>Minimum Requirement:</strong></p>
 <p><strong>Institutional and governance: </strong></p>
 <ul>
@@ -758,63 +783,69 @@ data-event-label="Change to Sources tab"
   <li>Local community impacts</li>
   <li>Supplier and consumer engagement on sustainability issues</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p>The analytics will be carried out in all official UN languages and a variety of other languages, but not all national languages will be covered. Therefore there could be some reports that cannot be captured for this reason. </p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p>The analytics will be carried out in all official UN languages and a variety of other languages, but not all national languages will be covered. Therefore there could be some reports that cannot be captured for this reason. </p>
 <p><strong>&#x2022;</strong> <strong>At country level</strong></p>
 <p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>The data will be aggregated at the sub-regional, regional and global levels. In doing so, double-counting will be avoided, so a company may appear under several countries, but will only be counted once at regional and global levels.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>The data will be aggregated at the sub-regional, regional and global levels. In doing so, double-counting will be avoided, so a company may appear under several countries, but will only be counted once at regional and global levels.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>Data will be made available for all member states that have companies publishing sustainability information, as defined by the indicator. </p>
 <p><strong>Time series:</strong></p>
 <p>The reporting on this indicator will be annual, given that most companies publish sustainability information on an annual basis.</p>
@@ -865,45 +896,59 @@ data-event-label="Change to Sources tab"
   <li><strong>Proportion of reports that have undergone verification/assurance of complete report</strong></li>
   <li>Complete list of accepted assurance standards and tools to be defined.</li>
 </ul></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>N/A</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p>N/A</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p>N/A</p>
 <p><strong>Annex 1: Comparison of related Reporting Frameworks used to define minimum requirement</strong></p>
 <table>
   <thead>
@@ -3146,9 +3191,12 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -3261,12 +3309,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

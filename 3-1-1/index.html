@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,162 +488,187 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The maternal mortality ratio (MMR) is defined as the number of maternal deaths during a given time period per 100,000 live births during the same time period. It depicts the risk of maternal death relative to the number of live births and essentially captures the risk of death in a single pregnancy (proxied by a single live birth).</p>
 <p><strong>Concepts:</strong></p>
 <p>In the <em>International statistical classification of diseases and related health problems (ICD) </em>WHO defines the following:</p>
 <p><strong>Maternal death</strong>: The death of a woman while pregnant or within 42 days of termination of pregnancy, irrespective of the duration and site of the pregnancy, from any cause related to or aggravated by the pregnancy or its management (from direct or indirect obstetric death), but not from unintentional or incidental causes.</p>
 <p>A death occurring during pregnancy, childbirth and puerperium (also known</p>
 <p>as a <strong>pregnancy-related death</strong>): The death of a woman while pregnant or within 42 days of termination of pregnancy, irrespective of the cause of death.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Ratio: number of maternal deaths expressed per 100,000 live births</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>Maternal deaths are classified according to the <em>International statistical classification of diseases and related health problems</em> (ICD) definition. The specific codes used under ICD-10 (the 10<sup>th</sup> revision of the ICD) to define a maternal death are: O00-O96; O98, O99 and A34.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Ratio: number of maternal deaths expressed per 100,000 live births</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>Maternal deaths are classified according to the <em>International statistical classification of diseases and related health problems</em> (ICD) definition. The specific codes used under ICD-10 (the 10<sup>th</sup> revision of the ICD) to define a maternal death are: O00-O96; O98, O99 and A34.</p>
 <p>ICD-11 (the 11th revision of the ICD) was adopted by the World Health Assembly in May 2019 and comes into effect on 1<sup>st</sup> January 2022. Further information is available at: <a href="http://www.who.int/classifications/icd/en/">www.who.int/classifications/icd/en/</a> The coding rules related to maternal mortality are being edited to fully match the new structure of ICD-11, but without changing the resulting statistics. The ICD-11 rules can be accessed in the reference guide of ICD-11, at <a href="https://icd.who.int">https://icd.who.int</a> . Forthcoming releases from 2022 onwards will transition to use ICD-11 coding. Care has been taken to ensure that the definition of maternal death used for international comparison of mortality statistics remains stable over time, but the word &#x201C;unintentional&#x201D; has been used in the ICD-11 definition in place of the word &#x201C;accidental&#x201D; which was previously used, in ICD-10.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Please see page 14 of the report WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division &#x201C;Maternal mortality: Levels and trends 2000 to 2017&#x201D; for full details. (<a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/"><u>https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</u></a>).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG) maintains an input database consisting of maternal mortality data from civil registration, population-based surveys, surveillance systems, censuses, and other specialized studies/surveys. This database is used to calculate the proportion of maternal deaths (PM) among women of reproductive age (WRA). The MMR is then calculated as MMR = PM(D/B); where &quot;D&quot; is the number of all-cause deaths among women WRA and &quot;B&quot; is the number of live births. The number of live births is based upon the World Population Prospects published by UNDP. </p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Please see page 14 of the report WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division &#x201C;Maternal mortality: Levels and trends 2000 to 2017&#x201D; for full details. (<a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/"><u>https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</u></a>).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG) maintains an input database consisting of maternal mortality data from civil registration, population-based surveys, surveillance systems, censuses, and other specialized studies/surveys. This database is used to calculate the proportion of maternal deaths (PM) among women of reproductive age (WRA). The MMR is then calculated as MMR = PM(D/B); where &quot;D&quot; is the number of all-cause deaths among women WRA and &quot;B&quot; is the number of live births. The number of live births is based upon the World Population Prospects published by UNDP. </p>
 <p>Statistical modelling is undertaken to generate comparable country, regional, and global level estimates. Adjustments are made according to the data source type (See Section 4e below). The analysis accounts for stochastic errors, sampling error in the data source, errors during data collection and processing, and other random error. The model&apos;s fit is assessed by cross-validation.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>The input datasets are updated prior to each new publication round of the MMR estimates. Source data are collected by countries, typically annually for CRVS sources, every 3-5 years for specialized reviews, every 5-7 years for population-based surveys, and every 10 years for censuses. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>The next round of MMR estimation is scheduled for publication during 2022.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National-level data providers are typically statistical offices, specialized epidemiology monitoring authorities and/or Ministry of Health.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG).</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>The input datasets are updated prior to each new publication round of the MMR estimates. Source data are collected by countries, typically annually for CRVS sources, every 3-5 years for specialized reviews, every 5-7 years for population-based surveys, and every 10 years for censuses. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>The next round of MMR estimation is scheduled for publication during 2022.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National-level data providers are typically statistical offices, specialized epidemiology monitoring authorities and/or Ministry of Health.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG).</p>
 <p> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>WHO is the custodian UN agency for the maternal mortality ratio.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>All maternal mortality indicators derived from the 2019 estimation round include a point-estimate and an 80% uncertainty interval (UI). Both point-estimates and 80% UIs should be taken into account when assessing estimates.</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>WHO is the custodian UN agency for the maternal mortality ratio.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>All maternal mortality indicators derived from the 2019 estimation round include a point-estimate and an 80% uncertainty interval (UI). Both point-estimates and 80% UIs should be taken into account when assessing estimates.</p>
 <p>For example: &#x201C;The estimated 2017 global MMR is 211 (UI 199 to 243).&#x201D;</p>
 <p>This means:</p>
 <ul>
@@ -658,11 +683,11 @@ data-event-label="Change to Sources tab"
   <li>We are 90% certain that the true 2017 global MMR is 243 or less.</li>
 </ul>
 <p>The amount of data available for estimating an indicator and the quality of that data determine the width of an indicator&#x2019;s UI. As data availability and quality improve, the certainty increases that an indicator&#x2019;s true value lies close to the point-estimate.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>The extent of maternal mortality in a population is essentially the combination of two factors:</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>The extent of maternal mortality in a population is essentially the combination of two factors:</p>
 <ol>
   <li>The risk of death in a single pregnancy or a single live birth.</li>
   <li>The fertility level (i.e. the number of pregnancies or births that are experienced by women of reproductive age).</li>
@@ -670,11 +695,11 @@ data-event-label="Change to Sources tab"
 <p>The maternal mortality ratio (MMR) is defined as the number of maternal deaths during a given time period per 100 000 live births during the same time period. It depicts the risk of maternal death relative to the number of live births and essentially captures (i) above.</p>
 <p>By contrast, the maternal mortality rate (MMRate) is calculated as the number of maternal deaths divided by person-years lived by women of reproductive age. The MMRate captures both the risk of maternal death per pregnancy or per total birth (live birth or stillbirth), and the level of fertility in the population. </p>
 <p>In addition to the MMR and the MMRate, it is possible to calculate the adult lifetime risk of maternal mortality for women in the population. An alternative measure of maternal mortality, the proportion of deaths among women of reproductive age that are due to maternal causes (PM), is calculated as the number of maternal deaths divided by the total deaths among women aged 15&#x2013;49 years.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The maternal mortality ratio can be calculated by dividing recorded (or estimated) maternal deaths by total recorded (or estimated) live births in the same period and multiplying by 100 000. Measurement requires information on pregnancy status, timing of death (during pregnancy, childbirth, or within 42 days of termination of pregnancy), and cause of death.</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The maternal mortality ratio can be calculated by dividing recorded (or estimated) maternal deaths by total recorded (or estimated) live births in the same period and multiplying by 100 000. Measurement requires information on pregnancy status, timing of death (during pregnancy, childbirth, or within 42 days of termination of pregnancy), and cause of death.</p>
 <p>The maternal mortality ratio can be calculated directly from data collected through vital registration systems, household surveys or other sources. There are often data quality problems, particularly related to the underreporting and misclassification of maternal deaths. Therefore, data are often adjusted in order to take these data quality issues into account. Some countries undertake these adjustments or corrections as part of specialized/confidential enquiries or administrative efforts embedded within maternal mortality monitoring programmes.</p>
 <p><strong>Bayesian maternal mortality estimation model (the BMat model):</strong></p>
 <p>Estimation and projection of maternal mortality indicators are undertaken using the BMat model. This model is intended to ensure that the MMR estimation approach is consistent across all countries but remains flexible in that it is based on covariate-driven trends to inform estimates in countries or country-periods with limited information; captures observed trends in countries with longer time series of observations; and takes into account the differences in stochastic and sampling errors across observations.</p>
@@ -877,11 +902,11 @@ data-event-label="Change to Sources tab"
 <p><em>v = </em>is the proportion of HIV-related deaths to women aged 15&#x2013;49 that occur during pregnancy. The value of <em>v </em>can be computed as follows: <em>v </em>= <em>c k GFR / [</em>1 + <em>c</em>(<em>k-</em>1) <em>GFR] </em>where<strong> </strong>GFR is the general fertility rate, and where<em> c </em>is the average exposure time (in years) to the risk of pregnancy-related mortality per live birth (set equal to 1 for this analysis), and where <em>k </em>is the relative risk of dying from AIDS for a pregnant versus a non-pregnant woman (reflecting both the decreased fertility of HIV-positive women and the increased mortality risk of HIV-positive pregnant women). The value of <em>k </em>was set at 0.3.</p>
 <p>u = is the fraction of pregnancy-related AIDS deaths assumed to be indirect maternal deaths. The UN MMEIG/TAG reviewed available study data on AIDS deaths among pregnant women and recommended using <em>u = </em>0.3.</p>
 <p>For observed PMs, we assumed that the total reported maternal deaths are a combination of the proportion of reported non-HIV-related maternal deaths and the proportion of reported HIV-related (indirect) maternal deaths, where the latter is given by a*v for observations with a &#x201C;pregnancy-related death&#x201D; definition and a*v*u for observations with a &#x201C;maternal death&#x201D; definition.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>Details on adjustments and formulas are published/available here:</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>Details on adjustments and formulas are published/available here:</p>
 <p>(1) Peterson E, Chou D, Gemmill A, Moller AB, Say L, Alkema L. Estimating maternal mortality using vital registration data: a Bayesian hierarchical bivariate random walk model to estimate sensitivity and specificity of reporting for population-periods without validation data. 2019 (https://arxiv.org/abs/1909.08578)</p>
 <p>(2) World Health Organization (WHO), United Nations Children&#x2019;s Fund (UNICEF), United Nations Population Fund (UNFPA), World Bank Group, United Nations Population Division. Trends in maternal mortality: 2000 to 2017: estimates by WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division. Geneva: World Health Organization; 2019 (https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/).</p>
 <p> In brief:</p>
@@ -894,11 +919,11 @@ data-event-label="Change to Sources tab"
 <p>Underreporting and misclassification in CRVS systems are accounted for with specialized studies. Model estimated country-year specific adjustment factors are obtained and applied to CRVS data.</p>
 <p>Adjustment for under-reporting in non-CRVS and non-specialised sources:</p>
 <p>It is widely believed that some form of upward adjustment is required for population-based surveys to account for deaths early in pregnancy that might not have been captured. Therefore an upwards adjustment of 10% was applied to maternal deaths that were not obtained from CRVS systems or specialized studies.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>Missing values are treated at the country-level. This is done as follows. There is no treatment of missing values at the regional level.</p>
@@ -916,81 +941,94 @@ data-event-label="Change to Sources tab"
   <li>CRVS reported all-cause deaths were used to impute missing all-cause deaths in specialized studies in which the search was within registration systems.</li>
   <li>Estimated all-cause deaths from WHO Global Health Estimates were used to impute missing all-cause deaths in miscellaneous studies.</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Regional aggregations are calculated by aggregating the national-level estimates. The size of a country is determined by the live births estimated by UNDP&#x2019;s World Population Prospects. Aggregations are currently made for each of the UN Agencies that comprise the UN MMEIG.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>The methodology used by countries to compile the data depends on the source input type (CRVS, specialised study etc). Useful references include:</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Regional aggregations are calculated by aggregating the national-level estimates. The size of a country is determined by the live births estimated by UNDP&#x2019;s World Population Prospects. Aggregations are currently made for each of the UN Agencies that comprise the UN MMEIG.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>The methodology used by countries to compile the data depends on the source input type (CRVS, specialised study etc). Useful references include:</p>
 <ul>
   <li>WHO CRVS Tools &amp; Resources: <a href="https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)">https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)</a> </li>
   <li>World Health Organization. (&#x200E;2013)&#x200E;. WHO guidance for measuring maternal mortality from a census. World Health Organization. <a href="https://apps.who.int/iris/handle/10665/87982">https://apps.who.int/iris/handle/10665/87982</a></li>
   <li>World Health Organization. (&#x200E;2004)&#x200E;. Beyond the numbers : reviewing maternal deaths and complications to make pregnancy safer. World Health Organization. <a href="https://apps.who.int/iris/handle/10665/42984">https://apps.who.int/iris/handle/10665/42984</a></li>
 </ul>
 <p>Support and guidance to national authorities may also be requested from the WHO Secretariat.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data Availability</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data Availability</strong></p>
 <p>Data availability is presented by country with the country profiles, please see here: <a href="https://www.who.int/data/gho/data/themes/maternal-and-reproductive-health/maternal-mortality-country-profiles">https://www.who.int/data/gho/data/themes/maternal-and-reproductive-health/maternal-mortality-country-profiles</a> </p>
 <p><strong>Disaggregation:</strong></p>
 <p>Current MMR estimates are reported at national, regional, and global levels. Countries and territories</p>
 <p>included in the analyses are WHO Member States with populations over 100 000, plus two territories (Puerto Rico, and Occupied Palestinian Territory including east Jerusalem).</p>
 <p>The <strong>time series</strong> available is currently 2000 to 2017.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>The maternal mortality ratio is defined as the number of maternal deaths divided by live births. However, to account for potential incompleteness of death recording in various data sources, the MMEIG first computes the fraction of deaths due to maternal causes from original data sources (referred to as the &#x201C;proportion maternal&#x201D;, or PM), and then applies that fraction to WHO estimates of total deaths among women of reproductive age to obtain an estimate of the number of maternal deaths. </p>
 <p>In other words, the following fraction is first computed from country data sources:</p>
 <p>PM= Number of maternal deaths 15-49/All female deaths at ages 15-49 </p>
@@ -1004,31 +1042,41 @@ data-event-label="Change to Sources tab"
   <li>The MMEIG uses the standardized series of live births from the United Nations Population Division, as published in World Population Prospects 2019, in the denominator of the MMR equation. To better inform the WPP, countries should discuss discrepancies directly with the UNPD. The contact address is population@un.org; this email address is monitored regularly, and messages are dispatched to the appropriate analysts for each country or concern. </li>
   <li>Statistically speaking, maternal deaths are a relatively rare event, which can lead to noisy time trends in data over time. As the goal of the MMEIG estimates is to track long term progress in reducing maternal mortality, the estimation process involves some smoothing to generate a curve that better captures changes in underlying risk</li>
 </ol></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong> <a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/">https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</a> </p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong> <a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/">https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</a> </p>
 <p><strong>References:</strong></p>
 <p>(1) World Health Organization (WHO), United Nations Children&#x2019;s Fund (UNICEF), United Nations Population Fund (UNFPA), World Bank Group, United Nations Population Division. Trends in maternal mortality: 2000 to 2017: estimates by WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division. Geneva: World Health Organization; 2019 </p>
 <p>(2) Peterson E, Chou D, Gemmill A, Moller AB, Say L, Alkema L. Estimating maternal mortality using vital registration data: a Bayesian hierarchical bivariate random walk model to estimate sensitivity and specificity of reporting for population-periods without validation data. 2019 (https://arxiv.org/abs/1909.08578).</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -1141,12 +1189,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

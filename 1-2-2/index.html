@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,73 +488,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>The World Bank, UNICEF, UNDP</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>The World Bank, UNICEF, UNDP</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The following four series are used to monitor the SDG 1.2.2. </p>
 <p>1) Official multidimensional poverty headcount, by sex, and age (% of population)</p>
 <ul>
@@ -581,56 +592,63 @@ data-event-label="Change to Sources tab"
 <p>The most commonly used method is the Alkire Foster (AF) methodology which identifies dimensions, typically health, education and living standards and several indicators in each dimension. The unit of analysis could be either the individual or the household. The individuals or households are considered as multidimensionally poor if they are deprived in multiple dimensions, exceeding certain thresholds. </p>
 <p>EU countries, North Macedonia and Turkey have a different approach to measure the multidimensional poverty using the concept of &quot;people at risk of poverty or social exclusion&quot; (AROPE) calculated by EUROSTAT using the data from EU statistics on income and living conditions (EU-SILC). AROPE consists of three indicators, and individuals are considered as &quot;at risk of poverty or social exclusion&quot; if they are &quot;at risk of poverty&quot; or &quot;severely materially deprived&quot; or &quot;living in a household with a very low work intensity&quot;. </p>
 <p>There is a multidimensional poverty measure specifically designed for children. A child is considered multidimensionally poor if s/he is simultaneously deprived in multiple dimensions. It identifies the dimensions of poverty and the indicators under each dimension, and has a similar structure to the AF methodology. However, it is different in that it focuses on the life-cycle of children, creating different sets of dimensions and indicators for different age groups (e.g., for ages 0-4, 5-11, 12-14, 15-17 years), and conducts analyses separately for each age group. In the global SDG database, the multidimensional poverty headcount (%) for the overall 0-17 age group has been used for countries reporting individual measures of child multidimensional poverty.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>The unit for the indicator 1) and 5) is the percentage of population, while the unit for the indicator 3) is the percentage of households. The unit for the indicator 2) and 4) is the proportion.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Data sources used for calculating indicators differ from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>Data collection methods used for calculating indicators differ from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>The timing of the data collection differs from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>EU countries and some Latin American countries conduct the survey and produce multidimensional indicators every year, but most of the developing countries have published multidimensional measurement only once or a few times in the last 10 years. For these countries, it is difficult to state definitely when the next data is available.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>Following is the list of national data providers responsible for producing the data at the national level.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>The unit for the indicator 1) and 5) is the percentage of population, while the unit for the indicator 3) is the percentage of households. The unit for the indicator 2) and 4) is the proportion.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Data sources used for calculating indicators differ from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>Data collection methods used for calculating indicators differ from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>The timing of the data collection differs from survey to survey in each country. For details, please refer to the official documentation through the links listed at the end.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>EU countries and some Latin American countries conduct the survey and produce multidimensional indicators every year, but most of the developing countries have published multidimensional measurement only once or a few times in the last 10 years. For these countries, it is difficult to state definitely when the next data is available.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>Following is the list of national data providers responsible for producing the data at the national level.</p>
 <table>
   <tbody>
     <tr>
@@ -1196,51 +1214,58 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>The World Bank, UNICEF, and UNDP</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>The UN Statistical Commission has adopted <a href="https://unstats.un.org/unsd/statcom/49th-session/documents/BG-Item-3a-IAEG-SDGs-DataFlowsGuidelines-E.pdf">Guidelines on Data Flows and Global Data Reporting for the SDGs</a>, which aim to establish efficient and transparent mechanisms for reporting on SDG data from national to international levels. The guidelines define a framework for national and international agencies to work together to improve the transmission and validation of SDG data at the global level. </p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>The World Bank, UNICEF, and UNDP</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>The UN Statistical Commission has adopted <a href="https://unstats.un.org/unsd/statcom/49th-session/documents/BG-Item-3a-IAEG-SDGs-DataFlowsGuidelines-E.pdf">Guidelines on Data Flows and Global Data Reporting for the SDGs</a>, which aim to establish efficient and transparent mechanisms for reporting on SDG data from national to international levels. The guidelines define a framework for national and international agencies to work together to improve the transmission and validation of SDG data at the global level. </p>
 <p>The Statistical Commission sets these guidelines under the overarching Fundamental Principles of Official Statistics and the Principles Governing International Statistical Activities, emphasizing in particular the principles of transparency, collaboration and communication, and professional and ethical standards. </p>
 <p>The guidelines mandate that SDG indicators be based on data produced and owned by national statistical systems, and that national statistical offices play a central coordinating role in the reporting process. The guidelines outline the roles and responsibilities of entities involved in the compilation of SDG data for global reporting, including National Statistics Offices (NSOs), other national institutions, and international organizations. </p>
 <p>At the national level, the NSO, as coordinator of the National Statistical System, is expected to identify a national data provider for each indicator and liaise between national entities and international custodian agencies. For SDG Indicator 1.2.2, the data provider would be the national entity that is leading the development and monitoring of a measure of national multidimensional poverty recognized as official by the government. </p>
 <p>At the global level, custodian agencies are mandated to compile national SDG indicator data, to harmonize it to ensure quality, international comparability and the computation of regional aggregates, and to report (upload) the data to the Global SDG Indicator Database. In many instances, custodian agencies also support the methodological development of indicators and provide technical assistance to under-resourced national statistical systems. Custodian agencies are expected to publish a timeline of data collection activities, to ensure transparency and sufficient time for NSOs and national data providers to respond to requests for SDG data. </p>
 <p>SDG 1.2.2 is different from other SDG indicators in two important ways. Firstly, it is nationally defined and not a uniform measure across countries, and therefore it is not internationally comparable. Secondly, its custodians are NSOs and not international agencies. Because of these characteristics, UNDP, UNICEF and the World Bank collaborate as special partner agencies to provide a platform for compiling national SDG 1.2.2 data and reporting it to the global SDG database, a function typically performed by custodian agencies. While the special partner agencies strive to ensure that reported data is official and of good quality, they do not perform any harmonization or other processing of the data. The Guidelines on Data Flows and Global Data Reporting for the SDGs also require that national metadata be submitted at the same time as SDG data, to ensure accuracy and international comparability. The variety of methodologies for SDG Indicator 1.2.2 increases the relevance of national metadata as an instrument to ensure high quality and the accuracy of reported data. The three agencies also have extensive portfolios of technical assistance and capacity support to countries for the development of their national measures of multidimensional poverty. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Poverty has traditionally been defined as the lack of money. However, the poor themselves consider their experience of poverty much more broadly. A person who is poor can suffer multiple disadvantages at the same time &#x2013; for example, they may have poor health or malnutrition, a lack of clean water or electricity, poor quality of work or little schooling. Focusing on one factor alone, such as income, is not enough to capture the true reality of poverty. Therefore, multidimensional poverty measures described above have been developed to create a more comprehensive picture by looking at multiple dimensions such as health, education, living standards. Official multidimensional poverty headcount (% population), official multidimensional poverty headcount (% of total households) and multidimensional deprivation for children (% of population under 18) are all about the headcount ratio trying to capture how many people, households, or children in the entire pool are regarded as multidimensionally poor. On the other hand, average share of weighted deprivation tries to capture the depth of multidimensional poverty. For instance, if there are 18 indicators to capture different dimensions of poverty, the person who is deprived in 5 indicators, and the person who is deprived in 15 indicators are considered to be both multidimensionally poor. However, the &apos;intensity&apos; of the poverty is different between these two people, which is captured by the average share of weighted deprivation.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>The compiled data of SDG 1.2.2 is not intended to be comparable across countries due to the methodological differences. For instance, although both AF methodology and AROPE produce the headcount ratio of people who are considered as &quot;multidimensionally poor&quot;, their definition of multidimensionality is different and cannot be compared. Also, even when countries use the same approach (e.g. AF, AROPE or MODA), the statistics are not always comparable, as key parameters to calculate the measure such as the number of indicators, the weight allocated to each indicator etc, are tailored to the country specific context. Furthermore, even in the same country, if the methodology is different, the number should not be compared. For instance, if a country calculates its official multidimensional poverty using the AF measure but the child multidimensional poverty using the MODA methodology, the measures could be very different as the dimensions and indicators used in both approaches differ significantly. In this SDG 1.2.2 monitoring, the child multidimensional poverty based on the MODA methodology is reported as a supplementary indicator and the multidimensional poverty rate is reported separately from the disaggregation of the official multidimensional poverty indicator for children. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The measurement of poverty involves two crucial steps: (1) identification &#x2013; identifying who is poor, and (2) aggregation &#x2013; compiling the individual&#x2019;s information into a summary measure. There are different ways to perform these two steps. All measures currently being estimated by countries or multilateral organizations use the counting approach. Therefore, what follows relates only to counting approaches, even if other non-counting methodologies have been developed by experts. </p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Poverty has traditionally been defined as the lack of money. However, the poor themselves consider their experience of poverty much more broadly. A person who is poor can suffer multiple disadvantages at the same time &#x2013; for example, they may have poor health or malnutrition, a lack of clean water or electricity, poor quality of work or little schooling. Focusing on one factor alone, such as income, is not enough to capture the true reality of poverty. Therefore, multidimensional poverty measures described above have been developed to create a more comprehensive picture by looking at multiple dimensions such as health, education, living standards. Official multidimensional poverty headcount (% population), official multidimensional poverty headcount (% of total households) and multidimensional deprivation for children (% of population under 18) are all about the headcount ratio trying to capture how many people, households, or children in the entire pool are regarded as multidimensionally poor. On the other hand, average share of weighted deprivation tries to capture the depth of multidimensional poverty. For instance, if there are 18 indicators to capture different dimensions of poverty, the person who is deprived in 5 indicators, and the person who is deprived in 15 indicators are considered to be both multidimensionally poor. However, the &apos;intensity&apos; of the poverty is different between these two people, which is captured by the average share of weighted deprivation.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>The compiled data of SDG 1.2.2 is not intended to be comparable across countries due to the methodological differences. For instance, although both AF methodology and AROPE produce the headcount ratio of people who are considered as &quot;multidimensionally poor&quot;, their definition of multidimensionality is different and cannot be compared. Also, even when countries use the same approach (e.g. AF, AROPE or MODA), the statistics are not always comparable, as key parameters to calculate the measure such as the number of indicators, the weight allocated to each indicator etc, are tailored to the country specific context. Furthermore, even in the same country, if the methodology is different, the number should not be compared. For instance, if a country calculates its official multidimensional poverty using the AF measure but the child multidimensional poverty using the MODA methodology, the measures could be very different as the dimensions and indicators used in both approaches differ significantly. In this SDG 1.2.2 monitoring, the child multidimensional poverty based on the MODA methodology is reported as a supplementary indicator and the multidimensional poverty rate is reported separately from the disaggregation of the official multidimensional poverty indicator for children. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The measurement of poverty involves two crucial steps: (1) identification &#x2013; identifying who is poor, and (2) aggregation &#x2013; compiling the individual&#x2019;s information into a summary measure. There are different ways to perform these two steps. All measures currently being estimated by countries or multilateral organizations use the counting approach. Therefore, what follows relates only to counting approaches, even if other non-counting methodologies have been developed by experts. </p>
 <p>The identification and aggregation of the multidimensionally poor involves the following steps:</p>
 <ol>
   <li>Define the set of relevant dimensions of poverty, and for each of these define a set of indicators.</li>
@@ -1725,67 +1750,73 @@ data-event-label="Change to Sources tab"
 <p>Estimating multidimensional child poverty follows the same steps as the other examples mentioned above: the relevant dimensions are identified, criteria to assess deprivation in each dimension are established, and deprived children in each dimension are identified. A threshold is then specified concerning the minimum number of dimensions in which a child must be deprived to be considered poor, and children above or below this threshold are then counted. Moreover, the percentage (and number) of children deprived in exactly one, exactly two, exactly three, et cetera, deprivations are reported and analyzed, as well as the overlaps or simultaneous deprivations. This makes it possible to measure the incidence, the breadth, and the severity of poverty in a simple and integrated way.</p>
 <p>For child poverty, the selection of dimensions should be based on child rights. However, not all rights constitute child poverty, as explained in the Guidelines on Human Rights and Poverty from the Office of the High Commissioner for Human Rights. According to the Conference of European Statisticians: &#x201C;Deprivation measures need to be based upon a clear and explicit theory or normative definition of poverty in order to ensure that each indicator is a valid measure, i.e. that <strong>it measures poverty and not some other related (or unrelated) concept such as wellbeing [sic] or happiness</strong>&#x201D; (Recommendation 28 (a), emphasis added).</p>
 <p>As in the case of CONEVAL (explicitly) and UBN (implicitly), no differential weights should be applied across dimensions because they are rights. All rights are equally important and cannot be substituted. This is not just emanating from the human rights approach, but it is also the case with capabilities approach, as stated by Dixon and Nussbaum (2012): &#x201C;A Capabilities Approach is generally committed to the equal protection of rights for all up to a certain threshold. Any trade-off that leaves some people below this threshold will thus be a clear failure of basic justice under a Capabilities Approach&#x201D; (Children&#x2019;s Rights and a Capabilities Approach: The Question of Special Priority, p. 554, Public Law and Legal Theory Working Paper No. 384.)</p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> This approach was proposed in several publications before being adopted widely in Latin America. See, among others: ILO (1978), Morris (1978) and Streeten et al. (1981). <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> Early examples of analyses using this approach include, for instance, Beccaria and Minuj&#xED;n (1985), Minujin, A. (1995), and Erikson, R (1989). <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> In Ireland, since 1997 &#x201C;consistent poverty&#x201D; is defined as the proportion of people who are both income-poor and cannot afford at least two of the set of items considered essential for a basic standard of living (previously 8, now 11 items are considered as essential). Since 2010, the United Kingdom applies a similar definition for one of its four policy targets on child poverty, combining low income and material deprivation (The Child Poverty Unit, 2014). See also Aaberge and Brandolini (2014). <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> The economic well-being threshold was defined with reference to a basket of basic goods and services. The minimum economic well-being threshold is the minimum required income to acquire enough food to ensure adequate nutrition. <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> Foster, Greer and Thorbecke (1976). <a href="#footnote-ref-6">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-7">6</sup><p> Following Alkire and Foster (2007). <a href="#footnote-ref-7">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-8">7</sup><p> Vietnam General Statistics Office. <a href="https://www.gso.gov.vn/en/metadata/2019/10/explanation-of-terminology-content-and-methodology-of-some-statistical-indicators-on-living-standard/">https://www.gso.gov.vn/en/metadata/2019/10/explanation-of-terminology-content-and-methodology-of-some-statistical-indicators-on-living-standard/</a> <a href="#footnote-ref-8">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-9">8</sup><p> The formula developed by Datt and featured in the 2018 Poverty and Shared Prosperity report by the World Bank, also allows for a combination of incidence and breadth of poverty. There are several other formulae which allow this combination. <a href="#footnote-ref-9">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-10">9</sup><p> For information on these measures, visit the website of the Multidimensional Poverty Peer Network (MPPN), <a href="http://www.mppn.org">www.mppn.org</a>. The MPPN was launched in 2013 to provide support to policy makers who are implementing a Multidimensional Poverty Index (MPI) or are exploring the possibility of developing multidimensional measures of poverty. <a href="#footnote-ref-10">&#x2191;</a></p></div></div></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>The treatment of missing values differs from survey to survey. For details, please refer to the official documentation through the links listed at the end.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>No estimation by international agencies has been implemented for missing values in this data.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Since the data for indicator 1.2.2 are based on the national definitions of poverty &#x2013; and the methodologies used to produce them are different, as described in the &#x201C;comments and limitations&#x201D; section, data are not comparable across countries. Thus regional and global aggregates are not produced.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>A successful measure of multidimensional poverty should be rigorous, institutionalized, sustainable, and useful. Such a measure generates credible and relevant information, and it is established as an official permanent statistic alongside traditional ones such as the income or expenditure poverty headcount and poverty gaps. As with other indicators, it is important that a clear and transparent system be in place for the regular updating of the measurement. This implies that the responsibility for these updates is assigned to an official entity and that associated costs are incorporated in the government&#x2019;s budget. Ideally, a multidimensional poverty measure could be used actively to guide policy-making (e.g. policies coordination, targeting, and policy evaluation). </p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Since the data for indicator 1.2.2 are based on the national definitions of poverty &#x2013; and the methodologies used to produce them are different, as described in the &#x201C;comments and limitations&#x201D; section, data are not comparable across countries. Thus regional and global aggregates are not produced.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>A successful measure of multidimensional poverty should be rigorous, institutionalized, sustainable, and useful. Such a measure generates credible and relevant information, and it is established as an official permanent statistic alongside traditional ones such as the income or expenditure poverty headcount and poverty gaps. As with other indicators, it is important that a clear and transparent system be in place for the regular updating of the measurement. This implies that the responsibility for these updates is assigned to an official entity and that associated costs are incorporated in the government&#x2019;s budget. Ideally, a multidimensional poverty measure could be used actively to guide policy-making (e.g. policies coordination, targeting, and policy evaluation). </p>
 <p>To make such a measure institutional and useful, it is fundamental for the government to own the process. Having the support of high-level representatives within the government, such as the president or prime minister, or ministers, grants additional legitimacy to the process and may facilitate the adoption of the measure by other levels of government and stakeholders. In addition, a high-level official may be able to bring other relevant actors into the design process and work on the institutionalization of the measure. The active participation of different ministries in the discussions and decisions throughout the process of design, namely the selection of indicators, respective cut-offs, and weights, is essential to ensure that the final measure meets the needs of policy makers in a specific country context.</p>
 <p>To make a measure long-lasting, rather than specific to a particular administration, it is useful to build consensus and a shared sense of legitimacy around the measure that transcends individual political actors. This requires that the process of developing the measure is perceived as credible, transparent, and non-partisan. Engaging key stakeholders, such as academics, opinion leaders, the opposition, and civil society representatives throughout the process is highly desirable. This should include wide consultations with the public, for example through nationally representative surveys to capture the national consensus about the minima required to satisfy different dimensions. In addition, it is important to have a well-designed communication strategy to explain the concept and the process to these different actors, allowing for channels for them to participate in the discussions about the design of the measure. Some countries have opted for involving a poverty committee that gathers experts and representatives from different sectors of society in the decision process of designing the measure. </p>
 <p>More specifically, the design of a measure of multidimensional poverty generally involves a technical process, complemented and supported by a political process. If both technical and political committees are set up, it is useful to agree on: (1) a plan of activities and timeline; (2) a schedule of regular interactions to ensure good communication; and (3) a documentation system that keeps track of all decisions and respective rationales. However, political interference in the technical process should be avoided, as recommended by the UNSD National Quality Assurance Frameworks Manual for Official Statistics.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>The data has been validated by a three-stage approach to assure its accuracy. First, the data is entered by World Bank staff assigned to each country, typically in consultation with the country NSO and/or country official documents. That data is sent to UNICEF and UNDP country officers for the validation. After integrating inputs from these three agencies, the data is sent to the SDGs focal point for each country for their final approval. For countries where the World Bank does not have any country offices, such as for OECD and EU countries, the World Bank collected the information based on data source available online, and sent it directly to the official counterparts of each country for verification.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>Initially, the data has been input by poverty economists, which has been checked carefully together with the metadata information by the central team for monitoring SDGs 1.2.2 in the World Bank. Then data has been sent to the UNDP and UNICEF for further verification.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Level of disaggregation:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>The data has been validated by a three-stage approach to assure its accuracy. First, the data is entered by World Bank staff assigned to each country, typically in consultation with the country NSO and/or country official documents. That data is sent to UNICEF and UNDP country officers for the validation. After integrating inputs from these three agencies, the data is sent to the SDGs focal point for each country for their final approval. For countries where the World Bank does not have any country offices, such as for OECD and EU countries, the World Bank collected the information based on data source available online, and sent it directly to the official counterparts of each country for verification.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>Initially, the data has been input by poverty economists, which has been checked carefully together with the metadata information by the central team for monitoring SDGs 1.2.2 in the World Bank. Then data has been sent to the UNDP and UNICEF for further verification.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Level of disaggregation:</strong></p>
 <p>Official multidimensional poverty headcount (% population) is disaggregated by sex and age. The age band for official multidimensional poverty headcount for children is mostly 0-17, but some countries have different age definition for children, such as 0-15 in El Salvador. Geographically it is disaggregated by urban and rural areas.</p>
 <p><strong>Years of Reporting:</strong></p>
 <p>Years of reporting in the SDG 1.2.2 indicators are those when the source survey has been conducted except for the AROPE. When the survey year is split into two years, the first year has been reported. In AROPE, the reference period for all dimensions along with the indicators is disseminated as well as variables related to the materially deprived items in question is the survey year, except for age, income, variables on arrears, work intensity of the household, country of birth and activity status. As far as age is concerned, it refers to the age of the respondent at the end of the income reference period. For income, the income reference period is a fixed 12-month period (such as the previous calendar or tax year) for all countries except Ireland for which the survey is continuous and income is collected for the last twelve months. Variables on arrears refer to the last 12 months, while work intensity of the household refers to the number of months that all working age household members have been working during the income reference year. For activity status, the reference year is the year previous to survey year and for the country of birth is constant.</p>
@@ -4509,47 +4540,61 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Comparability:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Comparability:</strong></p>
 <p>The compiled data of SDG 1.2.2 are not intended to be comparable across countries due to the methodological differences. For instance, although both AF methodology and AROPS produce the headcount ratio of people who are considered as &quot;multidimensionally poor&quot;, their definition of multidimensionality is different and cannot be compared. Also, even when countries use the same approach (e.g. AF, AROPE or MODA), the statistics are not always comparable, as key parameters to calculate the measure such as the number of indicators, the weight allocated to each indicator etc, are tailored to the country specific context. Furthermore, even in the same country, if the methodology is different, the number should not be compared. For instance, if a country calculates its official multidimensional poverty using the AF measure but the child multidimensional poverty using the MODA methodology, the measures could be very different as the dimensions and indicators used in both approaches differ significantly. In this SDG 1.2.2 monitoring, the child multidimensional poverty based on the MODA methodology is reported as a supplementary indicator and the multidimensional poverty rate is reported separately from the disaggregation of the official multidimensional poverty indicator for children.</p>
 <p><strong>Sources of discrepancies:</strong></p>
 <p>UNDP produces global Multidimensional Poverty Index (MPI), which is the product of multiplying multidimensional headcount and average number of deprivations using the same dimension and indicators covering more than 100 countries. However, most of these numbers are not officially approved by each country, and sometimes the nationally calculated MPI is different from the global MPI due to some difference of the parameters, therefore, in this platform, we are not reporting the global MPI.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><table>
   <thead>
     <tr>
       <th>
@@ -5224,9 +5269,12 @@ data-event-label="Change to Sources tab"
 <p>World Bank (2017). <em>Monitoring Global Poverty: Report of the Commission on Global Poverty</em>. Washington, DC: World Bank. </p>
 <p>World Bank.2018. <em>Poverty and Shared Prosperity 2018: Piecing Together the Poverty Puzzle</em>. Washington, D.C: World Bank Group.</p>
 <p>World Bank, UNDP and UNICEF 2021. A Roadmap for Countries Measuring Multidimensional Poverty. Washington, DC: World Bank. License: Creative Commons Attribution CC BY 3.0 IGO</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -5339,12 +5387,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

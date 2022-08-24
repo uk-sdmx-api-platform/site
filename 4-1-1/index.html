@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,73 +488,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>UNESCO Institute of Statistics (UIS)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>UNESCO Institute of Statistics (UIS)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>Percentage of children and young people achieving at least a minimum proficiency level in (i) reading and (ii) mathematics during primary education (Grade 2 or 3), at the end of primary education, and at the end of lower secondary education. The minimum proficiency level will be measured relative to new common reading and mathematics scales currently in development.</p>
 <p><strong>Concepts:</strong></p>
 <p><em>Minimum proficiency level (MPL)</em> is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. In September 2018, an agreement was reached on a verbal definition of the global minimum proficiency level of reference for each of the areas and domains of Indicator 4.1.1 as described in the <a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/02/MPLs_revised_doc_20190204.docx"><u>Minimum Proficiency Levels (MPLs): Outcomes of the consensus building meeting</u></a>.</p>
@@ -652,36 +663,43 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> PLD: Performance level descriptors are descriptions of the performance levels to express the knowledge and skills required to achieve each performance level, by domain. <a href="#footnote-ref-2">&#x2191;</a></p></div></div></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Percent (%)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>This indicator expresses a <em>Minimum proficiency level (MPL) </em>that is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. In September 2018, an agreement was reached on a verbal definition of the global minimum proficiency level of reference for each of the areas and domains of Indicator 4.1.1 as described in the <a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/02/MPLs_revised_doc_20190204.docx"><u>Minimum Proficiency Levels (MPLs): Outcomes of the consensus building meeting</u></a><u>.</u></p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Type of data sources: In school and population-based learning assessments.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Percent (%)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>This indicator expresses a <em>Minimum proficiency level (MPL) </em>that is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. In September 2018, an agreement was reached on a verbal definition of the global minimum proficiency level of reference for each of the areas and domains of Indicator 4.1.1 as described in the <a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/02/MPLs_revised_doc_20190204.docx"><u>Minimum Proficiency Levels (MPLs): Outcomes of the consensus building meeting</u></a><u>.</u></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Type of data sources: In school and population-based learning assessments.</p>
 <p><strong>Table 2. How reporting is structured?</strong></p>
 <table>
   <tbody>
@@ -856,26 +874,26 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The UIS compiles information from data source providers at international level and from countries at the national level.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>Data collection is rolling during the year. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Biannual UIS data release (March and September)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p><strong>School-Based assessments</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The UIS compiles information from data source providers at international level and from countries at the national level.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>Data collection is rolling during the year. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Biannual UIS data release (March and September)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p><strong>School-Based assessments</strong></p>
 <ul>
   <li><u>International Large-Scale Assessments</u> are reported to the UIS by cross-national organisations (LLECE, PASEC, TIMSS, and PIRLS). Typically, Cross-National Large-Scale Assessment, either regional or international, define various performance levels, and report as well the mean and standard deviation. They choose as well one level as the cut-off point that defines what children/youth are below or above level.</li>
   <li><u>Regional assessments</u>: PASEC, SACMEQ, ERCE, PILNA, SEAMEO.</li>
@@ -886,48 +904,55 @@ data-event-label="Change to Sources tab"
   <li>MICS6: reported to the UIS by UNICEF</li>
   <li>Pal Network: reported to the UIS by Pal Network</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>UNESCO Institute of Statistics (UIS)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>The UNESCO Institute for Statistics (UIS) is the statistical branch of the United Nations Educational, Scientific and Cultural Organization (UNESCO). The Institute produces internationally comparable data and methodologies in the fields of education, science, culture and communication for countries at all stages of development.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>UNESCO Institute of Statistics (UIS)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>The UNESCO Institute for Statistics (UIS) is the statistical branch of the United Nations Educational, Scientific and Cultural Organization (UNESCO). The Institute produces internationally comparable data and methodologies in the fields of education, science, culture and communication for countries at all stages of development.</p>
 <p>The <a href="https://www.moe.gov.bn/DocumentDownloads/Education%202030/Education2030.pdf"><u>Education 2030 Framework for Action &#xA7;100</u></a> has clearly stated that: &#x201C;<em>In recognition of the importance of harmonization of monitoring and reporting, the UIS will remain the official source of cross-nationally comparable data on education. It will continue to produce international monitoring indicators based on its annual education survey and on other data sources that guarantee international comparability for more than 200 countries and territories. In addition to collecting data, the UIS will work with partners to develop new indicators, statistical approaches and monitoring tools to better assess progress across the targets related to UNESCO&#x2019;s mandate, working in coordination with the SDG-Education 2030 SC&#x201D;.</em></p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>The indicator aims to measure the percentage of children and young people who have achieved the minimum learning outcomes in reading and mathematics during or at the end of the relevant stages of education.</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>The indicator aims to measure the percentage of children and young people who have achieved the minimum learning outcomes in reading and mathematics during or at the end of the relevant stages of education.</p>
 <p>The higher the figure, the higher the proportion of children and/or young people reaching at least minimum proficiency in the respective domain (reading or mathematic) with the limitations indicated under the &#x201C;Comments and limitations&#x201D; section.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>Learning outcomes from cross-national learning assessment are directly comparable for all countries which participated in the same cross-national learning assessments. However, these outcomes are not comparable across different cross-national learning assessments or with national learning assessments. A level of comparability of learning outcomes across assessments could be achieved by using different methodologies, each with varying standard errors. The UIS has implemented a mechanism of comparability through a consensus on the definition of the skills and contents. The comparability of learning outcomes over time has additional complications, which require, ideally, to design and implement a set of comparable items as anchors in advance. Methodological developments are underway to address comparability of assessments outcomes over time.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The number of children and/or young people at the relevant stage of education <strong>n</strong> in year <strong>t</strong> achieving or exceeding the pre-defined proficiency level in subject s expressed as a percentage of the number of children and/or young people at stage of education <strong>n</strong>, in year <strong>t</strong>, in any proficiency level in subject <strong>s</strong>.</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>Learning outcomes from cross-national learning assessment are directly comparable for all countries which participated in the same cross-national learning assessments. However, these outcomes are not comparable across different cross-national learning assessments or with national learning assessments. A level of comparability of learning outcomes across assessments could be achieved by using different methodologies, each with varying standard errors. The UIS has implemented a mechanism of comparability through a consensus on the definition of the skills and contents. The comparability of learning outcomes over time has additional complications, which require, ideally, to design and implement a set of comparable items as anchors in advance. Methodological developments are underway to address comparability of assessments outcomes over time.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The number of children and/or young people at the relevant stage of education <strong>n</strong> in year <strong>t</strong> achieving or exceeding the pre-defined proficiency level in subject s expressed as a percentage of the number of children and/or young people at stage of education <strong>n</strong>, in year <strong>t</strong>, in any proficiency level in subject <strong>s</strong>.</p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <msub>
       <mrow>
@@ -981,110 +1006,130 @@ data-event-label="Change to Sources tab"
 <p>To address the challenges posed by the limited capacity of some countries to implement cross-national, regional, and national assessments, actions have been taken by the UIS and its partners. The strategies are used according to its level of precision and following a <a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/GAML6-WD-2-Protocol-for-reporting-4.1.1_v1.pdf"><u>reporting protocol</u></a> that includes the national assessments under specific circumstances. </p>
 <p><strong>Completion status </strong></p>
 <p>Combining completion rates with learning outcomes improves our understanding of progress towards Target 4.1. Almost all information regarding learning is school-based and does not take into account the completion of the level. The inclusion of completion in the global list offers to report according to completion status. The greatest differences between the SDG 4.1.1 on learning before completion and the disaggregation by completion are found in regions or countries with lower completion and enrolment rates because the adjusted (or children completing and learning) indicator is based on a quality-adjusted completion rate. This also explains why the largest differences occur at the lower-secondary level. Globally, 47% of lower-secondary students achieve minimum proficiency in reading according to the original SDG 4.1.1 Indicator, but the value for the adjusted indicator would fall to 34% of adolescents completing lower secondary and achieving minimum proficiency in mathematics. References <a href="http://tcg.uis.unesco.org/wp-content/uploads/sites/4/2020/10/WG-GAML-3-Children-Completing-and-Learning.pdf">here</a>.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>As currently measured, most learning assessments have different methodologies for establishing a Minimum Proficiency level (MPL). The UIS and GAM establish standardization guidelines to guide the choice of the minimum thresholds based on the frameworks of each assessment program. The most critical decision is to choose in each assessment a level for international reporting that is consistent with the international definition of MPL. In the case of some assessment program, it means choosing a different level than the one the assessment program had been using for reporting results.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>As currently measured, most learning assessments have different methodologies for establishing a Minimum Proficiency level (MPL). The UIS and GAM establish standardization guidelines to guide the choice of the minimum thresholds based on the frameworks of each assessment program. The most critical decision is to choose in each assessment a level for international reporting that is consistent with the international definition of MPL. In the case of some assessment program, it means choosing a different level than the one the assessment program had been using for reporting results.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>Missing values are not imputed.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Missing values are not imputed.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Population weighted averages.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>The UIS has elaborated guidance for the countries regarding the contents, the procedures and the reporting in the Global Alliance to monitor learning <a href="http://gaml.uis.unesco.org/learning-poverty/">microsite</a>. </p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Population weighted averages.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>The UIS has elaborated guidance for the countries regarding the contents, the procedures and the reporting in the Global Alliance to monitor learning <a href="http://gaml.uis.unesco.org/learning-poverty/">microsite</a>. </p>
 <p>In terms of selection of data sources, the <a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/GAML6-WD-2-Protocol-for-reporting-4.1.1_v1.pdf">Protocol for Reporting on SDG Global Indicator 4.1.1</a> is guiding the countries about the selection of the assessment program. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>The UIS maintains a global database on learning assessments in basic education. For transparency purposes, the inclusion</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>The UIS maintains a global database on learning assessments in basic education. For transparency purposes, the inclusion</p>
 <p> of a data point in the database is completed by following a protocol and is reviewed by UIS technical focal points to ensure consistency and overall data quality, based on objective criteria to ensure that only the most recent and reliable information are included in the database.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>Information produced by the cross-national and national assessment programs are described in their manuals. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>The criteria to ensure the quality and standardization of the data are: the data sources must include adequate documentation; data values should be representative at the national population level and should otherwise be included in a footnote; data values are based on a sufficiently large sample; the learning assessment framework covers the minimum set of content in the global content framework and the proficiency levels are aligned with the minimum proficiency level (MPL) as defined in the global proficiency framework; and the data are plausible and based on trends and consistency with previously published or reported estimates for the indicator.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability: </strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>Information produced by the cross-national and national assessment programs are described in their manuals. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>The criteria to ensure the quality and standardization of the data are: the data sources must include adequate documentation; data values should be representative at the national population level and should otherwise be included in a footnote; data values are based on a sufficiently large sample; the learning assessment framework covers the minimum set of content in the global content framework and the proficiency levels are aligned with the minimum proficiency level (MPL) as defined in the global proficiency framework; and the data are plausible and based on trends and consistency with previously published or reported estimates for the indicator.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability: </strong></p>
 <p>Data available at the national level.</p>
 <p><strong>Time series: </strong></p>
 <p>Data available since 2000.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Indicator is published disaggregated by sex and completion status (Global Indicator 4.1.2). Other disaggregation such as location, socio-economic status, immigrant status, ethnicity and language of the test at home are based on data produced by international organizations administering cross learning assessment detailed in the <a href="http://tcg.uis.unesco.org/wp-content/uploads/sites/4/2020/09/metadata-4.1.1.pdf"><u>expanded metadata document</u></a> and validated by countries. Parity indexes are estimated in the reporting of Indicator 4.5.1.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Not yet applicable. Data are reported at the national level only.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p>Minimum Proficiency Levels</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p>Minimum Proficiency Levels</p>
 <p><a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/07/MPLs_revised_doc_20190506_v2.pdf"><u>http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/07/MPLs_revised_doc_20190506_v2.pdf</u></a></p>
 <p>Costs and Benefits of Different Approaches to Measuring the Learning Proficiency of Students (SDG Indicator 4.1.1)</p>
 <p><a href="http://uis.unesco.org/sites/default/files/documents/ip53-costs-benefits-approaches-measuring-proficiency-2019-en.pdf"><u>http://uis.unesco.org/sites/default/files/documents/ip53-costs-benefits-approaches-measuring-proficiency-2019-en.pdf</u></a></p>
@@ -1092,9 +1137,12 @@ data-event-label="Change to Sources tab"
 <p><a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/GAML6-WD-2-Protocol-for-reporting-4.1.1_v1.pdf"><u>http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/GAML6-WD-2-Protocol-for-reporting-4.1.1_v1.pdf</u></a></p>
 <p>Global Proficiency Framework for Reading and Mathematics - Grade 2 to 6</p>
 <p><a href="http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/Global-Proficiency-Framework-18Oct2019_KD.pdf"><u>http://gaml.uis.unesco.org/wp-content/uploads/sites/2/2019/05/Global-Proficiency-Framework-18Oct2019_KD.pdf</u></a></p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -1207,12 +1255,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

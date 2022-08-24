@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,279 +488,327 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>International Telecommunication Union (ITU)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>International Telecommunication Union (ITU)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The proportion of individuals who own a mobile telephone, by sex is defined as the &#x2018;proportion of individuals who own a mobile telephone, by sex&#x2019;.</p>
 <p><strong>Concepts:</strong></p>
 <p>An individual owns a mobile cellular phone if he/she has a mobile cellular phone device with at least one active SIM card for personal use. Mobile cellular phones supplied by employers that can be used for personal reasons (to make personal calls, access the Internet, etc.) are included. Individuals who have only active SIM card(s) and not a mobile phone device are excluded. Individuals who have a mobile phone for personal use that is not registered under his/her name are also included. An active SIM card is a SIM card that has been used in the last three months.</p>
 <p>A mobile (cellular) telephone refers to a portable telephone subscribing to a public mobile telephone service using cellular technology, which provides access to the PSTN. This includes analogue and digital cellular systems and technologies such as IMT-2000 (3G) and IMT-Advanced. Users of both postpaid subscriptions and prepaid accounts are included.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Percentage of individuals</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>For countries that collect this data through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (urban/rural), by sex, by age group, by educational level (ISCED), by labour force status (ILO), and by occupation (ISCO). ITU collects data for all of these breakdowns from countries.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>This indicator is a newly developed ITU indicator that was approved by the World Telecommunication/ICT Indicators Symposium (WTIS) in 2014. The indicator&#x2019;s definition and methodology were developed under the coordination of ITU, through its Expert Groups and following an extensive consultation process with countries. Data for the proportion of individuals owning a mobile phone were first collected in 2015, through an annual questionnaire that ITU sends to national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic).</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Percentage of individuals</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>For countries that collect this data through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (urban/rural), by sex, by age group, by educational level (ISCED), by labour force status (ILO), and by occupation (ISCO). ITU collects data for all of these breakdowns from countries.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>This indicator is a newly developed ITU indicator that was approved by the World Telecommunication/ICT Indicators Symposium (WTIS) in 2014. The indicator&#x2019;s definition and methodology were developed under the coordination of ITU, through its Expert Groups and following an extensive consultation process with countries. Data for the proportion of individuals owning a mobile phone were first collected in 2015, through an annual questionnaire that ITU sends to national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic).</p>
 <p>Data are usually not adjusted, but discrepancies in the definition, age scope of individuals, reference period or the break in comparability between years are noted in a data note. For this reason, data are not always strictly comparable.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>ITU collects data on this indicator through an annual questionnaire that it sends to the heads of the national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic). </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Data are released twice a year, In July and December, in the <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/wtid.aspx">Wor&#x200B;ld Telecommun&#x200B;ic&#x200B;ation/ICT Indicators Database&#x200B;</a>&#x200B;.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National Statistical Offices (NSOs).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>ITU</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Mobile phone networks have spread rapidly over the last decade and the number of mobile-cellular subscriptions is quasi equal to the number of the people living on earth. However, not every person uses, or owns a mobile-cellular telephone. Mobile phone ownership, in particular, is important to track gender equality since the mobile phone is a personal device that, if owned and not just shared, provides women with a degree of independence and autonomy, including for professional purposes. A number of studies have highlighted the link between mobile phone ownership and empowerment, and productivity growth.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>ITU collects data on this indicator through an annual questionnaire that it sends to the heads of the national statistical offices (NSO). In this questionnaire, through which ITU already collects a number of ICT indicators, ITU collects absolute values. The percentages are calculated a-posteriori. The survey methodology is verified to ensure that it meets adequate statistical standards. The data are verified to ensure consistency with previous years&#x2019; data and other relevant country-level indicators (ICT and economic). </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Data are released twice a year, In July and December, in the <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/wtid.aspx">Wor&#x200B;ld Telecommun&#x200B;ic&#x200B;ation/ICT Indicators Database&#x200B;</a>&#x200B;.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National Statistical Offices (NSOs).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>ITU</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Mobile phone networks have spread rapidly over the last decade and the number of mobile-cellular subscriptions is quasi equal to the number of the people living on earth. However, not every person uses, or owns a mobile-cellular telephone. Mobile phone ownership, in particular, is important to track gender equality since the mobile phone is a personal device that, if owned and not just shared, provides women with a degree of independence and autonomy, including for professional purposes. A number of studies have highlighted the link between mobile phone ownership and empowerment, and productivity growth.</p>
 <p>Existing data on the proportion of women owning a mobile phone suggest that less women than men own a mobile phone. This indicator highlights the importance of mobile phone ownership to track and to improve gender equality, and monitoring will help design targeted policies to overcome the gender divide. The collection of this indicator was proposed by the Task Group on Gender of the Partnership on Measuring ICT for Development.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>While the data on the &#x2018;proportion of individuals who own a mobile telephone&#x2019; currently only exist for very few countries, ITU is encouraging all countries to collect data on this indicator through national household surveys and the indicator is expected to be added to the Partnership on Measuring ICT for Development&#x2019;s Core List of Indicators. The number of countries with official data for this indicator is expected to increase in the near future.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>Countries can collect data on this indicator through national household surveys. This indicator is calculated by dividing the total number of in-scope individuals who own a mobile phone by the total number of in-scope individuals.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>No adjustments are made to the data submitted by countries.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>While the data on the &#x2018;proportion of individuals who own a mobile telephone&#x2019; currently only exist for very few countries, ITU is encouraging all countries to collect data on this indicator through national household surveys and the indicator is expected to be added to the Partnership on Measuring ICT for Development&#x2019;s Core List of Indicators. The number of countries with official data for this indicator is expected to increase in the near future.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>Countries can collect data on this indicator through national household surveys. This indicator is calculated by dividing the total number of in-scope individuals who own a mobile phone by the total number of in-scope individuals.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>No adjustments are made to the data submitted by countries.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>Missing values are not estimated. </p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Missing values are not estimated.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>ITU has not produced any global estimates but is working on a methodology to produce global estimates for this indicator.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>ITU has not produced any global estimates but is working on a methodology to produce global estimates for this indicator.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
 <p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>Overall, the indicator is available for more than 80 countries at least from one survey.</p>
 <p><strong>Time series:</strong></p>
 <p>2015 onwards</p>
 <p><strong>Disaggregation:</strong></p>
 <p>For countries that collect this indicator through a national household survey, and if data allow breakdown and disaggregation, the indicator can be broken down not only by sex but also by region (urban/rural), by age group, by educational level, by labour force status, and by occupation.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>None. ITU uses the data provided by countries, including the in-scope population that is used to calculate the percentages.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong></p>
 <p>http://www.itu.int/en/ITU-D/Statistics/Pages/default.aspx</p>
 <p><strong>References:</strong></p>
 <p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
 <p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -873,12 +921,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

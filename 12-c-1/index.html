@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,73 +488,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>United Nations Environment Programme (UNEP)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definitions:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>United Nations Environment Programme (UNEP)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definitions:</strong></p>
 <p>In order to measure fossil fuel subsidies at the national, regional and global level, three sub-indicators are recommended for reporting on this indicator: 1) direct transfer of government funds; 2) induced transfers (price support); and as an optional sub-indicator 3) tax expenditure, other revenue foregone, and under-pricing of goods and services. The definitions of the IEA Statistical Manual (IEA, 2005) and the Agreement on Subsidies and Countervailing Measures (ASCM) under the World Trade Organization (WTO) (WTO, 1994) are used to define fossil fuel subsidies. Standardised descriptions from the United Nations Statistical Office&#x2019;s Central Product Classification should be used to classify individual energy products. It is proposed to drop the wording &#x201C;as a proportion of total national expenditure on fossil fuels&#x201D; and thus this indicator is effectively &quot;Amount of fossil fuel subsidies per unit of GDP (production and consumption)&quot;.</p>
 <p><strong>Concepts:</strong></p>
 <p>The concepts and definitions used in the methodology have been based on existing international frameworks and glossaries.</p>
@@ -565,106 +576,120 @@ data-event-label="Change to Sources tab"
   <li>Include non-energy uses with monitoring optional for the measuring of this indicator.</li>
   <li>Additional details are provided in the methodological document entitled, Measuring Fossil Fuel Subsidies in the Context of the Sustainable Development Goals.</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Percentage of GDP</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Percentage of GDP</p>
 <p>Constant United States dollars per capita</p>
 <p>Millions of constant United States dollars</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Direct transfers are generally reported in government budgets, and well documented in sectoral and Finance Ministries, broken down by programme if not by fuel. Those that meet the SNA definition of &#x201C;subsidies&#x201D; &#x2013; i.e., subsidies on products, and other subsidies on production &#x2013; can also be found in a country&#x2019;s System of National Accounts. Budget documents are publicly available for most countries. The degree to which information on individual programmes is itemized in those reports is highly variable, however. Support to corporations involved in energy production or transformation may sometimes be found in their annual reports, for example. In some cases, researchers may be able to obtain unpublished data from state-owned energy enterprises directly.</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Direct transfers are generally reported in government budgets, and well documented in sectoral and Finance Ministries, broken down by programme if not by fuel. Those that meet the SNA definition of &#x201C;subsidies&#x201D; &#x2013; i.e., subsidies on products, and other subsidies on production &#x2013; can also be found in a country&#x2019;s System of National Accounts. Budget documents are publicly available for most countries. The degree to which information on individual programmes is itemized in those reports is highly variable, however. Support to corporations involved in energy production or transformation may sometimes be found in their annual reports, for example. In some cases, researchers may be able to obtain unpublished data from state-owned energy enterprises directly.</p>
 <p>Induced transfer are measured by calculating the price-gap between the producer or consumer price and a reference price, and multiplying that differential by the affected volume produced or consumed. </p>
 <p>Measuring the value of special features introduced into the tax code to favour certain industries or activities of those industries (such as investment in productive capital) can be a complex endeavour. Some countries do this exercise already, and report the annual value of those tax features in their periodic tax-expenditure reports. Where that is not the case, the analysist must construct a model and estimate the difference in the revenues that would be owed to the government under the baseline conditions and with the special tax feature.</p>
 <p>Fossil fuel subsidies should be monitored on an annual basis.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The data will be collected by UN Environment through electronic reporting being developed by UN Environment. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>Annual with reporting on induced transfers starting in 2018. Data on direct transfers and tax revenue foregone will be in place by 2020.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Annual.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><ol>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The data will be collected by UN Environment through electronic reporting being developed by UN Environment. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>Annual with reporting on induced transfers starting in 2018. Data on direct transfers and tax revenue foregone will be in place by 2020.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Annual.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><ol>
   <li>National Focal Points from National Statistical Systems.</li>
   <li>International Estimate Providers &#x2013; OECD, IEA and IMF</li>
 </ol></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>United Nations Environment Programme (UNEP)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>UNEP has been assigned the role of custodian agency for this indicator under the SDG process.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>The scale and impact of fossil fuel subsidies presents both challenges and opportunities for achieving the goals of the 2030 Agenda on Sustainable Development. For one, the use of fossil fuels, and their promotion through subsidy schemes, adversely affects the ability of governments to attain key goals, such as reducing poverty, improving health, reaching gender equality, providing access to energy, and addressing climate change. At the same time, there is a need to ensure that poor households that are particularly vulnerable to price increases obtain or retain access to energy. Energy-dependent sectors of the economy can be affected, particularly by abrupt changes in prices. Any successful reform therefore requires careful analysis and adapted mitigation measures. For another, reallocating fossil fuel subsidies to sectors that are relevant for development could give a boost to reaching the SDGs. </p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>United Nations Environment Programme (UNEP)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>UNEP has been assigned the role of custodian agency for this indicator under the SDG process.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>The scale and impact of fossil fuel subsidies presents both challenges and opportunities for achieving the goals of the 2030 Agenda on Sustainable Development. For one, the use of fossil fuels, and their promotion through subsidy schemes, adversely affects the ability of governments to attain key goals, such as reducing poverty, improving health, reaching gender equality, providing access to energy, and addressing climate change. At the same time, there is a need to ensure that poor households that are particularly vulnerable to price increases obtain or retain access to energy. Energy-dependent sectors of the economy can be affected, particularly by abrupt changes in prices. Any successful reform therefore requires careful analysis and adapted mitigation measures. For another, reallocating fossil fuel subsidies to sectors that are relevant for development could give a boost to reaching the SDGs. </p>
 <p>Awareness and understanding of existing subsidies based on credible data is necessary to increase transparency and inform decision-making. Reporting against a global indicator measuring consumer and producer fossil fuel subsidies provides a global picture that encompasses both consumer and producer subsidies. It allows for tracking of national and global trends and serve as an important guide for policy-making. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>The monitoring and reporting of SDG Indicator 12.c.1 requires capacity within national statistical systems to evaluate direct and indirect transfers of government funds. Data collection by the statistical agencies from the sectoral ministries and state-owned enterprises, including at the sub-national level, which depends on their capacity. There is a need for additional training materials and sharing of experiences on the indicator.</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>The monitoring and reporting of SDG Indicator 12.c.1 requires capacity within national statistical systems to evaluate direct and indirect transfers of government funds. Data collection by the statistical agencies from the sectoral ministries and state-owned enterprises, including at the sub-national level, which depends on their capacity. There is a need for additional training materials and sharing of experiences on the indicator.</p>
 <p>The indicator methodology utilizes a phased monitoring to allow for countries with different capacities to engage in monitoring 12.c.1. The two phases include global monitoring based on price gap estimates plus national monitoring of direct and indirect transfers with optional monitoring of tax expenditure foregone.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>It is proposed that countries report on the subsidy categories listed below as sub-indicators.</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>It is proposed that countries report on the subsidy categories listed below as sub-indicators.</p>
 <p>- Direct transfers; </p>
 <p>- Induced transfers (reporting on regulated prices and calculation of the total amount);</p>
 <p>- Tax expenditure, other government revenue foregone and under-pricing of goods and services, including risk (optional). </p>
@@ -673,112 +698,135 @@ data-event-label="Change to Sources tab"
 <p>Estimates of subsidies to consumers observable through price-gaps (i.e., consumer price support) have been calculated by several international organizations (IADB, IEA, and IMF), covering different geographic regions and time-periods. The three organisations that produce these estimates use roughly the same approach, which can be summed up by the following equation:</p>
 <p>Consumer price support = (adjusted net-of-tax reference unit price &#x2013; local net-of-tax unit price) x units subsidized</p>
 <p>Estimates are based on reference prices on import (or export) parity prices using the price of a product at the nearest international hub, adjusted for quality differences if necessary, plus (or minus) the cost of freight and insurance to the net importer (or back to the net exporter), plus the cost of internal distribution and marketing and any value-added tax (VAT). For tradable commodities (mainly coal, crude oil, and petroleum products), the reference prices are based on the spot price at the nearest international hub &#x2013; e.g., the United States, Northwest Europe, or Singapore.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>Not applicable.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>Not applicable.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>Missing values are not imputed.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>A price gap method is used to create national, regional and global estimates.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>The methodology used for the calculation of the regional/global aggregates from the country values is available at <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p><a href="https://wedocs.unep.org/bitstream/handle/20.500.11822/28111/FossilFuel.pdf?sequence=1&amp;isAllowed=y">https://wedocs.unep.org/bitstream/handle/20.500.11822/28111/FossilFuel.pdf?sequence=1&amp;isAllowed=y</a> </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>See 4.d.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>See 4.d.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>See 4.d.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>The methodology used for the calculation of the regional/global aggregates from the country values is available at <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p><a href="https://wedocs.unep.org/bitstream/handle/20.500.11822/28111/FossilFuel.pdf?sequence=1&amp;isAllowed=y">https://wedocs.unep.org/bitstream/handle/20.500.11822/28111/FossilFuel.pdf?sequence=1&amp;isAllowed=y</a> </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>See 4.d.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>See 4.d.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>See 4.d.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>An initial baseline data assessment of data availability demonstrates that 99 countries have existing data which can be used to estimate fossil fuels from direct transfer and many of these countries also have information on tax revenue foregone. Data on induced transfers using a price gap approach is available for all UN member states.</p>
 <p><strong>Time series:</strong></p>
 <p>The reporting on this indicator will follow an annual cycle with initial reporting on induced transfers starting in 2018. Data on direct transfers and tax revenue foregone will be in place by 2020.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Because of the risk of double counting, the dataset should therefore provide disaggregated information on individual subsidy measures that will be reported as sub-indicators by category of subsidies.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Country level data and price gap data are shown separately, thus this should not apply. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p>UNEP (2019). Measuring Fossil Fuel Subsidies in the Context of the Sustainable Development Goals.</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p>UNEP (2019). Measuring Fossil Fuel Subsidies in the Context of the Sustainable Development Goals.</p>
 <p>UN Environment, Nairobi, Kenya</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -891,12 +939,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

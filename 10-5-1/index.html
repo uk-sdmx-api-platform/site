@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,73 +488,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>International Monetary Fund</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>International Monetary Fund</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>Seven FSIs are included as SDG indicators for 10.5.1 and expressed as percent.</p>
 <p>1 - Regulatory Tier 1 capital to assets </p>
 <p>2 - Regulatory Tier 1 capital to risk-weighted assets </p>
@@ -590,86 +601,100 @@ data-event-label="Change to Sources tab"
 <p><em>Liquid assets to short-term liabilities:</em> Liquid assets include currency and deposits and other financial assets available on demand or within three months as well as securities traded in liquid markets that can be converted into cash with minimal change in value. The denominator is short-term elements of debt liabilities plus net market value of financial derivatives position. The latter is calculated as financial derivatives liability position minus financial derivative asset position. Short-term refers to three months and should be defined on a remaining maturity basis. If remaining maturity is not available, original maturity can be used as an alternative. </p>
 <p> </p>
 <p><em>Net open position in foreign exchange to capital:</em> Net open position should be calculated in accordance with the guidance in the <em>2019 FSIs Guide</em>. The denominator is total regulatory capital as defined above.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Percent (%). Data in the sectoral financial statements and other memorandum series used to calculate FSIs are in national currency. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>Classification of financial positions by type of financial instruments and by counterpart sector, and definition of financial corporations subsectors are provided in the 2019 FSIs Guide. <a href="http://data.imf.org/FSI"><u><br></u>http://data.imf.org/FSI</a>.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>The common source data are data reported by banks for supervisory purposes. They include balance sheet, income statement, and memorandum series (such as Tier 1 capital, Tier 2 capital, risk-weighted assets).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>The national central banks or supervisory agencies collect these data for supervisory purposes, and these data are used for FSIs compilation. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>There are no predetermined deadlines. Countries report new FSIs as soon as they are ready</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Data are disseminated on the IMF website as soon as they are ready.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>The national central banks or bank supervisory agencies.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>The FSIs are compiled at national level, but not at region or global level. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p><strong>Regulatory Tier 1 capital to assets</strong>: It is a measure of leverage indicating the extent to which assets are funded by other than own funds.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Percent (%). Data in the sectoral financial statements and other memorandum series used to calculate FSIs are in national currency. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>Classification of financial positions by type of financial instruments and by counterpart sector, and definition of financial corporations subsectors are provided in the 2019 FSIs Guide. <a href="http://data.imf.org/FSI"><u><br></u>http://data.imf.org/FSI</a>.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>The common source data are data reported by banks for supervisory purposes. They include balance sheet, income statement, and memorandum series (such as Tier 1 capital, Tier 2 capital, risk-weighted assets).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>The national central banks or supervisory agencies collect these data for supervisory purposes, and these data are used for FSIs compilation. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>There are no predetermined deadlines. Countries report new FSIs as soon as they are ready</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Data are disseminated on the IMF website as soon as they are ready.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>The national central banks or bank supervisory agencies.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>The FSIs are compiled at national level, but not at region or global level. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p><strong>Regulatory Tier 1 capital to assets</strong>: It is a measure of leverage indicating the extent to which assets are funded by other than own funds.</p>
 <p> </p>
 <p><strong>Regulatory Tier 1 capital to risk-weighted assets</strong>: It measures the capital adequacy of deposit takers based on the core capital concept of the Basel Committee on Banking Supervision (BCBS). Capital adequacy and availability ultimately determine the degree of robustness of financial institutions to withstand shocks to their balance sheets. </p>
 <p> </p>
@@ -682,124 +707,147 @@ data-event-label="Change to Sources tab"
 <p><strong>Liquid assets to short-term liabilities</strong>: It is a liquidity ratio and is intended to capture the liquidity mismatch of assets and liabilities and provides an indication of the extent to which deposit takers can meet the short-term withdrawal of funds without facing liquidity problems. </p>
 <p> </p>
 <p><strong>Net open position in foreign exchange to capital</strong>: This FSI is an indicator of sensitivity to market risk, which is intended to gauge deposit takers&#x2019; exposure to exchange rate risk compared with capital. It measures the mismatch of foreign currency asset and liability positions to assess the vulnerability to exchange rate movements.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>Data for most countries are reported on a monthly or quarterly basis; a few countries report some FSI data on a semi-annual or annual basis and with a lag of more than a quarter. As of end-December 2021, there were more than 140 FSI reporters. Some countries&#x2019; compilation practices deviate from the <em>2019 FSIs Guide</em> methodology in certain areas and are documented in the FSIs metadata also posted on the IMF&#x2019;s FSIs website. Reporting countries provide all or most core FSIs and some encouraged FSIs that can be used to support the interpretation of these seven SDG indicators. FSIs data and metadata reported by countries are available at http://data.imf.org/FSI.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The calculation of the seven FSIs is detailed in section on &#x201C;Definition&#x201D; above. The common source data are data reported by banks to supervisory authorities, which are usually the FSI compilers.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>Data adjustments are not applicable to FSIs.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>Data for most countries are reported on a monthly or quarterly basis; a few countries report some FSI data on a semi-annual or annual basis and with a lag of more than a quarter. As of end-December 2021, there were more than 140 FSI reporters. Some countries&#x2019; compilation practices deviate from the <em>2019 FSIs Guide</em> methodology in certain areas and are documented in the FSIs metadata also posted on the IMF&#x2019;s FSIs website. Reporting countries provide all or most core FSIs and some encouraged FSIs that can be used to support the interpretation of these seven SDG indicators. FSIs data and metadata reported by countries are available at http://data.imf.org/FSI.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The calculation of the seven FSIs is detailed in section on &#x201C;Definition&#x201D; above. The common source data are data reported by banks to supervisory authorities, which are usually the FSI compilers.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>Data adjustments are not applicable to FSIs.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
 <p>It is not relevant to the seven FSIs. Source data are collected by banks&#x2019; supervisory authorities and complete reporting is usually mandated by law.</p>
 <p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
 <p>The FSIs are not compiled at regional or global levels.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>The FSIs are not aggregated at regional levels.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>The <em>2019 FSIs Guide</em> is available at http://data.imf.org/FSI.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>Country authorities are responsible for the quality of FSIs and underlying data.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>The FSIs are not aggregated at regional levels.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>The <em>2019 FSIs Guide</em> is available at http://data.imf.org/FSI.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>Country authorities are responsible for the quality of FSIs and underlying data.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><ul>
   <li>The common source data are data reported by banks for supervisory purposes. National supervisors check and validate the data that are used by national FSI compilers. IMF staff check data in the sectoral financial statements and memorandum series reported by countries and address data issues in collaboration with the national compilers whenever such issues are flagged by the validation and consistency checks implemented in the IMF data processing system before processing the data and posting the indicators on the FSIs website. </li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>Quality assessment is done as part of the validation and consistency checks implemented in the IMF data processing system. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>Quality assessment is done as part of the validation and consistency checks implemented in the IMF data processing system. </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>As of end-December 2021, there were more than 140 FSI reporters. All reporters provide all or most core FSIs and some encouraged FSIs that can be used to support the interpretation of these seven SDG indicators. </p>
 <p><strong>Time series:</strong></p>
 <p>Data for most countries are reported on a monthly or quarterly basis (about 15 percent and 75 percent of total number of reporting countries, respectively); a few countries report data on a semi-annual basis and with a lag of more than a quarter. Data are available as far back as 2005 for some countries.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>The FSIs disseminated by the IMF are weighted averages for the sector as a whole (e.g., deposit takers, other financial corporations, nonfinancial corporations). Data for parent banks, their branches, and relevant subsidiaries are consolidated; if this consolidation is not possible or not applicable, an explanation is provided in the metadata. There are no disaggregated breakdowns of the FSIs reported to the IMF.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Data calculated by other sources could be different from the FSIs disseminated by the IMF due to the use of different compilation methodology and/or institutional coverage. The FSIs disseminated by the IMF are compiled based on the <em>2019</em> <em>FSIs Guide</em>, which provides the guidance on the concepts and definitions, and sources and techniques for the compilation of cross-country comparable data to support national and international surveillance of financial systems. To facilitate identification of possible discrepancies across countries, reporters provide metadata to the IMF that detail departures from recommendations in the <em>2019</em> <em>FSIs Guide</em>.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong> http://data.imf.org/FSI</p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong> http://data.imf.org/FSI</p>
 <p><strong>References: </strong></p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -912,12 +960,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

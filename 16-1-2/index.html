@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -494,73 +494,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definitions:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definitions:</strong></p>
 <p>This indicator is defined as the total count of conflict-related deaths divided by the total population, expressed per 100,000 population.</p>
 <p>&#x2018;Conflict&#x2019; is defined as &#x2018;armed conflict&#x2019; in reference to a terminology enshrined in International Humanitarian Law (IHL), and applied to situations based on the assessment of the United Nations (UN) and other internationally mandated entities. &#x2018;Conflict-related deaths&#x2019; refers to direct and indirect deaths associated to armed conflict. &#x2018;Population&#x2019; refers to total resident population in a given situation of armed conflict included in the indicator, in a given year. Population data are derived from annual estimates produced by the UN Population Division.</p>
 <p><strong>Concepts:</strong></p>
@@ -574,165 +585,185 @@ data-event-label="Change to Sources tab"
 <p>Indirect deaths are deaths resulting from a loss of access to essential goods and services (e.g. economic slowdown, shortages of medicines or reduced farming capacity that result in lack of access to adequate food, water, sanitation, health care and safe conditions of work) that are caused or aggravated by the situation of armed conflict.</p>
 <p>By definition, these deaths should be separated from other violent deaths which are, in principle, not connected to the situation of armed conflict (e.g. intentional and non-intentional homicides, self-defence, self-inflicted), but are still relevant to the implementation and measurement of SDG target 16.1. The International Classification of Crime for Statistical Purposes (ICCS) provides definitional elements and classification of violent deaths both related and not related to armed conflict. The ICCS provides indications on how to distinguish between intentional homicides, killings directly related to war/armed conflict and killings that amount to war crimes.</p>
 <p><em>&#x2018;Cause&#x2019;</em> refers to the weapons, means and methods that caused the conflict-related deaths. The categories for the disaggregation of the &#x2018;c<em>ause of death</em>&#x2019; for direct deaths build on the WHO International Classification of Diseases (ICD-11), ICCS, the International Committee of the Red Cross (ICRC) overview of weapons regulated by IHL, UN practice and OHCHR casualty recording. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Examples of sources include eyewitnesses; hospital records; community elders, religious and civil leaders; security forces and conflict parties; local authorities; prosecution offices, police and other law enforcement agencies, health authorities; government departments and officials; UN and other international organizations; detailed media reports and other relevant civil society organizations. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>Data will be compiled from data providers that have been systematically assessed by OHCHR for their application of the methodology for the indicator, including their ability to provide credible and reliable data and apply the verification standard based on the technical guidance.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Examples of sources include eyewitnesses; hospital records; community elders, religious and civil leaders; security forces and conflict parties; local authorities; prosecution offices, police and other law enforcement agencies, health authorities; government departments and officials; UN and other international organizations; detailed media reports and other relevant civil society organizations. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>Data will be compiled from data providers that have been systematically assessed by OHCHR for their application of the methodology for the indicator, including their ability to provide credible and reliable data and apply the verification standard based on the technical guidance.</p>
 <p>The mechanisms, bodies and institutions that have the mandate, capacity and independence to document and investigate alleged killings related to conflict will be prioritized. From this perspective, UN entities working on casualty recording in the framework of their operations (e.g. peacekeeping operations, commissions of inquiry, humanitarian operations and human rights offices), national human rights institutions and national statistical offices will generally be prioritized. OHCHR will conduct capacity-building activities and collaborate, including in validating data, with relevant stakeholders at national, regional and international levels. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>In 2019, OHCHR plans to collect data on documented direct conflict-related deaths of civilians for 2015, 2016, 2017</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>In 2020, OHCHR plans to report data on documented direct conflict-related deaths of civilians for 2015, 2016, 2017</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National and international data providers that have been assessed by OHCHR for their application of the indicator&#x2019;s associated methodology, including UN entities working on casualty recording in the framework of their operations (e.g. peacekeeping operations, commissions of inquiry, humanitarian operations and human rights offices), national human rights institutions, national statistical offices and relevant civil society organizations. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>This indicator measures the prevalence of armed conflicts and their impact in terms of loss of life. Together with the indicator 16.1.1 on intentional homicide, they measure violent deaths that occur in all countries of the world (intentional homicides) and in situations of armed conflict (conflict-related deaths). </p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>In 2019, OHCHR plans to collect data on documented direct conflict-related deaths of civilians for 2015, 2016, 2017</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>In 2020, OHCHR plans to report data on documented direct conflict-related deaths of civilians for 2015, 2016, 2017</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National and international data providers that have been assessed by OHCHR for their application of the indicator&#x2019;s associated methodology, including UN entities working on casualty recording in the framework of their operations (e.g. peacekeeping operations, commissions of inquiry, humanitarian operations and human rights offices), national human rights institutions, national statistical offices and relevant civil society organizations. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>Office of the United Nations High Commissioner for Human Rights (OHCHR)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>This indicator measures the prevalence of armed conflicts and their impact in terms of loss of life. Together with the indicator 16.1.1 on intentional homicide, they measure violent deaths that occur in all countries of the world (intentional homicides) and in situations of armed conflict (conflict-related deaths). </p>
 <p>The 2030 Agenda for Sustainable Development seeks to strengthen universal peace and commits to redouble efforts to resolve or prevent conflict. It recognizes that there can be no sustainable development without peace and no peace without sustainable development. Counting deaths occurring in situations of armed conflict is therefore essential to the measurement of the Agenda, including and beyond its Goal 16. Monitoring conflict-related deaths is also necessary to help protect civilians and other potential victims, ensure respect of humanitarian and human rights standards, and understand the patterns and consequences of armed conflicts in order to prevent future armed conflicts.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>In situations of armed conflict, a large share of deaths may not be reported. Often, normal registration systems are heavily affected by the presence of armed conflict. Additionally, actors on both sides of an armed conflict may have incentives for misreporting, deflating or inflating casualties. In most instances, the number of cases reported will depend on access to conflict zones, access to information, motivation and perseverance of both international and national actors, such as UN peace missions and other internationally mandated entities, national institutions (e.g. national statistical offices, national human rights institutions) and relevant civil society organizations. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The indicator is calculated as the total count of conflict-related deaths divided by the total resident population in a given situation of armed conflict for the year, expressed per 100,000 population, occurring within the preceding 12 months. </p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>In situations of armed conflict, a large share of deaths may not be reported. Often, normal registration systems are heavily affected by the presence of armed conflict. Additionally, actors on both sides of an armed conflict may have incentives for misreporting, deflating or inflating casualties. In most instances, the number of cases reported will depend on access to conflict zones, access to information, motivation and perseverance of both international and national actors, such as UN peace missions and other internationally mandated entities, national institutions (e.g. national statistical offices, national human rights institutions) and relevant civil society organizations. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The indicator is calculated as the total count of conflict-related deaths divided by the total resident population in a given situation of armed conflict for the year, expressed per 100,000 population, occurring within the preceding 12 months. </p>
 <p>The total count of conflict-related deaths includes first the total number of documented direct deaths, using all potentially relevant data sources (e.g. UN peace missions, national statistical offices, national human rights institutions, civil society organisations). Documented cases provide verified information on each direct conflict-related death. </p>
 <p>Depending on the magnitude of conflict-related deaths, capacity of data providers, and other contextual and practical considerations, the methodology will seek to produce statistical estimates of undocumented deaths directly linked to the armed conflict. Further work will be needed to cover deaths indirectly linked to the armed conflict, e.g. loss of access to essential goods and services. Existing data must be updated regularly and retrospectively reflecting the emergence of new data over time.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
 <p>As a starting point, the indicator will only include documented conflict-related direct deaths. If there are no documented conflict-related direct deaths for a particular situation of armed conflict, no estimate of missing values will be computed. Specific to the nature of this indicator, it is worth noting that depending on the availability and quality of data over the course of the armed conflict, statistical surveys and techniques may be used to estimate undocumented direct conflict-related deaths, adding the statistical estimates to the documented cases.</p>
 <p>National datasets with sufficiently well documented direct deaths constitute an essential source for further statistical analysis and estimations of undocumented direct deaths. As indirect deaths would typically fall outside the scope of common casualty recording practices (that rather focus on direct deaths), they may be captured using additional administrative records and/or statistical surveys allowing the measurement of excess mortality, namely all the deaths (direct and indirect) that would not have occurred in time of peace, as defined and measured by epidemiologists. </p>
 <p>The methodology for these estimations will be further developed in collaboration with national statistical offices, national human rights institutions, UN entities and civil society organizations.</p>
 <p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
 <p>Same as country level.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Regional aggregates are calculated as the total number of documented direct conflict-related deaths, divided by the total resident population of armed conflict, for the region, expressed in 100, 000 population. The global aggregate is calculated as the total number of documented direct conflict-related deaths for all the situations of armed conflict, divided by the total resident population of all situations of armed conflict, included in the indicator, expressed in 100, 000 population.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Regional aggregates are calculated as the total number of documented direct conflict-related deaths, divided by the total resident population of armed conflict, for the region, expressed in 100, 000 population. The global aggregate is calculated as the total number of documented direct conflict-related deaths for all the situations of armed conflict, divided by the total resident population of all situations of armed conflict, included in the indicator, expressed in 100, 000 population.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><ul>
   <li>link to technical guidance note</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><ul>
   <li>link to technical guidance note</li>
   <li>OHCHR will conduct a validation process of the list of situations of armed conflict to be considered for the indicator every year. OHCHR will systematically assess each potentially relevant data provider for its application of the methodology for the indicator, including its ability to provide credible and reliable data and apply verification standards. This will be done through metadata exchange, capacity building and continued exchange with data providers.</li>
 </ul></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>At the time of drafting the present metadata for the reclassification request to the IAEG-SDG, data documented direct conflict-related deaths of civilians have been collected for most of the deadliest situations of armed conflict in the SDG regions of Southern Asia, Western Asia, Sub-Saharan Africa, Northern Africa, Latin America and Europe. Not all of these data, however, have been collated for global SDGs indicators reporting purposes. </p>
 <p><strong>Time series:</strong></p>
 <p>2015 - 2017</p>
@@ -744,45 +775,59 @@ data-event-label="Change to Sources tab"
   <li>Cause of death (Heavy weapons and explosive munitions; Planted explosives and unexploded ordnance (UXO); Small arms and light weapons;; Incendiary; Chemical, Biological, Radiological, Nuclear (CBRN); Electromagnetic weapons; Less lethal weapons; Denial of access to/destruction of objects indispensable to survival; Accidents related to conflict; Use of objects and other means; Unknown)</li>
   <li>Status of the person killed (Civilian, Other protected person, Member of armed forces, Person directly participating in hostilities, Unknown) </li>
 </ul></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Discrepancies might exist between national definitions, international statistical and legal standards, coverage and quality of data, according to the mandate, methods and capacity of data providers. Capacity building for the implementation of the methodology for this indicator by data providers will improve quality and consistency across data sets.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong></p>
 <p>http://www.ohchr.org/EN/Issues/Indicators/Pages/HRIndicatorsIndex.aspx</p>
 <p><strong>References:</strong></p>
 <p>INTERNATIONAL COMMITTEE OF THE RED CROSS (2009). Typology of Armed Conflicts in International Humanitarian Law: Legal Concepts and Actual Situations. Volume 91 Numbers 873. Available from <a href="https://www.icrc.org/en/doc/assets/files/other/irrc-873-vite.pdf">https://www.icrc.org/en/doc/assets/files/other/irrc-873-vite.pdf</a>.</p>
@@ -795,9 +840,12 @@ data-event-label="Change to Sources tab"
 <p>WORLD HEALTH ORGANIZATION (2018). International Classification of Diseases 11<sup>th</sup> Revision. Available from <a href="https://icd.who.int/">https://icd.who.int/</a> .</p>
 <p>UNITED NATIONS (2012). Human Rights Indicators: A Guide to Measurement and Implementation. New York and Geneva. Available from <a href="http://www.ohchr.org/EN/Issues/Indicators/Pages/HRIndicatorsIndex.aspx">http://www.ohchr.org/EN/Issues/Indicators/Pages/HRIndicatorsIndex.aspx</a> .</p>
 <p>HUMAN RIGHTS DATA AND ANALYSIS GROUP (2014). Updated Statistical Analysis of Documentation of Killings in the Syrian Arab Republic, Commissioned by the Office of the UN High Commissioner for Human Rights. Available from <a href="https://www.ohchr.org/Documents/Countries/SY/HRDAGUpdatedReportAug2014.pdf">https://www.ohchr.org/Documents/Countries/SY/HRDAGUpdatedReportAug2014.pdf</a> .</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -910,12 +958,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

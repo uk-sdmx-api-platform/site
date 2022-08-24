@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -490,109 +490,127 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>International Organization for Migration</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definitions:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>International Organization for Migration</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definitions:</strong></p>
 <p>10.7.3 data are currently based on the International Organization for Migration (IOM)&#x2019;s Missing Migrants Project (MMP), which since 2014 has documented incidents in which migrants (regardless of legal status) have died or are presumed to have died in the process of migration towards an international destination. This selection of data is based on the currently available sources and can provide some insight into the risks of migration routes. </p>
 <p>The MMP aims to provide information on the risks linked to irregular migration movement between states, and thus its definition of a migrant death excludes migrants who die in countries where they have established residence. Deaths in refugee housing, immigration detention centres or camps are similarly excluded unless the death can clearly be linked to a hazard of the journey, e.g. a sickness contracted en route. MMP data also exclude deaths that occur during deportation or after forced return to a migrant&#x2019;s homeland or third country, as well as deaths more loosely connected with migrants&#x2019; precarious or irregular status, such as those resulting from labour exploitation or resulting from lack of access to health care. Disappearances of migrants en route in which there is no presumption of death (i.e. excluding shipwrecks and potential drownings) are also excluded, as missing persons reports are not publicly available, nor are they typically available disaggregated by migratory status.</p>
 <p><strong>Concepts:<em> </em></strong></p>
 <p><em>(based on the IOM Glossary on Migration, 2019)</em></p>
 <p>Migrant - An umbrella term, not defined under international law, reflecting the common lay understanding of a person who moves away from his or her place of usual residence, whether within a country or across an international border, temporarily or permanently, and for a variety of reasons. The term includes a number of well-defined legal categories of people, such as migrant workers; persons whose particular types of movements are legally-defined, such as smuggled migrants; as well as those whose status or means of movement are not specifically defined under international law, such as international students.</p>
 <p>Irregular migration - Movement of persons that takes place outside the laws, regulations, or international agreements governing the entry into or exit from the State of origin, transit or destination.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Number of people who have died during international migration</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>n/a - no national or international standards used barring UNSD geographical standards</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>See <a href="#_Table_1:_Missing">Table 1</a> for details on data sources used in the MMP database. For each incident recorded, the specific source of information is listed in the &#x2018;Information Source&#x2019; variable, along with a link to the report if relevant, in the downloadable dataset available from <a href="https://missingmigrants.iom.int/downloads">mmp.iom.int/downloads</a>.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Number of people who have died during international migration</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>n/a - no national or international standards used barring UNSD geographical standards</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>See <a href="#_Table_1:_Missing">Table 1</a> for details on data sources used in the MMP database. For each incident recorded, the specific source of information is listed in the &#x2018;Information Source&#x2019; variable, along with a link to the report if relevant, in the downloadable dataset available from <a href="https://missingmigrants.iom.int/downloads">mmp.iom.int/downloads</a>.</p>
 <h5>Table 1: Missing Migrants Project data sources and their strengths and weaknesses</h5>
 <table>
   <tbody>
@@ -839,131 +857,144 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>Data are collected by IOM staff based at IOM&#x2019;s Global Migration Data Analysis Centre and in its Regional Offices on a daily basis. Disaggregated, incident-based data is uploaded to a public dataset twice weekly at <a href="https://missingmigrants.iom.int">https://missingmigrants.iom.int</a>. This consists of (1) receiving information from the key stakeholders/data sources listed in <a href="#_Table_1:_Missing">Table 1</a>; (2) monitoring online news and social media for relevant reports; and (3) verifying incidents as discussed in the &#x2018;quality assurance&#x2019; section below. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>On-going (updated twice weekly to <a href="https://missingmigrants.iom.int/downloads">public dataset</a>).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Disaggregated, incident-based data collected by the Missing Migrants Project is updated on a daily basis and is uploaded to <a href="https://missingmigrants.iom.int/downloads">missingmigrants.iom.int</a> twice weekly, typically on Tuesdays and Fridays. The aggregated SDG 10.7.3 dataset us updated annually. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>No country currently collects / reports comprehensive data on deaths during migration at a national level on their territory / area of effective control. As such, MMP and therefore the 10.7.3 dataset rely on other data providers &#x2013; including local authorities, NGOs, surveys with survivors and other sources &#x2013; which are outlined in <a href="#_Table_1:_Missing">Table 1</a>.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>International Organization for Migration (IOM)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>IOM began documenting deaths during migration in 2014 under the Missing Migrants Project. SDG indicator 10.7.3 was adopted in March 2020 as one measure of &#x2018;safe&#x2019; migration called for in Target 10.7.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>MMP data bears witness to the ongoing global crisis of deaths during migration and is the only global database on this topic. It is hoped that by counting and accounting for these deaths, almost all of which are linked to irregular migration, policymakers, academics, and the general public will be better informed about the risks linked to unsafe migration. While data by itself might not bring about change, it can provide the necessary evidence to prompt action. However, it is likely that the data currently available is a vast undercount of the true number of lives lost during migration. </p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>Data are collected by IOM staff based at IOM&#x2019;s Global Migration Data Analysis Centre and in its Regional Offices on a daily basis. Disaggregated, incident-based data is uploaded to a public dataset twice weekly at <a href="https://missingmigrants.iom.int">https://missingmigrants.iom.int</a>. This consists of (1) receiving information from the key stakeholders/data sources listed in <a href="#_Table_1:_Missing">Table 1</a>; (2) monitoring online news and social media for relevant reports; and (3) verifying incidents as discussed in the &#x2018;quality assurance&#x2019; section below. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>On-going (updated twice weekly to <a href="https://missingmigrants.iom.int/downloads">public dataset</a>).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Disaggregated, incident-based data collected by the Missing Migrants Project is updated on a daily basis and is uploaded to <a href="https://missingmigrants.iom.int/downloads">missingmigrants.iom.int</a> twice weekly, typically on Tuesdays and Fridays. The aggregated SDG 10.7.3 dataset us updated annually. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>No country currently collects / reports comprehensive data on deaths during migration at a national level on their territory / area of effective control. As such, MMP and therefore the 10.7.3 dataset rely on other data providers &#x2013; including local authorities, NGOs, surveys with survivors and other sources &#x2013; which are outlined in <a href="#_Table_1:_Missing">Table 1</a>.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>International Organization for Migration (IOM)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>IOM began documenting deaths during migration in 2014 under the Missing Migrants Project. SDG indicator 10.7.3 was adopted in March 2020 as one measure of &#x2018;safe&#x2019; migration called for in Target 10.7.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>MMP data bears witness to the ongoing global crisis of deaths during migration and is the only global database on this topic. It is hoped that by counting and accounting for these deaths, almost all of which are linked to irregular migration, policymakers, academics, and the general public will be better informed about the risks linked to unsafe migration. While data by itself might not bring about change, it can provide the necessary evidence to prompt action. However, it is likely that the data currently available is a vast undercount of the true number of lives lost during migration. </p>
 <p>There are few official sources of data on deaths during migration, and as of 2021, none at a national level. Thus, MMP data are best understood as a minimum estimate of the true number of migrant deaths worldwide. Data are collected from a variety of sources outlined in <a href="#_Table_1:_Missing">Table 1</a>. In the disaggregated public database available from the <a href="https://missingmigrants.iom.int">MMP website</a>, there are several variables which indicate the information source and quality of each incident involving death(s) during migration. </p>
 <p>An important consideration in MMP data are that these information sources change over time. These changes are linked to the large geography covered by the relatively small and under-resourced MMP team, but also to narratives of migration &#x2018;crises&#x2019; that shape public attention and therefore data availability from media and non-governmental sources. This politicization of irregular migration &#x2013; notably the criminalization of search and rescue actors in the Mediterranean and United States-Mexico border &#x2013; profoundly affect access to relevant information and thus data coverage, quality and comparability. With this in mind, MMP data are best understood as indicative of the global nature of migrant fatalities and should not be used to identify trends over time.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>Data on deaths during migration are fragmented, incomplete and scattered among many different sources. The MMP database provides a global overview of data on migrant fatalities, but it is primarily dependent on secondary sources of information. Information is gathered from diverse sources such as official records &#x2013; including from coast guards and medical examiners &#x2013; and other sources such as media reports, non-governmental organizations (NGOs), and surveys and interviews of migrants. The reliability and completeness of data vary greatly from region to region, from country to country and over time. In addition to undercounting the absolute number of deaths which occur during migration, MMP data also lack identifying information in many cases (incl. age, gender, country of origin) which are vital to providing closure to families searching for loved ones lost during migration.</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>Data on deaths during migration are fragmented, incomplete and scattered among many different sources. The MMP database provides a global overview of data on migrant fatalities, but it is primarily dependent on secondary sources of information. Information is gathered from diverse sources such as official records &#x2013; including from coast guards and medical examiners &#x2013; and other sources such as media reports, non-governmental organizations (NGOs), and surveys and interviews of migrants. The reliability and completeness of data vary greatly from region to region, from country to country and over time. In addition to undercounting the absolute number of deaths which occur during migration, MMP data also lack identifying information in many cases (incl. age, gender, country of origin) which are vital to providing closure to families searching for loved ones lost during migration.</p>
 <p><a href="#_Table_1:_Missing">Table 1</a> illustrates the wide variety of sources used in the MMP database, and gives some insight into the various advantages and disadvantages of each. For example, some of the data are collected directly from migrants who have survived a deadly incident, typically via NGO/humanitarian actors or surveys of migrants. Eyewitness testimonies are often the only source of information about migrant deaths, especially those which occur on remote routes or in the many areas of the world where no official data on deaths during migration is collected. However, eyewitness testimonies are nearly impossible to verify on remote routes, and there is a small risk of double-counting if migrants report the same incident when asked whether they are aware of a death or disappearance. Data from surveys are similarly invaluable due to the dearth of data on this topic, but are not representative as they typically capture only a small fraction of the total number of people on the move who may have witnessed a death. Similarly, media reports often provide information on migrant deaths that are not available from official sources, but may offer limited or even conflicting information, especially as the investigation and identification of bodies may occur after an initial report. As no State currently produces national-level data on deaths during migration (neither within their own territory nor of their nationals abroad) MMP data only represents documented, verified incidents and is best considered a very conservative estimate of the true number of lives lost during migration.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>MMP is an incident-based database, meaning that each entry in the database represents a single occurrence in which an individual or group of individuals die during migration or at international borders in one particular place and time.<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup> This approach is used instead of a body/human remains-based database due to the fact that many migrant bodies are never recovered, particularly in overseas routes such as the Mediterranean Sea, or remote terrains such as the Sahara Desert. MMP and therefore indicator 10.7.3 does not produce statistical estimates of the true number of lives lost given the extreme variance in completeness (coverage and quality) of data.</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>MMP is an incident-based database, meaning that each entry in the database represents a single occurrence in which an individual or group of individuals die during migration or at international borders in one particular place and time.<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup> This approach is used instead of a body/human remains-based database due to the fact that many migrant bodies are never recovered, particularly in overseas routes such as the Mediterranean Sea, or remote terrains such as the Sahara Desert. MMP and therefore indicator 10.7.3 does not produce statistical estimates of the true number of lives lost given the extreme variance in completeness (coverage and quality) of data.</p>
 <p>The MMP database provides a global overview of data on migrant fatalities, but it is primarily dependent on secondary sources of information. Information is gathered from diverse sources such as official records &#x2013; including from coast guards and medical examiners &#x2013; and other sources such as media reports, non-governmental organizations (NGOs), and surveys and interviews of migrants. When a record is added to the MMP database, often it is a result of bringing together several different data sources. For example, a death may be reported first by the media, and subsequently there may be a government statement confirming what happened, and then migrant families and community members may offer information on the likely identity of the person who died. The reliability and completeness of data vary greatly from region to region, from country to country and over time. <a href="#_Table_1:_Missing">Table 1</a> gives an overview of the data sources used and their various pros and cons. The MMP dataset cites the data source for each entry in its fully disaggregated incident-based database, available for download from <a href="https://missingmigrants.iom.int/downloads">missingmigrants.iom.int/downloads</a>.</p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> In some cases, official statistics are not disaggregated by incident, in which case the entry will be marked as a &#x201C;cumulative total&#x201D; in the disaggregated dataset on the <a href="https://missingmigrants.iom.int">MMP website</a>. <a href="#footnote-ref-2">&#x2191;</a></p></div></div></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>As the MMP database is incident-based and includes only verified deaths. No adjustments are made for Indicator 10.7.3.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p>As MMP data is incident-based and reflects only deaths during migration which can be verified, data are highly incomplete. Missing values at the country and regional level are left blank for reporting MMP data for SDG 10.7.3.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Regional aggregates represent the sum of the number of migrant deaths recorded in that region, per the UNSG geoscheme. The location (region, route, etc.) categorizations used in the MMP database are described <a href="https://missingmigrants.iom.int/regional-classification">here</a>.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>IOM guidance for countries on 10.7.3 will be published in 2022</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>MMP data are managed a team of experts based at IOM&#x2019;s Global Migration Data Centre. Data cleaning is undertaken at least once annually. Incidents recorded in the MMP database are generally quite timely; however, given the dearth of official information on deaths during migration the database as a whole is both highly incomplete and individual records often have low accuracy, especially in terms of the identities of those who die during migration. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>As the data contained in the MMP dataset comes from a wide variety of sources, all data are verified by a team at IOM&#x2019;s Global Migration Data Analysis Centre to ensure that:</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>As the MMP database is incident-based and includes only verified deaths. No adjustments are made for Indicator 10.7.3.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p>As MMP data is incident-based and reflects only deaths during migration which can be verified, data are highly incomplete. Missing values at the country and regional level are left blank for reporting MMP data for SDG 10.7.3.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Regional aggregates represent the sum of the number of migrant deaths recorded in that region, per the UNSG geoscheme. The location (region, route, etc.) categorizations used in the MMP database are described <a href="https://missingmigrants.iom.int/regional-classification">here</a>.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>IOM guidance for countries on 10.7.3 will be published in 2022</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>MMP data are managed a team of experts based at IOM&#x2019;s Global Migration Data Centre. Data cleaning is undertaken at least once annually. Incidents recorded in the MMP database are generally quite timely; however, given the dearth of official information on deaths during migration the database as a whole is both highly incomplete and individual records often have low accuracy, especially in terms of the identities of those who die during migration. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>As the data contained in the MMP dataset comes from a wide variety of sources, all data are verified by a team at IOM&#x2019;s Global Migration Data Analysis Centre to ensure that:</p>
 <ul>
   <li>The incident reported meets MMP&#x2019;s definition of a death during migration</li>
   <li>The information contained in the report is accurate and complete</li>
   <li>All new incidents reported are checked against existing records to reduce the likelihood of double counting.</li>
 </ul>
 <p>The latter process usually consists of searching for separate reports on the same incident which contain similar information, including contacting the relevant authorities for confirmation where possible. The &#x2018;Source quality&#x2019; variable indicates the reliability of the information reported (see <a href="#_Table_2:_Variables">Table 2</a> for details).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>Data on deaths during migration remains highly incomplete to the point that statistical assessment is nearly impossible. For this reason, the fully disaggregated MMP database includes a &#x2018;source quality&#x2019; indicator that indicates the type of information source for each incident involving a migrant death recorded. Little information is typically known about the overall population of irregular migrants in many countries, let alone of those on the move irregularly or the risks to life that they face on their journeys. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>Data on deaths during migration remains highly incomplete to the point that statistical assessment is nearly impossible. For this reason, the fully disaggregated MMP database includes a &#x2018;source quality&#x2019; indicator that indicates the type of information source for each incident involving a migrant death recorded. Little information is typically known about the overall population of irregular migrants in many countries, let alone of those on the move irregularly or the risks to life that they face on their journeys. </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>The MMP is a global project, and as such collects data in all regions of the world. However, as mentioned throughout this document, MMP data is only as robust as the data sources available, meaning that for remote geographies less data tends to be available. Generally, MMP&#x2019;s coverage is strongest in the Mediterranean and the US-Mexico border, whereas for the rest of the world data coverage is believed to be poor. However, coverage should not be equated with data quality, as for example in the case of the Mediterranean Sea, many remains are lost and consequently the data on the identities (age, gender, country of origin, name) of the decedents is highly incomplete.</p>
 <p><strong>Time series:</strong></p>
 <p>2014-present (ongoing data collection)</p>
@@ -1182,45 +1213,59 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>As the MMP dataset does relies on multiple types of data sources, there may be discrepancies about specific cases with government reports. The full incident-based dataset, including all sources, can be downloaded for comparison and verification at <a href="https://missingmigrants.iom.int/downloads">missingmigrants.iom.int/downloads</a>.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL: </strong><a href="https://missingmigrants.iom.int/"><strong>missingmigrants.iom.int</strong></a></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL: </strong><a href="https://missingmigrants.iom.int/"><strong>missingmigrants.iom.int</strong></a></p>
 <p><strong>References: </strong></p>
 <ul>
   <li>Garcia Borja, A. and J. Black (2021) <a href="https://www.fmreview.org/issue66/garciaborja-black">Measuring migrant deaths and disappearances</a>. In <em>Forced Migration Review </em>66:58-60.</li>
@@ -1228,9 +1273,12 @@ data-event-label="Change to Sources tab"
   <li>See full list of Missing Migrants Project publications at <a href="https://missingmigrants.iom.int/publications">mmp.iom.int/publications</a>.</li>
   <li>IOM guidance for countries on 10.7.3 will be published in 2022</li>
 </ul></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -1343,12 +1391,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

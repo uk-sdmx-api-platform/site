@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -488,73 +488,84 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>United Nations Office on Drugs and Crime (UNODC)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>United Nations Office on Drugs and Crime (UNODC)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>This indicator is defined as the percentage of persons who paid at least one bribe (gave a public official money, a gift or counter favour) to a public official, or were asked for a bribe by these public officials, in the last 12 months, as a percentage of persons who had at least one contact with a public official in the same period.</p>
 <p><strong>Concepts:</strong></p>
 <p>In the International Classification of Crime for Statistical Purposes (ICCS), bribery is defined as: &#x2018;Promising, offering, giving, soliciting, or accepting an undue advantage to or from a public official or a person who directs or works in a private sector entity, directly or indirectly, in order that the person act or refrain from acting in the exercise of his or her official duties&#x2019;. This definition is based on definitions of bribery of national public officials, bribery of foreign public officials and official of international organisations and bribery in the private sector that are contained in the United Nations Convention against Corruption (articles 15, 16, and 21).</p>
@@ -562,162 +573,182 @@ data-event-label="Change to Sources tab"
 <p>The concept of undue advantage is operationalized by reference to giving of money, gifts or provision of a service requested/offered by/to a public official in exchange for a special treatment.</p>
 <p>This indicator captures the often called &#x2018;administrative bribery&#x2019;, which is often intended as the type of bribery affecting citizens in their dealings with public administrations and/or civil servants.</p>
 <p>For this indicator, public official refers to persons holding a legislative, executive, administrative or judicial office. In the operationalization of the indicator, a list of selected officials and civil servants is used.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>This indicator is derived from household surveys on corruption experience and/or victimisation surveys with a module on bribery.</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>This indicator is derived from household surveys on corruption experience and/or victimisation surveys with a module on bribery.</p>
 <p>The indicator refers to individual experience of the respondent, who is randomly selected among the household members, while experience of bribery by other members is not to be included. Experience of bribery is collected through a series of questions on concrete contacts and experiences of bribery with a list of public official and civil servants.</p>
 <p>The denominator refers only to those persons that had at least one direct interaction with a public official/civil servant as they form the population group at risk of experiencing bribery.</p>
 <p>UNODC collects data on the prevalence of bribery through its annual data collection (UN-CTS). The data collection through the UN-CTS is facilitated by a network of over 130 national Focal Points appointed by responsible authorities.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>At international level, data are collected by UNODC through the annual UN-CTS data collection. Data are on bribery indicator are sent to UNODC by member states, usually through national UN-CTS Focal Points (around 130 appointed Focal Points as of 2016) which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). When necessary, other data sources are used, including from websites, publications, other forms of communication.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>At international level, data are collected by UNODC through the annual UN-CTS data collection. Data are on bribery indicator are sent to UNODC by member states, usually through national UN-CTS Focal Points (around 130 appointed Focal Points as of 2016) which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). When necessary, other data sources are used, including from websites, publications, other forms of communication.</p>
 <p>Data for SDG monitoring will be sent to countries for consultation prior to publication. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>III-IV quarter 2016 </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>II quarter 2017 </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>Data on bribery are sent to UNODC by member states, usually through national UN-CTS Focal Points which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). The primary source of data on the indicator of bribery experience is usually the institution responsible for surveys on corruption/victimisation surveys (National Statistical Office, Anti-Corruption Agency, etc.).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p><strong>Name:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>III-IV quarter 2016 </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>II quarter 2017 </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>Data on bribery are sent to UNODC by member states, usually through national UN-CTS Focal Points which in most cases are national institutions responsible for data production in the area of crime and criminal justice (National Statistical Offices, Ministry of Interior, Ministry of Justice, etc.). The primary source of data on the indicator of bribery experience is usually the institution responsible for surveys on corruption/victimisation surveys (National Statistical Office, Anti-Corruption Agency, etc.).</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p><strong>Name:</strong></p>
 <p>UNODC</p>
 <p><strong>Description:</strong></p>
 <p>UNODC, through the annual UN Crime Trends Survey (UN-CTS)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Corruption is an antonym of equal accessibility to public services and of correct functioning of the economy; as such, it has a negative impact on fair distribution of resources and development opportunities. Besides, corruption erodes public trust in authorities and the rule of law; when administrative bribery becomes a recurrent experience of large sectors of the population and businesses, its negative effects have an enduring negative impact on the rule of law, democratic processes and justice. By providing a direct measure of the experience of bribery, this indicator provides an objective metric of corruption, a yardstick to monitor progress in the fight against corruption</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>In the experience of several surveys conducted at national and international level, the so-called bribery prevalence rate is defined as the percentage of persons who paid at least one bribe (gave a public official money, a gift or counter favour) to a public official in the last 12 months, as a percentage of persons who had at least one contact with a public official in the same period. In this formulation the share of population who was asked a bribe but did not give it is not included. Available data at national and international level usually refers to this formulation, while the collection of data according to the formulation included in the SDG framework will depend on the adaptation of relevant survey tools and the calculation by national authorities. It is expected that data according to the current definition will become available gradually.</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Corruption is an antonym of equal accessibility to public services and of correct functioning of the economy; as such, it has a negative impact on fair distribution of resources and development opportunities. Besides, corruption erodes public trust in authorities and the rule of law; when administrative bribery becomes a recurrent experience of large sectors of the population and businesses, its negative effects have an enduring negative impact on the rule of law, democratic processes and justice. By providing a direct measure of the experience of bribery, this indicator provides an objective metric of corruption, a yardstick to monitor progress in the fight against corruption</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>In the experience of several surveys conducted at national and international level, the so-called bribery prevalence rate is defined as the percentage of persons who paid at least one bribe (gave a public official money, a gift or counter favour) to a public official in the last 12 months, as a percentage of persons who had at least one contact with a public official in the same period. In this formulation the share of population who was asked a bribe but did not give it is not included. Available data at national and international level usually refers to this formulation, while the collection of data according to the formulation included in the SDG framework will depend on the adaptation of relevant survey tools and the calculation by national authorities. It is expected that data according to the current definition will become available gradually.</p>
 <p>On a more general level, it should be noted that this indicator provides solid information on the experience of bribery occurring in the interaction between citizens and the public sector in the context of service delivery/transactions, while it does not cover other forms of corruption, such as &#xB4;grand corruption&#xB4;, trading in influence or abuse of power</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>The indicator is calculated as the total number of persons who paid at least one bribe to a public official in the last 12 months, or were asked for a bribe in the same period, over the total number of persons who had at least one contact with a public official in the same period, multiplied by 100.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><p><strong>&#x2022; At country level</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>The indicator is calculated as the total number of persons who paid at least one bribe to a public official in the last 12 months, or were asked for a bribe in the same period, over the total number of persons who had at least one contact with a public official in the same period, multiplied by 100.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><p><strong>&#x2022; At country level</strong></p>
 <p>Missing values are not imputed</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Missing values are not imputed. Global and regional estimates will be produced when data availability will improve.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Global and regional estimates will be produced when data availability will improve.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Global and regional estimates will be produced when data availability will improve.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>Countries that have at least 1 data point after 2010 for the indicator on bribery prevalence (see point 7.1) are:</p>
 <p>Asia and Pacific: 2</p>
 <p>Africa: 8</p>
@@ -735,51 +766,68 @@ data-event-label="Change to Sources tab"
 <p>type of official</p>
 <p>income level of bribe-givers</p>
 <p>education attainment of bribe-givers</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>For the time being, only data from national sources are used.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL:</strong></p>
 <p>www.unodc.org</p>
 <p><strong>References:</strong></p>
 <p>UNODC, International Classification of Crime for Statistical Purposes, 2015</p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -892,12 +940,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

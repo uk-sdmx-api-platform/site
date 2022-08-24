@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220823234242">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220824001529">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -493,107 +493,125 @@ data-event-label="Change to Sources tab"
       </div>
     </div>
   </div>
-</div>
-
-<button class="accordion">Data reporter</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Organisation</th>
-        <td></td>
-        <td><p>Food and Agriculture Organisation of the United Nations (FAO)</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person(s)</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact organisation unit</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact person function</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact phone</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact mail address</th>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Contact email address</th>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Definition, concepts, and classifications</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Definition and concepts</th>
-        <td></td>
-        <td><p><strong>Definition:</strong></p>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Definition, concepts, and classifications 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td></td>
+              <td><p>Food and Agriculture Organisation of the United Nations (FAO)</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person(s)</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact person function</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact phone</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact mail address</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td></td>
+              <td><p><strong>Definition:</strong></p>
 <p>The indicator measures the percentage of individuals in the population who have experienced food insecurity at moderate or severe levels during the reference period. The severity of food insecurity, defined as a latent trait, is measured on the Food Insecurity Experience Scale global reference scale, a measurement standard established by FAO through the application of the Food Insecurity Experience Scale in more than 140 countries worldwide, starting in 2014.</p>
 <p><strong>Concepts:</strong></p>
 <p>Extensive research over more than 25 years has demonstrated that the inability to access food results in a series of experiences and conditions that are fairly common across cultures and socio-economic contexts and that range from being concerned about the ability to obtain enough food, to the need to compromise on the quality or the diversity of food consumed, to being forced to reduce the intake of food by cutting portion sizes or skipping meals, up to the extreme condition of feeling hungry and not having means to access any food for a whole day. Typical conditions like these form the basis of an experience-based food insecurity measurement scale. When analysed through sound statistical methods rooted in Item Response Theory, data collected through such scales provide the basis to compute theoretically consistent, cross country comparable measures of the prevalence of food insecurity. The severity of the food insecurity condition as measured by this indicator thus directly reflects the extent of households&#x2019; or individuals&#x2019; inability to regularly access the food they need.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Unit of measure</th>
-        <td></td>
-        <td><p>Prevalence of food insecurity: Percent (%) </p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td></td>
+              <td><p>Prevalence of food insecurity: Percent (%) </p>
 <p>Number of food insecure people: Millions (of people) </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Classifications</th>
-        <td></td>
-        <td><p>The construction of the regional and global estimates, as well as estimates for specific groups, such as Least Developed Countries, Land Locked Developing countries, Small Island Developing States, Developed Regions, and Developing Regions, of this indicator follows the UN M49 Standard.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Data source type and data collection method</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Data sources</th>
-        <td></td>
-        <td><p>Data can be collected using the Food Insecurity Experience Scale survey module (FIES-SM) developed by FAO, or any other experience-based food security scale questionnaires, including:</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td></td>
+              <td><p>The construction of the regional and global estimates, as well as estimates for specific groups, such as Least Developed Countries, Land Locked Developing countries, Small Island Developing States, Developed Regions, and Developing Regions, of this indicator follows the UN M49 Standard.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td></td>
+              <td><p>Data can be collected using the Food Insecurity Experience Scale survey module (FIES-SM) developed by FAO, or any other experience-based food security scale questionnaires, including:</p>
 <ul>
   <li>the Household Food Security Survey Module (HFSSM) developed by the Economic Research Service of the US Department of Agriculture, and used in the US and Canada, </li>
   <li>the Latin American and Caribbean Food Security Scale (or Escala Latinoamericana y Caribe&#xF1;a de Seguridad Alimentaria &#x2013; ELCSA), used in Guatemala and tested in several other Spanish speaking countries in Latin America, </li>
@@ -722,70 +740,77 @@ data-event-label="Change to Sources tab"
 <p>To ensure comparability of the FImod+sev and FIsev indicators computed for different populations, universal thresholds are defined on the FIES global reference scale and converted into corresponding values on the &#x201C;local&#x201D; scales obtained as a result of application of the Rasch model on any specific population, through a process of &#x201C;equating&#x201D;.</p>
 <p>Equating is a form of standardization of the metric based on identification of the subset of items that can be considered common to the global FIES and the specific scale used for measurement in each context. The severity levels associated with the common items are used as anchoring points to adjust the global FIES thresholds to the local scales. The standardization process ensures that the mean and standard deviation of the set of common items is the same when measured on the global FIES or on the national scale. Compatibility with the global FIES and the possibility to compile this indicator requires that at least four of the eight FIES items are identified as common.</p>
 <p>The Statistics Division at FAO has developed the RM.weights package under R, which provides routines for estimating the parameters of the Rasch model using conditional maximum likelihood, with the possibility to allow for the complex survey design.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection method</th>
-        <td></td>
-        <td><p>Face-to-face and telephone interviews within national surveys.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data collection calendar</th>
-        <td></td>
-        <td><p>Continuing</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data release calendar</th>
-        <td></td>
-        <td><p>Data are released each year alongside the <em>State of Food Security and Nutrition in the World</em> report, usually in mid-July. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data providers</th>
-        <td></td>
-        <td><p>National data providers will be the National Statistical Authorities that are responsible for the survey in which the FIES or similar scale is included. FAO will provide data for countries where the FIES or compatible module is not included in any national survey.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Data compilers</th>
-        <td></td>
-        <td><p>Organization(s) responsible for compilation and reporting on this indicator at the global level: Food and Agriculture Organization of the United Nations, Statistics Division, Food Security and Nutrition Statistics Team.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Institutional mandate</th>
-        <td></td>
-        <td><p>The Office of the Chief Statistician of FAO manages the Interdepartmental Working Group on SDG indicators under the FAO custodianship, and identifies a focal point for each of them. The team leader of the Food Security and Nutrition Statistics Team of the Statistics Division is formally appointed as the focal person for the collection, processing, and dissemination of statistics for this indicator. </p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Other methodological considerations</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Field</th>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Rationale</th>
-        <td></td>
-        <td><p>Food insecurity at moderate levels of severity is typically associated with the inability to regularly eat healthy, balanced diets. As such, high prevalence of food insecurity at moderate levels can be considered a predictor of various forms of diet-related health conditions in the population, associated with micronutrient deficiency and unbalanced diets. Severe levels of food insecurity, on the other hand, imply a high probability of reduced food intake and therefore can lead to more severe forms of undernutrition, including hunger.</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td></td>
+              <td><p>Face-to-face and telephone interviews within national surveys.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td></td>
+              <td><p>Continuing</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td></td>
+              <td><p>Data are released each year alongside the <em>State of Food Security and Nutrition in the World</em> report, usually in mid-July. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td></td>
+              <td><p>National data providers will be the National Statistical Authorities that are responsible for the survey in which the FIES or similar scale is included. FAO will provide data for countries where the FIES or compatible module is not included in any national survey.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td></td>
+              <td><p>Organization(s) responsible for compilation and reporting on this indicator at the global level: Food and Agriculture Organization of the United Nations, Statistics Division, Food Security and Nutrition Statistics Team.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td></td>
+              <td><p>The Office of the Chief Statistician of FAO manages the Interdepartmental Working Group on SDG indicators under the FAO custodianship, and identifies a focal point for each of them. The team leader of the Food Security and Nutrition Statistics Team of the Statistics Division is formally appointed as the focal person for the collection, processing, and dissemination of statistics for this indicator. </p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td></td>
+              <td><p>Food insecurity at moderate levels of severity is typically associated with the inability to regularly eat healthy, balanced diets. As such, high prevalence of food insecurity at moderate levels can be considered a predictor of various forms of diet-related health conditions in the population, associated with micronutrient deficiency and unbalanced diets. Severe levels of food insecurity, on the other hand, imply a high probability of reduced food intake and therefore can lead to more severe forms of undernutrition, including hunger.</p>
 <p>Short questionnaires like the FIES are very easy to administer at limited cost, which is one of the main advantages of their use. The ability to precisely determine the food insecurity status of specific individuals or households, however, is limited by the small number of questions, a reason why assignment of individual respondents to food insecurity classes is best done in probability terms, thus ensuring that estimates of prevalence rates in a population are sufficiently reliable even when based on relatively small sample sizes. </p>
 <p>As with any statistical assessment, reliability and precision crucially depend on the quality of the survey design and implementation. One major advantage of the analytic treatment of the data through the Rasch model-based methods is that it permits testing the quality of the data collected and evaluating the likely margin of uncertainty around estimated prevalence rates, which should always be reported.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Comments and limitations</th>
-        <td></td>
-        <td><p>An average of less than three minutes of survey time is estimated to collect FIES data in a well-conducted face-to-face survey, which should make it possible to include the FIES-SM in a nationally representative survey in every country in the world, at a very reasonable cost. FAO provides versions of the FIES-SM adapted and translated in each of the more than 200 languages and dialects used in the Gallup World Poll.</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td></td>
+              <td><p>An average of less than three minutes of survey time is estimated to collect FIES data in a well-conducted face-to-face survey, which should make it possible to include the FIES-SM in a nationally representative survey in every country in the world, at a very reasonable cost. FAO provides versions of the FIES-SM adapted and translated in each of the more than 200 languages and dialects used in the Gallup World Poll.</p>
 <p>When used in the Gallup World Poll, with sample sizes of only about 1000 individuals, the width of confidence intervals rarely exceeds 20% of the measured prevalence (that is, prevalence rates of around 50% are estimated with margins of errors of plus or minus 5%). Obviously, confidence intervals are likely to be much smaller when national prevalence rates are estimated using larger samples.</p>
 <p>Compared to other proposed non-official indicators of household food insecurity, the FIES based approach has the advantage that food insecurity prevalence rates are directly comparable across population groups and countries. Even if they use similar labels (such as &#x201C;mild&#x201D;, &#x201C;moderate&#x201D; and &#x201C;severe&#x201D; food insecurity) other approaches have yet to demonstrate the formal comparability of the thresholds used for classification, due to lack of the definition of a proper statistical model that links the values of the &#x201C;indexes&#x201D; or &#x201C;scores&#x201D; used for classification, to the severity of food insecurity. For this reason, care should be taken when comparing the results obtained with the FIES with those obtained with these other indicators, even if, unfortunately, similar labels are used to describe them.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Method of computation</th>
-        <td></td>
-        <td><p>Data at the individual or household level is collected by applying an experience-based food security scale questionnaire within a survey. The food security survey module collects answers to questions asking respondents to report the occurrence of several typical experiences and conditions associated with food insecurity. The data is analysed using the Rasch model (also known as one-parameter logistic model, 1-PL), which postulates that the probability of observing an affirmative answer by respondent i to question j, is a logistic function of the distance, on an underlying scale of severity, between the position of the respondent, <math xmlns="http://www.w3.org/1998/Math/MathML">
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td></td>
+              <td><p>Data at the individual or household level is collected by applying an experience-based food security scale questionnaire within a survey. The food security survey module collects answers to questions asking respondents to report the occurrence of several typical experiences and conditions associated with food insecurity. The data is analysed using the Rasch model (also known as one-parameter logistic model, 1-PL), which postulates that the probability of observing an affirmative answer by respondent i to question j, is a logistic function of the distance, on an underlying scale of severity, between the position of the respondent, <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msub>
       <mrow>
         <mi>a</mi>
@@ -1505,16 +1530,16 @@ data-event-label="Change to Sources tab"
       </mrow>
     </msub>
   </math>). In the database, the number of food insecure people are expressed in thousands. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Adjustments</th>
-        <td></td>
-        <td><p>International calibration of food insecurity thresholds is performed to ensure national and sub-national results are comparable.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-        <td></td>
-        <td><ul>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td></td>
+              <td><p>International calibration of food insecurity thresholds is performed to ensure national and sub-national results are comparable.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td></td>
+              <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>The indicator is not computed if no country data are available.</p>
@@ -1522,11 +1547,11 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>Missing values for individual countries are implicitly imputed to be equal to the population weighted average of the estimated values of the countries present in the same region.</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Regional aggregations</th>
-        <td></td>
-        <td><p>Regional and global aggregates of the prevalence of moderate or severe food insecurity (FI) based on FIES are computed as: </p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td></td>
+              <td><p>Regional and global aggregates of the prevalence of moderate or severe food insecurity (FI) based on FIES are computed as: </p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>F</mi>
     <msub>
@@ -1590,11 +1615,11 @@ data-event-label="Change to Sources tab"
       </mrow>
     </msub>
   </math> the corresponding population size. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-        <td></td>
-        <td><p>Experience-based food security scales data are collected through population surveys (either household or individual surveys) using questionnaires/modules that are adapted to the country language and condition.</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td></td>
+              <td><p>Experience-based food security scales data are collected through population surveys (either household or individual surveys) using questionnaires/modules that are adapted to the country language and condition.</p>
 <p>Examples are provided below: </p>
 <p>U.S.A.: Household Food Security Survey Module (<a href="https://www.ers.usda.gov/media/8271/hh2012.pdf"><u>https://www.ers.usda.gov/media/8271/hh2012.pdf</u></a>)</p>
 <p>Brazil: Escala Brasileira de Inseguran&#xE7;a Alimentar (<a href="http://biblioteca.ibge.gov.br/visualizacao/livros/liv91984.pdf"><u>http://biblioteca.ibge.gov.br/visualizacao/livros/liv91984.pdf</u></a>, Quadro 5, page 30)</p>
@@ -1608,44 +1633,50 @@ data-event-label="Change to Sources tab"
 <p><a href="http://www.fao.org/3/a-be898r.pdf"><u>http://www.fao.org/3/a-be898r.pdf</u></a></p>
 <p><a href="http://www.fao.org/3/a-be898a.pdf"><u>http://www.fao.org/3/a-be898a.pdf</u></a></p>
 <p><a href="http://www.fao.org/3/a-be898c.pdf"><u>http://www.fao.org/3/a-be898c.pdf</u></a></p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality management</th>
-        <td></td>
-        <td><p>ESS conducts trend analysis of the newly updated indicator with other relevant indicators. Meanwhile, preliminary estimates of each round of the update are circulated among regional offices for review. Because of their knowledge of their regions and countries, they often provide invaluable inputs to the revisions and finalization of the update. </p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assurance</th>
-        <td></td>
-        <td><p>FIES data are validated through testing of adherence to the Rasch model assumption of equal discrimination of the items and absence of residual correlation and measurement of Rasch reliability indexes. Such a test would reveal whether the data is of sufficient quality to produce reliable estimates of the prevalence of food insecurity according to the FIES standard. </p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td></td>
+              <td><p>ESS conducts trend analysis of the newly updated indicator with other relevant indicators. Meanwhile, preliminary estimates of each round of the update are circulated among regional offices for review. Because of their knowledge of their regions and countries, they often provide invaluable inputs to the revisions and finalization of the update. </p></td>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td></td>
+              <td><p>FIES data are validated through testing of adherence to the Rasch model assumption of equal discrimination of the items and absence of residual correlation and measurement of Rasch reliability indexes. Such a test would reveal whether the data is of sufficient quality to produce reliable estimates of the prevalence of food insecurity according to the FIES standard. </p>
 <p>Then, item severity parameters are compared with the FIES global reference standard to verify the possibility of calibrating the measures against such standard and thus produce estimates of the prevalence of food insecurity that can be considered comparable across countries.</p>
 <p>Relevant material is available at <a href="http://www.fao.org/3/a-i4830e.pdf"><u>http://www.fao.org/3/a-i4830e.pdf</u></a>, <a href="http://www.fao.org/3/b-i4830s.pdf"><u>http://www.fao.org/3/b-i4830s.pdf</u></a>, <a href="http://www.fao.org/3/c-i4830f.pdf"><u>http://www.fao.org/3/c-i4830f.pdf</u></a> and <a href="http://www.fao.org/3/a-i3946e.pdf"><u>http://www.fao.org/3/a-i3946e.pdf</u></a>.</p>
 <p>When the estimates are based on official national data, the data used to compile the indicator is obtained directly from the microdata dissemination websites of countries, when available (e.g. USA), or by direct request to the national statistical offices responsible for data collection (e.g. Canada).</p></td>
-      </tr>
-      <tr>
-        <th scope="row">Quality assessment</th>
-        <td></td>
-        <td><p>High. For the vast majority of countries, the quality assurance steps provide indication of high quality and reliable data.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<button class="accordion">Data availability and disaggregation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Data availability:</strong></p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td></td>
+              <td><p>High. For the vast majority of countries, the quality assurance steps provide indication of high quality and reliable data.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Data availability:</strong></p>
 <p>Data for 2014-2020 are available from FAO for more than 140 countries, areas and territories included in the Gallup World Poll. </p>
 <p>Regional and sub regional aggregates are computed for all regions, with the exceptions of the Caribbean and the Middle Africa regions (as less than 50% of the regional population up to 2019 was covered). Both regions can be estimated only for 2020. Data have been subject to a country consultation process and only results validated by national statistical offices are published at country level.</p>
 <p><strong>Time series:</strong></p>
@@ -1656,50 +1687,67 @@ data-event-label="Change to Sources tab"
 <p>When producing disaggregated statistics, attention must be devoted to verifying the validity of the application by estimating the Rasch model with the data from each specific subpopulation group and, if necessary, perform the appropriate equating of the measure before comparing results.</p>
 <p>It is good practice to associate a measure of variability (margins of error or upper and lower bound) when disaggregated data are produced.</p>
 <p>At the moment, disaggregated statistics by gender of the respondent are provided.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">Comparability/deviation from international standards</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>Sources of discrepancies:</strong></p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>In the few cases where indicators of food insecurity based on experience-based food security scales have been reported by countries (U.S., Canada, Mexico, Guatemala and Brazil), these have been based on nationally set thresholds that do not correspond to the international thresholds proposed by the FIES. See Annex I and Table A3 in http://www.fao.org/3/i4830e.pdf for a description of the differences. In the future, it is desirable that country would start reporting prevalence estimates using also the internationally set thresholds for moderate or severe and severe levels, in addition to those based on national thresholds.</p>
 <p>FAO is ready to provide assistance on the analytic methods needed to estimate prevalence based on the FIES global reference thresholds.</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="accordion">References and documentation</button>
-<div class="panel">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">National</th>
-        <th scope="col">Global</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td><p><strong>URL: </strong><a href="http://www.fao.org/in-action/Voices-of-the-Hungry/">http://www.fao.org/in-action/Voices-of-the-Hungry/</a> </p>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion_item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse show" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">National</th>
+              <th scope="col">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><p><strong>URL: </strong><a href="http://www.fao.org/in-action/Voices-of-the-Hungry/">http://www.fao.org/in-action/Voices-of-the-Hungry/</a> </p>
 <p><a href="http://www.fao.org/3/i4830e.pdf">http://www.fao.org/3/i4830e.pdf</a></p></td>
-      </tr>
-    </tbody>
-  </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
         </article>
@@ -1812,12 +1860,12 @@ data-event-label="Change to Sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220823234242'></script>
+<script src='/site/assets/js/sdg.js?v=20220824001529'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220823234242"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220824001529"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
