@@ -339,10 +339,12 @@
       let button = document.getElementById("toggleAll");
       if(!$('.accordion-button').hasClass("collapsed")){
           $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-button').addClass("show");
           button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
 
       } else {
           $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+        $('.accordion-button').removeClass("show");
           button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
       }
     });
