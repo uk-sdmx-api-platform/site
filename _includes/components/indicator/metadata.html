@@ -13,17 +13,17 @@
         <div class="accordion-body">
           <dl>
             <dt>Goal</dt>
-            <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] | markdownify }}</dd>
             <dt>Target</dt>
-            <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] | markdownify }}</dd>
             <dt>Indicator</dt>
-            <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] | markdownify }}</dd>
             <dt>Series</dt>
-            <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] | markdownify }}</dd>
             <dt>Related indicators</dt>
-            <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] | markdownify }}</dd>
             <dt>Custodian agencies</dt>
-            <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] }}</dd>
+            <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] | markdownify }}</dd>
           </dl>
         </div>
       </div>
@@ -47,38 +47,38 @@
             <tbody>
               <tr>
                 <th scope="row">Organisation</th>
-                <td>{{ page.indicator['CONTACT_ORGANISATION'] }}</td>
-                <td>{{ page.indicator['CONTACT_ORGANISATION__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_ORGANISATION'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_ORGANISATION__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact person(s)</th>
-                <td>{{ page.indicator['CONTACT_NAME'] }}</td>
-                <td>{{ page.indicator['CONTACT_NAME__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_NAME'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_NAME__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact organisation unit</th>
-                <td>{{ page.indicator['ORGANISATION_UNIT'] }}</td>
-                <td>{{ page.indicator['ORGANISATION_UNIT__GLOBAL'] }}</td>
+                <td>{{ page.indicator['ORGANISATION_UNIT'] | markdownify }}</td>
+                <td>{{ page.indicator['ORGANISATION_UNIT__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact person function</th>
-                <td>{{ page.indicator['CONTACT_FUNCT'] }}</td>
-                <td>{{ page.indicator['CONTACT_FUNCT__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_FUNCT'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_FUNCT__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact phone</th>
-                <td>{{ page.indicator['CONTACT_PHONE'] }}</td>
-                <td>{{ page.indicator['CONTACT_PHONE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_PHONE'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_PHONE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact mail address</th>
-                <td>{{ page.indicator['CONTACT_MAIL'] }}</td>
-                <td>{{ page.indicator['CONTACT_MAIL__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_MAIL'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_MAIL__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Contact email address</th>
-                <td>{{ page.indicator['CONTACT_EMAIL'] }}</td>
-                <td>{{ page.indicator['CONTACT_EMAIL__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CONTACT_EMAIL'] | markdownify }}</td>
+                <td>{{ page.indicator['CONTACT_EMAIL__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -104,18 +104,18 @@
             <tbody>
               <tr>
                 <th scope="row">Definition and concepts</th>
-                <td>{{ page.indicator['STAT_CONC_DEF'] }}</td>
-                <td>{{ page.indicator['STAT_CONC_DEF__GLOBAL'] }}</td>
+                <td>{{ page.indicator['STAT_CONC_DEF'] | markdownify }}</td>
+                <td>{{ page.indicator['STAT_CONC_DEF__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Unit of measure</th>
-                <td>{{ page.indicator['UNIT_MEASURE'] }}</td>
-                <td>{{ page.indicator['UNIT_MEASURE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['UNIT_MEASURE'] | markdownify }}</td>
+                <td>{{ page.indicator['UNIT_MEASURE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Classifications</th>
-                <td>{{ page.indicator['CLASS_SYSTEM'] }}</td>
-                <td>{{ page.indicator['CLASS_SYSTEM__GLOBAL'] }}</td>
+                <td>{{ page.indicator['CLASS_SYSTEM'] | markdownify }}</td>
+                <td>{{ page.indicator['CLASS_SYSTEM__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -141,38 +141,38 @@
             <tbody>
               <tr>
                 <th scope="row">Data sources</th>
-                <td>{{ page.indicator['SOURCE_TYPE'] }}</td>
-                <td>{{ page.indicator['SOURCE_TYPE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['SOURCE_TYPE'] | markdownify }}</td>
+                <td>{{ page.indicator['SOURCE_TYPE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Data collection method</th>
-                <td>{{ page.indicator['COLL_METHOD'] }}</td>
-                <td>{{ page.indicator['COLL_METHOD__GLOBAL'] }}</td>
+                <td>{{ page.indicator['COLL_METHOD'] | markdownify }}</td>
+                <td>{{ page.indicator['COLL_METHOD__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Data collection calendar</th>
-                <td>{{ page.indicator['FREQ_COLL'] }}</td>
-                <td>{{ page.indicator['FREQ_COLL__GLOBAL'] }}</td>
+                <td>{{ page.indicator['FREQ_COLL'] | markdownify }}</td>
+                <td>{{ page.indicator['FREQ_COLL__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Data release calendar</th>
-                <td>{{ page.indicator['REL_CAL_POLICY'] }}</td>
-                <td>{{ page.indicator['REL_CAL_POLICY__GLOBAL'] }}</td>
+                <td>{{ page.indicator['REL_CAL_POLICY'] | markdownify }}</td>
+                <td>{{ page.indicator['REL_CAL_POLICY__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Data providers</th>
-                <td>{{ page.indicator['DATA_SOURCE'] }}</td>
-                <td>{{ page.indicator['DATA_SOURCE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['DATA_SOURCE'] | markdownify }}</td>
+                <td>{{ page.indicator['DATA_SOURCE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Data compilers</th>
-                <td>{{ page.indicator['COMPILING_ORG'] }}</td>
-                <td>{{ page.indicator['COMPILING_ORG__GLOBAL'] }}</td>
+                <td>{{ page.indicator['COMPILING_ORG'] | markdownify }}</td>
+                <td>{{ page.indicator['COMPILING_ORG__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Institutional mandate</th>
-                <td>{{ page.indicator['INST_MANDATE'] }}</td>
-                <td>{{ page.indicator['INST_MANDATE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['INST_MANDATE'] | markdownify }}</td>
+                <td>{{ page.indicator['INST_MANDATE__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -198,53 +198,53 @@
             <tbody>
               <tr>
                 <th scope="row">Rationale</th>
-                <td>{{ page.indicator['RATIONALE'] }}</td>
-                <td>{{ page.indicator['RATIONALE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['RATIONALE'] | markdownify }}</td>
+                <td>{{ page.indicator['RATIONALE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Comments and limitations</th>
-                <td>{{ page.indicator['REC_USE_LIM'] }}</td>
-                <td>{{ page.indicator['REC_USE_LIM__GLOBAL'] }}</td>
+                <td>{{ page.indicator['REC_USE_LIM'] | markdownify }}</td>
+                <td>{{ page.indicator['REC_USE_LIM__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Method of computation</th>
-                <td>{{ page.indicator['DATA_COMP'] }}</td>
-                <td>{{ page.indicator['DATA_COMP__GLOBAL'] }}</td>
+                <td>{{ page.indicator['DATA_COMP'] | markdownify }}</td>
+                <td>{{ page.indicator['DATA_COMP__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Adjustments</th>
-                <td>{{ page.indicator['ADJUSTMENT'] }}</td>
-                <td>{{ page.indicator['ADJUSTMENT__GLOBAL'] }}</td>
+                <td>{{ page.indicator['ADJUSTMENT'] | markdownify }}</td>
+                <td>{{ page.indicator['ADJUSTMENT__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td>{{ page.indicator['IMPUTATION'] }}</td>
-                <td>{{ page.indicator['IMPUTATION__GLOBAL'] }}</td>
+                <td>{{ page.indicator['IMPUTATION'] | markdownify }}</td>
+                <td>{{ page.indicator['IMPUTATION__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Regional aggregations</th>
-                <td>{{ page.indicator['REG_AGG'] }}</td>
-                <td>{{ page.indicator['REG_AGG__GLOBAL'] }}</td>
+                <td>{{ page.indicator['REG_AGG'] | markdownify }}</td>
+                <td>{{ page.indicator['REG_AGG__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td>{{ page.indicator['DOC_METHOD'] }}</td>
-                <td>{{ page.indicator['DOC_METHOD__GLOBAL'] }}</td>
+                <td>{{ page.indicator['DOC_METHOD'] | markdownify }}</td>
+                <td>{{ page.indicator['DOC_METHOD__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Quality management</th>
-                <td>{{ page.indicator['QUALITY_MGMNT'] }}</td>
-                <td>{{ page.indicator['QUALITY_MGMNT__GLOBAL'] }}</td>
+                <td>{{ page.indicator['QUALITY_MGMNT'] | markdownify }}</td>
+                <td>{{ page.indicator['QUALITY_MGMNT__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Quality assurance</th>
-                <td>{{ page.indicator['QUALITY_ASSURE'] }}</td>
-                <td>{{ page.indicator['QUALITY_ASSURE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['QUALITY_ASSURE'] | markdownify }}</td>
+                <td>{{ page.indicator['QUALITY_ASSURE__GLOBAL'] | markdownify }}</td>
               </tr>
               <tr>
                 <th scope="row">Quality assessment</th>
-                <td>{{ page.indicator['QUALITY_ASSMNT'] }}</td>
-                <td>{{ page.indicator['QUALITY_ASSMNT__GLOBAL'] }}</td>
+                <td>{{ page.indicator['QUALITY_ASSMNT'] | markdownify }}</td>
+                <td>{{ page.indicator['QUALITY_ASSMNT__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -269,8 +269,8 @@
             <tbody>
               <tr>
                 <th scope="row"></th>
-                <td>{{ page.indicator['COVERAGE'] }}</td>
-                <td>{{ page.indicator['COVERAGE__GLOBAL'] }}</td>
+                <td>{{ page.indicator['COVERAGE'] | markdownify }}</td>
+                <td>{{ page.indicator['COVERAGE__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -295,8 +295,8 @@
             <tbody>
               <tr>
                 <th scope="row"></th>
-                <td>{{ page.indicator['COMPARABILITY'] }}</td>
-                <td>{{ page.indicator['COMPARABILITY__GLOBAL'] }}</td>
+                <td>{{ page.indicator['COMPARABILITY'] | markdownify }}</td>
+                <td>{{ page.indicator['COMPARABILITY__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -321,8 +321,8 @@
             <tbody>
               <tr>
                 <th scope="row"></th>
-                <td>{{ page.indicator['OTHER_DOC'] }}</td>
-                <td>{{ page.indicator['OTHER_DOC__GLOBAL'] }}</td>
+                <td>{{ page.indicator['OTHER_DOC'] | markdownify }}</td>
+                <td>{{ page.indicator['OTHER_DOC__GLOBAL'] | markdownify }}</td>
               </tr>
             </tbody>
           </table>
@@ -340,12 +340,14 @@
       if(!$('.accordion-button').hasClass("collapsed")){
           $('.accordion-button').removeClass("collapsed").addClass("collapsed");
           $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
 
       } else {
-        $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-        $('.accordion-collapse').addClass("show");
-        button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
       }
     });
   });
