@@ -337,12 +337,12 @@
   $(document).ready(function(){
     $("#toggleAll").click( function() {
       let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("active")){
-          $('.accordion-button').removeClass("active").addClass("active");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
           button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
 
       } else {
-          $('.accordion-button').addClass("active").removeClass("active");
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
           button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
       }
     });
