@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,111 +423,114 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 5.a: Undertake reforms to give women equal rights to economic resources, as well as access to ownership and control over land and other forms of property, financial services, inheritance and natural resources, in accordance with national laws</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 5.a.1: (a) Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex; and (b) share of women among owners or rights-bearers of agricultural land, by type of tenure</p></dd>
-          <dt>Series</dt>
-          <dd><p>Not applicable</p></dd>
-          <dt>Related indicators</dt>
-          <dd><p>SDG indicator 1.4.2.</p></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>Food and Agriculture Organization of the United Nations (FAO)</p></dd>
-        </dl>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 5.a: Undertake reforms to give women equal rights to economic resources, as well as access to ownership and control over land and other forms of property, financial services, inheritance and natural resources, in accordance with national laws</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 5.a.1: (a) Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex; and (b) share of women among owners or rights-bearers of agricultural land, by type of tenure</p></dd>
+            <dt>Series</dt>
+            <dd><p>Not applicable</p></dd>
+            <dt>Related indicators</dt>
+            <dd><p>SDG indicator 1.4.2.</p></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Food and Agriculture Organization of the United Nations (FAO)</p></dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>Food and Agriculture Organization of the United Nations (FAO)</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>Food and Agriculture Organization of the United Nations (FAO)</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><p><strong>Definition:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><p><strong>Definition:</strong></p>
 <p>The indicator consists of two sub-indicators. </p>
 <p><u>Sub-indicator 5.a.1 (a</u>):</p>
 <table>
@@ -674,44 +677,44 @@ data-event-label="high"
 </ul>
 <p><em><u>A Note on &#x201C;(Self) Reported Ownership/Possession of Agricultural Land&#x201D;</u></em></p>
 <p>As mentioned above, <em>reported ownership or possession</em> is relatively less reliable than documented ownership. However, in a situation where a country has scarce data on formal documentation along with missing information on alienation rights, reported ownership could still be a temporarily useful alternative for comparing ownership between men and women. However, estimates computed based mainly on reported ownership weakens the international comparability of estimates across countries. Therefore, it is highly recommended that the survey questionnaire be modified in a manner that both documented ownership and alienation rights are included, as defined above, in order to calculate the indicator using the correct methodology. </p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> Refer to <a href="https://www.fao.org/tenure/voluntary-guidelines/en/">https://www.fao.org/tenure/voluntary-guidelines/en/</a> <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> FAO. 2015. <a href="https://www.fao.org/3/i4913e/i4913e.pdf">World Programme for the Census of Agriculture 2020- Volume 1: Programme, concepts and definitions. FAO Statistical Development Series 15</a>, paras 8.2.13 &#x2013; 8.2.28. <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> Defined as: &#x201C;all land used for crops with a less than one-year growing cycle&#x201D; (WCA 2020). Temporary crops comprise all the crops that need to be sown or planted after each harvest for new production (e.g., cereals). The full list of crops classified as &#x2018;temporary&#x2019; is provided in the WCA 2020 (page 165, <a href="http://www.fao.org/3/a-i4913e.pdf">http://www.fao.org/3/a-i4913e.pdf</a>) <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> Defined as: &#x201C;land that has been cultivated for less than five years with herbaceous or forage crops for mowing or pasture&#x201D;. <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> When arable land is kept at rest for at least one agricultural year because of crop rotation or other reasons, such as the impossibility to plant new crops, this is defined as temporarily fallow. This category does not include the land that it is not cultivated at the time of the survey but will be sowed and planted before the end of the agricultural year. <a href="#footnote-ref-6">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-7">6</sup><p> Area that is cultivated with long term crops that do not need to be replanted every year, such as fruits and nuts, some types of stimulant crops, etc. <a href="#footnote-ref-7">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-8">7</sup><p> Land cultivated with herbaceous forage crops or is left as wild prairie or grazing land for more than five years. <a href="#footnote-ref-8">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-9">8</sup><p> Household is defined according to the United Nations Principles and Recommendations for Population and Housing Censuses, Revision 3 @ https://unstats.un.org/unsd/publication/seriesM/Series_M67rev3en.pdf <a href="#footnote-ref-9">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-10">9</sup><p> Source: <em>&#x201C;Multilingual thesaurus on land tenure&#x201D;</em>, FAO 2003 <a href="#footnote-ref-10">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-11">10</sup><p> Source: <em>&#x201C;Multilingual thesaurus on land tenure&#x201D;</em>, FAO 2003 <a href="#footnote-ref-11">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-12">11</sup><p> Source: <em>&#x201C;Multilingual thesaurus on land tenure&#x201D;</em>, FAO 2003 <a href="#footnote-ref-12">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-13">12</sup><p> Source: <em>&#x201C;UN Methodological Guidelines on the Production of Statistics on Asset Ownership from a Gender Perspective&#x201D;</em> Draft Guidelines submitted at the UN Statistical Commission in March 2017 <a href="#footnote-ref-13">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td><p>5.a.1 (a): percent (%)</p>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td><p>5.a.1 (a): percent (%)</p>
 <p>5.a.1 (b): percent (%)</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td><p>Classification of land use - World Census of Agriculture 2020 (WCA 2020).</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td><p>Classification of land use - World Census of Agriculture 2020 (WCA 2020).</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><p><u>Recommended data sources </u></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><p><u>Recommended data sources </u></p>
 <p>Indicator 5.a.1 focuses on adult individuals living in agricultural households, as defined above. Thus, the data required to estimate the indicator, can be collected through agricultural surveys/ censuses or national household-based surveys having a suitable coverage of agricultural households. </p>
 <p><strong>Agricultural Survey</strong>: Agricultural surveys are a recommended data source for two main reasons:</p>
 <ol>
@@ -732,11 +735,11 @@ data-event-label="high"
   <li>It is much more expensive to add the questions for 5.a.1 in agricultural censuses than in surveys as the number of holdings to be enumerated is much larger. </li>
   <li>With the need for a much larger number of interviewers in a census, the quality of interviewers selected may be adversely affected.</li>
 </ol><div class="footnotes"><div><sup class="footnote-number" id="footnote-14">13</sup><p> Examples of GHS that could be used to generate the indicator 5.a.1 are: Household Budget Surveys (HBS), Living Standard Measurement Surveys (LSMS), Living Conditions Surveys, Labour Force Surveys (LFS), Multipurpose Household Surveys, Demographic and Health Surveys (DHS) and Multiple Indicator Cluster Surveys (MICS). <a href="#footnote-ref-14">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>The data should be collected through surveys that collect information on an individual&#x2019;s land ownership and tenure rights. </p>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>The data should be collected through surveys that collect information on an individual&#x2019;s land ownership and tenure rights. </p>
 <p>In collecting data for indicator 5.a.1 through an agricultural survey, agriculture census or general household survey, two decisions need to be made:</p>
 <p>i) Determine the number of adult members of an agricultural household (eligible respondents) on whom information is to be collected, and </p>
 <p>ii) Determine who should report this information</p>
@@ -1212,58 +1215,58 @@ data-event-label="high"
     </tr>
   </tbody>
 </table><div class="footnotes"><div><sup class="footnote-number" id="footnote-15">14</sup><p> Findings from the EDGE pilot studies reveal that data from proxy respondents yield different estimates than self-reported data, with variations by asset, by type of ownership and by the sex of the owner. In particular, it was found that proxy-reported data decrease both women&#x2019;s and men&#x2019;s reported ownership of agricultural land. Such underestimation is greater for men (-15 percentage points) than for women (-10 percentage points) and is less pronounced when we consider documented ownership (-7 percentage points for men and -2 percentage points for women). <a href="#footnote-ref-15">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-16">15</sup><p> Alternatively &#x2018;do you have, use or occupy&#x2019; &#x2026; <a href="#footnote-ref-16">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-17">16</sup><p> Refer to the WCA 2020 Volumes @ <a href="https://www.fao.org/world-census-agriculture/wcarounds/wca2020/en/">https://www.fao.org/world-census-agriculture/wcarounds/wca2020/en/</a> or Handbook on the Agricultural Integrated Survey @ https://www.fao.org/in-action/agrisurvey/resources/resource-detail/en/c/1198081/ <a href="#footnote-ref-17">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><p>The data collection calendar depends on the frequency of surveys required to compute the indicators. FAO is engaging with countries to include the questions needed to measure the indicator into their existing national surveys, i.e., household-based surveys, agricultural surveys and censuses through capacity development activities at national/ regional levels and provision of technical assistance needed to compute the indicator. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>The data release depends highly on the frequency of surveys required to compute the indicators. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>National Statistical Offices. If agricultural surveys or censuses are used, the responsible organization may be the Ministry of Agriculture or, more generally, the organization responsible for agricultural surveys or censuses in the country.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>Food and Agricultural Organization (FAO)</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td><p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture http://www.fao.org/3/K8024E/K8024E.pdf.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><p>The data collection calendar depends on the frequency of surveys required to compute the indicators. FAO is engaging with countries to include the questions needed to measure the indicator into their existing national surveys, i.e., household-based surveys, agricultural surveys and censuses through capacity development activities at national/ regional levels and provision of technical assistance needed to compute the indicator. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>The data release depends highly on the frequency of surveys required to compute the indicators. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>National Statistical Offices. If agricultural surveys or censuses are used, the responsible organization may be the Ministry of Agriculture or, more generally, the organization responsible for agricultural surveys or censuses in the country.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>Food and Agricultural Organization (FAO)</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td><p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture http://www.fao.org/3/K8024E/K8024E.pdf.</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>Indicator 5.a.1 aims to monitor the gender balance on ownership/secure rights over agricultural land. Sub-indicator (a) and sub-indicator (b) are based on the same data and they monitor ownership/rights from two different angles. While sub-indicator (a) uses the total male/female agricultural population as reference population, and it tells us how many male/female own land, sub-indicator (b) focuses on the agricultural population with land ownership/secure rights, and it tells us how many of them are women.</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>Indicator 5.a.1 aims to monitor the gender balance on ownership/secure rights over agricultural land. Sub-indicator (a) and sub-indicator (b) are based on the same data and they monitor ownership/rights from two different angles. While sub-indicator (a) uses the total male/female agricultural population as reference population, and it tells us how many male/female own land, sub-indicator (b) focuses on the agricultural population with land ownership/secure rights, and it tells us how many of them are women.</p>
 <p>Therefore, it is sufficient to have: </p>
 <ol>
   <li>The number in the agricultural population with ownership or secure rights over agricultural land (by sex), and</li>
@@ -1343,17 +1346,17 @@ data-event-label="high"
     </tr>
   </tbody>
 </table></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p>One recommendation is for countries to take into consideration the impact of the expected sample size on the precision of the estimates. One way of attaining a large enough sample size is to consider collecting information on all eligible respondents through a proxy respondent, as this can be relatively easily done using the household rosters in the surveys. However, it is important to keep in mind that when a proxy respondent provides the information for the member of the household, it is likely that some bias or response errors are introduced </p>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p>One recommendation is for countries to take into consideration the impact of the expected sample size on the precision of the estimates. One way of attaining a large enough sample size is to consider collecting information on all eligible respondents through a proxy respondent, as this can be relatively easily done using the household rosters in the surveys. However, it is important to keep in mind that when a proxy respondent provides the information for the member of the household, it is likely that some bias or response errors are introduced </p>
 <p>It is critical that the list of legally binding documents of ownership proposed to be included in questions relating to proxy 1 in this document are customized to consider only documents that are enforceable before the law and that guarantee individual&#x2019;s rights in the national context. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p><strong><u>How the indicator is calculated:</u></strong></p>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p><strong><u>How the indicator is calculated:</u></strong></p>
 <p>The indicator 5.a.1 considers as owners or holders of secure rights to agricultural land all the individuals in the reference population who:</p>
 <ul>
   <li>Are listed as &#x2018;owners&#x2019; or &#x2018;holders&#x2019; on a written legal document that testifies security of rights over agricultural land</li>
@@ -1413,16 +1416,16 @@ data-event-label="high"
 </table>
 <p><strong>Use of Sampling Weights</strong></p>
 <p>When the data source is a sample survey, the appropriate survey sampling weights&#x2014;base weights, non-response adjustments and poststratification adjustments&#x2014;should be used in estimating the sub-indicators. Further, if subsampling of eligible respondents to the 5.a.1 questions is done in a census or survey, the weights need to account for this.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td><p>No adjustment with respect to use of standard classification and harmonization of breakdown for age groups and other dimension is performed. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><ul>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td><p>No adjustment with respect to use of standard classification and harmonization of breakdown for age groups and other dimension is performed. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>No imputation of data is made at country level.</p>
@@ -1430,57 +1433,57 @@ data-event-label="high"
   <li><strong>At regional and global levels </strong></li>
 </ul>
 <p>No imputation of data is made at the regional and global level. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>Weighted regional aggregates will be generated only if a sufficient number of countries in the region report on the indicator. This will be the case if (1) at least 50 percent of countries have a value or (2) if enough countries have a value as to cover 50 percent of the population in the region. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td><p>Countries can rely on the background paper describing the methodology and other relevant documents available at <a href="http://www.fao.org/sustainable-development-goals/indicators/5a1/en/?ADMCMD_view=1%20as">http://www.fao.org/sustainable-development-goals/indicators/5a1/en/?ADMCMD_view=1 as</a> well as the e-learning available at <a href="https://elearning.fao.org/course/view.php?id=363">https://elearning.fao.org/course/view.php?id=363</a> </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td><p>Logical and arithmetic control of reporting data is carried out.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td><p>FAO is collaborating with the countries to design/complete/improve the survey questionnaires and contributing to develop and check the syntaxes used to compute the indicator. The microdata of surveys utilized in the computation of indicators are collected by the national institutions, hence their quality rests with the data producers. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td><p>Quality assessments are performed on the final estimation of the indicator when it is updated and compared with previous results. Some countries have data that needs to be assessed further, either check on the raw data and/or the processing of data.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>Weighted regional aggregates will be generated only if a sufficient number of countries in the region report on the indicator. This will be the case if (1) at least 50 percent of countries have a value or (2) if enough countries have a value as to cover 50 percent of the population in the region. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td><p>Countries can rely on the background paper describing the methodology and other relevant documents available at <a href="http://www.fao.org/sustainable-development-goals/indicators/5a1/en/?ADMCMD_view=1%20as">http://www.fao.org/sustainable-development-goals/indicators/5a1/en/?ADMCMD_view=1 as</a> well as the e-learning available at <a href="https://elearning.fao.org/course/view.php?id=363">https://elearning.fao.org/course/view.php?id=363</a> </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td><p>Logical and arithmetic control of reporting data is carried out.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td><p>FAO is collaborating with the countries to design/complete/improve the survey questionnaires and contributing to develop and check the syntaxes used to compute the indicator. The microdata of surveys utilized in the computation of indicators are collected by the national institutions, hence their quality rests with the data producers. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td><p>Quality assessments are performed on the final estimation of the indicator when it is updated and compared with previous results. Some countries have data that needs to be assessed further, either check on the raw data and/or the processing of data.</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>Table 6. Breakdown of the number of countries covered by region as of 2022</p>
 <table>
   <tbody>
@@ -1738,69 +1741,70 @@ data-event-label="high"
   </tbody>
 </table>
 <p>If the country collects data by type of tenure, the disaggregation is required by type of tenure. However, if the country does not do this, the disaggregation by type of tenure would not be possible as the information will be collected at an aggregated level.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Sources of discrepancies:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>There is currently no known source of difference.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>1- URL: </strong><a href="http://www.fao.org/sustainable-development-goals/indicators/5.a.1/en/">http://www.fao.org/sustainable-development-goals/indicators/5.a.1/en/</a></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>1- URL: </strong><a href="http://www.fao.org/sustainable-development-goals/indicators/5.a.1/en/">http://www.fao.org/sustainable-development-goals/indicators/5.a.1/en/</a></p>
 <p>2- AGRIS handbook on the integrated agricultural surveys, <a href="https://www.fao.org/in-action/agrisurvey/resources/resource-detail/en/c/1198081/">https://www.fao.org/in-action/agrisurvey/resources/resource-detail/en/c/1198081/</a></p>
 <p>3- Measuring Individuals&#x2019; Rights to Land. An Integrated Approach to Data Collection for SDG Indicators 1.4.2 and 5.a.1. <a href="https://www.fao.org/publications/card/en/c/CA4885EN/">https://www.fao.org/publications/card/en/c/CA4885EN/</a></p>
 <p>4- World Programme for the Census of Agriculture 2020 Volume 1. <a href="https://www.fao.org/3/i4913e/i4913e.pdf">https://www.fao.org/3/i4913e/i4913e.pdf</a> </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1875,12 +1879,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

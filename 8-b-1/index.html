@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,111 +423,114 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 8.b: By 2020, develop and operationalize a global strategy for youth employment and implement the Global Jobs Pact of the International Labour Organization</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 8.b.1: Existence of a developed and operationalized national strategy for youth employment, as a distinct strategy or as part of a national employment strategy </p></dd>
-          <dt>Series</dt>
-          <dd></dd>
-          <dt>Related indicators</dt>
-          <dd><p> 8.5.2; 8.6.1; 8.7.1 </p></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>International Labour Organization (ILO) </p></dd>
-        </dl>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 8.b: By 2020, develop and operationalize a global strategy for youth employment and implement the Global Jobs Pact of the International Labour Organization</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 8.b.1: Existence of a developed and operationalized national strategy for youth employment, as a distinct strategy or as part of a national employment strategy </p></dd>
+            <dt>Series</dt>
+            <dd></dd>
+            <dt>Related indicators</dt>
+            <dd><p> 8.5.2; 8.6.1; 8.7.1 </p></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>International Labour Organization (ILO) </p></dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>International Labour Organization (ILO) </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>International Labour Organization (ILO) </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><p>The proposed methodology draws on:</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><p>The proposed methodology draws on:</p>
 <ol>
   <li>Global policy instruments, notably:</li>
 </ol>
@@ -542,43 +545,43 @@ data-event-label="high"
   <li>International monitoring of youth employment policies was carried out over the period 2010-2012 by the Youth Employment Network (YEN) &#x2013; a partnership between the ILO, United Nations and World Bank &#x2013; utilising a questionnaire sent to national authorities. This evolved into YouthPOL<sup><a href="#footnote-4" id="footnote-ref-4">[3]</a></sup>, an inventory of youth employment policies and programmes maintained by the ILO (65 countries covered to date). </li>
   <li>The ILO also maintains EmPol, a dataset of broader national employment policies (143 countries covered).</li>
 </ul><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> Available online at: https://www.ilo.org/ilc/ILCSessions/101stSession/texts-adopted/WCMS_185950/lang--en/index.htm <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> https://www.ilo.org/ilc/ILCSessions/98thSession/texts/WCMS_115076/lang--en/index.htm <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> <a href="http://www.ilo.org/dyn/youthpol/en/f?p=30850:1001:0::NO">http://www.ilo.org/dyn/youthpol/en/f?p=30850:1001:0::NO</a><u>:::</u> <a href="#footnote-ref-4">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td><p>Categorical variable with values possible values of 0, 1, 2 or 3.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td><p>Not applicable</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td><p>Categorical variable with values possible values of 0, 1, 2 or 3.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td><p>Not applicable</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><ol>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><ol>
   <li><em>Global survey for data collection</em>: Requesting responsible national entities to provide relevant information and support documents; a survey questionnaire is developed and administered by the ILO with biennial frequency to assess progress.This will be complemented by regular information and updates from ILO country offices on development, adoption and implementation of youth employment policies in countries covered by these offices, every year.</li>
 </ol>
 <p> </p>
@@ -590,81 +593,81 @@ data-event-label="high"
   <li><em>Data validation</em>: Regular quality checks are conducted on all data, in particular when: (i) an already available document has not been directly provided by the government itself; (ii) it is unclear if the strategy and related action plan have been officially adopted; or (iii) there are doubts regarding the implementation of the strategy. </li>
 </ol>
 <p> </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>See section 3.a.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><ul>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>See section 3.a.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><ul>
   <li>Proposed methodology to the ICLS: October 2018 </li>
   <li>Refinement of survey questionnaire and technical guidelines: October &#x2013; November 2018 </li>
   <li>Final testing: November 2018 - February 2019 </li>
   <li>Regular administration of the survey: started early 2019 </li>
 </ul>
 <p> </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>Annual</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>National entities (ministries or other government agencies) responsible for development, employment and youth policies. The ILO maintains a roster of national actors involved in the monitoring process. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>ILO</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td><p>The Department of Statistics (STATISTICS) works to provide relevant, timely and reliable labour statistics, to develop international standards for better measurement of labour issues and enhanced international comparability, and to help member States develop and improve their labour statistics. </p>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>Annual</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>National entities (ministries or other government agencies) responsible for development, employment and youth policies. The ILO maintains a roster of national actors involved in the monitoring process. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>ILO</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td><p>The Department of Statistics (STATISTICS) works to provide relevant, timely and reliable labour statistics, to develop international standards for better measurement of labour issues and enhanced international comparability, and to help member States develop and improve their labour statistics. </p>
 <p>The Employment Policy Department (EMPLOYMENT) is responsible for promoting full and productive employment by developing integrated employment, development and skills policies (ILO, 2012) that are inclusive, gender sensitive and sustainable. The department is mandated to coordinate ILO efforts to promote decent job opportunities for young women and men; over the years, it has supported the formulation, implementation and review of national youth employment strategies and action plans in different countries and regions (ILO, 2008; ILO, 2015). This type of targeted action and related achievements have been included in the ILO programming framework and performance system. </p>
 <p>The ILO supports its constituents and other development stakeholders through knowledge and capacity building as well as through policy advocacy and advice. The list of references at the end of this note offers examples of recent major ILO contributions to knowledge building on youth employment and youth employment policy (ILO, 2017). </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>The purpose of SDG indicator 8.b.1 is to provide an indication of the progress of countries in addressing youth employment issues. In this respect, it is assumed that having officially adopted what can be recognised as a structured strategy for youth employment would mean larger attention given by a country to youth labour market challenges, compared to countries with no strategy. In fact, the development of such a strategy usually entails broad participation of and consultation/coordination among different stakeholders.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p> Governments may have <em>de facto</em> national strategies for youth employment, but lack an officially adopted <em>de jure</em> document. For SDG 8.b.1 monitoring purposes only what emerges from <em>de jure</em> documents is considered.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p>The information and documents provided by national authorities will be analysed by the ILO to classify countries according to this grid: </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>The purpose of SDG indicator 8.b.1 is to provide an indication of the progress of countries in addressing youth employment issues. In this respect, it is assumed that having officially adopted what can be recognised as a structured strategy for youth employment would mean larger attention given by a country to youth labour market challenges, compared to countries with no strategy. In fact, the development of such a strategy usually entails broad participation of and consultation/coordination among different stakeholders.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p> Governments may have <em>de facto</em> national strategies for youth employment, but lack an officially adopted <em>de jure</em> document. For SDG 8.b.1 monitoring purposes only what emerges from <em>de jure</em> documents is considered.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p>The information and documents provided by national authorities will be analysed by the ILO to classify countries according to this grid: </p>
 <table>
   <tbody>
     <tr>
@@ -730,134 +733,135 @@ data-event-label="high"
   <li>Technical guidelines for data providers and compilers, along with the above-mentioned questionnaire and detailed notes.</li>
 </ol>
 <p>Consultations with pertinent ministries and social partners&#x2019; representatives are held throughout the process.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td><p>Not applicable</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><p>For countries that have not responded in the current survey round, the last country responses to the ILO survey are reported. The underlying assumption is that policy changes are unlikely to occur each year and therefore recent responses to the ILO survey remain valid.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>None</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td><p>Not applicable</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td><p>Not applicable</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><p>For countries that have not responded in the current survey round, the last country responses to the ILO survey are reported. The underlying assumption is that policy changes are unlikely to occur each year and therefore recent responses to the ILO survey remain valid.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>None</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td><p>Not applicable</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>The methodology is mainly based on a methodology used for the ILO youth employment policies database (YouthPOL) that covers 65 countries in 5 regions, including: Colombia, Mexico, Jordan, Australia, Cambodia, China, Republic of Korea, Philippines, Germany, Kazakhstan, Russian Federation, Italy, Spain, and Ukraine. The data can be accessed <a href="https://www.ilo.org/dyn/youthpol/en/f?p=30850:1001:0::NO:::" target="_blank"><u>in this link.</u></a> The methodology is based on a simplified version of the questionnaires used in this database.</p>
 <p> </p>
 <p><strong>Time series:</strong> This submission covers data from 2019 to 2020. </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p>Not applicable</p></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p>Not applicable</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p>International Conference of Labour Statisticians, 20<sup>th</sup>. Session. Resolution III <a href="http://www.ilo.org/20thicls" target="_blank"><u>www.ilo.org/20thicls</u></a> </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p>International Conference of Labour Statisticians, 20<sup>th</sup>. Session. Resolution III <a href="http://www.ilo.org/20thicls" target="_blank"><u>www.ilo.org/20thicls</u></a> </p>
 <p>International Labour Office (ILO). 2008. <em>Guide for the preparation of National action Plans on Youth Employment. </em>(Geneva, ILO) </p>
 <p>_. 2012. <em>Guide for the formulation of national employment policies. </em>(Geneva). </p>
 <p>_. 2015. <em>Comparative Analysis of Policies for Youth Employment in Asia and the Pacific. </em>(Geneva). </p>
 <p>_. 2017.<em> Global employment trends for youth 2017: paths to a better working future </em>(Geneva) </p>
 <p>O&#x2019;higgins, N. 2017. <em>Rising to the youth employment challenge: new evidence on key policy issues </em>(Geneva, ILO). </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -932,12 +936,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,111 +423,114 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 10: Reduce inequality within and among countries</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 10.c: By 2030, reduce to less than 3 per cent the transaction costs of migrant remittances and eliminate remittance corridors with costs higher than 5 per cent</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 10.c.1: Remittance costs as a proportion of the amount remitted</p></dd>
-          <dt>Series</dt>
-          <dd><p>Not applicable</p></dd>
-          <dt>Related indicators</dt>
-          <dd><p>G20 5x5 target &#x2013; Remittance cost reduction for development. In 2009, the G8 set a target, later adopted by the G20, to reduce the cost of international remittances from 10 percent to 5 percent within five years. The target was dubbed the &#x201C;5x5 Objective.&#x201D;</p></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>World Bank</p></dd>
-        </dl>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 10: Reduce inequality within and among countries</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 10.c: By 2030, reduce to less than 3 per cent the transaction costs of migrant remittances and eliminate remittance corridors with costs higher than 5 per cent</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 10.c.1: Remittance costs as a proportion of the amount remitted</p></dd>
+            <dt>Series</dt>
+            <dd><p>Not applicable</p></dd>
+            <dt>Related indicators</dt>
+            <dd><p>G20 5x5 target &#x2013; Remittance cost reduction for development. In 2009, the G8 set a target, later adopted by the G20, to reduce the cost of international remittances from 10 percent to 5 percent within five years. The target was dubbed the &#x201C;5x5 Objective.&#x201D;</p></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>World Bank</p></dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>World Bank</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>World Bank</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><h2>Definition:</h2>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><h2>Definition:</h2>
 <p>The target includes two components. The first component is that transaction costs for migrant remittances should be 3% or less by 2030. This transaction cost should be intended as <strong>&#x201C;</strong><strong>Global average total cost of sending $200 (or equivalent in local sending currency) and expressed as % of amount sent&#x201D;.</strong> This indicator is readily available and published on a quarterly basis by the World Bank in the Remittance Prices Worldwide database, which covers 365 country corridors, from 48 sending to 105 receiving countries. The second component is to eliminate corridor where cost is 5% or higher. This should be intended in the sense that it should be possible for remittance senders to send money to the beneficiary for an average cost of 5% or less of the amount sent. For this purpose, it should suffice that in each corridor there are at least 3 services, meeting a defined set of service requirements (including service quality, reach etc.), for which the average is 5% or less.</p>
 <p><strong>Concepts:</strong></p>
 <p><strong>International remittance transfer.</strong> A cross-border person-to-person payment of relatively low value. The transfers are typically recurrent payments by migrant workers (who send money to their families in their home country every month). In the report, the term &#x201C;remittance transfer&#x201D; is used for simplicity (ie it is assumed the transfer is international).</p>
@@ -536,110 +539,110 @@ data-event-label="high"
 <p><strong>Money transfer operator (MTO).</strong> A non-deposit taking payment service provider where the service involves payment per transfer (or possibly payment for a set or series of transfers) by the sender to the payment service provider (for example, by cash or bank transfer) &#x2013; i.e. as opposed to a situation where the payment service provider debits an account held by the sender at the payment service provider. MTOs may include both traditional players focusing on delivering funds in cash and innovative players which may adopt a variety of different business models for the delivery of the transactions.</p>
 <p><strong>Price. </strong>The total cost to the end users of sending a remittance transfer (including the fees charged to the sender and the margin by which the exchange rate charged to the end users is above the current interbank exchange rate).</p>
 <p><strong>Transparent service</strong>. A remittance service for which the sending cost can be split into its two components: transfer fee and foreign exchange margin. If a provider does not disclose the foreign exchange rate applicable to the transaction, then the service is considered not transparent. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td><p>Cost expressed as % of amount sent</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td><p>Cost expressed as % of amount sent</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><p>Data sources are the remittance service providers (RSPs) themselves. Data are collected quarterly through a mystery shopping exercise, which takes one week. Every year, in each corridor, a market analysis is conducted to compile a sample of RSPs covering at least 80% of the market.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>Mystery shopping conducted quarterly. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><p>Quarterly</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>March, June, September, December</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>Data are collected by mystery shopping from remittance service providers.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>World Bank</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><p>Data sources are the remittance service providers (RSPs) themselves. Data are collected quarterly through a mystery shopping exercise, which takes one week. Every year, in each corridor, a market analysis is conducted to compile a sample of RSPs covering at least 80% of the market.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>Mystery shopping conducted quarterly. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><p>Quarterly</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>March, June, September, December</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>Data are collected by mystery shopping from remittance service providers.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>World Bank</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>Data for these indicators have been collected by the World Bank through the Remittance Prices Worldwide (RPW) database since 2008 for the purpose of monitoring the G8 / G20 target on reducing remittance prices. Also known as the &#x201C;5x5 objective&#x201D;, this goal was adopted by the G8 in 2009, and it refers to reduction of the global average total cost of migrant remittances by 5 percentage points in 5 years. To achieve this objective, the governments in both sending and receiving countries should consider implementing reforms based upon the General Principles for International Remittances Services by the World Bank/Committee on Payment and Settlement Systems (January 2007). This internationally agreed framework has proven effective in helping reduce the cost of remittances and guiding actions to enhance the efficiency of international remittances. The World Bank&#x2019;s RPW database is the only global database that monitors remittance prices across all regions of the world. RPW was launched by the World Bank in September 2008, and is a key tool in monitoring the evolution of costs to the remitters and the beneficiaries from sending and receiving money in major country corridors.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p>NA</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p>Data is collected through a mystery shopping exercise of remittance service providers (RSPs). A sample of RSPs including at least 80% of the market share in each corridor are included in the mystery shopping exercise. The average cost is calculated as the simple average of total costs (including both fee and exchange rate margin) quoted by each RSP operating in a corridor.</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>Data for these indicators have been collected by the World Bank through the Remittance Prices Worldwide (RPW) database since 2008 for the purpose of monitoring the G8 / G20 target on reducing remittance prices. Also known as the &#x201C;5x5 objective&#x201D;, this goal was adopted by the G8 in 2009, and it refers to reduction of the global average total cost of migrant remittances by 5 percentage points in 5 years. To achieve this objective, the governments in both sending and receiving countries should consider implementing reforms based upon the General Principles for International Remittances Services by the World Bank/Committee on Payment and Settlement Systems (January 2007). This internationally agreed framework has proven effective in helping reduce the cost of remittances and guiding actions to enhance the efficiency of international remittances. The World Bank&#x2019;s RPW database is the only global database that monitors remittance prices across all regions of the world. RPW was launched by the World Bank in September 2008, and is a key tool in monitoring the evolution of costs to the remitters and the beneficiaries from sending and receiving money in major country corridors.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p>NA</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p>Data is collected through a mystery shopping exercise of remittance service providers (RSPs). A sample of RSPs including at least 80% of the market share in each corridor are included in the mystery shopping exercise. The average cost is calculated as the simple average of total costs (including both fee and exchange rate margin) quoted by each RSP operating in a corridor.</p>
 <p>In 2016, introduced the Smart Remitter Target (SmarRT) to monitor remittance transactions at a more granular level. It aims to reflect the cost that a savvy consumer with access to sufficiently complete information would pay to transfer remittances in each corridor. SmaRT is calculated as the simple average as the three cheapest services for sending the equivalent of $200 in each corridor and is expressed in terms of the percentage of the total amount sent. In addition to transparency, services must meet additional criteria to be included in SmaRT, including transaction speed (5 days or less) and accessibility (determined by geographic proximity of branches for services that require physical presence, or access to any technology or device necessary to use the service, such as a bank account, mobile phone or the internet. The SmaRT Methodology was developed in collaboration with the Global Remittances Working Group, a working group which was formed by the World Bank at the request of the G8/G20 to monitor the progress towards the 5x5 Objective. </p>
 <p>For additional information on the methodology of SmaRT, please see: <a href="https://remittanceprices.worldbank.org/sites/default/files/smart_methodology.pdf">https://remittanceprices.worldbank.org/sites/default/files/smart_methodology.pdf</a> </p>
 <p>Target 10.c.1 includes two components, which require two separate calculations:</p>
@@ -654,29 +657,29 @@ data-event-label="high"
   <li>Average cost of sending $200 (%) in a corridor: simple average of the cost of all transparent services from a sending country to a specific destination country. Sample size is 367.</li>
   <li>SmaRT average cost of sending $200 (%) in a corridor: SmaRT average cost of all SmaRT qualifying services from a sending country to a specific destination country. Sample size changes by the quarter, depending on the availability of the SmaRT qualifying services in corridors satisfying the specific prerequisites identified in the SmaRT Methodology.</li>
 </ol></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><p><strong>&#x2022; At country level</strong></p>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><p><strong>&#x2022; At country level</strong></p>
 <p>A sample of corridors is collected for each sending and receiving country. It is assumed that the cost of other corridors from/to each country fall in similar cost range.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Regional aggregates are computed by calculating simple averages of the cost of individual transparent services remitting to the recipient countries in the region for which there is data. Countries with no data are not included, however, as a representative sample is built, it is assumed that missing data fall in the same cost range as collected data.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>Regional aggregates are computed by calculating simple averages of individual transparent services remitting to the recipient countries in the region for which there is data.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td><ul>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>Regional aggregates are computed by calculating simple averages of individual transparent services remitting to the recipient countries in the region for which there is data.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td><ul>
   <li>Minimum requirements for national and regional databases are provided on the Remittance Prices Worldwide website at: <a href="https://remittanceprices.worldbank.org/en/national-and-regional-databases-certified-by-the-world-bank">https://remittanceprices.worldbank.org/en/national-and-regional-databases-certified-by-the-world-bank</a>. For consistent methodology, the following minimum requirements were established: <ol>
       <li>Double price points data gathering </li>
       <li>Collection of fees for the sender </li>
@@ -697,113 +700,114 @@ data-event-label="high"
 <ul>
   <li>Web site for Remittance Prices Worldwide database and related resources: <a href="http://remittanceprices.worldbank.org">http://remittanceprices.worldbank.org</a> </li>
 </ul></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td><p>Data are collected by researchers through mystery shopping, and subsequently compiled, cleaned, and reviewed. The World Bank uses vendor services for data collection and compilation. The data is then reviewed in detail by the World Bank RPW team, who also undertakes the analysis.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td><p>Data are collected by researchers through mystery shopping, and subsequently compiled, cleaned, and reviewed. The World Bank uses vendor services for data collection and compilation. The data is then reviewed in detail by the World Bank RPW team, who also undertakes the analysis.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>The data are available for 367 corridors, which include 48 sending countries and 105 receiving countries. The data are collected quarterly.</p>
 <p><strong>Time series:</strong></p>
 <p>Data availability: since 2008 (all data available online; data available online in Excel format starting from Q1 2011).</p>
 <p><strong>Disaggregation:</strong></p>
 <p>RPW tracks the cost of remittances by the type of remittance service providers: commercial banks, money transfer operators, post offices, mobile money providers (more provider types may be added as market evolves). In addition, disaggregation is also possible by the instrument used to fund the transaction: including but not limited to cash, bank account, debit/credit card, mobile money etc.; and by the instrument used to disburse the funds: including but not limited to cash, bank account, mobile wallet etc. </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Sources of discrepancies:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>There are no country-produced alternatives for this data, except for countries that have established a remittance price database in line with World Bank minimum requirements. It has been observed that data are broadly in line and no significant discrepancies exist.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>URL: </strong><a href="http://remittances.worldbank.org">http://remittances.worldbank.org</a></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>URL: </strong><a href="http://remittances.worldbank.org">http://remittances.worldbank.org</a></p>
 <p><strong>References: </strong>Please see various resources on<strong> </strong><a href="http://remittanceprices.worldbank.org/en/resources">http://remittanceprices.worldbank.org/en/resources</a><strong> </strong></p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -878,12 +882,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

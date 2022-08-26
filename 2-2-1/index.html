@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,234 +423,237 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 2.2: By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 2.2.1: Prevalence of stunting (height for age &lt;-2 standard deviation from the median of the World Health Organization (WHO) Child Growth Standards) among children under 5 years of age</p></dd>
-          <dt>Series</dt>
-          <dd></dd>
-          <dt>Related indicators</dt>
-          <dd></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>United Nations Children&apos;s Fund (UNICEF)</p>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 2.2: By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 2.2.1: Prevalence of stunting (height for age &lt;-2 standard deviation from the median of the World Health Organization (WHO) Child Growth Standards) among children under 5 years of age</p></dd>
+            <dt>Series</dt>
+            <dd></dd>
+            <dt>Related indicators</dt>
+            <dd></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>United Nations Children&apos;s Fund (UNICEF)</p>
 <p>World Health Organization (WHO)</p>
 <p>World Bank (WB)</p></dd>
-        </dl>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>United Nations Children&apos;s Fund (UNICEF)</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>United Nations Children&apos;s Fund (UNICEF)</p>
 <p>World Health Organization (WHO)</p>
 <p>World Bank (WB)</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><p><strong>Definition:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><p><strong>Definition:</strong></p>
 <p>Prevalence of stunting (height-for-age &lt;-2 standard deviation from the median of the World Health Organization (WHO) Child Growth Standards) among children under 5 years of age. </p>
 <p> (French: pourcentage de sous-alimentation; Spanish: porcentaje de sub-alimentaci&#xF3;n)</p>
 <p><strong>Concepts:</strong></p>
 <p>NA.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><p>For the majority of countries, nationally representative household surveys constitute the data source. For a limited number of countries data from surveillance systems is used if sufficient population coverage is documented (about 80%). For both data sources, the child&#x2019;s height and weight measurements have to be collected following recommended standard measuring techniques (WHO 2008). </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>UNICEF, WHO and the World Bank group jointly review new data sources to update the country level estimates. Each agency uses their existing mechanisms for obtaining data.</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><p>For the majority of countries, nationally representative household surveys constitute the data source. For a limited number of countries data from surveillance systems is used if sufficient population coverage is documented (about 80%). For both data sources, the child&#x2019;s height and weight measurements have to be collected following recommended standard measuring techniques (WHO 2008). </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>UNICEF, WHO and the World Bank group jointly review new data sources to update the country level estimates. Each agency uses their existing mechanisms for obtaining data.</p>
 <p>For WHO, see published database methodology (de Onis et al. 2004). For UNICEF, the cadre of dedicated data and monitoring specialists working at national, regional and international levels in 190 countries routinely provide technical support for the collection and analysis of data. For the past 20 years UNICEF has undertaken an annual process to update its global databases, called Country Reporting on Indicators for Goals (CRING). This exercise is done in close collaboration with UNICEF country offices with the purpose of ensuring that UNICEF global databases contain updated and internationally comparable data. UNICEF country offices are invited to submit, through an online system, nationally representative data for over 100 key indicators on the well-being of women and children, including stunting. The country office staff work with local counterparts to ensure the most relevant data are shared. Updates sent by the country offices are then reviewed by sector specialists at UNICEF headquarters to check for consistency and overall data quality of the submitted estimates and re-analysis where possible. This review is based on a set of objective criteria to ensure that only the most reliable information is included in the databases. Once reviewed, feedback is made available on whether or not specific data points are accepted, and if not, the reasons why. UNICEF uses these data obtained through CRING to feed into the joint dataset. The World Bank Group provides estimates availabe through the Living Standard Measurement Surveys (LSMS) which ussually requires re-analysis of datasets given theat the LSMS reports often do not tabulate the stunting data. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><p>Data sources are currently being updated to feed into the 2017 production of global and regional estimates and updated country level dataset to be released in May 2017.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>The next planned release fo global/regional estimates as well as the updated country dataset is May 2017. Global and regional estimates are released annually every May starting in 2017. The country level dataset is updated and released more often than the global/regional estimates. Although a set schedule has not yet been established, there have been at least two annual updates (one coinciding with the annual release of the regional/global estimates and at least one other update at another time of the year).</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>Data providers vary and most commonly are ministries of health, national offices of statistics or national institutes of nutrition. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>UNICEF, WHO and the World Bank group</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><p>Data sources are currently being updated to feed into the 2017 production of global and regional estimates and updated country level dataset to be released in May 2017.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>The next planned release fo global/regional estimates as well as the updated country dataset is May 2017. Global and regional estimates are released annually every May starting in 2017. The country level dataset is updated and released more often than the global/regional estimates. Although a set schedule has not yet been established, there have been at least two annual updates (one coinciding with the annual release of the regional/global estimates and at least one other update at another time of the year).</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>Data providers vary and most commonly are ministries of health, national offices of statistics or national institutes of nutrition. </p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>UNICEF, WHO and the World Bank group</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>Child growth is an internationally accepted outcome reflecting child nutritional status. Child stunting refers to a child who is too short for his or her age and is the result of chronic or recurrent malnutrition. Stunting is a contributing risk factor to child mortality and is also a marker of inequalities in human development. Stunted children fail to reach their physical and cognitive potential. Child stunting is one of the World Health Assembly nutrition target indicators.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p>Survey estimates come with levels of uncertainty due to both sampling error and non-sampling error (e.g. measurement technical error, recording error etc.,). None of the two sources of errors have been fully taken into account for deriving estimates neither at country nor at regional and global levels.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p>Survey estimates are based on standardized methodology using the WHO Child Growth Standards as described elsewhere (Ref: Anthro software manual). Global and regional estimates are based on methodology outlined in UNICEF-WHO-The World Bank: Joint child malnutrition estimates - Levels and trends (UNICEF/WHO/WB 2012 )</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><ul>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>Child growth is an internationally accepted outcome reflecting child nutritional status. Child stunting refers to a child who is too short for his or her age and is the result of chronic or recurrent malnutrition. Stunting is a contributing risk factor to child mortality and is also a marker of inequalities in human development. Stunted children fail to reach their physical and cognitive potential. Child stunting is one of the World Health Assembly nutrition target indicators.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p>Survey estimates come with levels of uncertainty due to both sampling error and non-sampling error (e.g. measurement technical error, recording error etc.,). None of the two sources of errors have been fully taken into account for deriving estimates neither at country nor at regional and global levels.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p>Survey estimates are based on standardized methodology using the WHO Child Growth Standards as described elsewhere (Ref: Anthro software manual). Global and regional estimates are based on methodology outlined in UNICEF-WHO-The World Bank: Joint child malnutrition estimates - Levels and trends (UNICEF/WHO/WB 2012 )</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>No imputation methodology is applied to derive estimates for countries or years where no data is avaialble.</p>
@@ -658,115 +661,115 @@ data-event-label="high"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>Countries and years are treated as missing randomly following a multilevel modeling approach (International Journal of Epidemiology 2004;33:1260-70).</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>Regional aggregates are available for the following classifications: UN, MDG, UNICEF, WHO, The World Bank regions and income groups.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>Regional aggregates are available for the following classifications: UN, MDG, UNICEF, WHO, The World Bank regions and income groups.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>More than 150 countries.</p>
 <p><strong>Time series:</strong></p>
 <p>At country level, data are provided for the years where surveys are included in the joint dataset. Survey years range from 1983 to 2016. For the global and regional levels, estimates for the years 1990 to the latest available estimate upon release each year (i.e. in Sept 2016 edition of the Joint Malnutrition Estimates the latest available estimate was for 2015). </p>
 <p><strong>Disaggregation:</strong></p>
 <p>Global and regional estimates refer to the age group of children under 5 years, sexes combined. Disaggregated country data are available in a majority of household surveys and UNICEF - WHO- The World Bank Group are expanding the joint data set to include sub national and stratified estimates (e.g. sex, age groups, wealth, mothers&apos; education, residence) in 2017.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Sources of discrepancies:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>The standard analysis approach to construct the joint data set aims for a maximum comparability of country estimates. For the inclusion of survey estimates into the JME dataset, the inter-agency group applies survey quality assessment criteria. When there is insufficient documentation, the survey is not included until information becomes available. When raw data are available, and there is a question about the analysis approach, data re-analysis is performed following the standard methodology. Discrepancies between results from standardised approach and those reported may occur for various reasons, for example, the use of different standards for z-score calculations, imputation of the day of birth when missing, the use of rounded age in months, the use of different flagging systems for data exclusion. For surveys based on the previous NCHS/WHO references, and for which raw data are not available, a method for converting the z-scores to be based on the WHO Child Growth Standards is applied (Yang and de Onis, 2008). In addition, when surveys do not cover the age interval 0-&lt;5 years, or are only representative of the rural areas, an adjustment based on other surveys for the same country, is performed. Any adjustment or conversion is transparently stated in the annotated joint data set.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>URL:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>URL:</strong></p>
 <p>data.unicef.org/nutrition/malnutrition.html; http://www.who.int/nutgrowthdb/estimates2014/en/; http://datatopics.worldbank.org/child-malnutrition;</p>
 <p><strong>References:</strong></p>
 <p>United Nations Children&#x2019;s Fund, World Health Organization, The World Bank (2012). UNICEFWHO-World Bank Joint Child Malnutrition Estimates. (UNICEF, New York; WHO, Geneva; The World Bank, Washington, DC; 2012). </p>
@@ -776,13 +779,14 @@ data-event-label="high"
 <p>International Journal of Epidemiology 2004;33:1260-70</p>
 <p>International Journal of Epidemiology 2003;32:518-26</p>
 <p>http://www.biomedcentral.com/1471-2431/8/19</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -857,12 +861,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

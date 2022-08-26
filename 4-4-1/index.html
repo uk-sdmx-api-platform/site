@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,111 +423,114 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 4.4: By 2030, substantially increase the number of youth and adults who have relevant skills, including technical and vocational skills, for employment, decent jobs and entrepreneurship</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 4.4.1: Proportion of youth and adults with information and communications technology (ICT) skills, by type of skill</p></dd>
-          <dt>Series</dt>
-          <dd><p>Not Applicable </p></dd>
-          <dt>Related indicators</dt>
-          <dd><p>4.5, 5.b, 8.5, 8.6, 8.b, 9.2, 9.c</p></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>International Telecommunication Union (ITU)</p></dd>
-        </dl>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 4.4: By 2030, substantially increase the number of youth and adults who have relevant skills, including technical and vocational skills, for employment, decent jobs and entrepreneurship</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 4.4.1: Proportion of youth and adults with information and communications technology (ICT) skills, by type of skill</p></dd>
+            <dt>Series</dt>
+            <dd><p>Not Applicable </p></dd>
+            <dt>Related indicators</dt>
+            <dd><p>4.5, 5.b, 8.5, 8.6, 8.b, 9.2, 9.c</p></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>International Telecommunication Union (ITU)</p></dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>International Telecommunication Union (ITU)</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>International Telecommunication Union (ITU)</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><p><strong>Definition:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><p><strong>Definition:</strong></p>
 <p>The proportion of youth and adults with information and communications technology (ICT) skills, by type of skill as defined as the percentage of individuals that have undertaken certain ICT-related activities in the last 3 months. The indicator is expressed as a percentage.<br></p>
 <p><strong>Concepts:</strong></p>
 <p>The indicator on the proportion of individuals with ICT skills, by type of skills refers to individuals that have undertaken certain computer-related activities in the last three months. (Please note however, that from 2020 this data will be collected with a different scope and response categories, as explained below.)</p>
@@ -559,249 +562,250 @@ data-event-label="high"
   <li>Verifying the reliability of information found online</li>
   <li>Programming or coding in digital environments (e.g. computer software, app development)</li>
 </ul></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td><p>Percentage of individuals</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td><p>Activities are classified according to agreement at the Expert Group meeting on ICT Household Indicators (EGH).</p>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td><p>Percentage of individuals</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td><p>Activities are classified according to agreement at the Expert Group meeting on ICT Household Indicators (EGH).</p>
 <p>Furthermore, for countries that collect this data through an official survey, and if data allow breakdown and disaggregation, the indicator can be broken down by region (urban/rural), by sex, by age group, by educational level (ISCED), by labour force status (ILO), and by occupation (ISCO). ITU collects data for all of these breakdowns from countries.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><p>Countries can collect data on this indicator through national household surveys. Data for different countries are compiled by ITU.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>Data for different countries are compiled and provided by ITU.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>ITU releases data twice per year on ICT skills.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>Bodies responsible for conducting household surveys (including National Statistical Offices and Government Ministries) in which information on the use of ICT skills is collected. Data is compiled by ITU.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>ITU</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td><p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><p>Countries can collect data on this indicator through national household surveys. Data for different countries are compiled by ITU.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>Data for different countries are compiled and provided by ITU.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><p>Various. Each survey has its own data collection cycle. ITU collects data twice a year from Member States, in Q1 and in Q3.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>ITU releases data twice per year on ICT skills.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>Bodies responsible for conducting household surveys (including National Statistical Offices and Government Ministries) in which information on the use of ICT skills is collected. Data is compiled by ITU.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>ITU</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td><p>As the UN specialized agency for ICTs, ITU is the official source for global ICT statistics, collecting ICT data from its Member States. </p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>ICT skills determine the effective use of information and communication technology, so this indicator may therefore assist in making the link between ICT usage and impact. The lack of such skills continues to be one of the key barriers keeping people from fully benefitting from the potential of information and communication technologies. These data may be used to inform targeted policies to improve ICT skills, and thus contribute to an inclusive information society.</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>ICT skills determine the effective use of information and communication technology, so this indicator may therefore assist in making the link between ICT usage and impact. The lack of such skills continues to be one of the key barriers keeping people from fully benefitting from the potential of information and communication technologies. These data may be used to inform targeted policies to improve ICT skills, and thus contribute to an inclusive information society.</p>
 <p>This is also a core indicator of the Partnership on Measuring ICT for Development&apos;s Core List of Indicators, which has been endorsed by the UN Statistical Commission (in 2014).</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p>This indicator is relatively new but based on an internationally-agreed definition and methodology, which have been developed under the coordination of International Telecommunications Union (ITU), through its Expert Groups and following an extensive consultation process with countries. It was also endorsed by the UN Statistical Commission in 2014<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>, and again in 2020.</p>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p>This indicator is relatively new but based on an internationally-agreed definition and methodology, which have been developed under the coordination of International Telecommunications Union (ITU), through its Expert Groups and following an extensive consultation process with countries. It was also endorsed by the UN Statistical Commission in 2014<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>, and again in 2020.</p>
 <p>The indicator is based on the responses provided by interviewees regarding certain activities that they have carried out in a reference period of time. However, it is not a direct assessment of skills nor do we know if those activities were undertaken effectively. </p><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> As one of the Core List of Indicators of the Partnership on Measuring ICT for Development. <a href="#footnote-ref-2">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p>This indicator is calculated as the proportion of in-scope who have carried out each activity in the past 3 months, regardless of where that activity took place. The indicator is expressed as a percentage.</p>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p>This indicator is calculated as the proportion of in-scope who have carried out each activity in the past 3 months, regardless of where that activity took place. The indicator is expressed as a percentage.</p>
 <p>Figures supplied are expressed as a proportion of the in-scope population.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td><p>No adjustments are made to the data submitted by countries.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><p><strong>&#x2022; At country level</strong></p>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td><p>No adjustments are made to the data submitted by countries.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><p><strong>&#x2022; At country level</strong></p>
 <p>None by data compiler.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>None by data compiler.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>Regional and global aggregates are not currently available for this indicator.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td><p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>Regional and global aggregates are not currently available for this indicator.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td><p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
 <p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td><p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td><p>Data are checked and validated by the ICT Data and Analytics (IDA) Division of the ITU. Countries are contacted to clarify and correct their submissions.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td><p>The guidelines of the Manual for Measuring ICT Access and Use by Households and Individuals 2020 are followed.</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>As of 2020, 91 economies have ever reported ICT skills data since 2005.</p>
 <p><strong>Time series:</strong></p>
 <p>2005 onwards</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Since data for the indicator on the proportion of individuals with ICT skills, by type of skills are collected through a survey, classificatory variables for individuals can provide further information on the differences in ICT skills among men/women, children/adults (age groups), employed/unemployed, etc., according to national requirements These data may be used to inform targeted policies to improve ICT skills, and thus contribute to the development of an inclusive information society.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Sources of discrepancies:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>None</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>URL:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>URL:</strong></p>
 <p>International Telecommunication Union:</p>
 <p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/default.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/default.aspx</a> </p>
 <p><strong>References:</strong></p>
 <p>ITU Manual for Measuring ICT Access and Use by Households and Individuals 2020:</p>
 <p><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx">https://www.itu.int/en/ITU-D/Statistics/Pages/publications/manual.aspx</a> </p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -876,12 +880,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

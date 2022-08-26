@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826220433">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220826221353">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -423,111 +423,114 @@ data-event-label="high"
   </div>
 </div>
 
+  <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
-          <dt>Target</dt>
-          <dd><p>Target 5.c: Adopt and strengthen sound policies and enforceable legislation for the promotion of gender equality and the empowerment of all women and girls at all levels</p></dd>
-          <dt>Indicator</dt>
-          <dd><p>Indicator 5.c.1: Proportion of countries with systems to track and make public allocations for gender equality and women&#x2019;s empowerment</p></dd>
-          <dt>Series</dt>
-          <dd></dd>
-          <dt>Related indicators</dt>
-          <dd><p>None</p></dd>
-          <dt>Custodian agencies</dt>
-          <dd><p>UN Women in collaboration with OECD and UNDP</p></dd>
-        </dl>
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 5: Achieve gender equality and empower all women and girls</p></dd>
+            <dt>Target</dt>
+            <dd><p>Target 5.c: Adopt and strengthen sound policies and enforceable legislation for the promotion of gender equality and the empowerment of all women and girls at all levels</p></dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 5.c.1: Proportion of countries with systems to track and make public allocations for gender equality and women&#x2019;s empowerment</p></dd>
+            <dt>Series</dt>
+            <dd></dd>
+            <dt>Related indicators</dt>
+            <dd><p>None</p></dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>UN Women in collaboration with OECD and UNDP</p></dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td></td>
-              <td><p>UN Women in collaboration with OECD and UNDP</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td></td>
+                <td><p>UN Women in collaboration with OECD and UNDP</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td></td>
-              <td><p><strong>Definitions:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td></td>
+                <td><p><strong>Definitions:</strong></p>
 <p>Sustainable Development Goal (SDG) Indicator 5.c.1 seeks to measure government efforts to track budget allocations for gender equality throughout the public finance management cycle and to make these publicly available. This is an indicator of characteristics of the fiscal system. It is not an indicator of quantity or quality of finance allocated for gender equality and women&#x2019;s empowerment (GEWE). The indicator measures three criteria. The first focuses on the intent of a government to address GEWE by identifying if it has programs/policies and resource allocations for GEWE. The second assesses if a government has planning and budget tools to track resources for GEWE throughout the public financial management cycle. The third focuses on transparency by identifying if a government has provisions to make allocations for GEWE publicly available.</p>
 <p>The indicator aims to encourage national governments to develop appropriate budget tracking and monitoring systems and commit to making information about allocations for gender equality readily available to the public. The system should be led by the Ministry of Finance in collaboration with the sectoral ministries and National Women&#x2019;s Machineries and overseen by an appropriate body such as Parliament or Public Auditors.</p>
 <h2>Concepts: </h2>
@@ -613,118 +616,118 @@ data-event-label="high"
     </ul>
   </li>
 </ul><div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> Ibid. <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> &#x201C;Gender Budgeting in OECD Countries,&#x201D; OECD, 2016. <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> Ibid. <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> &#x201C;Budget Call Circulars and Gender Budget Statements in the Asia Pacific: A Review,&#x201D; UN Women, 2015. <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> &#x201C;Budget Classification,&#x201D; IMF, 2009. <a href="#footnote-ref-6">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-7">6</sup><p> Ibid. <a href="#footnote-ref-7">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-8">7</sup><p> Ibid. <a href="#footnote-ref-8">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td></td>
-              <td><p>Proportion of countries that have a system in place to track budget allocations to gender equality out of the total number of reporting countries</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td></td>
-              <td><p> Not applicable</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td></td>
+                <td><p>Proportion of countries that have a system in place to track budget allocations to gender equality out of the total number of reporting countries</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td></td>
+                <td><p> Not applicable</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td></td>
-              <td><p>An electronic questionnaire composed of thirteen binary questions with accompanying monitoring guidance will be used to collect data on this indicator.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td></td>
-              <td><p>Data collection is undertaken as part of the country-level monitoring of effective development cooperation where the Global Partnership monitoring framework provides a useful platform and mechanism. The Global Partnership monitoring is led by national coordinators appointed by their respective government to coordinate data collection and validation across relevant government ministries, departments and agencies. Where countries are not reporting through the Global Partnership, efforts are made to expand country coverage by reaching out to national coordinator/focal points directly or through custodian/co-custodian country offices. </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td></td>
+                <td><p>An electronic questionnaire composed of thirteen binary questions with accompanying monitoring guidance will be used to collect data on this indicator.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td></td>
+                <td><p>Data collection is undertaken as part of the country-level monitoring of effective development cooperation where the Global Partnership monitoring framework provides a useful platform and mechanism. The Global Partnership monitoring is led by national coordinators appointed by their respective government to coordinate data collection and validation across relevant government ministries, departments and agencies. Where countries are not reporting through the Global Partnership, efforts are made to expand country coverage by reaching out to national coordinator/focal points directly or through custodian/co-custodian country offices. </p>
 <p>For this indicator, the national coordinator/focal point will liaise with the Ministry of Finance, Ministry of Women and other relevant ministries to complete the questionnaire. UN Women country office focal points will be available for support. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td></td>
-              <td><p>Data collected every 3 years</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td></td>
-              <td><p>First quarter, every 3 years</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td></td>
-              <td><p>Response to questionnaire completed by Ministries of Finance&#x2014;as part of national statistical systems&#x2014;or Budget Office in coordination with National Statistical Offices and relevant sectoral ministries and national women&#x2019;s machineries.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td></td>
-              <td><p>UN Women, with UNDP and the OECD.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td></td>
-              <td><p>UN Women is committed through its work at the global, regional and county level to support Member States in filling critical gaps in generating and using data, statistics, evidence and analysis on gender equality. As part of its triple mandate, UN Women supports Member States in setting norms. UN Women also assists in implementing norms and standards through its country programmes. In addition, UN Women leads and coordinates the UN system&#x2019;s work in support of gender equality and the empowerment of women.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td></td>
+                <td><p>Data collected every 3 years</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td></td>
+                <td><p>First quarter, every 3 years</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td></td>
+                <td><p>Response to questionnaire completed by Ministries of Finance&#x2014;as part of national statistical systems&#x2014;or Budget Office in coordination with National Statistical Offices and relevant sectoral ministries and national women&#x2019;s machineries.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td></td>
+                <td><p>UN Women, with UNDP and the OECD.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td></td>
+                <td><p>UN Women is committed through its work at the global, regional and county level to support Member States in filling critical gaps in generating and using data, statistics, evidence and analysis on gender equality. As part of its triple mandate, UN Women supports Member States in setting norms. UN Women also assists in implementing norms and standards through its country programmes. In addition, UN Women leads and coordinates the UN system&#x2019;s work in support of gender equality and the empowerment of women.</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td></td>
-              <td><p>Adequate and effective financing is essential to achieve SDG 5 and the gender related targets across the SDG framework. By tracking and making public gender equality allocations, governments promote greater transparency which can support stronger accountability. The indicator encourages governments to put in place a system to track and make public resource allocations which can then inform policy review, better policy formulation and more effective public financial management. </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td></td>
+                <td><p>Adequate and effective financing is essential to achieve SDG 5 and the gender related targets across the SDG framework. By tracking and making public gender equality allocations, governments promote greater transparency which can support stronger accountability. The indicator encourages governments to put in place a system to track and make public resource allocations which can then inform policy review, better policy formulation and more effective public financial management. </p>
 <p>The principle of adequate financing for gender equality is rooted in the Beijing Declaration and Platform of Action (para 345 and 346) adopted in 1995. However, the Secretary General&#x2019;s report on the twenty-year review and appraisal of the Platform for Action found that underinvestment in gender equality and women&#x2019;s empowerment has contributed to slow and uneven progress in all 12 critical areas of concern. Inadequate financing hinders the implementation of gender responsive laws and policies. Data shows that financing gaps are sometimes a high as 90% with critical shortfalls in infrastructure, productive and economic sectors.</p>
 <p>The 2030 Agenda for Sustainable Development Agenda commits to a &#x201C;significant increase in investments to close the gender gap.&#x201D; Ensuring requisite resources for gender equality is central to implementing and achieving SDG 5 and all gender targets across the framework. Tracking these allocations and making the data publicly available are important steps to assess progress towards meeting these goals. This has been reaffirmed at the Third International Conference on Financing for Development, where member states adopted the Addis Ababa Action Agenda which commits to track gender equality allocations and increase transparency on public spending.<sup><a href="#footnote-9" id="footnote-ref-9">[8]</a></sup> Furthermore, the Commission on the Status of Women at its 60th session called upon states to support and institutionalize gender-responsive budgeting and tracking across all sectors of public expenditure to address gaps in resourcing for gender equality and the empowerment of women and girls.</p>
 <p>Indicator 5.c.1 measures the proportion of governments with systems to track and make public resource allocations for gender equality. It builds on Indicator 8 of the Global Partnership for Effective Development Co-operation that has been piloted, tested and rolled out in 81 countries. Indicator 8 allowed, for the first time, the systematic collection of data on government efforts to track resource allocations for gender equality across countries. Indicator 5.c.1 is defined in almost identical terms to Indicator 8 of the GPEDC. In addition, Indicator 5.c.1 is the only indicator in the SDG monitoring framework that links national budgeting systems with implementation of legislation and policies for gender equality and women&#x2019;s empowerment.</p>
 <p>The refined methodology for Indicator 5.c.1 is an improvement over the original methodology for Indicator 8. The increased specificity of the criteria provides a greater level of detail and therefore, captures the variability in countries&#x2019; gender equality policies and public financial management systems. The application of a tiered scoring approach with specific thresholds increases the indicator&#x2019;s rigor and gives incentive to countries to improve these systems over time. </p>
 <p></p>
 <p>Further, it is envisaged that the OECD Survey of Budget Practices and Procedures, conducted regularly among OECD countries, will be modified and updated to align closely with Indicator 5.c.1. This will allow greater global coverage by strengthening the indicator&#x2019;s relevance to ministries of finance in OECD countries.</p><div class="footnotes"><div><sup class="footnote-number" id="footnote-9">8</sup><p> Addis Ababa Action Agenda paragraphs 30 and 53. <a href="#footnote-ref-9">&#x2191;</a></p></div></div></td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td></td>
-              <td><p>The indicator does not measure allocation of resources but the existence of mechanisms to track resource allocations and that make that information available publicly. However, there is an optional question in the questionnaire (not scored) that requests countries to report the percentage of the government budget allocated for gender equality programs. </p>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td></td>
+                <td><p>The indicator does not measure allocation of resources but the existence of mechanisms to track resource allocations and that make that information available publicly. However, there is an optional question in the questionnaire (not scored) that requests countries to report the percentage of the government budget allocated for gender equality programs. </p>
 <p>Another limitation is that the indicator, which is process oriented, does not provide data on the adequacy or quality of resource allocations.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td></td>
-              <td><p>Data is collected via a questionnaire comprising 13 binary (Yes/No) questions to assess whether a country has a system in place to track and make public allocations for gender equality and women&#x2019;s empowerment.</p>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td></td>
+                <td><p>Data is collected via a questionnaire comprising 13 binary (Yes/No) questions to assess whether a country has a system in place to track and make public allocations for gender equality and women&#x2019;s empowerment.</p>
 <p><strong>Scoring:</strong></p>
 <p>Each criterion is weighted equally. A country would need to satisfy the threshold of &#x201C;yes&#x201D; responses per criterion. A country will be considered to satisfy each criterion as follows: </p>
 <table>
@@ -1346,129 +1349,129 @@ data-event-label="high"
     </mfrac>
   </math></p>
 <p>Where <strong><em>x</em></strong> refers to the region of analysis and <strong><em>y</em></strong> refers to the country classification based on the questionnaire.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td></td>
-              <td><p>Not applicable</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td></td>
-              <td><p><strong>&#x2022; At country level</strong></p>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td></td>
+                <td><p>Not applicable</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td></td>
+                <td><p><strong>&#x2022; At country level</strong></p>
 <p>Not Imputed</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Not Imputed</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td></td>
-              <td><p>Global aggregates are weighted averages of all the sub-regions that make up the world. Regional aggregates are weighted averages of all the countries within the region.</p>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td></td>
+                <td><p>Global aggregates are weighted averages of all the sub-regions that make up the world. Regional aggregates are weighted averages of all the countries within the region.</p>
 <p>Country level data are updated on a periodic basis. Where data are not updated, the last reported year may be used for the global and/or regional aggregates. </p></td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td></td>
-              <td><p>Methodology used by countries for the compilation of the data at the national level: questionnaire with monitoring guidance that includes definitions and instructions.</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td></td>
-              <td><p> See 4.d on validation</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td></td>
-              <td><p>See 4.d on validation</p></td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td></td>
-              <td><p> See 4.d on validation</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td></td>
+                <td><p>Methodology used by countries for the compilation of the data at the national level: questionnaire with monitoring guidance that includes definitions and instructions.</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td></td>
+                <td><p> See 4.d on validation</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td></td>
+                <td><p>See 4.d on validation</p></td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td></td>
+                <td><p> See 4.d on validation</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Data availability:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Data availability:</strong></p>
 <p>As identified in the pilot exercise for Indicator 5.c.1, the information that is collected through administering the questionnaire is readily available by Ministries of Finance and/or Budget Offices.</p>
 <p><strong>Time series:</strong></p>
 <p>First release of data was 2019</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Not applicable</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p><strong>Sources of discrepancies:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Since data is reported by countries via a validated questionnaire, there should be no discrepancies.</p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td><p>Global Partnership for Effective Development Corporation: <a href="http://effectivecooperation.org/about/global-monitoring-framework/">http://effectivecooperation.org</a></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><p>Global Partnership for Effective Development Corporation: <a href="http://effectivecooperation.org/about/global-monitoring-framework/">http://effectivecooperation.org</a></p>
 <p>Technical materials on how to incorporate gender equality in to public finance management systems: <a href="http://gender-financing.unwomen.org/en">http://gender-financing.unwomen.org/en</a></p>
 <p>IMF research on gender responsive budgeting and tracking systems: <a href="https://www.imf.org/external/np/res/dfidimf/topic7.htm">https://www.imf.org/external/np/res/dfidimf/topic7.htm</a> </p>
 <p><a href="https://www.imf.org/external/pubs/ft/wp/2016/wp16149.pdf">https://www.imf.org/external/pubs/ft/wp/2016/wp16149.pdf</a></p>
@@ -1476,13 +1479,14 @@ data-event-label="high"
 <p><a href="https://www.imf.org/external/pubs/ft/wp/2016/wp16149.pdf">https://www.imf.org/external/pubs/ft/wp/2016/wp16149.pdf</a></p>
 <p><a href="https://www.oecd.org/gender/Gender-Budgeting-in-OECD-countries.pdf">https://www.oecd.org/gender/Gender-Budgeting-in-OECD-countries.pdf</a></p>
 <p>Public Expenditure and Financial Accountability (PEFA) Program which provides guidance on assessment of public finance management systems can be found here: <a href="http://www.pefa.org/en">http://www.pefa.org/en</a></p></td>
-            </tr>
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1557,12 +1561,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220826220433'></script>
+<script src='/site/assets/js/sdg.js?v=20220826221353'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220826220433"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220826221353"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
