@@ -2510,7 +2510,7 @@ body.contrast-high #search-bar-on-page button:hover {
 body.contrast-high.layout-search form input, body.contrast-high.layout-search form label {
   color: black; }
 
-btn-toggle-all {
+.btn-toggle-all {
   margin-bottom: 20px; }
 
 .accordion-header {
