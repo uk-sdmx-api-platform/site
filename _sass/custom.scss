@@ -1,5 +1,10 @@
 // Enter any custom Sass in this file.
 
+.accordion-header {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 #fields .variable-selector[data-field="Reporting type"] {
   display: none;
 }
