@@ -1,329 +1,333 @@
-<div class="accordion" id="accordionExample">
-  <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <dl>
-          <dt>Goal</dt>
-          <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] }}</dd>
-          <dt>Target</dt>
-          <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] }}</dd>
-          <dt>Indicator</dt>
-          <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] }}</dd>
-          <dt>Series</dt>
-          <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] }}</dd>
-          <dt>Related indicators</dt>
-          <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] }}</dd>
-          <dt>Custodian agencies</dt>
-          <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] }}</dd>
-        </dl>
+<div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd>{{ page.indicator['SDG_GOAL__GLOBAL'] }}</dd>
+            <dt>Target</dt>
+            <dd>{{ page.indicator['SDG_TARGET__GLOBAL'] }}</dd>
+            <dt>Indicator</dt>
+            <dd>{{ page.indicator['SDG_INDICATOR__GLOBAL'] }}</dd>
+            <dt>Series</dt>
+            <dd>{{ page.indicator['SDG_SERIES_DESCR__GLOBAL'] }}</dd>
+            <dt>Related indicators</dt>
+            <dd>{{ page.indicator['SDG_RELATED_INDICATORS__GLOBAL'] }}</dd>
+            <dt>Custodian agencies</dt>
+            <dd>{{ page.indicator['SDG_CUSTODIAN_AGENCIES__GLOBAL'] }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Definition, concepts, and classifications 
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td>{{ page.indicator['CONTACT_ORGANISATION'] }}</td>
+                <td>{{ page.indicator['CONTACT_ORGANISATION__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person(s)</th>
+                <td>{{ page.indicator['CONTACT_NAME'] }}</td>
+                <td>{{ page.indicator['CONTACT_NAME__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td>{{ page.indicator['ORGANISATION_UNIT'] }}</td>
+                <td>{{ page.indicator['ORGANISATION_UNIT__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact person function</th>
+                <td>{{ page.indicator['CONTACT_FUNCT'] }}</td>
+                <td>{{ page.indicator['CONTACT_FUNCT__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact phone</th>
+                <td>{{ page.indicator['CONTACT_PHONE'] }}</td>
+                <td>{{ page.indicator['CONTACT_PHONE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact mail address</th>
+                <td>{{ page.indicator['CONTACT_MAIL'] }}</td>
+                <td>{{ page.indicator['CONTACT_MAIL__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td>{{ page.indicator['CONTACT_EMAIL'] }}</td>
+                <td>{{ page.indicator['CONTACT_EMAIL__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td>{{ page.indicator['STAT_CONC_DEF'] }}</td>
+                <td>{{ page.indicator['STAT_CONC_DEF__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td>{{ page.indicator['UNIT_MEASURE'] }}</td>
+                <td>{{ page.indicator['UNIT_MEASURE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td>{{ page.indicator['CLASS_SYSTEM'] }}</td>
+                <td>{{ page.indicator['CLASS_SYSTEM__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td>{{ page.indicator['SOURCE_TYPE'] }}</td>
+                <td>{{ page.indicator['SOURCE_TYPE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td>{{ page.indicator['COLL_METHOD'] }}</td>
+                <td>{{ page.indicator['COLL_METHOD__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td>{{ page.indicator['FREQ_COLL'] }}</td>
+                <td>{{ page.indicator['FREQ_COLL__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td>{{ page.indicator['REL_CAL_POLICY'] }}</td>
+                <td>{{ page.indicator['REL_CAL_POLICY__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td>{{ page.indicator['DATA_SOURCE'] }}</td>
+                <td>{{ page.indicator['DATA_SOURCE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td>{{ page.indicator['COMPILING_ORG'] }}</td>
+                <td>{{ page.indicator['COMPILING_ORG__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td>{{ page.indicator['INST_MANDATE'] }}</td>
+                <td>{{ page.indicator['INST_MANDATE__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td>{{ page.indicator['RATIONALE'] }}</td>
+                <td>{{ page.indicator['RATIONALE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td>{{ page.indicator['REC_USE_LIM'] }}</td>
+                <td>{{ page.indicator['REC_USE_LIM__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td>{{ page.indicator['DATA_COMP'] }}</td>
+                <td>{{ page.indicator['DATA_COMP__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td>{{ page.indicator['ADJUSTMENT'] }}</td>
+                <td>{{ page.indicator['ADJUSTMENT__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td>{{ page.indicator['IMPUTATION'] }}</td>
+                <td>{{ page.indicator['IMPUTATION__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td>{{ page.indicator['REG_AGG'] }}</td>
+                <td>{{ page.indicator['REG_AGG__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td>{{ page.indicator['DOC_METHOD'] }}</td>
+                <td>{{ page.indicator['DOC_METHOD__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td>{{ page.indicator['QUALITY_MGMNT'] }}</td>
+                <td>{{ page.indicator['QUALITY_MGMNT__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td>{{ page.indicator['QUALITY_ASSURE'] }}</td>
+                <td>{{ page.indicator['QUALITY_ASSURE__GLOBAL'] }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td>{{ page.indicator['QUALITY_ASSMNT'] }}</td>
+                <td>{{ page.indicator['QUALITY_ASSMNT__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>{{ page.indicator['COVERAGE'] }}</td>
+                <td>{{ page.indicator['COVERAGE__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>{{ page.indicator['COMPARABILITY'] }}</td>
+                <td>{{ page.indicator['COMPARABILITY__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">National</th>
+                <th scope="col">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>{{ page.indicator['OTHER_DOC'] }}</td>
+                <td>{{ page.indicator['OTHER_DOC__GLOBAL'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Definition, concepts, and classifications 
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Organisation</th>
-              <td>{{ page.indicator['CONTACT_ORGANISATION'] }}</td>
-              <td>{{ page.indicator['CONTACT_ORGANISATION__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person(s)</th>
-              <td>{{ page.indicator['CONTACT_NAME'] }}</td>
-              <td>{{ page.indicator['CONTACT_NAME__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact organisation unit</th>
-              <td>{{ page.indicator['ORGANISATION_UNIT'] }}</td>
-              <td>{{ page.indicator['ORGANISATION_UNIT__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact person function</th>
-              <td>{{ page.indicator['CONTACT_FUNCT'] }}</td>
-              <td>{{ page.indicator['CONTACT_FUNCT__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact phone</th>
-              <td>{{ page.indicator['CONTACT_PHONE'] }}</td>
-              <td>{{ page.indicator['CONTACT_PHONE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact mail address</th>
-              <td>{{ page.indicator['CONTACT_MAIL'] }}</td>
-              <td>{{ page.indicator['CONTACT_MAIL__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Contact email address</th>
-              <td>{{ page.indicator['CONTACT_EMAIL'] }}</td>
-              <td>{{ page.indicator['CONTACT_EMAIL__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Data source type and data collection method
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Definition and concepts</th>
-              <td>{{ page.indicator['STAT_CONC_DEF'] }}</td>
-              <td>{{ page.indicator['STAT_CONC_DEF__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Unit of measure</th>
-              <td>{{ page.indicator['UNIT_MEASURE'] }}</td>
-              <td>{{ page.indicator['UNIT_MEASURE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Classifications</th>
-              <td>{{ page.indicator['CLASS_SYSTEM'] }}</td>
-              <td>{{ page.indicator['CLASS_SYSTEM__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Indicator information
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Data sources</th>
-              <td>{{ page.indicator['SOURCE_TYPE'] }}</td>
-              <td>{{ page.indicator['SOURCE_TYPE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection method</th>
-              <td>{{ page.indicator['COLL_METHOD'] }}</td>
-              <td>{{ page.indicator['COLL_METHOD__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Data collection calendar</th>
-              <td>{{ page.indicator['FREQ_COLL'] }}</td>
-              <td>{{ page.indicator['FREQ_COLL__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Data release calendar</th>
-              <td>{{ page.indicator['REL_CAL_POLICY'] }}</td>
-              <td>{{ page.indicator['REL_CAL_POLICY__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Data providers</th>
-              <td>{{ page.indicator['DATA_SOURCE'] }}</td>
-              <td>{{ page.indicator['DATA_SOURCE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Data compilers</th>
-              <td>{{ page.indicator['COMPILING_ORG'] }}</td>
-              <td>{{ page.indicator['COMPILING_ORG__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Institutional mandate</th>
-              <td>{{ page.indicator['INST_MANDATE'] }}</td>
-              <td>{{ page.indicator['INST_MANDATE__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        Other methodological considerations
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Field</th>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rationale</th>
-              <td>{{ page.indicator['RATIONALE'] }}</td>
-              <td>{{ page.indicator['RATIONALE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Comments and limitations</th>
-              <td>{{ page.indicator['REC_USE_LIM'] }}</td>
-              <td>{{ page.indicator['REC_USE_LIM__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Method of computation</th>
-              <td>{{ page.indicator['DATA_COMP'] }}</td>
-              <td>{{ page.indicator['DATA_COMP__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Adjustments</th>
-              <td>{{ page.indicator['ADJUSTMENT'] }}</td>
-              <td>{{ page.indicator['ADJUSTMENT__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-              <td>{{ page.indicator['IMPUTATION'] }}</td>
-              <td>{{ page.indicator['IMPUTATION__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Regional aggregations</th>
-              <td>{{ page.indicator['REG_AGG'] }}</td>
-              <td>{{ page.indicator['REG_AGG__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-              <td>{{ page.indicator['DOC_METHOD'] }}</td>
-              <td>{{ page.indicator['DOC_METHOD__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Quality management</th>
-              <td>{{ page.indicator['QUALITY_MGMNT'] }}</td>
-              <td>{{ page.indicator['QUALITY_MGMNT__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assurance</th>
-              <td>{{ page.indicator['QUALITY_ASSURE'] }}</td>
-              <td>{{ page.indicator['QUALITY_ASSURE__GLOBAL'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Quality assessment</th>
-              <td>{{ page.indicator['QUALITY_ASSMNT'] }}</td>
-              <td>{{ page.indicator['QUALITY_ASSMNT__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-        Data availability and disaggregation
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td>{{ page.indicator['COVERAGE'] }}</td>
-              <td>{{ page.indicator['COVERAGE__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-        Comparability/deviation from international standards
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td>{{ page.indicator['COMPARABILITY'] }}</td>
-              <td>{{ page.indicator['COMPARABILITY__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-        References and documentation
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">National</th>
-              <th scope="col">Global</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td>{{ page.indicator['OTHER_DOC'] }}</td>
-              <td>{{ page.indicator['OTHER_DOC__GLOBAL'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+<div>
