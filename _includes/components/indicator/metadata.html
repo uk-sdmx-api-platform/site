@@ -1,8 +1,8 @@
 <div class="mt-4" id="metadata-section">
   <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data provided for this indicator at the national level and at the global level.</p>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
   <div class="accordion" id="accordionExample">
-    <button class="btn btn-toggle-all" id="toggleAll">Show all</button>
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll">Show all sections</button>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -331,3 +331,20 @@
     </div>
   </div>
 <div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+< !╌ <script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("active")){
+          $('.accordion-button').removeClass("active").addClass("active");
+          button.innerHTML = 'Hide all'
+
+      } else {
+          $('.accordion-button').addClass("active").removeClass("active");
+          button.innerHTML = 'Show all sections'
+      }
+    });
+  });
+</script>
