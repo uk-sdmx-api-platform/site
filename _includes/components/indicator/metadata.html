@@ -329,15 +329,17 @@
 </div>
 
 <script type="text/javascript">
-  $("#toggleAll").click( function() {
-    let button = document.getElementById("toggleAll");
-    if(!$('.accordion-header').hasClass("active")){
-        $('.accordion-header').removeClass("active").addClass("active");
-        button.innerHTML = 'Hide all'
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-header').hasClass("active")){
+          $('.accordion-header').removeClass("active").addClass("active");
+          button.innerHTML = 'Hide all'
 
-    } else {
-        $('.accordion-header').addClass("active").removeClass("active");
-        button.innerHTML = 'Show all'
-    }
-});
+      } else {
+          $('.accordion-header').addClass("active").removeClass("active");
+          button.innerHTML = 'Show all'
+      }
+    });
+  });
 </script>
