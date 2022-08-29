@@ -34,7 +34,7 @@
         </fieldset>
       </div>
       <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
           {%- capture var_hint_replacement -%}
             {% raw %}<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>{% endraw %}
