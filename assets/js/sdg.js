@@ -2971,13 +2971,13 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.initialiseFieldsWithGlobalValues = function() {
     if (this.hasReportingTypes) {
       this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
+      console.log('fieldValuesWithGlobalReportingType: ', this.fieldValuesWithGlobalReportingType)
       this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
       console.log('fieldValuesWithNationalReportingType: ', this.fieldValuesWithNationalReportingType)
       this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
       console.log('comparableFieldValues: ',this.comparableFieldValues)
       this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
       this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-      console.log('selectableFields: ', this.selectableFields)
       var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
       this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
@@ -3004,7 +3004,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
     this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
-    console.log('allowedFields: ',  this.allowedFields)
   }
 
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
@@ -3041,9 +3040,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
 
   this.clearSelectedFields = function() {
     this.selectedFields = [{field: "Reporting type", values: ["National"]}];
-    console.log('selectedFields before getData: ', this.selectedFields)
     this.getData();
-    console.log('selectedFields after getData: ',this.selectedFields)
     this.onFieldsCleared.notify();
   };
 
@@ -3070,7 +3067,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   
   this.updateHeadlineSelectedFields = function () {
     this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
-    console.log('selectedFields: ',this.selectedFields)
     this.getData();
   }
     
@@ -3265,8 +3261,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       var combinations = helpers.getCombinationData(this.selectedFields);
     }
 
-    console.log('filteredData: ', filteredData)
-    console.log('combinations: ', combinations)
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
