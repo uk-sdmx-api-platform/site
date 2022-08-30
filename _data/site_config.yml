@@ -4,26 +4,14 @@ analytics:
   gtm: ''
   ga_prod: ''
 breadcrumbs:
-  goal:
-    - path: /
-      label: general.home
-    - path: /goals
-      label: general.goals
-  indicator:
-    - path: /
-      label: general.home
-    - path: /goals
-      label: general.goals
-  post:
-    - path: /
-      label: general.home
-    - path: /news
-      label: menu.updates
+  goal: []
+  indicator: []
+  post: []
 cookie_consent_form:
-  enabled: false
+  enabled: true
 country:
-  name: Australia
-  adjective: Australian
+  name: UK
+  adjective: UK
 create_goals:
   previous_next_links: false
   goals: []
@@ -56,107 +44,160 @@ date_formats:
     format: "%d %B %Y"
 disclaimer:
   phase: BETA
-  message: This is a development website. We welcome your <a href="mailto:%email_contacts.suggestions">feedback</a>.
+  message: >-
+    This website is in development – your <a
+    href="https://www.surveymonkey.co.uk/r/SDGfeedback">feedback</a> will help
+    us to improve it
+  hidden: false
 email_contacts:
-  questions: test@example.com
-  suggestions: test@example.com
-  functional: test@example.com
+  questions: sustainabledevelopment@ons.gov.uk
+  suggestions: sustainabledevelopment@ons.gov.uk
+  functional: sustainabledevelopment@ons.gov.uk
 environment: staging
 footer_language_toggle: none
 footer_menu:
   - path: /contact-us
     translation_key: menu.contact_us
-  - path: 'https://twitter.com/MyTwitterAccount'
+  - path: 'https://twitter.com/ONS'
     translation_key: general.twitter
-  - path: 'https://facebook.com/MyFacebookAccount'
-    translation_key: general.facebook
-  - path: /about/cookies-and-privacy/
+  - path: /cookies-no-javascript/
     translation_key: menu.cookies
+  - path: /privacy-notice/
+    translation_key: Privacy
+  - path: /accessibility-statement/
+    translation_key: Accessibility statement
 frontpage_cards:
-  - title: frontpage.download_all
+  - title: Download all data
     content: ''
     include: components/download-all-data.html
     button_label: ''
     button_link: ''
     rule_color: ''
-  - title: Lorem ipsum
-    content: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis
-      cursus est sed dapibus.
+  - title: Publications
+    content: >
+
+      [SDGs in the UK: Progress on monitoring and reporting
+      data](https://www.ons.gov.uk/economy/environmentalaccounts/articles/sustainabledevelopmentgoalstakingstockprogressandpossibilities/december2020)
+
+
+      [UK SDG Voluntary National
+      Review](https://www.gov.uk/government/publications/uks-voluntary-national-review-of-the-sustainable-development-goals)
+
+      <br/><br/>
+
+      <a href="./publications" aria-label="More publications">More
+      publications...</a>
     include: ''
-    button_label: Read more
-    button_link: 'https://example.com'
+    button_label: ''
+    button_link: ''
     rule_color: ''
-  - title: Nam vestibulum
-    content: |
-      Nam vestibulum, purus quis porttitor imperdiet, nisl sem mollis nisl, a
-      interdum risus enim vitae tortor. Donec feugiat accumsan rutrum.
+  - title: Useful resources
+    content: >
+
+      [The Global Goals](https://www.globalgoals.org/)
+
+
+      [Implementing the Sustainable Development
+      Goals](https://www.gov.uk/government/publications/implementing-the-sustainable-development-goals/implementing-the-sustainable-development-goals--2)
+
+
+      [UN Department of Economic and Social Affairs](https://sdgs.un.org/)
     include: ''
-    button_label: Read more
-    button_link: 'https://example.com'
+    button_label: ''
+    button_link: ''
     rule_color: ''
 frontpage_goals_grid:
-  title: Our data for Sustainable Development Goal indicators
+  title: UK data for the Sustainable Development Goals
   description: >-
-    Click on each goal for our Sustainable Development Goal global indicator
-    data.
-frontpage_introduction_banner:
-  title: frontpage.intro_title
-  description: frontpage.intro_body
-goal_image_base: 'https://open-sdg.org/sdg-translations/assets/img/goals'
-goal_image_extension: ''
-goals_page:
-  title: general.goals
-  description: goal.description
-graph_color_headline: '#004466'
-graph_color_headline_high_contrast: '#55a6e5'
-graph_color_set: ''
-graph_color_list: []
-graph_color_number: 0
-graph_title_from_series: false
-header_language_toggle: dropdown
-hide_empty_metadata: false
-hide_single_series: true
-hide_single_unit: true
-ignored_disaggregations:
-  - OBS_STATUS
-  - UNIT_MULT
-  - NATURE
-  - COMMENT_OBS
-  - SOURCE_DETAIL
-  - FREQ
-indicator_config_form:
-  enabled: true
-  dropdowns: []
-  repository_link: '/tree/develop/indicator-config'
-  translation_link: ''
-indicator_data_form:
-  enabled: true
-  repository_link: '/tree/develop/data'
-indicator_metadata_form:
-  enabled: true
-  dropdowns: []
-  repository_link: '/tree/develop/meta'
-  translation_link: ''
-  language: ''
-  scopes:
-    - national
-    - global
-  exclude_fields: []
-  translated: false
+    Select each goal for indicator data.
+footer_menu:
+  - path: /contact-us
+    translation_key: menu.contact_us
+  - path: 'https://twitter.com/ONS'
+    translation_key: general.twitter
+  - path: /cookies-no-javascript/
+    translation_key: menu.cookies
+  - path: /privacy-notice/
+    translation_key: Privacy
+  - path: /accessibility-statement/
+    translation_key: Accessibility statement
+frontpage_cards:
+  - title: Download all data
+    content: ''
+    include: components/download-all-data.html
+    button_label: ''
+    button_link: ''
+    rule_color: ''
+  - title: Publications
+    content: >
+
+      [SDGs in the UK: Progress on monitoring and reporting
+      data](https://www.ons.gov.uk/economy/environmentalaccounts/articles/sustainabledevelopmentgoalstakingstockprogressandpossibilities/december2020)
+
+
+      [UK SDG Voluntary National
+      Review](https://www.gov.uk/government/publications/uks-voluntary-national-review-of-the-sustainable-development-goals)
+
+      <br/><br/>
+
+      <a href="./publications" aria-label="More publications">More
+      publications...</a>
+    include: ''
+    button_label: ''
+    button_link: ''
+    rule_color: ''
+  - title: Useful resources
+    content: >
+
+      [The Global Goals](https://www.globalgoals.org/)
+
+
+      [Implementing the Sustainable Development
+      Goals](https://www.gov.uk/government/publications/implementing-the-sustainable-development-goals/implementing-the-sustainable-development-goals--2)
+
+
+      [UN Department of Economic and Social Affairs](https://sdgs.un.org/)
+    include: ''
+    button_label: ''
+    button_link: ''
+    rule_color: ''
+frontpage_goals_grid:
+  title: UK data for the Sustainable Development Goals
+  description: >-
+    Select each goal for indicator data.
 languages:
   - en
 languages_public: []
 logos: []
-map_layers: []
+map_layers:
+  - subfolder: country
+    label: Country
+    min_zoom: 4
+    max_zoom: 6
+    staticBorders: true
+  - subfolder: regions
+    label: Regions
+    min_zoom: 6
+    max_zoom: 8
+    staticBorders: true
+  - subfolder: local_authorities
+    label: Local Authorities
+    min_zoom: 9
+    max_zoom: 12
+    staticBorders: true
 map_options:
-  minZoom: 5
+  disaggregation_controls: false
+  minZoom: 4
   maxZoom: 10
-  tileURL: ''
+  tileURL: 'https://{s}.tile.jawg.io/{id}/{z}/{x}/{y}{r}.png?access-token={accessToken}'
   tileOptions:
-    id: ''
-    accessToken: ''
-    attribution: ''
+    id: jawg-light
+    accessToken: lCtbMZiG4tbVWl7uq9EEch1yphnuLx9JyZL2qZwoQJ26wAu73oK1NkU4K50AALkp
+    attribution: >-
+      <a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps"
+      target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a
+      href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+      contributors | <a href="http://geoportal.statistics.gov.uk/">ONS</a>
   colorRange: chroma.brewer.BuGn
   noValueColor: '#f0f0f0'
   styleNormal:
@@ -181,16 +222,19 @@ menu:
   - path: /goals
     translation_key: general.goals
     dropdown: []
-  - path: /reporting-status
+  - path: /reporting-status/
     translation_key: menu.reporting_status
     dropdown: []
-  - path: /about
+  - path: /about/
     translation_key: menu.about
     dropdown: []
-  - path: /faq
+  - path: /publications/
+    translation_key: menu.publications
+    dropdown: []
+  - path: /faq/
     translation_key: menu.faq
     dropdown: []
-  - path: /news
+  - path: /updates/
     translation_key: menu.updates
     dropdown: []
 metadata_edit_url: metadata
@@ -199,9 +243,36 @@ news:
   category_links: false
 remote_data_prefix: 'https://uk-sdmx-api-platform.github.io/data'
 reporting_status:
-  title: status.reporting_status
-  description: status.description
-  disaggregation_tabs: false
+  title: Reporting status
+  description: >
+
+    Reporting status provides an overview of how much Sustainable Development
+    Goal (SDG) data the UK reports. For more information, see [What does the
+    reporting status
+    mean?](https://onsdigital.github.io/sdg-indicators/faq/#what-does-the-reporting-status-mean)
+
+
+    Disaggregation status provides an overview of how many of the SDG indicators
+    are disaggregated. For more information, see [What does the disaggregation
+    status
+    mean?](https://onsdigital.github.io/sdg-indicators/faq/#what-does-the-disaggregation-status-mean)
+
+
+    For details about all available disaggregations and how each indicator is
+    disaggregated, see the [UK disaggregation
+    report](https://onsdigital.github.io/sdg-data/disaggregations.html).
+
+
+    Note: These percentages have been rounded. As a result, adding them together
+    may not equal exactly 100%.
+  disaggregation_tabs: true
+  status_types:
+    - value: complete
+      label: status.reported
+      hide_on_goal_pages: false
+    - value: notstarted
+      label: status.exploring_data_sources
+      hide_on_goal_pages: false
 repository_url_data: 'https://github.com/open-sdg/open-sdg-data-starter'
 repository_url_site: ''
 search_index_boost: []
@@ -212,6 +283,11 @@ site_config_form:
   dropdowns: []
   repository_link: '/tree/develop/_data'
   translation_link: ''
+time_series_attributes:
+  - field: COMMENT_TS
+    label: indicator.footnote
+  - field: DATA_LAST_UPDATE
+    label: metadata_fields.national_data_update_url
 validate_indicator_config: false
 validate_site_config: false
 x_axis_label: ''
