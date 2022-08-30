@@ -10,6 +10,11 @@
   vertical-align: top;
 }
 
+td.meta-not-available {
+   color: #505A5F;
+   font-style: italic;
+}
+
 .accordion-body > table th {
   border: 1px solid #dee2e6;
   padding: 10px;
