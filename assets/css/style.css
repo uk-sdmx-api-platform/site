@@ -2510,14 +2510,14 @@ body.contrast-high #search-bar-on-page button:hover {
 body.contrast-high.layout-search form input, body.contrast-high.layout-search form label {
   color: black; }
 
-table {
+.accordion-body > table {
   border: 1px solid #dee2e6; }
 
-table td {
+.accordion-body > table td {
   border: 1px solid #dee2e6;
   padding: 10px; }
 
-table th {
+.accordion-body > table th {
   border: 1px solid #dee2e6;
   padding: 10px; }
 
