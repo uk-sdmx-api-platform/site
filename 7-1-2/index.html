@@ -39,7 +39,7 @@ var opensdg = {
   },
 
   // Disaggregations which should be ignored on indicator pages.
-  ignoredDisaggregations: null,
+  ignoredDisaggregations: ["Activity (default)","Age (default)","Urbanisation (default)"],
 
   language: 'en',
 };
@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830113811">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830115012">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -281,6 +281,8 @@ data-event-label="high"
 
 <script type="text/template" id="units_template">
   
+  <% if(units.length > 1) { %>
+  
     <h4>Unit of Measurement</h4>
     <fieldset>
       <legend class="sr-only">Unit of Measurement</legend>
@@ -290,9 +292,13 @@ data-event-label="high"
       <% }); %>
     </fieldset>
   
+  <% } %>
+  
 </script>
 
 <script type="text/template" id="series_template">
+  
+  <% if(serieses.length > 1) { %>
   
     <h4>Series</h4>
     <fieldset>
@@ -302,6 +308,8 @@ data-event-label="high"
         <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -349,10 +357,10 @@ data-event-label="high"
             
             <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
                 <a href="/site/7" title="View this goal's indicator list">
-                    <img src="https://open-sdg.org/sdg-translations/assets/img/goals/en/7.png"
+                    <img src="https://open-sdg.github.io/sdg-translations/assets/img/goals/en/7.svg"
                         alt="Affordable and clean energy - Goal 7"
                         id="goal-7"
-                        class="goal-icon-image goal-icon-image-" />
+                        class="goal-icon-image goal-icon-image-svg" />
                 </a>
             </div>
             <div class="col-8 col-md-9 col-lg-10 indicator-details">
@@ -404,7 +412,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;URBANISATION&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Urban&quot;,&quot;Rural&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Degree of urbanisation&quot;},{&quot;name&quot;:&quot;OBS_STATUS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Normal value&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;UNIT_MULT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Units&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit of measure&quot;},{&quot;name&quot;:&quot;REPORTING_TYPE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;National&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Reporting type&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Proportion of population with primary reliance on clean fuels and technology for cooking&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Series&quot;},{&quot;name&quot;:&quot;Urban or Rural&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Urban&quot;,&quot;Rural&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Urban or Rural&quot;},{&quot;name&quot;:&quot;Observation status&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;Unit multiplier&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Percentage (%)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Units&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -472,7 +480,11 @@ data-event-label="high"
         
         
         
-        <th scope="col">Reporting type</th>
+        <th scope="col">Units</th>
+        
+        
+        
+        <th scope="col">Series</th>
         
         
         
@@ -480,15 +492,7 @@ data-event-label="high"
         
         
         
-        <th scope="col">Unit multiplier</th>
-        
-        
-        
-        <th scope="col">UNIT_MEASURE</th>
-        
-        
-        
-        <th scope="col" class="table-value">SERIES</th>
+        <th scope="col" class="table-value">Unit multiplier</th>
         
         
       </thead>
@@ -501,11 +505,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -513,15 +521,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -533,11 +533,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -545,15 +549,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -565,11 +561,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -577,15 +577,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -597,11 +589,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -609,15 +605,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -629,11 +617,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -641,15 +633,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -661,11 +645,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -673,15 +661,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -693,11 +673,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -705,15 +689,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -725,11 +701,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -737,15 +717,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -757,11 +729,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -769,15 +745,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -789,11 +757,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -801,15 +773,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -821,11 +785,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -833,15 +801,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -853,11 +813,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -865,15 +829,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -885,11 +841,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -897,15 +857,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -917,11 +869,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -929,15 +885,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -949,11 +897,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -961,15 +913,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -981,11 +925,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -993,15 +941,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -1013,11 +953,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -1025,15 +969,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -1045,11 +981,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -1057,15 +997,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -1077,11 +1009,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -1089,15 +1025,7 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
-          
-          
-          
-          <td>Percent</td>
-          
-          
-          
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -1109,11 +1037,15 @@ data-event-label="high"
           
           
           
-          <td>100</td>
+          <td>100.0</td>
           
           
           
-          <td>National</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
           
           
           
@@ -1121,15 +1053,35 @@ data-event-label="high"
           
           
           
-          <td>Units</td>
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
           
           
           
-          <td>Percent</td>
+          <td>100.0</td>
           
           
           
-          <td class="table-value">Proportion of population with primary reliance on clean fuels and technology for cooking [7.1.2]</td>
+          <td>Percentage (%)</td>
+          
+          
+          
+          <td>Proportion of population with primary reliance on clean fuels and technology for cooking</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
           
           
         </tr>
@@ -2111,12 +2063,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220830113811'></script>
+<script src='/site/assets/js/sdg.js?v=20220830115012'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220830113811"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220830115012"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

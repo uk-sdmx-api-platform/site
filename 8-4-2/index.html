@@ -39,7 +39,7 @@ var opensdg = {
   },
 
   // Disaggregations which should be ignored on indicator pages.
-  ignoredDisaggregations: null,
+  ignoredDisaggregations: ["Activity (default)","Age (default)","Urbanisation (default)"],
 
   language: 'en',
 };
@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830113811">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830115012">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -281,6 +281,8 @@ data-event-label="high"
 
 <script type="text/template" id="units_template">
   
+  <% if(units.length > 1) { %>
+  
     <h4>Unit of Measurement</h4>
     <fieldset>
       <legend class="sr-only">Unit of Measurement</legend>
@@ -290,9 +292,13 @@ data-event-label="high"
       <% }); %>
     </fieldset>
   
+  <% } %>
+  
 </script>
 
 <script type="text/template" id="series_template">
+  
+  <% if(serieses.length > 1) { %>
   
     <h4>Series</h4>
     <fieldset>
@@ -302,6 +308,8 @@ data-event-label="high"
         <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -349,10 +357,10 @@ data-event-label="high"
             
             <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
                 <a href="/site/8" title="View this goal's indicator list">
-                    <img src="https://open-sdg.org/sdg-translations/assets/img/goals/en/8.png"
+                    <img src="https://open-sdg.github.io/sdg-translations/assets/img/goals/en/8.svg"
                         alt="Decent work and economic growth - Goal 8"
                         id="goal-8"
-                        class="goal-icon-image goal-icon-image-" />
+                        class="goal-icon-image goal-icon-image-svg" />
                 </a>
             </div>
             <div class="col-8 col-md-9 col-lg-10 indicator-details">
@@ -404,7 +412,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit of measure&quot;},{&quot;name&quot;:&quot;PRODUCT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Biomass (material flows)&quot;,&quot;Fossil fuels (material flows)&quot;,&quot;Metal ores (material flows)&quot;,&quot;Non-metallic minerals (material flows)&quot;,&quot;Non-metallic minerals - construction dominant (material flows)&quot;,&quot;Non-metallic minerals - industrial or agricultural dominant (material flows)&quot;,&quot;Biomass (material flows)&quot;,&quot;Crops (material flows)&quot;,&quot;Crop residues (material flows)&quot;,&quot;Grazed biomass and fodder crops (material flows)&quot;,&quot;Wood (material flows)&quot;,&quot;Wild catch and harvest (material flows)&quot;,&quot;Metal ores (material flows)&quot;,&quot;Ferrous ores (material flows)&quot;,&quot;Non-ferrous ores (material flows)&quot;,&quot;Non-metallic minerals (material flows)&quot;,&quot;Fossil fuels (material flows)&quot;,&quot;Coal (material flows)&quot;,&quot;Oil shale and tar sands (material flows)&quot;,&quot;Petroleum (material flows)&quot;,&quot;Natural gas (material flows)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Type of product&quot;},{&quot;name&quot;:&quot;OBS_STATUS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Normal value&quot;,&quot;Normal value&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;UNIT_MULT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Millions&quot;,&quot;Units&quot;,&quot;Units&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;REPORTING_TYPE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;National&quot;,&quot;Global&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Reporting type&quot;},{&quot;name&quot;:&quot;BASE_PER&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;2015&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Base period&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Domestic material consumption&quot;,&quot;Domestic material consumption per capita&quot;,&quot;Domestic material consumption per unit of GDP&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Series&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Tonnes&quot;,&quot;Tonnes per $m&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Units&quot;},{&quot;name&quot;:&quot;Material category&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Biomass&quot;,&quot;Fossil fuels&quot;,&quot;Metal ores&quot;,&quot;Non-metallic minerals&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Material category&quot;},{&quot;name&quot;:&quot;Observation status&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;Unit multiplier&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;OBS_STATUS&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Normal value&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;UNIT_MULT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Units&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;REPORTING_TYPE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Global&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Reporting type&quot;},{&quot;name&quot;:&quot;SERIES&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;SDG Series&quot;},{&quot;name&quot;:&quot;PRODUCT&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Non-metallic minerals - construction dominant (material flows)&quot;,&quot;Non-metallic minerals - industrial or agricultural dominant (material flows)&quot;,&quot;Biomass (material flows)&quot;,&quot;Crops (material flows)&quot;,&quot;Crop residues (material flows)&quot;,&quot;Grazed biomass and fodder crops (material flows)&quot;,&quot;Wood (material flows)&quot;,&quot;Wild catch and harvest (material flows)&quot;,&quot;Metal ores (material flows)&quot;,&quot;Ferrous ores (material flows)&quot;,&quot;Non-ferrous ores (material flows)&quot;,&quot;Non-metallic minerals (material flows)&quot;,&quot;Fossil fuels (material flows)&quot;,&quot;Coal (material flows)&quot;,&quot;Oil shale and tar sands (material flows)&quot;,&quot;Petroleum (material flows)&quot;,&quot;Natural gas (material flows)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Type of product&quot;},{&quot;name&quot;:&quot;UNIT_MEASURE&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit of measure&quot;},{&quot;name&quot;:&quot;BASE_PER&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;2015&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Base period&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
@@ -472,6 +480,14 @@ data-event-label="high"
         
         
         
+        <th scope="col">Units</th>
+        
+        
+        
+        <th scope="col">Series</th>
+        
+        
+        
         <th scope="col">Reporting type</th>
         
         
@@ -505,7 +521,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -517,11 +541,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -537,7 +561,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -549,11 +581,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -569,7 +601,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -581,11 +621,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -601,7 +641,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -613,11 +661,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -633,7 +681,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -645,11 +701,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -665,7 +721,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -677,11 +741,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -697,7 +761,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -709,11 +781,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -729,7 +801,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -741,11 +821,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -761,7 +841,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -773,11 +861,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -793,7 +881,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -805,11 +901,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -825,7 +921,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -837,11 +941,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -857,7 +961,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -869,11 +981,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -889,7 +1001,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -901,11 +1021,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -921,7 +1041,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -933,11 +1061,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -953,7 +1081,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -965,11 +1101,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -985,7 +1121,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -997,11 +1141,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1017,7 +1161,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1029,11 +1181,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1049,7 +1201,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1061,11 +1221,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1081,7 +1241,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1093,11 +1261,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1113,7 +1281,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1125,11 +1301,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1145,7 +1321,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1157,11 +1341,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1177,7 +1361,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1189,11 +1381,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1209,7 +1401,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1221,11 +1421,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1241,7 +1441,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1253,11 +1461,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1273,7 +1481,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1285,11 +1501,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1305,7 +1521,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1317,11 +1541,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1337,7 +1561,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1349,11 +1581,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1369,7 +1601,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1381,11 +1621,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1401,7 +1641,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1413,11 +1661,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1433,7 +1681,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1445,11 +1701,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1465,7 +1721,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1477,11 +1741,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1497,7 +1761,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1509,11 +1781,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1529,7 +1801,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1541,11 +1821,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1561,7 +1841,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1573,11 +1861,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1593,7 +1881,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1605,11 +1901,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1625,7 +1921,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1637,11 +1941,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1657,7 +1961,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1669,11 +1981,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1689,7 +2001,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1701,11 +2021,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1721,7 +2041,15 @@ data-event-label="high"
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1733,11 +2061,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1749,11 +2077,19 @@ data-event-label="high"
           
           
           
-          <td>8.485285223</td>
+          <td>8.4852852232</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes</td>
+          
+          
+          
+          <td>Domestic material consumption per capita</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1765,11 +2101,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1781,11 +2117,19 @@ data-event-label="high"
           
           
           
-          <td>225.7871516</td>
+          <td>225.7871516117</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1797,11 +2141,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1813,11 +2157,19 @@ data-event-label="high"
           
           
           
-          <td>236.9181129</td>
+          <td>236.9181128925</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1829,11 +2181,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1845,11 +2197,19 @@ data-event-label="high"
           
           
           
-          <td>219.3087112</td>
+          <td>219.3087112001</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1861,11 +2221,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1877,11 +2237,19 @@ data-event-label="high"
           
           
           
-          <td>199.0089112</td>
+          <td>199.0089111529</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1893,11 +2261,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1909,11 +2277,19 @@ data-event-label="high"
           
           
           
-          <td>185.0046183</td>
+          <td>185.0046183487</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1925,11 +2301,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1941,11 +2317,19 @@ data-event-label="high"
           
           
           
-          <td>181.5959244</td>
+          <td>181.5959244472</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1957,11 +2341,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1973,11 +2357,19 @@ data-event-label="high"
           
           
           
-          <td>177.7374393</td>
+          <td>177.737439347</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -1989,11 +2381,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2005,11 +2397,19 @@ data-event-label="high"
           
           
           
-          <td>162.643647</td>
+          <td>162.6436469631</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2021,11 +2421,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2037,11 +2437,19 @@ data-event-label="high"
           
           
           
-          <td>172.6563103</td>
+          <td>172.6563102979</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2053,11 +2461,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2069,11 +2477,19 @@ data-event-label="high"
           
           
           
-          <td>184.4772446</td>
+          <td>184.4772446126</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2085,11 +2501,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2101,11 +2517,19 @@ data-event-label="high"
           
           
           
-          <td>180.0532712</td>
+          <td>180.0532711506</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2117,11 +2541,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2133,11 +2557,19 @@ data-event-label="high"
           
           
           
-          <td>174.4619579</td>
+          <td>174.461957852</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2149,11 +2581,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2165,11 +2597,19 @@ data-event-label="high"
           
           
           
-          <td>171.6982768</td>
+          <td>171.6982767604</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2181,11 +2621,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2197,11 +2637,19 @@ data-event-label="high"
           
           
           
-          <td>178.114093</td>
+          <td>178.1140930181</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2213,11 +2661,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2229,11 +2677,19 @@ data-event-label="high"
           
           
           
-          <td>172.4758766</td>
+          <td>172.4758765631</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2245,11 +2701,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2261,11 +2717,19 @@ data-event-label="high"
           
           
           
-          <td>176.4993963</td>
+          <td>176.4993962683</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2277,11 +2741,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2293,11 +2757,19 @@ data-event-label="high"
           
           
           
-          <td>195.2596481</td>
+          <td>195.2596480731</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2309,11 +2781,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2325,11 +2797,19 @@ data-event-label="high"
           
           
           
-          <td>208.7470758</td>
+          <td>208.7470757614</td>
           
           
           
-          <td>National</td>
+          <td>Tonnes per $m</td>
+          
+          
+          
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
           
           
           
@@ -2341,11 +2821,11 @@ data-event-label="high"
           
           
           
-          <td>Tonnes per $m</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2357,19 +2837,7 @@ data-event-label="high"
           
           
           
-          <td>202.2079501</td>
-          
-          
-          
-          <td>National</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
+          <td>202.2079500822</td>
           
           
           
@@ -2377,7 +2845,27 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
+          <td>Domestic material consumption per unit of GDP</td>
+          
+          
+          
+          <td></td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td>Units</td>
+          
+          
+          
+          <td></td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2389,19 +2877,7 @@ data-event-label="high"
           
           
           
-          <td>212.5544518</td>
-          
-          
-          
-          <td>National</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
+          <td>212.5544518332</td>
           
           
           
@@ -2409,23 +2885,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Domestic material consumption per unit of GDP [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2000</td>
+          <td>Domestic material consumption per unit of GDP</td>
           
           
           
-          <td>13.66576</td>
-          
-          
-          
-          <td>Global</td>
+          <td></td>
           
           
           
@@ -2437,1259 +2901,11 @@ data-event-label="high"
           
           
           
-          <td>Metric Tons</td>
+          <td></td>
           
           
           
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2001</td>
-          
-          
-          
-          <td>13.75163</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2002</td>
-          
-          
-          
-          <td>13.30561</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2003</td>
-          
-          
-          
-          <td>13.06867</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2004</td>
-          
-          
-          
-          <td>13.48239</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2005</td>
-          
-          
-          
-          <td>13.15461</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2006</td>
-          
-          
-          
-          <td>12.99372</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2007</td>
-          
-          
-          
-          <td>12.63189</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2008</td>
-          
-          
-          
-          <td>11.8959</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2009</td>
-          
-          
-          
-          <td>10.2246</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2010</td>
-          
-          
-          
-          <td>9.8744</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2011</td>
-          
-          
-          
-          <td>9.98363</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2012</td>
-          
-          
-          
-          <td>9.50886</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2013</td>
-          
-          
-          
-          <td>9.57251</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2014</td>
-          
-          
-          
-          <td>10.65636</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2015</td>
-          
-          
-          
-          <td>10.53961</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2016</td>
-          
-          
-          
-          <td>10.42176</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2017</td>
-          
-          
-          
-          <td>10.44107</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2018</td>
-          
-          
-          
-          <td>10.40221</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2019</td>
-          
-          
-          
-          <td>10.12325</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption per capita, by type of raw material [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2000</td>
-          
-          
-          
-          <td>809735769.15472</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2001</td>
-          
-          
-          
-          <td>843136053.28986</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2002</td>
-          
-          
-          
-          <td>805722329.70605</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2003</td>
-          
-          
-          
-          <td>800489799.59037</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2004</td>
-          
-          
-          
-          <td>818600009.58785</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2005</td>
-          
-          
-          
-          <td>807612914.39052</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2006</td>
-          
-          
-          
-          <td>825640265.53532</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2007</td>
-          
-          
-          
-          <td>826238342.80923</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2008</td>
-          
-          
-          
-          <td>765089461.01824</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2009</td>
-          
-          
-          
-          <td>679041940.86791</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2010</td>
-          
-          
-          
-          <td>660503063.81795</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2011</td>
-          
-          
-          
-          <td>656993815.88633</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2012</td>
-          
-          
-          
-          <td>645528837.0695</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2013</td>
-          
-          
-          
-          <td>642300551.76569</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2014</td>
-          
-          
-          
-          <td>725229719.364</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2015</td>
-          
-          
-          
-          <td>723633056.64487</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2016</td>
-          
-          
-          
-          <td>724831290.63855</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2017</td>
-          
-          
-          
-          <td>751086407.33645</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2018</td>
-          
-          
-          
-          <td>754360502.84312</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
-          
-          
-        </tr>
-        
-        <tr>
-          
-          
-          <td>2019</td>
-          
-          
-          
-          <td>742849871.71633</td>
-          
-          
-          
-          <td>Global</td>
-          
-          
-          
-          <td>Normal value</td>
-          
-          
-          
-          <td>Units</td>
-          
-          
-          
-          <td>Metric Tons</td>
-          
-          
-          
-          <td class="table-value">Domestic material consumption [8.4.2,12.2.2]</td>
+          <td class="table-value"></td>
           
           
         </tr>
@@ -4772,12 +3988,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220830113811'></script>
+<script src='/site/assets/js/sdg.js?v=20220830115012'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220830113811"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220830115012"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

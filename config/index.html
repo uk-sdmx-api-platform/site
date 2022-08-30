@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830113811">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830115012">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -729,8 +729,32 @@ data-event-label="high"
       }
     propertyEditorAccessibilityFixes(editor.getEditor('root.frontpage_goals_grid'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('frontpage_introduction_banner', {"title":"17 goals to transform our world","description":"Welcome to the home of UK data for <a href=\"https://sdgs.un.org/goals\">the Sustainable Development Goals (SDGs)</a> – reported by <a href=\"https://www.ons.gov.uk/\">the Office for National Statistics</a>,  the UK’s national statistics institute.\n\nThe Sustainable Development Goals (SDGs) are a universal call to action to end poverty, protect the planet and improve the lives and prospects of everyone, everywhere. The 17 Goals were adopted by all UN Member States in 2015, as part of the <a href=\"https://sdgs.un.org/2030agenda\">2030 Agenda for Sustainable Development</a>.\n\nUK data for the Sustainable Development Goals are collated and reported here."});
+        var propertyEditor = editor.getEditor('root.frontpage_introduction_banner');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: frontpage_introduction_banner');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.frontpage_introduction_banner'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('goal_image_base', "https://open-sdg.github.io/sdg-translations/assets/img/goals");
+        var propertyEditor = editor.getEditor('root.goal_image_base');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: goal_image_base');
+      }
     try {
         var propertyEditor = editor.getEditor('root.goal_image_base');
         if (typeof propertyEditor.label !== 'undefined') {
@@ -745,34 +769,202 @@ data-event-label="high"
         console.log('Unable to set "required" flag: goal_image_base');
       }propertyEditorAccessibilityFixes(editor.getEditor('root.goal_image_base'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('goal_image_extension', "svg");
+        var propertyEditor = editor.getEditor('root.goal_image_extension');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: goal_image_extension');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.goal_image_extension'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('goals_page', {"title":"UK data for the Sustainable Development Goals","description":"Select each goal for indicator data."});
+        var propertyEditor = editor.getEditor('root.goals_page');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: goals_page');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.goals_page'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_color_headline', "#004466");
+        var propertyEditor = editor.getEditor('root.graph_color_headline');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_color_headline');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_headline'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_color_headline_high_contrast', "#55a6e5");
+        var propertyEditor = editor.getEditor('root.graph_color_headline_high_contrast');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_color_headline_high_contrast');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_headline_high_contrast'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_color_set', "accessible");
+        var propertyEditor = editor.getEditor('root.graph_color_set');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_color_set');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_set'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_color_list', []);
+        var propertyEditor = editor.getEditor('root.graph_color_list');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_color_list');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_list'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_color_number', 0);
+        var propertyEditor = editor.getEditor('root.graph_color_number');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_color_number');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_number'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_title_from_series', true);
+        var propertyEditor = editor.getEditor('root.graph_title_from_series');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_title_from_series');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_title_from_series'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('header_language_toggle', "none");
+        var propertyEditor = editor.getEditor('root.header_language_toggle');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: header_language_toggle');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.header_language_toggle'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_empty_metadata'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('hide_single_series', true);
+        var propertyEditor = editor.getEditor('root.hide_single_series');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: hide_single_series');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_single_series'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('hide_single_unit', true);
+        var propertyEditor = editor.getEditor('root.hide_single_unit');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: hide_single_unit');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_single_unit'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('indicator_config_form', {"enabled":false,"dropdowns":[],"repository_link":"","translation_link":""});
+        var propertyEditor = editor.getEditor('root.indicator_config_form');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: indicator_config_form');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_config_form'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('indicator_data_form', {"enabled":false,"repository_link":""});
+        var propertyEditor = editor.getEditor('root.indicator_data_form');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: indicator_data_form');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_data_form'));
 
+    
+      try {
+        var currentValue = normalizeCurrentValue('indicator_metadata_form', {"enabled":false,"dropdowns":[],"repository_link":"","translation_link":"","language":"","scopes":[],"exclude_fields":[],"translated":false});
+        var propertyEditor = editor.getEditor('root.indicator_metadata_form');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: indicator_metadata_form');
+      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_metadata_form'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_tabs'));
@@ -1374,12 +1566,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220830113811'></script>
+<script src='/site/assets/js/sdg.js?v=20220830115012'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220830113811"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220830115012"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

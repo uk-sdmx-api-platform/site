@@ -1138,9 +1138,9 @@ var accessibilitySwitcher = function () {
 
 };
 opensdg.chartColors = function(indicatorId) {
-  var colorSet = null;
-  var numberOfColors = null;
-  var customColorList = null;
+  var colorSet = "accessible";
+  var numberOfColors = 0;
+  var customColorList = [];
 
   this.goalNumber = parseInt(indicatorId.slice(indicatorId.indexOf('_')+1,indicatorId.indexOf('-')));
   this.goalColors = [['e5243b', '891523', 'ef7b89', '2d070b', 'f4a7b0', 'b71c2f', 'ea4f62', '5b0e17', 'fce9eb'],
@@ -1190,7 +1190,7 @@ var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
 // Note this headline color is overridden in indicatorView.js.
 var HEADLINE_COLOR = '#777777';
-var GRAPH_TITLE_FROM_SERIES = false;
+var GRAPH_TITLE_FROM_SERIES = true;
 
   /**
  * Model helper functions with general utility.
@@ -3350,8 +3350,8 @@ var indicatorView = function (model, options) {
     var helpers = 
 (function() {
 
-  var HIDE_SINGLE_SERIES = false;
-var HIDE_SINGLE_UNIT = false;
+  var HIDE_SINGLE_SERIES = true;
+var HIDE_SINGLE_UNIT = true;
 
   /**
  * @param {Object} args
@@ -3673,7 +3673,7 @@ function updateHeadlineColor(contrast, chartInfo) {
  * @return {String} The headline color in hex form.
  */
 function getHeadlineColor(contrast) {
-    return isHighContrast(contrast) ? '#FFDD00' : '#00006a';
+    return isHighContrast(contrast) ? '#55a6e5' : '#004466';
 }
 
 /**

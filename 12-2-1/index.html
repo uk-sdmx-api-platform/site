@@ -39,7 +39,7 @@ var opensdg = {
   },
 
   // Disaggregations which should be ignored on indicator pages.
-  ignoredDisaggregations: null,
+  ignoredDisaggregations: ["Activity (default)","Age (default)","Urbanisation (default)"],
 
   language: 'en',
 };
@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830113811">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830115012">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -281,6 +281,8 @@ data-event-label="high"
 
 <script type="text/template" id="units_template">
   
+  <% if(units.length > 1) { %>
+  
     <h4>Unit of Measurement</h4>
     <fieldset>
       <legend class="sr-only">Unit of Measurement</legend>
@@ -290,9 +292,13 @@ data-event-label="high"
       <% }); %>
     </fieldset>
   
+  <% } %>
+  
 </script>
 
 <script type="text/template" id="series_template">
+  
+  <% if(serieses.length > 1) { %>
   
     <h4>Series</h4>
     <fieldset>
@@ -302,6 +308,8 @@ data-event-label="high"
         <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -349,10 +357,10 @@ data-event-label="high"
             
             <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
                 <a href="/site/12" title="View this goal's indicator list">
-                    <img src="https://open-sdg.org/sdg-translations/assets/img/goals/en/12.png"
+                    <img src="https://open-sdg.github.io/sdg-translations/assets/img/goals/en/12.svg"
                         alt="Responsible consumption and production - Goal 12"
                         id="goal-12"
-                        class="goal-icon-image goal-icon-image-" />
+                        class="goal-icon-image goal-icon-image-svg" />
                 </a>
             </div>
             <div class="col-8 col-md-9 col-lg-10 indicator-details">
@@ -392,7 +400,7 @@ data-event-label="high"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
-  data-showdata="false"
+  data-showdata="true"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -404,12 +412,3572 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Material footprint&quot;,&quot;Material footprint per capita&quot;,&quot;Material footprint per unit of GDP&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Series&quot;},{&quot;name&quot;:&quot;Material category&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Biomass&quot;,&quot;Metal ores excluding precious metals&quot;,&quot;Non-metallic minerals&quot;,&quot;Fossil fuels&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Material category&quot;},{&quot;name&quot;:&quot;Observation status&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Observation status&quot;},{&quot;name&quot;:&quot;Unit multiplier&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Unit multiplier&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Metric tons&quot;,&quot;Kilograms per constant USD&quot;,&quot;Tons per GDP (millions of pounds)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Units&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
 >
   
-  <div id="indicator-main" class="indicator-main col-md-12">
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    <div id="serieses"></div>
+<div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
+<div id="toolbar">
+  <span id="series-help">
+    <h4>Sub-categories</h4>
+    <p>Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.</p>
+  </span>
+  <div id="fields">
+    <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+  </div>
+</div>
+
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    
+
+
+
+
+<div id="headlineTable">
+
+  <div id="datatables">
+
+    
+    <a href="https://uk-sdmx-api-platform.github.io/data/en/headline/12-2-1.csv" class="btn btn-primary btn-download" download="indicator_12-2-1.csv" tabindex="0" role="button">Download Headline CSV</a>
+    
+    <a href="https://uk-sdmx-api-platform.github.io/data/en/data/12-2-1.csv" class="btn btn-primary btn-download" download='indicator_12-2-1.csv' tabindex='0' role='button'>Download Source CSV</a>
+
+    <p class="no-js-disaggregation-hint">Download source CSV for disaggregations</p>
+
+    
+    <h3>Headline data</h3>
+    <table class="table-responsive table table-hover dataTable no-footer" role="grid">
+      <caption>Material footprint, material footprint per capita, and material footprint per GDP</caption>
+      <thead>
+        
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col">Units</th>
+        
+        
+        
+        <th scope="col">Series</th>
+        
+        
+        
+        <th scope="col">Observation status</th>
+        
+        
+        
+        <th scope="col" class="table-value">Unit multiplier</th>
+        
+        
+      </thead>
+      <tbody>
+        
+        <tr>
+          
+          
+          <td>1990</td>
+          
+          
+          
+          <td>1085.413</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1991</td>
+          
+          
+          
+          <td>1062.829</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1992</td>
+          
+          
+          
+          <td>965.168</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1993</td>
+          
+          
+          
+          <td>933.888</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1994</td>
+          
+          
+          
+          <td>927.691</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1995</td>
+          
+          
+          
+          <td>866.457</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1996</td>
+          
+          
+          
+          <td>941.921</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1997</td>
+          
+          
+          
+          <td>1145.467</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1998</td>
+          
+          
+          
+          <td>1331.521</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1999</td>
+          
+          
+          
+          <td>1393.502</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>1365.742</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>1427.904</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>1344.47</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>1309.612</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>1464.399</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>1365.497</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>1352.15</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>1302.617</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>1156.109</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>1012.619</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>954.336</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>964.866</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>951.984</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>1024.069</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>1112.38</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>1195.637</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>1070.756</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>970.509</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>971.213</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Millions</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1990</td>
+          
+          
+          
+          <td>19.0</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1991</td>
+          
+          
+          
+          <td>18.5</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1992</td>
+          
+          
+          
+          <td>16.8</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1993</td>
+          
+          
+          
+          <td>16.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1994</td>
+          
+          
+          
+          <td>16.0</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1995</td>
+          
+          
+          
+          <td>14.9</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1996</td>
+          
+          
+          
+          <td>16.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1997</td>
+          
+          
+          
+          <td>19.6</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1998</td>
+          
+          
+          
+          <td>22.8</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1999</td>
+          
+          
+          
+          <td>23.7</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>23.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>24.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>22.6</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>22.0</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>24.4</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>22.6</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>22.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>21.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>18.7</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>16.3</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>15.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>15.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>14.9</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>16.0</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>17.2</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>18.4</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>16.3</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>14.7</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>14.6</td>
+          
+          
+          
+          <td>Metric tons</td>
+          
+          
+          
+          <td>Material footprint per capita</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1990</td>
+          
+          
+          
+          <td>0.37388</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1991</td>
+          
+          
+          
+          <td>0.39475</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1992</td>
+          
+          
+          
+          <td>0.36828</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1993</td>
+          
+          
+          
+          <td>0.35715</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1994</td>
+          
+          
+          
+          <td>0.34624</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1995</td>
+          
+          
+          
+          <td>0.32308</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1996</td>
+          
+          
+          
+          <td>0.3568</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1997</td>
+          
+          
+          
+          <td>0.41305</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1998</td>
+          
+          
+          
+          <td>0.46777</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1999</td>
+          
+          
+          
+          <td>0.47836</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>0.46124</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>0.47465</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>0.44659</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>0.431</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>0.48311</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>0.44937</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>0.44546</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>0.43057</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>0.39501</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>0.36666</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>0.34398</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>0.35049</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>0.34658</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>0.37134</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>0.39893</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>0.42166</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>0.37921</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>0.34438</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>0.34802</td>
+          
+          
+          
+          <td>Kilograms per constant USD</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Normal value</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1990</td>
+          
+          
+          
+          <td>889.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1991</td>
+          
+          
+          
+          <td>880.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1992</td>
+          
+          
+          
+          <td>796.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1993</td>
+          
+          
+          
+          <td>752.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1994</td>
+          
+          
+          
+          <td>719.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1995</td>
+          
+          
+          
+          <td>655.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1996</td>
+          
+          
+          
+          <td>695.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1997</td>
+          
+          
+          
+          <td>805.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1998</td>
+          
+          
+          
+          <td>902.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>1999</td>
+          
+          
+          
+          <td>914.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2000</td>
+          
+          
+          
+          <td>865.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2001</td>
+          
+          
+          
+          <td>881.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2002</td>
+          
+          
+          
+          <td>812.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2003</td>
+          
+          
+          
+          <td>765.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2004</td>
+          
+          
+          
+          <td>836.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2005</td>
+          
+          
+          
+          <td>758.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2006</td>
+          
+          
+          
+          <td>731.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2007</td>
+          
+          
+          
+          <td>688.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2008</td>
+          
+          
+          
+          <td>612.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2009</td>
+          
+          
+          
+          <td>559.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2010</td>
+          
+          
+          
+          <td>516.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2011</td>
+          
+          
+          
+          <td>515.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2012</td>
+          
+          
+          
+          <td>501.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2013</td>
+          
+          
+          
+          <td>528.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>557.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>585.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>515.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>459.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>453.0</td>
+          
+          
+          
+          <td>Tons per GDP (millions of pounds)</td>
+          
+          
+          
+          <td>Material footprint per unit of GDP</td>
+          
+          
+          
+          <td>Definition differs</td>
+          
+          
+          
+          <td class="table-value">Units</td>
+          
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+
+  
+  <div id="datatableFooter">
+    
+    
+    <p>Geographical Area: </p>
+    
+    
+    <p>Unit of Measurement: </p>
+    
+    
+    <p>Footnote: </p>
+    
+  </div>
+  
+
+</div>
+
+
+<section>
+
+  <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    <div style="display: none;">
+    <span id="table-alternative">For tabular data alternative see Table tab.</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link active"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Chart tab"
+
+        
+      >Chart</button>
+    </li>
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link "
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Table tab"
+
+        
+      >Table</button>
+    </li>
+    
+  </ul>
+  
+    <div class="tab-content data-view">
+    
+      
+        <div role="tabpanel" class="tab-pane active" id="chartview">
+          
+
+    <div id="dataset-size-warning" style="display:none" role="alert">
+      <i class="fa fa-bolt"><span class="sr-only">Warning:</span></i>
+      There are too many datasets to show on the chart. Not all will be shown until you remove some selections.
+    </div>
+
+    
+    <div id="selectionsChart">
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">Material footprint, material footprint per capita, and material footprint per GDP</h4>
+          <div id="chart" class="plot-container">
+            <canvas
+    role="img"
+    aria-labelledby="chart-heading"
+    aria-describedby="table-alternative chart-annotations"
+    tabindex="0"
+ ></canvas>
+
+          </div>
+          <div id="plotLegend"></div>
+          
+
+
+
+<div id="selectionChartFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unit of Measurement:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Footnote:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Data last updated:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+</div>
+
+        </div>
+      </figure>
+      <div id="chartSelectionDownload" class="clearfix">
+        <button id="btnSave" title="Download chart as image" class='btn btn-primary btn-download'>
+          Download Chart Image
+        </button><!-- 
+   --></div>
+    </div>
+
+
+
+        </div>
+      
+    
+      
+        <div role="tabpanel" class="tab-pane " id="tableview">
+          <div style="display: none;">
+            <span id="column-sort-info">Click to sort by this column</span>
+          </div>
+          <div id="selectionsTable"></div>
+<dl id="tableTargetLines" class="clearfix"></dl>
+
+
+
+
+<div id="selectionTableFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unit of Measurement:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Footnote:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Data last updated:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+</div>
+
+<div id="tableSelectionDownload" class="clearfix"></div>
+
+        </div>
+      
+    
+  </div>
+  
+
+  </div>
+
+</section>
+
   
   </div>
 </div>
@@ -1287,12 +4855,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220830113811'></script>
+<script src='/site/assets/js/sdg.js?v=20220830115012'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220830113811"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220830115012"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
