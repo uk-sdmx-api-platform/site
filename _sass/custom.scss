@@ -1,15 +1,15 @@
 // Enter any custom Sass in this file.
 
-table {
+.accordion-body > table {
   border: 1px solid #dee2e6;
 }
   
-table td {
+.accordion-body > table td {
   border: 1px solid #dee2e6;
   padding: 10px;
 }
 
-table th {
+.accordion-body > table th {
   border: 1px solid #dee2e6;
   padding: 10px;
 }
