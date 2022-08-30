@@ -128,7 +128,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830110001">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220830113811">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -164,7 +164,7 @@ layout-config-builder
   <div class="disclaimer-alert">
     <strong class="phase-tag">BETA</strong>
     
-    This is a development website. We welcome your <a href="mailto:test@example.com">feedback</a>.
+    This website is in development – your <a href="https://www.surveymonkey.co.uk/r/SDGfeedback">feedback</a> will help us to improve it
     
   </div>
 </div>
@@ -185,13 +185,15 @@ layout-config-builder
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
     <a class="nav-link" href="/site/goals">Goals</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/reporting-status">Reporting Status</a>
+    <a class="nav-link" href="/site/reporting-status/">Reporting Status</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/about">About</a>
+    <a class="nav-link" href="/site/about/">About</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/faq">FAQ</a>
+    <a class="nav-link" href="/site/publications/">Publications</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/news">Updates</a>
+    <a class="nav-link" href="/site/faq/">FAQ</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/site/updates/">Updates</a>
 </li></ul>
     
                 </div>
@@ -465,7 +467,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('breadcrumbs', {"goal":[{"path":"/","label":"general.home"},{"path":"/goals","label":"general.goals"}],"indicator":[{"path":"/","label":"general.home"},{"path":"/goals","label":"general.goals"}],"post":[{"path":"/","label":"general.home"},{"path":"/news","label":"menu.updates"}]});
+        var currentValue = normalizeCurrentValue('breadcrumbs', {"goal":[],"indicator":[],"post":[]});
         var propertyEditor = editor.getEditor('root.breadcrumbs');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -479,7 +481,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('cookie_consent_form', {"enabled":false});
+        var currentValue = normalizeCurrentValue('cookie_consent_form', {"enabled":true});
         var propertyEditor = editor.getEditor('root.cookie_consent_form');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -493,7 +495,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('country', {"name":"Australia","adjective":"Australian"});
+        var currentValue = normalizeCurrentValue('country', {"name":"UK","adjective":"UK"});
         var propertyEditor = editor.getEditor('root.country');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -619,7 +621,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('disclaimer', {"phase":"BETA","message":"This is a development website. We welcome your <a href=\"mailto:%email_contacts.suggestions\">feedback</a>."});
+        var currentValue = normalizeCurrentValue('disclaimer', {"phase":"BETA","message":"This website is in development – your <a href=\"https://www.surveymonkey.co.uk/r/SDGfeedback\">feedback</a> will help us to improve it","hidden":false});
         var propertyEditor = editor.getEditor('root.disclaimer');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -633,7 +635,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('email_contacts', {"questions":"test@example.com","suggestions":"test@example.com","functional":"test@example.com"});
+        var currentValue = normalizeCurrentValue('email_contacts', {"questions":"sustainabledevelopment@ons.gov.uk","suggestions":"sustainabledevelopment@ons.gov.uk","functional":"sustainabledevelopment@ons.gov.uk"});
         var propertyEditor = editor.getEditor('root.email_contacts');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -687,7 +689,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('footer_menu', [{"path":"/contact-us","translation_key":"menu.contact_us"},{"path":"https://twitter.com/MyTwitterAccount","translation_key":"general.twitter"},{"path":"https://facebook.com/MyFacebookAccount","translation_key":"general.facebook"},{"path":"/about/cookies-and-privacy/","translation_key":"menu.cookies"}]);
+        var currentValue = normalizeCurrentValue('footer_menu', [{"path":"/contact-us","translation_key":"menu.contact_us"},{"path":"https://twitter.com/ONS","translation_key":"general.twitter"},{"path":"/cookies-no-javascript/","translation_key":"menu.cookies"},{"path":"/privacy-notice/","translation_key":"Privacy"},{"path":"/accessibility-statement/","translation_key":"Accessibility statement"}]);
         var propertyEditor = editor.getEditor('root.footer_menu');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -701,7 +703,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('frontpage_cards', [{"title":"frontpage.download_all","content":"","include":"components/download-all-data.html","button_label":"","button_link":"","rule_color":""},{"title":"Lorem ipsum","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis\ncursus est sed dapibus.\n","include":"","button_label":"Read more","button_link":"https://example.com","rule_color":""},{"title":"Nam vestibulum","content":"Nam vestibulum, purus quis porttitor imperdiet, nisl sem mollis nisl, a\ninterdum risus enim vitae tortor. Donec feugiat accumsan rutrum.\n","include":"","button_label":"Read more","button_link":"https://example.com","rule_color":""}]);
+        var currentValue = normalizeCurrentValue('frontpage_cards', [{"title":"Download all data","content":"","include":"components/download-all-data.html","button_label":"","button_link":"","rule_color":""},{"title":"Publications","content":"\n[SDGs in the UK: Progress on monitoring and reporting data](https://www.ons.gov.uk/economy/environmentalaccounts/articles/sustainabledevelopmentgoalstakingstockprogressandpossibilities/december2020)\n\n[UK SDG Voluntary National Review](https://www.gov.uk/government/publications/uks-voluntary-national-review-of-the-sustainable-development-goals)\n<br/><br/>\n<a href=\"./publications\" aria-label=\"More publications\">More publications...</a>\n","include":"","button_label":"","button_link":"","rule_color":""},{"title":"Useful resources","content":"\n[The Global Goals](https://www.globalgoals.org/)\n\n[Implementing the Sustainable Development Goals](https://www.gov.uk/government/publications/implementing-the-sustainable-development-goals/implementing-the-sustainable-development-goals--2)\n\n[UN Department of Economic and Social Affairs](https://sdgs.un.org/)\n","include":"","button_label":"","button_link":"","rule_color":""}]);
         var propertyEditor = editor.getEditor('root.frontpage_cards');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -715,7 +717,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('frontpage_goals_grid', {"title":"Our data for Sustainable Development Goal indicators","description":"Click on each goal for our Sustainable Development Goal global indicator data."});
+        var currentValue = normalizeCurrentValue('frontpage_goals_grid', {"title":"UK data for the Sustainable Development Goals","description":"Select each goal for indicator data."});
         var propertyEditor = editor.getEditor('root.frontpage_goals_grid');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -727,32 +729,8 @@ data-event-label="high"
       }
     propertyEditorAccessibilityFixes(editor.getEditor('root.frontpage_goals_grid'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('frontpage_introduction_banner', {"title":"frontpage.intro_title","description":"frontpage.intro_body"});
-        var propertyEditor = editor.getEditor('root.frontpage_introduction_banner');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: frontpage_introduction_banner');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.frontpage_introduction_banner'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('goal_image_base', "https://open-sdg.org/sdg-translations/assets/img/goals");
-        var propertyEditor = editor.getEditor('root.goal_image_base');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: goal_image_base');
-      }
     try {
         var propertyEditor = editor.getEditor('root.goal_image_base');
         if (typeof propertyEditor.label !== 'undefined') {
@@ -767,190 +745,34 @@ data-event-label="high"
         console.log('Unable to set "required" flag: goal_image_base');
       }propertyEditorAccessibilityFixes(editor.getEditor('root.goal_image_base'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('goal_image_extension', "");
-        var propertyEditor = editor.getEditor('root.goal_image_extension');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: goal_image_extension');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.goal_image_extension'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('goals_page', {"title":"general.goals","description":"goal.description"});
-        var propertyEditor = editor.getEditor('root.goals_page');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: goals_page');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.goals_page'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('graph_color_headline', "#004466");
-        var propertyEditor = editor.getEditor('root.graph_color_headline');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: graph_color_headline');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_headline'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('graph_color_headline_high_contrast', "#55a6e5");
-        var propertyEditor = editor.getEditor('root.graph_color_headline_high_contrast');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: graph_color_headline_high_contrast');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_headline_high_contrast'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('graph_color_set', "");
-        var propertyEditor = editor.getEditor('root.graph_color_set');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: graph_color_set');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_set'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('graph_color_list', []);
-        var propertyEditor = editor.getEditor('root.graph_color_list');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: graph_color_list');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_list'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('graph_color_number', 0);
-        var propertyEditor = editor.getEditor('root.graph_color_number');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: graph_color_number');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_color_number'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.graph_title_from_series'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('header_language_toggle', "dropdown");
-        var propertyEditor = editor.getEditor('root.header_language_toggle');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: header_language_toggle');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.header_language_toggle'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_empty_metadata'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('hide_single_series', true);
-        var propertyEditor = editor.getEditor('root.hide_single_series');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: hide_single_series');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_single_series'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('hide_single_unit', true);
-        var propertyEditor = editor.getEditor('root.hide_single_unit');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: hide_single_unit');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.hide_single_unit'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('indicator_config_form', {"enabled":true,"dropdowns":[],"repository_link":"/tree/develop/indicator-config","translation_link":""});
-        var propertyEditor = editor.getEditor('root.indicator_config_form');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: indicator_config_form');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_config_form'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('indicator_data_form', {"enabled":true,"repository_link":"/tree/develop/data"});
-        var propertyEditor = editor.getEditor('root.indicator_data_form');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: indicator_data_form');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_data_form'));
 
-    
-      try {
-        var currentValue = normalizeCurrentValue('indicator_metadata_form', {"enabled":true,"dropdowns":[],"repository_link":"/tree/develop/meta","translation_link":"","language":"","scopes":["national","global"],"exclude_fields":[],"translated":false});
-        var propertyEditor = editor.getEditor('root.indicator_metadata_form');
-        propertyEditor.setValue(null);
-        propertyEditor.setValue(currentValue);
-        
-      }
-      catch (e) {
-        console.log(e.message);
-        console.log('Unable to set config key: indicator_metadata_form');
-      }
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_metadata_form'));
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_tabs'));
@@ -1011,7 +833,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('map_layers', []);
+        var currentValue = normalizeCurrentValue('map_layers', [{"subfolder":"country","label":"Country","min_zoom":4,"max_zoom":6,"staticBorders":true},{"subfolder":"regions","label":"Regions","min_zoom":6,"max_zoom":8,"staticBorders":true},{"subfolder":"local_authorities","label":"Local Authorities","min_zoom":9,"max_zoom":12,"staticBorders":true}]);
         var propertyEditor = editor.getEditor('root.map_layers');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -1025,7 +847,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('map_options', {"minZoom":5,"maxZoom":10,"tileURL":"","tileOptions":{"id":"","accessToken":"","attribution":""},"colorRange":"chroma.brewer.BuGn","noValueColor":"#f0f0f0","styleNormal":{"weight":1,"opacity":1,"fillOpacity":0.7,"color":"#888888","dashArray":""},"styleHighlighted":{"weight":1,"opacity":1,"fillOpacity":0.7,"color":"#111111","dashArray":""},"styleStatic":{"weight":2,"opacity":1,"fillOpacity":0,"color":"#172d44","dashArray":"5,5"}});
+        var currentValue = normalizeCurrentValue('map_options', {"disaggregation_controls":false,"minZoom":4,"maxZoom":10,"tileURL":"https://{s}.tile.jawg.io/{id}/{z}/{x}/{y}{r}.png?access-token={accessToken}","tileOptions":{"id":"jawg-light","accessToken":"lCtbMZiG4tbVWl7uq9EEch1yphnuLx9JyZL2qZwoQJ26wAu73oK1NkU4K50AALkp","attribution":"<a href=\"http://jawg.io\" title=\"Tiles Courtesy of Jawg Maps\" target=\"_blank\">&copy; <b>Jawg</b>Maps</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors | <a href=\"http://geoportal.statistics.gov.uk/\">ONS</a>"},"colorRange":"chroma.brewer.BuGn","noValueColor":"#f0f0f0","styleNormal":{"weight":1,"opacity":1,"fillOpacity":0.7,"color":"#888888","dashArray":""},"styleHighlighted":{"weight":1,"opacity":1,"fillOpacity":0.7,"color":"#111111","dashArray":""},"styleStatic":{"weight":2,"opacity":1,"fillOpacity":0,"color":"#172d44","dashArray":"5,5"}});
         var propertyEditor = editor.getEditor('root.map_options');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -1039,7 +861,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('menu', [{"path":"/goals","translation_key":"general.goals","dropdown":[]},{"path":"/reporting-status","translation_key":"menu.reporting_status","dropdown":[]},{"path":"/about","translation_key":"menu.about","dropdown":[]},{"path":"/faq","translation_key":"menu.faq","dropdown":[]},{"path":"/news","translation_key":"menu.updates","dropdown":[]}]);
+        var currentValue = normalizeCurrentValue('menu', [{"path":"/goals","translation_key":"general.goals","dropdown":[]},{"path":"/reporting-status/","translation_key":"menu.reporting_status","dropdown":[]},{"path":"/about/","translation_key":"menu.about","dropdown":[]},{"path":"/publications/","translation_key":"menu.publications","dropdown":[]},{"path":"/faq/","translation_key":"menu.faq","dropdown":[]},{"path":"/updates/","translation_key":"menu.updates","dropdown":[]}]);
         var propertyEditor = editor.getEditor('root.menu');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -1135,7 +957,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('reporting_status', {"title":"status.reporting_status","description":"status.description","disaggregation_tabs":false,"status_types":[{"value":"complete","label":"status.reported"},{"value":"inprogress","label":"status.statistics_in_progress"},{"value":"notstarted","label":"status.exploring_data_sources"},{"value":"notapplicable","label":"status.not_applicable"}]});
+        var currentValue = normalizeCurrentValue('reporting_status', {"title":"Reporting status","description":"\nReporting status provides an overview of how much Sustainable Development Goal (SDG) data the UK reports. For more information, see [What does the reporting status mean?](https://onsdigital.github.io/sdg-indicators/faq/#what-does-the-reporting-status-mean)\n\nDisaggregation status provides an overview of how many of the SDG indicators are disaggregated. For more information, see [What does the disaggregation status mean?](https://onsdigital.github.io/sdg-indicators/faq/#what-does-the-disaggregation-status-mean)\n\nFor details about all available disaggregations and how each indicator is disaggregated, see the [UK disaggregation report](https://onsdigital.github.io/sdg-data/disaggregations.html).\n\nNote: These percentages have been rounded. As a result, adding them together may not equal exactly 100%.\n","disaggregation_tabs":true,"status_types":[{"value":"complete","label":"status.reported","hide_on_goal_pages":false},{"value":"notstarted","label":"status.exploring_data_sources","hide_on_goal_pages":false}]});
         var propertyEditor = editor.getEditor('root.reporting_status');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -1334,16 +1156,19 @@ data-event-label="high"
                         </li>
                         <li>
                             
-                            <a href="https://twitter.com/MyTwitterAccount" target="_blank">Twitter</a>
+                            <a href="https://twitter.com/ONS" target="_blank">Twitter</a>
                             
                         </li>
                         <li>
-                            
-                            <a href="https://facebook.com/MyFacebookAccount" target="_blank">Facebook</a>
+                            <a href="/site/cookies-no-javascript/">Cookies</a>
                             
                         </li>
                         <li>
-                            <a href="/site/about/cookies-and-privacy/">Cookies</a>
+                            <a href="/site/privacy-notice/">Privacy</a>
+                            
+                        </li>
+                        <li>
+                            <a href="/site/accessibility-statement/">Accessibility statement</a>
                             
                         </li>
                         
@@ -1375,6 +1200,169 @@ data-event-label="high"
 <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
 
 
+<script>
+  
+
+
+var klaroConfig = {
+    version: 1,
+    elementID: 'klaro',
+    styling: {
+        theme: ['light', 'top', 'wide'],
+    },
+    noAutoLoad: false,
+    htmlTexts: false,
+    embedded: false,
+    groupByPurpose: true,
+    storageMethod: 'cookie',
+    cookieName: 'cookie_settings',
+    cookieExpiresAfterDays: 365,
+    default: false,
+    mustConsent: false,
+    acceptAll: true,
+    hideDeclineAll: false,
+    hideLearnMore: false,
+    noticeAsModal: false,
+    services: [
+        {
+            name: 'contrast',
+            default: true,
+            purposes: ['functional'],
+            cookies: ['contrast'],
+            required: true,
+            optOut: false,
+            onlyOnce: true,
+        },
+        {
+            name: 'cookie_settings',
+            default: true,
+            purposes: ['functional'],
+            cookies: ['cookie_settings'],
+            required: true,
+            optOut: false,
+            onlyOnce: true,
+        },
+        
+        {
+            name: 'google-analytics',
+            default: false,
+            purposes: ['analytics'],
+            
+            cookies: ['_gat', '_gid', '_ga'],
+            
+            required: false,
+            optOut: false,
+            onlyOnce: false,
+        },
+        
+    ],
+};
+
+  klaroConfig.lang = 'en';
+klaroConfig.translations = {
+    en: {
+        acceptAll: "Accept all",
+        acceptSelected: "Accept selected",
+        close: "Close",
+        consentModal: {
+            description: "Here you can change which cookies you're happy for us to use.",
+            title: "Cookie settings",
+        },
+        consentNotice: {
+            changeDescription: "The cookies used on this site have changed since you last visited, please renew your consent.",
+            description: "We use some essential cookies to make this service work. We’d also like to use {purposes} so we can understand how you use the service and make improvements.",
+            learnMore: "View cookies",
+            testing: "Testing mode!",
+        },
+        contextualConsent: {
+            acceptAlways: "Always",
+            acceptOnce: "Yes",
+            description: "Do you want to load external content supplied by {title}?",
+        },
+        decline: "Reject additional cookies",
+        ok: "Accept additional cookies",
+        poweredBy: "Realized with Klaro!",
+        privacyPolicy: {
+            name: "privacy policy",
+            text: "To learn more, please read our privacy policy.",
+        },
+        purposeItem: {
+            service: "service",
+            services: "services",
+        },
+        purposes: {
+            functional: {
+                description: "Essential cookies keep your information secure, and do things like remember your preferences and the choices you make whilst you use the website. They always need to be on.",
+                title: "Essential cookies",
+            },
+            analytics: {
+                description: "These services collect information about how you use the website. We use this data to help make the website better.",
+                title: "Analytics cookies",
+            },
+        },
+        save: "Save",
+        service: {
+            disableAll: {
+                description: "Use this switch to enable or disable all services.",
+                title: "Enable or disable all services",
+            },
+            optOut: {
+                description: "This services is loaded by default (but you can opt out)",
+                title: "(opt-out)",
+            },
+            purpose: "purpose",
+            purposes: "purposes",
+            required: {
+                description: "This service is always required",
+                title: "(always required)",
+            },
+        },
+    },
+};
+var allRequired = true;
+klaroConfig.services.forEach(function(service) {
+    if (!service.required) {
+        allRequired = false;
+    }
+    if (service.name === 'contrast') {
+        service.translations = {
+            en: {
+                description: "Retains active state of accessibility services",
+                title: "Accessibility mode",
+            },
+        }
+    }
+    else if (service.name === 'cookie_settings') {
+        service.translations = {
+            en: {
+                description: "Saves your cookie consent settings",
+                title: "Cookie settings",
+            },
+        }
+    }
+    else if (service.name === 'google-analytics') {
+        service.translations = {
+            en: {
+                description: "Collects information about page visits using Google Analytics",
+                title: "Google Analytics",
+            },
+        }
+    }
+});
+
+if (allRequired) {
+    klaroConfig.translations['en'].consentNotice.description = "We use some essential cookies to make this service work. They always need to be on.";
+    klaroConfig.translations['en'].ok = "OK";
+    klaroConfig.hideDeclineAll = true;
+    klaroConfig.hideLearnMore = true;
+}
+
+</script>
+<script src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
+<script>translations['cookies'] = translations['cookies'] || {};
+    translations['cookies']['cookie_settings'] = 'Cookie settings';</script>
+
+
 
 
 
@@ -1386,12 +1374,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220830110001'></script>
+<script src='/site/assets/js/sdg.js?v=20220830113811'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220830110001"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220830113811"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
