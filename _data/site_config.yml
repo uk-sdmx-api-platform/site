@@ -110,61 +110,60 @@ frontpage_goals_grid:
   title: UK data for the Sustainable Development Goals
   description: >-
     Select each goal for indicator data.
-footer_menu:
-  - path: /contact-us
-    translation_key: menu.contact_us
-  - path: 'https://twitter.com/ONS'
-    translation_key: general.twitter
-  - path: /cookies-no-javascript/
-    translation_key: menu.cookies
-  - path: /privacy-notice/
-    translation_key: Privacy
-  - path: /accessibility-statement/
-    translation_key: Accessibility statement
-frontpage_cards:
-  - title: Download all data
-    content: ''
-    include: components/download-all-data.html
-    button_label: ''
-    button_link: ''
-    rule_color: ''
-  - title: Publications
-    content: >
-
-      [SDGs in the UK: Progress on monitoring and reporting
-      data](https://www.ons.gov.uk/economy/environmentalaccounts/articles/sustainabledevelopmentgoalstakingstockprogressandpossibilities/december2020)
-
-
-      [UK SDG Voluntary National
-      Review](https://www.gov.uk/government/publications/uks-voluntary-national-review-of-the-sustainable-development-goals)
-
-      <br/><br/>
-
-      <a href="./publications" aria-label="More publications">More
-      publications...</a>
-    include: ''
-    button_label: ''
-    button_link: ''
-    rule_color: ''
-  - title: Useful resources
-    content: >
-
-      [The Global Goals](https://www.globalgoals.org/)
-
-
-      [Implementing the Sustainable Development
-      Goals](https://www.gov.uk/government/publications/implementing-the-sustainable-development-goals/implementing-the-sustainable-development-goals--2)
-
-
-      [UN Department of Economic and Social Affairs](https://sdgs.un.org/)
-    include: ''
-    button_label: ''
-    button_link: ''
-    rule_color: ''
-frontpage_goals_grid:
+frontpage_introduction_banner:
+  title: 17 goals to transform our world
+  description: >-
+    Welcome to the home of UK data for <a href="https://sdgs.un.org/goals">the Sustainable Development Goals (SDGs)</a>
+    – reported by <a href="https://www.ons.gov.uk/">the Office for National Statistics</a>, 
+    the UK’s national statistics institute.
+    
+    
+    The Sustainable Development Goals (SDGs) are a universal call to action
+    to end poverty, protect the planet and improve the lives and prospects
+    of everyone, everywhere. The 17 Goals
+    were adopted by all UN Member States in 2015, as part of the <a
+    href="https://sdgs.un.org/2030agenda">2030 Agenda for Sustainable
+    Development</a>.
+    
+    
+    UK data for the Sustainable Development Goals are collated and reported here.
+goal_image_base: 'https://open-sdg.github.io/sdg-translations/assets/img/goals'
+goal_image_extension: svg
+goals_page:
   title: UK data for the Sustainable Development Goals
   description: >-
     Select each goal for indicator data.
+graph_color_headline: '#004466'
+graph_color_headline_high_contrast: '#55a6e5'
+graph_color_set: accessible
+graph_color_list: []
+graph_color_number: 0
+graph_title_from_series: true
+header_language_toggle: none
+hide_empty_metadata: false
+hide_single_series: true
+hide_single_unit: true
+ignored_disaggregations:
+  - Activity (default)
+  - Age (default)
+  - Urbanisation (default)
+indicator_config_form:
+  enabled: false
+  dropdowns: []
+  repository_link: ''
+  translation_link: ''
+indicator_data_form:
+  enabled: false
+  repository_link: ''
+indicator_metadata_form:
+  enabled: false
+  dropdowns: []
+  repository_link: ''
+  translation_link: ''
+  language: ''
+  scopes: []
+  exclude_fields: []
+  translated: false
 languages:
   - en
 languages_public: []
