@@ -2673,3 +2673,13 @@ input, button, select, optgroup, textarea {
   border-style: solid;
   border-width: 1px;
   left: 32px; }
+
+body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF; }
+body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::after {
+  background-color: #000;
+  border-color: #000; }
+body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+  background-color: #000;
+  border-color: #FFFFFF; }
