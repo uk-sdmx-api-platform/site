@@ -2683,3 +2683,8 @@ body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::after {
 body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::before {
   background-color: #000;
   border-color: #FFFFFF; }
+body.contrast-high .accordion-item {
+  border: 1px solid #FFFFFF;
+  background-color: #000; }
+body.contrast-high .accordion-button {
+  background-color: #000; }
