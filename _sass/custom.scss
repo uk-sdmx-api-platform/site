@@ -203,7 +203,7 @@ body.contrast-high {
     border-color: #000;
   }
   
-  .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+  .toggle-switch-check:empty ~ .toggle-switch-bar::before {
     background-color: #000;
     border-color: #FFFFFF;
   }
@@ -214,6 +214,7 @@ body.contrast-high {
   }
   
   .accordion-button {
+    color: #fff;
     background-color: #000;
   }
 }
