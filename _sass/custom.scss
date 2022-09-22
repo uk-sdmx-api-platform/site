@@ -191,3 +191,21 @@ input, button, select, optgroup, textarea {
     border-width: 1px;
     left: 32px;
 }
+
+body.contrast-high {
+  .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+  }
+  
+  .toggle-switch-check:checked ~ .toggle-switch-bar::after {
+    background-color: #000;
+    border-color: #000;
+  }
+  
+  .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+    background-color: #000;
+    border-color: #FFFFFF;
+  }
+  
+}
