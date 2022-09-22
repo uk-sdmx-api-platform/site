@@ -2680,11 +2680,12 @@ body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::before {
 body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::after {
   background-color: #000;
   border-color: #000; }
-body.contrast-high .toggle-switch-check:checked ~ .toggle-switch-bar::before {
+body.contrast-high .toggle-switch-check:empty ~ .toggle-switch-bar::before {
   background-color: #000;
   border-color: #FFFFFF; }
 body.contrast-high .accordion-item {
   border: 1px solid #FFFFFF;
   background-color: #000; }
 body.contrast-high .accordion-button {
+  color: #fff;
   background-color: #000; }
