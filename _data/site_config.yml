@@ -7,6 +7,7 @@ breadcrumbs:
   goal: []
   indicator: []
   post: []
+compare_national_and_global_data: true
 cookie_consent_form:
   enabled: true
 country:
