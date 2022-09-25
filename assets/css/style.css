@@ -1404,6 +1404,12 @@ select:focus {
   box-shadow: none !important;
   outline: 3px solid #ffdd00 !important; }
 
+.categories > h4 {
+  margin-bottom: 1.5rem; }
+
+.compare-toggle-title {
+  margin-bottom: 1.5rem; }
+
 label.toggle-switch {
   cursor: pointer; }
 

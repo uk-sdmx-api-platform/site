@@ -3032,7 +3032,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.colorAssignments = [];
 
   this.clearSelectedFields = function() {
-    this.selectedFields = [];
+    this.selectedFields = [{field: "Reporting type", values: ["National"]}];
     this.getData();
     this.onFieldsCleared.notify();
   };
@@ -3365,7 +3365,8 @@ function initialiseFields(args) {
             fields: args.fields,
             allowedFields: args.allowedFields,
             childFields: _.uniq(args.edges.map(function (edge) { return edge.To })),
-            edges: args.edges
+            edges: args.edges,
+            fieldValuesWithNationalReportingType: args.fieldValuesWithNationalReportingType
         }));
 
         $(OPTIONS.rootElement).removeClass('no-fields');
@@ -4875,7 +4876,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
-        
+    
         helpers.initialiseFieldsWithGlobalValues(args);
         helpers.initialiseFields(args);
 
@@ -4979,6 +4980,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     $(OPTIONS.rootElement).on('click', '#clear', function () {
         MODEL.clearSelectedFields();
+        MODEL.selectedFields = [{field: "Reporting type", values: ["National"]}];
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
