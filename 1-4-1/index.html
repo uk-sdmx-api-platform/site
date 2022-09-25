@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1739,828 +1775,35 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 1: End poverty in all its forms everywhere</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 1.4.1: Proportion of population living in households with access to basic services</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-03-01</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <table>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 1: End poverty in all its forms everywhere</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 1.4.1: Proportion of population living in households with access to basic services</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><table>
   <tbody>
     <tr>
       <td>
@@ -2648,160 +1891,79 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>United Nations Human Settlements Programme (UN-Habitat)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>United Nations Human Settlements Programme (UN-Habitat)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Concepts and definitions:</strong></p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>United Nations Human Settlements Programme (UN-Habitat)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>United Nations Human Settlements Programme (UN-Habitat)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Concepts and definitions:</strong></p>
 <p>The following key concepts were defined to support the indicator in the context of poverty eradication. </p>
 <p><strong>Basic Services</strong> refer to public service provision systems that meet human basic needs including drinking water, sanitation, hygiene, energy, mobility, waste collection, health care, education and information technologies. The basis cervices indicator will be therefore based on 9 components. These components are captured in various standalone indicators of the SDGs, which means that the concepts and definitions of SDG indicator 1.4.1 will be derived from or are the same as those of these specific SDG indicators. </p>
 <p><strong>Access to basic services</strong> implies that sufficient and affordable service is reliably available with adequate quality.</p>
@@ -2833,374 +1995,282 @@ data-event-label="Change to Sources tab"
   <li><strong>Access to Basic Information Services</strong> refers to having a broadband internet access. Broadband is defined as technologies that deliver advertised download speeds of at least 256 kbit/s. Connecting the 50% of the world that is still offline means, in large part, ensuring that everyone, everywhere is able to access an internet that is affordable. The main types of broadband services are: 1) Fixed (wired) broadband network, such as DSL, cable modem, high speed leased lines, fibre to- the-home/building, powerline and other fixed (wired) broadband; 2) Terrestrial fixed (wireless) broadband network, such as WiMAX, fixed CDMA; 3) Satellite broadband network (via a satellite connection); 4) Mobile broadband network (at least 3G, e.g. UMTS) via a handset and 5) Mobile broadband network (at least 3G, e.g. UMTS) via a card (e.g. integrated SIM card in a computer) or USB modem. This is connected to and will be captured through SDG 9.c.1 - <em>Proportion of population covered by a mobile network, by technology</em>.</li>
 </ol>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> <a href="https://www.ssatp.org/sites/ssatp/files/publications/HTML/Gender-RG/Source%20documents/Tool%20Kits%20&amp;%20Guides/Monitoring%20and%20Evaluation/TLM&amp;E7%20Access%20Index%20TRB%2006.pdf">https://www.ssatp.org/sites/ssatp/files/publications/HTML/Gender-RG/Source documents/Tool Kits &amp; Guides/Monitoring and Evaluation/TLM&amp;E7 Access Index TRB 06.pdf</a> <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> http://www.worldbank.org/en/topic/transport/brief/connections-note-23 <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not applicable. Each measure that forms part of the dashboard comes with the unit of measurement from the parent metadata. Majority of these are in proportions.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not Applicable: See the original metadata for each of the measures in the dashboard.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>The main source of data for this indicator remains household surveys including DHS, MICS, LSMS, World Bank, UNICEF and UNDP, the censuses and administrative data. These data sources are also described in the various metadata for the constituent SDG indicators. A lot of the pre-processed data is also derived from the SDG indicators that form this indicator.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Data will be collected from countries on the constituent indicators that they have processed and published. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>The monitoring and reporting of the indicator can be repeated at regular intervals of 3 to 5 years each. Measurement and reporting need to be feasible on a global basis, i.e. not so expensive that the costs are unreasonable particularly at country level.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Every 3-5 years.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>UN-Habitat and various supporting agencies such as UNEP, The World Bank, AfDB, IDB, EBRD and ADB and bilateral donors (JICA, GDZ, etc.).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>National statistical agencies and city management teams lead the compilation and reporting at a national level. Global and regional reporting is led by UN-Habitat. The collection of the data is supported by collaborative efforts of several international institutions (UN-Habitat, UNEP, The World Bank, AfDB, IDB, EBRD and ADB) and bilateral donors (JICA, GDZ, etc.).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not applicable: This is described in the parent metadata where the indicators featured in this dashboard and provided.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Poverty has many dimensions. It is not only a lack of material well-being but also a lack of opportunities to live a tolerable life. The international extreme poverty line was updated in 2015 to 1.90 USD per day using 2011 purchasing power parity (WB 2015). Living under the extreme poverty line often encompasses deprivations of safe drinking water, proper sanitation, access to modern energy, sustainable mobility to economic resources, information technology, healthcare, education, etc. Poverty is also a manifestation of hunger and malnutrition, limited access to education and other basic services, social discrimination and exclusion as well as the lack of participation in decision-making. In other words, poverty is multidimensional and covers many aspects of life ranging from access to opportunities, livelihoods and means of survival. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable. Each measure that forms part of the dashboard comes with the unit of measurement from the parent metadata. Majority of these are in proportions.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not Applicable: See the original metadata for each of the measures in the dashboard.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The main source of data for this indicator remains household surveys including DHS, MICS, LSMS, World Bank, UNICEF and UNDP, the censuses and administrative data. These data sources are also described in the various metadata for the constituent SDG indicators. A lot of the pre-processed data is also derived from the SDG indicators that form this indicator.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data will be collected from countries on the constituent indicators that they have processed and published. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The monitoring and reporting of the indicator can be repeated at regular intervals of 3 to 5 years each. Measurement and reporting need to be feasible on a global basis, i.e. not so expensive that the costs are unreasonable particularly at country level.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Every 3-5 years.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UN-Habitat and various supporting agencies such as UNEP, The World Bank, AfDB, IDB, EBRD and ADB and bilateral donors (JICA, GDZ, etc.).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National statistical agencies and city management teams lead the compilation and reporting at a national level. Global and regional reporting is led by UN-Habitat. The collection of the data is supported by collaborative efforts of several international institutions (UN-Habitat, UNEP, The World Bank, AfDB, IDB, EBRD and ADB) and bilateral donors (JICA, GDZ, etc.).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable: This is described in the parent metadata where the indicators featured in this dashboard and provided.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Poverty has many dimensions. It is not only a lack of material well-being but also a lack of opportunities to live a tolerable life. The international extreme poverty line was updated in 2015 to 1.90 USD per day using 2011 purchasing power parity (WB 2015). Living under the extreme poverty line often encompasses deprivations of safe drinking water, proper sanitation, access to modern energy, sustainable mobility to economic resources, information technology, healthcare, education, etc. Poverty is also a manifestation of hunger and malnutrition, limited access to education and other basic services, social discrimination and exclusion as well as the lack of participation in decision-making. In other words, poverty is multidimensional and covers many aspects of life ranging from access to opportunities, livelihoods and means of survival. </p>
 <p>Among the different aspects of poverty, this indicator focuses on &#x2018;access to basic services&#x2019;. Providing access to basic services such as safe drinking water, sanitation facilities, sustainable energy and mobility, housing, education, healthcare etc, helps to improve the quality of life of the poor. The lack of basic services provision and the lack of empowerment and involvement of local governments in basic service delivery undermine the economic growth and quality of life in any community. Adequate basic service delivery systems promote socio-economic improvements and help to achieve economic growth, social inclusion, poverty reduction and equality. More specifically, improved basic services can help to raise well-being and productivity of communities, create jobs, save time and human effort in transporting water, support food security, better use of energy, production of essential commodities, improve health (by making medical care, clean water or solid waste collection available) or enhance the level of education. </p>
 <p>In the Quito implementation plan for the New Urban Agenda adopted in Habitat III conference, member states commit to &#x201C;promoting equitable and affordable access to sustainable basic physical and social infrastructure for all, without discrimination, including affordable serviced land, housing, modern and renewable energy, safe drinking water and sanitation, safe, nutritious and adequate food, waste disposal, sustainable mobility, health care and family planning, education, culture, and information and communications technologies&#x201D; . They further commit to &#x201C;ensuring that these services are responsive to the rights and needs of women, children and youth, older persons and persons with disabilities, migrants, indigenous peoples and local communities, as appropriate, and to those of others in vulnerable situations&#x201D;.</p>
 <p>Basic service delivery must move towards a demand-driven approach, which is appropriate for the local needs &#x2013; and hence able to respond to the concept of &#x201C;Access for all&#x201D; &#x2013; as stated in the NUA. Basic services are fundamental to improving living standards. Governments have the responsibility for their provision. This indicator will measure levels of accessibility to basic services and guide the efforts of governments for provision of equitable basic services for all to eradicate poverty.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Different local characteristics of what constitutes &#x201C;basic services&#x201D; around the world by some concerned authorities and stakeholders compelled the team to work on modules and global guides for this indicator. This draws on definitions available for many other SDG indicators. For example, elements of basic services are measured under indicators 3.8.1 (health), 4.1.1 (education), 6.1.1 (water), 6.2.1 (sanitation), 7.1.1 (energy), 11.2.1 (public transport), etc. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Different local characteristics of what constitutes &#x201C;basic services&#x201D; around the world by some concerned authorities and stakeholders compelled the team to work on modules and global guides for this indicator. This draws on definitions available for many other SDG indicators. For example, elements of basic services are measured under indicators 3.8.1 (health), 4.1.1 (education), 6.1.1 (water), 6.2.1 (sanitation), 7.1.1 (energy), 11.2.1 (public transport), etc. </p>
 <p>Finally, many countries still have limited capacities for data management, data collection and monitoring, and continue to struggle with limited data on large or densely populated geographical areas. This means that complementarity in data reporting in a few exceptions is needed to ensure that both national and global figures achieve consistencies in the final reported data for access to basic services.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>This indicator is a combination of various components of basic services which on their own are already existing as standalone indicators of the SDGs. As a result, the team of experts advised and agreed that these should be presented as a dashboard Their metadata provide the specific methodologies for computing these indicators. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>This indicator is a combination of various components of basic services which on their own are already existing as standalone indicators of the SDGs. As a result, the team of experts advised and agreed that these should be presented as a dashboard Their metadata provide the specific methodologies for computing these indicators. </p>
 <p><strong>Data presentation</strong></p>
 <p>Individual components of access to basic services will be computed separately from various data sources over the years. However, the dashboard will be configured to display the most recent data points, but with the possibility to visualize data for older years through a drill down access. </p>
 <p>Data will be presented or visualized as a dashboard but with the possibility to map it out through various visualization tools such as spider web of the achievement of access to different basic services in a country through plotting the various components of the indicators. In this way, policy makers can be informed of most needed intervention areas for any region and country. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>Not Applicable. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not Applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p>&#x2022; <strong>At country level</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not Applicable</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>&#x2022; <strong>At country level</strong></p>
 <p>Treatment of missing values is provided in relevant metadata for each individual indicator. </p>
 <p>Not applicable</p>
 <p>&#x2022; <strong>At regional and global levels</strong></p>
 <p>Treatment of missing values is provided in relevant metadata for each individual indicator. </p>
 <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Not Applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Countries will be expected to have their own dashboards for presenting this data and information. Examples of easy to use tools for presenting the data as a dashboard will be provided to various countries via the national statistical systems/offices. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not applicable: Original data quality management is managed by the custodian agencies for each indicator that is presented under 1.4.1 dashboard. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Quality assurance checks for published data will be conducted by the custodian agency along with other supporting agencies.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not Applicable</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Countries will be expected to have their own dashboards for presenting this data and information. Examples of easy to use tools for presenting the data as a dashboard will be provided to various countries via the national statistical systems/offices. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable: Original data quality management is managed by the custodian agencies for each indicator that is presented under 1.4.1 dashboard. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Quality assurance checks for published data will be conducted by the custodian agency along with other supporting agencies.</p>
 <p>Not applicable: Original data quality assurance is managed by the custodian agencies for each indicator that is presented under 1.4.1 dashboard. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not applicable: Original data quality assessment is managed by the custodian agencies for each indicator that is presented under 1.4.1 dashboard. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable: Original data quality assessment is managed by the custodian agencies for each indicator that is presented under 1.4.1 dashboard. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>Data for a large set of sub-indicators such as water and sanitation, energy, information are readily available and already included in different international household survey framework. Refinement of definitions of different types of basic services and inclusion of the newly developed survey items in the existing household survey was completed. Data compilation has shown that already more than 100 countries have data at the national level.</p>
 <p><strong>Time series:</strong></p>
 <p>Time series data will be produced for the periods running from 1990 to present. This will be available based on the richness of the data sources for each indicator.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Different levels of disaggregation will be applied given that different SDG indicators will be used to represent this indicator (see further details in metadata for each indicator). However, the dashboard will not provide disaggregated data for each individual indicator. will be </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not Applicable </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not Applicable </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>World Bank, 2015 The International Poverty Line, <a href="http://www.worldbank.org/en/programs/icp/brief/poverty-line">http://www.worldbank.org/en/programs/icp/brief/poverty-line</a> </li>
   <li>WHO and UNICEF, 2017 Progress on Drinking Water, Sanitation and Hygiene Launch version July 12 2017, <a href="https://www.unicef.org/publications/index_96611.html">https://www.unicef.org/publications/index_96611.html</a> </li>
   <li>UNDP 2016 Technical Notes Calculating the Human Development Indices, <a href="http://hdr.undp.org/en/content/multidimensional-poverty-index-mpi">http://hdr.undp.org/en/content/multidimensional-poverty-index-mpi</a> </li>
@@ -3328,142 +2398,39 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -3489,7 +2456,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -3542,12 +2509,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3733,12 +2700,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

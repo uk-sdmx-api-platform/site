@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -439,1045 +459,158 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 14.3: Minimize and address the impacts of ocean acidification, including through enhanced scientific cooperation at all levels</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 14.3.1: Average marine acidity (pH) measured at agreed suite of representative sampling stations</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>Average marine acidity (pH) measured at agreed suite of representative sampling stations</p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>14.a.1 Increase scientific knowledge, develop research capacity and transfer marine technology, taking into account the Intergovernmental Oceanographic Commission Criteria and Guidelines on the Transfer of Marine Technology, in order to improve ocean health and to enhance the contribution of marine biodiversity to the development of developing countries, in particular small island developing States and least developed countries</p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Intergovernmental Oceanographic Commission (IOC) of UNESCO</p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 14.3: Minimize and address the impacts of ocean acidification, including through enhanced scientific cooperation at all levels</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 14.3.1: Average marine acidity (pH) measured at agreed suite of representative sampling stations</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Average marine acidity (pH) measured at agreed suite of representative sampling stations</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2022-08-12</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>14.a.1 Increase scientific knowledge, develop research capacity and transfer marine technology, taking into account the Intergovernmental Oceanographic Commission Criteria and Guidelines on the Transfer of Marine Technology, in order to improve ocean health and to enhance the contribution of marine biodiversity to the development of developing countries, in particular small island developing States and least developed countries</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>Intergovernmental Oceanographic Commission (IOC) of UNESCO</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Intergovernmental Oceanographic Commission (IOC) of UNESCO</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <h2>Definitions:</h2>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Intergovernmental Oceanographic Commission (IOC) of UNESCO</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><h2>Definitions:</h2>
 <p>Ocean acidification is the decrease of seawater pH over an extended period, typically of decades or longer, which is caused primarily by the uptake of carbon dioxide from the atmosphere<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>. </p>
 <p>This indicator is based on observations that constrain the ocean carbon system and which are required to describe the variability in ocean acidity. The carbon system in this context mainly refers to the four measurable parameters: pH (the concentration of hydrogen ions on a logarithmic scale), DIC (CT; total dissolved inorganic carbon), <em>p</em>CO<sub>2</sub> (carbon dioxide partial pressure), and TA (AT, total alkalinity). Average, as used here, is the equally weighed annual mean. </p>
 <p>An agreed suite of representative sampling stations are sites that have a measurement frequency that is adequate for describing variability and trends in carbonate chemistry in order to deliver critical information on the exposure of and impacts on marine systems to ocean acidification, and which provide data of sufficient quality and with comprehensive metadata information to enable integration with data from other sites in the country. </p>
 <p><strong>Concepts:</strong></p>
 <p>Ocean acidification is caused by an increase in the amount of dissolved atmospheric CO<sub>2</sub> in the seawater. The average marine acidity is expressed as pH, the concentration of hydrogen ions on a logarithmic scale. In order to be able to constrain the carbonate chemistry of seawater, it is necessary to measure at least two of the four parameters, i.e. pH, <em>p</em>CO<sub>2</sub>, DIC (CT), and TA (AT). pH (the concentration of hydrogen ions on a logarithmic scale, expressed on total scale), DIC (total dissolved inorganic carbon, in &#x3BC;mol kg<sup>-1</sup>), <em>p</em>CO<sub>2</sub> (carbon dioxide partial pressure, in ppt or &#x3BC;atm), and TA (AT, total alkalinity, in &#x3BC;mol kg<sup>-1</sup>).</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p>NOAA. What is ocean acidification? National Ocean Service website <a href="https://oceanservice.noaa.gov/facts/acidification.html">https://oceanservice.noaa.gov/facts/acidification.html</a>, 06/25/18 <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>pH on total scale</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>pH on total scale</p>
 <p>and/or pCO<sub>2</sub> [&#x3BC;atm or ppt], DIC [&#x3BC;mol kg<sup>-1</sup>], TA [&#x3BC;mol kg<sup>-1</sup>]</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>The SDG indicator 14.3.1 methodology was endorsed by IOC Member States at the Fifty-first Session of the IOC Executive Council (IOC/EC-LI/2 Annex 6 rev). In November 2018, the SDG indicator 14.3.1 was upgraded to Tier II by the UN Inter&#x2011;agency and Expert Group on SDG indicators (IAEG-SDGs). The methodology was further community approved as an Ocean Best Practice (<a href="http://dx.doi.org/10.25607/OBP-655">http://dx.doi.org/10.25607/OBP-655</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>The general IOC data collection process is described in Document <a href="http://www.ioc-unesco.org/index.php?option=com_oe&amp;task=viewDocumentRecord&amp;docID=19589">IOC-XXIX/2Annex 14</a>.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The SDG indicator 14.3.1 methodology was endorsed by IOC Member States at the Fifty-first Session of the IOC Executive Council (IOC/EC-LI/2 Annex 6 rev). In November 2018, the SDG indicator 14.3.1 was upgraded to Tier II by the UN Inter&#x2011;agency and Expert Group on SDG indicators (IAEG-SDGs). The methodology was further community approved as an Ocean Best Practice (<a href="http://dx.doi.org/10.25607/OBP-655">http://dx.doi.org/10.25607/OBP-655</a>). </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The general IOC data collection process is described in Document <a href="http://www.ioc-unesco.org/index.php?option=com_oe&amp;task=viewDocumentRecord&amp;docID=19589">IOC-XXIX/2Annex 14</a>.</p>
 <p>The novelty of assessing ocean acidification at the global level, as in indicator 14.3.1, requires the IOC secretariat to collect the data via different pathways. Data collections are a mixture of:</p>
 <ul>
   <li>direct requests to National Statistical Offices (NSOs), as new national reporting mechanisms are now installed allowing them to provide the required information (from the 2021 data collection onwards),</li>
@@ -1491,204 +624,120 @@ data-event-label="Change to Sources tab"
 <p>The data collection process takes place in close collaboration with the IOC Project Office for IODE Oostende, Belgium and relevant data providers/national archives, the GOA-ON data portal, and entities such as the marine chemistry part of the European Marine Observation and Data Network (EMODnet). Since 2019 IOC invites all data providers to use the newly established SDG 14.3.1 Data Portal (<a href="http://oa.iode.org">http://oa.iode.org</a>). This SDG 14.3.1 Data Portal is a tool for the submission, collection, validation, storage and sharing of ocean acidification data and metadata submitted towards the Sustainable Development Goal 14.3.1 Indicator: Average marine acidity (pH) measured at agreed suite of representative sampling stations. Besides allowing for a direct submission of metadata and data, the portal further provides the full text of the SDG 14.3.1 Indicator Methodology, the data template, the metadata template and the metadata instructions file. Since 2020 a newly developed FAQ section facilitates the provision of 14.3.1 data. IOC is developing a federated data system to automatically harvest data from other relevant ocean carbon databases and repositories into the SDG 14.3.1 Indicator database.</p>
 <p>Furthermore the<a href="http://portal.goa-on.org/"> GOA-ON data portal</a> features open access data, in addition to a global monitoring asset inventory. The portal is designed to offer two levels of access: 1) visualization and 2) download capabilities. Combining different open-access data sets may provide incentives to create new observing systems in under-sampled areas and to increase the application of open access data policies worldwide, according to the IOC Criteria and Guidelines for the Transfer of Marine Technology (2005) in the future.</p>
 <p>Furthermore, the GOA-ON website hosts a number of pages dedicated to the SDG 14.3.1 methodology: <a href="http://goa-on.org/sdg_14.3.1/sdg_14.3.1.php">http://goa-on.org/sdg_14.3.1/sdg_14.3.1.php</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>The official counterparts are the IOC focal points. They, as well as National Oceanographic Data Centres (NODCs), are contacted by IOC to request relevant data from the appropriate national oceanographic data centres and/or relevant scientists, agencies or programmes. An annual data submission request is sent out via IOC Circular Letters directly to the member states asking for the respective data and metadata (through circular letter <a href="https://oceanexpert.org/document/26312">2792</a> in 2019, circular letter <a href="https://oceanexpert.org/document/27502">2815</a> in 2020 and circular letter <a href="https://unesdoc.unesco.org/ark:/48223/pf0000379637">2859</a> in 2021). New updates and the inclusion of new features to the SDG 14.3.1 data portal to be developed in 2022 will facilitate with collaboration with other existing ocean carbon data centres and biogeochemical data platforms. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The official counterparts are the IOC focal points. They, as well as National Oceanographic Data Centres (NODCs), are contacted by IOC to request relevant data from the appropriate national oceanographic data centres and/or relevant scientists, agencies or programmes. An annual data submission request is sent out via IOC Circular Letters directly to the member states asking for the respective data and metadata (through circular letter <a href="https://oceanexpert.org/document/26312">2792</a> in 2019, circular letter <a href="https://oceanexpert.org/document/27502">2815</a> in 2020 and circular letter <a href="https://unesdoc.unesco.org/ark:/48223/pf0000379637">2859</a> in 2021). New updates and the inclusion of new features to the SDG 14.3.1 data portal to be developed in 2022 will facilitate with collaboration with other existing ocean carbon data centres and biogeochemical data platforms. </p>
 <p>Furthermore, IOC benefits from direct contributions from ocean acidification scientists organized within the Global Ocean Acidification Observing Network (GOA-ON) to the SDG 14.3.1 data portal. </p>
 <p>All contributors of data to SDG 14.3.1 are encouraged to read and follow the standard operating procedures provided in Dickson et al. 2007. This document covers ocean carbon chemistry, sample-handling techniques, quality assurance procedures, the use of Certified Reference Materials (CRMs) and Standard Operating Procedures (SOPs) for discrete sampling of pH, <em>p</em>CO<sub>2</sub>, TA, and DIC. Data contributors are also encouraged to read the Guide to Best Practices in Ocean Acidification Research and Data Reporting, which focuses on best practices for laboratory experiments, but also includes background on carbon chemistry (Riebesell et al. 2010). For coastal environments, which can be subject to large variability and a range of influences, such as nutrient and freshwater inputs, guidelines for the measurement of pH and carbonate chemistry can be found here (Pimenta and Grear 2018).</p>
 <p>All data submitted to SDG 14.3.1 must include an estimate of measurement uncertainty in the metadata. Autonomous sensors for pH and <em>p</em>CO<sub>2</sub> require calibration and maintenance to validate sensor performance and identify drift or sensor malfunction. Where possible, the analysis of discrete bottle samples analysed for pH, DIC or TA collected next to the sensors can be used to calculate pH and <em>p</em>CO<sub>2</sub>.</p>
 <p>All ocean acidity datasets submitted to SDG 14.3.1 must also include associated temperature (in situ [and temperature of measurement if different than in situ]), salinity, and pressure (sampling depth). If submitting pH values, all pH values must be on the total scale (Dickson et al. 2007).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>National data sets should be reported annually (at the least), following the request by IOC Circular letters. However, experts, national focal points of Member States and NODCs are invited to submit data throughout the year via the SDG 14.3.1 data portal. The invitation via a Circular Letter will be sent during the second semester of each year. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Data are released in February each year.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>The general IOC data collection process is described in Document IOC-XXIX/2Annex 14.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National data sets should be reported annually (at the least), following the request by IOC Circular letters. However, experts, national focal points of Member States and NODCs are invited to submit data throughout the year via the SDG 14.3.1 data portal. The invitation via a Circular Letter will be sent during the second semester of each year. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data are released in February each year.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The general IOC data collection process is described in Document IOC-XXIX/2Annex 14.</p>
 <p>The novelty of assessing ocean acidification at the global level, as for this indicator 14.3.1, requires the IOC secretariat to collect the data via a range of different pathways. This will include direct requests to National Statistical Offices (NSOs), annual requests to the IOC national focal points, and NODCs and associated data agencies in the member states, as well as international data centres and individual data providers.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>The Intergovernmental Oceanographic Commission (IOC) of UNESCO is the custodian agency for this Indicator. In collaboration with the International Oceanographic Data and Information Exchange (IODE) of IOC, the data will be collected and stored in a transparent and traceable manner, allowing for the ocean acidification data to be shared. IOC welcomes data sets which can be freely shared without restrictions (CC0, CC BY), with restrictions for commercial use (CC BY-NC), as well as those which only allow for IOC-UNESCO to derive products used for the purpose of the SDG indicator 14.3.1 reporting (<a href="http://oa.iode.org">http://oa.iode.org</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>IOC-UNESCO is the custodian agency for the SDG indicator 14.3.1. The purpose of the Commission is to promote international cooperation and to coordinate programmes in research, services and capacity-building, in order to learn more about the nature and resources of the ocean and coastal areas and to apply that knowledge for the improvement of management, sustainable development, the protection of the marine environment, and the decision-making processes of its Member States. In addition, IOC is recognized through the United Nations Convention on the Law of the Sea (UNCLOS) as a competent international organization in the fields of Marine Scientific Research (Part XIII) and Transfer of Marine Technology (Part XIV). </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The Intergovernmental Oceanographic Commission (IOC) of UNESCO is the custodian agency for this Indicator. In collaboration with the International Oceanographic Data and Information Exchange (IODE) of IOC, the data will be collected and stored in a transparent and traceable manner, allowing for the ocean acidification data to be shared. IOC welcomes data sets which can be freely shared without restrictions (CC0, CC BY), with restrictions for commercial use (CC BY-NC), as well as those which only allow for IOC-UNESCO to derive products used for the purpose of the SDG indicator 14.3.1 reporting (<a href="http://oa.iode.org">http://oa.iode.org</a>). </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>IOC-UNESCO is the custodian agency for the SDG indicator 14.3.1. The purpose of the Commission is to promote international cooperation and to coordinate programmes in research, services and capacity-building, in order to learn more about the nature and resources of the ocean and coastal areas and to apply that knowledge for the improvement of management, sustainable development, the protection of the marine environment, and the decision-making processes of its Member States. In addition, IOC is recognized through the United Nations Convention on the Law of the Sea (UNCLOS) as a competent international organization in the fields of Marine Scientific Research (Part XIII) and Transfer of Marine Technology (Part XIV). </p>
 <p>According to its Statutes, the Commission may act also as a joint specialized mechanism of the organizations of the United Nations system that have agreed to use the Commission for discharging certain of their responsibilities in the fields of marine sciences and ocean services, and have agreed accordingly to sustain the work of the Commission. IOC is further one of the organizations supporting the Global Ocean Acidification Observing Network (GOA-ON) (<a href="http://goa-on.org">http://goa-on.org</a>). The Commission hosts one part of the distributed GOA-ON Secretariat, fostering science collaboration and capacity building in ocean acidification observations. GOA-ON actively encourages its members to collect and report metadata and data relevant for the SDG indicator 14.3.1.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The ocean absorbs up to 30% of the annual emissions of anthropogenic CO<sub>2</sub> to the atmosphere, helping to alleviate the impacts of climate change on the planet. However, this comes at a steep ecological cost, as the absorbed CO<sub>2</sub> reacts with seawater and results in shifts in the dissolved carbonate chemistry including increased acidity levels in the marine environment (decreased seawater pH). The observed changes have been shown to cause a range of responses at the organism level that can affect biodiversity, ecosystem structure and food security. For example, a decrease in dissolved carbonate reduces the solubility of carbonate minerals including aragonite and calcite, the two main forms of calcium carbonate used by marine species to form shells and skeletal material (e.g. reef building corals and shelled molluscs). Aragonite is the more soluble form and its availability for shell building by organisms such as corals and oysters, called the aragonite saturation state [&#x3A9; (aragonite)], is used together with pH as an indicator in tracking the progression of ocean acidification. In addition, of equal importance to some key marine organisms, is the dissolved CO<sub>2</sub> and bicarbonate concentration. It is, therefore, of the upmost urgency that a full categorization of the changing carbonate system is delivered.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The ocean absorbs up to 30% of the annual emissions of anthropogenic CO<sub>2</sub> to the atmosphere, helping to alleviate the impacts of climate change on the planet. However, this comes at a steep ecological cost, as the absorbed CO<sub>2</sub> reacts with seawater and results in shifts in the dissolved carbonate chemistry including increased acidity levels in the marine environment (decreased seawater pH). The observed changes have been shown to cause a range of responses at the organism level that can affect biodiversity, ecosystem structure and food security. For example, a decrease in dissolved carbonate reduces the solubility of carbonate minerals including aragonite and calcite, the two main forms of calcium carbonate used by marine species to form shells and skeletal material (e.g. reef building corals and shelled molluscs). Aragonite is the more soluble form and its availability for shell building by organisms such as corals and oysters, called the aragonite saturation state [&#x3A9; (aragonite)], is used together with pH as an indicator in tracking the progression of ocean acidification. In addition, of equal importance to some key marine organisms, is the dissolved CO<sub>2</sub> and bicarbonate concentration. It is, therefore, of the upmost urgency that a full categorization of the changing carbonate system is delivered.</p>
 <p>Regular observations of marine acidity at open-ocean locations over the past 20-30 years have revealed a clear trend of decreasing pH and that present-day conditions are often outside preindustrial bounds. Observational trends in coastal areas have been reported to be more difficult to determine. In some regions, the changes are amplified by natural processes like upwelling (whereby cold, often CO<sub>2</sub> and nutrient rich, water from the deep rises toward the sea surface). In addition, other factors, including freshwater run-off, ice-melting, nutrients, biological activity, temperature change and large ocean oscillations influencing carbon dioxide levels, particularly in coastal waters, need to be taken into account when interpreting drivers of ocean acidification and the related impacts. Ocean acidification has potentially direct consequences for marine life and cascades through to the services provided by the open ocean and coastal areas including food and livelihood, tourism, coastal protection, cultural identity, transportation and recreation. The impacts on ocean services from ocean acidification may be lessened through appropriate monitoring and improved understanding of variability and rates of change, helping to inform mitigation and/or adaptation strategies.</p>
 <p>Although this indicator requests &#x201C;average acidity&#x201D; values from nations, the data which comprises the average ought to provide insight into the variability of the measurements, which is more relevant for the impact on marine life. In other words, species do not respond to &#x201C;average&#x201D; conditions, but to real time conditions. At a minimum, the total range (minimum and maximum values) should be reported in addition to the average.</p>
 <p>Coastal countries often have long-term monitoring of water quality, including information on nutrient concentrations, temperature, salinity and occasionally carbonate chemistry. These water quality monitoring sites provide historical context about biogeochemical variability of the system and should be considered ideal location for ocean acidification monitoring. Additional sites may also need to be established to characterize variability.</p>
 <p>The data variables associated with the monitoring of ocean acidification (variables include pH, carbon dioxide partial pressure [<em>p</em>CO<sub>2</sub>], total dissolved inorganic carbon [DIC], and total alkalinity [TA]) have the potential to serve global, national, regional, and local data needs, such as tracking the exposure of marine ecosystems and aquaculture sites to corrosive conditions, and identifying opportunities to reduce ecosystem and economic vulnerability to ocean acidification. For example, local monitoring of pH and aragonite saturation state on the Pacific coast of the United States has enabled shellfish farmers to adapt to damaging conditions present during upwelling events, which reduce pH and threaten brood stock.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>The methodology for this indicator has been developed with the technical support of experts in the field of ocean acidification. It provides globally accepted and adapted guidelines and best practices established by scientists and published in peer-reviewed literature. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The methodology for this indicator has been developed with the technical support of experts in the field of ocean acidification. It provides globally accepted and adapted guidelines and best practices established by scientists and published in peer-reviewed literature. </p>
 <p>As this is a highly complex indicator, the technical infrastructure necessary for the correct measurement is a potentially constraining factor. The Methodology for the indicator describes how to avoid comparability issues of the data, which have been problematic in the past, as well as measurement errors and advises on the most appropriate technical and methodological procedures to guarantee high-quality data that can be used for the global assessment of ocean acidification. The addition of metadata to the methodology for this indicator is crucial for adding traceability and transparency to the data, by providing information on the precise equipment and methodology used, as well as specifying the location, accompanying biogeochemical variables and the person taking the measurement.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Detailed information in <a href="https://unesdoc.unesco.org/ark:/48223/pf0000265127?3=null&amp;queryId=f3a23122-f713-4f5c-aa88-5e73275ff5f6">Attachment I IOC/EC-LI/2 Annex 6</a>.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Detailed information in <a href="https://unesdoc.unesco.org/ark:/48223/pf0000265127?3=null&amp;queryId=f3a23122-f713-4f5c-aa88-5e73275ff5f6">Attachment I IOC/EC-LI/2 Annex 6</a>.</p>
 <p>This indicator calls for the collection of multiple observations, in the form of individual data points, to capture the variability in ocean acidity. Individual data points for pH either are measured directly or can be calculated based on data for two of the other carbonate chemistry parameters, these being TA (AT), DIC (CT) and <em>p</em>CO<sub>2</sub>. Calculation tools developed by experts in the field are freely available, and they are introduced and linked in the methodology. Average pH is defined as the annual equally weighed mean of multiple data points at representative sampling stations. The exact number of samples and data points depends on the level of variability of ocean acidity at the site in question. The minimum number of samples should enable the characterisation of a seasonal cycle at the site. Detailed guidelines on the minimum number of observations required are provided in the Methodology (<a href="https://oa.iode.org">https://oa.iode.org</a>). </p>
 <p>In addition to the data value, standard deviation and the total range (minimum and maximum values measured), as well as underlying data used to provide traceability and transparency (metadata information) should be reported. All reported values should have gone through a first level quality control by the data provider. If historical data is available, this should be released to enable calculations about the rate of change and to compare natural variability and anthropogenic effects.</p>
 <p>Relevant data from 2010 onwards are accepted.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>The counterparts are invited to provide references (<a href="https://oceanexpert.org/document/26001">metadata</a>) for the information provided. Data provided by experts, who are not representatives of NODCs or IOC Member States, are sent for national validation to the relevant official counterparts.</p>
-<p>Further IOC receives verified information by the identified representatives of its Member States directly, which entails the validation necessary to be published for the SDG indicator 14.3.1 assessments.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>The 14.3.1 data and metadata files give detailed information about the requested data and metadata to report. Data and metadata files contain compulsory variables to be reported and additional variables to be included if available.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The 14.3.1 data and metadata files give detailed information about the requested data and metadata to report. Data and metadata files contain compulsory variables to be reported and additional variables to be included if available.</p>
 <p>Data providers/Member States are encouraged to submit primary quality controlled data sets of two variables characterizing the carbonate system: pH, TA, DIC or <em>p</em>CO<sub>2</sub>, plus precise location, temperature, salinity and hydrostatic pressure (sampling depth) (see Quality control). Depending on data quality, different categories will be assigned to the submitted data sets. In addition, corresponding macro nutrient concentrations are requested, if nitrate, phosphate and silicate data are available (see Data quality). Further, data providers will be invited to submit all data, independent of where the data were collected within the water column; however, they are encouraged to provide surface data (&#x2264; 10 m). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>Some missing values may be modelled or calculated if established methodologies exist (see Recommendations for calculation of the carbonate system in IOC/EC-LI/2 Annex 6).</p>
@@ -1696,52 +745,31 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>Regional aggregates are permissible if more than 50% of coastal nations have reported values.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Every country or nominated IODE National Oceanographic Data Centre (NODC)/Associated Data Unit (ADU)<sup><sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup> </sup>will provide annually updated data sets. Aggregations across regions will require data of comparable quality and all relevant metadata with site-specific information be included in the data sets. Due to the variability of measurements and the prevalence of areas with high variability in ocean acidity, the aggregation of measurement averages (equally weighed annual mean) across coastal marine habitat and ecosystem types is difficult to interpret and is therefore discouraged. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Every country or nominated IODE National Oceanographic Data Centre (NODC)/Associated Data Unit (ADU)<sup><sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup> </sup>will provide annually updated data sets. Aggregations across regions will require data of comparable quality and all relevant metadata with site-specific information be included in the data sets. Due to the variability of measurements and the prevalence of areas with high variability in ocean acidity, the aggregation of measurement averages (equally weighed annual mean) across coastal marine habitat and ecosystem types is difficult to interpret and is therefore discouraged. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-3">2</sup><p> https://www.iode.org/index.php?option=com_oe&amp;task=viewGroupRecord&amp;groupID=349 <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>The SDG 14.3.1 Indicator Methodology presented in the document <a href="https://unesdoc.unesco.org/ark:/48223/pf0000265127?3=null&amp;queryId=f3a23122-f713-4f5c-aa88-5e73275ff5f6">IOC-XXIX/2Annex 14, IOC/EC-LI/2 Annex 6</a> provides guidelines for the collection of measurements towards the Indicator. Data and metadata files in which all of the relevant measurements should be compiled will be provided to the data centre or data originator. This data will be collected by the relevant national data centers, such as National Statistical Offices (NSOs) and National Oceanographic Data Centers (NODCs), and shared with the Indicator&#x2019;s custodian agency, the IOC of UNESCO.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The SDG 14.3.1 Indicator Methodology presented in the document <a href="https://unesdoc.unesco.org/ark:/48223/pf0000265127?3=null&amp;queryId=f3a23122-f713-4f5c-aa88-5e73275ff5f6">IOC-XXIX/2Annex 14, IOC/EC-LI/2 Annex 6</a> provides guidelines for the collection of measurements towards the Indicator. Data and metadata files in which all of the relevant measurements should be compiled will be provided to the data centre or data originator. This data will be collected by the relevant national data centers, such as National Statistical Offices (NSOs) and National Oceanographic Data Centers (NODCs), and shared with the Indicator&#x2019;s custodian agency, the IOC of UNESCO.</p>
 <p>The Indicator Methodology comprises an overview of statements on best practice and links to several Standard Operating Procedures (SOPs). These procedures represent the best practices compiled by the leading researcher in the field and have been made freely available. A list of relevant material, as referenced in the Indicator Methodology, can be found here: <a href="http://www.ioccp.org/index.php/documents/standards-and-methods">http://www.ioccp.org/index.php/documents/standards-and-methods</a></p>
 <p>The collection of samples followed by their analysis according to the methods and standards included in the SDG 14.3.1 Indicator Methodology is of the greatest importance for the production of data that can be collated towards the global comparison of ocean acidification data of known quality under this indicator. Guidance on how to collect, analyse and manage the data is provided in the methodology and associated metadata and its metadata instruction file. </p>
 <p>The document <a href="https://unesdoc.unesco.org/ark:/48223/pf0000265127?3=null&amp;queryId=f3a23122-f713-4f5c-aa88-5e73275ff5f6">IOC-XXIX/2Annex 14, IOC/EC-LI/2 Annex 6</a> further provides guidance on sampling strategies, sampling frequencies, recommendations for calculation of the carbonate system and uncertainty of measurement.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>For the purposes of SDG 14.3.1, three categories of measurement quality were established (adapted from Newton et al. 2015):</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>For the purposes of SDG 14.3.1, three categories of measurement quality were established (adapted from Newton et al. 2015):</p>
 <p><u>Category 1: Climate quality</u></p>
 <p>The climate quality objective is typically used to determine trends in the open ocean, shelf and coastal waters, providing data on seasonal through interannual variability on regional scales. The climate quality objective requires that a change in the dissolved carbonate ion concentration to be estimated at a particular site with a relative standard uncertainty of 1%. The carbonate ion concentration is calculated from two of the four carbonate system parameters and implies an uncertainty of approximately 0.003 in pH; of 2 &#x3BC;mol kg<sup>&#x2013;1</sup> in measurements of TA and DIC; and a relative uncertainty of about 0.5% in the <em>p</em>CO<sub>2</sub>. Such precision is only currently achievable by a limited number of laboratories and is not typically achievable for all parameters by even the best autonomous sensors.</p>
 <p><u>Category 2: Weather quality </u></p>
@@ -1749,20 +777,13 @@ data-event-label="Change to Sources tab"
 <p><u>Category 3: Measurements of undefined quality </u></p>
 <p>For SDG 14.3.1, pH measurements using glass electrodes will be considered Category 3 due to the challenges of using glass pH electrodes in seawater. It is intended that the methodology provided here gives useful information for countries building capacity towards Category 1 and 2 measurements. For example, carefully calibrated glass pH electrodes may help in the identification of coastal ocean acidification hot spots and help prioritize future monitoring plans. In annual SDG 14.3.1 summary products, Category 3 measurement sites will be presented as data collection sites only, no data values will be visualized. </p>
 <p>All those contributing data to SDG 14.3.1 are encouraged to adopt measurement quality Category 1 or 2. A variety of capacity development activities to support Member States&#x2019; capacity in this regard are conducted by different organizations (more information can be found here: e.g. <a href="http://www.iaea.org/ocean-acidification">www.iaea.org/ocean-acidification</a>; <a href="http://ioccp.org">http://ioccp.org</a>; <a href="http://www.ioc-cd.org/index.php">http://www.ioc-cd.org/index.php</a>; <a href="http://www.whoi.edu/courses/OCB-OA/">http://www.whoi.edu/courses/OCB-OA/</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Data quality control and validation processes were developed in close consultation with experts in the field of ocean acidification, amongst them members of the Global Ocean Acidification Observing Network (GOA-ON) and data management experts, like the ones at IODE. Data quality control is a critical component of the data analysis, submission and processing. Scientists and technicians who collected the submitted data will be responsible for the primary quality control of the data and accompanying detailed metadata. The metadata submitted with the data must also describe the quality control standard operating procedures (SOPs) followed for each parameter.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data quality control and validation processes were developed in close consultation with experts in the field of ocean acidification, amongst them members of the Global Ocean Acidification Observing Network (GOA-ON) and data management experts, like the ones at IODE. Data quality control is a critical component of the data analysis, submission and processing. Scientists and technicians who collected the submitted data will be responsible for the primary quality control of the data and accompanying detailed metadata. The metadata submitted with the data must also describe the quality control standard operating procedures (SOPs) followed for each parameter.</p>
 <p><u>Primary quality control by data provider consists of:</u></p>
 <ul>
   <li>Quality control that is attached to the methodology (CRMs, tris buffer calibration, SOPs are provided),</li>
@@ -1779,71 +800,103 @@ data-event-label="Change to Sources tab"
   <li>External quality control/audit &#x2013; Expert QC Group applying the weather and climate levels as defined by GOA-ON (following the example of SOCAT),</li>
   <li>Feedback to data holders.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Following the quality control management and assurance mechanisms described in 4.i and 4.j, three categories of measurement quality will be attributed to the individual data sets:</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Following the quality control management and assurance mechanisms described in 4.i and 4.j, three categories of measurement quality will be attributed to the individual data sets:</p>
 <ol>
   <li>Established oceanographic climate quality (Category 1).</li>
   <li>Weather quality data including that from sensors and capacity building simplified pH and alkalinity measurements, with appropriate uncertainty assessment (Category 2).</li>
   <li>Measurements of undefined quality (Category 3) (will not be displayed in the visualization of annual weighted means and variance of pH).</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>Metadata and data availability continuously increase. Since 2021, SDG 14.3.1 data from different national and national data bases are provided directly to a dedicated data portal (<a href="http://oa.iode.org">http://oa.iode.org</a>). This data portal features a wide range of metadata and additional data characterizing the carbonate system of the seawater, not available at the global SDG database.</p>
 <p>In order to close existing data gaps to a) measure ocean acidification and b) to report SDG indicator 14.3.1 metadata and data, IOC, together with partners, conducts trainings and webinars. A new ocean acidification online course is now available. (https://classroom.oceanteacher.org/tag/index.php?tc=1&amp;tag=Ocean%20acidification). Past and future trainings are announced on the Ocean Expert (<a href="https://oceanexpert.org/events/calendar">https://oceanexpert.org/events/calendar</a>) and GOA-ON website (<a href="http://goa-on.org/news/news.php">http://goa-on.org/news/news.php</a>).</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Countries provide complete data sets with respective site-specific data and metadata files.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>As this indicator only considers data submitted by Member States, there are no discrepancies between estimates and submitted data sets. In the past, differences between countries in the measurement of pH and other ocean acidification data were mainly attributable to technical difficulties and the lack of comprehensive guidelines for the best practice of measurements. The present Methodology and the guidelines contained within provide detailed instructions on the measurement, collection, treatment and quality control of data in a way that will enable countries to avoid future discrepancies. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <h2>Main URLs:</h2>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>As this indicator only considers data submitted by Member States, there are no discrepancies between estimates and submitted data sets. In the past, differences between countries in the measurement of pH and other ocean acidification data were mainly attributable to technical difficulties and the lack of comprehensive guidelines for the best practice of measurements. The present Methodology and the guidelines contained within provide detailed instructions on the measurement, collection, treatment and quality control of data in a way that will enable countries to avoid future discrepancies. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><h2>Main URLs:</h2>
 <p>IOC-UNESCO <a href="http://www.ioc-unesco.org/">http://www.ioc-unesco.org/</a></p>
 <p>IODE <a href="https://www.iode.org/">https://www.iode.org/</a>; https://oa.iode.org</p>
 <p>GOA-ON <a href="http://goa-on.org/">http://goa-on.org/</a></p>
@@ -1859,142 +912,39 @@ data-event-label="Change to Sources tab"
 <p>Pimenta, A.R. and Grear, J.S. (2018) EPA Guidelines for Measuring Changes in Seawater pH and Associated Carbonate Chemistry in Coastal Environments of the Eastern United States. Office of Research and Development, National Health and Environmental Effects Research Laboratory. EPA/600/R-17/483 </p>
 <p>Riebesell U., Fabry V. J., Hansson L. &amp; Gattuso J.-P. (Eds.) (2011) Guide to best practices for ocean acidification research and data reporting. Luxembourg, Publications Office of the European Union, 258pp. (EUR 24872 EN). </p>
 <p>Tilbrook, B., Jewett, E.B., DeGrandpre, M.D., Hernandez-Ayon, J.M., Feely, R.A., Gledhill, D.K., Hansson, L., Isensee, K., Kurz, M.L., Newton, J.A. and Siedlecki, S.A., 2019. An enhanced ocean acidification observing network: from people to technology to data synthesis and information exchange. Frontiers in Marine Science, 6, p.337.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2020,7 +970,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2073,12 +1023,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2264,12 +1214,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

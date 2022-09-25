@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1167,983 +1203,109 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 2.3: By 2030, double the agricultural productivity and incomes of small-scale food producers, in particular women, indigenous peoples, family farmers, pastoralists and fishers, including through secure and equal access to land, other productive resources and inputs, knowledge, financial services, markets and opportunities for value addition and non-farm employment</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 2.3.2: Average income of small-scale food producers, by sex and indigenous status</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Income of small-scale food producers (Average income from agriculture, PPP) (constant international $) (primary series)</p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 2.3: By 2030, double the agricultural productivity and incomes of small-scale food producers, in particular women, indigenous peoples, family farmers, pastoralists and fishers, including through secure and equal access to land, other productive resources and inputs, knowledge, financial services, markets and opportunities for value addition and non-farm employment</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 2.3.2: Average income of small-scale food producers, by sex and indigenous status</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>Income of small-scale food producers (Average income from agriculture, PPP) (constant international $) (primary series)</p>
 <p>Income of large-scale food producers (Average income from agriculture, PPP) (constant international $) (complementary series)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>SDG indicator 2.3.1</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>Food and Agriculture Organization (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Food and Agriculture Organization (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>SDG indicator 2.3.1</p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Food and Agriculture Organization (FAO)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Food and Agriculture Organization (FAO)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p>SDG indicator 2.3.2 measures income from on-farm production activities, which is related to the production of food and agricultural products. This includes income from crop production, livestock production, fisheries and aquaculture production, and from forestry production. </p>
 <p>The indicator is computed as <em>annual income</em>. </p>
 <p>FAO proposes to define small-scale food producers as producers who: </p>
@@ -2159,211 +1321,143 @@ data-event-label="Change to Sources tab"
   <li>Tropical Livestock Units are a conversion scale used for standardization and measurement of the number of livestock heads. One TLU is the metabolic weight equivalent of one cattle in North America. The complete list of conversion factors can be found in the Guidelines for the preparation of livestock sector Reviews </li>
   <li>The computation of income is based on the resolution adopted by the 17th International Conference of Labour Statisticians (ICLS). Income should be computed by deducting from revenues the operating costs and the depreciation of assets.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Constant PPP 2011 USD. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Given that indicator 2.3.2 is measured on a target population of producers &#x2013; those considered as small-scale &#x2013; the ideal data source for measuring them is a single survey that collects all the information required with reference to individual production units. The most appropriate data source for collecting information on agricultural production and the associated costs are agricultural surveys. Other possibilities to be explored in absence of an agricultural surveys are: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Constant PPP 2011 USD. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Given that indicator 2.3.2 is measured on a target population of producers &#x2013; those considered as small-scale &#x2013; the ideal data source for measuring them is a single survey that collects all the information required with reference to individual production units. The most appropriate data source for collecting information on agricultural production and the associated costs are agricultural surveys. Other possibilities to be explored in absence of an agricultural surveys are: </p>
 <ol>
   <li>household surveys integrated with an agricultural module, </li>
   <li>agricultural censuses, </li>
   <li>administrative data.</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>The target population of indicator 2.3.2 are small-scale producers for which the best data sources are agricultural surveys. These contain information on agricultural production, economic variables and labour input. However, agricultural surveys are not conducted in a systematic way, so they may be scattered in long time periods. FAO promotes the Agricultural Integrated Surveys (AGRIS) which collects data in a yearly basis for different modules, e.g. agricultural production. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The target population of indicator 2.3.2 are small-scale producers for which the best data sources are agricultural surveys. These contain information on agricultural production, economic variables and labour input. However, agricultural surveys are not conducted in a systematic way, so they may be scattered in long time periods. FAO promotes the Agricultural Integrated Surveys (AGRIS) which collects data in a yearly basis for different modules, e.g. agricultural production. </p>
 <p>Currently, the indicator is produced mainly using the Living Standards Measurement Study (LSMS) of the World Bank. Some countries contain an Integrated Surveys of Agriculture (LSMS-ISA). These surveys include information such as farm size, disaggregation by geographic areas, type of activities and type of households, values of output, values of production costs and number of work hours in different activities. Such surveys have data relevant to the computation of the indicators.</p>
 <p>FAO, along with the World Bank and IFAD are compiling harmonized indicators of rural livelihoods with information on micro-level household data the LSMS surveys and other household surveys publicly available in the initiative called RuLIS (Rural Livelihoods Information System) which includes the indicators disaggregated by gender, rural areas, urban areas, income quintiles and income percentage that comes from agriculture.</p>
 <p>Some of the datasets utilized to do the computation of the indicator 2.3.2. can be seen in Annex 1 of the document &#x201C;Methodology for Computing and Monitoring the Sustainable Development Goal Indicators 2.3.1 and 2.3.2.&#x201D; available in <a href="http://www.fao.org/3/ca3043en/CA3043EN.pdf">http://www.fao.org/3/ca3043en/CA3043EN.pdf</a> and Annex 1 of the document &#x201C;Rural Livelihoods Information System (RuLIS). Technical notes on concepts and definitions used for the indicators derived from household surveys&#x201D; available in <a href="http://www.fao.org/3/ca2813en/CA2813EN.pdf">http://www.fao.org/3/ca2813en/CA2813EN.pdf</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>The data collection calendar depends on the frequency of surveys required to compute the indicators. FAO is engaging with countries to include the questions needed to measure the indicator into their existing national surveys, i.e., household-based surveys, agricultural surveys and censuses through capacity development activities at national/ regional levels and provision of technical assistance needed to compute the indicator. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>The data release depends highly on the frequency of surveys required to compute the indicators.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>National Statistical Offices or other institutions involved in agricultural surveys, such as dedicated statistics offices of the Ministry of Agriculture. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Food and Agricultural Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture. <a href="http://www.fao.org/3/K8024E/K8024E.pdf">http://www.fao.org/3/K8024E/K8024E.pdf</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The 2030 Sustainable Development Agenda has emphasized the importance of enhancing income of small-scale food producers, as these producers play an important role in the global production of food. The indicator monitors progress in this area, where the target is to double income by year 2030. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data collection calendar depends on the frequency of surveys required to compute the indicators. FAO is engaging with countries to include the questions needed to measure the indicator into their existing national surveys, i.e., household-based surveys, agricultural surveys and censuses through capacity development activities at national/ regional levels and provision of technical assistance needed to compute the indicator. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data release depends highly on the frequency of surveys required to compute the indicators.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National Statistical Offices or other institutions involved in agricultural surveys, such as dedicated statistics offices of the Ministry of Agriculture. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Food and Agricultural Organization of the United Nations (FAO)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture. <a href="http://www.fao.org/3/K8024E/K8024E.pdf">http://www.fao.org/3/K8024E/K8024E.pdf</a>. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The 2030 Sustainable Development Agenda has emphasized the importance of enhancing income of small-scale food producers, as these producers play an important role in the global production of food. The indicator monitors progress in this area, where the target is to double income by year 2030. </p>
 <p>The enhancement of income of small-scale production units also has implications on poverty reduction, as small-scale food producers are often poor, and are frequently found to be close to subsistence conditions.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Given the approved methodology, the computation of the indicator requires survey microdata collected at the farm level on a wide range of variables &#x2013; including all elements allowing to compute revenues and costs of the enterprise together with labour input and the availability of land and livestock &#x2013; referred to the same production unit. Such type of surveys are seldom collected at the national level. For this reason, the availability of data for the indicator is altogether limited. In some countries, data can be obtained from household surveys reporting details on agricultural production. These data sources have to be considered as second-best solution, given that their sampling is focused on households and not on food production units. While in many countries there is a considerable degree of overlap between the population of food producers and households, this is still a partial overlap, which can undermine the accuracy of the computation. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Given i agricultural activities, including crops, livestock, fisheries and forestry activities, and j [1,&#x2026;,n] small scale food producers defined as in the first section as a subset of all N [1,&#x2026;,k] food producers, the SDG indicator 2.3.2 must be computed using the following formula: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Given the approved methodology, the computation of the indicator requires survey microdata collected at the farm level on a wide range of variables &#x2013; including all elements allowing to compute revenues and costs of the enterprise together with labour input and the availability of land and livestock &#x2013; referred to the same production unit. Such type of surveys are seldom collected at the national level. For this reason, the availability of data for the indicator is altogether limited. In some countries, data can be obtained from household surveys reporting details on agricultural production. These data sources have to be considered as second-best solution, given that their sampling is focused on households and not on food production units. While in many countries there is a considerable degree of overlap between the population of food producers and households, this is still a partial overlap, which can undermine the accuracy of the computation. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Given i agricultural activities, including crops, livestock, fisheries and forestry activities, and j [1,&#x2026;,n] small scale food producers defined as in the first section as a subset of all N [1,&#x2026;,k] food producers, the SDG indicator 2.3.2 must be computed using the following formula: </p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi mathvariant="normal">S</mi>
     <mi mathvariant="normal">D</mi>
@@ -2573,48 +1667,20 @@ data-event-label="Change to Sources tab"
   <li>Costs of fisheries and aquaculture activities: fishing gear expenditures, hired labour expenditures, trading activities, fresh fish purchases, processed fish purchases, other related costs </li>
 </ul>
 <p>To obtain comparable results across countries in the case of income, values must necessarily be expressed in International Dollars at Purchasing Power Parity (PPP $), based on the conversion provided by the World Bank International Comparison Project. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>FAO is responsible to check the syntaxes used in the computation of the indicator as well as the questions.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>The Average income of small-scale food producers in constant PPP 2011 USD is in the dataset in local currency units (LCU). For each country and year, the LCU labour value of production has to be converted into PPP 2011 USD. The process first consists on accounting for inflation in the currency, for which the Consumer Price Index (CPI) of each country is used; once deflated, it is converted into PPP 2011 USD, which allows for a homogenous standard of the indicator. SDG 2.3 not only focuses on small-scale farmers, but also on women and people with indigenous status. The indicator (which is at the household level) is then calculated disaggregated by sex of the household head or producer (depending on whether a household or an agricultural survey was used), that is, whether the household head or producer is female or male headed.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The Average income of small-scale food producers in constant PPP 2011 USD is in the dataset in local currency units (LCU). For each country and year, the LCU labour value of production has to be converted into PPP 2011 USD. The process first consists on accounting for inflation in the currency, for which the Consumer Price Index (CPI) of each country is used; once deflated, it is converted into PPP 2011 USD, which allows for a homogenous standard of the indicator. SDG 2.3 not only focuses on small-scale farmers, but also on women and people with indigenous status. The indicator (which is at the household level) is then calculated disaggregated by sex of the household head or producer (depending on whether a household or an agricultural survey was used), that is, whether the household head or producer is female or male headed.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>Variables employed in the computation are subject to outlier detection, through Median Absolute Deviations and other approaches, on a case by case basis. </p>
@@ -2622,91 +1688,69 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>No imputation of data is made at the regional and global level. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>No regional or global aggregates can be computed, given the limited availability of data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Countries can rely on the methodology paper available at <a href="http://www.fao.org/3/ca3043en/ca3043en.pdf">http://www.fao.org/3/ca3043en/ca3043en.pdf</a> and the eLearning available at <a href="https://elearning.fao.org/course/view.php?id=483">https://elearning.fao.org/course/view.php?id=483</a> .</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Logical and arithmetic control of reporting data is carried out.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>The microdata of surveys utilized in the computation are publicly available, hence their quality rests with the producers. The quality of the calculation was checked with a number of colleagues, and with two independent peer-reviewers of the RuLIS project.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Qualitative assessment has been performed on the final estimations of the indicator, which was updated this year and compared with previous results. PPP conversion factors are retrieved from the World Bank and are constantly updated, which results in a change of conversion factors and therefore a slight modification in the results on indicator 2.3.2. from 2019 to 2021.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>No regional or global aggregates can be computed, given the limited availability of data. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Countries can rely on the methodology paper available at <a href="http://www.fao.org/3/ca3043en/ca3043en.pdf">http://www.fao.org/3/ca3043en/ca3043en.pdf</a> and the eLearning available at <a href="https://elearning.fao.org/course/view.php?id=483">https://elearning.fao.org/course/view.php?id=483</a> .</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Logical and arithmetic control of reporting data is carried out.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The microdata of surveys utilized in the computation are publicly available, hence their quality rests with the producers. The quality of the calculation was checked with a number of colleagues, and with two independent peer-reviewers of the RuLIS project.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Qualitative assessment has been performed on the final estimations of the indicator, which was updated this year and compared with previous results. PPP conversion factors are retrieved from the World Bank and are constantly updated, which results in a change of conversion factors and therefore a slight modification in the results on indicator 2.3.2. from 2019 to 2021.</p>
 <p>Some countries have data that needs to be assessed further, either checks on the raw data and/or the processing of data by the RuLIS team.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>The following data availability information is provided based on available suitable surveys in selected countries. </p>
 <p>Breakdown of the number of countries covered by region is as follows:</p>
 <table>
@@ -2927,172 +1971,95 @@ data-event-label="Change to Sources tab"
 <p>By 2030</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Indicator 2.3.2 must be disaggregated by classes of farming/pastoral/forestry enterprise size. The overall SDG Target 2.3 requires specific focus on women, indigenous peoples, family farmers, pastoralists and fishers. For this reason, the indicator must be disaggregated by <em>sex, type of enterprise and by community of reference</em>.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Note on the proposed &#x201C;Methodology for Computing and Monitoring the sustainable Development Goal Indicator 2.3.1 and 2.3.2&#x201D;, Office of the Chief Statistician and Statistics Division, FAO, Rome <a href="https://www.fao.org/3/ca3043en/CA3043EN.pdf">https://www.fao.org/3/ca3043en/CA3043EN.pdf</a> </p>
-<p><em>Defining Small Scale Food producers to Monitor Target 2.3 of the 2030 Agenda for Sustainable Development</em>. FAO Statistics Division Working Paper available at <a href="http://www.fao.org/3/a-i6858e.pdf">http://www.fao.org/3/a-i6858e.pdf</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
+<p>Not applicable</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Note on the proposed &#x201C;Methodology for Computing and Monitoring the sustainable Development Goal Indicator 2.3.1 and 2.3.2&#x201D;, Office of the Chief Statistician and Statistics Division, FAO, Rome <a href="https://www.fao.org/3/ca3043en/CA3043EN.pdf">https://www.fao.org/3/ca3043en/CA3043EN.pdf</a> </p>
+<p><em>Defining Small Scale Food producers to Monitor Target 2.3 of the 2030 Agenda for Sustainable Development</em>. FAO Statistics Division Working Paper available at <a href="http://www.fao.org/3/a-i6858e.pdf">http://www.fao.org/3/a-i6858e.pdf</a> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -3118,7 +2085,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -3171,12 +2138,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3362,12 +2329,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

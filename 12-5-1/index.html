@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -923,982 +959,108 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 12: Ensure sustainable consumption and production patterns</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 12.5: By 2030, substantially reduce waste generation through prevention, reduction, recycling and reuse</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 12.5.1: National recycling rate, tons of material recycled</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>11.6.1, 12.4.2, 12.3.1(a)</p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>United Nations Environment Programme (UNEP) and United Nations Statistics Division (UNSD)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 12: Ensure sustainable consumption and production patterns</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 12.5: By 2030, substantially reduce waste generation through prevention, reduction, recycling and reuse</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 12.5.1: National recycling rate, tons of material recycled</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-02-04</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>11.6.1, 12.4.2, 12.3.1(a)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP) and United Nations Statistics Division (UNSD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP) and United Nations Statistics Division (UNSD)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definitions:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>United Nations Environment Programme (UNEP) and United Nations Statistics Division (UNSD)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definitions:</strong></p>
 <p>For the purposes of this indicator, the National Recycling Rate will be defined as the quantity of material recycled in the country plus quantities exported for recycling out of total waste generated in the country, minus material imported intended for recycling. Note that recycling includes codigestion/anaerobic digestion and composting/aerobic process, but not controlled combustion (incineration) or land application.</p>
 <table>
   <tbody>
@@ -1947,212 +1109,144 @@ data-event-label="Change to Sources tab"
 <p>For the purpose of consistency with the Basel Convention reporting and correspondence with EUROSTAT reporting system, Recovery operations R2 to R12 listed in Basel Convention Annex IV, are to be considered as &#x2018;Recycling&#x2019; under the UNSD reporting for hazardous waste. </p>
 <p><em>Total waste generated</em> is the total amount of waste (both hazardous and non-hazardous) generated in the country during the year. </p>
 <p><em>Total waste generated (excluding construction, mining and agriculture) </em>is the total amount of waste (both hazardous and non-hazardous) generated in the country during the year. For the purpose of this indicator, total waste generated will include municipal solid waste, non-hazardous industrial waste, hazardous waste and exclude non-metallic minerals (industrial and construction minerals), construction waste and agricultural waste. Expressed in tons, reported as the sum of waste generated during the course of the reporting year in sectors following the UNSD/UNEP Questionnaire on Environment Statistics, Table R1 Generation of Waste by Source, excluding Construction waste (F 41- 43 ISIC code), Agricultural waste (A 01-03 ISIC code) and Mining and quarrying waste (ISIC 05-09).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Tonnes, Percent, KG</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Tonnes, Percent, KG</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>Data provided by national governments, including NSOs and Ministries of Environment</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>The custodian agencies propose to collect national data through the UNSD/UNEP Questionnaire on Environment Statistics (waste section). UNSD carries out extensive data validation procedures that include built-in automated procedures, manual checks and cross-references to national sources of data. Communication is carried out with countries for clarification and validation of data. Only data that are considered accurate or those confirmed by countries during the validation process are included in UNSD&#x2019;s environment statistics database and disseminated on UNSD&#x2019;s website (<a href="https://unstats.un.org/unsd/envstats/qindicators">https://unstats.un.org/unsd/envstats/qindicators</a> and <a href="https://unstats.un.org/unsd/envstats/country_files">https://unstats.un.org/unsd/envstats/country_files</a>).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The custodian agencies propose to collect national data through the UNSD/UNEP Questionnaire on Environment Statistics (waste section). UNSD carries out extensive data validation procedures that include built-in automated procedures, manual checks and cross-references to national sources of data. Communication is carried out with countries for clarification and validation of data. Only data that are considered accurate or those confirmed by countries during the validation process are included in UNSD&#x2019;s environment statistics database and disseminated on UNSD&#x2019;s website (<a href="https://unstats.un.org/unsd/envstats/qindicators">https://unstats.un.org/unsd/envstats/qindicators</a> and <a href="https://unstats.un.org/unsd/envstats/country_files">https://unstats.un.org/unsd/envstats/country_files</a>).</p>
 <ul>
   <li>Additionally, data from the Basel Convention reporting may also be sent to countries for their consideration for SDG reporting. </li>
 </ul>
 <p>Data for OECD and European Union countries are collected through the biennial OECD/Eurostat Joint Questionnaire on the State of the Environment that is consistent with the UNSD/UNEP Questionnaire, so data are comparable. (https://unstats.un.org/sdgs/tierIII-indicators/files/Tier3-12-05-01.pdf.)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>The UNSD/UNEP Questionnaire on Environment Statistics is sent every 2 years.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>First SDG reporting cycle: 2020</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>National Statistical Systems </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The UNSD/UNEP Questionnaire on Environment Statistics is sent every 2 years.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>First SDG reporting cycle: 2020</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National Statistical Systems </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>UNSD and UNEP (and UNU for e-waste)</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Minimizing waste generation and maximizing the recycling of waste is central to the concept of circular economy. However, currently the total amount of produced materials that are recycled are estimated to be low (based on academic literature). If countries are to better understand how waste are generated, collected and recycled then this will put countries and other stakeholders in a better position to identify how to tackle the issues face for key waste streams (such as metals, e-waste or plastics). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Most countries control large end-of-chain recycling facilities and export of recyclable materials, so data from these entities is feasible to collect. There may be recycling carried out in the informal sector that never enters the formal channels, in this case countries can estimate the size of the informal recycling sector to properly account for all the recycling in the country. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Minimizing waste generation and maximizing the recycling of waste is central to the concept of circular economy. However, currently the total amount of produced materials that are recycled are estimated to be low (based on academic literature). If countries are to better understand how waste are generated, collected and recycled then this will put countries and other stakeholders in a better position to identify how to tackle the issues face for key waste streams (such as metals, e-waste or plastics). </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Most countries control large end-of-chain recycling facilities and export of recyclable materials, so data from these entities is feasible to collect. There may be recycling carried out in the informal sector that never enters the formal channels, in this case countries can estimate the size of the informal recycling sector to properly account for all the recycling in the country. </p>
 <p>National recycling rate is part of measuring progress towards sustainable consumption and production, but it does not capture prevention, reduction, reuse and repair. Calculating additional intensity indicators against the DMC and the material flow (MF) gives proxies and helps connect this indicator to resource efficiency in consumption and production.</p>
 <p>Additional research is needed to understand typical losses (due to transformation of materials, loss of humidity, % of rejects) along the recycling chain for various recyclable materials. The losses would need to be known as %-ages from the point of entry in the recycling value chain (I.e. Collection of source segregated material, or input to sorting facility) to the point of exit (I.e. when the material leaves the last recyclable processing unit to enter a facility as secondary raw material). This would allow to connect indicator 11.6.1. which will measure among other things the municipal recycling rate, to the national recycling rate. Municipal recycling rate is likely going to be measured at the beginning of the chain, while indicator 12.5.1 will likely be measured at the point of exit from the chain. Such studies may be done using the process flow and material mass balance approach. Another approach could be to follow transactions in the waste management process and introducing so called &#x201C;system of boundaries&#x201D; defining points of reporting of waste quantities. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>A full methodology for this indicator is available in the document entitled, &#x201C;Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)&#x201D;. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>A full methodology for this indicator is available in the document entitled, &#x201C;Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)&#x201D;. </p>
 <p>For the purposes of this indicator, the National Recycling Rate will be defined as the quantity of material recycled in the country plus quantities exported for recycling out of total waste generated in the country, minus material imported intended for recycling. Note that recycling includes codigestion/anaerobic digestion and composting/aerobic process, but not controlled combustion (incineration) or land application.</p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi mathvariant="normal">R</mi>
@@ -2566,135 +1660,85 @@ data-event-label="Change to Sources tab"
     <mo>)</mo>
   </math></p>
 <p>The recycling rate is defined as above for level 1; however, it is proposed that it is disaggregated by type of waste, including e-waste and other waste types (such as packaging waste and metals). For the disaggregation by waste stream the formula will be the same, but particular waste types will be evaluated. (Existing data on e-waste and the importance of e-waste means that this disaggregation will be collected at the global level.)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>UNSD carries out extensive data validation procedures that include built-in automated procedures, manual checks and cross-references to national sources of data. Communication is carried out with countries for clarification and validation of data. Only data that are considered accurate or those confirmed by countries during the validation process are included in UNSD&#x2019;s environment statistics database and disseminated on UNSD&#x2019;s website</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p>UNSD, who conducts the data collection, validation and dissemination process via the UNSD/UNEP Questionnaire on Environment Statistics, does not make any estimation or imputation for missing values so the number of data points provided towards Level 2 (national monitoring) indicators are actual country data. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNSD, who conducts the data collection, validation and dissemination process via the UNSD/UNEP Questionnaire on Environment Statistics, does not make any estimation or imputation for missing values so the number of data points provided towards Level 2 (national monitoring) indicators are actual country data. </p>
 <p>However, UNEP is considering the possibility of global modelling towards Level 1 (global monitoring) indicators. </p>
 <p><strong>&#x2022; At country level</strong></p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>All countries that reply to the questionnaire. </p>
 <p><strong>Time series:</strong></p>
 <p>The UNSD/UNEP Questionnaire on Environment Statistics is sent every 2 years requesting annual data and the time series will be maintained. </p>
@@ -2703,172 +1747,95 @@ data-event-label="Change to Sources tab"
   <li>By where recycling occurs (in-country and materials exported destined for recycling)</li>
   <li>By material type (e-waste, plastics, metals, etc.) and for key groups of materials (e.g. e-waste and packaging waste)</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>As mentioned, waste statistics involve a large number of national and sub-national stakeholders which may create discrepancies. To address these possible discrepancies, inter-institutional stakeholder collaboration is always encouraged.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)</p>
-<p>United Nations Statistics Division (UNSD) and United Nations Environment Programme Questionnaire on Environment Statistics (waste section). Available at: <a href="https://unstats.un.org/unsd/envstats/questionnaire">https://unstats.un.org/unsd/envstats/questionnaire</a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
+<p>As mentioned, waste statistics involve a large number of national and sub-national stakeholders which may create discrepancies. To address these possible discrepancies, inter-institutional stakeholder collaboration is always encouraged.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Global Chemicals and Waste Indicator Review Document (UNEP, forthcoming)</p>
+<p>United Nations Statistics Division (UNSD) and United Nations Environment Programme Questionnaire on Environment Statistics (waste section). Available at: <a href="https://unstats.un.org/unsd/envstats/questionnaire">https://unstats.un.org/unsd/envstats/questionnaire</a></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2894,7 +1861,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2947,12 +1914,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3138,12 +2105,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

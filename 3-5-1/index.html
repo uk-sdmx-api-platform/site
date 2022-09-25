@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1667,984 +1703,110 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 3.5: Strengthen the prevention and treatment of substance abuse, including narcotic drug abuse and harmful use of alcohol</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 3.5.1: Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders </p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>Indicator 3.5.2: Harmful use of alcohol, defined according to the national context as alcohol per capita consumption (aged 15 years and older) within a calendar year in litres of pure alcohol </p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>World Health Organization (WHO) </p>
+<p>United Nations Office on Drugs and Crime (UNODC) </p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 3.5: Strengthen the prevention and treatment of substance abuse, including narcotic drug abuse and harmful use of alcohol</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 3.5.1: Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2019-09-20</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>Indicator 3.5.2: Harmful use of alcohol, defined according to the national context as alcohol per capita consumption (aged 15 years and older) within a calendar year in litres of pure alcohol </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>World Health Organization (WHO) </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>World Health Organization (WHO) </p>
 <p>United Nations Office on Drugs and Crime (UNODC) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>World Health Organization (WHO) </p>
-<p>United Nations Office on Drugs and Crime (UNODC) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definitions:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definitions:</strong></p>
 <p>The coverage of treatment interventions for substance use disorders is defined as the number of people who received treatment in a year divided by the total number of people with substance use disorders in the same year. This indicator is disaggregated by two broad groups of psychoactive substances: (1) drugs, (2) alcohol and other psychoactive substances. </p>
 <p> </p>
 <p>Whenever possible, this indicator is additionally disaggregated by type of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services). The proposed indicator will be accompanied, with contextual information on availability coverage, i.e. treatment capacity for substance use disorders generated at national level to provide additional information for interpretation of the contact coverage data. </p>
@@ -2663,62 +1825,49 @@ data-event-label="Change to Sources tab"
 <p><u>Psychosocial interventions</u> refer to programs that address motivational, behavioral, psychological, social, and environmental factors related to substance use and have been shown to reduce drug use, promote abstinence and prevent relapse. For different drug use disorders, the evidence from clinical trials supports the effectiveness of treatment planning, screening, counselling, peer support groups, cognitive behavioral therapy (CBT), motivational interviewing (MI), community reinforcement approach (CRA), motivational enhancement therapy (MET), family therapy (FT) modalities, contingency management (CM), counselling, insight-oriented treatments, housing and employment support among others. (UNODC WHO International Standards for the Treatment of Drug Use Disorders, 2016). </p>
 <p> </p>
 <p><u>Rehabilitation and aftercare</u> (Recovery Management and Social Support) refers to interventions that are based on scientific evidence and focused on the process of rehabilitation, recovery and social reintegration dedicated to treat drug use disorders. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>The sources include: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The sources include: </p>
 <ul>
   <li>Household surveys </li>
   <li>Surveys among people using substances &#x2013; using for instance respondent driven sampling </li>
@@ -2727,20 +1876,13 @@ data-event-label="Change to Sources tab"
 <p>Surveys should be nationally representative, with a sample size sufficiently large to capture relevant events and compute needed disaggregation, and they should be based on a solid sample design. The use of indirect questions for network scale-up methods in household surveys is encouraged. </p>
 <p>Treatment registries are the main source of data for the number of people receiving treatment. They should cover the entire national territory and be linked to all relevant agencies providing treatment services. </p>
 <p>To estimate the number of people with alcohol use disorders, preferred data sources are population-based surveys targeting the adult population (15+ years). International surveys such as WHS, STEPS, GENACIS, and ECAS represent good practices. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>WHO and UNODC will use existing data collections to gather available statistics from member states: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>WHO and UNODC will use existing data collections to gather available statistics from member states: </p>
 <ul>
   <li>UNODC Annual Report Questionnaire ; </li>
   <li>WHO Global Survey on Progress on SDG Health Target 3.5; </li>
@@ -2763,142 +1905,94 @@ data-event-label="Change to Sources tab"
   <li>The collected, collated and analysed data is included in the process of country consultations. </li>
 </ul>
 <p>After the validation process, the data will be sent to national focal points for their review before publication. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Countries are encouraged to conduct general population surveys on substance use regularly, but at least every four-five years. Also, countries are encouraged to use less costly alternatives to estimate the number of people with substance use disorders and service utilization, taking advantage of the availability of administrative data through the use of indirect estimation methods. Collection of data from countries is planned on annual or biannual basis. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Data on relevant SDG indicators are collected, compiled and sent back to countries for data review annually. Data are then reported to UNSD through the regular reporting channels annually. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Drug use disorders data are collected through national focal points. Data providers vary by country and they can be institutions such as Drug Control Agencies, National Drug Observatories, Ministries of Health and/or National Statistical Offices. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Data will be compiled by the co-custodians for this indicator (UNODC and WHO). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>According to UNODC and WHO data, around 271 million people aged 15 to 64 years worldwide used an illicit drug at least once in 2017, about 2.3 billion people are current drinkers of alcohol, some 35 million of people suffer from drug use disorders and 289 million from alcohol use disorders. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Countries are encouraged to conduct general population surveys on substance use regularly, but at least every four-five years. Also, countries are encouraged to use less costly alternatives to estimate the number of people with substance use disorders and service utilization, taking advantage of the availability of administrative data through the use of indirect estimation methods. Collection of data from countries is planned on annual or biannual basis. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data on relevant SDG indicators are collected, compiled and sent back to countries for data review annually. Data are then reported to UNSD through the regular reporting channels annually. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Drug use disorders data are collected through national focal points. Data providers vary by country and they can be institutions such as Drug Control Agencies, National Drug Observatories, Ministries of Health and/or National Statistical Offices. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data will be compiled by the co-custodians for this indicator (UNODC and WHO). </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>According to UNODC and WHO data, around 271 million people aged 15 to 64 years worldwide used an illicit drug at least once in 2017, about 2.3 billion people are current drinkers of alcohol, some 35 million of people suffer from drug use disorders and 289 million from alcohol use disorders. </p>
 <p> </p>
 <p>Substance use disorders are serious health conditions that present a significant burden for affected individuals, their families and communities. Untreated substance use disorders trigger substantial costs to society including lost productivity, increased health care expenditure, and costs related to criminal justice, social welfare, and other social consequences. Strengthening treatment services entails providing access to a comprehensive set of evidence-based interventions (-laid down in the international standards and guidelines) that should be available to all population groups in need. The indicator will inform the extent to which a range of evidence-based interventions for treatment of substance use disorder are available and are accessed by the population in need at country, regional and global level. </p>
 <p> </p>
 <p>Even though effective treatment exists, only a small amount of people with substance use disorders receive it. For instance, it is estimated that globally one out of 7 people with drug use disorders have access to or provided drug treatment services (World Drug Report 2019). <a href="https://www.who.int/gho/substance_abuse/en/" target="_blank">WHO ATLAS-Substance Use</a> data showed that in 2014 only 11.9 % (out of 103 responding) countries reported high coverage (40% or more) for alcohol dependence. SDG indicator 3.5.1 is crucial for measurement the progress towards strengthening the treatment of substance abuse worldwide as formulated in the Target 3.5. </p>
 <p> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>The two main challenges in terms of computing the SDG 3.5.1 indicator are the limited availability of household surveys on substance use and the under-reporting of use among survey respondents. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The two main challenges in terms of computing the SDG 3.5.1 indicator are the limited availability of household surveys on substance use and the under-reporting of use among survey respondents. </p>
 <p>Data reported from household surveys are one of the sources of information on of the number of people with substance use disorders. There are issues of under-reporting for certain psychoactive substances, in countries where stigma is associated to substance use and when a considerable proportion of the drug or alcohol using population is institutionalized, homeless or unreachable by population-based surveys. Additionally, being a relatively rare event, household surveys on substance use disorders require a large sample and can be costly. In order to address these issues, additional approaches (e.g. scale up methods) are increasingly used in household surveys to address undercount issues. These can be used in conjunction with special studies and/or additional information, in order to obtain reasonable estimates via indirect methods, such as benchmark/multiplier or capture-recapture methods. </p>
 <p> </p>
 <p>An additional step in data validation and country capacity building for monitoring treatment coverage for substance use disorders will be implemented during the next couple of years for in-depth data generation in a sample of countries from different regions and representing different levels of health system development. A rapid assessment tool for in-depth data generation is in the process of development by WHO. </p>
 <p> </p>
 <p>The indicator stresses on type, availability and coverage of services but does not necessarily provide information on the actual quality of the interventions/services provided. To address this, at national level, the proposed treatment indicator will be accompanied with contextual information on availability coverage, i.e. treatment capacity for substance use disorders to provide additional information for interpretation of the contact coverage data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>The indicator will be computed by dividing the number of people receiving treatment services at least once in a year by the total number of people with substance use disorders in the same year: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The indicator will be computed by dividing the number of people receiving treatment services at least once in a year by the total number of people with substance use disorders in the same year: </p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <msub>
       <mrow>
@@ -2994,82 +2088,40 @@ data-event-label="Change to Sources tab"
   </math></p>
 <p> </p>
 <p>Where: SUD &#x2013; Substance use disorders </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>At country level </strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>At country level </strong></p>
 <p>For drug use disorder, data will be provided for countries where information is available for both numerator and denominator. No data estimates will be done at the national level. </p>
 <p> </p>
 <p>For alcohol, when information on service utilization is missing in a country, several approaches will be used to produce estimates based on all available pieces of contextual service capacity data in the country and regionally. Link to be established between service availability and service utilization to get rough understanding on number of people who might be using services for countries where no direct information on number of people using services is available at all. </p>
 <p><strong> </strong></p>
 <p><strong>At regional and global level </strong></p>
 <p>Sub-regional and regional aggregates are produced when enough data at the country level are available (a minimum number of countries and a minimum percentage of population coverage). When data are available, sub-regional estimates are created first and then aggregated at regional level. The global level is computed as aggregation of regional estimates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>UNODC has published a series of methodological guidelines on several issues related to the drug problem, entitled &#x201C;Global Assessment Program (GAP)&#x201D;. These guidelines consist of 8 modules, covering different aspects of monitoring the drug situation including setting up drug information systems, estimating drug prevalence using indirect methods, setting up treatment monitoring and reporting systems, etc. The modules can be found at: <a href="https://www.unodc.org/unodc/en/GAP/" target="_blank">https://www.unodc.org/unodc/en/GAP/</a>. It is planned to update these guidelines in the near future. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNODC has published a series of methodological guidelines on several issues related to the drug problem, entitled &#x201C;Global Assessment Program (GAP)&#x201D;. These guidelines consist of 8 modules, covering different aspects of monitoring the drug situation including setting up drug information systems, estimating drug prevalence using indirect methods, setting up treatment monitoring and reporting systems, etc. The modules can be found at: <a href="https://www.unodc.org/unodc/en/GAP/" target="_blank">https://www.unodc.org/unodc/en/GAP/</a>. It is planned to update these guidelines in the near future. </p>
 <p> </p>
 <p>As part of the ARQ review process, UNODC is planning to enhance its capacity building tools by complementing regional and national capacity building activities with: </p>
 <ul>
@@ -3078,68 +2130,60 @@ data-event-label="Change to Sources tab"
   <li>promoting national coordination mechanisms on drugs data, including national drug observatories </li>
 </ul>
 <p>WHO has published series of documents on alcohol monitoring in populations (e.g. International Guide for Monitoring Alcohol Consumption and Related Harm), and established a <a href="https://www.who.int/substance_abuse/activities/gisah/en/" target="_blank">Global Information System on Alcohol and Health (GISAH)</a> that provides easy and rapid access to a wide range of alcohol-related health indicators. It is an essential tool for assessing and monitoring the health situation and trends related to alcohol consumption, alcohol-related harm, and policy responses in countries. GISAH is a further development of the Global Alcohol Database which has been built since 1997 by the WHO Department of Mental Health and Substance Abuse. The main purpose of GISAH is to serve WHO Member States and governmental and nongovernmental organizations by making alcohol-related health data available. These data can help to analyse the state of the health situation related to alcohol in a country, a WHO region or sub-region, or the world. <a href="https://www.who.int/substance_abuse/activities/gisah_indicatorbook.pdf?ua=1" target="_blank">The Indicator Code Book</a> has been prepared to assist countries in collecting the data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>At UNODC, quality assurance measures are in place to collect, process and disseminate statistical data. They build on the &#x2018;Principles governing international statistical activities&#x2019; and regulate the collection, processing, publication and dissemination of data. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>At UNODC, quality assurance measures are in place to collect, process and disseminate statistical data. They build on the &#x2018;Principles governing international statistical activities&#x2019; and regulate the collection, processing, publication and dissemination of data. </p>
 <p> </p>
 <p>All data for SDG indicators as compiled by the Office are sent to countries (through the relevant national focal points) for their review before statistical data are officially released by UNODC. When countries provide feedback/comments on the data, a technical discussion is conducted to identify a common position. </p>
 <p> </p>
 <p>At WHO quality assurance measures are in place for producing the health statistics that include the main indicators on alcohol consumption and its health consequences. WHO Technical Advisory Group on Alcohol and Drug Epidemiology provides technical advice and input to WHO activities on monitoring alcohol consumption and treatment capacity for substance use disorders in its Member States. </p>
 <p> </p>
 <p>Data compilation is to be performed centrally by WHO and UNODC based on data collected from countries that later will be validated through official focal points. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>During the reporting period 2013-2017, 62 countries have provided data on drug use disorders and 98 countries provided data on drug treatment. The availability and accuracy of data on the number of people with drug use disorders and people in treatment for the use of drugs is gradually increasing. </p>
 <p>For the number of alcohol use disorders data are currently available for 188 Member States (for 2016) and validated through the process of country consultation. Data are regularly updated and presented through WHO Global Health Observatory. For utilization of treatment by people with alcohol use disorders, data are currently available for at least 30 countries and further data collection is ongoing </p>
 <p>For contextual information on treatment services, WHO has collected data from more than 85 countries; data collection for other is ongoing and to be accomplished till the end of 2019. </p>
@@ -3164,37 +2208,63 @@ data-event-label="Change to Sources tab"
   <li>solvents and inhalants </li>
   <li>NPS </li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>Given the heterogeneity of national data collection systems, there is potential for discrepancies related either to the differences in recording the number of people in treatment and for people with substance use disorders. For this purpose, the ARQ has recently been improved to allow for countries to specify the nature of the data reported and to enable UNODC to assess the accuracy and comparability of data. </p>
 <p> </p>
 <p>Apart from evaluating the consistency of data and addressing data discrepancies by using additional sources, UNODC is in continuous communication and discusses technical issues with reporting countries in order to minimize discrepancies and inconsistency of data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p><strong>URLs:</strong> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>URLs:</strong> </p>
 <p><a href="https://www.who.int/gho/substance_abuse/en/" target="_blank"><u>https://www.who.int/gho/substance_abuse/en/</u></a> </p>
 <p><a href="https://wdr.unodc.org/wdr2019/" target="_blank"><u>https://wdr.unodc.org/wdr2019/</u></a> </p>
 <p><a href="https://www.who.int/healthinfo/global_burden_disease/about/en/" target="_blank"><u>https://www.who.int/healthinfo/global_burden_disease/about/en/</u></a> </p>
@@ -3208,142 +2278,39 @@ data-event-label="Change to Sources tab"
 <p><a href="https://www.unodc.org/documents/data-and-analysis/statistics/Drugs/Drug_Use_Survey_Nigeria_2019_BOOK.pdf" target="_blank"><u>https://www.unodc.org/documents/data-and-analysis/statistics/Drugs/Drug_Use_Survey_Nigeria_2019_BOOK.pdf</u></a> </p>
 <p><a href="https://www.who.int/substance_abuse/activities/gisah/en/" target="_blank"><u>https://www.who.int/substance_abuse/activities/gisah/en/</u></a> </p>
 <p><a href="https://www.who.int/substance_abuse/activities/gisah_indicatorbook.pdf?ua=1" target="_blank"><u>https://www.who.int/substance_abuse/activities/gisah_indicatorbook.pdf?ua=1</u></a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -3369,7 +2336,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -3422,12 +2389,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3613,12 +2580,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

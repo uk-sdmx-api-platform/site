@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -439,982 +459,108 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 12: Ensure sustainable consumption and production patterns</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 12.4: By 2020, achieve the environmentally sound management of chemicals and all wastes throughout their life cycle, in accordance with agreed international frameworks, and significantly reduce their release to air, water and soil in order to minimize their adverse impacts on human health and the environment</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 12.4.1: Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>N/A </p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>Indicators 12.4.2, 12.5.1, 3.9.1, 3.9.2 and 3.9.3.</p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>United Nations Environment Programme (UNEP)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 12: Ensure sustainable consumption and production patterns</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 12.4: By 2020, achieve the environmentally sound management of chemicals and all wastes throughout their life cycle, in accordance with agreed international frameworks, and significantly reduce their release to air, water and soil in order to minimize their adverse impacts on human health and the environment</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 12.4.1: Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>N/A </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-02-03</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>Indicators 12.4.2, 12.5.1, 3.9.1, 3.9.2 and 3.9.3.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>United Nations Environment Programme (UNEP)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definitions:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>United Nations Environment Programme (UNEP)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definitions:</strong></p>
 <p>The indicator refers to the number of parties (=countries that have ratified, accepted, approved or accessed), to the following Multilateral Environmental Agreements (MEAs):</p>
 <ol>
   <li>The Basel Convention on the Control of Transboundary Movements of Hazardous Wastes and their Disposal (Basel Convention); </li>
@@ -1463,65 +609,52 @@ data-event-label="Change to Sources tab"
 <p>The Montreal Protocol requires, under its Article 7, that each Party provides to the Secretariat for each controlled substance statistical data on its annual production, amounts used for feedstocks, amounts destroyed by technologies approved by the Parties, imports from and exports to Parties and non-Parties respectively and amount of the controlled substance listed in Annex E used for quarantine and pre-shipment applications, for the year during which provisions concerning those substances entered into force for that Party and for each year thereafter. Each Party shall also provide to the Secretariat statistical data on its annual emissions of HFC-23 per facility. The calculation of control levels is provided in Article 3 of the Protocol. This reporting enables monitoring of the implementation of the Protocol, and compliance with the control measures under the protocol.</p>
 <p>Additionally, under Article 4B, each party is required to establish and implement a system for licensing the import and export of new, used, recycled and reclaimed controlled substances. Each Party is required, within three months of the date of introducing its licensing system, to report to the Secretariat on the establishment and operation of that system. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p><sup> </sup> The parameters presented below are based on the obligations of the Parties to transmit information to the Secretariat, whatever its national circumstances. Other information that only needs to be communicated to the Secretariat based on national circumstances, such as a possible national definitions of hazardous wastes, possible article 11 agreements under the Basel Convention, or a possible exemptions under the Stockholm Convention would not be included, either because the Secretariat is not in a position to assess whether the obligation to transmit information has materialized itself, or because Parties have the right not to make use of a right. <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>For the <strong>Basel, Rotterdam and Stockholm Conventions</strong> the units of measurements are the transmission of information, such as the number of country contacts designated, number of national reports, national implementation plans and import responses. For each party, a percentage value is assigned to indicate how much of the required information has been submitted.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>For the <strong>Basel, Rotterdam and Stockholm Conventions</strong> the units of measurements are the transmission of information, such as the number of country contacts designated, number of national reports, national implementation plans and import responses. For each party, a percentage value is assigned to indicate how much of the required information has been submitted.</p>
 <p>For the Minamata Convention the units of measurement are the number of designated national focal points and the number of national reports received. For each party, a percentage value is assigned to indicate how much of the required information has been submitted.</p>
 <p>For the Montreal Protocol the units of measurement are the number of parties that comply with their reporting obligations with regard to production and consumption of controlled substances (Article 7) and submission of information on licensing systems (Article 4B). </p>
 <p>For each party, a percentage value is assigned to indicate how much of the required information has been submitted.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p><strong>Description:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Description:</strong></p>
 <ol>
   <li>Basel Convention: national focal points, electronic reporting system for annual national reports;</li>
   <li>Rotterdam Convention: official contact points and designated national authorities, PIC circular for import responses;</li>
@@ -1529,110 +662,68 @@ data-event-label="Change to Sources tab"
   <li>Montreal Protocol: national focal points;</li>
   <li>Minamata Convention: national focal points.</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Data is collected by the Secretariat of the Basel, Rotterdam and Stockholm Conventions from Focal Points for the Basel Conventions, official contact points and designated national authorities for the Rotterdam Convention, official contact points for the Stockholm Convention, by the Ozone Secretariat from national focal points for the Montreal Protocol, and by the Secretariat of the Minamata Convention from national focal points for the Minamata Convention. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data is collected by the Secretariat of the Basel, Rotterdam and Stockholm Conventions from Focal Points for the Basel Conventions, official contact points and designated national authorities for the Rotterdam Convention, official contact points for the Stockholm Convention, by the Ozone Secretariat from national focal points for the Montreal Protocol, and by the Secretariat of the Minamata Convention from national focal points for the Minamata Convention. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>First reporting cycle: 2017;</li>
   <li>Second reporting cycle: 2020;</li>
   <li>Third reporting cycle: 2025;</li>
   <li>Fourth reporting cycle: 2030.</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>First reporting cycle: 2010-2014;</li>
   <li>Second reporting cycle: 2015-2019;</li>
   <li>Third reporting cycle: 2020-2024;</li>
   <li>Fourth reporting cycle: 2025-2029.</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>Focal Points and Competent Authorities for the Basel Conventions (188 Parties);</li>
   <li>Designated National Authorities and Official contact points for the Rotterdam Convention (164 Parties);</li>
   <li>Official contact points and national focal points for Stockholm Convention (184 Parties);</li>
   <li>Focal points for Montreal Protocol (198 Parties);</li>
   <li>Focal points for information exchange and national focal points for the Minamata Convention (currently 127 Parties).</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>Secretariat of the Basel, Rotterdam and Stockholm Conventions; </li>
   <li>Secretariat for the Montreal Protocol on Substances that Deplete the Ozone Layer (Ozone Secretariat);</li>
   <li>Secretariat of the Minamata Convention.</li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p><strong>Basel Convention</strong>: Pursuant to article 5 of the Basel Convention, Parties are required to designate or establish one or more competent authorities and one focal point to facilitate the implementation of the Convention. Parties also have an obligation to inform the Secretariat of any changes regarding designations made by them. The Conference of the Parties has adopted a standard form for notification of designation of contacts (decision BC-11/21), which Parties are requested to use to transmit information to the Secretariat including modifications . </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Basel Convention</strong>: Pursuant to article 5 of the Basel Convention, Parties are required to designate or establish one or more competent authorities and one focal point to facilitate the implementation of the Convention. Parties also have an obligation to inform the Secretariat of any changes regarding designations made by them. The Conference of the Parties has adopted a standard form for notification of designation of contacts (decision BC-11/21), which Parties are requested to use to transmit information to the Secretariat including modifications . </p>
 <p>A list of competent authorities and focal points to the Basel Convention is maintained and regularly updated on the Convention website: <a href="http://www.basel.int/Countries/CountryContacts/tabid/1342/Default.aspx">http://www.basel.int/Countries/CountryContacts/tabid/1342/Default.aspx</a>.</p>
 <p>In order to enable monitoring of the implementation of the Basel Convention by its Parties and to present reports on this matter to the Conference of Parties on a regular basis, the Convention establishes a mechanism for Parties to transmit information about implementation of the Convention. According to Article 13, the Parties, consistent with national laws and regulations, shall transmit, through the Secretariat, to the Conference of the Parties established under Article 15, before the end of each calendar year<strong><u>, a report</u></strong> on the previous calendar year.</p>
 <p>Article 13 mandates the Secretariat to receive and disseminate this and other types of information.</p>
@@ -1649,64 +740,51 @@ data-event-label="Change to Sources tab"
 <p>Under the Montreal Protocol, the role of the Secretariat is stipulated in Article 12 of the Protocol including the obligation to receive, data provided pursuant to Article 7. Additionally, under Article 4B, each Party is required, within three months of the date of introducing its licensing system, to report to the Secretariat on the establishment and operation of that system. </p>
 <p>Compliance of the Parties with their reporting obligations is considered by an Implementation Committee established under the Protocol&#x2019;s Non-Compliance Procedure and is determined by the Meeting of the Parties based on the Committee&#x2019;s recommendations (<a href="https://ozone.unep.org/list-of-implementation-committee-recommendations">https://ozone.unep.org/list-of-implementation-committee-recommendations</a>). </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-3">2</sup><p> The import response may consist of an interim response that is not necessarily a decision see for example Article 10(4)(b)(ii)-(iv) <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The proposed indicator is process-oriented, focusing on compliance with the obligations that contribute to the overall target of achieving the environmentally sound management of chemicals and all wastes throughout their life cycle. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The proposed indicator is process-oriented, focusing on compliance with the obligations that contribute to the overall target of achieving the environmentally sound management of chemicals and all wastes throughout their life cycle. </p>
 <p>It doesn&#x2019;t measure the quantity of chemicals in media and doesn&#x2019;t quantify adverse impacts on human health and the environment. The MEAs, however, were developed and adopted to address the most urgent challenges for human health and the environment and therefore, through the implementation of MEAs progress will be made to reduce release to air, water and soil and well as presence of hazardous chemicals in products. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>The transmission of information as required by the five Conventions follows a different timing. This is the reason why the reporting to this indicator has been scheduled for 5-year cycles, which would allow capturing the compliance of Parties with the transmission of information of all the Conventions.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The transmission of information as required by the five Conventions follows a different timing. This is the reason why the reporting to this indicator has been scheduled for 5-year cycles, which would allow capturing the compliance of Parties with the transmission of information of all the Conventions.</p>
 <p>Please also note that the timing for submission of reporting for the Minamata Convention has not yet been agreed on. It is not clear whether any reporting will be required prior to 2020, nor it is clear how many times reporting would be required prior to 2030. Thus, the Minamata Convention is included here, but the reporting is subject to further decisions on this.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>In the following methodology, reporting is to take place in 2017 for the period 2010-2014, in 2020 for the period 2015-2019, in 2025 for the period 2020-2024 and in 2030 for the period 2025-2029. Reporting parameters include the following: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>In the following methodology, reporting is to take place in 2017 for the period 2010-2014, in 2020 for the period 2015-2019, in 2025 for the period 2020-2024 and in 2030 for the period 2025-2029. Reporting parameters include the following: </p>
 <p>The Country Score depends on the amount of information that is sent to the Conventions&#x2019; Secretariat, and is calculated as follows (and communicated by the Secretariats):</p>
 <p><strong><u>Basel Convention:</u></strong></p>
 <ol>
@@ -1835,89 +913,38 @@ data-event-label="Change to Sources tab"
   </math></p>
 <p>The final indicator will be a number expressed as percent, where 100% is the maximum degree of compliance with the reporting obligations of the MEAs to which a Country is a Party, and 0% the least degree of compliance with those obligations.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-4">3</sup><p><u> Applicable to Parties bound by the amendments to the Stockholm Convention. Parties that are not bound by the amendments will by default receive one point for each such amendment.</u> <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> <u>Please note that at the moment data is not available for the Minamata Convention. The timing of submission of reporting is not yet decided.</u> Information on the timing of submission of reporting has been included under chapter 2.a. <a href="#footnote-ref-5">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>All the information mentioned below on the Basel, Rotterdam and Stockholm Conventions is submitted through the officially designated country contacts. </p>
-<p>The databases of country contracts for the Basel, Rotterdam and Stockholm Conventions: <a href="http://www.basel.int/Countries/CountryContacts/tabid/1342/Default.aspx">http://www.basel.int/Countries/CountryContacts/tabid/1342/Default.aspx</a></p>
-<p><a href="http://www.pic.int/Countries/CountryContacts/tabid/3282/language/en-US/Default.aspx">http://www.pic.int/Countries/CountryContacts/tabid/3282/language/en-US/Default.aspx</a></p>
-<p><a href="http://chm.pops.int/Countries/CountryContacts/tabid/304/Default.aspx">http://chm.pops.int/Countries/CountryContacts/tabid/304/Default.aspx</a> </p>
-<p>National annual reports under the Basel Convention: http://www.basel.int/Countries/NationalReporting/NationalReports/BC2018Reports/tabid/8202/Default.aspx</p>
-<p>The PIC Circular which contains import responses under the Rotterdam Convention which is updated every six months: http://www.pic.int/Implementation/PICCircular/tabid/1168/language/en-US/Default.aspx Please also see country profiles webpage which contains various relevant information: http://www.pic.int/Countries/CountryProfiles/tabid/1087/language/en-US/Default.aspx</p>
-<p>National reports under the Stockholm Convention: <a href="http://chm.pops.int/Countries/Reporting/NationalReports/tabid/3668/Default.aspx">http://chm.pops.int/Countries/Reporting/NationalReports/tabid/3668/Default.aspx</a></p>
-<p>Transmission of the National Implementation Plans under the Stockholm Convention : <a href="http://chm.pops.int/Implementation/NationalImplementationPlans/NIPTransmission/tabid/253/Default.aspx">http://chm.pops.int/Implementation/NationalImplementationPlans/NIPTransmission/tabid/253/Default.aspx</a></p>
-<p>For the Minamata Convention, a list of designated national focal points is available at <a href="https://www.mercuryconvention.org/Countries/Parties/Notifications/tabid/3826/language/en-US/Default.aspx">https://www.mercuryconvention.org/Countries/Parties/Notifications/tabid/3826/language/en-US/Default.aspx</a>. National reports submitted by the Parties to the Minamata Convention for the first reporting cycle are available at <a href="https://www.mercuryconvention.org/Countries/Parties/Reporting/Firstnationalshortreport2019/tabid/8635/language/en-US/Default.aspx">https://www.mercuryconvention.org/Countries/Parties/Reporting/Firstnationalshortreport2019/tabid/8635/language/en-US/Default.aspx</a></p>
-<p>Under the Montreal Protocol, the Secretariat does not carry out any validation, other than simple completeness and consistency checks which are communicated back to the reporting party. There is no consultation with countries on the national data submitted to the SDGs Indicators Database. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>&#x2022; At country level:</strong></p>
 <p>Missing values are not imputed. </p>
 <p><strong>&#x2022; At regional and global levels:</strong></p>
 <p>Missing values are not imputed.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: </p>
 <p><a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p><strong>For the Basel Convention</strong>, information on mandate, frequency, format and procedures for the designation of the focal points and competent authorities: http://www.basel.int/Procedures/FocalPoint/tabid/1325/Default.aspx</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>For the Basel Convention</strong>, information on mandate, frequency, format and procedures for the designation of the focal points and competent authorities: http://www.basel.int/Procedures/FocalPoint/tabid/1325/Default.aspx</p>
 <p><a href="http://www.basel.int/Procedures/CompetentAuthorities/tabid/1324/Default.aspx">http://www.basel.int/Procedures/CompetentAuthorities/tabid/1324/Default.aspx</a></p>
 <p>Format and manual for national reporting for the year 2018 and onwards under the Basel Convention: http://www.basel.int/Countries/NationalReporting/Guidance/tabid/1498/Default.aspx</p>
 <p><strong>For the Rotterdam Convention</strong>, information on mandate, frequency, format and procedures for the designation of the official contact points Designated National Authorities:</p>
@@ -1931,70 +958,62 @@ data-event-label="Change to Sources tab"
 <p>For transmission of notifications of designations of country contacts in accordance with the Basel, Rotterdam and Stockholm Conventions, the revised form has been harmonised and may be used to transmit information on designated contacts in accordance with the provisions of any or all three of the Conventions. This is intended to facilitate transmission of information to the Secretariat while respecting the legal autonomy of each Convention.</p>
 <p>For the Minamata Convention, States or regional economic integration are invited to designate national focal points using the form and the sample letter available at <a href="https://www.mercuryconvention.org/Countries/Parties/FocalPoints/tabid/7708/language/en-US/Default.aspx">https://www.mercuryconvention.org/Countries/Parties/FocalPoints/tabid/7708/language/en-US/Default.aspx</a> Guidance for the submission of national reports is available at https://www.mercuryconvention.org/Countries/Parties/Reporting/tabid/8189/language/en-US/Default.aspx</p>
 <p>The Montreal protocol does not provide any guidance to countries for the compilation of the data at the national level. However, the parties adopted data reporting forms to guide the parties on the information to be reported to the Secretariat. Additionally, under the institutions of the protocol, developing countries get technical and financial assistance, part of which includes training manuals and other resources and guidance on compilation reporting of data - <a href="https://www.unenvironment.org/ozonaction/resources">https://www.unenvironment.org/ozonaction/resources</a>.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>The BRS Secretariat reviews the national reports for completeness and correctness and communicates with Parties with a view of addressing identified gaps, when possible.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The BRS Secretariat reviews the national reports for completeness and correctness and communicates with Parties with a view of addressing identified gaps, when possible.</p>
 <p>Under the Committee administering the Mechanism for Promoting Implementation and Compliance (ICC), which is a subsidiary body of the Basel Convention, there is a standing area of work on the national reporting which aims at improving timely and complete national reporting under paragraph 3 of Article 13 of the Convention. Activities in the biennium 2020-2021 include, inter alia, classifying and, as appropriate, publishing information on Parties&#x2019; compliance with their annual national reporting obligations for 2016 and 2017 based on the assumptions, criteria and categories adopted by the Conference of the Parties at its thirteenth meeting and the targets adopted by the Conference of the Parties at its fourteenth meeting; developing recommendations on the revision of targets referred to in paragraph 13 of decision BC-14/15 for the reports due for 2018 and subsequent years; and with a view to increasing the completeness and timeliness of national reporting under paragraph 3 of Article 13, exploring how individual Parties can integrate national reporting needs under the Basel Convention into the United Nations Development Assistance Framework.</p>
 <p>The Minamata Secretariat has a system in place to (i) review the completeness and correctness of the reports received; and (ii) to inform Parties about the outcomes of such review before the reports are published on the Minamata Convention website.</p>
 <p>The Secretariat for the Montreal Protocol uses an online reporting system with a database for collecting and managing the reported information. The system includes a variety of checks and validation rules to ensure completeness and consistency of the reported information.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>For the Basel and Stockholm Conventions the Electronic Reporting System is the tool to be used by Parties to submit their national reports. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>For the Basel and Stockholm Conventions the Electronic Reporting System is the tool to be used by Parties to submit their national reports. </p>
 <p>For guidelines please see the responses for the question 4(h).</p>
 <p>A reporting format for the Minamata Convention on Mercury has been adopted by the first Conference of the Parties for the submission of national reports pursuant to Article 21. The Secretariat drafted guidance for the short reports (4 questions) to assist Parties. At its second meeting, the Conference of the Parties requested the Secretariat to draft guidance on how to fill out the full reporting format (48 questions), which is under preparation. An online reporting tool has been prepared by the Secretariat to assist Parties and facilitate collecting the information for the reports.</p>
 <p>Under the Montreal Protocol, the responsibility for quality assurance of the submitted data and information lies with the parties. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>For the Basel, Rotterdam and Stockholm Conventions, information transmitted by Parties to the Secretariat is made available to the Conference of the Parties for monitoring. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>For the Basel, Rotterdam and Stockholm Conventions, information transmitted by Parties to the Secretariat is made available to the Conference of the Parties for monitoring. </p>
 <p>For the Minamata Convention, the Secretariat can report very high reporting rates: 80% of Parties have submitted complete reports (data is available at <a href="https://www.mercuryconvention.org/Countries/Parties/Reporting/tabid/8189/language/en-US/Default.aspx">https://www.mercuryconvention.org/Countries/Parties/Reporting/tabid/8189/language/en-US/Default.aspx</a>) The Secretariat can also report that 80% of Parties have designated national focal points in a timely and appropriate manner (a list of designations is available at https://www.mercuryconvention.org/Countries/Parties/Notifications/tabid/3826/language/en-US/Default.aspx)</p>
 <p>Under the Montreal Protocol, the responsibility for the overall evaluation of fulfilling quality of the submitted data lies with the parties. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <ol>
   <li>Basel Conventions: 188 Parties;</li>
   <li>Rotterdam Convention: 164 Parties;</li>
@@ -2013,36 +1032,62 @@ data-event-label="Change to Sources tab"
 <p><strong>Disaggregation:</strong></p>
 <p>The indicator is available at country level. </p>
 <p>It is disaggregated by Convention, in addition to providing the average transmission rate of the five Conventions. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>For the BRS Conventions, the data is produced by Parties and then transmitted to the Secretariat which makes it publicly available on the Conventions website.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>For the BRS Conventions, the data is produced by Parties and then transmitted to the Secretariat which makes it publicly available on the Conventions website.</p>
 <p>For the Minamata Convention, the data reported in this paper is only produced by countries.</p>
 <p>Under the Montreal Protocol, the data and information reported are produced by the Parties. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Relevant links to the Basel, Rotterdam and Stockholm Conventions: </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Relevant links to the Basel, Rotterdam and Stockholm Conventions: </p>
 <p>http://www.brsmeas.org/Implementation/SustainableDevelopmentGoals/Overview/tabid/8490/language/en-US/Default.aspx</p>
 <p>http://www.basel.int/Countries/CountryContacts/tabid/1342/Default.aspx</p>
 <p><a href="http://www.pic.int/Countries/CountryContacts/tabid/3282/language/en-US/Default.aspx">http://www.pic.int/Countries/CountryContacts/tabid/3282/language/en-US/Default.aspx</a></p>
@@ -2061,142 +1106,39 @@ data-event-label="Change to Sources tab"
 <p>https://ozone.unep.org/countries/data-reporting-tools</p>
 <p><a href="https://ozone.unep.org/additional-reported-information">https://ozone.unep.org/additional-reported-information</a></p>
 <p>https://ozone.unep.org/mixtures-blends-tool.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2222,7 +1164,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2275,12 +1217,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2466,12 +1408,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

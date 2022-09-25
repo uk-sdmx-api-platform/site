@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -439,983 +459,109 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 14.a: Increase scientific knowledge, develop research capacity and transfer marine technology, taking into account the Intergovernmental Oceanographic Commission Criteria and Guidelines on the Transfer of Marine Technology, in order to improve ocean health and to enhance the contribution of marine biodiversity to the development of developing countries, in particular small island developing States and least developed countries</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 14.a.1: Proportion of total research budget allocated to research in the field of marine technology</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-02-15</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>Links to SDG 17, SDG 5;</p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 14.a: Increase scientific knowledge, develop research capacity and transfer marine technology, taking into account the Intergovernmental Oceanographic Commission Criteria and Guidelines on the Transfer of Marine Technology, in order to improve ocean health and to enhance the contribution of marine biodiversity to the development of developing countries, in particular small island developing States and least developed countries</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 14.a.1: Proportion of total research budget allocated to research in the field of marine technology</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>Links to SDG 17, SDG 5;</p>
 <p>Targets: to all other SDG 14 targets, as science is crucial to protect and conserve the oceans&#x2019; resources.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>Intergovernmental Oceanographic Commission of UNESCO</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Intergovernmental Oceanographic Commission of UNESCO</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Intergovernmental Oceanographic Commission of UNESCO</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Intergovernmental Oceanographic Commission of UNESCO</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p>Definitions and mechanisms used in the development of the SDG indicator 14.a.1 are based on the IOC Criteria and Guidelines on Transfer of Marine Technology &#x2013; IOCCGTMT (originally published and endorsed by IOC Member States in 2005. These guidelines provide an internationally agreed definition of what is understood by the term marine technology and have been referenced in various UN General Assembly Resolutions and specifically in the formulation of SDG target 14.a. These are further explained in the Global Ocean Science Report (GOSR) referenced below.</p>
 <p>Marine technology as defined in the IOCCGTMT refers to instruments, equipment, vessels, processes and methodologies required to produce and use knowledge to improve the study and understanding of the nature and resources of the ocean and coastal areas. Toward this end, marine technology may include any of the following components:</p>
 <ol>
@@ -1432,257 +578,161 @@ data-event-label="Change to Sources tab"
 <p><strong>Concepts:</strong></p>
 <p>The concepts used for the definition and calculation of the indicator 14.a.1 are based on similar concepts used in the UNESCO Science Report (2010, 2015).These reports present GERD data (gross domestic expenditure on research and experimental development) as a share of GDP (gross domestic product) and further provide the R&amp;D (research and development) expenditure by sector of performance in % (Table S2 in the 2015 UNESCO Science Report). In addition, UIS publishes science field specific R&amp;D, e.g. natural sciences (http://data.uis.unesco.org/).</p>
 <p>The definitions and classifications used to collect R&amp;D data are based on the &#x2018;Frascati Manual: Proposed Standard Practice for Surveys on Research and Experimental Development&#x2019; (OECD, 2002).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Ocean science expenditure as a share of GERD (%) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not applicable </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Data sources: regular direct submission to the GOSR questionnaire/GOSR portal (https://gosr.ioc-unesco.org).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Ocean science expenditure as a share of GERD (%) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data sources: regular direct submission to the GOSR questionnaire/GOSR portal (https://gosr.ioc-unesco.org).</p>
 <p>The questionnaire used for the first edition of the GOSR was reviewed by the Editorial Board of the GOSR2020 as well as by UIS in 2017/2018 prior to the data collection exercise started in 2018. Assessments from 2018 on were conducted with an improved questionnaire (https://gosr.ioc-unesco.org/methodology).</p>
 <p>The novelty of the GOSR published for the first time in 2017, and the respective data collection of the 14.a.1 related data, requires the IOC Secretariat to collect the data via its national focal point until now. Future data collections might explore data availability at NSOs. New national reporting mechanisms are being established, which facilitate the provision of the required information (e.g. Colombia, Canada, Italy; document IOC-XXIX/2 Annex 14). The GERD (gross domestic expenditure on research and development) data were obtained from the UNESCO Institute for Statistics/World Bank, based on information directly provided from NSOs.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>(I) National Counterparts:</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>(I) National Counterparts:</p>
 <p>As mentioned in the previous paragraph the official counterparts are the IOC focal points <a href="https://oceanexpert.org/document/17716">https://oceanexpert.org/document/17716</a> and well as National Oceanographic and Statistical Data Centres <a href="https://www.iode.org/index.php?option=com_content&amp;view=article&amp;id=61&amp;Itemid=100057">https://www.iode.org/index.php?option=com_content&amp;view=article&amp;id=61&amp;Itemid=100057</a>. </p>
 <p>(II) Validation and consultation process by IOC Secretariat.</p>
 <p>These counterparts are invited to provide metadata information for the data provided. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>The next data collection is planned to start in 2021. The GOSR data portal will allow for data submission throughout the year. In addition, IOC Member States will receive regular invitations to submit to the portal via IOC Circular letters. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Biannually.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>IOC focal points </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The next data collection is planned to start in 2021. The GOSR data portal will allow for data submission throughout the year. In addition, IOC Member States will receive regular invitations to submit to the portal via IOC Circular letters. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Biannually.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>IOC focal points </p>
 <p>National Statistical Offices (NSOs)</p>
 <p>UNESCO Institute for Statistics (UIS)/World Bank</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Intergovernmental Oceanographic Commission of UNESCO (IOC-UNESCO) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Intergovernmental Oceanographic Commission of UNESCO (IOC-UNESCO) </p>
 <p>UNESCO Institute for Statistics (UIS)/World Bank</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>IOC-UNESCO is the custodian agency for the SDG indicator 14.a.1. The purpose of the Commission is to promote international cooperation and to coordinate programmes in research, services and capacity-development, in order to learn more about the nature and resources of the ocean and coastal areas and to apply that knowledge for the improvement of management, sustainable development, the protection of the marine environment, and the decision-making processes of its Member States. In addition, IOC is recognized through the United Nations Convention on the Law of the Sea (UNCLOS) as a competent international organization in the fields of Marine Scientific Research (Part XIII) and Transfer of Marine Technology (Part XIV). According to its Statutes, the Commission may act also as a joint specialized mechanism of the organizations of the United Nations system that have agreed to use the Commission for discharging certain of their responsibilities in the fields of marine sciences and ocean services, and have agreed accordingly to sustain the work of the Commission. IOC&#x2019;s Member States agreed to submit information relevant to the SDG indicator 14.a.1 to the IOC Secretariat in 2014 IOC/EC-XLVII/2 Annex 8. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Sustained investment in research and development (R&amp;D), including ocean research, remains essential to advance knowledge and to develop new technology needed to support modern economies. The ocean economy yields various benefits in terms of employment, revenues and innovation in many domains. Its current developments are largely based on decades of science and R&amp;D investments by governments around the world. Baseline information on ocean science funding, as delivered by the indicator 14.a.1 can be used as a starting point for more directed, tailored investment and new capacity development strategies, and to support the case for ensuring maximum impact of ocean research, for example through marine technology and knowledge transfer from government-funded marine and maritime R&amp;D projects. Annual (2009-2013) baseline information for 24 countries is presented in the GOSR (Isensee, K., Horn, L. and Schaaper, M. 2017. The funding for ocean science. In: In: IOC UNESCO, <em>Global Ocean Science Report&#x2014;The current status of ocean science around the world</em>. L. Vald&#xE9;s et al. (eds). Paris, UNESCO, pp. 80&#x2013;97) and in the GOSR2020 for 27 countries (Jolly, C., Olivari, M., Isensee, K., Nurse, L., Roberts, S., Lee, Y.-H. and Escobar Briones, E. 2020. Funding for ocean science. IOC-UNESCO, <em>Global Ocean Science Report 2020&#x2013;Charting Capacity for Ocean Sustainability.</em> K. Isensee (ed.), Paris, UNESCO Publishing, pp 69-90.). Updates on the methodology and progress made was published in the <a href="http://legacy.ioc-unesco.org/index.php?option=com_oe&amp;task=viewDocumentRecord&amp;docID=24776">IOC/INF-1368</a> and <a href="https://oceanexpert.org/event/2805#documents">IOC/INF-1385</a>.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>IOC-UNESCO is the custodian agency for the SDG indicator 14.a.1. The purpose of the Commission is to promote international cooperation and to coordinate programmes in research, services and capacity-development, in order to learn more about the nature and resources of the ocean and coastal areas and to apply that knowledge for the improvement of management, sustainable development, the protection of the marine environment, and the decision-making processes of its Member States. In addition, IOC is recognized through the United Nations Convention on the Law of the Sea (UNCLOS) as a competent international organization in the fields of Marine Scientific Research (Part XIII) and Transfer of Marine Technology (Part XIV). According to its Statutes, the Commission may act also as a joint specialized mechanism of the organizations of the United Nations system that have agreed to use the Commission for discharging certain of their responsibilities in the fields of marine sciences and ocean services, and have agreed accordingly to sustain the work of the Commission. IOC&#x2019;s Member States agreed to submit information relevant to the SDG indicator 14.a.1 to the IOC Secretariat in 2014 IOC/EC-XLVII/2 Annex 8. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Sustained investment in research and development (R&amp;D), including ocean research, remains essential to advance knowledge and to develop new technology needed to support modern economies. The ocean economy yields various benefits in terms of employment, revenues and innovation in many domains. Its current developments are largely based on decades of science and R&amp;D investments by governments around the world. Baseline information on ocean science funding, as delivered by the indicator 14.a.1 can be used as a starting point for more directed, tailored investment and new capacity development strategies, and to support the case for ensuring maximum impact of ocean research, for example through marine technology and knowledge transfer from government-funded marine and maritime R&amp;D projects. Annual (2009-2013) baseline information for 24 countries is presented in the GOSR (Isensee, K., Horn, L. and Schaaper, M. 2017. The funding for ocean science. In: In: IOC UNESCO, <em>Global Ocean Science Report&#x2014;The current status of ocean science around the world</em>. L. Vald&#xE9;s et al. (eds). Paris, UNESCO, pp. 80&#x2013;97) and in the GOSR2020 for 27 countries (Jolly, C., Olivari, M., Isensee, K., Nurse, L., Roberts, S., Lee, Y.-H. and Escobar Briones, E. 2020. Funding for ocean science. IOC-UNESCO, <em>Global Ocean Science Report 2020&#x2013;Charting Capacity for Ocean Sustainability.</em> K. Isensee (ed.), Paris, UNESCO Publishing, pp 69-90.). Updates on the methodology and progress made was published in the <a href="http://legacy.ioc-unesco.org/index.php?option=com_oe&amp;task=viewDocumentRecord&amp;docID=24776">IOC/INF-1368</a> and <a href="https://oceanexpert.org/event/2805#documents">IOC/INF-1385</a>.</p>
 <p>In addition to the data related to ocean science funding the GOSR 2017, 2020 and the GOSR portal provide information about the impacts of ocean science funding, such as data about research output, i.e. bibliometric and technometric data, ocean science personal and ocean science technology. The GOSR reports ocean science investment and the resulting capacity in a transparent and inclusive manner, based on a unique collection of primary data, is an opportunity to support and measure progress in capacity development globally. This ambition of the 2030 Agenda is also evident in the UN Decade of Ocean Science for Sustainable Development (2021&#x2013;2030, hereafter &#x2018;the Ocean Decade&#x2019;), where the definition of &#x2018;ocean science&#x2019; encompasses natural and social science disciplines, including interdisciplinary approaches; the technology and infrastructure that supports ocean science; the application of ocean science for societal benefits, including knowledge transfer and applications in regions that are currently lacking science capacity; as well as science-policy and science-innovation interfaces. Data and information presented in the GOSR2020, in future editions of the report and in the new GOSR portal will form part of the monitoring and evaluation process to track the progress of the Ocean Decade in achieving its vision &#x2018;The science we need for the ocean we want&#x2019;, via the objectives, challenges and seven goals outlined in the Ocean Decade Implementation Plan. The baseline information collected and published in the GOSR2020 immediately before the start of Ocean Decade will guide all ocean science actors, support</p>
 <p>the involvement of all countries in the Ocean Decade and help to remove barriers related to gender, generation and origin for all participants.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>As of 2020 the SDG 14.a.1 methodology is an adopted mechanism to obtain related information. Due to the fact that no agreed procedure to assess ocean science capacity existed until the first edition of the Global Ocean Science Report in 2017, national reporting mechanisms had to be developed and require partly still to be harmonized. However since the GOSR 2020 data collection more countries established an strategy to collect 14.a.1 related information, allowing for global and regional technology and knowledge transfer in a resource- and need-adapted manner based on national inventories, as well as global and regional comparisons. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Indicator 14.a.1 = National governmental research expenditure in marine technology / National governmental R&amp;D expenditure</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>As of 2020 the SDG 14.a.1 methodology is an adopted mechanism to obtain related information. Due to the fact that no agreed procedure to assess ocean science capacity existed until the first edition of the Global Ocean Science Report in 2017, national reporting mechanisms had to be developed and require partly still to be harmonized. However since the GOSR 2020 data collection more countries established an strategy to collect 14.a.1 related information, allowing for global and regional technology and knowledge transfer in a resource- and need-adapted manner based on national inventories, as well as global and regional comparisons. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Indicator 14.a.1 = National governmental research expenditure in marine technology / National governmental R&amp;D expenditure</p>
 <p>National governmental R&amp;D expenditure data are assessed annually by the UNESCO Institute for Statistics (UIS).</p>
 <p>National governmental ocean science expenditures are envisaged to be assessed biannually via the GOSR portal (IOC-XXIX/2 Annex 10).</p>
 <p>The development of the GOSR data repository/data portal will take place in close collaboration with UIS and IOC (at Headquarters and at the IOC Project Office for IODE, Oostende, Belgium).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>IOC receives verified information directly from the identified representatives of its Member States directly (primary data), which entails the validation to be published for the SDG indicator 14.a.1 assessments.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Data are based on the GOSR2020 questionnaire and UNESCO Institute for Statistics database. Note that ocean science funding is not identified as such in GERD data, and can be found in natural sciences and other categories. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data are based on the GOSR2020 questionnaire and UNESCO Institute for Statistics database. Note that ocean science funding is not identified as such in GERD data, and can be found in natural sciences and other categories. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>In case countries do not provide data, no estimate will be calculated.</p>
@@ -1690,98 +740,76 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels</strong></li>
 </ul>
 <p>For regional and global estimates/averages, only data received from Member States will be taken into account, missing values are not imputed or otherwise estimated.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Each national contribution is weighted equally to calculate average values for the regional and global estimates.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Each national contribution is weighted equally to calculate average values for the regional and global estimates.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>No particular guidance for the national data compilation exists as the organization of ocean science differs among Member States. </li>
   <li>The IOC Secretariat recommends that IOC national focal points (IOC official national designated Coordinating Bodies for Liaison with the IOC) consult with the respective ministry(ies) responsible for ocean science and national universities and institutions to obtain SDG indicator 14.3.1 data.</li>
   <li>IOC is an intergovernmental body of 150 Member States, the IOC national focal points may act as national coordinating bodies for relevant government departments, universities and research institutions actively involved in marine science and technology and other related aspects of ocean affairs.</li>
   <li>As mentioned in point 3.a, the novelty of the GOSR published for the first time in 2017, and the respective data collection of the 14.a.1 related data, requires the IOC secretariat to collect the data via its national focal point until now. Future data collections might explore data availability at NSOs. New national reporting mechanisms are being established, which facilitate the provision of the required information (e.g. Colombia, Canada, Italy; document IOC-XXIX/2 Annex 14). The GERD (gross domestic expenditure on research and development) data were obtained from the UNESCO Institute for Statistics/World Bank, based on information directly provided from NSOs.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Automated quality control will be set up for future data collection via the GOSR portal. Currently information received from IOC Member States are quality controlled by the IOC Secretariat before publication, which involves contacting the respective focal points in case needed. The quality controlled information is then made freely available and open access at the GOSR portal (<a href="https://gosr.ioc-unesco.org/home">https://gosr.ioc-unesco.org/home</a>). </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Automated quality control will be set up for future data collection via the GOSR portal. Currently information received from IOC Member States are quality controlled by the IOC Secretariat before publication, which involves contacting the respective focal points in case needed. The quality controlled information is then made freely available and open access at the GOSR portal (<a href="https://gosr.ioc-unesco.org/home">https://gosr.ioc-unesco.org/home</a>). </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>IOC national focal points and experts from UIS assist in the data quality assessment, comparing indicator values with the national expenditure for Natural Sciences (UIS), this allows the identification of discrepancies. In the future new values will be compared to previously obtained information. In case of discrepancies, the IOC secretariat will consult the data providers individually.</li>
   <li>Combination of: Automated quality control by data portal; National quality control; Automated quality control via GOSR portal, IOC Secretariat.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>See 4.i and 4.j.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>All data collected so far are available at the GOSR portal, as well as in the GOSR2017 and GOSR2020 publications. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 4.i and 4.j.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>All data collected so far are available at the GOSR portal, as well as in the GOSR2017 and GOSR2020 publications. </p>
 <p>See</p>
 <p><a href="https://gosr.ioc-unesco.org/home">https://gosr.ioc-unesco.org/home</a></p>
 <p><a href="https://gosr.ioc-unesco.org/report">https://gosr.ioc-unesco.org/report</a></p>
@@ -1790,35 +818,61 @@ data-event-label="Change to Sources tab"
 <p>To date data are available for the years 2009-2017.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Possibility for regional and global aggregation.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>As this indicator only takes into account data submitted by Member States, there are no discrepancies between estimates and submitted data sets.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>IOC-UNESCO. 2017<em>., Global Ocean Science Report&#x2014;The current status of ocean science around the world</em>. L. Vald&#xE9;s et al. (eds), UNESCO Publishing, Paris.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>IOC-UNESCO. 2017<em>., Global Ocean Science Report&#x2014;The current status of ocean science around the world</em>. L. Vald&#xE9;s et al. (eds), UNESCO Publishing, Paris.</p>
 <p>IOC-UNESCO. 2020. <em>Global Ocean Science Report 2020&#x2013;Charting Capacity for Ocean Sustainability</em>. K. Isensee (ed.), UNESCO Publishing, Paris.</p>
 <p>Isensee, K., Horn, L. and Schaaper, M. 2017. The funding for ocean science. In: In: IOC-UNESCO, Global</p>
 <p>Ocean Science Report&#x2014;The current status of ocean science around the world. L. Vald&#xE9;s et al. (eds). Paris, UNESCO, pp. 80&#x2013;97.</p>
@@ -1841,142 +895,39 @@ data-event-label="Change to Sources tab"
 <p>IOC Criteria and Guidelines on the Transfer of Marine Technology</p>
 <p><a href="https://unesdoc.unesco.org/ark:/48223/pf0000139193.locale=en">https://unesdoc.unesco.org/ark:/48223/pf0000139193.locale=en</a></p>
 <p>UNESCO. 2015. UNESCO Science Report: Towards 2030. Paris, UNESCO Publishing. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2002,7 +953,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2055,12 +1006,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2246,12 +1197,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

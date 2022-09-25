@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -439,828 +459,35 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 11.a: Support positive economic, social and environmental links between urban, peri-urban and rural areas by strengthening national and regional development planning</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 11.a.1: Number of countries that have national urban policies or regional development plans that (a) respond to population dynamics; (b) ensure balanced territorial development; and (c) increase local fiscal space</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-12-20</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>This Indicator is related to several Goals and Targets, particularly the following: </p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 11.a: Support positive economic, social and environmental links between urban, peri-urban and rural areas by strengthening national and regional development planning</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 11.a.1: Number of countries that have national urban policies or regional development plans that (a) respond to population dynamics; (b) ensure balanced territorial development; and (c) increase local fiscal space</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>This Indicator is related to several Goals and Targets, particularly the following: </p>
 <table>
   <tbody>
     <tr>
@@ -1438,162 +665,81 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>UN-Habitat</p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>UN-Habitat</p>
 <p>UNFPA</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>UN-Habitat</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UN-Habitat</p>
 <p>UNFPA</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p><em>National Urban Policies and regional development plans: </em></p>
 <p>A National Urban Policy (NUP) is defined as a coherent set of decisions or principle of actions derived through a deliberate government led process of coordinating and rallying various actors for a common vision and goal that will promote more transformative, productive, inclusive, and resilient urban development for the long term<sup><sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup></sup>. </p>
 <p>This standard definition is extended and adapted to country contexts and may include, where applicable terms such as National Urban <em>Plan</em>, <em>Framework</em>, or <em>Strategy</em> as long as they are aligned with the above qualifiers. </p>
@@ -1633,181 +779,127 @@ data-event-label="Change to Sources tab"
 <p>This revised indicator is indeed suitable for all countries and regions, and lends itself to regional analyses, as well as other forms of aggregation and disaggregation, according to development level, for example. It is also applicable at multiple territorial levels. </p>
 <p>Moreover, monitoring this indicator will help more broadly with NUP monitoring and help increase awareness, capacity and knowledge of best practices for sustainable urban policy in the process. Also, due to the multidisciplinary dimension of NUPs and their role in global agendas, the enhanced data collection and analysis capacity that would be permitted by this indicator revision would participate in guiding the necessary steps to create a more enabling urban policy environment to support SDG 11 and urban dimensions of other SDGs. NUP monitoring according to SDGs would for instance serve as a gap analysis to help formulate tailored recommendations and identify best practices.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> UN-Habitat and Cities Alliance, 2014., The Evolution of National Urban Policy: A global overview <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Number (of countries)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>The primary source of data is the official documents of national urban policies and regional development plans, available in or provided by national and regional administrations of the countries. All these will be derived from the national and global state of NUP survey results. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Number (of countries)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The primary source of data is the official documents of national urban policies and regional development plans, available in or provided by national and regional administrations of the countries. All these will be derived from the national and global state of NUP survey results. </p>
 <p>The alignment of the policies and plans with proposed indicators are assessed by independent national level policy evaluators to avoid subjectivity and bias. The field of practice on NUP has developed a database of experts across the regions where evaluators are routinely drawn for undertaking these reviews. </p>
 <p>To help with this evaluation according to the three qualifiers, policy evaluators follow an agreed upon analysis framework. Other supporting tools such as expert opinion, baseline data, benchmarking, performance monitoring and reporting, and gap and content analysis could be used. </p>
 <p>Global, regional and national level compilations and analyses of NUP have already been undertaken by UN-Habitat and partners, which provide a solid foundation of evidence and expertise for the monitoring of indicator this proposed proxy indicator for 11.a.1. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Tailor-made questionnaires are sent to relevant focal points in charge of indicator 11a.1 to fill in the status of the indicator components. The national level data is collected based on the training modules that have widely been disseminate to many national urban policy and statistics systems. The baseline data is derived from the country, regional and global assessments undertaken every year to inform the Global State of NUP. Additionally, the data collection process targeting specifically the three qualifiers of the indicator 11.a.1. is conducted for the Global State of NUP published every two years. The data collection process is ongoing. The results listed above are based on current findings, from 67 of the 194 countries who completed the 2020 survey as well as using baseline 2018 NUP data which included 79 countries which had not yet responded to the 2020 survey, but NUP data was available based on thematic focus areas.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Tailor-made questionnaires are sent to relevant focal points in charge of indicator 11a.1 to fill in the status of the indicator components. The national level data is collected based on the training modules that have widely been disseminate to many national urban policy and statistics systems. The baseline data is derived from the country, regional and global assessments undertaken every year to inform the Global State of NUP. Additionally, the data collection process targeting specifically the three qualifiers of the indicator 11.a.1. is conducted for the Global State of NUP published every two years. The data collection process is ongoing. The results listed above are based on current findings, from 67 of the 194 countries who completed the 2020 survey as well as using baseline 2018 NUP data which included 79 countries which had not yet responded to the 2020 survey, but NUP data was available based on thematic focus areas.</p>
 <p>UN Habitat compiles and presents national urban policies into a National Urban Policy Database <a href="http://urbanpolicyplatform.org/wp-content/uploads/2018/09/13092018NUP-database.pdf"><u>http://urbanpolicyplatform.org/wp-content/uploads/2018/09/13092018NUP-database.pdf</u></a> </p>
 <p>This document gathers country level data on the presence of a NUP, their title and date, status of development, and focus. It also provides direct links to the national urban policy documents. It currently contains information on 150 NUPs worldwide and is frequently updated. </p>
 <p>Every year we conduct new rounds of data collection for indicator 11a.1. For example, the 2020 round of data collection for indicator 11.a.1. is now ongoing. Member States have been contacted to fill out the <em>2020 Global State of National Urban Policy Survey</em> which includes various questions regarding the individual countries&#x2019; status on NUPs, as well as a question specific to indicator 11.a.1. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Monitoring and reporting of the indicator is repeated at annual intervals, allowing several reporting points until 2030. Comprehensive reporting will be undertaken once every 2 years.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>The data will be available annually, and updates on the global database will be conducted every 6 months. Data will be available online on the Urban Policy Platform. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Government departments&#x2019; in charge of urban, rural or territorial affairs fill in the survey. Additional information is gathered from National Statistical Offices and government official websites and UNDESA data are also consulted for population dynamics. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>UN-Habitat</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Monitoring and reporting of the indicator is repeated at annual intervals, allowing several reporting points until 2030. Comprehensive reporting will be undertaken once every 2 years.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data will be available annually, and updates on the global database will be conducted every 6 months. Data will be available online on the Urban Policy Platform. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Government departments&#x2019; in charge of urban, rural or territorial affairs fill in the survey. Additional information is gathered from National Statistical Offices and government official websites and UNDESA data are also consulted for population dynamics. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UN-Habitat</p>
 <p>UNFPA</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>The United Nations Human Settlements Programme (UN-Habitat) is the specialized agency for sustainable urbanization and human settlements in the United Nations. The mandate derives from the priorities established in relevant General Assembly resolutions and decisions, including General Assembly resolution 3327 (XXIX), by which the General Assembly established the United Nations Habitat and Human Settlements Foundation, and resolution 32/162 by which the Assembly established the United Nations Center for Human Settlements (Habitat). In 2001, by its Resolution 56/206, the General Assembly transformed the Habitat into the secretariat of the United Nations Human Settlements Programme (UN-Habitat), with a mandate to coordinate human settlements activities within the United Nations System. As such, UN-Habitat has been designated the overall coordinator of SDG 11 and specifically as a custodian agency for 9 of the 14 indicators under SDG 11 including indicator 11.a.1. UN-Habitat also supports the monitoring and reporting of 4 urban specific indicators in other goals.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p><em>National Urban Policies can help achieve target 11.a.1 </em></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The United Nations Human Settlements Programme (UN-Habitat) is the specialized agency for sustainable urbanization and human settlements in the United Nations. The mandate derives from the priorities established in relevant General Assembly resolutions and decisions, including General Assembly resolution 3327 (XXIX), by which the General Assembly established the United Nations Habitat and Human Settlements Foundation, and resolution 32/162 by which the Assembly established the United Nations Center for Human Settlements (Habitat). In 2001, by its Resolution 56/206, the General Assembly transformed the Habitat into the secretariat of the United Nations Human Settlements Programme (UN-Habitat), with a mandate to coordinate human settlements activities within the United Nations System. As such, UN-Habitat has been designated the overall coordinator of SDG 11 and specifically as a custodian agency for 9 of the 14 indicators under SDG 11 including indicator 11.a.1. UN-Habitat also supports the monitoring and reporting of 4 urban specific indicators in other goals.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><em>National Urban Policies can help achieve target 11.a.1 </em></p>
 <p>This indicator is based on the notion that the development and implementation of National Urban Policies should support participation, partnership, cooperation and coordination of actors as well as facilitate dialogue. National Urban Policy (NUP) and Regional Development Plans (RDP) promote coordinated and connected urban development. A coordinated effort from government through a NUP or RDP provides the best opportunity for achieving sustainable urbanization and balanced territorial development by linking sectorial policies, connecting national, regional and local government policies, strengthening urban, peri-urban and rural links through balanced territorial development. </p>
 <p> </p>
 <p>This indicator provides a good barometer on global progress on sustainable national urban policies. It serves as gap analysis to support policy recommendations. The indicator can identify good practices and policies among countries that can promote partnership and cooperation between all stakeholders. This indicator is both process oriented and aspirational and has the potential to support the validation of Goal 11 and other SDGs indicators with an urban component. The indicator has the ability to be applicable at multi jurisdictions levels, i.e covering a number of areas while taking care of urban challenges in a more integrated national manner. </p>
@@ -1825,35 +917,21 @@ data-event-label="Change to Sources tab"
 <p>The second qualifier requires policies and plans to <em>ensure balanced territorial development</em>, in a direct answer to target 11.a.1&#x2019;s reference to the urban, peri-urban and rural continuum. Policies and plans should adopt a broad territorial perspective and consider the linkages and flows from urban to rural areas not only to avoid and reduce social, economic and environmental disparities between territories but also to promote distinctive strengths and encourage beneficial interactions for the most efficient path to sustainable growth for the country. Such a perspective for policies and plans is achieved higher territorial scale than cities, through regional plans and national policies. </p>
 <p>Finally, the third qualifier is to <em>increase local fiscal space</em>. As integrated NUPs and regional development plans introduce a more coordinated and decentralized articulation of responsibilities for urban development, ensuring that subnational and local governments have the adequate financial resources to carry out their responsibilities is essential to the successful implementation of policies and plans. The transfer of competences from central to local levels must therefore be accompanied by a commensurate devolution of financial resources and autonomy. Moreover, in times of shrinking governmental budgets, the capacity of local governments to expand and diversify endogenous financial resources and revenues and not rely too heavily on central transfers should be increased. This involves more fiscal power and capacity, better land value capture mechanisms &#x2013; which go hand in hand with a clear and enforceable land policy framework &#x2013; and innovative financial partnerships, for instance collaborating with the private sector for service and infrastructure delivery. In all cases, fiscal policies and mechanisms must remain subordinated to the established urban policy and planning objectives: central transfers must be embedded within the NUP framework, and take into account territorial equity; and local fiscal systems must be closely tied to local territorial plans so as to incentivize sustainable patterns of development. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-3">2</sup><p> UN-Habitat and OECD, 2018, Global State of National Urban Policy <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> UN-Habitat, 2016, <em>Sustainable Urbanization in the Paris Agreement. Comparative review for urban content in the Nationally Determined Contributions (NDCs) </em> <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> UN-Habitat, 2019, Urban-Rural Linkages, Guiding Principles: Framework for Action to Advance Integrated Territorial Development (https://urbanrurallinkages.files.wordpress.com/2019/09/url-gp-1.pdf) <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> OECD, 2019, OECD Principles on Urban Policy (<a href="https://www.oecd.org/cfe/Brochure-OECD-Principles-Urban-Policy.pdf">https://www.oecd.org/cfe/Brochure-OECD-Principles-Urban-Policy.pdf</a>) and OECD Principles on Rural Policy (https://www.oecd.org/rural/rural-development-conference/documents/Rural-principles.pdf) <a href="#footnote-ref-6">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-7">6</sup><p> UN-Habitat, 2016, <em>Addressing Climate Change in National Urban Policies</em> <a href="#footnote-ref-7">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>UN-Habitat and UNFPA, along with many other partners such as OECD and Cities Alliance are working together to collect updated information from Member States regarding the three qualifiers in addition to other questions pertinent to National Urban Policies and their implementation process. The survey<sup><sup><a href="#footnote-8" id="footnote-ref-8">[7]</a></sup></sup> results will inform the 2020 Global State of National Urban Policy Report. Many countries have filled in required information based on the specific qualifiers of indicator 11.a.1. which builds upon the 2018 NUP dataset<sup><sup><a href="#footnote-9" id="footnote-ref-9">[8]</a></sup></sup>. The success of the indicator requires more capacity development and routine follow ups with ministries and NSOs at national levels, but sometimes also going beyond the national levels to ensure good understanding of the 3 sub-components.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UN-Habitat and UNFPA, along with many other partners such as OECD and Cities Alliance are working together to collect updated information from Member States regarding the three qualifiers in addition to other questions pertinent to National Urban Policies and their implementation process. The survey<sup><sup><a href="#footnote-8" id="footnote-ref-8">[7]</a></sup></sup> results will inform the 2020 Global State of National Urban Policy Report. Many countries have filled in required information based on the specific qualifiers of indicator 11.a.1. which builds upon the 2018 NUP dataset<sup><sup><a href="#footnote-9" id="footnote-ref-9">[8]</a></sup></sup>. The success of the indicator requires more capacity development and routine follow ups with ministries and NSOs at national levels, but sometimes also going beyond the national levels to ensure good understanding of the 3 sub-components.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-8">7</sup><p> See question 27 of Global Survey on National Urban Policies at: <a href="https://drive.google.com/file/d/1-zn9d85GWJv1Tr039OtmoqPOfpwiowku/view?usp=sharing">https://drive.google.com/file/d/1-zn9d85GWJv1Tr039OtmoqPOfpwiowku/view?usp=sharing</a> <a href="#footnote-ref-8">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-9">8</sup><p> UN-Habitat and OECD, 2018, Global State of National Urban Policy (<a href="http://urbanpolicyplatform.org/wp-content/uploads/2019/11/Global-Report-NUP1.pdf">http://urbanpolicyplatform.org/wp-content/uploads/2019/11/Global-Report-NUP1.pdf</a>) <a href="#footnote-ref-9">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>The methodology uses a policy evaluation framework that assesses and tracks progress on the extent to which country level national urban policy or regional development plans are being developed or implemented to cover or satisfy the following criteria: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The methodology uses a policy evaluation framework that assesses and tracks progress on the extent to which country level national urban policy or regional development plans are being developed or implemented to cover or satisfy the following criteria: </p>
 <ol>
   <li>Responds to population dynamics </li>
   <li>Ensures balanced regional and territorial development </li>
@@ -2084,171 +1162,147 @@ data-event-label="Change to Sources tab"
 </table>
 <p>Based on the final value of the assessment (X in Table 2 above), countries that fall into categories 2 and 3, which correspond to 1 &#x2013; 50 percentage points, are not counted as &#x201C;countries that are developing and implementing a national urban policy or regional development plans&#x201D;. These countries are encouraged to deploy efforts in order to improve national urban policies or regional development plans. </p>
 <p>Countries that fall into categories 4 and 5, which correspond to 51 percentage points or more in the assessment, are considered as &#x201C;countries that are developing and implementing a national urban policy or regional development plan&#x201D; that contribute to the achievement of Target 11.a. Countries that are counted as having national urban policies or regional development plans can still make efforts to improve the rating of the 3 qualifiers</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>Data compiled is checked against several criteria including the data sources used, the application of internationally agreed definitions, classification and methodologies to the data from that source, etc. Once reviewed, appropriate feedback is then provided to individual countries for further discussion. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Any adjustment to the data is jointly agreed after consultations with the relevant national agencies that share the data points for reporting.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p>Measuring this process indicator entails a policy evaluation of governmental National Urban Policies or Regional Development Plans, the data source as such is easily accessible for evaluation. Data from 2018 was also included in the table counts above based on thematic focus: economic development, spatial structure, human development, environmental sustainability, and climate resilience. Missing values for this process-oriented indicator is reported as 0 to signify that the country has no national urban policy.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Regional aggregates can be a simple addition of the indicator&#x2019;s values for the countries representing the region.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>As of May 2020, the qualifiers were collected by distributing the <em>Global State of NUP Survey<sup><sup><a href="#footnote-10" id="footnote-ref-10">[9]</a></sup></sup></em> to Member States. Reporting is subjective to the Member State and will need to be verified against the Member States&#x2019; NUP or RDP for quality assurance. 2018 data was also collected through national follow ups with relevant offices and additional follows ups with experts in various countries. A guide was developed for collection of NUP data and disseminated to many countries. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Any adjustment to the data is jointly agreed after consultations with the relevant national agencies that share the data points for reporting.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Measuring this process indicator entails a policy evaluation of governmental National Urban Policies or Regional Development Plans, the data source as such is easily accessible for evaluation. Data from 2018 was also included in the table counts above based on thematic focus: economic development, spatial structure, human development, environmental sustainability, and climate resilience. Missing values for this process-oriented indicator is reported as 0 to signify that the country has no national urban policy.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Regional aggregates can be a simple addition of the indicator&#x2019;s values for the countries representing the region.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>As of May 2020, the qualifiers were collected by distributing the <em>Global State of NUP Survey<sup><sup><a href="#footnote-10" id="footnote-ref-10">[9]</a></sup></sup></em> to Member States. Reporting is subjective to the Member State and will need to be verified against the Member States&#x2019; NUP or RDP for quality assurance. 2018 data was also collected through national follow ups with relevant offices and additional follows ups with experts in various countries. A guide was developed for collection of NUP data and disseminated to many countries. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-10">9</sup><p> See survey questionnaire at: <a href="https://drive.google.com/file/d/1-zn9d85GWJv1Tr039OtmoqPOfpwiowku/view?usp=sharing">https://drive.google.com/file/d/1-zn9d85GWJv1Tr039OtmoqPOfpwiowku/view?usp=sharing</a> <a href="#footnote-ref-10">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>To ensure consistency in data production across countries, UN-Habitat has developed detailed step-by-step tutorials on the computation of indicator 11.a.1, which further explain the steps presented in this metadata. The detailed tutorials, which will be continuously updated are available at <a href="https://unhabitat.org/knowledge/data-and-analytics">https://unhabitat.org/knowledge/data-and-analytics</a>, <a href="https://www.urbanagendaplatform.org/learning">https://www.urbanagendaplatform.org/learning</a>, and <a href="https://data.unhabitat.org/">https://data.unhabitat.org/</a>. Within its Data and Analytics Section which is responsible for the indicator data compilation, UN-Habitat has a team of data experts who check all submitted data and provide direct support to countries in the indicator computation in collaboration with the Agency&#x2019;s NUP experts. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>UN-Habitat&#x2019;s work in the areas of national and regional development planning has developed a strong foundation of evidence that can be adapted to monitor this target and indicator. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>To ensure consistency in data production across countries, UN-Habitat has developed detailed step-by-step tutorials on the computation of indicator 11.a.1, which further explain the steps presented in this metadata. The detailed tutorials, which will be continuously updated are available at <a href="https://unhabitat.org/knowledge/data-and-analytics">https://unhabitat.org/knowledge/data-and-analytics</a>, <a href="https://www.urbanagendaplatform.org/learning">https://www.urbanagendaplatform.org/learning</a>, and <a href="https://data.unhabitat.org/">https://data.unhabitat.org/</a>. Within its Data and Analytics Section which is responsible for the indicator data compilation, UN-Habitat has a team of data experts who check all submitted data and provide direct support to countries in the indicator computation in collaboration with the Agency&#x2019;s NUP experts. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UN-Habitat&#x2019;s work in the areas of national and regional development planning has developed a strong foundation of evidence that can be adapted to monitor this target and indicator. </p>
 <p>Monitoring of the indicator will also benefit from various ongoing initiatives of policy reviews undertaken by UN-Habitat for its country assistance, or the OECD in its Urban Policy Review series. </p>
 <p>For instance, UN-Habitat and the OECD have jointly published the 2018 <em>Global State of National Urban Policy Report,</em> which identifies 150 NUPs worldwide, and analyses them according to their development phase, thematic components and institutional arrangement, and aggregates them into regional and global analyses. The second edition of the Global Report will be published in 2020 and future editions will align more closely with the terms of indicator 11.a.1 and will consistently assess the three qualifiers. </p>
 <p>UN-Habitat also conducted in-depth analyses of the NUP trends and national case studies in global regions through National Urban Policy Reports in Arab States, Asia and the Pacific, Europe and North America, Latin America and the Caribbean, and Sub-Saharan Africa. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Once data is received from member states, UN-Habitat uses a checklist specific to each indicator to assess a) whether the data production process followed the metadata provisions, and b) confirm the accuracy of the data sources used for the indicator computation. In addition, the received data is also checked for other qualities such as reporting period and consistency with other previously reported trends, which ensures reliable regional estimates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Once data is received from member states, UN-Habitat uses a checklist specific to each indicator to assess a) whether the data production process followed the metadata provisions, and b) confirm the accuracy of the data sources used for the indicator computation. In addition, the received data is also checked for other qualities such as reporting period and consistency with other previously reported trends, which ensures reliable regional estimates. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>2018 data related to National Urban Policies is available online. The updated 2020 data will be made available online on the Urban Policy Platform and in <em>2020 Global State of National Urban Policy Report</em> within the 2020 calendar year.</p>
 <p>As of May 2020, 154 countries of the 194 Member States have some form of an NUP. 79 countries have an explicit NUP, while 73 countries have a partial NUP. There is no information currently available for 39 countries regarding the presence of an NUP, and 3 countries in the European and North American region have reported to not have a NUP.</p>
 <p><strong>Time series:</strong></p>
 <p>A comprehensive update on National Urban Policy is conducted every two years starting in 2018. </p>
 <p><strong>Disaggregation: </strong></p>
 <p>N/A </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>No differences between country produced data and international estimated data on the indicator are expected to arise. Where such discrepancies exist, these will be resolved through planned technical meetings and capacity development workshops.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>OECD Urban Policy Review Series Available at: </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>OECD Urban Policy Review Series Available at: </p>
 <p><a href="http://www.oecd.org/cfe/regional-policy/urbanmetroreviews.htm"><u>http://www.oecd.org/cfe/regional-policy/urbanmetroreviews.htm</u></a></p>
 <p>UN Habitat (2015), <em>National Urban Policy: Framework for a Rapid Diagnostic, </em>United Nations Human Settlements Programme: Nairobi. Available at: </p>
 <p><a href="https://unhabitat.org/national-urban-policy-framework-for-a-rapid-diagnostic/"><u>https://unhabitat.org/national-urban-policy-framework-for-a-rapid-diagnostic/</u></a></p>
@@ -2267,142 +1321,39 @@ data-event-label="Change to Sources tab"
 <p>[4] http://www.urbangateway.org/icnup/2015/home</p>
 <p>[5] <a href="https://www.dropbox.com/s/7aut8vh9h5g4poh/National%20Urban%20Policy%20Database_2017_final.xlsx?dl=0"><u>https://www.dropbox.com/s/7aut8vh9h5g4poh/National%20Urban%20Policy%20Database_2017_final.xlsx?dl=0</u></a></p>
 <p>[6] <a href="http://urbanpolicyplatform.org/"><u>http://urbanpolicyplatform.org/#</u></a></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2428,7 +1379,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2481,12 +1432,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2672,12 +1623,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

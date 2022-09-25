@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1027,982 +1063,108 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 3.a: Strengthen the implementation of the World Health Organization Framework Convention on Tobacco Control in all countries, as appropriate</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 3.a.1: Age-standardized prevalence of current tobacco use among persons aged 15 years and older</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>Not applicable </p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>3.4.1 Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease </p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>World Health Organization; Secretariat of the WHO Framework Convention on Tobacco Control (co-custodians) </p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 3.a: Strengthen the implementation of the World Health Organization Framework Convention on Tobacco Control in all countries, as appropriate</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 3.a.1: Age-standardized prevalence of current tobacco use among persons aged 15 years and older</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Not applicable </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-12-06</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>3.4.1 Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>World Health Organization; Secretariat of the WHO Framework Convention on Tobacco Control (co-custodians) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>World Health Organization; Secretariat of the WHO Framework Convention on Tobacco Control (co-custodians) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition: </strong> </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>World Health Organization; Secretariat of the WHO Framework Convention on Tobacco Control (co-custodians) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition: </strong> </p>
 <p>The indicator is defined as the percentage of the population aged 15 years and over who currently use any tobacco product (smoked and/or smokeless tobacco) on a daily or non-daily basis. </p>
 <p> </p>
 <p><strong>Concepts:</strong> </p>
@@ -2015,64 +1177,51 @@ data-event-label="Change to Sources tab"
 <p> </p>
 <p>Prevalence estimates have been &#x201C;age-standardized&#x201D; to make them comparable across all countries no matter the demographic profile of the country. This is done by applying each country&#x2019;s age-and-sex specific prevalence rates to the WHO Standard Population. The resulting rates are hypothetical numbers which are only meaningful when comparing rates obtained for one country </p>
 <p>with those obtained for another country. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Proportion (per cent) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>&#x201C;Tobacco products&#x201D; are defined in Article 1 (f) of the WHO FCTC, see <a href="https://www.who.int/fctc/text_download/en/">https://www.who.int/fctc/text_download/en/</a>. Heated tobacco products are classified as tobacco products in decision FCTC/CIO8(22), see <a href="https://www.who.int/fctc/cop/sessions/cop8/FCTC__COP8(22).pdf">https://www.who.int/fctc/cop/sessions/cop8/FCTC__COP8(22).pdf</a> </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Proportion (per cent) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>&#x201C;Tobacco products&#x201D; are defined in Article 1 (f) of the WHO FCTC, see <a href="https://www.who.int/fctc/text_download/en/">https://www.who.int/fctc/text_download/en/</a>. Heated tobacco products are classified as tobacco products in decision FCTC/CIO8(22), see <a href="https://www.who.int/fctc/cop/sessions/cop8/FCTC__COP8(22).pdf">https://www.who.int/fctc/cop/sessions/cop8/FCTC__COP8(22).pdf</a> </p>
 <p>WHO Standard population is used for age-standardisation, see <a href="https://www.who.int/healthinfo/paper31.pdf">https://www.who.int/healthinfo/paper31.pdf</a> </p>
 <p>World Population Prospects (population aged 15 years or more per country) is used in the denominator of the indicator, see <a href="https://population.un.org/wpp/">https://population.un.org/wpp/</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Prevalence rates by age-by-sex from national representative population surveys conducted since 1990: </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Prevalence rates by age-by-sex from national representative population surveys conducted since 1990: </p>
 <p>&#x2022; officially recognized by the national health authority; </p>
 <p>&#x2022; of randomly selected participants representative of the general population; and </p>
 <p>&#x2022; reporting at least one indicator measuring current tobacco use, daily tobacco use, current tobacco smoking, daily tobacco smoking, current cigarette smoking or daily cigarette smoking. </p>
@@ -2083,458 +1232,276 @@ data-event-label="Change to Sources tab"
 <p>&#x2022; review of other surveys conducted in collaboration with WHO such as STEPwise surveys and World Health Surveys; </p>
 <p>&#x2022; scanning of international surveillance databases such as those of the Demographic and Health Survey (DHS), Multiple Indicator Cluster Survey (MICS) and the World Bank Living Standards Measurement Survey (LSMS); and </p>
 <p>&#x2022; identification and review of country-specific surveys that are not part of international surveillance systems. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Reports either downloaded from websites, submitted through the WHO FCTC reporting platform or emailed by national counterparts. WHO shares and makes public the methodologies for its estimates through the WHO global report on trends in tobacco use 2000-2025 and the WHO Report on the Global Tobacco Epidemic. The WHO estimates undergo country consultation prior to publication. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Continual data collection. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Biennial release via the WHO Global Report on Trends in Tobacco Use 2000-2025, the WHO Global Health Observatory and the Global Progress Report on Implementation of the WHO FCTC.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>WHO Member States, Parties to the WHO FCTC. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>WHO Tobacco Free Initiative; Secretariat of the WHO Framework Convention on Tobacco Control and the Protocol to Eliminate Illicit Trade in Tobacco Products. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>The WHO Framework Convention on Tobacco Control (WHO FCTC) was adopted by the World Health Assembly on 21 May 2003 (Resolution 56.1) and entered into force on 27 February 2005. In 2010, Conference of the Parties adopted Decision FCTC/COP4(16), which requests the Convention Secretariat, in cooperation with competent authorities within WHO, in particular the Tobacco Free Initiative, to further standardize definitions and indicators and facilitate regular review of progress in implementation of the Convention. See <a href="https://apps.who.int/gb/fctc/PDF/cop4/FCTC_COP4_DIV6-en.pdf">https://apps.who.int/gb/fctc/PDF/cop4/FCTC_COP4_DIV6-en.pdf</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Tobacco use is a major contributor to illness and death from non-communicable diseases (NCDs). There is no proven safe level of tobacco use or of second-hand smoke exposure. All daily and non-daily users of tobacco are at risk of a variety of poor health outcomes across the life-course, including NCDs. Reducing the prevalence of current tobacco use will make a large contribution to reducing premature mortality from NCDs (Target 3.4). Routine and regular monitoring of this indicator is necessary to enable accurate monitoring and evaluation of the impact of implementation of the WHO Framework Convention on Tobacco Control (WHO FCTC), or tobacco control policies in the countries that are not yet Parties to the WHO FCTC, over time. Tobacco use prevalence levels are an appropriate indicator of implementation of SDG Target 3.a &#x201C;Strengthen the implementation of the World Health Organization Framework Convention on Tobacco Control in all countries, as appropriate&#x201D;. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Raw data collected through nationally representative population-based surveys in the countries are used to calculate comparable estimates for this indicator. Information from subnational surveys are not used. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Reports either downloaded from websites, submitted through the WHO FCTC reporting platform or emailed by national counterparts. WHO shares and makes public the methodologies for its estimates through the WHO global report on trends in tobacco use 2000-2025 and the WHO Report on the Global Tobacco Epidemic. The WHO estimates undergo country consultation prior to publication. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Continual data collection. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Biennial release via the WHO Global Report on Trends in Tobacco Use 2000-2025, the WHO Global Health Observatory and the Global Progress Report on Implementation of the WHO FCTC.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>WHO Member States, Parties to the WHO FCTC. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>WHO Tobacco Free Initiative; Secretariat of the WHO Framework Convention on Tobacco Control and the Protocol to Eliminate Illicit Trade in Tobacco Products. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The WHO Framework Convention on Tobacco Control (WHO FCTC) was adopted by the World Health Assembly on 21 May 2003 (Resolution 56.1) and entered into force on 27 February 2005. In 2010, Conference of the Parties adopted Decision FCTC/COP4(16), which requests the Convention Secretariat, in cooperation with competent authorities within WHO, in particular the Tobacco Free Initiative, to further standardize definitions and indicators and facilitate regular review of progress in implementation of the Convention. See <a href="https://apps.who.int/gb/fctc/PDF/cop4/FCTC_COP4_DIV6-en.pdf">https://apps.who.int/gb/fctc/PDF/cop4/FCTC_COP4_DIV6-en.pdf</a> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Tobacco use is a major contributor to illness and death from non-communicable diseases (NCDs). There is no proven safe level of tobacco use or of second-hand smoke exposure. All daily and non-daily users of tobacco are at risk of a variety of poor health outcomes across the life-course, including NCDs. Reducing the prevalence of current tobacco use will make a large contribution to reducing premature mortality from NCDs (Target 3.4). Routine and regular monitoring of this indicator is necessary to enable accurate monitoring and evaluation of the impact of implementation of the WHO Framework Convention on Tobacco Control (WHO FCTC), or tobacco control policies in the countries that are not yet Parties to the WHO FCTC, over time. Tobacco use prevalence levels are an appropriate indicator of implementation of SDG Target 3.a &#x201C;Strengthen the implementation of the World Health Organization Framework Convention on Tobacco Control in all countries, as appropriate&#x201D;. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Raw data collected through nationally representative population-based surveys in the countries are used to calculate comparable estimates for this indicator. Information from subnational surveys are not used. </p>
 <p> </p>
 <p>In some countries, all tobacco use and tobacco smoking may be equivalent, but for many countries where other forms of tobacco are also being consumed, smoking rates will be lower than tobacco use rates to some degree. </p>
 <p> </p>
 <p>The comparability, quality and frequency of household surveys affects the accuracy and quality of the estimates. Non-comparability of data can arise from the use of different survey instruments, sampling and analysis methods, and indicator definitions across Member States. Surveys may cover a variety of age ranges (not always 15+) and be repeated at irregular intervals. Surveys may include a variety of different tobacco products, or sometimes only one product such as cigarettes, based on the country&#x2019;s perception of which products are important to monitor. Unless both smoked and smokeless products are monitored simultaneously, tobacco use prevalence will be underreported. Countries have begun to monitor use of e-cigarettes and other emerging products, which may confound countries&#x2019; definitions of tobacco use. The definition of current use may not always be restricted to the 30 days prior to the survey. In addition, surveys ask people to self-report their tobacco use, which can lead to under-reporting of tobacco use. </p>
 <p> </p>
 <p>There is no standard protocol used across Member States to ask people about their tobacco use. WHO&#x2019;s Tobacco Questions for Surveys (TQS) have been adopted in many surveys, which helps improve comparability of indicators across countries. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>A statistical model based on a Bayesian negative binomial meta-regression is used to model prevalence of current tobacco use for each country, separately for men and women. A full description of the method is available as a peer-reviewed article in The Lancet, volume 385, No. 9972, p966&#x2013;976 (2015). Once the age-and-sex-specific prevalence rates from national surveys are compiled into a dataset, the model is fit to calculate trend estimates from the year 2000 to 2030. The model has two main components: (a) adjusting for missing indicators and age groups, and (b) generating an estimate of trends over time as well as the 95% credible interval around the estimate. Depending on the completeness/comprehensiveness of survey data from a particular country, the model at times makes use of data from other countries to fill information gaps. To fill data gaps, information is &#x201C;borrowed&#x201D; from countries in the same UN subregion. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>A statistical model based on a Bayesian negative binomial meta-regression is used to model prevalence of current tobacco use for each country, separately for men and women. A full description of the method is available as a peer-reviewed article in The Lancet, volume 385, No. 9972, p966&#x2013;976 (2015). Once the age-and-sex-specific prevalence rates from national surveys are compiled into a dataset, the model is fit to calculate trend estimates from the year 2000 to 2030. The model has two main components: (a) adjusting for missing indicators and age groups, and (b) generating an estimate of trends over time as well as the 95% credible interval around the estimate. Depending on the completeness/comprehensiveness of survey data from a particular country, the model at times makes use of data from other countries to fill information gaps. To fill data gaps, information is &#x201C;borrowed&#x201D; from countries in the same UN subregion. </p>
 <p>The resulting trend lines are used to derive estimates for single years, so that a number can be reported even if the country did not run a survey in that year. In order to make the results comparable between countries, the prevalence rates are age-standardized to the WHO Standard Population. </p>
 <p>Estimates for countries with irregular surveys or many data gaps will have large uncertainty ranges, and such results should be interpreted with caution. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>The results of the modelling described in the <em>Method of Computation</em> are compared with the input data to assure a good model fit. The results and input data are shared with countries via the tobacco control focal point for country consultation prior to publication in the biennial reports <em>WHO global report on trends in tobacco use 2000-2025 </em>and<em> WHO Report on the Global Tobacco Epidemic</em>. During country consultation, sometimes additional data are made available to WHO by the country for the purposes of modelling indicator 3.a.1.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Except for adjustments made during modelling as described in the <em>Method of Computation</em>, no other adjustments are made.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>&#xF0B7; At country level </strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Except for adjustments made during modelling as described in the <em>Method of Computation</em>, no other adjustments are made.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>&#xF0B7; At country level </strong></p>
 <p>For countries with less than two national surveys completed in different years since 1990, no estimate is calculated, since no trend can be determined. For countries with data from two or more national surveys, data gaps, if any, are filled as described in the <em>Method of Computation</em>. </p>
 <p> </p>
 <p><strong>&#xF0B7; At regional and global levels </strong></p>
 <p>Countries where no estimate can be calculated are included in regional and global averages by assuming their prevalence rates for men and women are equal to the average rates for men and women seen in the UN subregion1 in which they are located. Where fewer than 50% of a UN subregion&#x2019;s population was surveyed, UN subregions are grouped with neighbouring subregions until at least 50% of the grouped population has contributed data to the region&#x2019;s average rates. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Average prevalence rates for regions are calculated by population-weighting the age-specific prevalence rates in countries, then age-standardizing the age-specific average rates of the region. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Countries use a variety of population-based survey protocols to monitor tobacco use at national level. Examples of internationally supported protocols include Tobacco Questions for Surveys (<a href="https://www.gtssacademy.org/survey-tools/tqs/">https://www.gtssacademy.org/survey-tools/tqs/</a>); the Global Adult Tobacco Survey (<a href="https://www.gtssacademy.org/survey-tools/gats/">https://www.gtssacademy.org/survey-tools/gats/</a>); the WHO STEPS survey (<a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps</a>); the World Health Survey (<a href="https://www.who.int/data/data-collection-tools/world-health-survey-plus">https://www.who.int/data/data-collection-tools/world-health-survey-plus</a>); the Multiple Indicator Cluster survey (<a href="https://mics.unicef.org/tools">https://mics.unicef.org/tools</a>); and the Demographic and Health Survey (<a href="https://www.dhsprogram.com/Methodology/index.cfm">https://www.dhsprogram.com/Methodology/index.cfm</a>). Sampling for national representativeness is the preserve of National Statistics Offices. Survey data submitted by the WHO FCT Parties biennially to the Convention Secretariat via the WHO FCTC Reporting Instrument (<a href="https://fctc.who.int/who-fctc/reporting/reporting-instrument">https://fctc.who.int/who-fctc/reporting/reporting-instrument</a>) are shared with WHO. Additional data are obtained by WHO through contact with tobacco focal points at the Ministries of Health or by searching in the public domain.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Clearance of statistical methods and publications through WHO Division of Data, Analytics, and Delivery for Impact. Adherence to GATHER guidelines (<a href="http://gather-statement.org/">http://gather-statement.org/</a>) is required for clearance. Data, estimates and metadata are published through the Global Health Observatory.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>The survey data reported by WHO member states and by Parties to the WHO-FCTC is checked against published reports and for internal consistency. Modelling results, together with input data, are shared with tobacco surveillance and policy experts in WHO Regions prior to being shared with tobacco focal points in Ministries of Health. The pertinent WHO collaborating centre also reviews the results prior to publication. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Average prevalence rates for regions are calculated by population-weighting the age-specific prevalence rates in countries, then age-standardizing the age-specific average rates of the region. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Countries use a variety of population-based survey protocols to monitor tobacco use at national level. Examples of internationally supported protocols include Tobacco Questions for Surveys (<a href="https://www.gtssacademy.org/survey-tools/tqs/">https://www.gtssacademy.org/survey-tools/tqs/</a>); the Global Adult Tobacco Survey (<a href="https://www.gtssacademy.org/survey-tools/gats/">https://www.gtssacademy.org/survey-tools/gats/</a>); the WHO STEPS survey (<a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps</a>); the World Health Survey (<a href="https://www.who.int/data/data-collection-tools/world-health-survey-plus">https://www.who.int/data/data-collection-tools/world-health-survey-plus</a>); the Multiple Indicator Cluster survey (<a href="https://mics.unicef.org/tools">https://mics.unicef.org/tools</a>); and the Demographic and Health Survey (<a href="https://www.dhsprogram.com/Methodology/index.cfm">https://www.dhsprogram.com/Methodology/index.cfm</a>). Sampling for national representativeness is the preserve of National Statistics Offices. Survey data submitted by the WHO FCT Parties biennially to the Convention Secretariat via the WHO FCTC Reporting Instrument (<a href="https://fctc.who.int/who-fctc/reporting/reporting-instrument">https://fctc.who.int/who-fctc/reporting/reporting-instrument</a>) are shared with WHO. Additional data are obtained by WHO through contact with tobacco focal points at the Ministries of Health or by searching in the public domain.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Clearance of statistical methods and publications through WHO Division of Data, Analytics, and Delivery for Impact. Adherence to GATHER guidelines (<a href="http://gather-statement.org/">http://gather-statement.org/</a>) is required for clearance. Data, estimates and metadata are published through the Global Health Observatory.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The survey data reported by WHO member states and by Parties to the WHO-FCTC is checked against published reports and for internal consistency. Modelling results, together with input data, are shared with tobacco surveillance and policy experts in WHO Regions prior to being shared with tobacco focal points in Ministries of Health. The pertinent WHO collaborating centre also reviews the results prior to publication. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>Availability depends on each country&#x2019;s schedule for publishing their nationally representative population survey results. WHO calculates estimates every two years.</p>
 <p><strong>Time series:</strong></p>
 <p>The indicator is calculated for all countries from 2000 to the current year. Where the current year is later than the most recent national survey year, projections are made according to the <em>Method of Computation</em> described above. </p>
 <p><strong>Disaggregation:</strong></p>
 <p>Sex </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong> </p>
 <p>WHO estimates differ from national estimates in that they are (i) age-standardised to improve international comparability and (ii) calculated using one standard method for all countries. Infrequent surveys or unavailability of recent surveys lead to more reliance on modelling. As the data set for each country improves over time with addition of new surveys, recent estimates may seem inconsistent with earlier estimates. WHO estimates undergo country consultation prior to release. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p><strong>URL: </strong> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>URL: </strong> </p>
 <p><a href="http://www.who.int/gho/en/" target="_blank"><u>http://www.who.int/gho/en/</u></a> </p>
 <p><a href="http://apps.who.int/fctc/implementation/database/" target="_blank"><u>http://apps.who.int/fctc/implementation/database/</u></a> </p>
 <p><strong>Notes:</strong> </p>
 <p><sup>1</sup> For a listing of countries by UN region, please refer to World Population Prospects, published by the UN Department of Economic and Social Affairs. For the purposes of tobacco use analysis, the following adjustments were made: (i) Eastern Africa subregion was divided into two regions: Eastern Africa Islands and Remainder of Eastern Africa; (ii) Armenia, Azerbaijan, Estonia, Georgia, Kazakhstan, Kyrgyzstan, Latvia, Lithuania, Tajikistan, Uzbekistan and Turkmenistan were classified with Eastern Europe, (iii); Cyprus, Israel and Turkey were classified with Southern Europe, and (iv) Melanesia, Micronesia and Polynesia subregions were combined into one subregion.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2560,7 +1527,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2613,12 +1580,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2804,12 +1771,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

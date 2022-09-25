@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1351,1312 +1387,320 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 17.1: Strengthen domestic resource mobilization, including through international support to developing countries, to improve domestic capacity for tax and other revenue collection</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 17.1.1: Total government revenue as a proportion of GDP, by source</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>Indicator 17.1.2: Proportion of domestic budget funded by domestic taxes </p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>IMF Statistics Department (Government Finance Division)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 17.1: Strengthen domestic resource mobilization, including through international support to developing countries, to improve domestic capacity for tax and other revenue collection</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 17.1.1: Total government revenue as a proportion of GDP, by source</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-03-01</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>Indicator 17.1.2: Proportion of domestic budget funded by domestic taxes </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>IMF Statistics Department (Government Finance Division)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>IMF Statistics Department (Government Finance Division)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>IMF Statistics Department (Government Finance Division)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p>Revenue is defined in Chapter 4 (paragraph 4.23) of GFSM 2014 an increase in net worth resulting from a transaction. It is a fiscal indicator for assessing the sustainability of fiscal activities. General government units have four types of revenue. The major types of revenue are taxes (GFS code 11), social contributions (GFS code 12), grants (GFS code 13), and other revenue (GFS code 14). Of these, compulsory levies and transfers are the main sources of revenue for most general government units. In particular, taxes are compulsory, unrequited amounts receivable by government units from institutional units. Social contributions are actual or imputed revenue receivable by social insurance schemes to make provision for social insurance benefits payable. Grants are transfers receivable by government units from other resident or nonresident government units or international organizations, and that do not meet the definition of a tax, subsidy, or social contribution. Other revenue is all revenue receivable excluding taxes, social contributions, and grants. Other revenue comprises: (i) property income; (ii) sales of goods and services; (iii) fines, penalties, and forfeits; (iv) transfers not elsewhere classified; and (v) premiums, fees, and claims related to nonlife insurance and standardized guarantee schemes.</p>
 <p><strong>Concepts:</strong></p>
 <p>The transactions and the associated classifications are detailed in Chapter 5 of GFSM 2014 and are structured to demonstrate how general government (and public sector) units raise revenue. Only those taxes and social insurance contributions that are evidenced by tax assessments and declarations, customs declarations, and similar documents are considered to create revenue for government units. Thus, the difference between assessments and expected collections represents a claim that has no real value and should not be recorded as revenue (see GFSM 2014 paragraph 5.20). The analytic framework of GFSM 2014 (like that of the GFSM 2001) builds on the GFSM 1986 framework, and extends it by incorporating additional elements that are useful in assessing fiscal policy. An important example is the treatment of nonfinancial assets, where the sale of such assets is no longer included in revenue. The disposal of a nonfinancial asset by sale or barter is not revenue because it has no effect on net worth. Rather, it changes the composition of the balance sheet by exchanging one asset (the nonfinancial asset) for another (the proceeds of the sale). Similarly, amounts receivable from loan repayments and loan disbursements are not revenue. In general, transactions that increase net worth result from current operations. Capital transfers are an exception. In GFSM 2014, capital transfers receivable are classified as revenue because they increase the recipient&#x2019;s net worth and they are often indistinguishable from current transfers in their effect on government operations. In recording cash-based accounting revenue transactions, data representing the tax payments received by government, net of refunds paid out during the period covered should be reported. These data will include taxes paid after the original assessment, taxes paid or refunds deducted from taxes after subsequent assessments, and taxes paid or refunds deducted after any subsequent reopening of the accounts. Therefore, total tax revenue could be presented on a gross basis as the total amount of all taxes accrued, or on a net basis as the gross amount minus tax refunds. Revenue categories are presented gross of expense categories for the same or related category. In particular, interest revenue is presented gross rather than as net interest expense or net interest revenue. Similarly, social benefits and social contributions, grant revenue and expense, and rent revenue and expense are presented gross. Also, sales of goods and services are presented gross of the expenses incurred in their production. In cases of erroneous or unauthorized transactions, revenue categories are presented net of refunds of the relevant revenue, and expense categories are presented net of inflows from the recovery of the expense. For example, refunds of income taxes may be paid when the amount of taxes withheld or otherwise paid in advance of the final determination exceeds the actual tax due. Such refunds are recorded as a reduction in tax revenue. For this reason, tax revenue is presented net of non-payable tax credits (see GFSM 2014 paragraphs 5.29&#x2013;5.32).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Proportion</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>See 2.a.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>The actual and recommended sources of data for deriving this indicator are the fiscal statistics reported to the IMF&#x2019;s Statistics Department. These come from various national agencies (Ministries of Finance, Central Banks, National Statistics Offices, etc.) and are compiled according to a standardized method for data collection: the annual GFS Questionnaire. In the 2020 annual reporting cycle, approximately 130 countries reported the relevant series for monitoring indicator 17.1.1. For current non-reporting countries that have demonstrated the capacity to compile and report the relevant GFS revenue series, the IMF Statistics Department is engaged in outreach to the national authorities, in consultation with the respective IMF Area Departments and Offices of the Executive Director, as needed. Capacity Development activities will seek to address data deficiencies, including through regional workshops. The steps outlined above should allow, over time, for covering virtually the entire IMF membership.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>See 3.a. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Dates when source collection is next planned: IMF Statistics Department completed the 2020 round of annual GFS collection in February 2021. The 2021 collection cycle is planned to take place between September and December 2021.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Country data are disseminated as they are processed and summary World Tables and other indicators, including 17.1.1 are planned for release in early 2021. For most countries, the reference year will be their Fiscal Year 2019 series, as well as five or more most recent years.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>See 3.a.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>The IMF Statistics Department (Government Finance Division) is the organization responsible for the compilation and reporting on this indicator at the global level.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>See 3.a.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Fiscal policy is the use of the level and composition of the general government and public sectors&#x2019; spending and revenue&#x2014;and the related accumulation of government assets and liabilities&#x2014;to achieve such goals as the stabilization of the economy, the reallocation of resources, and the redistribution of income. In addition to revenue mobilization, government units may also finance a portion of their activities in a specific period by borrowing or by acquiring funds from sources other than compulsory transfers&#x2014;for example, interest revenue, incidental sales of goods and services, or the rent of subsoil assets. Indicator 17.1.1 Total government revenue as a proportion of GDP, by source supports understanding countries&#x2019; domestic revenue mobilization in the form of tax and nontax sources. The indicator will provide analysts with a cross-country comparable dataset that highlights the relationship between the four main types of revenue as well as the relative &quot;tax burden&quot; (revenue in the form of taxes) and &#x201C;fiscal burden&#x201D; (revenue in the form of taxes plus social contributions).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>In principle, GFS should cover all entities that materially affect fiscal policies. Cross-country comparisons are ideally made with reference to the consolidated general government sector. However, for most developing and many emerging market economies, compiling data for the consolidated general government and its subsectors is problematic owing to limitations in the availability and/or timeliness of source data. For example, a country may have one central government; several state, provincial, or regional governments; and many local governments. Countries may also have social security funds. The <em>GFSM 201</em>4 recommends that statistics should be compiled for all such general government units. This reporting structure is illustrated below:</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Proportion</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 2.a.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The actual and recommended sources of data for deriving this indicator are the fiscal statistics reported to the IMF&#x2019;s Statistics Department. These come from various national agencies (Ministries of Finance, Central Banks, National Statistics Offices, etc.) and are compiled according to a standardized method for data collection: the annual GFS Questionnaire. In the 2020 annual reporting cycle, approximately 130 countries reported the relevant series for monitoring indicator 17.1.1. For current non-reporting countries that have demonstrated the capacity to compile and report the relevant GFS revenue series, the IMF Statistics Department is engaged in outreach to the national authorities, in consultation with the respective IMF Area Departments and Offices of the Executive Director, as needed. Capacity Development activities will seek to address data deficiencies, including through regional workshops. The steps outlined above should allow, over time, for covering virtually the entire IMF membership.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 3.a. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Dates when source collection is next planned: IMF Statistics Department completed the 2020 round of annual GFS collection in February 2021. The 2021 collection cycle is planned to take place between September and December 2021.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Country data are disseminated as they are processed and summary World Tables and other indicators, including 17.1.1 are planned for release in early 2021. For most countries, the reference year will be their Fiscal Year 2019 series, as well as five or more most recent years.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 3.a.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The IMF Statistics Department (Government Finance Division) is the organization responsible for the compilation and reporting on this indicator at the global level.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 3.a.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Fiscal policy is the use of the level and composition of the general government and public sectors&#x2019; spending and revenue&#x2014;and the related accumulation of government assets and liabilities&#x2014;to achieve such goals as the stabilization of the economy, the reallocation of resources, and the redistribution of income. In addition to revenue mobilization, government units may also finance a portion of their activities in a specific period by borrowing or by acquiring funds from sources other than compulsory transfers&#x2014;for example, interest revenue, incidental sales of goods and services, or the rent of subsoil assets. Indicator 17.1.1 Total government revenue as a proportion of GDP, by source supports understanding countries&#x2019; domestic revenue mobilization in the form of tax and nontax sources. The indicator will provide analysts with a cross-country comparable dataset that highlights the relationship between the four main types of revenue as well as the relative &quot;tax burden&quot; (revenue in the form of taxes) and &#x201C;fiscal burden&#x201D; (revenue in the form of taxes plus social contributions).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>In principle, GFS should cover all entities that materially affect fiscal policies. Cross-country comparisons are ideally made with reference to the consolidated general government sector. However, for most developing and many emerging market economies, compiling data for the consolidated general government and its subsectors is problematic owing to limitations in the availability and/or timeliness of source data. For example, a country may have one central government; several state, provincial, or regional governments; and many local governments. Countries may also have social security funds. The <em>GFSM 201</em>4 recommends that statistics should be compiled for all such general government units. This reporting structure is illustrated below:</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAzIAAABpCAIAAABu9oHTAAAAAXNSR0IArs4c6QAAKdBJREFUeF7tXVsMVcXV/tGHvggmAkkVX6SgbTCmXLRJCw0BQZLaJiagYBRRtFKDgXCx+NC08iAGMdKQUIwavCQWQ6JRVBAKGGhMoIIWJS0VeALtRR8QCU/SfnW165/Obc/Z93P2tx9O9pk9s2atb62999pr1swM+ec///l/PIgAESACRIAIEAEiQASaRuCiphlg/0SACBABIkAEiAARIAL/RoBuGe2ACBABIkAEiAARIAKtQGCIOYg5ZMiQVjBFJogAESACRIAIEAEi0BkE1Bmz3bILFy50BoT/CHr06NFx48Z1SmqIDHm7JnWnVKzC0rw7ovcOKhqa7aDU3Xx6X3TRRYPtnEDAoFvWwRkAvLE78t7qppg0747ovYOKplvWEduGmBjKG2znxBSQuWXdMWxKSgSIABEgAkSACLQaAbplrVYPmSMCRIAIEAEiQAS6gwDdsu7ompISASJABIgAESACrUaAblmr1UPmiAARIAJEgAgQge4gQLesO7qmpESACBABIkAEiECrEaBb1mr1kDkiQASIABEgAkSgOwjQLeuOrikpESACRIAIEAEi0GoE6Ja1Wj1kjggQASJABIgAEegOAnTLuqPr/pb0yy+/nDFjBpZCluONN96oQp5PP/105syZ+BXi9XRaliDPPvssGC6LGukQASJABIhA/QjQLasfc/bYMwLwNm655ZYlS5Z89fVx6tSp1atXv//++z0TSmiga0nX2WkCXxlV4EoeOHCgOB1SIAJEgAi0GQE8+UeOHPnEE08ok/hKR0lFb4R0KFasWFEKD3TL0jFnzcYQeOedd6644oqbb74ZO1TgwDlckPHjx4OhBQsWSPxM7lLcFZMnT8YtihJE1yR6ZNZBNVQYM2aMhMT0Ek4s8SKdehvqPQke5s6di64t3syuXT5RMm/ePDAmskhbrwheMR9++OGnn3568eLFjSmJHRMBIkAEakFg0qRJf/jDH3RYY+/evVdffXUtPcc6KWt7KLpljauSDCQhcN1116GejipefPHF+ELCgTtBQmi4KiObo0aNOnny5JkzZy677LKPP/7YqvPKK69861vfQvnll18OT2j48OFoi8rnz593P3S8nUpH2i9OpN+pU6euX78eJ3v27Lnjjjvg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" /></p>
 <p>Some countries report data for the consolidated general government with one or more sub-sectors not separately reported. Similarly, there are some countries that report &#x201C;consolidated central government&#x201D; without necessarily providing the budgetary central government subsector separately. To address this, and allow the derivation of regional and world aggregates, the country data are presented for the budgetary central government, the consolidated central government (with and without social security funds), and for consolidated general government, as reported by the national authorities. </p>
 <p>For many emerging market and low-income countries with limited statistical capacity, budgetary central government is considered the most appropriate level of institutional coverage for comparison purposes. Budgetary central government, as described in <em>GFSM 2014</em> (paragraph 2.81), is an institutional unit of the general government sector particularly important in terms of size and power, particularly the power to exercise control over many other units and entities. This component of general government is usually covered by the main (or general) budget. The budgetary central government&#x2019;s revenue (and expense) are normally regulated and controlled by a ministry of finance, or its functional equivalent, by means of a budget approved by the legislature. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Indicator 17.1.1 will be derived using series that are basic to the GFS reporting framework. GFS revenue series maintained by the IMF Statistics Department are collected in Table 1 of the standard annual data questionnaire. Each revenue transaction is classified according to whether it is a tax or another type of revenue. GFS revenue aggregates are summations of individual entries and elements in this particular class of flows and allow for these data to be arranged in a manageable and analytically useful way. For example, tax revenue is the sum of all flows that are classified as taxes. Conceptually, the value for each main revenue aggregate is the sum of the values for all items in the relevant category. The annual GFS series for monitoring Indicator 17.1.1will be derived from the data reported by the national authorities (in national currency) expressed as a percent of Gross Domestic Product (GDP), where GDP is derived from the IMF <em>World Economic Outlook</em> database (no adjustments and/or weighting techniques will be applied). Mixed sources are not being used nor will the calculation change over time (i.e., there are no discontinuities in the underlying series as these are key aggregates/ components in all country reported GFS series). The presentation will closely align with that currently contained in World Table 4 from the hard-copy <em>GFS Yearbook</em>: </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Indicator 17.1.1 will be derived using series that are basic to the GFS reporting framework. GFS revenue series maintained by the IMF Statistics Department are collected in Table 1 of the standard annual data questionnaire. Each revenue transaction is classified according to whether it is a tax or another type of revenue. GFS revenue aggregates are summations of individual entries and elements in this particular class of flows and allow for these data to be arranged in a manageable and analytically useful way. For example, tax revenue is the sum of all flows that are classified as taxes. Conceptually, the value for each main revenue aggregate is the sum of the values for all items in the relevant category. The annual GFS series for monitoring Indicator 17.1.1will be derived from the data reported by the national authorities (in national currency) expressed as a percent of Gross Domestic Product (GDP), where GDP is derived from the IMF <em>World Economic Outlook</em> database (no adjustments and/or weighting techniques will be applied). Mixed sources are not being used nor will the calculation change over time (i.e., there are no discontinuities in the underlying series as these are key aggregates/ components in all country reported GFS series). The presentation will closely align with that currently contained in World Table 4 from the hard-copy <em>GFS Yearbook</em>: </p>
 <p><img src="data:image/png;base64,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" /></p>
 <p><br />Historic series have been aligned with <em>GFSM 2014</em> classifications. This enhances the comparability of data across countries and ensures establishing robust analytical findings to support SDG monitoring using fiscal data.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>See 4.c.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>N/A</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p>The IMF plans to rely exclusively on officially reported data provided by the national authorities using the standard GFS questionnaire based on GFSM 2014 methodology. No country data estimates for missing values will be calculated by the IMF Statistics Department. Where country data are not available due to a lack of reporting to the IMF Statistics Department, we plan to engage in outreach to the national authorities, in consultation with the respective IMF Area Departments and Offices of the Executive Director, as needed, to ensure that the key GFS series are reported.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>The IMF Statistics Department will leverage the existing GFS database to provide cross-country comparable series in a standardized presentation format. We would appreciate further discussion with the IAEG SDGs on the merits of deriving regional or global aggregates from the country reported values for this indicator.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>See 4.c. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>See 4.c.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>See 4.c.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>See 4.c.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>N/A</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The IMF plans to rely exclusively on officially reported data provided by the national authorities using the standard GFS questionnaire based on GFSM 2014 methodology. No country data estimates for missing values will be calculated by the IMF Statistics Department. Where country data are not available due to a lack of reporting to the IMF Statistics Department, we plan to engage in outreach to the national authorities, in consultation with the respective IMF Area Departments and Offices of the Executive Director, as needed, to ensure that the key GFS series are reported.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The IMF Statistics Department will leverage the existing GFS database to provide cross-country comparable series in a standardized presentation format. We would appreciate further discussion with the IAEG SDGs on the merits of deriving regional or global aggregates from the country reported values for this indicator.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 4.c. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 4.c.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 4.c.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See 4.c.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>Classification of the indicator into one of the three tiers: We recommend that 17.1.1 (like 17.1.2) remain classified as Tier 1: The indicator is conceptually clear and internationally agreed standards for compiling components and aggregates are available. The underlying data are regularly produced by countries, and there is current data available. From the IAEG-SDGs Tier Classification description at https://unstats.un.org/sdgs/iaeg-sdgs/tier-classification/, a key criteria is that &#x201C;data are regularly produced by countries for at least 50 per cent of countries&#x201D;. The IMF GFS database, with 130+ regular annual reporting countries using the same reporting format meets this key criteria. Apart from conflict countries, all IMF member countries produce revenue (and expenditure) data for surveillance purposes. In recent rounds of soliciting annual GFS series from countries, we have specifically encouraged those countries that were non-reporters over the past few years to (at a minimum) provide the key revenue and expenditure series needed to monitor 17.1.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>The detailed GFS revenue classification structure in the annual questionnaire that is used by countries to report data allows for compiling 17.1.1. The four types of revenue: Taxes, Social contributions, Grants and Other revenue are further disaggregated in the annual GFS questionnaire in order to encompass all possible forms of revenue administrations. Taxes are disaggregated as follows:<br /></p>
@@ -2667,171 +1711,94 @@ data-event-label="Change to Sources tab"
 <p><br /></p>
 <p>And Other revenue is disaggregated into five main types, with additional component detail as follows:</p>
 <p><img src="data:image/png;base64,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" /><br /><br /></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
-<p>Where the relevant aggregates and component detail in series disseminated by the national authorities are found to differ from GFS due to unreported revisions, the IMF Statistics Department will solicit revised time series in GFS format from the national authorities.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>The GFSM 2014 is available at <a href="http://www.imf.org/external/np/sta/gfsm/">http://www.imf.org/external/np/sta/gfsm/</a>. A series of videos that discuss the GFS analytical framework are available at: <a href="http://www.youtube.com/playlist?list=PLmYAE4wV1YQzimXjDWMQ-4GwConTsP7-a">IMF Statistics E-Learning Videos - YouTube</a>. Although not foreseen under the reporting of 17.1.1, analysts can also use the detailed IMF GFS Revenue database to supplement this indicator with measures of direct, indirect and capital taxes (see GFSM 2014, Annex to Chapter 4).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
+<p>Where the relevant aggregates and component detail in series disseminated by the national authorities are found to differ from GFS due to unreported revisions, the IMF Statistics Department will solicit revised time series in GFS format from the national authorities.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The GFSM 2014 is available at <a href="http://www.imf.org/external/np/sta/gfsm/">http://www.imf.org/external/np/sta/gfsm/</a>. A series of videos that discuss the GFS analytical framework are available at: <a href="http://www.youtube.com/playlist?list=PLmYAE4wV1YQzimXjDWMQ-4GwConTsP7-a">IMF Statistics E-Learning Videos - YouTube</a>. Although not foreseen under the reporting of 17.1.1, analysts can also use the detailed IMF GFS Revenue database to supplement this indicator with measures of direct, indirect and capital taxes (see GFSM 2014, Annex to Chapter 4).</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2857,7 +1824,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2910,12 +1877,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3101,12 +2068,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

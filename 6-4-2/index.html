@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -927,828 +963,35 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 6: Ensure availability and sustainable management of water and sanitation for all</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 6.4: By 2030, substantially increase water-use efficiency across all sectors and ensure sustainable withdrawals and supply of freshwater to address water scarcity and substantially reduce the number of people suffering from water scarcity</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 6.4.2: Level of water stress: freshwater withdrawal as a proportion of available freshwater resources</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Level of water stress: freshwater withdrawal as a proportion of available freshwater resources (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>6.4.1: Change in water-use efficiency over time</p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 6: Ensure availability and sustainable management of water and sanitation for all</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 6.4: By 2030, substantially increase water-use efficiency across all sectors and ensure sustainable withdrawals and supply of freshwater to address water scarcity and substantially reduce the number of people suffering from water scarcity</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 6.4.2: Level of water stress: freshwater withdrawal as a proportion of available freshwater resources</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>Level of water stress: freshwater withdrawal as a proportion of available freshwater resources (%)</p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>6.4.1: Change in water-use efficiency over time</p>
 <p>6.1.1: Proportion of population using safely managed drinking water services</p>
 <p>6.3.1: Proportion of wastewater safely treated</p>
 <p>6.6.1: Change in the extent of water-related ecosystems over time</p>
@@ -1757,160 +1000,79 @@ data-event-label="Change to Sources tab"
 <p>15.3.1: Proportion of land that is degraded over total land area</p>
 <p>1.5.1: Number of deaths, missing persons and persons affected by disaster per 100,000 people [a]</p>
 <p>11.5.1: Number of deaths, missing persons and persons affected by disaster per 100,000 people [a]</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Food and Agriculture Organization of the United Nations (FAO)</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Food and Agriculture Organization of the United Nations (FAO)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p>The level of water stress: freshwater withdrawal as a proportion of available freshwater resources is the ratio between total freshwater withdrawn by all major sectors and total renewable freshwater resources, after taking into account environmental flow requirements. Main sectors, as defined by ISIC standards, include agriculture; forestry and fishing; manufacturing; electricity industry; and services. This indicator is also known as water withdrawal intensity.</p>
 <p><strong>Concepts:</strong></p>
 <p>This indicator provides an estimate of pressure by all sectors on the country&#x2019;s renewable freshwater resources. A low level of water stress indicates a situation where the combined withdrawal by all sectors is marginal in relation to the resources, and has therefore little potential impact on the sustainability of the resources or on the potential competition between users. A high level of water stress indicates a situation where the combined withdrawal by all sectors represents a substantial share of the total renewable freshwater resources, with potentially larger impacts on the sustainability of the resources and potential situations of conflicts and competition between users. </p>
@@ -1920,178 +1082,124 @@ data-event-label="Change to Sources tab"
 <p>Total freshwater withdrawal (TFWW) is the volume of freshwater extracted from its source (rivers, lakes, aquifers) for agriculture, industries and services<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup>. It is estimated at the country level for the following three main sectors: agriculture, services (including domestic water withdrawal) and industries (including cooling of thermoelectric plants). Freshwater withdrawal includes fossil groundwater. It does not include non-conventional water, i.e. direct use of treated wastewater, direct use of agricultural drainage water and desalinated water. </p>
 <p>Environmental flow requirements (EFR) are defined as the quantity and timing of freshwater flows and levels necessary to sustain aquatic ecosystems, which, in turn, support human cultures, economies, sustainable livelihoods, and wellbeing. Water quality and also the resulting ecosystem services are excluded from this formulation which is confined to water volumes. This does not imply that quality and the support to societies which are dependent on environmental flows are not important and should not be taken care of.<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup> Methods of computation of EFR are extremely variable and range from global estimates to comprehensive assessments for river reaches. For the purpose of the SDG indicator, water volumes can be expressed in the same units as the TFWW, and then as percentages of the available water resources.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> In AQUASTAT, Services water withdrawal is reported as Municipal water withdrawal. <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> They are indeed taken into account by other targets and indicators, such as 6.3.2, 6.5.1 and 6.6.1. <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Percent (%)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Percent (%)</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>The System of Environmental-Economic Accounting for Water: SEEA-Water for water resources and withdrawals (Available at https://seea.un.org/content/seea-water</li>
   <li>The World Census of Agriculture 2020: WCA (Volume 1), for irrigation definitions (Available at: http://www.fao.org/world-census-agriculture).</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Data for this indicator are usually collected by national ministries and institutions having water-related issues in their mandate, such as national statistic offices, ministries of water resources, agriculture or environment. Official counterparts at country level are the national statistics office and/or the line ministry for water resources and irrigation. More specifically, FAO requests countries to nominate a National Correspondent to act as the focal point for the data collection and communication. Data are mainly published within national statistical yearbooks, national water resources and irrigation master plans and other reports (such as those from projects, international surveys or results and publications from national and international research centres).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Data collection is done through FAO&#x2019;s Global Information System on Water and Agriculture (AQUASTAT) and AQUASTAT questionnaire on water and agriculture. The data collection process relies on a network of National Correspondents, officially nominated by their respective countries, in charge of the provision of official national data to AQUASTAT. As at August 2020, 150 countries have nominated national correspondents as well as alternate correspondents from different agencies. Countries submit data through the annual AQUASTAT questionnaire on water and agriculture, which contains, among others, the information required for the calculation of SDG indicator 6.4.2.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Data are collected every year through the AQUASTAT network of National Correspondents. FAO has dispatched the questionnaires to the National Correspondents in July 2022.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Data for the indicator are released every year, usually in February following the UNSD collection schedule.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data for this indicator are usually collected by national ministries and institutions having water-related issues in their mandate, such as national statistic offices, ministries of water resources, agriculture or environment. Official counterparts at country level are the national statistics office and/or the line ministry for water resources and irrigation. More specifically, FAO requests countries to nominate a National Correspondent to act as the focal point for the data collection and communication. Data are mainly published within national statistical yearbooks, national water resources and irrigation master plans and other reports (such as those from projects, international surveys or results and publications from national and international research centres).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data collection is done through FAO&#x2019;s Global Information System on Water and Agriculture (AQUASTAT) and AQUASTAT questionnaire on water and agriculture. The data collection process relies on a network of National Correspondents, officially nominated by their respective countries, in charge of the provision of official national data to AQUASTAT. As at August 2020, 150 countries have nominated national correspondents as well as alternate correspondents from different agencies. Countries submit data through the annual AQUASTAT questionnaire on water and agriculture, which contains, among others, the information required for the calculation of SDG indicator 6.4.2.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data are collected every year through the AQUASTAT network of National Correspondents. FAO has dispatched the questionnaires to the National Correspondents in July 2022.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data for the indicator are released every year, usually in February following the UNSD collection schedule.</p>
 <p> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Data come from governmental sources. The institutions responsible for data collection at national level vary according to countries. However, in general data for this indicator are provided by the Ministry of Agriculture, Ministry of Water, Ministry of Environment and other line Ministries. In many cases, data collection at country level is coordinated by the National Statistics office (NSO).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Calculation rules are predefined and use data referring to the same year to general aggregate values.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>FAO has, as part of its mandate, the function of &#x201C;collect, analyse, interpret and disseminate information relating to nutrition, food and agriculture&#x201D;. (FAO Constitution, Article 1)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The purpose of this indicator is to show the degree to which water resources are being exploited to meet the country&apos;s water demand. It measures a country&apos;s pressure on its water resources and therefore the challenge on the sustainability of its water use. It tracks progress regarding &#x201C;withdrawals and supply of freshwater to address water scarcity&#x201D;, i.e. the environmental component of target 6.4.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data come from governmental sources. The institutions responsible for data collection at national level vary according to countries. However, in general data for this indicator are provided by the Ministry of Agriculture, Ministry of Water, Ministry of Environment and other line Ministries. In many cases, data collection at country level is coordinated by the National Statistics office (NSO).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Calculation rules are predefined and use data referring to the same year to general aggregate values.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>FAO has, as part of its mandate, the function of &#x201C;collect, analyse, interpret and disseminate information relating to nutrition, food and agriculture&#x201D;. (FAO Constitution, Article 1)</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The purpose of this indicator is to show the degree to which water resources are being exploited to meet the country&apos;s water demand. It measures a country&apos;s pressure on its water resources and therefore the challenge on the sustainability of its water use. It tracks progress regarding &#x201C;withdrawals and supply of freshwater to address water scarcity&#x201D;, i.e. the environmental component of target 6.4.</p>
 <p>The indicator shows to what extent water resources are already used, and signals the importance of effective supply and demand management policies. It indicates the likelihood of increasing competition and conflict between different water uses and users in a situation of increasing water scarcity. Increased water stress, shown by an increase in the value of the indicator, has potentially negative effects on the sustainability of the natural resources and on economic development. On the other hand, low values of the indicator indicate that water does not represent a particular challenge for economic development and sustainability.</p>
 <p>However, extremely low values may indicate the inability of a country to use properly its water resources for the benefit of the population. In such cases, a moderate and controlled increase in the value of the indicator can be a sign of positive development.</p>
 <p>This indicator provides an estimate of pressure by all sectors on the country&#x2019;s renewable freshwater resources. A low level of water stress indicates a situation where the combined withdrawal by all sectors is marginal in relation to the resources, and has therefore little potential impact on the sustainability of the resources or on the potential competition between users. A high level of water stress indicates a situation where the combined withdrawal by all sectors represents a substantial share of the total renewable freshwater resources, with potentially larger impacts on the sustainability of the resources and potential situations of conflicts and competition between users.</p>
@@ -2099,20 +1207,13 @@ data-event-label="Change to Sources tab"
 <p><strong>Total renewable freshwater resources (TRWR)</strong></p>
 <p><strong>Total freshwater withdrawal (TFWW)</strong></p>
 <p><strong>Environmental flow requirements (EFR)</strong></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Freshwater withdrawal as a percentage of renewable freshwater resources is a good indicator of pressure on limited water resources, one of the most important natural resources. However, it only partially addresses the issues related to sustainable water management. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Freshwater withdrawal as a percentage of renewable freshwater resources is a good indicator of pressure on limited water resources, one of the most important natural resources. However, it only partially addresses the issues related to sustainable water management. </p>
 <p>Supplementary indicators that capture the multiple dimensions of water management would combine data on water demand management, behavioural changes with regard to water use and the availability of appropriate infrastructure, and measure progress in increasing the efficiency and sustainability of water use, in particular in relation to population and economic growth. They would also recognize the different climatic environments that affect water use in countries, especially in agriculture, which is the main user of water. Sustainability assessment is also linked to the critical thresholds fixed for this indicator. Although there is no universal consensus on such thresholds, a proposal is presented below.</p>
 <p>Trends in freshwater withdrawal show relatively slow patterns of change. Usually, three-five years are a minimum frequency to be able to detect significant changes, as it is unlikely that the indicator would show meaningful variations from one year to the other. </p>
 <p>Estimation of water withdrawal by sector may represent a limitation to the computation of the indicator. Few countries publish water withdrawal data on a regular basis by sector. </p>
@@ -2127,20 +1228,13 @@ data-event-label="Change to Sources tab"
   <li>the indicator can be higher than 100 percent when water withdrawal non-renewable freshwater (fossil groundwater), when annual groundwater withdrawal is higher than annual replenishment (over-abstraction) or when freshwater withdrawal includes part or all the water set aside for environmental flow requirements. </li>
 </ul>
 <p>Some of these issues can be solved through disaggregation of the indicator at the level of hydrological units and by distinguishing between different use sectors. However, due to the complexity of water flows, both within a country and between countries, care should be taken not to double-count.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p><strong>Computation Method:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Computation Method:</strong></p>
 <p>Method of computation: The indicator is computed as the total freshwater withdrawn (TFWW) divided by the difference between the total renewable freshwater resources (TRWR) and the environmental flow requirements (EFR), multiplied by 100. All variables are expressed in km<sup>3</sup>/year (10<sup>9</sup> m<sup>3</sup>/year).</p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>S</mi>
@@ -2192,60 +1286,21 @@ data-event-label="Change to Sources tab"
   <li>HIGH 75-100%</li>
   <li>CRITICAL &gt;100% </li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>Data validation is done in a few steps. </p>
-<ul>
-  <li>the AQUASTAT questionnaire embeds automatic validation rules to allow National Correspondents to identify any data consistency errors while compiling the data.</li>
-  <li>Once the questionnaire is submitted, FAO thoroughly reviews the information reported, using the following tools:<ul>
-      <li>Manual cross-variable check. This includes cross-comparison with similar countries as well as historic data for the countries. </li>
-      <li>Time-series coherency by running an R-script to compare reported data with those corresponding to previous years</li>
-      <li>Verification of the metadata, especially the source of the proposed data. The critical analysis of the compiled data gives preference to national sources and expert knowledge.</li>
-    </ul>
-  </li>
-  <li>After this verification, exchanges between the National Correspondents and FAO take place to correct and confirm the collected data. </li>
-  <li>The last validation step is an automated validation routine included in the Statistical Working System (SWS), which uses almost 200 validation rules.</li>
-</ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Since national level data is frequently tailored to be useful at national level and not for international comparisons, data may be manipulated in order to maximize international comparability. Adjusted data is displayed with an appropriate qualifier. Data is rounded according to a specific methodology<u> </u><a href="http://www.fao.org/aquastat/en/databases/maindatabase/metadata/">http://www.fao.org/aquastat/en/databases/maindatabase/metadata/</a></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Since national level data is frequently tailored to be useful at national level and not for international comparisons, data may be manipulated in order to maximize international comparability. Adjusted data is displayed with an appropriate qualifier. Data is rounded according to a specific methodology<u> </u><a href="http://www.fao.org/aquastat/en/databases/maindatabase/metadata/">http://www.fao.org/aquastat/en/databases/maindatabase/metadata/</a></p>
 <p>Additionally, the Statistical Working System (SWS) has the correspondence among different international codes (FAOSTAT, UNSDM49, ISO2, ISO3) for geographic areas and is used to convert area codes in the external sources to UNSDM49 codes which is the standard used in the SWS.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>&#x2022; At country level</strong></p>
 <p>Three types of imputation are made at country level to fill in missing years in the timeseries:</p>
 <ul>
   <li>Linear imputation: between two available data-points.</li>
@@ -2254,104 +1309,82 @@ data-event-label="Change to Sources tab"
 </ul>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>Thanks to the imputation methods at country level, data will be available for the whole time series (unless the latest official value was obtained more than 10 years ago). Imputed data is displayed with an appropriate qualifier.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>Regional and global estimates will be done by summing up the national figures on renewable freshwater resources and total freshwater withdrawal, considering only the internal renewable water resources of each country to avoid double counting, and the external renewable freshwater resources of the region, if any. In case of regional aggregation without physical continuity (such as income groupings or Least Developed Countries group, etc.), total renewable water resources are summed up. The EFR at regional level is estimated as the average of the countries&#x2019; EFRs, in percentage, and applied to the regional water resources.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Regional and global estimates will be done by summing up the national figures on renewable freshwater resources and total freshwater withdrawal, considering only the internal renewable water resources of each country to avoid double counting, and the external renewable freshwater resources of the region, if any. In case of regional aggregation without physical continuity (such as income groupings or Least Developed Countries group, etc.), total renewable water resources are summed up. The EFR at regional level is estimated as the average of the countries&#x2019; EFRs, in percentage, and applied to the regional water resources.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>A set of tools is available to countries for the compilation of the indicator. Among them, a step-by-step methodological guide, an interpretation paper, and an e-learning course. All the tools are available on the FAO web pages, at: http://www.fao.org/sustainable-development-goals/indicators/642/en/. </li>
   <li>During 2020,2021 and 2022, FAO has organized regional virtual trainings for Asia, Latin-America and the Caribbean and Africa on SDG 6.4. and contributed to global workshops on SDG 6. </li>
   <li>FAO&#x2019;s AQUASTAT team provides continued guidance to the countries thought the National Correspondents during the data collection time to ensure data is duly and timely compiled.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>The AQUASTAT questionnaire on water and agriculture, used for collecting information on SDG indicator 6.4.2, was endorsed by FAO&#x2019;s Office of the Chief Statistician (OCS).</li>
   <li>During the reporting process, the OCS provides overall guidance, including on metadata reporting, based on the Metadata Dissemination Standard approved by the FAO IDWG-Statistics Technical Task Force.</li>
   <li>Data on Environmental flow requirements is reupdated only when detailed methodology and metadata are provided and when consistency in the values is ensured.</li>
   <li>After revision and validation, data are submitted to the OCS who also ensures the quality of the data and results.</li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: http://www.fao.org/docrep/019/i3664e/i3664e.pdf, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Overall evaluation of data quality is based on standard quality criteria and follows FAO&#x2019;s SQAF. It also includes:</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: http://www.fao.org/docrep/019/i3664e/i3664e.pdf, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Overall evaluation of data quality is based on standard quality criteria and follows FAO&#x2019;s SQAF. It also includes:</p>
 <ul>
   <li>A qualitative and quantitative manual cross-variable check after data is received. This consists of the verification that all the numbers are consistent based on the internal validation rules embedded in the questionnaire. Any issues identified are flagged and listed to be followed-up with the countries. </li>
   <li>Time-series coherency check done by running an R-script to compare reported data with those corresponding to previous years. Based on this, a scattered diagram is also made by variable and country to allow for a visual verification of historical data. The critical analysis of the compiled data gives preference to national sources and expert knowledge, unless these greatly diverge from historic data or in the case of drastic changes in methodologies used by countries with significant influence on the results. </li>
   <li>Verification of the metadata, especially the source of the proposed data. When data sources were not provided, the questionnaire was added as the data source of a given value. For the </li>
 </ul>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Data needed for the indicator are collected through AQUASTAT for 168 countries worldwide. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data needed for the indicator are collected through AQUASTAT for 168 countries worldwide. </p>
 <p><strong>Time series:</strong></p>
 <p>1961-2019 (Discontinuous, depending on country. Data are interpolated to create timelines.) </p>
 <p><strong>Disaggregation:</strong></p>
@@ -2362,35 +1395,61 @@ data-event-label="Change to Sources tab"
   <li>all the service sectors (ISIC E and ISIC G-T), hereinafter &#x201C;services&#x201D;.</li>
 </ol>
 <p>At national level, water resources and withdrawals are estimated or measured at the level of appropriate hydrological units (river basins, aquifers). It is therefore possible to obtain a geographical distribution of water stress by hydrological unit, thus allowing for more targeted response in terms of water demand management.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Geographical: For national estimates incoming freshwater is counted as being part of the country&#x2019;s available freshwater resources, while global estimates can only be done by adding up the internal renewable freshwater resources (water generated within the country) of all countries in order to avoid double counting. Moreover, external freshwater resources are computed according to treaties, if present, which may lead to different values with respect to the actual freshwater resources assessed through hydrology.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Geographical: For national estimates incoming freshwater is counted as being part of the country&#x2019;s available freshwater resources, while global estimates can only be done by adding up the internal renewable freshwater resources (water generated within the country) of all countries in order to avoid double counting. Moreover, external freshwater resources are computed according to treaties, if present, which may lead to different values with respect to the actual freshwater resources assessed through hydrology.</p>
 <p>Over-time: time series are comparable across time. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p><strong>URL:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>URL:</strong></p>
 <p><a href="http://www.fao.org/aquastat/en/">http://www.fao.org/aquastat/en/</a> </p>
 <p><strong>References:</strong></p>
 <p>Food and Agricultural Organization of the United Nations (FAO). AQUASTAT, FAO&apos;s Global Water Information System. Rome. Website <a href="http://www.fao.org/aquastat/en/">http://www.fao.org/aquastat/en/</a>. </p>
@@ -2423,142 +1482,39 @@ data-event-label="Change to Sources tab"
 <p><strong>UNSD/UNEP Questionnaire on Environment Statistics &#x2013; Water Section<br /></strong><a href="http://unstats.un.org/unsd/environment/questionnaire.htm">http://unstats.un.org/unsd/environment/questionnaire.htm</a><u><br /></u><a href="http://unstats.un.org/unsd/environment/qindicators.htm">http://unstats.un.org/unsd/environment/qindicators.htm</a></p>
 <p><strong>UNSD &#x2018;National Accounts Main Aggregates Database&#x2019;<br /></strong><a href="http://unstats.un.org/unsd/snaama/selbasicFast.asp">http://unstats.un.org/unsd/snaama/selbasicFast.asp</a></p>
 <p><strong>FAO e-learning course on </strong>SDG Indicator 6.4.2 - Level of water stress: https://elearning.fao.org/course/view.php?id=365 </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2584,7 +1540,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2637,12 +1593,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2828,12 +1784,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -995,984 +1031,110 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 16.7: Ensure responsive, inclusive, participatory and representative decision-making at all levels</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 16.7.2: Proportion of population who believe decision-making is inclusive and responsive, by sex, age, disability and population group</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2021-05-01</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>SDG indicator 16.7.2 complements indicator <strong>16.7.1</strong> (under the same target 16.7 -- &#x201C;Ensure responsive, inclusive, participatory and representative decision-making at all levels&#x201D;) which draws on administrative data sources to measure the proportional representation of various population groups in public institutions. The two indicators are highly complementary as proportional representation alone is no guarantee that all population groups represented in public institutions have equal decision-making power, or that all population groups in the national population have equal opportunities to voice their interests and preferences and to influence public decision-making. Indicator 16.7.2 provides important additional information by focusing on the inclusiveness and responsiveness of decision-making, as perceived by the population (drawing from population surveys).</p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 16.7: Ensure responsive, inclusive, participatory and representative decision-making at all levels</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 16.7.2: Proportion of population who believe decision-making is inclusive and responsive, by sex, age, disability and population group</p>
+</dd>
+            <dt>Series</dt>
+            <dd>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>SDG indicator 16.7.2 complements indicator <strong>16.7.1</strong> (under the same target 16.7 -- &#x201C;Ensure responsive, inclusive, participatory and representative decision-making at all levels&#x201D;) which draws on administrative data sources to measure the proportional representation of various population groups in public institutions. The two indicators are highly complementary as proportional representation alone is no guarantee that all population groups represented in public institutions have equal decision-making power, or that all population groups in the national population have equal opportunities to voice their interests and preferences and to influence public decision-making. Indicator 16.7.2 provides important additional information by focusing on the inclusiveness and responsiveness of decision-making, as perceived by the population (drawing from population surveys).</p>
 <p>Indicator 16.7.2 can also be used to complement SDG target 10.2 on the promotion of the &#x201C;social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status&#x201D;, which only has one indicator measuring economic exclusion (<strong>SDG 10.2.1</strong> &#x2013; Proportion of people living below 50 per cent of median income, by age, sex and persons with disabilities). Indicator 16.7.2 therefore provides important additional information to measure progress against this target by providing data on <em>political</em> inclusion. </p>
 <p>Similarly, 16.7.2 can also be used to complement SDG target 10.3 on &#x201C;Ensuring equal opportunity and reduce inequalities of outcome, including by eliminating discriminatory laws, policies and practices and promoting appropriate legislation, policies and action in this regard&#x201D;, which only has one indicator measuring felt discrimination on various grounds (<strong>SDG 10.3.1</strong> Proportion of the population reporting having personally felt discriminated against or harassed within the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law). Indicator 16.7.2 therefore provides relevant additional information to measure progress against this target by helping to identify whether certain population groups might feel discriminated against in terms of their inclusion in public decision-making and the extent to which political institutions are responsive to their demands/preferences.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>UNDP Oslo Governance Centre</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>UNDP Oslo Governance Centre</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition:</strong></p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>UNDP Oslo Governance Centre</p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNDP Oslo Governance Centre</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition:</strong></p>
 <p>This survey-based indicator measures self-reported levels of &#x2018;external political efficacy&#x2019;, that is, the extent to which people think that politicians and/or political institutions will listen to, and act on, the opinions of ordinary citizens. </p>
 <p>To address both dimensions covered by this indicator, SDG indicator 16.7.2 uses two well-established survey questions, namely: 1) one question measuring the extent to which people feel they <em>have a say</em> in what the government does (focus on <em>inclusive</em> participation in decision-making) and 2) another question measuring the extent to which people feel the political system allows them to have an <em>influence </em>on politics (focus on <em>responsive </em>decision-making).</p>
 <p>All efforts should be made to disaggregate survey results on these two questions by sex, age group, income level, education level, place of residence (administrative region e.g. province, state, district; urban/rural), disability status, and nationally relevant population groups.</p>
@@ -1980,175 +1142,121 @@ data-event-label="Change to Sources tab"
 <p><strong>Decision-making:</strong> It is implicit in indicator 16.7.2 that &#x2018;decision-making&#x2019; refers to decision-making in the public governance realm (and not all decision-making). </p>
 <p><strong><em>Inclusive </em>decision-making: </strong>Decision-making processes which provide people with an opportunity to &#x2018;have a say&#x2019;, that is, to voice their demands, opinions and/or preferences to decision-makers. </p>
 <p><strong><em>Responsive </em>decision-making:</strong> Decision-making processes where politicians and/or political institutions listen to and act on the stated demands, opinions and/or preferences of people.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Percentage</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>This indicator needs to be measured on the basis of data collected by NSOs through official household surveys.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>NSOs should identify suitable survey vehicles to incorporate the two questions for measuring SDG indicator 16.7.2, keeping in mind the guidelines on survey methodology provided above. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>To ensure timely capture of changes in levels of external political efficacy, NSOs should report data on indicator 16.7.2 at least once every two years. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Percentage</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>This indicator needs to be measured on the basis of data collected by NSOs through official household surveys.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>NSOs should identify suitable survey vehicles to incorporate the two questions for measuring SDG indicator 16.7.2, keeping in mind the guidelines on survey methodology provided above. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>To ensure timely capture of changes in levels of external political efficacy, NSOs should report data on indicator 16.7.2 at least once every two years. </p>
 <p>NSOs will need to choose the most appropriate time/period for administering the 16.7.2 questions. Electoral periods should be avoided, and NSOs should aim for the middle of an electoral term. Experience shows that surveys conducted at the beginning of an electoral term generate more positive responses than surveys conducted at the end of a term. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Data will be reported at the international level in April each year. The first full release of data for the indicator will take place in April 2021.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>National Statistical Offices </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>UNDP</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>UNDP helps national and local government partners to build capable, responsive, open, inclusive and accountable core governance institutions that reinforce the dynamic <u>relationship between the State and the people</u> across all developmental contexts, by supporting inclusive political processes and strengthening multi-stakeholder engagement at the local level for more community participation and capacity and the inclusion of marginalized groups.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>SDG indicator 16.7.2 refers to the concept of &#x2018;political efficacy&#x2019;, which dates back to the 1950s, when the concept was discussed jointly with political trust as a key measure of the overall health of a democratic system (Craig et al, 1990). It can be defined as the &#x201C;feeling that political and social change is possible and that the individual citizen can play a part in bringing about this change&quot; (Campbell, Gurin and Miller, 1954, p.187). This perception that people can impact decision-making is important as it makes it worthwhile for them to perform their civic duties (Acok et al, 1985).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data will be reported at the international level in April each year. The first full release of data for the indicator will take place in April 2021.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National Statistical Offices </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNDP</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNDP helps national and local government partners to build capable, responsive, open, inclusive and accountable core governance institutions that reinforce the dynamic <u>relationship between the State and the people</u> across all developmental contexts, by supporting inclusive political processes and strengthening multi-stakeholder engagement at the local level for more community participation and capacity and the inclusion of marginalized groups.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>SDG indicator 16.7.2 refers to the concept of &#x2018;political efficacy&#x2019;, which dates back to the 1950s, when the concept was discussed jointly with political trust as a key measure of the overall health of a democratic system (Craig et al, 1990). It can be defined as the &#x201C;feeling that political and social change is possible and that the individual citizen can play a part in bringing about this change&quot; (Campbell, Gurin and Miller, 1954, p.187). This perception that people can impact decision-making is important as it makes it worthwhile for them to perform their civic duties (Acok et al, 1985).</p>
 <p>The ability to participate in society, to have a say in the shaping of policies and to dissent without fear are essential freedoms. Political voice also provides a corrective to public policy: it can ensure the accountability of officials and public institutions, reveal what people need and value, and call attention to significant deprivations. Political voice also reduces the potential for conflicts and enhances the prospect of building consensus on key issues, with payoffs for economic efficiency, social equity, and inclusiveness in public life.<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup></p>
 <p>Since the seminal studies of Campbell, Gurin and Miller (1954) and Campbell, Converse, Miller and Stokes (1960), the political efficacy construct has been regarded both as an important predictor of political participation and as a positive outcome of participation (Finkel, 1985). High levels of political efficacy among citizens are regarded as desirable for democratic stability. Individuals that are confident about their ability to influence the actions of their government are more likely to support the democratic system of government (Easton, 1965). </p>
 <p>There are two dimensions to political efficacy. First, subjective competence, or &#x2018;internal efficacy&#x2019;, can be defined as the confidence of the individual in his or her own abilities to understand politics and to act politically. Second, system responsiveness, or &#x2018;external efficacy&#x2019;, can be defined as the individual&#x2019;s belief in the responsiveness of the political system, i.e. policymaking processes and government decisions that respond to public demands or preferences (Lane 1959; Converse 1972; Balch 1974). SDG indicator 16.7.2 focuses only on this second dimension, &#x2018;external efficacy&#x2019;.<strong> </strong></p>
@@ -2158,20 +1266,13 @@ data-event-label="Change to Sources tab"
 <p> </p>
 <p>As part of its 7<sup>th</sup> wave (2018-19), the <a href="http://www.worldvaluessurvey.org/WVSContents.jsp">World Values Survey Association</a> (WVSA) administered in 15 countries worldwide<sup><a href="#footnote-6" id="footnote-ref-6">[5]</a></sup> the first question on external political efficacy used by the ESS (<em>&#x201C;How much would you say the political system in [country] allows people like you to have a say in what the government does?&#x201D;</em>). This question has since been incorporated in the core WVS questionnaire for all countries, and the WVSA will incorporate the second question used by the ESS (<em>&#x201C;How much would you say that the political system in [country] allows people like you to have an influence on politics?&#x201D;) </em>in its next survey wave. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> See OECD, &#x201C;Final report of the expert group on quality of life indicators&#x201D;, 2017 <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> The question on external political efficacy was included in the past two rounds of the OECD Adult Skills Survey (PIAAC), with each data collection round including different countries: in 2008-2013, the PIAAC covered 20 OECD countries plus 3 OECD sub-entities, namely Flanders, England and Northern Ireland, and the Russian Federation; and in 2012-2016, the PIAAC covered 6 additional countries, as well as Lithuania (an OECD accession country). <a href="#footnote-ref-3">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-4">3</sup><p> See <a href="https://www.europeansocialsurvey.org/methodology/ess_methodology/source_questionnaire/">https://www.europeansocialsurvey.org/methodology/ess_methodology/source_questionnaire/</a> <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> The European Social Survey in its Round 9 (2018) was run in Albania, Austria, Belgium, Bulgaria, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Hungary, Iceland, Ireland, Israel, Italy, Latvia, Lithuania, Montenegro, Netherlands, Norway, Poland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland and United Kingdom. <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> The World Values Survey Association administered the first question on external political efficacy used by the ESS in the following 15 countries: Andorra, Argentina, Australia, Bangladesh, Brazil, Egypt, Indonesia, Iraq, Kazakhstan, Jordan, Lebanon, Malaysia, Nigeria, Pakistan, Peru. <a href="#footnote-ref-6">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p><strong>Excludes measurement of &#x2018;internal political efficacy&#x2019; </strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Excludes measurement of &#x2018;internal political efficacy&#x2019; </strong></p>
 <p>As discussed in detail above, there are two dimensions to political efficacy. First, subjective competence, or &#x2018;internal efficacy&#x2019;, and second, system responsiveness, or &#x2018;external efficacy&#x2019;. This methodology stops short of measuring &#x2018;internal political efficacy&#x2019; (also called &#x2018;subjective competence&#x2019;), which can be defined as the confidence or belief that an individual has in his or her own abilities to understand politics and to participate in the political process. Subjective competence is expected to be correlated with political interest (ESS, 2016). Higher levels of subjective competence are also expected to be associated with higher levels of political participation, including voting in elections. As such, policymakers interested in identifying factors driving high or low levels of political participation should not base their diagnostics solely on levels of external efficacy measured by SDG 16.7.2, as levels of internal efficacy (<em>not </em>measured by SDG 16.7.2) also come into play. </p>
 <p><strong>Translation challenges</strong></p>
 <p>The idiom &#x2018;having a say&#x2019; can be difficult to translate into other languages, given it can also have various meanings in English (such as expressing one&#x2019;s views, or being in command, among others). To ensure global comparability of results on this question, getting good quality local language translations is a critical step in the measurement of SDG 16.7.2. To ensure the best possible quality of local language translations, NSOs should be cautious not to use formal or &#x2018;academically correct&#x2019; versions of the local languages; rather, they should focus on the everyday (colloquial) use of the language. </p>
@@ -2198,20 +1299,13 @@ data-event-label="Change to Sources tab"
   <li><em>Disability status: </em>The United Nations Convention on the Rights of Persons with Disabilities (2006) calls upon State Parties to ensure that persons with disabilities can effectively and fully participate in political and public life on an equal basis with others. Under Article 31 of the Convention, State Parties commit to collecting disaggregated information, including statistical and research data to give effect to the Convention, and assume responsibility for the dissemination of these statistics. </li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-7">6</sup><p> See Holbrook, A. L., &amp; Krosnick, J. A. (2010). Social desirability bias in voter turnout reports tests using the</p><p>item count technique. Public Opinion Quarterly, 74 (1), 37{67}. <a href="#footnote-ref-7">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-8">7</sup><p> See Kuklinski, J. H., Cobb, M. D., &amp; Gilens, M. (1997). Racial attitudes and the new south. The Journal of</p><p>Politics, 59 (02), 323{349}. <a href="#footnote-ref-8">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-9">8</sup><p> See https://www.un.org/development/desa/ageing/wp-content/uploads/sites/24/2018/03/Report-of-the-United-Kingdom-of-Great-Britain-and-Northern-Ireland-on-ageing-related-statistics-and-age-disaggregated-data.pdf <a href="#footnote-ref-9">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <ol>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ol>
   <li>NSOs first need to calculate the share of respondents who responded positively to each question (i.e. the cumulative percentage of respondents who responded 3-&apos;some&apos;, 4-&apos;a lot&apos; or 5-&apos;a great deal&apos;).<sup><a href="#footnote-10" id="footnote-ref-10">[9]</a></sup> </li>
 </ol>
 <p>For instance: </p>
@@ -2323,140 +1417,90 @@ data-event-label="Change to Sources tab"
   <li>simple average of these two cumulative percentages.</li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-10">9</sup><p> If this indicator is being calculated from an existing survey that uses a non-standard response scale, please contact UNDP at <a href="mailto:sdg16indicators@undp.org">sdg16indicators@undp.org</a> for guidance on identifying &#x201C;positive&#x201D; responses in non-standard response scales. <a href="#footnote-ref-10">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>The countries are requested to input the indicators&#x2019; data and metadata in a reporting platform following the guidelines in the present metadata sheet. The platform encourages to provide separate information on the survey metadata, namely the source of information for the statistics, the survey instruments, the methodology and protocols and possible. Countries are also requested to insert the statistics on the two questions disaggregated by the pre-specified fields. All inputted information is verified for conformity with the metadata prior to submission. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not Applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <p><strong>&#x2022; At country level</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not Applicable</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>&#x2022; At country level</strong></p>
 <p>There is no treatment of missing values.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>There is no imputation of missing values. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>The average share of respondents who responded positively to the two questions selected to measure SDG 16.7.2 will be provided for each region, and globally.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p><strong>Methods and guidance available to countries for the compilation of data at national level:</strong> </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The average share of respondents who responded positively to the two questions selected to measure SDG 16.7.2 will be provided for each region, and globally.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Methods and guidance available to countries for the compilation of data at national level:</strong> </p>
 <p>To disaggregate survey results by disability status, it is recommended that countries use the <a href="http://www.washingtongroup-disability.com/washington-group-question-sets/short-set-of-disability-questions/">Short Set of Questions on<strong> </strong>Disability<strong> </strong>elaborated by the Washington Group</a>. </p>
 <p><strong>Methods and guidance available to countries for the compilation of data at international level:</strong></p>
 <p>European Social Survey: Source questionnaire and accompanying guidance, in various languages: </p>
 <p><a href="https://www.europeansocialsurvey.org/methodology/ess_methodology/source_questionnaire/">https://www.europeansocialsurvey.org/methodology/ess_methodology/source_questionnaire/</a> </p>
 <p>OECD&#x2019;s Adult Skills Survey (PIAAC): Questionnaire and accompanying guidance, in various languages: <a href="http://www.oecd.org/skills/piaac/samplequestionsandquestionnaire.htm">http://www.oecd.org/skills/piaac/samplequestionsandquestionnaire.htm</a> </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Statistics for this indicator is inputted in the reporting platform (<a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsdg16reporting.undp.org%2Flogin&amp;data=02%7C01%7Cmariana.neves%40undp.org%7C307a2d2600d64d5872e908d812bea69e%7Cb3e5db5e2944483799f57488ace54319%7C0%7C0%7C637279957333850920&amp;sdata=AI9rb2m1dE62v7zxpoPS6Kgk6m1Nvs3bspt4M4wATWw%3D&amp;reserved=0">https://sdg16reporting.undp.org/login</a>). UNDP has dedicated staff to verify the collected data and liaise with the data officers in the agency in the countries.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>NSOs have the main responsibility to ensure the statistical quality of the data compiled for this indicator. One possible quality assurance mechanism would be to compare results obtained by the NSO with readily available survey results on external political efficacy generated by relevant national, regional or global unofficial data producers (see potential global and regional unofficial sources below).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>UNDP will make available a quality assessment protocol for national statistics office to be used at national level and intended to assess the alignment of data produced with users needs, the compliance with guidelines in terms of computations, the timeliness of data production, the accessibility of statistics produced, the consistent use of methodology both in terms of geographic representation and through time, the coherence in terms of data production, and the architecture of data production.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Description and time series:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Statistics for this indicator is inputted in the reporting platform (<a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsdg16reporting.undp.org%2Flogin&amp;data=02%7C01%7Cmariana.neves%40undp.org%7C307a2d2600d64d5872e908d812bea69e%7Cb3e5db5e2944483799f57488ace54319%7C0%7C0%7C637279957333850920&amp;sdata=AI9rb2m1dE62v7zxpoPS6Kgk6m1Nvs3bspt4M4wATWw%3D&amp;reserved=0">https://sdg16reporting.undp.org/login</a>). UNDP has dedicated staff to verify the collected data and liaise with the data officers in the agency in the countries.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>NSOs have the main responsibility to ensure the statistical quality of the data compiled for this indicator. One possible quality assurance mechanism would be to compare results obtained by the NSO with readily available survey results on external political efficacy generated by relevant national, regional or global unofficial data producers (see potential global and regional unofficial sources below).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>UNDP will make available a quality assessment protocol for national statistics office to be used at national level and intended to assess the alignment of data produced with users needs, the compliance with guidelines in terms of computations, the timeliness of data production, the accessibility of statistics produced, the consistent use of methodology both in terms of geographic representation and through time, the coherence in terms of data production, and the architecture of data production.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Description and time series:</strong></p>
 <ul>
   <li>There is no existing globally comparable official dataset on the &#x201C;Proportion of population who believe decision-making is inclusive and responsive, by sex, age, disability and population group.&#x201D; While a large number of countries have experience with measuring external political efficacy, there is large variability in the ways NSOs and government agencies in individual countries collect data on this concept, in terms of question wording and response formats, etc. This variability poses a significant challenge for cross-country comparability of such data.</li>
   <li>However, a number of non-official global and regional survey data producers have already incorporated the two questions for 16.7.2 reporting in their questionnaires, and are already producing the necessary data. In line with the <a href="https://unstats.un.org/unsd/accsub-public/Principles_stat_activities/Ltr-CoChairs-Principles.pdf">2017 Guiding Principles of Data Reporting and Data Sharing for the Global Monitoring of the 2030 Agenda for Sustainable Development</a> (Version 1) developed by the Committee for the Coordination of Statistical Activities (CCSA) which states that &#x201C;non-official sources may be used by international organizations in compiling official statistics to reach the following objectives: &#x2026;d) to construct international data series in fields which are not covered by existing official sources; and&#x2026;e) to impute national data where national official data do not exist or are of proven poor quality&#x201D;, it is suggested to consider using these non-official sources for countries where the NSO has not yet incorporated the two questions selected for 16.7.2. <strong>As outlined in the above-cited Guiding Principles, NSOs would need to validate this unofficial data before it is submitted to the international level for SDG reporting:</strong>
@@ -2483,35 +1527,61 @@ data-event-label="Change to Sources tab"
   <li><strong>Place of residence:</strong> by administrative region e.g. by province, state, district; urban/rural</li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-11">10</sup><p> The ESS was primarily designed as a time series that could monitor changing attitudes and values across Europe. For this reason, its questionnaire comprises a core module, containing items measuring a range of topics of enduring interest to the social sciences as well as the most comprehensive set of socio-structural (&apos;background&apos;) variables of any cross-national survey. The exact number of items can change from round to round, but each question has a unique variable name to assist users working with data over time. <a href="#footnote-ref-11">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-12">11</sup><p> The European Social Survey in its Round 9 (2018) was run in Albania, Austria, Belgium, Bulgaria, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Hungary, Iceland, Ireland, Israel, Italy, Latvia, Lithuania, Montenegro, Netherlands, Norway, Poland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland and United Kingdom. <a href="#footnote-ref-12">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-13">12</sup><p> In 2008-2013 (round 1), the PIAAC covered 20 OECD countries plus 3 OECD sub-entities, namely Flanders, England and Northern Ireland, and the Russian Federation; in 2012-2016 (round 2), the PIAAC covered 6 additional countries, as well as Lithuania (an OECD accession country); in 2016-19, the PIAAC is covering Ecuador, Hungary, Kazakhstan, Mexico, Peru and the United States. <a href="#footnote-ref-13">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-14">13</sup><p> UN General Assembly, Convention on the Rights of Persons with Disabilities: resolution / adopted by the General Assembly, 24 January 2007, A/RES/61/106, available at: http://www.refworld.org/docid/45f973632.html <a href="#footnote-ref-14">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-15">14</sup><p> Francesco Capotorti, Special Rapporteur of the United Nations Sub-Commission on Prevention of Discrimination and Protection of Minorities (1977). <a href="#footnote-ref-15">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-16">15</sup><p> UN Office of the High Commissioner for Human Rights (OHCHR), Minority Rights: International Standards and Guidance for Implementation, 2010, HR/PUB/10/3, &lt;http://www.refworld.org/docid/4db80ca52.html&gt; <a href="#footnote-ref-16">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>There is no internationally estimated data for this indicator.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li>Abramson, P. R., &amp; Aldrich, J. H. (1982). The decline of electoral participation in America. <em>American Political Science Review</em>, 76, (3), 502-521 </li>
   <li>Abramson, P. R., &amp; Finifter, A. W. (1981). On the Meaning of Political Trust: New Evidence from Items Introduced in 1978. <em>American Journal of Political Science</em>. 25, (2), 297-307. </li>
   <li>Balch, G. I. (1974). Multiple Indicators in Survey Research: The Concept of &#x201C;Sense of Political Efficacy&#x201D;. <em>Political Methodology</em>, 1, (2), 1-43 </li>
@@ -2568,142 +1638,39 @@ data-event-label="Change to Sources tab"
 <p><strong><em>&#x201C;The <u>political system</u> in [country]&#x201D;: </em></strong>A particular form of government. For example, democracy is a political system in which citizens govern themselves. Other political systems include republics, monarchies, communist systems and dictatorships.</p>
 <p><strong><em>&#x201C;<u>Having a say</u> in what the government does&#x201D; </em></strong>means having a channel to express one&#x2019;s demands, opinions or preferences about what the government does, and feeling listened to.</p>
 <p><strong><em>&#x201C;<u>Have an influence</u> on politics&#x201D;</em></strong> means feeling that decision-makers listen to and act on one&#x2019;s demands, opinions or preferences. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2729,7 +1696,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -2782,12 +1749,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -2973,12 +1940,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

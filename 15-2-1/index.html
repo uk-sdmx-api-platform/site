@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925151412">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,6 +233,7 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -257,14 +258,16 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -308,6 +311,23 @@ data-event-label="high"
   
   <% } %>
   
+</script>
+
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -404,6 +424,22 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by the UK.<br>
+      Global data refers to data reported for the UK by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
+
+<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -3875,986 +3911,112 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        <div role="tabpanel" class="tab-pane active" id="national">
-    <!-- National Metadata -->
-    <div>
-        <article>
-            <p>
-                
-                
-                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-            </p>
-            <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
         
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata last updated </th>
-        <td>
-          
-            
-            
-            
-            
-
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
-    </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="global">
-    <!-- Global Metadata -->
-    <div>
-        <article>
-            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-            <table class="table">
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Goal </th>
-        <td>
-          
-            <p>Goal 15: Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Target </th>
-        <td>
-          
-            <p>Target 15.2: By 2020, promote the implementation of sustainable management of all types of forests, halt deforestation, restore degraded forests and substantially increase afforestation and reforestation globally</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Indicator </th>
-        <td>
-          
-            <p>Indicator 15.2.1: Progress towards sustainable forest management</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Series </th>
-        <td>
-          
-            <p>Annual forest area change rate (%)</p>
+    <div class="mt-4" id="metadata-section">
+  <h3>Indicator metadata</h3>
+  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+  <div class="accordion" id="accordionExample">
+    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Indicator information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <dl>
+            <dt>Goal</dt>
+            <dd><p>Goal 15: Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss</p>
+</dd>
+            <dt>Target</dt>
+            <dd><p>Target 15.2: By 2020, promote the implementation of sustainable management of all types of forests, halt deforestation, restore degraded forests and substantially increase afforestation and reforestation globally</p>
+</dd>
+            <dt>Indicator</dt>
+            <dd><p>Indicator 15.2.1: Progress towards sustainable forest management</p>
+</dd>
+            <dt>Series</dt>
+            <dd><p>Annual forest area change rate (%)</p>
 <p>Above-ground biomass in forest (tonnes per hectare)</p>
 <p>Proportion of forest area within legally established protected areas (%)</p>
 <p>Proportion of forest area with a long-term management plan (%)</p>
 <p>Forest area under an independently verified forest management certification scheme (thousands of hectares)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Metadata update </th>
-        <td>
-          
-            <p>2022-03-31</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Related indicators </th>
-        <td>
-          
-            <p>15.1.1: Forest area as a proportion of total land area </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">International organisations(s) responsible for global monitoring </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data reporter </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person(s) </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact organisation unit </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact person function </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact phone </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact mail </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Contact email </th>
-        <td>
-          
-            <p>Not available for this indicator</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition, concepts, and classifications </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Definition and concepts </th>
-        <td>
-          
-            <p><strong>Definition: </strong></p>
+</dd>
+            <dt>Related indicators</dt>
+            <dd><p>15.1.1: Forest area as a proportion of total land area </p>
+</dd>
+            <dt>Custodian agencies</dt>
+            <dd><p>Food and Agriculture Organization of the United Nations (FAO) </p>
+</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Data reporter
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organisation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Food and Agriculture Organization of the United Nations (FAO) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact organisation unit</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact email address</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not available for this indicator</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Definition, concepts, and classifications
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Definition and concepts</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Definition: </strong></p>
 <p>&#x201C;Sustainable forest management&#x201D; (SFM) is a central concept for Goal 15 and target 15.1 as well as for target 15.2. It has been formally defined, by the UN General Assembly, as follows: </p>
 <p><em>[a] dynamic and evolving concept [that] aims to maintain and enhance the economic, social and environmental values of all types of forests, for the benefit of present and future generations</em>&#x201D; (Resolution A/RES/62/98) </p>
 <p>The indicator is composed of five sub-indicators that measure progress towards all dimensions of sustainable forest management. The environmental values of forests are covered by three sub-indicators focused on the extension of forest area, biomass within the forest area and protection and maintenance of biological diversity, and of natural and associated cultural resources. Social and economic values of forests are reconciled with environmental values through sustainable management plans. The sub-indicator provides further qualification to the management of forest areas, by assessing areas which are independently verified for compliance with a set of national or international standards. </p>
@@ -4869,20 +4031,13 @@ data-event-label="Change to Sources tab"
 <p>A dashboard is used to assess progress related to the five sub-indicators. The adoption of the dashboard approach aims at ensuring consideration of all dimensions of sustainable forest management and provides for clear view of areas where progress has been achieved. </p>
 <p><strong>Concepts: </strong></p>
 <p>See Annex 1 with Terms and Definitions. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Unit of measure </th>
-        <td>
-          
-            <table>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Unit of measure</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><table>
   <tbody>
     <tr>
       <td>
@@ -4934,172 +4089,125 @@ data-event-label="Change to Sources tab"
     </tr>
   </tbody>
 </table>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Classifications </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data source type and collection method </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data sources </th>
-        <td>
-          
-            <p>Sub-indicators 1 to 4</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Classifications</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Data source type and data collection method
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data sources</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Sub-indicators 1 to 4</p>
 <p>Data are collected by FAO through the Global Forest Resources Assessment (FRA). Assessments have been carried out at regular intervals since 1946 and are now produced every five year. The latest of these assessments, FRA 2020, contains information for 236 countries and territories on about 60 variables related to the extent of forests, their conditions, uses and values for several points in time. </p>
 <p>Sub-indicator 5</p>
 <p>Currently, forest certification by the Forest Stewardship Council (FSC) and the Programme for the Endorsement of Forest Certification (PEFC) are included in the data submissions. The latter includes several national/regional certification schemes that have been endorsed according to the PEFC standards. </p>
 <p>Data on forest certification are submitted annually to FAO by the head offices of the respective forest certification scheme. Data include the area certified by each scheme, as well as areas that are double-certified by the two schemes. That allows for estimating the total certified forest area, adjusted for double certified area. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection method </th>
-        <td>
-          
-            <p>Sub-indicators 1 to 4</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection method</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Sub-indicators 1 to 4</p>
 <p>Data on these sub-indicators are collected through FAO&#x2019;s Global Forest Resources Assessment (FRA) programme. Officially nominated national correspondents and their teams prepare the country reports for the assessment. Some prepare more than one report as they also report on dependent territories. For the remaining countries and territories where no information is provided, a report is prepared by FAO using existing information and a literature search. </p>
 <p>All data are provided to FAO by countries in the form of a country report through an online platform following a standard format, which includes the original data and reference sources and descriptions of how these have been used to estimate the forest area for different points in time. The online platform was used for all data entry, review and quality control.</p>
 <p>In order to obtain internationally comparable data, countries are requested to provide national categories and definitions, and in case these are different than the FAO categories and definitions, countries are requested to perform a reclassification of national data to correspond to the FAO categories and definitions and to document this step in the country report. Countries are also requested to use interpolation or extrapolation of national data in order to provide estimates for the specific reporting years. </p>
 <p>Sub-indicator 5</p>
 <p>Data are annually reported by the certification bodies to FAO and consolidated into estimates of total certified forest area, which are made available to the countries through the FRA online platform where country officials can view the data that are being submitted. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data collection calendar </th>
-        <td>
-          
-            <p>Source data collection for sub-indicators 1 to 4 was initiated in 2018 and concluded in 2019. Data collection for the next FRA is expected to start in 2022. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data collection calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Source data collection for sub-indicators 1 to 4 was initiated in 2018 and concluded in 2019. Data collection for the next FRA is expected to start in 2022. </p>
 <p>Data on sub-indicator 5 is reported by the certification bodies to FAO by the end of each calendar year, referring to the status of certified forest area by end of June that year. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data release calendar </th>
-        <td>
-          
-            <p>Data with updated time series and including year 2020 was released in July 2020. Next release of a complete FRA dataset is scheduled for 2025. The possibilities of a more frequent reporting on forest area and other key indicators are currently being evaluated. Data on forest certification is updated annually.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data providers </th>
-        <td>
-          
-            <p>The data for sub-indicators 1 to 4 are provided by the countries through a global network of officially nominated national correspondents. For the countries and territories which do not have a national correspondent, a report is prepared by FAO using previously reported information, literature search, remote sensing or their combination.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data release calendar</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Data with updated time series and including year 2020 was released in July 2020. Next release of a complete FRA dataset is scheduled for 2025. The possibilities of a more frequent reporting on forest area and other key indicators are currently being evaluated. Data on forest certification is updated annually.</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data providers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The data for sub-indicators 1 to 4 are provided by the countries through a global network of officially nominated national correspondents. For the countries and territories which do not have a national correspondent, a report is prepared by FAO using previously reported information, literature search, remote sensing or their combination.</p>
 <p> </p>
 <p>For sub-indicator 5, forest certification, data are provided by head offices of respective forest certification scheme.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data compilers </th>
-        <td>
-          
-            <p>Food and Agriculture Organization of the United Nations (FAO) </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Institutional mandate </th>
-        <td>
-          
-            <p>Article 1 of FAO&#x2019;s constitution specifies that, &#x201C;The Organization shall collect, analyse, interpret, and disseminate information related to nutrition, food and agriculture.&#x201D; In this regard, FAO collects national level data from member countries, which it then standardizes and disseminates through corporate statistical databases. FAO is the custodian UN agency for 21 SDG indicators, including 15.2.1.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Other methodological considerations </th>
-        <td>
-          
-            
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Rationale </th>
-        <td>
-          
-            <p>The definition of SFM by the UN General Assembly contains several key aspects, notably that sustainable forest management is a concept which varies over time and between countries, whose circumstances &#x2013; ecological, social and economic &#x2013; vary widely, but that it should always address a wide range of forest values, including economic, social and environmental values, and take intergenerational equity into account. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Data compilers</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Food and Agriculture Organization of the United Nations (FAO) </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Institutional mandate</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Article 1 of FAO&#x2019;s constitution specifies that, &#x201C;The Organization shall collect, analyse, interpret, and disseminate information related to nutrition, food and agriculture.&#x201D; In this regard, FAO collects national level data from member countries, which it then standardizes and disseminates through corporate statistical databases. FAO is the custodian UN agency for 21 SDG indicators, including 15.2.1.</p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Other methodological considerations
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 10%;">Field</th>
+                <th scope="col" style="width: 45%;">National</th>
+                <th scope="col" style="width: 45%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rationale</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The definition of SFM by the UN General Assembly contains several key aspects, notably that sustainable forest management is a concept which varies over time and between countries, whose circumstances &#x2013; ecological, social and economic &#x2013; vary widely, but that it should always address a wide range of forest values, including economic, social and environmental values, and take intergenerational equity into account. </p>
 <p>Clearly a simple measure of forest area is insufficient to monitor sustainable forest management as a whole. The significance of the five sub-indicators can be briefly explained as follows: </p>
 <ol>
   <li>Trends in forest area are crucial for monitoring SFM. The first sub-indicator focuses on both the direction of change (whether there is a loss or gain in forest area) and how the change rate varies over time; the latter is important to capture progress among countries that are losing forest area but have managed to reduce the rate of annual forest area loss. </li>
@@ -5108,78 +4216,36 @@ data-event-label="Change to Sources tab"
   <li>The fourth sub-indicator looks at the forest area that is under a long-term forest management plan. The existence of a documented forest management plan is the basis for long term and sustainable management of the forest resources for a variety of management objectives such as for wood and non-wood forest products, protection of soil and water, biodiversity conservation, social and cultural use, and a combination of two or several of these. An increasing area under forest management plan is therefore an indicator of progress towards sustainable forest management. </li>
   <li>The fifth sub-indicator is the forest area that is certified by an independently verified forest management certification scheme. Such certification schemes apply standards that generally are higher than those established by the countries&#x2019; own normative frameworks, and compliance is verified by an independent and accredited certifier. An increase in certified forest area therefore provides an additional indication of progress towards sustainable forest management. It should however be noted that there are significant areas of sustainably managed forest which are not certified, either because their owners have chosen not to seek certification (which is voluntary and market-based) or because no credible or affordable certification scheme is in place for that area. </li>
 </ol>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comment and limitations </th>
-        <td>
-          
-            <p>The five sub-indicators chosen to illustrate progress towards sustainable forest management do not fully cover all aspects of sustainable forest management. In particular, social and economic aspects are summarized under the sub-indicators on areas under sustainable forest management plans. Furthermore, as the trends are calculated using only those countries which have data complete time series, different sub-indicators may reflect different sets of countries. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Comments and limitations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>The five sub-indicators chosen to illustrate progress towards sustainable forest management do not fully cover all aspects of sustainable forest management. In particular, social and economic aspects are summarized under the sub-indicators on areas under sustainable forest management plans. Furthermore, as the trends are calculated using only those countries which have data complete time series, different sub-indicators may reflect different sets of countries. </p>
 <p>While the dashboard illustrates the progress on the individual sub-indicators, there is no weighting of the relative importance of the sub-indicators. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Method of computation </th>
-        <td>
-          
-            <p>National data on forest area, biomass stock, forest area within protected areas, and forest area under management plan are reported directly by countries to FAO for pre-established reference years. Based on the country reported data, FAO then makes country-level estimates of the forest area net change rate using the compound interest formula. The proportion of forest area within protected area and under management plan is calculated using the reported areas for each reference year and the forest area for year 2015. Data on forest area under an independently verified forest management certification scheme are reported to FAO by the head offices of respective forest certification scheme, who are jointly adjusting the figures to remove any double accounting. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Method of computation</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>National data on forest area, biomass stock, forest area within protected areas, and forest area under management plan are reported directly by countries to FAO for pre-established reference years. Based on the country reported data, FAO then makes country-level estimates of the forest area net change rate using the compound interest formula. The proportion of forest area within protected area and under management plan is calculated using the reported areas for each reference year and the forest area for year 2015. Data on forest area under an independently verified forest management certification scheme are reported to FAO by the head offices of respective forest certification scheme, who are jointly adjusting the figures to remove any double accounting. </p>
 <p>No dashboard traffic lights are made at country level. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Validation </th>
-        <td>
-          
-            <p>All data submitted by countries to FRA, including the FAO estimates made in case of desk studies, are available at the FRA online platform (<a href="https://fra-data.fao.org/">https://fra-data.fao.org</a>). The platform also includes the sub-indicators for 15.2.1. A request for validation was sent to the respective Head of Forestry before finalization and publishing of data. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Adjustments </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
-        <td>
-          
-            <ul>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Adjustments</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Not applicable</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><ul>
   <li><strong>At country level </strong></li>
 </ul>
 <p>For countries and territories where no information was provided to FAO for FRA 2020 (47 countries and territories representing 0.5 percent of the global forest area), a report was prepared by FAO using existing information from previous assessments, literature search, remote sensing or a combination of two or more of them. </p>
@@ -5188,128 +4254,132 @@ data-event-label="Change to Sources tab"
   <li><strong>At regional and global levels </strong></li>
 </ul>
 <p>See above. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Regional aggregations </th>
-        <td>
-          
-            <p>See Annex 2 &#x2013; Methodology. It should be noted that for those sub-indicators where there are gaps in the data set, only the countries with complete data for the relevant years (either provided by the countries or estimated by FAO) are included in the regional and global aggregates. Annex 2 also shows how the dashboard traffic lights are applied at global and regional level. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
-        <td>
-          
-            <p>Detailed methodology and guidance on how to prepare the country reports through an online reporting platform and to convert national data according to national categories and definitions to FAO&#x2019;s global categories and definitions is found in the documents </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Regional aggregations</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>See Annex 2 &#x2013; Methodology. It should be noted that for those sub-indicators where there are gaps in the data set, only the countries with complete data for the relevant years (either provided by the countries or estimated by FAO) are included in the regional and global aggregates. Annex 2 also shows how the dashboard traffic lights are applied at global and regional level. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Detailed methodology and guidance on how to prepare the country reports through an online reporting platform and to convert national data according to national categories and definitions to FAO&#x2019;s global categories and definitions is found in the documents </p>
 <p>&#x201C;<em>Guidelines and Specifications</em>&#x201D; (<a href="http://www.fao.org/3/I8699EN/i8699en.pdf"><u>www.fao.org/3/I8699EN/i8699en.pdf</u></a>) and </p>
 <p>&#x201C;<em>Terms and Definitions</em>&#x201D; (<a href="http://www.fao.org/3/I8661EN/i8661en.pdf"><u>www.fao.org/3/I8661EN/i8661en.pdf</u></a>). </p>
 <p>FAO supports the reporting process through capacity development on reporting methodology and remote sensing. The reporting platform provides easy access to relevant and freely available global remote sensing data sets and products.</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality management </th>
-        <td>
-          
-            <p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a>, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring).</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assurance </th>
-        <td>
-          
-            <p>Date reported by countries to FAO are subject to a rigorous review process to ensure correct use of definitions and methodology as well as internal consistency. A comparison is made with past assessments and other existing data sources. Regular contacts between national correspondents and FAO staff by e-mail and regional/sub-regional review workshops form part of this review process. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Quality assessment </th>
-        <td>
-          
-            <p>Quality of statistics produced and disseminated by the FAO is evaluated in terms of fitness for use i.e. the degree to which statistics meet the user&#x2019;s requirements. The quality dimensions assessed are: Relevance; Accuracy and Reliability; Timeliness and Punctuality; Coherence and Comparability; Accessibility and Clarity. Quality dimensions definitions are provided in the FAO Statistical Quality Assurance Framework (SQAF), which provides the definition of quality and describes quality principles for statistical outputs; statistical processes; institutional environment (http://www.fao.org/docrep/019/i3664e/i3664e.pdf). The SQAF is based on the Fundamental Principles of Official Statistics and the Principles Governing International Statistical Activities (CCSA). Adherence to these principles ensures the quality of FAO statistical production processes and of statistical outputs. Regular quality assessments are conducted through the FAO Quality Assessment and Planning Survey (QAPS), a bi-annual survey designed to gather information on all of FAO&#x2019;s statistical activities, which is used to assess the extent to which quality standards are being met with a view to increasing compliance with the SQAF, and to document best practices and provide guidance for improvement where necessary. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Data availability and disaggregation </th>
-        <td>
-          
-            <p><strong>Data availability:</strong></p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality management</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a>, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring).</p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assurance</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Date reported by countries to FAO are subject to a rigorous review process to ensure correct use of definitions and methodology as well as internal consistency. A comparison is made with past assessments and other existing data sources. Regular contacts between national correspondents and FAO staff by e-mail and regional/sub-regional review workshops form part of this review process. </p>
+</td>
+              </tr>
+              <tr>
+                <th scope="row">Quality assessment</th>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p>Quality of statistics produced and disseminated by the FAO is evaluated in terms of fitness for use i.e. the degree to which statistics meet the user&#x2019;s requirements. The quality dimensions assessed are: Relevance; Accuracy and Reliability; Timeliness and Punctuality; Coherence and Comparability; Accessibility and Clarity. Quality dimensions definitions are provided in the FAO Statistical Quality Assurance Framework (SQAF), which provides the definition of quality and describes quality principles for statistical outputs; statistical processes; institutional environment (http://www.fao.org/docrep/019/i3664e/i3664e.pdf). The SQAF is based on the Fundamental Principles of Official Statistics and the Principles Governing International Statistical Activities (CCSA). Adherence to these principles ensures the quality of FAO statistical production processes and of statistical outputs. Regular quality assessments are conducted through the FAO Quality Assessment and Planning Survey (QAPS), a bi-annual survey designed to gather information on all of FAO&#x2019;s statistical activities, which is used to assess the extent to which quality standards are being met with a view to increasing compliance with the SQAF, and to document best practices and provide guidance for improvement where necessary. </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Data availability and disaggregation
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Data availability:</strong></p>
 <p>The Global Forest Resources Assessment collects data from 236 countries and territories. </p>
 <p><strong>Time series:</strong></p>
 <p>2000, 2010, 2015, and every year since.</p>
 <p><strong>Disaggregation:</strong></p>
 <p>No further disaggregation of this indicator. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">Comparability/deviation from international standards </th>
-        <td>
-          
-            <p><strong>Sources of discrepancies:</strong></p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Comparability/deviation from international standards
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>Sources of discrepancies:</strong></p>
 <p>The national figures in the database are reported by the countries themselves following a standardized format, definitions and reporting years, thus eliminating any discrepancies between global and national figures. The reporting template requests that countries provide the full reference for original data sources as well as national definitions and terminology. Separate sections in the template country reports deal with the analysis of data (including any assumptions made and the methods used for estimates and projections to the common reporting years); calibration of data to the official land area as held by FAO; and reclassification of data to the classes used in FAO&#x2019;s Global Forest Resources Assessments. </p>
 <p>Regarding the data on forest area under an independently verified forest management certification scheme, these are usually not part of official national statistics, and are maintained by local offices of the respective certification schemes. They in turn report their data to their head offices. As certified forest area is dynamic and can change monthly as some certificates expire and new certificates come. Therefore, the data are requested to correspond to the end of June each year. However, data are not always reported by the local offices according to that date. </p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      <tr>
-        <th scope="row">References and Documentation </th>
-        <td>
-          
-            <p><strong>URL: </strong><a href="http://www.fao.org/forest-resources-assessment/en/"><u>http://www.fao.org/forest-resources-assessment/en/</u></a> </p>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEight">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          References and documentation
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">National</th>
+                <th scope="col" style="width: 50%;">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p>Not available for this indicator</p>
+</td>
+                <td><p><strong>URL: </strong><a href="http://www.fao.org/forest-resources-assessment/en/"><u>http://www.fao.org/forest-resources-assessment/en/</u></a> </p>
 <p><strong>References:</strong></p>
 <p></p>
 <p>Global Forest Resources Assessment 2020, Guidelines and Specifications (<a href="http://www.fao.org/3/I8699EN/i8699en.pdf"><u>www.fao.org/3/I8699EN/i8699en.pdf</u></a>)</p>
@@ -5594,142 +4664,39 @@ data-event-label="Change to Sources tab"
 <p><u>Comments:</u></p>
 <p>Using June 30 as the date for reporting, allows for the certification bodies to have their databases updated so they can provide information to FAO by end of the year, and then be included in the annual reporting to SDG in the beginning of the following year.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> If forest area change rate is negative (= forest loss) then: annual forest area loss rate = <strong>-</strong> (annual forest area change rate) <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-        </article>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-</div>
-<div role="tabpanel" class="tab-pane" id="sources">
-    <!-- Count the non-empty sources (up to 5) -->
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#toggleAll").click( function() {
+      let button = document.getElementById("toggleAll");
+      if(!$('.accordion-button').hasClass("collapsed")){
+          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
+          $('.accordion-collapse').removeClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
+          
+
+      } else {
+          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
+          $('.accordion-collapse').addClass("show");
+          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        
+      }
+    });
+  });
+</script>
 
 
 
-
-
-</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -5755,7 +4722,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-  
+
 </div>
   </div>
 </div>
@@ -5808,12 +4775,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -5999,12 +4966,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
+<script src='/site/assets/js/sdg.js?v=20220925151412'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925151412"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
