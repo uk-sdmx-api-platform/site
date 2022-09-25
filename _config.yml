@@ -3,6 +3,8 @@
 # Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
 remote_theme: open-sdg/open-sdg@global-national-comparison
 
+compare_national_and_global_data: true
+
 # Replace this title as needed.
 title: general.site_title
 url: ""
