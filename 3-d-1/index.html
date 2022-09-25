@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925144938">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925145128">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,23 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-lines (14 sloc)  755 Bytes
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -424,22 +404,6 @@ lines (14 sloc)  755 Bytes
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -855,18 +819,16 @@ data-event-label="Change to Sources tab"
 
 <div class="tab-content">
     
-        
-    <div role="tabpanel" class="tab-pane active" id="national">
-        <!-- National Metadata -->
-        <div>
-            <article>
-                <p>
-                    
-                    
-                    This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
-                </p>
-                <table class="table metadata-content">
-  <tbody>
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
   
   
   
@@ -911,21 +873,13 @@ data-event-label="Change to Sources tab"
   
   
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Indicator information </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -933,21 +887,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Goal </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -955,21 +901,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Target </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -977,21 +915,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Indicator </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -999,21 +929,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Series </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1021,21 +943,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Metadata update </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1043,21 +957,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Related indicators </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1065,21 +971,13 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
         <th scope="row">Data reporter </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1087,8 +985,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1105,8 +1001,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact person(s) </th>
         <td>
@@ -1119,8 +1013,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1137,8 +1029,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact person function </th>
         <td>
@@ -1151,8 +1041,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1169,8 +1057,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact mail </th>
         <td>
@@ -1183,8 +1069,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1201,19 +1085,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Definition, concepts, and classifications </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1221,8 +1097,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1239,8 +1113,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Unit of measure </th>
         <td>
@@ -1253,8 +1125,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1271,19 +1141,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Data source type and collection method </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1291,8 +1153,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1309,8 +1169,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data collection method </th>
         <td>
@@ -1323,8 +1181,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1341,8 +1197,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data release calendar </th>
         <td>
@@ -1355,8 +1209,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1373,8 +1225,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data compilers </th>
         <td>
@@ -1387,8 +1237,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1405,19 +1253,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Other methodological considerations </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1425,8 +1265,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1443,8 +1281,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Comment and limitations </th>
         <td>
@@ -1457,8 +1293,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1475,19 +1309,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Validation </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1495,8 +1321,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1513,8 +1337,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Quality management </th>
         <td>
@@ -1527,8 +1349,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1545,8 +1365,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Quality assessment </th>
         <td>
@@ -1559,8 +1377,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1577,8 +1393,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Comparability/deviation from international standards </th>
         <td>
@@ -1591,8 +1405,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1609,14 +1421,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Data last updated </th>
         <td>
@@ -1626,13 +1430,6 @@ data-event-label="Change to Sources tab"
             
             
 
-            
-              
-              
-              
-              <a href="/site/<span class="empty-metadata-placeholder"></span>">
-                Link
-              </a>
             
 
           
@@ -1644,23 +1441,7 @@ data-event-label="Change to Sources tab"
       
       
       
-        
-          
-          
-          
-        
-      
-      
-      
   
-      
-      
-      
-        
-          
-          
-          
-        
       
       
       <tr>
@@ -1673,12 +1454,108 @@ data-event-label="Change to Sources tab"
             
 
             
-              
-              
-              
-              <a href="/site/<span class="empty-metadata-placeholder"></span>">
-                Link
-              </a>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
             
 
           
@@ -1687,129 +1564,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
-      
-        
-          
-          
-          
-        
-      
-      
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </tbody>
-</table>
-
-            </article>
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="global">
-        <!-- Global Metadata -->
-        <div>
-            <article>
-                <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-                <table class="table metadata-content">
-  <tbody>
-  
-      
-      
-      
-        
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Indicator information </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder"></span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
       
       
       <tr>
@@ -1826,8 +1580,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Target </th>
         <td>
@@ -1840,8 +1592,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1858,19 +1608,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Series </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1878,8 +1620,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1896,19 +1636,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Related indicators </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1916,8 +1648,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1934,19 +1664,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Data reporter </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -1954,8 +1676,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -1975,8 +1695,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact person(s) </th>
         <td>
@@ -1989,8 +1707,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2007,8 +1723,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact person function </th>
         <td>
@@ -2021,8 +1735,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2039,8 +1751,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Contact mail </th>
         <td>
@@ -2053,8 +1763,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2071,19 +1779,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Definition, concepts, and classifications </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -2091,8 +1791,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2112,8 +1810,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Unit of measure </th>
         <td>
@@ -2127,8 +1823,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2145,19 +1839,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Data source type and collection method </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -2165,8 +1851,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2184,8 +1868,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data collection method </th>
         <td>
@@ -2200,8 +1882,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data collection calendar </th>
         <td>
@@ -2214,8 +1894,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2235,8 +1913,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Data providers </th>
         <td>
@@ -2249,8 +1925,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2267,8 +1941,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Institutional mandate </th>
         <td>
@@ -2283,19 +1955,11 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-        
-          
-          
-          
-        
-      
-      
       <tr>
         <th scope="row">Other methodological considerations </th>
         <td>
           
-            <p><span class="empty-metadata-placeholder"></span></p>
+            
 
           
         </td>
@@ -2303,8 +1967,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2321,8 +1983,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Comment and limitations </th>
         <td>
@@ -2336,8 +1996,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2358,8 +2016,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Validation </th>
         <td>
@@ -2377,8 +2033,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Adjustments </th>
         <td>
@@ -2392,8 +2046,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2411,8 +2063,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Regional aggregations </th>
         <td>
@@ -2425,8 +2075,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2443,8 +2091,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Quality management </th>
         <td>
@@ -2457,8 +2103,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2475,8 +2119,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Quality assessment </th>
         <td>
@@ -2489,8 +2131,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2508,8 +2148,6 @@ data-event-label="Change to Sources tab"
   
       
       
-      
-      
       <tr>
         <th scope="row">Comparability/deviation from international standards </th>
         <td>
@@ -2523,8 +2161,6 @@ data-event-label="Change to Sources tab"
         
       
   
-      
-      
       
       
       <tr>
@@ -2796,22 +2432,19 @@ data-event-label="Change to Sources tab"
   
   
   
-  </tbody>
 </table>
 
-            </article>
-        </div>
+        </article>
     </div>
-    <div role="tabpanel" class="tab-pane" id="sources">
-        <!-- Count the non-empty sources (up to 5) -->
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
 
 
 
 
 
-    </div>
-
-
+</div>
     
     
         <div role="tabpanel" class="tab-pane" id="edit">
@@ -2837,7 +2470,7 @@ data-event-label="Change to Sources tab"
         </div>
     
 </div>
-
+  
 </div>
   </div>
 </div>
@@ -2890,12 +2523,12 @@ data-event-label="Change to Sources tab"
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
 
@@ -3081,12 +2714,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925144938'></script>
+<script src='/site/assets/js/sdg.js?v=20220925145128'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925144938"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925145128"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

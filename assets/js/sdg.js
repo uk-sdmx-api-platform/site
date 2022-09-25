@@ -1184,7 +1184,6 @@ var indicatorModel = function (options) {
  */
 var UNIT_COLUMN = 'UNIT_MEASURE';
 var SERIES_COLUMN = 'SERIES';
-var REPORTINGTYPE_COLUMN = 'Reporting type';
 var GEOCODE_COLUMN = 'GeoCode';
 var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
@@ -1221,14 +1220,6 @@ function isElementUniqueInArray(element, index, arr) {
  */
 function dataHasGeoCodes(columns) {
   return columns.includes(GEOCODE_COLUMN);
-}
-
-/**
- * @param {Array} reportingTypes
- * @return {boolean}
- */
-function dataHasGlobalValues(reportingTypes) {
-  return reportingTypes.includes("Global");
 }
 
 /**
@@ -2649,177 +2640,6 @@ function getTimeSeriesAttributes(rows) {
   return timeSeriesAttributes;
 }
 
-  /** 
-* Model helper functions related to comparing national and global data.
- */
-
-function getCombinationDataForReportingTypeComparison(selectedFields) {
-  var combinations = [{'Reporting type': 'National'}, {'Reporting type': 'Global'}]
-  if (selectedFields.length < 2) {
-    // do nothing  
-  } else {
-    var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
-    var field = selectedComparisonValue[0]['field'];
-    var value = selectedComparisonValue[0]['values'][0];
-    combinations.forEach(object => {object[field] = value;});
-  }
-  return combinations
-}
-	
-
-
-function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
-
-  var selectedFields = [{
-    field: "Reporting type",
-    values: ["National", "Global"]}]
-  var field = selectedComparisonValue.split("|")[0];
-  var value = selectedComparisonValue.split("|")[1];
-  if (value === "total") {
-    // do nothing
-  } else {
-    selectedFields.push(_.map($('#category-select option'), function(option) {
-      return {
-	field: field,
-        values: [value]
-      };
-    })[0])
-  }
-  return selectedFields
-}
-
-
-/**
- * @param {Array} columns
- * @return {boolean}
- */
-function dataHasReportingTypes(columns) {
-  return columns.includes(REPORTINGTYPE_COLUMN);
-}
-
-/**
- * @param {boolean} headlineHasGlobalReportingType
- * @param {boolean} fieldsHaveGlobalReportingType
- * @return {boolean} 
- */
-function dataIsComparable(headlineIsComparable, fieldsAreComparable) {
-	return headlineIsComparable || fieldsAreComparable
-}
-
-function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
-  	return headlineHasGlobalData && headlineHasNationalData;
-}
-
-/**
- * @param {Array} Headline data
- * @return {boolean} 
- */
-function headlineHasNationalReportingType(headlineRows) {
-	return headlineRows.some(function(row) {
-  	return row[REPORTINGTYPE_COLUMN] === 'National';
-  }, this)
-
-}
-
-/**
- * @param {Array} Headline data
- * @return {boolean} 
- */
-function headlineHasGlobalReportingType(headlineRows) {
-	return headlineRows.some(function(row) {
-  	return row[REPORTINGTYPE_COLUMN] === 'Global';
-  }, this)
-
-}
-
-
-/**
- * @param {Array} Field items and values with global data
- * @return {boolean} 
- */
-function fieldsAreComparable(comparableFieldValues) {
- 	return _.map(comparableFieldValues, 'values').some(element => element.length > 0);
-}
-  
-
-/**
- * @param {Array} rows
- * @param {Array} columns
- * @return {Array} Field items and values with global data
- */
-function fieldValuesWithGlobalReportingType(rows, columns) {
-  var fields = getFieldColumnsFromData(columns);
-  return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
-    return {
-      field: field,
-      values: values.filter(function(fieldValue) {
-        return fieldValueHasGlobalReportingType(field, fieldValue, rows);
-      }, this),
-    };
-  }, this);
-}
-
-/**
- * @param {Array} rows
- * @param {Array} columns
- * @return {Array} Field items and values with global data
- */
-function fieldValuesWithNationalReportingType(rows, columns) {
-  var fields = getFieldColumnsFromData(columns);
-  return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
-    return {
-      field: field,
-      values: values.filter(function(fieldValue) {
-        return fieldValueHasNationalReportingType(field, fieldValue, rows);
-      }, this),
-    };
-  }, this);
-}
-
-/**
- * @param {Array} rows
- * @param {Array} columns
- * @return {Array} Field items and values with national and global data
- */
-function comparableFieldValues(rows, columns) {
-  var fields = getFieldColumnsFromData(columns);
-  return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
-    return {
-      field: field,
-      values: values.filter(function(fieldValue) {
-        return fieldValueHasNationalReportingType(field, fieldValue, rows) && fieldValueHasGlobalReportingType(field, fieldValue, rows);
-      }, this),
-    };
-  }, this);
-}
-
-
-
-/**
- * @param {string} field
- * @param {string} reportingType
- * @param {Array} rows
- */
-function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
-  return rows.some(function(row) {
-    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'Global';
-  }, this);
-}
-
-/**
- * @param {string} field
- * @param {string} reportingType
- * @param {Array} rows
- */
-function fieldValueHasNationalReportingType(field, fieldValue, rows) {
-  return rows.some(function(row) {
-    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'National';
-  }, this);
-}
-
 
   function deprecated(name) {
     return function() {
@@ -2830,7 +2650,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   return {
     UNIT_COLUMN: UNIT_COLUMN,
     SERIES_COLUMN: SERIES_COLUMN,
-    REPORTINGTYPE_COLUMN: REPORTINGTYPE_COLUMN,
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
@@ -2840,12 +2659,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
-    dataHasReportingTypes: dataHasReportingTypes,
-    dataIsComparable: dataIsComparable,
-    headlineHasGlobalReportingType: headlineHasGlobalReportingType,
-    headlineHasNationalReportingType: headlineHasNationalReportingType,
-    headlineIsComparable: headlineIsComparable,
-    fieldsAreComparable: fieldsAreComparable,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -2857,9 +2670,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
-    fieldValuesWithGlobalReportingType: fieldValuesWithGlobalReportingType,
-    fieldValuesWithNationalReportingType: fieldValuesWithNationalReportingType,
-    comparableFieldValues: comparableFieldValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
@@ -2874,8 +2684,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     getAllowedFieldsWithChildren: getAllowedFieldsWithChildren,
     getUpdatedFieldItemStates: getUpdatedFieldItemStates,
     fieldItemStatesForView: fieldItemStatesForView,
-    updateSelectedFieldsFromSelectedValue: updateSelectedFieldsFromSelectedValue,
-    getCombinationDataForReportingTypeComparison: getCombinationDataForReportingTypeComparison,
     getChartTitle: getChartTitle,
     getChartType: getChartType,
     getCombinationData: getCombinationData,
@@ -2927,15 +2735,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
-  this.headlineHasGlobalReportingType = false;
-  this.headlineHasNationalReportingType = false;
-  this.headlineIsComparable = false;
-  this.fieldsAreComparable = false;
-  this.dataIsComparable = false;
-  this.fieldValuesWithGlobalReportingType = [];
-  this.fieldValuesWithNationalReportingType = [];
-  this.comparableFieldValues = [];
-  this.comparisonToggle = false;
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -2960,25 +2759,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       this.selectedUnit = this.units[0];
       this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data, this.allColumns);
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
-    }
-  }
-  
-  this.initialiseFieldsWithGlobalValues = function() {
-    if (this.hasReportingTypes) {
-      this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
-      console.log('fieldValuesWithGlobalReportingType: ', this.fieldValuesWithGlobalReportingType)
-      this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
-      console.log('fieldValuesWithNationalReportingType: ', this.fieldValuesWithNationalReportingType)
-      this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
-      console.log('comparableFieldValues: ',this.comparableFieldValues)
-      this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
-      this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-      var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
-      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
-      this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
-      this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
-      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
-      this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
     }
   }
 
@@ -3024,8 +2804,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
-  this.hasReportingTypes = helpers.dataHasReportingTypes(this.allColumns);
-  this.initialiseFieldsWithGlobalValues();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
@@ -3039,7 +2817,7 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
 
   this.updateFieldStates = function(selectedFields) {
     this.selectedFields = helpers.removeOrphanSelections(selectedFields, this.edgesData);
-    this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields).filter(e => (e != 'Reporting type'));
+    this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields);
     this.fieldItemStates = helpers.getUpdatedFieldItemStates(this.fieldItemStates, this.edgesData, selectedFields, this.validParentsByChild);
     this.onSelectionUpdate.notify({
       selectedFields: this.selectedFields,
@@ -3051,18 +2829,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
-  
-  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
-    this.getData();
-    
-  };
-  
-  this.updateHeadlineSelectedFields = function () {
-    this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
-    this.getData();
-  }
-    
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
@@ -3087,7 +2853,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
-    this.initialiseFieldsWithGlobalValues();
     this.initialiseFields();
     this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
@@ -3206,14 +2971,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
-        dataIsComparable: this.dataIsComparable,
-        fieldsAreComparable: this.fieldsAreComparable,
-        headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
-        headlineHasNationalReportingType: this.headlineHasNationalReportingType,
-        headlineIsComparable: this.headlineIsComparable,
-        fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
-        fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
-        comparableFieldValues: this.comparableFieldValues,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -3246,14 +3003,8 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
     if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
-    
-    if (this.comparisonToggle) {
-      var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
-    }
-    else {
-      var combinations = helpers.getCombinationData(this.selectedFields);
-    }
 
+    var combinations = helpers.getCombinationData(this.selectedFields);
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
@@ -3282,14 +3033,6 @@ function fieldValueHasNationalReportingType(field, fieldValue, rows) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      dataIsComparable: this.dataIsComparable,
-      fieldsAreComparable: this.fieldsAreComparable,
-      headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
-      headlineHasNationalReportingType: this.headlineHasNationalReportingType,
-      headlineIsComparable: this.headlineIsComparable,
-      fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
-      fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
-      comparableFieldValues: this.comparableFieldValues,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
@@ -3373,10 +3116,6 @@ function initialiseFields(args) {
     } else {
         $(OPTIONS.rootElement).addClass('no-fields');
     }
-    
-    if (args.allowedFields == 'Reporting type') {
-         $(OPTIONS.rootElement).addClass('no-fields');
-    }
 }
 
 /**
@@ -3439,58 +3178,6 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
             $valueElement.show().text(translations.t(value));
         }
     });
-}
-
-  /**
- * @param {Object} args
- * @return null
- */
-
-function initialiseFieldsWithGlobalValues(args) {
-	
-	console.log('headlineIsComparable: '+args.headlineIsComparable);
-	var dataIsComparable = args.dataIsComparable
-	if (dataIsComparable === false) {
-		$('#toggles').hide()
-		$(OPTIONS.rootElement).addClass('no-global-data');
-	}
-	else {
-        	$(OPTIONS.rootElement).removeClass('no-global-data');
-    	}
-	
-	
-	$('.toggle-switch-check').change(function() {
-		if (this.checked) {
-			MODEL.comparisonToggle = true;
-			if (args.headlineIsComparable) {
-				 MODEL.updateHeadlineSelectedFields()
-			}
-			
-			console.log('Toggle on: ', this.checked);
-			console.log('dataIsComparable: '+args.dataIsComparable);
-			console.log('fieldsAreComparable: '+args.fieldsAreComparable)
-			$('#toolbar').hide();
-			if (args.fieldsAreComparable) {
-				var template = _.template($('#categories_template').html());
-				$('#categories').html(template({
-				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues
-			}));
-				console.log('fieldsAreComparable: ', args.fieldsAreComparable)
-				console.log('comparableFieldValues: ', args.comparableFieldValues)
-				$('#categories').show();
-                                $(OPTIONS.rootElement).on('change', '#category-select', function () {
-					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
-                                });
-			}	
-		} else {
-			MODEL.comparisonToggle = false;
-			MODEL.startValues = [{"field":"Reporting type","value":"National"}]
-			console.log('startValues: ', MODEL.startValues)
-			$('#categories').hide();
-			$('#toolbar').show()
-		}
-	});
 }
 
   /**
@@ -4768,7 +4455,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     HIDE_SINGLE_SERIES: HIDE_SINGLE_SERIES,
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
-    initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
@@ -4875,8 +4561,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
-        
-        helpers.initialiseFieldsWithGlobalValues(args);
+
         helpers.initialiseFields(args);
 
         if (args.hasGeoData && args.showMap) {
@@ -5619,7 +5304,12 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
     timeSliderDragUpdate: true,
     speedSlider: false,
     position: 'bottomleft',
-    playButton: false,
+    // Player options.
+    playerOptions: {
+      transitionTime: 1000,
+      loop: false,
+      startOver: true
+    },
   };
 
   L.Control.YearSlider = L.Control.TimeDimension.extend({
@@ -5718,6 +5408,14 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
       // delimited string of YYYY-MM-DD dates.
       times: years.map(function(y) { return y.time }).join(','),
       currentTime: new Date(years[0].time).getTime(),
+    });
+    // Create the player.
+    options.player = new L.TimeDimension.Player(options.playerOptions, options.timeDimension);
+    options.player.on('play', function() {
+      $('.timecontrol-play').attr('title', 'Pause');
+    });
+    options.player.on('stop', function() {
+      $('.timecontrol-play').attr('title', 'Play');
     });
     // Listen for time changes.
     if (typeof options.yearChangeCallback === 'function') {
@@ -5963,17 +5661,14 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
             this.hasSeries = (this.allSeries.length > 0);
             this.hasUnits = (this.allUnits.length > 0);
             this.hasDisaggregations = this.hasDissagregationsWithValues();
-            this.hasDisaggregationsWithMultipleValues = this.hasDisaggregationsWithMultipleValues();
         },
 
         getVisibleDisaggregations: function() {
             var features = this.plugin.getVisibleLayers().toGeoJSON().features;
             var disaggregations = features[0].properties.disaggregations;
-            // The purpose of the rest of this function is to identiy
-            // and remove any "region columns" - ie, any columns that
-            // correspond exactly to names of map regions. These columns
-            // are useful on charts and tables but should not display
-            // on maps.
+            // The purpose of the rest of this function is to
+            // "prune" the disaggregations by removing any keys
+            // that are identical across all disaggregations.
             var allKeys = Object.keys(disaggregations[0]);
             var relevantKeys = {};
             var rememberedValues = {};
@@ -5989,27 +5684,6 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
                 }
             });
             relevantKeys = Object.keys(relevantKeys);
-            if (features.length > 1) {
-                // Any columns not already identified as "relevant" might
-                // be region columns.
-                var regionColumnCandidates = allKeys.filter(function(item) {
-                    return relevantKeys.includes(item) ? false : true;
-                });
-                // Compare the column value across map regions - if it is
-                // different then we assume the column is a "region column".
-                // For efficiency we only check the first and second region.
-                var regionColumns = regionColumnCandidates.filter(function(candidate) {
-                    var region1 = features[0].properties.disaggregations[0][candidate];
-                    var region2 = features[1].properties.disaggregations[0][candidate];
-                    return region1 === region2 ? false : true;
-                });
-                // Now we can treat any non-region columns as relevant.
-                regionColumnCandidates.forEach(function(item) {
-                    if (!regionColumns.includes(item)) {
-                        relevantKeys.push(item);
-                    }
-                });
-            }
             relevantKeys.push(this.seriesColumn);
             relevantKeys.push(this.unitsColumn);
             var pruned = [];
@@ -6059,16 +5733,6 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
             return hasDisaggregations;
         },
 
-        hasDisaggregationsWithMultipleValues: function () {
-            var hasDisaggregations = false;
-            this.allDisaggregations.forEach(function(disaggregation) {
-                if (disaggregation.values.length > 1 && disaggregation.values[1] !== '') {
-                    hasDisaggregations = true;
-                }
-            });
-            return hasDisaggregations;
-        },
-
         updateList: function () {
             var list = this.list;
             list.innerHTML = '';
@@ -6099,7 +5763,7 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
                         definition = L.DomUtil.create('dd', 'disaggregation-definition'),
                         container = L.DomUtil.create('div', 'disaggregation-container'),
                         field = disaggregation.field;
-                    title.innerHTML = translations.t(field);
+                    title.innerHTML = field;
                     var disaggregationValue = currentDisaggregation[field];
                     if (disaggregationValue !== '') {
                         definition.innerHTML = disaggregationValue;
@@ -6179,7 +5843,7 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
                         legend = L.DomUtil.create('legend', 'disaggregation-fieldset-legend'),
                         fieldset = L.DomUtil.create('fieldset', 'disaggregation-fieldset'),
                         field = disaggregation.field;
-                    legend.innerHTML = translations.t(field);
+                    legend.innerHTML = field;
                     fieldset.append(legend);
                     form.append(fieldset);
                     formInputs.append(form);
@@ -6192,7 +5856,7 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
                             input.tabindex = 0;
                             input.checked = (value === currentDisaggregation[field]) ? 'checked' : '';
                             var label = L.DomUtil.create('label', 'disaggregation-label');
-                            label.innerHTML = (value === '') ? translations.indicator.total : value;
+                            label.innerHTML = (value === '') ? 'All' : value;
                             label.prepend(input);
                             fieldset.append(label);
                             input.addEventListener('change', function(e) {
@@ -6247,7 +5911,7 @@ if (klaroConfig && klaroConfig.noAutoLoad !== true) {
                     numUnits = this.allUnits.length,
                     displayForm = this.displayForm;
 
-                if (displayForm && (this.hasDisaggregationsWithMultipleValues || (numSeries > 1 || numUnits > 1))) {
+                if (displayForm && (this.hasDisaggregations || (numSeries > 1 || numUnits > 1))) {
 
                     var button = L.DomUtil.create('button', 'disaggregation-button');
                     button.innerHTML = translations.indicator.change_breakdowns;
