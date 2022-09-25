@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -684,111 +650,1020 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 3.4: By 2030, reduce by one third premature mortality from non-communicable diseases through prevention and treatment and promote mental health and well-being</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 3.4.1: Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease</p>
-</dd>
-            <dt>Series</dt>
-            <dd>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>Not applicable</p>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>World Health Organization (WHO) </p>
-</dd>
-          </dl>
-        </div>
-      </div>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>World Health Organization (WHO)</p>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 3.4: By 2030, reduce by one third premature mortality from non-communicable diseases through prevention and treatment and promote mental health and well-being</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 3.4.1: Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-03-01</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>World Health Organization (WHO) </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>World Health Organization (WHO)</p>
 <p> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definitions: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definitions: </strong></p>
 <p> </p>
 <p>Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease. </p>
 <p>Probability of dying between the ages of 30 and 70 years from cardiovascular diseases, cancer, diabetes or chronic respiratory diseases, defined as the per cent of 30-year-old-people who would die before their 70th birthday from cardiovascular disease, cancer, diabetes, or chronic respiratory disease, assuming that s/he would experience current mortality rates at every age and s/he would not die from any other cause of death (e.g., injuries or HIV/AIDS). This indicator is calculated using life table methods (see further details in section 3.3). </p>
@@ -800,135 +1675,203 @@ data-event-label="Change to Table tab"
 <p>Life table: A table showing the mortality experience of a hypothetical group of infants born at the same time and subject throughout their lifetime to a set of age-specific mortality rates. </p>
 <p> </p>
 <p>Cardiovascular disease, cancer, diabetes or chronic respiratory diseases: ICD-10 underlying causes of death I00-I99, COO-C97, E10-E14 and J30-J98. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Probability</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The four noncommunicable causes of death are defined in terms of the International Classification of Diseases, Tenth Revision (ICD-10) (See 2.a)</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The preferred data source is death registration systems with complete coverage and medical certification of cause of death. Other possible data sources include household surveys with verbal autopsy, and sample or sentinel registration systems. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>WHO conducts a formal country consultation process before releasing its cause-of-death estimates. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Probability</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>The four noncommunicable causes of death are defined in terms of the International Classification of Diseases, Tenth Revision (ICD-10) (See 2.a)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>The preferred data source is death registration systems with complete coverage and medical certification of cause of death. Other possible data sources include household surveys with verbal autopsy, and sample or sentinel registration systems. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>WHO conducts a formal country consultation process before releasing its cause-of-death estimates. </p>
 <p> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>WHO annually requests tabulated death registration data (including all causes of death) from Member States. Countries may submit annual cause-of-death statistics to WHO on an ongoing basis. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>End of 2020. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>National statistics offices and/or ministries of health. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>WHO </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>According to Article 64 of its constitution, WHO is mandated to request each Member State to provide statistics on mortality. Furthermore, the WHO Nomenclature Regulations of 1967 affirms the importance of compiling and publishing statistics of mortality and morbidity in comparable form. Member States started to report mortality data to WHO since the early fifties and this reporting activity is continuing until today. </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Disease burden from non-communicable diseases (NCDs) among adults is rapidly increasing globally due to ageing and epidemiological transitions. Cardiovascular diseases, cancer, diabetes and chronic respiratory diseases are the four main causes of NCD burden. Measuring the risk of dying from these four major causes is important to assess the extent of burden from premature mortality due NCDs in a population. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Cause of death estimates have large uncertainty ranges for some causes and some regions. Data gaps and limitations in high-mortality regions reinforce the need for caution when interpreting global comparative cause of death assessments, as well as the need for increased investment in population health measurement systems. The use of verbal autopsy methods in sample registration systems, demographic surveillance systems and household surveys provides some information on causes of death in populations without well-functioning death registration systems, but there remain considerable challenges in the validation and interpretation of such data, and in the assessment of uncertainty associated with diagnoses of underlying cause of death. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The methods used for the analysis of causes of death depend on the type of data available from countries: </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>WHO annually requests tabulated death registration data (including all causes of death) from Member States. Countries may submit annual cause-of-death statistics to WHO on an ongoing basis. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>End of 2020. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>National statistics offices and/or ministries of health. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>WHO </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>According to Article 64 of its constitution, WHO is mandated to request each Member State to provide statistics on mortality. Furthermore, the WHO Nomenclature Regulations of 1967 affirms the importance of compiling and publishing statistics of mortality and morbidity in comparable form. Member States started to report mortality data to WHO since the early fifties and this reporting activity is continuing until today. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Disease burden from non-communicable diseases (NCDs) among adults is rapidly increasing globally due to ageing and epidemiological transitions. Cardiovascular diseases, cancer, diabetes and chronic respiratory diseases are the four main causes of NCD burden. Measuring the risk of dying from these four major causes is important to assess the extent of burden from premature mortality due NCDs in a population. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Cause of death estimates have large uncertainty ranges for some causes and some regions. Data gaps and limitations in high-mortality regions reinforce the need for caution when interpreting global comparative cause of death assessments, as well as the need for increased investment in population health measurement systems. The use of verbal autopsy methods in sample registration systems, demographic surveillance systems and household surveys provides some information on causes of death in populations without well-functioning death registration systems, but there remain considerable challenges in the validation and interpretation of such data, and in the assessment of uncertainty associated with diagnoses of underlying cause of death. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The methods used for the analysis of causes of death depend on the type of data available from countries: </p>
 <p> </p>
 <p>For countries with a high-quality vital registration system including information on cause of death, the vital registration that member states submit to the WHO Mortality Database were used, with adjustments where necessary, e.g. for under-reporting of deaths, unknown age and sex, and ill-defined causes of deaths. </p>
 <p> </p>
@@ -938,20 +1881,48 @@ data-event-label="Change to Table tab"
 <p>Formulas to (1) calculate age-specific mortality rate for each five-year age group between 30 and 70, (2) translate the 5-year death rate into the probability of death in each 5-year age range, and (3) calculate the probability of death from age 30 to age 70, independent of other causes of death, can be found on page 6 of this document: </p>
 <p> </p>
 <p>NCD Global Monitoring Framework: Indicator Definitions and Specifications. Geneva: World Health Organization, 2014 (http://www.who.int/nmh/ncd-tools/indicators/GMF_Indicator_Definitions_FinalNOV2014.pdf?ua=1) </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Deaths of unknown sex were redistributed pro-rata within cause-age groups of known sexes, and then deaths of unknown age were redistributed pro-rata within cause-sex groups of known ages.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>The number of deaths were country consulted with country designated focal points (usually at the Ministry of Health or National Statistics Office) as part of the full set of causes of death prior to the release.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Deaths of unknown sex were redistributed pro-rata within cause-age groups of known sexes, and then deaths of unknown age were redistributed pro-rata within cause-sex groups of known ages.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <ul>
   <li><strong>At country level </strong></li>
 </ul>
 <p> </p>
@@ -964,128 +1935,124 @@ data-event-label="Change to Table tab"
 </ul>
 <p> </p>
 <p>NA </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aggregation of estimates of deaths by cause, age and sex by country, and aggregation of population by age, sex and country as denominator where needed. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The cause of death categories (including suicides) follow the definitions in terms of the International Classification of Diseases, Tenth Revision (ICD-10). Please see Annex Table A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The World Health Organization (WHO) established a Reference Group on Health Statistics in 2013 to provide advice on population health statistics to WHO with a focus on methodological and data issues related to the measurement of mortality and cause-of-death patterns. The group facilitated interaction between multilateral development institutions and other independent academic groups with WHO expert groups in specific subject areas including methods to the estimation on causes of death</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The data principles of the World Health Organization (WHO) provide a foundation for continually reaffirming trust in WHO&#x2019;s information and evidence on public health. The five principles are designed to provide a framework for data governance for WHO. The principles are intended primarily for use by WHO staff across all parts of the Organization in order to help define the values and standards that govern how data that flows into, across and out of WHO is collected, processed, shared and used. These principles are made publicly available so that they may be used and referred to by Member States and non-state actors collaborating with WHO.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>All statements and claims made officially by WHO headquarters about population-level (country, regional, global) estimates of health status (e.g. mortality, incidence, prevalence, burden of disease), are cleared by the Department of Data and Analytics (DNA) through the executive clearance process. This includes the GATHER statement. GATHER promotes best practices in reporting health estimates using a checklist of 18 items that should be reported every time new global health estimates are published, including descriptions of input data and estimation methods. Developed by a working group convened by the World Health Organization, the guidelines aim to define and promote good practice in reporting health estimates.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Aggregation of estimates of deaths by cause, age and sex by country, and aggregation of population by age, sex and country as denominator where needed. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>The cause of death categories (including suicides) follow the definitions in terms of the International Classification of Diseases, Tenth Revision (ICD-10). Please see Annex Table A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>The World Health Organization (WHO) established a Reference Group on Health Statistics in 2013 to provide advice on population health statistics to WHO with a focus on methodological and data issues related to the measurement of mortality and cause-of-death patterns. The group facilitated interaction between multilateral development institutions and other independent academic groups with WHO expert groups in specific subject areas including methods to the estimation on causes of death</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>The data principles of the World Health Organization (WHO) provide a foundation for continually reaffirming trust in WHO&#x2019;s information and evidence on public health. The five principles are designed to provide a framework for data governance for WHO. The principles are intended primarily for use by WHO staff across all parts of the Organization in order to help define the values and standards that govern how data that flows into, across and out of WHO is collected, processed, shared and used. These principles are made publicly available so that they may be used and referred to by Member States and non-state actors collaborating with WHO.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>All statements and claims made officially by WHO headquarters about population-level (country, regional, global) estimates of health status (e.g. mortality, incidence, prevalence, burden of disease), are cleared by the Department of Data and Analytics (DNA) through the executive clearance process. This includes the GATHER statement. GATHER promotes best practices in reporting health estimates using a checklist of 18 items that should be reported every time new global health estimates are published, including descriptions of input data and estimation methods. Developed by a working group convened by the World Health Organization, the guidelines aim to define and promote good practice in reporting health estimates.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability: </strong></p>
 <p>Almost 70 countries currently provide WHO with regular high-quality data on mortality by age, sex and causes of death, and another 58 countries submit data of lower quality. However, comprehensive cause-of-death estimates are calculated by WHO systematically for all of its Member States (with a certain population threshold).</p>
 <p><strong>Time series:</strong></p>
 <p>2000-2019</p>
 <p><strong>Disaggregation: </strong></p>
 <p>Sex </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
 <p>In countries with high quality vital registration systems, point estimates sometimes differ primarily for two reasons: 1) WHO redistributes deaths with ill-defined cause of death; and 2) WHO corrects for incomplete death registration. </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL:</strong> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL:</strong> </p>
 <p> </p>
 <p>http://www.who.int/gho/en/ </p>
 <p> </p>
@@ -1101,36 +2068,171 @@ data-event-label="Change to Table tab"
 <p> </p>
 <p>WHO Global Action Plan for the Prevention and Control of Noncommunicable Diseases 2013-2020 (http://apps.who.int/iris/bitstream/10665/94384/1/9789241506236_eng.pdf?ua=1) </p>
 <p> </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1371,12 +2473,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

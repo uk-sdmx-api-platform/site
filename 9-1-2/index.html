@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1404,111 +1370,1020 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 9: Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 9.1: Develop quality, reliable, sustainable and resilient infrastructure, including regional and trans-border infrastructure, to support economic development and human well-being, with a focus on affordable and equitable access for all</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 9.1.2: Passenger and freight volumes, by mode of transport</p>
-</dd>
-            <dt>Series</dt>
-            <dd><p>International maritime freight is an indicator reflecting (1) the sum of international freight volumes loaded (exports) and unloaded (imports) at ports worldwide and measured in metric tonnes, and (2) container port traffic at world ports measured in twenty-foot equivalent unit (TEU).</p>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 9: Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 9.1: Develop quality, reliable, sustainable and resilient infrastructure, including regional and trans-border infrastructure, to support economic development and human well-being, with a focus on affordable and equitable access for all</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 9.1.2: Passenger and freight volumes, by mode of transport</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>International maritime freight is an indicator reflecting (1) the sum of international freight volumes loaded (exports) and unloaded (imports) at ports worldwide and measured in metric tonnes, and (2) container port traffic at world ports measured in twenty-foot equivalent unit (TEU).</p>
 <p>Data is collected by the UNCTAD secretariat from various sources, including industry, government and specialised maritime transport data providers and consultancies. Volumes are expressed in metric tonnes and twenty-foot equivalent unit (TEU).</p>
-</dd>
-            <dt>Related indicators</dt>
-            <dd>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>International Civil Aviation Organization (ICAO); International Transport Forum (ITF); United Nations Economic Commission for Europe (UNECE); United Nations Conference on Trade and Development (UNCTAD).</p>
-</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>International Civil Aviation Organization (ICAO); International Transport Forum (ITF); United Nations Economic Commission for Europe (UNECE); United Nations Conference on Trade and Development (UNCTAD).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definitions:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2022-04-12</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>International Civil Aviation Organization (ICAO); International Transport Forum (ITF); United Nations Economic Commission for Europe (UNECE); United Nations Conference on Trade and Development (UNCTAD).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>International Civil Aviation Organization (ICAO); International Transport Forum (ITF); United Nations Economic Commission for Europe (UNECE); United Nations Conference on Trade and Development (UNCTAD).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definitions:</strong></p>
 <p>Passenger and freight volumes are respectively measured in passenger-kilometres and tonne-kilometres, and broken down by mode of transport. For the purposes of monitoring this indicator, passenger-km data are split between aviation, road (broken down between passenger cars, buses and motorcycles) and rail, and tonne-km are split between aviation, road, rail and inland waterways. </p>
 <p><strong>Concepts:</strong></p>
 <p>Aviation:</p>
@@ -1527,63 +2402,83 @@ data-event-label="Change to Table tab"
 <p>The ITF and UNECE, in collaboration with Eurostat, collect data on rail and road, inland waterway and pipeline statistics on an annual basis from all their collective Member countries. Data are collected from Transport Ministries, statistical offices and other institution designated as official data source. Although there are clear definitions for all the terms used in this survey, countries might have different methodologies to calculate tonne-kilometres and passenger-kilometres. Methods could be based on traffic or mobility surveys, use very different sampling methods and estimating techniques which could affect the comparability of their statistics. </p>
 <p>Official statistics for road, rail, inland waterways and pipeline transport are only available for UNECE or ITF member States. Data for these modes for other countries come from the ITF&#x2019;s global transport model.</p>
 <p>For definitions of all relevant terms, the UNECE/ITF/Eurostat Glossary for Transport Statistics can be consulted. The 5<sup>th</sup> edition of this publication is available at https://unece.org/DAM/trans/main/wp6/pdfdocs/Glossary_for_Transport_Statistics_EN.pdf</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviaiton: Revenue Passenger-Kilometres (RPK) and Freight Tonne-Kilometres (FTK)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Aviaiton: Revenue Passenger-Kilometres (RPK) and Freight Tonne-Kilometres (FTK)</p>
 <p>Martime: Metric tonnes and twenty-foot equivalent unit (TEU).</p>
 <p>Road, Rail, Inland Waterways and Pipelines: Passenger-Kilometres (Pkm) and Tonne-Kilometres (Tkm)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Maritime: </em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p><em>Maritime: </em></p>
 <p>Regional and sub-regional level data based on UNSD classification.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviation</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Aviation</p>
 <p>ICAO Air Transport Reporting Forms approved by the Statistics Division of ICAO and its Member States has been used to define standards, methodologies and to collect aviation data since the 1950&apos;s. ICAO definitions and metadata is also used by the Aviation Industry as the basis of collecting data and conducting analysis.</p>
 <p><em>Maritime:</em></p>
 <p>The UNCTAD secretariat collects and compiles the data from various websites and reports, including, by port and industry associations and authorities, national statistics offices, UN Monthly Bulletin of Statistics, governments, specialised agencies such as the International Energy Agency (IEA), the US Energy Information Administration (EIA), the Organization of the Petroleum Exporting Countries (OPEC), and, British Petroleum (BP). Data is also collected from reports issued by maritime specialised sources such as Drewry Maritime Research (DMR), Clarksons Research Services (CRS), Dynamar, and Lloyd&#x2019;s List Intelligence (LLI).</p>
 <p>Road, Rail, Inland waterways, Pipelines: The UNECE and the ITF collect transport statistics by means of questionnaires sent to their Member countries. The ITF also runs transport models that are used to provide transport information for all regions (see point 4.f).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Aviation: </em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p><em>Aviation: </em></p>
 <p>Official aviation statistics are reported on a regular basis by Member States to ICAO through Air Transport Reporting Forms.</p>
 <p><em>Maritime:</em></p>
 <p>Data not based on a systematic reporting by countries and relies mainly on secondary sources that may vary over time. Official reporting by countries is very limited. Some data is only available at regional or sub-regional level.</p>
@@ -1591,35 +2486,56 @@ data-event-label="Change to Table tab"
 <p>Note: Maritime cargo movements are counted only once regardless of whether the transhipment port is located within the same country or not </p>
 <p>Road, Rail, Inland waterways, Pipelines:</p>
 <p>Official transport statistics are reported on a regular basis by Member States to UNECE and ITF through questionnaires.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviation</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Aviation</p>
 <p>Every year by the fall data for the previous year is available to ICAO Member States at a country level. </p>
 <p>Road/Rail/Inland waterways/Pipelines</p>
 <p>Data are collected for the reference year starting in September of the following year, and are typically published by the following January. So year-2 data were published in Januaryyear-1.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Aviation:</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p><em>Aviation:</em></p>
 <p>Data are collected on a regular basis and a high level of coverage is expected to be available by the fall following the reference year.</p>
 <p>Maritime:</p>
 <p>Data are collected for the reference year on-ongoing process. Data are published annually on-line on UNCTADstat and in the annual Review of Maritime Transport in November of each year.</p>
 <p>Road, Rail, Inland waterways, Pipelines:</p>
 <p>Data are collect during the fall for the previous year and published on the following January.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Name:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Name:</p>
 <p>ICAO, ITF, UNECE, UNCTAD</p>
 <p><em>Aviation :</em></p>
 <p>International Civil Aviation organisation (ICAO).</p>
@@ -1628,78 +2544,105 @@ data-event-label="Change to Table tab"
 <p>Description: Data collected by UNCTAD from various sources, including government, industry and specialized maritime data sources and providers.</p>
 <p>Road, Rail, Inland waterways, Pipelines:</p>
 <p>Data for the UNECE and ITF are collected from either Transport Ministries or Statistical Offices.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>International Civil Aviation organisation (ICAO)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>ICAO:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>International Civil Aviation organisation (ICAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>ICAO:</p>
 <p>ICAO is funded and directed by 193 national governments to support their diplomacy and cooperation in air transport as signatory states to the Chicago Convention (1944). Its core function is to maintain an administrative and expert bureaucracy (the ICAO Secretariat) supporting these diplomatic interactions, and to research new air transport policy and standardization innovations as directed and endorsed by governments through the ICAO Assembly, or by the ICAO Council which the assembly elects.</p>
 <p>https://www.icao.int/about-icao/Pages/default.aspx</p>
 <p>UNCTAD:</p>
 <p>Established in 1964, the United Nations Conference on Trade and Development (UNCTAD), published its annual Review of Maritime Transport for the first time in 1968. The publication is part of UNCTAD&apos;s research and analytical work in the field of maritime transport aimed at helping developing countries maximize their trade and investment opportunities and increase their participation in the world economy. It has been regularly reconfirmed in the quadrennial Ministerial Conferences, most recently by UNCTAD XIII in Doha (2012) and UNCTAD XIV in Nairobi (2016). The mandates emanating from these conferences have emphasized sustainable and resilient transport as priority action areas and established &#x201C;Sustainable and Climate Resilient Maritime Transport&#x201D; as an important thematic area n UNCTAD&#x2019;s work programme and the Review of Maritime Transport. </p>
 <p>ITF:</p>
 <p>The International Transport Forum (ITF) was created by Ministerial Declaration in Dublin in 2006 on the legal basis of the European Conference of Ministers of Transport (ECMT), itself established as an international organisation by treaty (Protocol) signed in Brussels on 17 October 1953. The objectives of the ITF are to serve as a global platform for discussion and prenegotiation of transport policy issues across all modes. Unique in its global and modal scope, the ITF works to foster a deeper understanding of the role of transport in economic growth, environmental sustainability and social inclusion. It aspires to raise the public profile of transport policy.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Develop quality, reliable, sustainable and resilient infrastructure, including regional and trans-border infrastructure, to support economic development and human well-being, with a focus on affordable and equitable access for all. Trans-border infrastructure development is best captured by passenger and freight volumes moved by Member States and Regions. A growth in passenger and freight volumes shows a robust infrastructure development happening in States and Regions along with the resultant socio-economic benefit. Air Transport is particularly important not only for the economic and job benefits but also because it is one of the only mode of transport that can be relied on during emergencies and disease outbreaks to reach food, medicines, medical personnel, vaccines and other supplies speedily to the affected persons in the affected areas. In addition, tracking how the non-road share of freight volumes, and the public transport share of passenger volumes, changes over time allows insights into the overall sustainability of the global transport system.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Develop quality, reliable, sustainable and resilient infrastructure, including regional and trans-border infrastructure, to support economic development and human well-being, with a focus on affordable and equitable access for all. Trans-border infrastructure development is best captured by passenger and freight volumes moved by Member States and Regions. A growth in passenger and freight volumes shows a robust infrastructure development happening in States and Regions along with the resultant socio-economic benefit. Air Transport is particularly important not only for the economic and job benefits but also because it is one of the only mode of transport that can be relied on during emergencies and disease outbreaks to reach food, medicines, medical personnel, vaccines and other supplies speedily to the affected persons in the affected areas. In addition, tracking how the non-road share of freight volumes, and the public transport share of passenger volumes, changes over time allows insights into the overall sustainability of the global transport system.</p>
 <p><em>Aviation:</em></p>
 <p>Informed decision-making is the foundation upon which successful businesses are built. In a fast-growing industry like aviation, planners and investors require the most comprehensive, up-to-date, and reliable data. ICAO&#x2019;s aviation data/statistics programme is to provide accurate, reliable and consistent aviation data so that States, international organizations, aviation industry, tourism and other stakeholders can make better projections. The UN recognized ICAO as the central agency responsible for the collection, analysis, publication, standardization, improvement and dissemination of statistics pertaining to civil aviation.</p>
 <p><em>Maritime:</em></p>
 <p>The volume of international maritime freight and container port traffic movements provide an overall indication of the importance of port infrastructure for trade and development and may be relied upon to infer the quality and adequacy of seaports and their hinterland connections. Maritime transport is the dominant mode of international freight transport when flows are measured in volume terms. Behind the global and regional headline estimates, individual contributions vary by region and type of cargo, reflecting, among other factors, differences in countries&#x2019; economic structures, composition of trade, urbanization, levels of development, extent of integration into global trading networks, degree of participation in global supply chains, and the quality of transport infrastructure.</p>
 <p>World container port traffic reflects the importance of containerized trade and countries&#x2019; participation in global liner shipping networks and globalized manufacturing production processes.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Aviation:</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p><em>Aviation:</em></p>
 <p>Coverage for aviation is for all ICAO 193 Member States.</p>
 <p><em>Maritime: </em></p>
 <p>Coverage for international maritime freight volumes at regional and sub-regional level.</p>
 <p>Coverage for road, rail, inland waterways and pipelines is for all U.N. member States, but these are sourced from official statistics only for UNECE member States and ITF member States (and only when available). In order to provide a worldwide regional coverage, data from the ITF transport models are used (see point 4.f). </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviation</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Aviation</p>
 <p>The aviation passenger and freight volumes are reported for the air carriers through ICAO Air Transport Reporting Forms and grouped by Member States of ICAO.</p>
 <p>Road/Rail/Inland waterways/Pipelines</p>
 <p>Data for each inland mode are reported to UNECE/ITF/Eurostat by member States, through an annual data collection using the transport statistics web common questionnaire.</p>
@@ -1708,21 +2651,52 @@ data-event-label="Change to Table tab"
 <p>Cargo flows originating in or destined to landlocked countries are attributed to the ports of neighbouring coastal transit countries. The mode of transport &#x201C;maritime&#x201D; is assigned to an international trade transaction when the goods arrived at the country&#x2019;s external border (the seaport) transported by ship. </p>
 <p>Data on container port traffic include full and empty containers as well as transhipment traffic. </p>
 <p>Data is collected and compiled from various websites and reports, including, by port and industry associations and authorities, national statistics offices, UN Monthly Bulletin of Statistics, governments, specialised agencies such as the International Energy Agency (IEA), the US Energy Information Administration (EIA), the Organization of the Petroleum Exporting Countries (OPEC), and British Petroleum (BP). Data is also collected from reports issued by maritime specialised sources such as Drewry Maritime Research (DMR), Clarksons Research Services (CRS), Dynamar, and Lloyd&#x2019;s List Intelligence (LLI).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Road, rail, inland waterways and pipelines :</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>Aviation:</p>
+<p>ICAO Statistics Programme has put in place a series of robust data quality control functions to automate all the necessary calculations and producing a report for each reporting form. These quality control processes were divided into two main activities: verification and validation.</p>
+<p>Maritime:</p>
+<p>UNCTAD secretariat monitors, collects, and compiles the data at the country level as well as at regional/sub-regional level. It continuously updates the data as new data and information becomes available. Some commercial providers of maritime statistics publish global data that is derived, for example, from shipping contracts, and UNCTAD compares its own data with those published by commercial providers. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Road, rail, inland waterways and pipelines :</p>
 <p>In order to provide a worldwide regional coverage, data from the ITF transport models are used (see point 4.f). </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>&#x2022; At country level </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level </strong></p>
 <p><u>Aviation data are broadly complete.</u></p>
 <p><u>For inland transport statistics:</u> In case of missing data for a country for which at least one data point is available since 2000, we calculate estimates based on the expected growth rate for the country. The growth rates are computed from other socio-economic variables, such as Gross Domestic Product (GDP), population or urbanization.</p>
 <p><u>For road, rail, and inland waterways:</u> For non-ITF/UNECE countries, countries that did not submit a response, or when there is uncertainty regarding the provided data, data points are estimated using the ITF models, which use several covariates such as GDP, population, transport network coverage and more. Currently there are four global models used for this analysis: the urban passenger model, the non-urban passenger model, the international freight model and the urban freight model. A description of the four models can be found in the ITF Transport Outlook 2021 or in the following resources.</p>
@@ -1733,83 +2707,105 @@ data-event-label="Change to Table tab"
 <p><em>Maritime:</em></p>
 <p>International maritime freight: In case of missing data for a country or a sub-region for which a data point is available since 2006, UNCTAD makes an estimate based on the expected growth rate of the volume of merchandise trade. If not available, use is made of the latest year for which data was available.</p>
 <p>Container port traffic: In case of missing data, UNCTAD makes an estimate by extrapolating from the liner shipping connectivity and ship capacity deployment data, which has shown to be highly correlated with container port traffic. Container ship deployment data are available for all container ships of the world, which thus allows for estimates on container port traffic to be generated even if no national data is available. In other cases, UNCTAD makes an estimate based on the expected growth rate of the volume of merchandise trade.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aggregation by region based on UN classification of country groupings, including by geography and development status.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviation:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Aggregation by region based on UN classification of country groupings, including by geography and development status.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Aviation:</p>
 <p>States refer to the ICAO Reference Manual on the Statistics Programme (Doc 9060) to compile and file traffic reports at a national level.</p>
 <p>Road/Rail/Inland waterways/Pipelines</p>
 <p>Metadata (explanations of coverage, breaks in series etc.) for the ITF and UNECE inland transport data are available through their respective online databases. The aforementioned Glossary for Transport Statistics provides definitions for passenger-km and tonne-km, but also for related terms such as what constitutes a passenger, the definitions and exclusions within each transport mode etc.</p>
 <p><em>Maritime:</em></p>
 <p>Countries do not systematically collect or report data on international maritime freight and container port traffic. UNCTAD relies on data published by industry and information published by specialized sources. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Aviation:</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p><em>Aviation:</em></p>
 <p>ICAO applies the recommendations of the Committee for the Coordination of Statistical Activities (CCSA), including the Principles Governing International Statistical Activities.</p>
 <p><em>Maritime: </em></p>
 <p>UNCTAD systematically applies the recommendations of the Committee for the Coordination of Statistical Activities (CCSA), including the Principles Governing International Statistical Activities. UNCTAD participates in the work of the Chief Statisticians or coordinators of statistical activities of United Nations agencies and international and supranational organizations assembled in the Committee for the Coordination of Statistical Activities and ensures the implementation of their principles. <a href="https://unstats.un.org/unsd/ccsa/principles_stat_activities/">https://unstats.un.org/unsd/ccsa/principles_stat_activities/</a> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aviation:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Aviation:</p>
 <p>ICAO applies the United Nations Statistics Division (UNSD) fundamental principles and good practices of official statistics, and particularly the generic national quality assurance framework (NQAF). The complete version of the guidelines of NQAF is available at: http://unstats.un.org/unsd/dnss/qualityNQAF/nqaf.aspx.</p>
 <p>Maritime:</p>
 <p>UNCTAD conducts annual checks of collected data by updating the data with latest data available and comparing the data for internal consistency, against previous years, or similar data published or produced by other sources, including commercial sources specialized maritime transport data providers and research entities. Correspondence is undertaken with countries when necessary to collect, compare or confirm relevant data.</p>
 <p>Road/Rail/Inland waterways/Pipelines</p>
 <p>The ITF and UNECE conduct annual checks of their jointly collected data, comparing the data for internal consistency, against previous years, and on a per capita basis across countries, to determine if the data appear reasonable. Significant correspondence is undertaken with the countries over potential errors, and common issues and challenges are discussed at both the ITF annual statistics meeting and the UNECE&#x2019;s annual Working Party on Transport Statistics.</p>
 <p>A common problem for many countries is that passenger-km are only collected for public transport. Given that private passenger cars form the majority of passenger trips in most countries, this would clearly significantly underestimate road passenger-km, which is why the breakdown where available between passenger cars, buses and motorcycles is given. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Maritime:</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p><em>Maritime:</em></p>
 <p>UNCTAD systematically applies the recommendations of the Committee for the Coordination of Statistical Activities (CCSA), including the Principles Governing International Statistical Activities. UNCTAD participates in the work of the Chief Statisticians or coordinators of statistical activities of United Nations agencies and international and supranational organizations assembled in the Committee for the Coordination of Statistical Activities and ensures the implementation of their principles. <a href="https://unstats.un.org/unsd/ccsa/principles_stat_activities/">https://unstats.un.org/unsd/ccsa/principles_stat_activities/</a> </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
 <p>Aviation</p>
 <p>Data already provided for all 193 Member States that have air transport activities</p>
 <p>Road/Rail/Inland waterways/Pipelines</p>
@@ -1829,99 +2825,208 @@ data-event-label="Change to Table tab"
 <p>Container port traffic data cover 176 countries: 2010-2019</p>
 <p><strong>Disaggregation:</strong> International maritime freight: global, regional and subregional levels. </p>
 <p>Container port traffic: global, regional and country levels</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><em>Maritime:</em></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><em>Maritime:</em></p>
 <p><strong>Sources of discrepancies:</strong></p>
 <p>Data based on varied and mixed sources. This entails differences in computational systems and methods which may result in discrepancies. </p>
 <p>Data on container port traffic for some countries are based on estimates by UNCTAD while extrapolating from the liner shipping connectivity and ship capacity deployment data. These remain proxies and may not capture the actual volumes handled by the ports in these countries. </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
 <p><a href="http://www.icao.int">www.icao.int</a></p>
 <p><a href="https://data.oecd.org/transport/passenger-transport.htm">https://data.oecd.org/transport/passenger-transport.htm</a></p>
 <p><a href="https://w3.unece.org/PXWeb/en">https://w3.unece.org/PXWeb/en</a></p>
 <p><a href="https://unctadstat.unctad.org/EN/">https://unctadstat.unctad.org/EN/</a></p>
 <p>UNCTAD. Review of Maritime Transport Series: <a href="https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport">https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport</a></p>
 <p>UNCTAD statistics (UNCTADstat): <a href="http://stats.unctad.org/maritime">http://stats.unctad.org/maritime</a> <br /></p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -2162,12 +3267,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

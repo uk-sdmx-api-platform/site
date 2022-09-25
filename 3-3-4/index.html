@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1088,159 +1054,1081 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 3.3: By 2030, end the epidemics of AIDS, tuberculosis, malaria and neglected tropical diseases and combat hepatitis, water-borne diseases and other communicable diseases</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 3.3.4: Hepatitis B incidence per 100,000 population </p>
-</dd>
-            <dt>Series</dt>
-            <dd><p>Not applicable</p>
-</dd>
-            <dt>Related indicators</dt>
-            <dd>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>World Health Organization </p>
-</dd>
-          </dl>
-        </div>
-      </div>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>World Health Organization</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition:</strong> </p>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 3.3: By 2030, end the epidemics of AIDS, tuberculosis, malaria and neglected tropical diseases and combat hepatitis, water-borne diseases and other communicable diseases</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 3.3.4: Hepatitis B incidence per 100,000 population </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-04-01</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>World Health Organization </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>World Health Organization</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong> </p>
 <p>This indicator is measured indirectly through the proportion of children 5 years of age who have developed chronic HBV infection (i.e. the proportion that tests positive for a marker of infection called hepatitis B surface antigen [HBsAg]).<sup>1</sup> </p>
 <p> </p>
 <p>Hepatitis B surface antigen: a protein from the virus&#x2019;s coat. A positive test for HBsAg indicates active HBV infection. The immune response to HBsAg provides the basis for immunity against HBV, and HBsAg is the main component of HepB.<sup>2</sup> </p>
 <p> </p>
 <p><strong>Concepts:</strong> </p>
 <p>It is not possible, on clinical grounds, to differentiate hepatitis B from hepatitis caused by other viral agents, hence, laboratory confirmation of the diagnosis is essential. The Hepatitis B surface antigen is the most common hepatitis B test. The presence of HBsAg in serum indicates that the patient has contracted HBV infection. The measurement of HBsAg levels have been standardized in IU/ml. The test is used to identify those at risk of spreading the disease. HBsAg, an HBV viral coat antigen, is produced in large quantities in infected-cell cytoplasm and continues to be produced in patients with chronic, active HBV infection. Documented HBsAg positivity in serum for 6 or more months suggests chronic HBV with a low likelihood of subsequent spontaneous resolution. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Prevalence of the Hepatitis b surface antigen in children under five years of age (proportion with chronic infection)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>A systematic search on articles published between Jan 1, 1965, and Oct 30, 2018. in the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Prevalence of the Hepatitis b surface antigen in children under five years of age (proportion with chronic infection)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>A systematic search on articles published between Jan 1, 1965, and Oct 30, 2018. in the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. </p>
 <p> </p>
 <p>Following full text review, we extracted data from each study using the following variables: study characteristics (study and sample collection dates, study locations i.e., city, subnational [an area, region, state, or province in a country], or national level), participant characteristics (age range, sex, year, and population group), and prevalence of the HBV marker, type of laboratory tests, and number of participants the HBV marker prevalence was based on.</p>
 <p> </p>
@@ -1278,93 +2166,148 @@ data-event-label="Change to Table tab"
   <li>Population structure and size data for each country was from the UN population division: </li>
 </ol>
 <p><a href="http://www.un.org/en/development/desa/population/" target="_blank">http://www.un.org/en/development/desa/population/</a> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>WHO provides Member States the opportunity to review and comment on data as part of the so called country consultation process. Member States receive an annex with their country specific estimates, the serosurveys used to inform the mathematical model and the summary of the methodology. They are provided with sufficient time to provide any additional study to be screened according to the inclusion and inclusion criteria. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The systematic review of published serosurveys and model estimates are updated on an annual basis. Planned for the last quarter of 2019. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Second quarter of each year</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>World Health Organization </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>World Health Organization </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The purpose is to describe the reduction in chronic hepatitis b infections. Most of the burden of disease from HBV infection comes from infections acquired before the age of 5 years. Therefore, prevention of HBV infection focuses on children under 5 years of age. The United Nations selected the cumulative incidence of chronic HBV infection at 5 years of age as an indicator of the Sustainable Development Goal target for &#x201C;combating hepatitis&#x201D;. This indicator is measured indirectly through the proportion of children 5 years of age who have developed chronic HBV infection (i.e. the proportion that tests positive for a marker of infection called hepatitis B surface antigen [HBsAg]). </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The main Limitations of the analysis is that despite the thorough and in-depth literature search and access, there are fewer data on post vaccination studies than pre- vaccination studies. The model is largely informed by pre-vaccination studies in adults. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>WHO provides Member States the opportunity to review and comment on data as part of the so called country consultation process. Member States receive an annex with their country specific estimates, the serosurveys used to inform the mathematical model and the summary of the methodology. They are provided with sufficient time to provide any additional study to be screened according to the inclusion and inclusion criteria. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>The systematic review of published serosurveys and model estimates are updated on an annual basis. Planned for the last quarter of 2019. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Second quarter of each year</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>World Health Organization </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>World Health Organization </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>The purpose is to describe the reduction in chronic hepatitis b infections. Most of the burden of disease from HBV infection comes from infections acquired before the age of 5 years. Therefore, prevention of HBV infection focuses on children under 5 years of age. The United Nations selected the cumulative incidence of chronic HBV infection at 5 years of age as an indicator of the Sustainable Development Goal target for &#x201C;combating hepatitis&#x201D;. This indicator is measured indirectly through the proportion of children 5 years of age who have developed chronic HBV infection (i.e. the proportion that tests positive for a marker of infection called hepatitis B surface antigen [HBsAg]). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>The main Limitations of the analysis is that despite the thorough and in-depth literature search and access, there are fewer data on post vaccination studies than pre- vaccination studies. The model is largely informed by pre-vaccination studies in adults. </p>
 <p>The quality of studies and data was assessed by reviewing representativeness of sampling. Bias factor is a dichotomous variable. </p>
 <p>Potential important biases included geographical representation of the data points. Also, studies were from many different sources such as blood donors and pregnant women. The former possibly having a lower proportion of Hep B prevalence than the general population as donor questionnaires often exclude individuals with risk factors for blood-borne diseases and the pregnant women possibly having a higher prevalence as were in studies to see the effect of a birth dose of vaccine to prevent vertical transmission. As the proportion of studies and size of studies that were from blood donors was significantly greater than those on pregnant women, we may presume that our estimates of prevalence of pre- vaccination may be on the low side. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The data was modelled using a Bayesian logistic regression looking at the proportion of individuals that tested positive for HBsAg in each study, weighting each study by its size and using a conditional autoregressive (CAR) model accounting for spatial and economic correlations between similar countries. This model uses data from well sampled countries to estimate prevalence in more data poor countries with effects such as sex, age and vaccination status, these are also informed by the geographic and countries GDP proximity to other countries (CAR model). Under the assumption that countries that are close together economically and/or geographically will have more similar prevalence due to similar social structure and health care capabilities. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The data was modelled using a Bayesian logistic regression looking at the proportion of individuals that tested positive for HBsAg in each study, weighting each study by its size and using a conditional autoregressive (CAR) model accounting for spatial and economic correlations between similar countries. This model uses data from well sampled countries to estimate prevalence in more data poor countries with effects such as sex, age and vaccination status, these are also informed by the geographic and countries GDP proximity to other countries (CAR model). Under the assumption that countries that are close together economically and/or geographically will have more similar prevalence due to similar social structure and health care capabilities. </p>
 <p>The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the explanatory variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study. The coverage of routine 3 dose vaccination and birth dose vaccination in each study was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country. The WHO-UNICEF estimates are annual data for the country as a whole, and did not contain information on vaccine efficacy which was not used in the analysis as no data on this was obtained. The vaccine efficacy would be implicitly estimated in the analysis as we see vaccination having a variable effect across time and space across the studies. The coverage of routine 3 dose vaccination and birth dose vaccination in each study was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country. The coverage of routine 3 dose vaccination and birth dose vaccination in each study was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country. More explicitly, the model uses the ages and timing of the study to calculate the years across which the participants are born, so if the if there was an age group range of 10-15 in a study that was undertaken in 2015, the birth years would be from 2000-2005, we then average the vaccination coverage from the WHO-UNICEF estimates across those 5 years assuming that each age was evenly represented in that age group in the study. The same process was used for the 3 dose and birth dose vaccination. </p>
 <p> </p>
 <p>The general logistic model equation is described below, </p>
@@ -1388,20 +2331,48 @@ data-event-label="Change to Table tab"
 <p>Posterior distributions of parameters were inspected for convergence and to check for covariance between parameters. Where necessary parameters were centred and scaled to N (0, 1) to aid parameter convergence and remover covariance. This was done for the sex parameter, which was entered as the proportion of the sample that was female; this was seen to co-vary with the intercept and bias parameters before re-centring and scaling. However, the covariance of routine vaccination and birth dose persisted even after re-centring. This is in part unsurprising as there a few instances where birth dose is administered without the routine vaccination. Here we tried to reduce this interaction of the terms by transforming the birth dose data. We modelled birth dose using only data where the birth dose was greater than 60, 70, 80 &amp; 90% respectively, we also modelled birth dose to the square, thus increasing the effect of high birth doses over smaller doses. Model selection dependent on which one both reduced the covariance between the parameters and returned the lowest DIC score. </p>
 <p>Model validation was conducted using 90% of randomly selected data against the remaining 10%, and by comparing model estimates of prevalence against observed data (Figure 3). Figure 4 shows the average prevalence in each country from all the studies plotted against the models estimate. Figure 5 shows the marginal and joint posterior distributions for the fitted parameters. Table 1 gives the estimated parameter values with associated credible intervals. </p>
 <p>During the validation exercise (in which countries were consulted over their estimates) it was pointed out that China had undertaken three very large-scale population-based serological surveys in order to establish baseline prevalence and progress towards HBV elimination. There were a large number of other surveys from China, that are less representative than these three nationwide surveys. We conducted a sensitivity analysis by restricting the data from China to the three nationally representative surveys. The effect of this change in input data was that the effect of vaccination was more distinct, but the estimated age effects (change in prevalence in children under 5, or juveniles (children 5-15 years)) were no longer significantly different from zero (see Table 2 and Figure 6). The deviance was significantly reduced, suggesting a much better fitting model (Table 2), albeit on a somewhat reduced dataset. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Estimates are provided for the 194 WHO Member States and grouped accordingly to the six WHO regions. We also provide estimates according to income classification and follow UN Regional Groupings and Compositions as much as possible. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Estimates are provided for the 194 WHO Member States and grouped accordingly to the six WHO regions. We also provide estimates according to income classification and follow UN Regional Groupings and Compositions as much as possible. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <ul>
   <li><strong>At country level </strong></li>
 </ul>
 <p>All values represent the best estimates for the hepatitis B surface antigen indicator and aim to facilitate comparability across countries and over time. The estimates are not always the same as the official national estimates, because of the use of different methodologies and data sources. Estimates are provided for 194 WHO Member States. The analysis was carried out for the age groups 0-5 years and for the general population. Due to scarcity of data from some countries, the estimates are more robust at global and regional level than at country level, therefore, we suggest countries focus on the 95% Credible Intervals and not only on the reported point estimates. </p>
@@ -1414,38 +2385,66 @@ data-event-label="Change to Table tab"
   <li><strong>At regional and global levels </strong></li>
 </ul>
 <p>Same as above </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong> </p>
 <p>The estimates are not always the same as the official national estimates, because of the use of different methodologies and data sources. The study selection criteria were similar to (Schweitzer, et al., 2015). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees). </p>
 <p>Country estimates may come from selected serosurveys. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Non applicable. Estimates come from the mathematical model. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Non applicable. Estimates come from the mathematical model. </p>
 <p> </p>
 <p>Gather checklist of information that should be included in new reports of global health estimates. Gather promotes best practices in reporting health estimates. A range of health indicators are used to monitor population health and guide resource allocation throughout the world. But the lack of data for some regions and differing measurement methods present challenges that are often addressed by using statistical modelling techniques to generate coherent estimates based on often disparate sources of data. <a href="http://gather-statement.org/" target="_blank"><u>http://gather-statement.org/</u></a> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Quality assurance</strong> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p><strong>Quality assurance</strong> </p>
 <ul>
   <li>WHO&#x2019;s estimates use a methodology reviewed by the Immunization and Vaccines Related Implementation Research Advisory Committee (IVIR-AC) and presented to the Strategic Advisory Group of Experts (SAGE). These estimates have been documented following the Guidelines for Accurate and Transparent Health Estimates Reporting (GATHER). </li>
 </ul>
@@ -1453,133 +2452,236 @@ data-event-label="Change to Table tab"
 <ul>
   <li>WHO provided Member States the opportunity to review and comment on data and estimates as part of the so called country consultation process. </li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability: </strong></p>
 <p>Estimates are available for 194 Member States and for the six WHO Regions, as well as at global level. </p>
 <p><strong>Time series:</strong></p>
 <p>Estimates are available for pre- vaccine era, 2015 and 2018 and 2020 </p>
 <p><strong>Disaggregation: </strong></p>
 <p>age groups (i.e. under five years of age, 5 years and older (although these estimates are not reported) and the general population); sex/gender if possible. Although the data for the latter is scarce. In addition, data at national, regional and global level. </p>
 <p> </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>This dataset represents the best estimates for the hepatitis B surface antigen indicator and aims to facilitate comparability across countries and over time. The estimates are not always the same as the official national estimates, because of the use of different methodologies and data sources e.g. special populations or populations at risk are not included in the hepatitis b seroprevalence model. Estimates are provided for 194 WHO Member States. The conditional autoregressive model uses data from well sampled countries to estimate prevalence in more data-poor countries taking account of effects such as sex, age and vaccination status. Due to scarcity of data from some countries, the estimates are more robust at global and regional level than at country level, therefore focus should be on the 95% Credible Intervals and not only on the reported point estimates.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>This dataset represents the best estimates for the hepatitis B surface antigen indicator and aims to facilitate comparability across countries and over time. The estimates are not always the same as the official national estimates, because of the use of different methodologies and data sources e.g. special populations or populations at risk are not included in the hepatitis b seroprevalence model. Estimates are provided for 194 WHO Member States. The conditional autoregressive model uses data from well sampled countries to estimate prevalence in more data-poor countries taking account of effects such as sex, age and vaccination status. Due to scarcity of data from some countries, the estimates are more robust at global and regional level than at country level, therefore focus should be on the 95% Credible Intervals and not only on the reported point estimates.</p>
 <p><strong>Sources of discrepancies:</strong></p>
 <p>Inclusion or exclusion criteria of the type of seroprevalence studies. Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Serosurveys are available for each member states and reference provided for each data point.</strong> </p>
-<p><strong>URL: </strong><a href="http://whohbsagdashboard.com/#global-strategies" target="_blank"><strong><u>http://whohbsagdashboard.com/#global-strategies</u></strong></a><strong> </strong> </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>Serosurveys are available for each member states and reference provided for each data point.</strong> </p>
+<p><strong>URL: </strong><a href="http://whohbsagdashboard.com/#global-strategies" target="_blank"><strong><u>http://whohbsagdashboard.com/#global-strategies</u></strong></a><strong> </strong> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1820,12 +2922,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

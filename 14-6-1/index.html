@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -420,110 +402,1019 @@ data-event-label="high"
   
   <div id="indicator-main" class="indicator-main col-md-12">
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 14.6: By 2020, prohibit certain forms of fisheries subsidies which contribute to overcapacity and overfishing, eliminate subsidies that contribute to illegal, unreported and unregulated fishing and refrain from introducing new such subsidies, recognizing that appropriate and effective special and differential treatment for developing and least developed countries should be an integral part of the World Trade Organization fisheries subsidies negotiation</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 14.6.1: Degree of implementation of international instruments aiming to combat illegal, unreported and unregulated fishing</p>
-</dd>
-            <dt>Series</dt>
-            <dd><p>Metadata applies to complete series under this indicator. </p>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>SDG 1, SDG 2, SDG 5, SDG 12, SDG 13, SDG 14.2/4/5/6/7/c</p>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>Food and Agriculture Organization of the United Nations (FAO)</p>
-</dd>
-          </dl>
-        </div>
-      </div>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Food and Agriculture Organization of the United Nations (FAO)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition:</strong></p>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 14.6: By 2020, prohibit certain forms of fisheries subsidies which contribute to overcapacity and overfishing, eliminate subsidies that contribute to illegal, unreported and unregulated fishing and refrain from introducing new such subsidies, recognizing that appropriate and effective special and differential treatment for developing and least developed countries should be an integral part of the World Trade Organization fisheries subsidies negotiation</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 14.6.1: Degree of implementation of international instruments aiming to combat illegal, unreported and unregulated fishing</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Metadata applies to complete series under this indicator. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>SDG 1, SDG 2, SDG 5, SDG 12, SDG 13, SDG 14.2/4/5/6/7/c</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
 <p>Progress by countries in the degree of implementation of international instruments aiming to combat illegal, unreported and unregulated fishing.</p>
 <p><strong>Concepts:</strong></p>
 <p>The definitions and concepts associated with the indicator and utilized in the methodology are defined in the FAO term portal: <a href="http://www.fao.org/faoterm/collection/fisheries/en/">http://www.fao.org/faoterm/collection/fisheries/en/</a> </p>
@@ -541,13 +1432,20 @@ data-event-label="high"
 <p>The FAO Voluntary Guidelines for Flag State Performance spell out a range of actions that countries can take to ensure that vessels registered under their flags do not conduct IUU fishing, including monitoring, control and surveillance (MCS) activities, such as vessel monitoring systems (VMS) and observers. They promote information exchange and cooperation among countries so that flag states are in a position to refuse to register vessels that are &quot;flag-hopping&quot; by attempting to register with another flag state or to refuse vessels that have been reported for IUU fishing. The Guidelines also include recommendations on how countries can encourage compliance and take action against non-compliance by vessels, as well as on how to enhance international cooperation to assist developing countries to fulfil their flag state responsibilities.</p>
 <p>&#x2022; <strong>The FAO Agreement to Promote Compliance with International Conservation and Management Measures by Fishing Vessels on the High Seas (Compliance Agreement)</strong></p>
 <p>The 1993 FAO Compliance Agreement entered into force on the 24th of April 2003. Its main purpose is to encourage countries to take effective action, consistent with international law, and to deter the reflagging of vessels by their nationals as a means of avoiding compliance with applicable conservation and management rules for fishing activities on the high seas. With respect to the role of RFBs, the preamble calls upon States which do not participate in global, regional or sub regional fishery organizations or arrangements to do so, with a view to achieving compliance with international conservation and management measures.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Degree of implementation of applicable international instruments categorised into 5 bands, reflected as following:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Degree of implementation of applicable international instruments categorised into 5 bands, reflected as following:</p>
 <table>
   <tbody>
     <tr>
@@ -608,115 +1506,162 @@ data-event-label="high"
 </table>
 <p> </p>
 <p>See more details for the determination of the bands under 4.a. and for the computation of the sub-indicators under 4.c. and the Annex.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>No applicable international standards for measuring degree of implementation of such applicable instruments to combat IUU fishing.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>For the complete list of questions used for this indicator, please refer to appendix 1. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>No applicable international standards for measuring degree of implementation of such applicable instruments to combat IUU fishing.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>For the complete list of questions used for this indicator, please refer to appendix 1. </p>
 <p>The questionnaire is sent out to all FAO member States on a biennial basis. The questions used for this indicator will be included into the Committee on Fisheries Questionnaire for monitoring the implementation of the 1995 FAO Code of Conduct for Responsible Fisheries and related instruments. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>This questionnaire is run on a web-application, which automatically records the submissions from the countries onto a database. The indicator will be extracted automatically from their responses, with a report of the indicator shown to the respondent prior to final submission. This will ensure transparency of the process and will allow for final confirmation of the results.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>This questionnaire is run on a web-application, which automatically records the submissions from the countries onto a database. The indicator will be extracted automatically from their responses, with a report of the indicator shown to the respondent prior to final submission. This will ensure transparency of the process and will allow for final confirmation of the results.</p>
 <p>The sample size will differ from year to year depending on the number of respondents to the questionnaire. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The questionnaire is sent out on a biennial basis. It is expected to be sent out 8 months prior to the holding of the Committee on Fisheries and remain open for a 3-month period.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data for the indicator are expected to be released one week after closure of the questionnaire.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data is typically provided by the national fishery Ministries/departments.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Food and Agriculture Organization of the United Nations (FAO)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture http://www.fao.org/3/K8024E/K8024E.pdf.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The purpose of this indicator is to show a picture of the state of implementation of the instruments to combat IUU fishing, at a national, regional and global level. The first edition of the indicator will provide a baseline of the current state of implementation of these agreements. Subsequent indicator estimates will then be able to show any progress made by countries. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>The questionnaire is sent out on a biennial basis. It is expected to be sent out 8 months prior to the holding of the Committee on Fisheries and remain open for a 3-month period.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Data for the indicator are expected to be released one week after closure of the questionnaire.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Data is typically provided by the national fishery Ministries/departments.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Article I of the FAO constitution requires that the Organization collect, analyses, interpret and disseminate information relating to nutrition, food and agriculture http://www.fao.org/3/K8024E/K8024E.pdf.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>The purpose of this indicator is to show a picture of the state of implementation of the instruments to combat IUU fishing, at a national, regional and global level. The first edition of the indicator will provide a baseline of the current state of implementation of these agreements. Subsequent indicator estimates will then be able to show any progress made by countries. </p>
 <p>Although the exact score will be important from one reporting year to the next for determining the progress made by a country, to aid the interpretation of this indicator, the score will then be converted into one of five bands as following:</p>
 <table>
   <tbody>
@@ -772,21 +1717,35 @@ data-event-label="high"
 </table>
 <p>Additionally, a State may receive an indicator score of &#x201C;N/A&#x201D;, in the case that none of the instruments are applicable. This would only be the case if the country is land locked and does not flag any vessels that conduct fishing or fishing related activities. </p>
 <p><u>Countries that do not submit a response to the questionnaire on which the indicator is based or do not approve the use of their responses to the questionnaire for use in this indicator, will not receive an indicator score.</u></p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Aside from the status of a country as party or non-party to an international agreement which is available as public record, the indicator is a self-analysis by the country of their state of implementation of the various international instruments. Although questions in the questionnaire will be accompanied by pop up guides describing any technical aspects or terms, there may be a small variance in interpretation by different respondents.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Aside from the status of a country as party or non-party to an international agreement which is available as public record, the indicator is a self-analysis by the country of their state of implementation of the various international instruments. Although questions in the questionnaire will be accompanied by pop up guides describing any technical aspects or terms, there may be a small variance in interpretation by different respondents.</p>
 <p>Additionally, due to the fact that responses are not provided by an independent source, responses could in theory be politically influenced.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The indicator is based upon responses by States to a certain sections of the questionnaire for monitoring the implementation of the Code of Conduct for Responsible Fisheries and related instruments (CCRF). These are sections covering the implementation of different international instruments used to combat IUU fishing. The responses will be converted using an algorithm to obtain a score for the indicator. Each instrument will be covered within a given variable, as follows:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The indicator is based upon responses by States to a certain sections of the questionnaire for monitoring the implementation of the Code of Conduct for Responsible Fisheries and related instruments (CCRF). These are sections covering the implementation of different international instruments used to combat IUU fishing. The responses will be converted using an algorithm to obtain a score for the indicator. Each instrument will be covered within a given variable, as follows:</p>
 <p><strong>Variable 1</strong> <strong>(V1)</strong> - Adherence and implementation of the 1982 United Nations Convention on the Law of the Sea</p>
 <p><strong>Variable 2</strong> <strong>(V2)</strong> - Adherence and implementation of the 1995 United Nations Fish Stocks Agreement </p>
 <p><strong>Variable 3 (V3)</strong> - Development and implementation of a national plan of action (NPOA) to combat IUU fishing in line with the IPOA-IUU </p>
@@ -905,150 +1864,174 @@ data-event-label="high"
   </tbody>
 </table>
 <p>For more details regarding the list of question, scoring and applicability, please refer to Appendix 1 and 2.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not applicable</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>Upon completing the questionnaire, States are provided with a condensed report showing their responses to relevant questions within the questionnaire for the indicator and the resulting SDG indicator score for their validation. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022;</strong> <strong>At country level</strong></p>
 <p>Indicator will only be available for responding countries who approve of the use of their responses to the CCRF questionnaire for this indicator.</p>
 <p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
 <p>Data will only be aggregated from responding countries.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Regional and global aggregates for this indicator will count the number of countries within a region or globally that fall under each of the five bands, as a proportion of the countries within a region or globally that have reported this indicator. This approach better illustrates the distribution of scores in each region and avoids determining a mean score for a region that assumes that non-reporting countries are equal to the mean, which would not be appropriate for a means-of-implementation type indicator like this.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Once the countries receive the questionnaire, they will have access to a manual that will guide the user along the best process for completing the questionnaire. Due to the various themes that are covered within the questionnaire, it is essential that the focal point or user gather the responses using a well-coordinated process involving all the relevant staff that are in charge of the work within the various themes contained within the questionnaire, such as the focal point for the indicator. Additionally, the manual will also have a section describing the methodology of the indicator.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Regional and global aggregates for this indicator will count the number of countries within a region or globally that fall under each of the five bands, as a proportion of the countries within a region or globally that have reported this indicator. This approach better illustrates the distribution of scores in each region and avoids determining a mean score for a region that assumes that non-reporting countries are equal to the mean, which would not be appropriate for a means-of-implementation type indicator like this.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Once the countries receive the questionnaire, they will have access to a manual that will guide the user along the best process for completing the questionnaire. Due to the various themes that are covered within the questionnaire, it is essential that the focal point or user gather the responses using a well-coordinated process involving all the relevant staff that are in charge of the work within the various themes contained within the questionnaire, such as the focal point for the indicator. Additionally, the manual will also have a section describing the methodology of the indicator.</p>
 <p>Within the questionnaire application, the user will be able to find pop up guides embedded in the application describing technical aspects or terms encountered.</p>
 <p>URL to the authenticated CCRF questionnaire application: <a href="http://www.fao.org/fishery/code/codequest/?locale=en&amp;lang=en">FAO Questionnaire for Monitoring the Implementation of the Code of Conduct for Responsible Fisheries</a> and Related Instruments</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a>, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring). </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The questionnaire was created upon the request of the Members to the Committee on Fisheries. Within this process, FAO would not be in a position to question the responses of countries. Equally, this would require independent analysis of the status of implementation in the field of all responding countries for every edition of the questionnaire, a task that would require a substantial outlay of resources. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>FAO is responsible for the quality of the internal statistical processes used to compile the published datasets. The FAO Statistics Quality Assurance Framework (SQAF), available at: <a href="http://www.fao.org/docrep/019/i3664e/i3664e.pdf">http://www.fao.org/docrep/019/i3664e/i3664e.pdf</a>, provides the necessary principles, guidelines and tools to carry out quality assessments. FAO is performing an internal bi-annual survey (FAO Quality Assessment and Planning Survey) designed to gather information on all of FAO&#x2019;s statistical activities, notably to assess the extent to which quality standards are being implemented with a view to increasing compliance with the quality dimensions of SQAF, documenting best practices and prepare quality improvement plans, where necessary. Domain-specific quality assurance activities are carried out systematically (e.g. quality reviews, self-assessments, compliance monitoring). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>The questionnaire was created upon the request of the Members to the Committee on Fisheries. Within this process, FAO would not be in a position to question the responses of countries. Equally, this would require independent analysis of the status of implementation in the field of all responding countries for every edition of the questionnaire, a task that would require a substantial outlay of resources. </p>
 <p>FAO does however use the indicator when carrying out its national and regional workshops under its global capacity development programme to support the implementation of international instruments to combat IUU fishing. During these workshops, the indicator is used as a tool to understand the situation within the countries, all the while ensuring that there is a clear understanding of the questions, reporting process or any other technical aspects relevant to this indicator. </p>
 <p>Furthermore, once the user has completed the questionnaire, the user is able to extract a report of the indicator detailing their responses to the relevant questions and the corresponding scoring. The questionnaire respondent will then be able to validate the indicator score, which will in turn be automatically stored onto FAO databases. This system has been put in place, not only to ensure that no mistakes were made during the completion of the questionnaire but also to ensure transparency of the indicator process.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>From 2022 data series onwards, questions of a factual nature, used to indicate applicability of the indicator or to calculate the score of the indicator, such as whether a country is landlocked or whether it is a Party to a relevant international instrument will be pre-compiled. Official sources will be used to conduct this activity such as the depository of the relevant international binding instrument. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>From 2022 data series onwards, questions of a factual nature, used to indicate applicability of the indicator or to calculate the score of the indicator, such as whether a country is landlocked or whether it is a Party to a relevant international instrument will be pre-compiled. Official sources will be used to conduct this activity such as the depository of the relevant international binding instrument. </p>
 <p>This activity will be conducted for the following questions, detailed within Appendix 1: A.1, 1.1, 2.1, 4.1 and 5.1</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
 <p>The data required for this indicator is not currently available. It will become available in early 2018 after the closure of the 2017/18 edition of the Questionnaire for monitoring the implementation of the 1995 FAO Code of Conduct for Responsible Fisheries. Thereafter it will be collected regularly every two years through the Questionnaire for monitoring the implementation of the 1995 FAO Code of Conduct for Responsible Fisheries.</p>
 <p><strong>Time series:</strong></p>
 <p>2017 (When available will become baseline)</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Due to nature of indicator, there will only be one score per country which could then be aggregated regionally or globally.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
 <p>Data for this indicator is not internationally estimated.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL: </strong></p>
 <p>SDG 14.6.1: <a href="http://www.fao.org/sustainable-development-goals/indicators/14.6.1/en/">http://www.fao.org/sustainable-development-goals/indicators/14.6.1/en/</a></p>
 <p>Appendix 1: Questions and scoring</p>
 <table>
@@ -4040,36 +5023,171 @@ data-event-label="high"
     </tr>
   </tbody>
 </table>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -4310,12 +5428,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -684,110 +650,1019 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 13: Take urgent action to combat climate change and its impacts</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 13.a: Implement the commitment undertaken by developed-country parties to the United Nations Framework Convention on Climate Change to a goal of mobilizing jointly $100 billion annually by 2020 from all sources to address the needs of developing countries in the context of meaningful mitigation actions and transparency on implementation and fully operationalize the Green Climate Fund through its capitalization as soon as possible</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 13.a.1: Amounts provided and mobilized in United States dollars per year in relation to the continued existing collective mobilization goal of the $100 billion commitment through to 2025</p>
-</dd>
-            <dt>Series</dt>
-            <dd>
-</dd>
-            <dt>Related indicators</dt>
-            <dd>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>UN Climate Change (UNFCCC Secretariat)</p>
-</dd>
-          </dl>
-        </div>
-      </div>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UN Climate Change (UNFCCC Secretariat)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition:</strong></p>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 13: Take urgent action to combat climate change and its impacts</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 13.a: Implement the commitment undertaken by developed-country parties to the United Nations Framework Convention on Climate Change to a goal of mobilizing jointly $100 billion annually by 2020 from all sources to address the needs of developing countries in the context of meaningful mitigation actions and transparency on implementation and fully operationalize the Green Climate Fund through its capitalization as soon as possible</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 13.a.1: Amounts provided and mobilized in United States dollars per year in relation to the continued existing collective mobilization goal of the $100 billion commitment through to 2025</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-03-01</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>UN Climate Change (UNFCCC Secretariat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>UN Climate Change (UNFCCC Secretariat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
 <p>Under the UNFCCC process, the COP requested the Standing Committee on Finance (SCF) to prepare a Biennial Assessment and Overview of Climate Finance Flows (BA) (<a href="http://unfccc.int/resource/docs/2011/cop17/eng/09a01.pdf#page=4" target="_blank">decision 2/CP.17</a> paragraph 121(f)), drawing on the available sources of information, and including information on the geographical and thematic balance of flows. There is no agreed definition under the UNFCCC on what should count toward assessing progress toward the $100 billion commitment. Data from the UNFCCC secretariat refers to climate-specific financial support to developing country Parties, reported by Annex I Parties in their Biennial Reports. Only Annex II Parties are obligated to report on financial support provided and other Annex I Parties also voluntarily provide this information. Consequently, this data should not be interpreted as an indicator in relation to the achievement of the collective mobilization goal of $100 billion commitment. </p>
 <p>One of the functions of the SCF is to assist the COP with respect to the measurement, reporting and verification of the support provided to developing country Parties through activities such as the preparation of the Biennial Assessment and Overview of Climate Finance Flows (BA). Subsequently, the COP requested SCF to consider: </p>
 <ul>
@@ -796,223 +1671,341 @@ data-event-label="Change to Table tab"
   <li>Ongoing technical work on operational definitions of climate finance, including private finance mobilized by public interventions, to assess how adaptation and mitigation needs can most effectively be met by climate finance (<a href="http://unfccc.int/resource/docs/2013/cop19/eng/10a01.pdf#page=9" target="_blank">decision 3/CP.19</a>, paragraph 11).</li>
 </ul>
 <p>The SBSTA. by decision 18/CMA.1, paragraph 12a, was requested to develop the common tabular formats for the electronic reporting of the information referred to in chapters V and VI of the modalities, procedures and guidelines of enhanced framework, taking into account the existing the existing common tabular formats and common reporting formats.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>United States dollars per year </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The reporting of quantitative information on financial support through CTFs is guided by BR guidelines (decision 2/CP.17), CTF reporting parameters (19/CP.18) and footnotes to the CTF tables.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Biennial reports of Annex I Parties in the Convention submitted to the UNFCCC Secretariat. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>United States dollars per year </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>The reporting of quantitative information on financial support through CTFs is guided by BR guidelines (decision 2/CP.17), CTF reporting parameters (19/CP.18) and footnotes to the CTF tables.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Biennial reports of Annex I Parties in the Convention submitted to the UNFCCC Secretariat. </p>
 <ul>
   <li>Biennial Reports by Annex I Parties until 2022: <a href="https://unfccc.int/BRs"><em>https://unfccc.int/BRs</em></a><em>, </em>and Biennial Transparency Reports by developed as well as developing country Parties to be reported under Paris Agreement from 2024 onwards: <a href="https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-paris-agreement">https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-paris-agreement</a></li>
   <li>Biennial Assessment and Overview of Climate Finance Flows: <a href="https://unfccc.int/topics/climate-finance/resources/biennial-assessment-of-climate-finance"><em>https://unfccc.int/topics/climate-finance/resources/biennial-assessment-of-climate-finance</em></a><em>.</em></li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Annex I Parties are requested to submit their Biennial Reports (BRs) to the UNFCCC secretariat every two years (<a href="https://unfccc.int/decisions?f%5B0%5D=body%3A1343&amp;f%5B1%5D=conference%3A3461" target="_self">decision 2/CP.17</a>). Annex I Parties use the BR Common Tabular Format (CTF) application when preparing their BRs (<a href="https://unfccc.int/decisions?f%5B0%5D=body%3A1343&amp;f%5B1%5D=conference%3A3845" target="_self">decision 19/CP.18</a>). </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Annex I Parties are requested to submit their Biennial Reports (BRs) to the UNFCCC secretariat every two years (<a href="https://unfccc.int/decisions?f%5B0%5D=body%3A1343&amp;f%5B1%5D=conference%3A3461" target="_self">decision 2/CP.17</a>). Annex I Parties use the BR Common Tabular Format (CTF) application when preparing their BRs (<a href="https://unfccc.int/decisions?f%5B0%5D=body%3A1343&amp;f%5B1%5D=conference%3A3845" target="_self">decision 19/CP.18</a>). </p>
 <p><strong>Report preparers</strong>: Annex I Parties, collect data using their own data collection processes but follow BR guidelines and CTF reporting parameters and footnotes when reporting financial information to UNFCCC secretariat. </p>
 <p><strong>Users</strong>: UNFCCC secretariat, in preparing compilation and synthesis (C&amp;S), in particular the compilation of financial information from BR CTFs as submitted by Annex I Parties.<sup><a href="#footnote-3" id="footnote-ref-3">[1]</a></sup></p>
 <p> </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-3">1</sup><p> Available at: <a href="https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/compilation-and-synthesis-reports/compilation-and-synthesis-reports-of-parties-included-in-annex-i-to#eq-1">https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/compilation-and-synthesis-reports/compilation-and-synthesis-reports-of-parties-included-in-annex-i-to#eq-1</a> <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The fourth Biennial Reports by Annex I Parties were submitted in 2020 and a C&amp;S of the information was published in October 2020. This includes data on financial support provided to developing countries in the years 2017-2018. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>The fourth Biennial Reports by Annex I Parties were submitted in 2020 and a C&amp;S of the information was published in October 2020. This includes data on financial support provided to developing countries in the years 2017-2018. </p>
 <p>The next (fifth) Biennial Reports by Annex I Parties (BR5) to the Convention should be submitted to the UNFCCC Secretariat by 1 January 2022.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>By fourth quarter of 2022 compilation of data on financial support provided during the years 2019 and 2020 will be released. The data, including in spreadsheet format (CTF), as submitted by Annex I Parties to UNFCCC secretariat is publicly available and accessible via UNFCCC website.<sup><a href="#footnote-4" id="footnote-ref-4">[2]</a></sup> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>By fourth quarter of 2022 compilation of data on financial support provided during the years 2019 and 2020 will be released. The data, including in spreadsheet format (CTF), as submitted by Annex I Parties to UNFCCC secretariat is publicly available and accessible via UNFCCC website.<sup><a href="#footnote-4" id="footnote-ref-4">[2]</a></sup> </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-4">2</sup><p> Available at: https://unfccc.int/BRs <a href="#footnote-ref-4">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>National Governments of Annex I Parties to the UNFCCC. Only Annex II Parties report on financial support provided via CTF in accordance with guidelines for the preparation of the BRs and other Annex I Parties also voluntarily provide this information. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UNFCCC secretariat for purposes of C&amp;S.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>There isn&#x2019;t a formal set of instructions that would directly assign responsibility to an organisation for collection, processing, and dissemination of statistics for this indicator. However, the UNFCCC secretariat was requested by the COP 17 to prepare compilation and synthesis reports on the information reported by Parties in their BRs.<sup><a href="#footnote-5" id="footnote-ref-5">[3]</a></sup></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>National Governments of Annex I Parties to the UNFCCC. Only Annex II Parties report on financial support provided via CTF in accordance with guidelines for the preparation of the BRs and other Annex I Parties also voluntarily provide this information. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>UNFCCC secretariat for purposes of C&amp;S.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>There isn&#x2019;t a formal set of instructions that would directly assign responsibility to an organisation for collection, processing, and dissemination of statistics for this indicator. However, the UNFCCC secretariat was requested by the COP 17 to prepare compilation and synthesis reports on the information reported by Parties in their BRs.<sup><a href="#footnote-5" id="footnote-ref-5">[3]</a></sup></p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-5">3</sup><p> Available at: <a href="https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/compilation-and-synthesis-reports/compilation-and-synthesis-reports-of-parties-included-in-annex-i-to#eq-1">https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/national-communications-and-biennial-reports-annex-i-parties/compilation-and-synthesis-reports/compilation-and-synthesis-reports-of-parties-included-in-annex-i-to#eq-1</a> <a href="#footnote-ref-5">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>There is no common agreement on to the methodology to measure progress towards the USD 100bn commitment under the UNFCCC. The UNFCCC secretariat, in preparing C&amp;S, compiles financial information on support provided and mobilised as reported by Annex I Parties.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>There is no common agreement on to the methodology to measure progress towards the USD 100bn commitment under the UNFCCC. Data provided through Biennial Reports reflects the reporting of financial support provided to developing countries by Annex I Parties to the Convention. Moreover, the Biennial Assessment and Overview of Climate Finance Flows is a report prepared under the Standing Committee on Finance by the UNFCCC and includes a compilation of the data on financial support provided to developing countries by Annex I Parties. Each Party reports climate-specific finance provided and their underlying assumption and methodologies in accordance with the guidance linked under 4.h below. Moreover, Parties are requested to include information on underlying assumptions and methodologies in documentation box in BR CTFs.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The data is presented as reported by Annex I Parties to the Convention in their BRs, no adjustments with respect to use of standard classifications and harmonization of breakdowns or compliance with specific definitions are made.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The data is presented as reported by Annex I Parties to the Convention in their BRs, no estimates are produced. Only Annex II Parties are obligated to report on financial support provided and other Annex I Parties also voluntarily provide this information. Some Parties have not reported across all reporting cycles. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UNFCCC biennial reporting guidelines for developed country Parties, Annex I, <a href="https://unfccc.int/resource/docs/2011/cop17/eng/09a01.pdf#page=4" target="_blank">Decision 2/CP.17</a></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>There is no common agreement on to the methodology to measure progress towards the USD 100bn commitment under the UNFCCC. The UNFCCC secretariat, in preparing C&amp;S, compiles financial information on support provided and mobilised as reported by Annex I Parties.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>There is no common agreement on to the methodology to measure progress towards the USD 100bn commitment under the UNFCCC. Data provided through Biennial Reports reflects the reporting of financial support provided to developing countries by Annex I Parties to the Convention. Moreover, the Biennial Assessment and Overview of Climate Finance Flows is a report prepared under the Standing Committee on Finance by the UNFCCC and includes a compilation of the data on financial support provided to developing countries by Annex I Parties. Each Party reports climate-specific finance provided and their underlying assumption and methodologies in accordance with the guidance linked under 4.h below. Moreover, Parties are requested to include information on underlying assumptions and methodologies in documentation box in BR CTFs.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>The data is presented as reported by Annex I Parties to the Convention in their BRs, no adjustments with respect to use of standard classifications and harmonization of breakdowns or compliance with specific definitions are made.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p>The data is presented as reported by Annex I Parties to the Convention in their BRs, no estimates are produced. Only Annex II Parties are obligated to report on financial support provided and other Annex I Parties also voluntarily provide this information. Some Parties have not reported across all reporting cycles. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>UNFCCC biennial reporting guidelines for developed country Parties, Annex I, <a href="https://unfccc.int/resource/docs/2011/cop17/eng/09a01.pdf#page=4" target="_blank">Decision 2/CP.17</a></p>
 <p>Biennial Reports Common tabular format (CTF) for &#x201C;UNFCCC biennial reporting guidelines for developed country Parties&#x201D;, <a href="http://unfccc.int/resource/docs/2012/cop18/eng/08a03.pdf#page=3" target="_blank">Decision 19/CP.18</a></p>
 <p>Methodologies for the reporting of financial information by Parties included in Annex I of the Convention, <a href="https://unfccc.int/resource/docs/2015/cop21/eng/10a02.pdf#page=15">Decision 9/CP.21</a></p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability</strong>:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability</strong>:</p>
 <p>Biennial Reports of 41 Annex I Parties on financial support provided are available since 2011</p>
 <p><strong>Time series:</strong></p>
 <p>2011-2018. Data are annualised.</p>
@@ -1021,60 +2014,34 @@ data-event-label="Change to Table tab"
 <p>In 2016, 43 Annex I Parties out of 44 submitted their Biennial Reports (BR2), including climate finance data for 2013 and 2014.</p>
 <p>In 2018, 42 Annex I Parties out of 44 submitted their Biennial Reports (BR3), including climate finance data for 2015 and 2016.</p>
 <p>In 2020, 42 Annex I Parties out of 44 submitted their Biennial Reports (BR4), including climate finance data for 2017 and 2018. </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>There is no agreed definition of climate finance or the methodology on how to account climate finance in order to measure progress towards the USD 100bn commitment under the UNFCCC.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>There is no agreed definition of climate finance or the methodology on how to account climate finance in order to measure progress towards the USD 100bn commitment under the UNFCCC.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <ul>
   <li>UNFCCC biennial reporting guidelines for developed country Parties, Annex I: <a href="https://unfccc.int/resource/docs/2011/cop17/eng/09a01.pdf#page=4" target="_blank">Decision 2/CP.17</a></li>
   <li>Biennial Reports Common tabular format (CTF) for &#x201C;UNFCCC biennial reporting guidelines for developed country Parties&#x201D;: <a href="http://unfccc.int/resource/docs/2012/cop18/eng/08a03.pdf#page=3" target="_blank">Decision 19/CP.18</a></li>
   <li>Biennial Reports by Annex I Parties to be submitted until 2022: <a href="https://unfccc.int/BRs"><em>https://unfccc.int/BRs</em></a>, and Biennial Transparency Reports by developed as well as developing country Parties to be reported under Paris Agreement from 2024 onwards: <a href="https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-paris-agreement">https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-paris-agreement</a></li>
@@ -1082,36 +2049,171 @@ data-event-label="Change to Table tab"
   <li>Biennial Assessment and Overview of Climate Finance Flows is a report prepared under the Standing Committee on Finance by the UNFCCC and includes a compilation of the data on financial support provided to developing countries by Annex I Parties. Each Party reports climate-specific finance provided and the underlying assumption and methodologies used: <a href="https://unfccc.int/topics/climate-finance/resources/biennial-assessment-of-climate-finance"><em>https://unfccc.int/topics/climate-finance/resources/biennial-assessment-of-climate-finance</em></a><em>.</em></li>
   <li>Statement by 18 Donor States Determined to Commit USD100 Billion for Climate Finance: <a href="https://unfccc.int/news/18-industrial-states-release-climate-finance-statement">https://unfccc.int/news/18-industrial-states-release-climate-finance-statement</a></li>
 </ul>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1352,12 +2454,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

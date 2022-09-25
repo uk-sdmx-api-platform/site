@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -420,115 +402,1024 @@ data-event-label="high"
   
   <div id="indicator-main" class="indicator-main col-md-12">
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 6: Ensure availability and sustainable management of water and sanitation for all</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 6.3: By 2030, improve water quality by reducing pollution, eliminating dumping and minimizing release of hazardous chemicals and materials, halving the proportion of untreated wastewater and substantially increasing recycling and safe reuse globally</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 6.3.1: Proportion of domestic and industrial wastewater flows safely treated</p>
-</dd>
-            <dt>Series</dt>
-            <dd>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>The domestic portion of wastewater treated is closely linked to indicator 6.2.1a on the &#x201C;proportion of population using safely managed sanitation services&#x201D;, and draws upon some of the same data sources. </p>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 6: Ensure availability and sustainable management of water and sanitation for all</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 6.3: By 2030, improve water quality by reducing pollution, eliminating dumping and minimizing release of hazardous chemicals and materials, halving the proportion of untreated wastewater and substantially increasing recycling and safe reuse globally</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 6.3.1: Proportion of domestic and industrial wastewater flows safely treated</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2020-09-14</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>The domestic portion of wastewater treated is closely linked to indicator 6.2.1a on the &#x201C;proportion of population using safely managed sanitation services&#x201D;, and draws upon some of the same data sources. </p>
 <p>The indicator is also directly linked to indicator 6.3.2 on the &#x201C;proportion of bodies of water with good ambient water quality&#x201D;, because unsafe wastewater treatment leads to degradation in quality of the receiving waters. It directly informs progress towards target 6.3 and is strongly linked to target 6.6 on water-related ecosystems, as well as target 14.1 on marine pollution (coastal eutrophication).</p>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>United Nations Human Settlements Programme (UN-Habitat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>United Nations Human Settlements Programme (UN-Habitat)</p>
 <p>World Health Organization (WHO)</p>
 <p>United Nations Statistics Division (UNSD)</p>
-</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>United Nations Human Settlements Programme (UN-Habitat)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>United Nations Human Settlements Programme (UN-Habitat)</p>
 <p>World Health Organization (WHO)</p>
 <p>United Nations Statistics Division (UNSD)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definitions:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definitions:</strong></p>
 <p>This indicator measures the volumes of wastewater which are generated through different activities, and the volumes of wastewater which are safely treated before discharge into the environment. Both of these indicators are measured in units of 1000 m<sup>3</sup>/day, although some data sources may use other units that require conversion. The ratio of the volume treated to the volume generated is taken as the &#x2018;proportion of wastewater flow safely treated&#x2019;. </p>
 <p>Wastewater flows will be classified into industrial, services, and domestic flows, with reference to the International Standard Industrial Classification of All Economic Activities Revision 4 (ISIC). To the extent possible, the proportion of each of these waste streams that is safely treated before discharge to the environment will be calculated.</p>
 <p><strong>Concepts:</strong></p>
@@ -558,49 +1449,62 @@ data-event-label="high"
 <p>Wastewater: Wastewater is water which is of no further value to the purpose for which it was used because of its quality, quantity or time of occurrence. Cooling water is not considered here.</p>
 <p>Wastewater discharge: The amount of water (in m3) or substance (in kg BOD/d or comparable) added/leached to a water body (Fresh or non-fresh) from a point source.</p>
 <p>Wastewater treatment: Process to render wastewater fit to meet applicable environmental standards or other quality norms for recycling or reuse.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>A clear specification of the terminology and methodology for wastewater statistics is essential to contribute to harmonising international data collection practices and SDG 6.3.1 reporting. The objective of indicator 6.3.1 is to cover households and the entire economy, and to build on the existing international methodology for global monitoring wastewater generation and treatment. This approach reduces the monitoring burden that SDG reporting can impose on countries, and provides well-defined and internationally comparable variables for global data analysis and use by policymakers and urban/land planners.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>A clear specification of the terminology and methodology for wastewater statistics is essential to contribute to harmonising international data collection practices and SDG 6.3.1 reporting. The objective of indicator 6.3.1 is to cover households and the entire economy, and to build on the existing international methodology for global monitoring wastewater generation and treatment. This approach reduces the monitoring burden that SDG reporting can impose on countries, and provides well-defined and internationally comparable variables for global data analysis and use by policymakers and urban/land planners.</p>
 <p>Data are extracted from a number of pre-existing sources: </p>
 <ul>
   <li>Indicator tables from the UNSD/UNEP data collection on environment statistics</li>
@@ -612,119 +1516,202 @@ data-event-label="high"
   <li>Website of OECD water statistics (<a href="https://stats.oecd.org/index.aspx?DataSetCode=water_treat">https://stats.oecd.org/index.aspx?DataSetCode=water_treat#</a>).</li>
   <li>Country files from the WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP) data collection on safely managed sanitation services, and the reports referenced therein<br />(<a href="https://washdata.org/">https://washdata.org/</a>)</li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Total flows of wastewater generated and treated are reported by countries to UNSD and OECD/Eurostat databases. Eurostat deals with Member States of the European Union (EU) and the European Free Trade Association (EFTA) as well as the respective candidate countries. OECD works with all its Member States not contacted by Eurostat. UNSD sends the UNSD/UNEP Questionnaire to the rest of the world (approx. 165 countries). However, the response rate for the UNSD/UNEP questionnaire is around 50% and data completeness and quality remain a challenge, especially for developing countries. While efforts will continue to collect data from National Statistical Offices and Ministries of Environment at the national level, it is also critical to improve the availability and accessibility of wastewater statistics and increase training for collection of data and capacity development at the national and sub-national levels.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Total flows of wastewater generated and treated are reported by countries to UNSD and OECD/Eurostat databases. Eurostat deals with Member States of the European Union (EU) and the European Free Trade Association (EFTA) as well as the respective candidate countries. OECD works with all its Member States not contacted by Eurostat. UNSD sends the UNSD/UNEP Questionnaire to the rest of the world (approx. 165 countries). However, the response rate for the UNSD/UNEP questionnaire is around 50% and data completeness and quality remain a challenge, especially for developing countries. While efforts will continue to collect data from National Statistical Offices and Ministries of Environment at the national level, it is also critical to improve the availability and accessibility of wastewater statistics and increase training for collection of data and capacity development at the national and sub-national levels.</p>
 <p>The WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP) collects and compiles national data related to use of sanitation services including wastewater treatment, for calculation of SDG indicator 6.2.1a &#x201C;proportion of the population using safely managed sanitation services.&#x201D; National data sources are collected from National Statistical Offices, ministries responsible for service delivery, and regulatory authorities, as well as other regional and global initiatives (e.g. the European Protocol on Water and Health). The database is updated every two years following a country consultation process facilitated by WHO and UNICEF regional offices. </p>
 <p>These databases rely on a comparable harmonized terminology for water statistics. Wastewater data are nonetheless still relatively sparse on a global scale. UN-Habitat and WHO will disseminate information about these data collection processes, and will liaise with their technical focal points in regions and countries, to work with them to produce estimates which could then feed into the official statistical system via the NSOs. It is expected that over time, a better reporting of the wastewater data collected can be made to populate the SDG Indicator 6.3.1. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Next UNSD/UNEP and OECD/Eurostat data collection to be conducted in second half of 2020.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The global databases for indicator 6.3.1 is planned to be updated in the second quarter of 2021.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>National Statistical Offices (NSOs) are the primary responsible authorities for providing data to be used for global statistics. NSOs may draw on data collected or compiled by relevant national or other authorities, such as ministries, municipalities, or regulatory authorities.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>United Nations Human Settlements Programme (UN-Habitat), World Health Organization (WHO), and the United Nations Statistics Division (UNSD) are co-custodians for this indicator at the global level.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Next UNSD/UNEP and OECD/Eurostat data collection to be conducted in second half of 2020.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>The global databases for indicator 6.3.1 is planned to be updated in the second quarter of 2021.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>National Statistical Offices (NSOs) are the primary responsible authorities for providing data to be used for global statistics. NSOs may draw on data collected or compiled by relevant national or other authorities, such as ministries, municipalities, or regulatory authorities.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>United Nations Human Settlements Programme (UN-Habitat), World Health Organization (WHO), and the United Nations Statistics Division (UNSD) are co-custodians for this indicator at the global level.</p>
 <p>UNSD leads on collecting, compiling, and processing of data submitted by National Statistical Offices through the UNSD/UNEP Questionnaire on Environment Statistics for the non-OECD/Eurostat member states. </p>
 <p>UN-Habitat leads on collecting, compilation, and processing of data from UNSD and OECD/Eurostat databases. UN-Habitat also leads on collection of additional data on industrial wastewater generation and treatment. </p>
 <p>World Health Organization (WHO) leads on collection, compilation and processing of additional data on domestic wastewater generation and treatment.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Wastewater data are crucial to promote strategies for sustainable and safe wastewater use or reuse to the benefit of the world&#x2019;s population health and the global environment, but also to respond to growing water demands, increasing water pollution loads, and climate change impacts on water resources.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Wastewater data are crucial to promote strategies for sustainable and safe wastewater use or reuse to the benefit of the world&#x2019;s population health and the global environment, but also to respond to growing water demands, increasing water pollution loads, and climate change impacts on water resources.</p>
 <p>Sustainable Development Goal 6 (SDG 6) is about ensuring the availability and sustainability of water and sanitation for all by 2030. SDG Target 6.3 sets out to improve ambient water quality, which is essential to protecting both ecosystem and human health, by eliminating, minimizing and significantly reducing different streams of pollution into water bodies.</p>
 <p>The purpose of monitoring progress using SDG indicator 6.3.1 is to provide necessary and timely information to decision makers and stakeholders to make informed decisions to accelerate progress towards reducing water pollution, minimizing release of hazardous chemicals and increasing wastewater treatment and reuse. The target wording covers wastewater recycling and safe reuse with implication on water use efficiency, although it is not fully addressed by the global indicator and methodology.</p>
 <p>SDG indicator 6.3.1 tracks the proportion of wastewater flows from households, services and industrial economic activities that are safely treated at the source or through centralized wastewater treatment plants before being discharged into the environment, out of the total volume of wastewater generated.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>There is a relative lack of knowledge about the volumes of wastewater generated and treated, because wastewater statistics are in an early stage of development in many countries and not regularly produced or reported. Monitoring is relatively complex, costly, and data are not systematically aggregated to the national level and/or accessible; especially industrial wastewater data which are in general poorly monitored and seldom aggregated at national level.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>There is a relative lack of knowledge about the volumes of wastewater generated and treated, because wastewater statistics are in an early stage of development in many countries and not regularly produced or reported. Monitoring is relatively complex, costly, and data are not systematically aggregated to the national level and/or accessible; especially industrial wastewater data which are in general poorly monitored and seldom aggregated at national level.</p>
 <p>To some extent, this may be explained by the fact that a large proportion of the industrial water requirements are covered by the use of private systems using non-public/drinking water supply (groundwater, rivers and wells) which are not systematically included in the national statistics.</p>
 <p>Diffused pollution from non-point sources such as runoff from urban and agricultural land can contribute significantly to wastewater flows, and therefore its progressive inclusion in the global monitoring framework will be important. Presently, it cannot be monitored at source and its impact on ambient water quality will be monitored indirectly under indicator 6.3.2 on the proportion of bodies of water with good ambient water quality.</p>
 <p>Different types of wastewater have different degrees of contamination and pose different levels of threat to the environment and public health. Some data exist on the pollutant loading in terms of BOD5 and COD (kg O2/day), but these are not as widely available as data on volumes and will not be used at present for indicator 6.3.1. It is anticipated that future data drives will include more information on pollutant loadings that could be eventually featured in SDG 6.3.1 reporting. </p>
 <p>Finally, whether wastewater is classified as safely treated or not depends on the wastewater treatment plant&#x2019;s compliance rate to the effluent standards (i.e. performance). Many wastewater plants produce effluent which does not meet quality standards, due to improper design or loading. Effluent standards rely on both national and local requirements, as well as on specific water uses and potential reuse options, so that this approach may not provide strictly comparable variables between countries. For the purposes of global monitoring, in the absence of data on compliance, technology-based proxies will be used, in which compliance is assumed if the treatment plant provides at least secondary treatment.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The amount of wastewater generated is calculated by summing all of the wastewater generated by different economic activities and households. Wastewater flows are expressed in units of 1000 m3/day, although some data sources may use other units that require conversion. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The amount of wastewater generated is calculated by summing all of the wastewater generated by different economic activities and households. Wastewater flows are expressed in units of 1000 m3/day, although some data sources may use other units that require conversion. </p>
 <p>The amount of wastewater safely treated is calculated by summing all of the wastewater flows which receive treatment considered equivalent to secondary treatment or better. This wastewater flow is expressed in units of 1000 m3/day, although some data sources may use other units that require conversion.</p>
 <p>The proportion of wastewater flows which are safely treated is calculated as a ratio of the amount of wastewater safely treated to the amount of wastewater generated.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>&#x2022; At country level</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level</strong></p>
 <p>Outside of the UNSD and OECD/Eurostat databases, data on wastewater generation and treatment are not widely available, and what data do exist may not align with international definitions and classifications (e.g. ISIC codes). </p>
 <p>For statistics on total wastewater generated and treated, missing values are not imputed. No estimated or modelled data are produced.</p>
 <p>Some countries do not separately report the volume of wastewater generated by households. In the absence of reported data on domestic wastewater generation, an estimate of the wastewater generated at the household level will be made. It can be estimated that 80% of the water supply which enters private households will subsequently exit the household as wastewater. Therefore, if data are available on per capita water consumption, these can be used to estimate domestic wastewater generation. If data on per capita water consumption are not available, data from household surveys and censuses can be used to indicate the proportion of the population which has water supplies available on premises (e.g. municipal piped water, private boreholes with overhead tanks) and the proportion of the population which collects water from off-premises sources (e.g. communal standposts, community boreholes). In the absence of other data on domestic water consumption, it can be estimated that households with on-premises water supply consume approximately 120 litres per capita per day, and therefore generate 96 litres of wastewater per capita per day; those with off-premises water supply are assumed to consume approximately 20 litres per capita per day, and therefore generate 16 litres of wastewater per capita per day. </p>
@@ -733,71 +1720,93 @@ data-event-label="high"
 <p>Given the data limitations, especially on non-household wastewater, data currently available on compliance with discharge permits could be used to better to estimate the industrial flows treated.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>See &#x2018;regional aggregates&#x2019;.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Regional and global aggregates are produced by combining volumes of wastewater generated and treated from countries with data. For the purpose of calculating regional aggregate statistics, values for countries without national estimates are imputed on the basis of regional averages (e.g. using M49 sub-regions). These imputed data are never published separately as national statistics. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Regional and global aggregates are produced by combining volumes of wastewater generated and treated from countries with data. For the purpose of calculating regional aggregate statistics, values for countries without national estimates are imputed on the basis of regional averages (e.g. using M49 sub-regions). These imputed data are never published separately as national statistics. </p>
 <p>Regional and global aggregate statistics are only produced when the data available without imputation represent at least 50% of the regional or global total. Ideally this coverage threshold would be based on wastewater volumes, but data on the volumes of wastewater generated are not available for all countries. Accordingly, as an interim measure, data coverage thresholds and weighting of national statistics will be done on the basis of national population, drawing on the latest statistics available from the UN World Population Prospects.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>To be developed.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data submitted to UNSD or OECD/Eurostat come directly from national statistical offices and/or ministries of environment. Data treatment and validation is done jointly by Eurostat and the OECD for their member states according to an agreed process and timeline. For those data submitted to UNSD a review is undertaken by the Environment Statistics Section for consistency. UNSD carries out extensive data validation procedures that include built-in automated procedures, manual checks and cross-references to national sources of data. Communication is carried out with countries for clarification and validation of data. UNSD does not make any estimation or imputation for missing values so the number of data points provided are actual country data. Only data that are considered accurate or those confirmed by countries during the validation process are included in UNSD&#x2019;s environment statistics database and disseminated on UNSD&#x2019;s website.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>To be developed.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Data submitted to UNSD or OECD/Eurostat come directly from national statistical offices and/or ministries of environment. Data treatment and validation is done jointly by Eurostat and the OECD for their member states according to an agreed process and timeline. For those data submitted to UNSD a review is undertaken by the Environment Statistics Section for consistency. UNSD carries out extensive data validation procedures that include built-in automated procedures, manual checks and cross-references to national sources of data. Communication is carried out with countries for clarification and validation of data. UNSD does not make any estimation or imputation for missing values so the number of data points provided are actual country data. Only data that are considered accurate or those confirmed by countries during the validation process are included in UNSD&#x2019;s environment statistics database and disseminated on UNSD&#x2019;s website.</p>
 <p>UN-Habitat and WHO use the resulting data without modification. In case of any observed discrepancies or anomalies the national authorities are consulted for clarification.</p>
 <p>Estimates of domestic wastewater treatment are calculated based on national data and will be shared with countries for a consultation process similar to, and coordinated with, the consultation process used by WHO and UNICEF for indicators 6.1.1 and 6.2.1. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
 <p>In 2018 estimates of data on &#x2018;proportion of safely treated domestic wastewater flows&#x2019; were available for 79 countries. These are available through the UN SDG Database (EN_WWT_WWDS). No regional aggregates were produced due to low data coverage. </p>
 <p>The UNSD/UNEP Questionnaire on Environment Statistics has collected data on wastewater generation and treatment for about 7 years. The Questionnaire has been sent to more than 160 countries, covering both national and city levels. However, the response rate for the UNSD/UNEP questionnaire is hovering around 50% and data completeness and quality remain a challenge, especially for developing countries. </p>
 <p>For those variables relevant to this indicator which are collected via the UNSD/UNEP Questionnaire, data for up to 37 countries are available in some years (wastewater treated in urban wastewater treatment plants), though for other relevant variables, for a given year, data for 30 countries or less may be available. More details on the availability of data obtained from the UNSD/UNEP Questionnaire can be found in the <a href="https://unstats.un.org/unsd/statcom/51st-session/documents/2020-33-EnvironmentStats-E.pdf" target="_blank">Report of the Secretary-General on Environment Statistics</a><u><sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup></u> (Part C) and the <a href="https://unstats.un.org/unsd/statcom/51st-session/documents/BG-item-4e-EnvironmentStats-E.pdf">Background Report</a><sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup> (Part 1) submitted to the fifty-first session of the Statistical Commission (New York, 3-6 March 2020). Data received via the UNSD/UNEP Questionnaire have been published on the UNSD website in the form of indicator tables (UNSD Indicator Tables (inland water resources) (<a href="https://unstats.un.org/unsd/envstats/qindicators" target="_blank">https://unstats.un.org/unsd/envstats/qindicators</a>) as well as in Country Files (<a href="https://unstats.un.org/unsd/envstats/country_files" target="_blank">https://unstats.un.org/unsd/envstats/country_files</a>).</p>
@@ -832,61 +1841,35 @@ data-event-label="high"
 <p>Figure 3. OECD/Eurostat (left) and UNSD/UNEP (right) variables for the treatment of wastewater flow. The variables to populate the SDG Indicator 6.3.1 are highlighted in colour.</p>
 <p>Where it is possible to quantify both generation and treatment by source (industrial, service, or domestic), the proportion of wastewater treated will also be calculated separately by source.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> <a href="https://unstats.un.org/unsd/statcom/51st-session/documents/2020-33-EnvironmentStats-E.pdf">https://unstats.un.org/unsd/statcom/51st-session/documents/2020-33-EnvironmentStats-E.pdf</a> <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> <a href="https://unstats.un.org/unsd/statcom/51st-session/documents/BG-item-4e-EnvironmentStats-E.pdf">https://unstats.un.org/unsd/statcom/51st-session/documents/BG-item-4e-EnvironmentStats-E.pdf</a> <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
 <p>To be developed.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL:</strong></p>
 <p><strong>References:</strong></p>
 <ul>
   <li>OECD/Eurostat, 2018. Data Collection Manual for the OECD/Eurostat Joint Questionnaire on Inland Waters and Eurostat regional water questionnaire.</li>
@@ -896,36 +1879,171 @@ data-event-label="high"
   <li>Manual on the Basic Set of Environment Statistics <a href="https://unstats.un.org/unsd/envstats/fdes/manual_bses.cshtml">https://unstats.un.org/unsd/envstats/fdes/manual_bses.cshtml</a> (wastewater statistics - forthcoming)</li>
   <li>UNSD Indicator Tables (inland water resources) (<a href="https://unstats.un.org/unsd/envstats/qindicators">https://unstats.un.org/unsd/envstats/qindicators</a>)</li>
 </ul>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1166,12 +2284,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

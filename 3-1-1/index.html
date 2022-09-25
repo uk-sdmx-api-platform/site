@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -1568,233 +1534,1196 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 3.1: By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000 live births</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 3.1.1: Maternal mortality ratio</p>
-</dd>
-            <dt>Series</dt>
-            <dd><p>SH_STA_MORT</p>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>3.1.2: Proportion of births attended by skilled health personnel.</p>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p>
-</dd>
-          </dl>
-        </div>
-      </div>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition:</strong></p>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 3.1: By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000 live births</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 3.1.1: Maternal mortality ratio</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>SH_STA_MORT</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-12-06</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>3.1.2: Proportion of births attended by skilled health personnel.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>World Health Organization (WHO). Department of Sexual and Reproductive Health and Research.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
 <p>The maternal mortality ratio (MMR) is defined as the number of maternal deaths during a given time period per 100,000 live births during the same time period. It depicts the risk of maternal death relative to the number of live births and essentially captures the risk of death in a single pregnancy (proxied by a single live birth).</p>
 <p><strong>Concepts:</strong></p>
 <p>In the <em>International statistical classification of diseases and related health problems (ICD) </em>WHO defines the following:</p>
 <p><strong>Maternal death</strong>: The death of a woman while pregnant or within 42 days of termination of pregnancy, irrespective of the duration and site of the pregnancy, from any cause related to or aggravated by the pregnancy or its management (from direct or indirect obstetric death), but not from unintentional or incidental causes.</p>
 <p>A death occurring during pregnancy, childbirth and puerperium (also known</p>
 <p>as a <strong>pregnancy-related death</strong>): The death of a woman while pregnant or within 42 days of termination of pregnancy, irrespective of the cause of death.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Ratio: number of maternal deaths expressed per 100,000 live births</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Maternal deaths are classified according to the <em>International statistical classification of diseases and related health problems</em> (ICD) definition. The specific codes used under ICD-10 (the 10<sup>th</sup> revision of the ICD) to define a maternal death are: O00-O96; O98, O99 and A34.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Ratio: number of maternal deaths expressed per 100,000 live births</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Maternal deaths are classified according to the <em>International statistical classification of diseases and related health problems</em> (ICD) definition. The specific codes used under ICD-10 (the 10<sup>th</sup> revision of the ICD) to define a maternal death are: O00-O96; O98, O99 and A34.</p>
 <p>ICD-11 (the 11th revision of the ICD) was adopted by the World Health Assembly in May 2019 and comes into effect on 1<sup>st</sup> January 2022. Further information is available at: <a href="http://www.who.int/classifications/icd/en/">www.who.int/classifications/icd/en/</a> The coding rules related to maternal mortality are being edited to fully match the new structure of ICD-11, but without changing the resulting statistics. The ICD-11 rules can be accessed in the reference guide of ICD-11, at <a href="https://icd.who.int">https://icd.who.int</a> . Forthcoming releases from 2022 onwards will transition to use ICD-11 coding. Care has been taken to ensure that the definition of maternal death used for international comparison of mortality statistics remains stable over time, but the word &#x201C;unintentional&#x201D; has been used in the ICD-11 definition in place of the word &#x201C;accidental&#x201D; which was previously used, in ICD-10.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Please see page 14 of the report WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division &#x201C;Maternal mortality: Levels and trends 2000 to 2017&#x201D; for full details. (<a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/"><u>https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</u></a>).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG) maintains an input database consisting of maternal mortality data from civil registration, population-based surveys, surveillance systems, censuses, and other specialized studies/surveys. This database is used to calculate the proportion of maternal deaths (PM) among women of reproductive age (WRA). The MMR is then calculated as MMR = PM(D/B); where &quot;D&quot; is the number of all-cause deaths among women WRA and &quot;B&quot; is the number of live births. The number of live births is based upon the World Population Prospects published by UNDP. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Please see page 14 of the report WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division &#x201C;Maternal mortality: Levels and trends 2000 to 2017&#x201D; for full details. (<a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/"><u>https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</u></a>).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG) maintains an input database consisting of maternal mortality data from civil registration, population-based surveys, surveillance systems, censuses, and other specialized studies/surveys. This database is used to calculate the proportion of maternal deaths (PM) among women of reproductive age (WRA). The MMR is then calculated as MMR = PM(D/B); where &quot;D&quot; is the number of all-cause deaths among women WRA and &quot;B&quot; is the number of live births. The number of live births is based upon the World Population Prospects published by UNDP. </p>
 <p>Statistical modelling is undertaken to generate comparable country, regional, and global level estimates. Adjustments are made according to the data source type (See Section 4e below). The analysis accounts for stochastic errors, sampling error in the data source, errors during data collection and processing, and other random error. The model&apos;s fit is assessed by cross-validation.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The input datasets are updated prior to each new publication round of the MMR estimates. Source data are collected by countries, typically annually for CRVS sources, every 3-5 years for specialized reviews, every 5-7 years for population-based surveys, and every 10 years for censuses. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The next round of MMR estimation is scheduled for publication during 2022.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>National-level data providers are typically statistical offices, specialized epidemiology monitoring authorities and/or Ministry of Health.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>The input datasets are updated prior to each new publication round of the MMR estimates. Source data are collected by countries, typically annually for CRVS sources, every 3-5 years for specialized reviews, every 5-7 years for population-based surveys, and every 10 years for censuses. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>The next round of MMR estimation is scheduled for publication during 2022.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>National-level data providers are typically statistical offices, specialized epidemiology monitoring authorities and/or Ministry of Health.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>The United Nations Maternal Mortality Estimation Inter-Agency Group (UN MMEIG) &#x2013; comprising WHO, UNICEF, UNFPA, the World Bank Group and the United Nations Population Division (UNPD) of the Department of Economic and Social Affairs (MMEIG).</p>
 <p> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>WHO is the custodian UN agency for the maternal mortality ratio.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>All maternal mortality indicators derived from the 2019 estimation round include a point-estimate and an 80% uncertainty interval (UI). Both point-estimates and 80% UIs should be taken into account when assessing estimates.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>WHO is the custodian UN agency for the maternal mortality ratio.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>All maternal mortality indicators derived from the 2019 estimation round include a point-estimate and an 80% uncertainty interval (UI). Both point-estimates and 80% UIs should be taken into account when assessing estimates.</p>
 <p>For example: &#x201C;The estimated 2017 global MMR is 211 (UI 199 to 243).&#x201D;</p>
 <p>This means:</p>
 <ul>
@@ -1809,13 +2738,20 @@ data-event-label="Change to Table tab"
   <li>We are 90% certain that the true 2017 global MMR is 243 or less.</li>
 </ul>
 <p>The amount of data available for estimating an indicator and the quality of that data determine the width of an indicator&#x2019;s UI. As data availability and quality improve, the certainty increases that an indicator&#x2019;s true value lies close to the point-estimate.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The extent of maternal mortality in a population is essentially the combination of two factors:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>The extent of maternal mortality in a population is essentially the combination of two factors:</p>
 <ol>
   <li>The risk of death in a single pregnancy or a single live birth.</li>
   <li>The fertility level (i.e. the number of pregnancies or births that are experienced by women of reproductive age).</li>
@@ -1823,13 +2759,20 @@ data-event-label="Change to Table tab"
 <p>The maternal mortality ratio (MMR) is defined as the number of maternal deaths during a given time period per 100 000 live births during the same time period. It depicts the risk of maternal death relative to the number of live births and essentially captures (i) above.</p>
 <p>By contrast, the maternal mortality rate (MMRate) is calculated as the number of maternal deaths divided by person-years lived by women of reproductive age. The MMRate captures both the risk of maternal death per pregnancy or per total birth (live birth or stillbirth), and the level of fertility in the population. </p>
 <p>In addition to the MMR and the MMRate, it is possible to calculate the adult lifetime risk of maternal mortality for women in the population. An alternative measure of maternal mortality, the proportion of deaths among women of reproductive age that are due to maternal causes (PM), is calculated as the number of maternal deaths divided by the total deaths among women aged 15&#x2013;49 years.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The maternal mortality ratio can be calculated by dividing recorded (or estimated) maternal deaths by total recorded (or estimated) live births in the same period and multiplying by 100 000. Measurement requires information on pregnancy status, timing of death (during pregnancy, childbirth, or within 42 days of termination of pregnancy), and cause of death.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>The maternal mortality ratio can be calculated by dividing recorded (or estimated) maternal deaths by total recorded (or estimated) live births in the same period and multiplying by 100 000. Measurement requires information on pregnancy status, timing of death (during pregnancy, childbirth, or within 42 days of termination of pregnancy), and cause of death.</p>
 <p>The maternal mortality ratio can be calculated directly from data collected through vital registration systems, household surveys or other sources. There are often data quality problems, particularly related to the underreporting and misclassification of maternal deaths. Therefore, data are often adjusted in order to take these data quality issues into account. Some countries undertake these adjustments or corrections as part of specialized/confidential enquiries or administrative efforts embedded within maternal mortality monitoring programmes.</p>
 <p><strong>Bayesian maternal mortality estimation model (the BMat model):</strong></p>
 <p>Estimation and projection of maternal mortality indicators are undertaken using the BMat model. This model is intended to ensure that the MMR estimation approach is consistent across all countries but remains flexible in that it is based on covariate-driven trends to inform estimates in countries or country-periods with limited information; captures observed trends in countries with longer time series of observations; and takes into account the differences in stochastic and sampling errors across observations.</p>
@@ -2032,13 +2975,35 @@ data-event-label="Change to Table tab"
 <p><em>v = </em>is the proportion of HIV-related deaths to women aged 15&#x2013;49 that occur during pregnancy. The value of <em>v </em>can be computed as follows: <em>v </em>= <em>c k GFR / [</em>1 + <em>c</em>(<em>k-</em>1) <em>GFR] </em>where<strong> </strong>GFR is the general fertility rate, and where<em> c </em>is the average exposure time (in years) to the risk of pregnancy-related mortality per live birth (set equal to 1 for this analysis), and where <em>k </em>is the relative risk of dying from AIDS for a pregnant versus a non-pregnant woman (reflecting both the decreased fertility of HIV-positive women and the increased mortality risk of HIV-positive pregnant women). The value of <em>k </em>was set at 0.3.</p>
 <p>u = is the fraction of pregnancy-related AIDS deaths assumed to be indirect maternal deaths. The UN MMEIG/TAG reviewed available study data on AIDS deaths among pregnant women and recommended using <em>u = </em>0.3.</p>
 <p>For observed PMs, we assumed that the total reported maternal deaths are a combination of the proportion of reported non-HIV-related maternal deaths and the proportion of reported HIV-related (indirect) maternal deaths, where the latter is given by a*v for observations with a &#x201C;pregnancy-related death&#x201D; definition and a*v*u for observations with a &#x201C;maternal death&#x201D; definition.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Details on adjustments and formulas are published/available here:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>Estimates are reviewed with Member States through a WHO country consultation process and SDG focal points. In 2001, the WHO Executive Board endorsed a resolution (EB. 107.R8) seeking to &#x201C;establish a technical consultation process bringing together personnel and perspectives from Member States in different WHO regions&#x201D;. A key objective of this consultation process is &#x201C;to ensure that each Member State is consulted on the best data to be used&#x201D;. Since the process is an integral step in the overall estimation strategy, it is described here in brief.</p>
+<p>The country consultation process entails an exchange between WHO and technical focal person(s) in each country. It is carried out prior to the publication of estimates. During the consultation period, WHO invites focal person(s) to review input data sources, methods for estimation and the preliminary estimates. Focal person(s) are encouraged to submit additional data that may not have been taken into account in the preliminary estimates.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Details on adjustments and formulas are published/available here:</p>
 <p>(1) Peterson E, Chou D, Gemmill A, Moller AB, Say L, Alkema L. Estimating maternal mortality using vital registration data: a Bayesian hierarchical bivariate random walk model to estimate sensitivity and specificity of reporting for population-periods without validation data. 2019 (https://arxiv.org/abs/1909.08578)</p>
 <p>(2) World Health Organization (WHO), United Nations Children&#x2019;s Fund (UNICEF), United Nations Population Fund (UNFPA), World Bank Group, United Nations Population Division. Trends in maternal mortality: 2000 to 2017: estimates by WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division. Geneva: World Health Organization; 2019 (https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/).</p>
 <p> In brief:</p>
@@ -2051,13 +3016,20 @@ data-event-label="Change to Table tab"
 <p>Underreporting and misclassification in CRVS systems are accounted for with specialized studies. Model estimated country-year specific adjustment factors are obtained and applied to CRVS data.</p>
 <p>Adjustment for under-reporting in non-CRVS and non-specialised sources:</p>
 <p>It is widely believed that some form of upward adjustment is required for population-based surveys to account for deaths early in pregnancy that might not have been captured. Therefore an upwards adjustment of 10% was applied to maternal deaths that were not obtained from CRVS systems or specialized studies.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <ul>
   <li><strong>At country level</strong></li>
 </ul>
 <p>Missing values are treated at the country-level. This is done as follows. There is no treatment of missing values at the regional level.</p>
@@ -2075,106 +3047,115 @@ data-event-label="Change to Table tab"
   <li>CRVS reported all-cause deaths were used to impute missing all-cause deaths in specialized studies in which the search was within registration systems.</li>
   <li>Estimated all-cause deaths from WHO Global Health Estimates were used to impute missing all-cause deaths in miscellaneous studies.</li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Regional aggregations are calculated by aggregating the national-level estimates. The size of a country is determined by the live births estimated by UNDP&#x2019;s World Population Prospects. Aggregations are currently made for each of the UN Agencies that comprise the UN MMEIG.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The methodology used by countries to compile the data depends on the source input type (CRVS, specialised study etc). Useful references include:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Regional aggregations are calculated by aggregating the national-level estimates. The size of a country is determined by the live births estimated by UNDP&#x2019;s World Population Prospects. Aggregations are currently made for each of the UN Agencies that comprise the UN MMEIG.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>The methodology used by countries to compile the data depends on the source input type (CRVS, specialised study etc). Useful references include:</p>
 <ul>
   <li>WHO CRVS Tools &amp; Resources: <a href="https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)">https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)</a> </li>
   <li>World Health Organization. (&#x200E;2013)&#x200E;. WHO guidance for measuring maternal mortality from a census. World Health Organization. <a href="https://apps.who.int/iris/handle/10665/87982">https://apps.who.int/iris/handle/10665/87982</a></li>
   <li>World Health Organization. (&#x200E;2004)&#x200E;. Beyond the numbers : reviewing maternal deaths and complications to make pregnancy safer. World Health Organization. <a href="https://apps.who.int/iris/handle/10665/42984">https://apps.who.int/iris/handle/10665/42984</a></li>
 </ul>
 <p>Support and guidance to national authorities may also be requested from the WHO Secretariat.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data Availability</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>For information on data quality management, assurance, and assessment processes at WHO, please refer to: <a href="https://www.who.int/data/ddi">https://www.who.int/data/ddi</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data Availability</strong></p>
 <p>Data availability is presented by country with the country profiles, please see here: <a href="https://www.who.int/data/gho/data/themes/maternal-and-reproductive-health/maternal-mortality-country-profiles">https://www.who.int/data/gho/data/themes/maternal-and-reproductive-health/maternal-mortality-country-profiles</a> </p>
 <p><strong>Disaggregation:</strong></p>
 <p>Current MMR estimates are reported at national, regional, and global levels. Countries and territories</p>
 <p>included in the analyses are WHO Member States with populations over 100 000, plus two territories (Puerto Rico, and Occupied Palestinian Territory including east Jerusalem).</p>
 <p>The <strong>time series</strong> available is currently 2000 to 2017.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
 <p>The maternal mortality ratio is defined as the number of maternal deaths divided by live births. However, to account for potential incompleteness of death recording in various data sources, the MMEIG first computes the fraction of deaths due to maternal causes from original data sources (referred to as the &#x201C;proportion maternal&#x201D;, or PM), and then applies that fraction to WHO estimates of total deaths among women of reproductive age to obtain an estimate of the number of maternal deaths. </p>
 <p>In other words, the following fraction is first computed from country data sources:</p>
 <p>PM= Number of maternal deaths 15-49/All female deaths at ages 15-49 </p>
@@ -2188,66 +3169,188 @@ data-event-label="Change to Table tab"
   <li>The MMEIG uses the standardized series of live births from the United Nations Population Division, as published in World Population Prospects 2019, in the denominator of the MMR equation. To better inform the WPP, countries should discuss discrepancies directly with the UNPD. The contact address is population@un.org; this email address is monitored regularly, and messages are dispatched to the appropriate analysts for each country or concern. </li>
   <li>Statistically speaking, maternal deaths are a relatively rare event, which can lead to noisy time trends in data over time. As the goal of the MMEIG estimates is to track long term progress in reducing maternal mortality, the estimation process involves some smoothing to generate a curve that better captures changes in underlying risk</li>
 </ol>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL:</strong> <a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/">https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</a> </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL:</strong> <a href="https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/">https://www.who.int/reproductivehealth/publications/maternal-mortality-2000-2017/en/</a> </p>
 <p><strong>References:</strong></p>
 <p>(1) World Health Organization (WHO), United Nations Children&#x2019;s Fund (UNICEF), United Nations Population Fund (UNFPA), World Bank Group, United Nations Population Division. Trends in maternal mortality: 2000 to 2017: estimates by WHO, UNICEF, UNFPA, World Bank Group and the United Nations Population Division. Geneva: World Health Organization; 2019 </p>
 <p>(2) Peterson E, Chou D, Gemmill A, Moller AB, Say L, Alkema L. Estimating maternal mortality using vital registration data: a Bayesian hierarchical bivariate random walk model to estimate sensitivity and specificity of reporting for population-periods without validation data. 2019 (https://arxiv.org/abs/1909.08578).</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -2488,12 +3591,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

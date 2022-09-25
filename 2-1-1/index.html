@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -684,161 +650,1083 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 2.1.1: Prevalence of undernourishment</p>
-</dd>
-            <dt>Series</dt>
-            <dd><p>Primary series: Prevalence of undernourishment</p>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 2.1.1: Prevalence of undernourishment</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p>Primary series: Prevalence of undernourishment</p>
 <p>Complementary series: Number of undernourished people</p>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>2.1.2, 2.2.1, 2.2.2, 2.2.3 </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2022-03-31</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>2.1.2, 2.2.1, 2.2.2, 2.2.3 </p>
 <p>Comments: </p>
 <p>Links with Target 2.2, to the extent that hunger may lead to malnutrition, and Target 2.2 may not be achieved if Target 2.1 is not achieved.</p>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>Food and Agriculture Organization of the United Nations (FAO)</p>
-</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Food and Agriculture Organization of the United Nations (FAO)</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations (FAO)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition: </strong></p>
 <p>The prevalence of undernourishment (PoU) (French: pourcentage de sous-alimentation; Spanish: porcentaje de sub-alimentaci&#xF3;n; Italian: prevalenza di sotto-alimentazione) is an estimate of the proportion of the population whose habitual food consumption is insufficient to provide the dietary energy levels that are required to maintain a normal active and healthy life. It is expressed as a percentage.</p>
 <p><strong>Concepts: </strong></p>
 <p>Undernourishment is defined as the condition by which a person has access, on a regular basis, to the amount of food that are insufficient to provide the energy required for conducting a normal, healthy and active life, given his or her own dietary energy requirements. </p>
 <p>Though strictly related, &#x201C;undernourishment&#x201D; as defined here is different from the physical conditions of &#x201C;malnutrition&#x201D; and &#x201C;undernutrition&#x201D; as it refers to the condition of insufficient intake of food, rather than to the outcome in terms of nutritional status. In French, Spanish and Italian the difference is marked by the use of the terms alimentation, alimentaci&#xF3;n, or alimentazione, instead of nutrition, nutrici&#xF3;n or nutrizione, in the name of the indicator. A more appropriate expression in English that would render the precise meaning of the indicator might have been &#x201C;prevalence of under-feeding&#x201D; but by now the term &#x201C;undernourishment&#x201D; has long been associated with the indicator. </p>
 <p>While the undernourishment condition applies to individuals, due to conceptual and data-related considerations, the indicator can only be referred to a population, or group of individuals. The prevalence of undernourishment is thus an estimate of the percentage of individuals in a group that are in that condition, but it does not allow for the identification of which individuals in the group are, in fact, undernourished. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Prevalence of undernourishment: Percent (%) Number of undernourished people: Millions (of people) </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The construction of the regional and global estimates, as well as estimates for specific groups, such as Least Developed Countries, Land Locked Developing countries, Small Island Developing States, Developed Regions, and Developing Regions, of this indicator follows the UN M49 Standard.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The ideal source of data to estimate the PoU would be a carefully designed and skillfully conducted individual dietary intake survey, in which actual daily food consumption, together with heights and weights for each surveyed individual, are repeatedly measured on a sample that is representative of the target population. Due to their cost, however, such surveys are rare.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Prevalence of undernourishment: Percent (%) Number of undernourished people: Millions (of people) </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>The construction of the regional and global estimates, as well as estimates for specific groups, such as Least Developed Countries, Land Locked Developing countries, Small Island Developing States, Developed Regions, and Developing Regions, of this indicator follows the UN M49 Standard.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>The ideal source of data to estimate the PoU would be a carefully designed and skillfully conducted individual dietary intake survey, in which actual daily food consumption, together with heights and weights for each surveyed individual, are repeatedly measured on a sample that is representative of the target population. Due to their cost, however, such surveys are rare.</p>
 <p>In principle, a well-designed household survey that collects information on food acquisitions might be sufficient to inform a reliable estimate of the Prevalence of Undernourishment (PoU) in a population, at a reasonable cost and with the necessary periodicity to inform the SDG monitoring process, provided that: </p>
 <ol>
   <li>All sources of food consumption for all members of the households are properly accounted for, including, in particular, food that is consumed away from home; </li>
@@ -858,87 +1746,135 @@ data-event-label="Change to Table tab"
 <p>a) UN Population Division&#x2019;s World Population Prospects (https://esa.un.org/unpd/wpp/Download/Standard/Population/), which provide updated estimates of the structures of the national population by sex and age every two years for most countries in the world; </p>
 <p>b) FAO Food Balance Sheets (http://www.fao.org/faostat/en/#data), which provides updated estimates of the national availability of food every year for most countries in the world.</p>
 <p>Micro data from household surveys that collect food consumption data are sourced by FAO directly through the National Statistical Agencies&#x2019; websites, or through specific bilateral agreements. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Official information on food commodity production, trade and utilization used by FAO to compile Food Balance Sheets is provided mainly by Statistical Units of the Ministry of Agriculture. FAO sends out a data collection questionnaire every year to an identified focal point. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Official information on food commodity production, trade and utilization used by FAO to compile Food Balance Sheets is provided mainly by Statistical Units of the Ministry of Agriculture. FAO sends out a data collection questionnaire every year to an identified focal point. </p>
 <p>Microdata of household surveys are generally owned and provided by National Statistical Agencies. When available, data is sourced by FAO directly through the NSA&#x2019; website. In several cases, when microdata is not available in the public domain, bilateral agreements have been signed, usually in the contexts of technical assistance and capacity development programs. </p>
 <p>Data on the population size and structure for all monitored countries is obtained from the UN Population Division&#x2019;s World Population Prospects. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Continuing</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data are released each year alongside the <em>State of Food Security and Nutrition in the World</em> report, usually in mid-July. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Given the various data sources, national data providers vary. Official information on food commodity production, trade and utilization used by FAO to compile Food Balance Sheets is provided mainly by Statistical Units of the Ministry of Agriculture. Microdata of household surveys are generally owned and provided by National Statistical Agencies.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Food and Agriculture Organization of the United Nations, Statistics Division, Food Security and Nutrition Statistics Team</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The Office of the Chief Statistician of FAO manages the Interdepartmental Working Group on SDG indicators under the FAO custodianship and identifies a focal point for each of them. The team leader of the Food Security and Nutrition Statistics Team of the Statistics Division is formally appointed as the focal person for the collection, processing, and dissemination of statistics for this indicator. </p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The indicator has been used by FAO to monitor the World Food Summit Target and the MDG Target 1C, at national, regional and global level, since 1999. It allows monitoring trends in the extent of dietary energy inadequacy in a population over time, generated as a result of the combination of changes in the overall availability of food, in the households&#x2019; ability to access it, and in the socio-demographic characteristics of the population, as well as differences across countries and regions in any given moment in time. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Continuing</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Data are released each year alongside the <em>State of Food Security and Nutrition in the World</em> report, usually in mid-July. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Given the various data sources, national data providers vary. Official information on food commodity production, trade and utilization used by FAO to compile Food Balance Sheets is provided mainly by Statistical Units of the Ministry of Agriculture. Microdata of household surveys are generally owned and provided by National Statistical Agencies.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Food and Agriculture Organization of the United Nations, Statistics Division, Food Security and Nutrition Statistics Team</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>The Office of the Chief Statistician of FAO manages the Interdepartmental Working Group on SDG indicators under the FAO custodianship and identifies a focal point for each of them. The team leader of the Food Security and Nutrition Statistics Team of the Statistics Division is formally appointed as the focal person for the collection, processing, and dissemination of statistics for this indicator. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>The indicator has been used by FAO to monitor the World Food Summit Target and the MDG Target 1C, at national, regional and global level, since 1999. It allows monitoring trends in the extent of dietary energy inadequacy in a population over time, generated as a result of the combination of changes in the overall availability of food, in the households&#x2019; ability to access it, and in the socio-demographic characteristics of the population, as well as differences across countries and regions in any given moment in time. </p>
 <p>The parametric approach adopted by FAO allows obtaining reliable estimated for relatively large population groups. As it reflects a severe condition of lack of food, it is fully consistent with the spirit of a Goal that aims at reducing hunger.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Over the years, the parametric approach informing the computation of the PoU has been criticized, based on the presumptions that undernourishment should be assessed necessarily starting at the individual level, by comparing individual energy requirements with individual energy intakes. According to such a view, the prevalence of undernourishment could be simply computed by counting the number of individuals in a representative sample of the population that is classified as undernourished, based on a comparison of individual habitual food consumption and requirements. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Over the years, the parametric approach informing the computation of the PoU has been criticized, based on the presumptions that undernourishment should be assessed necessarily starting at the individual level, by comparing individual energy requirements with individual energy intakes. According to such a view, the prevalence of undernourishment could be simply computed by counting the number of individuals in a representative sample of the population that is classified as undernourished, based on a comparison of individual habitual food consumption and requirements. </p>
 <p>Unfortunately, such an approach is not feasible for two reasons: first, due to the cost of individual dietary intake surveys, individual food consumption is measured only in a few countries, every several years, on relatively small samples; moreover, individual energy requirements are practically unobservable with standard data collection methods (to the point that observed habitual energy consumption of individuals in a healthy status is still the preferred way to infer individual energy requirements). This means that even if it were possible to obtain accurate observations of the individual dietary energy consumption, this would be insufficient to infer on the undernourishment condition at individual level, unless integrated by the observation on the physical status (body mass index) and of its dynamic over time, of the same individual. </p>
 <p>The model-based approach to estimate the PoU developed by FAO integrates information that is available with sufficient regularity from different sources for most countries in the world, in a theoretically consistent way, thus providing what is still one of the most reliable tools to monitor progress towards reducing global hunger. </p>
 <p>Further specific consideration </p>
@@ -956,13 +1892,20 @@ data-event-label="Change to Table tab"
 <p>4. Limitations </p>
 <p>Due to the probabilistic nature of the inference and the margins of uncertainty associated with estimates of each of the parameters in the model, the precision of the PoU estimates is generally low. Even though it is not possible to compute theoretical Margins of Error (MoE) for PoU estimates, these would very likely exceed plus or minus 2.5% in most cases. For this reason, FAO publishes national level PoU estimates only when they are larger than 2.5%. This also suggests that 2.5% is the lowest feasible target that can be set for the PoU indicator, a value that is unsatisfactorily large when the ambition is to fully eradicate the scourge of hunger. </p>
 <p>If no survey is available that collects food consumption data and that is representative at subnational level, the indicator can only be computed at national level.&quot;</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>To compute an estimate of the prevalence of undernourishment in a population, the probability distribution of habitual dietary energy intake levels (expressed in kcal per person per day) for the average individual is modelled as a parametric probability density function (pdf), f(x).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>To compute an estimate of the prevalence of undernourishment in a population, the probability distribution of habitual dietary energy intake levels (expressed in kcal per person per day) for the average individual is modelled as a parametric probability density function (pdf), f(x).</p>
 <p>The indicator is obtained as the cumulative probability that the habitual dietary energy intake (x) is below the minimum dietary energy requirements (MDER) (i.e. the lowest limit of the range of energy requirements for the population&#x2019;s representative average individual) as in the formula below: </p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>P</mi>
@@ -1054,31 +1997,66 @@ data-event-label="Change to Table tab"
 <p>Human energy requirements for an individual in a given sex/age class are determined on the basis of normative requirements for basic metabolic rate (BMR) per kilogram of body mass, multiplied by the ideal weights that a healthy person of that sex/age class may have, given his or her height, and then multiplied by a coefficient of physical activity level (PAL) to take into account physical activity. Given that both healthy BMIs and PALs vary among active and healthy individuals of the same sex and age, a <em>range </em>of energy requirements applies to each sex and age group of the population. The MDER for the average individual in the population, which is the parameter used in the PoU formula, is obtained as the weighted average of the lower bounds of the energy requirement ranges for each sex and age group, using the shares of the population in each sex and age group as weights.</p>
 <p>Information on the population structure by sex and age is available for most countries in the world and for each year from the UN Department of Economic and Social Affairs (DESA) Population Prospects, revised every two years.</p>
 <p>Information on the median height in each sex and age group for a given country is derived from a recent demographic and health survey (DHS) or from other surveys that collect anthropometry data on children and adults. Even if such surveys do not refer to the same year for which the PoU is estimated, the impact of possible small intervening changes in median heights over the years on PoU estimates is expected to be negligible.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>None </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>&#x2022; At country level </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>There are no formal country consultations. Data validation is internal to FAO. This indicator has been in existence since 1999. FAO has produced it to inform the World Food Summit target and the MDG target 1.C without country consultations. Upon request, FAO has provided countries with details on the data used in their specific case. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>None </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level </strong></p>
 <p>When no data on food consumption is available from a recent household survey, the model-based estimate of the PoU is informed by an estimate of DEC from Food Balance Sheets, an indirect estimate of CV based on information on the country&#x2019;s GDP, Gini coefficient of Income, an index of the relative price of food, or other indicators of development such as country&#x2019;s Under 5 Mortality Rate, and an estimate of the MDER based on the UN Population Division&#x2019;s World Population Prospects data. </p>
 <p>See the section on method of computation for details. </p>
 <p><strong>&#x2022; At regional and global levels </strong></p>
 <p>Missing values for individual countries are implicitly imputed to be equal to the population weighted average of the estimated values of the countries present in the same subregion or region.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Regional and global aggregates of the PoU are computed as: </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Regional and global aggregates of the PoU are computed as: </p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <msub>
       <mrow>
@@ -1150,13 +2128,20 @@ data-event-label="Change to Table tab"
     </mfrac>
   </math></p>
 <p>where PoU<sub>i</sub> are the values of PoU estimated for all countries (i) in the aggregate for which available data allow to compute a reliable estimate, and N<sub>i</sub> the corresponding population size. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>The main three sources of data at national level are: </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>The main three sources of data at national level are: </p>
 <p>a) Official reports on the production, trade and utilization of the major food crop and livestock productions. </p>
 <p>b) Household survey data on food consumption </p>
 <p>c) Demographic characteristics of the national population </p>
@@ -1170,54 +2155,62 @@ data-event-label="Change to Table tab"
 <p>Detail on FBS methodology: <a href="http://www.fao.org/economic/ess/fbs/ess-fbs02/en/">http://www.fao.org/economic/ess/fbs/ess-fbs02/en/</a>. </p>
 <p>The FBS Handbook shown here should not be confused with the recently completed FBS Guidelines. The Handbook is of a more technical nature and explains the methodology followed by FAO in compiling country FBS. The Guidelines on the other hand, while based on the Handbook, provide countries with a more revised and practical guidance and recommendations for compilation at the national level. </p>
 <p>Some FBS background text also available on FAOSTAT: <a href="http://www.fao.org/faostat/en/#data/FBS">http://www.fao.org/faostat/en/#data/FBS</a>. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>ESS conducts trend analysis of the newly updated indicator with other relevant indicators. Meanwhile, preliminary estimates of each round of the update are circulated among regional offices for review. Because of their knowledge of their regions and countries, they often provide invaluable inputs to the revisions and finalization of the update. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>FBS capacity development programme in cooperation with the Global Strategy (more details may be provided if required); capacity development in cooperation with the ESS Food Security team as a PoU/FBS package (financed by projects); and direct FBS capacity development based on specific direct country requests.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>High</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>ESS conducts trend analysis of the newly updated indicator with other relevant indicators. Meanwhile, preliminary estimates of each round of the update are circulated among regional offices for review. Because of their knowledge of their regions and countries, they often provide invaluable inputs to the revisions and finalization of the update. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>FBS capacity development programme in cooperation with the Global Strategy (more details may be provided if required); capacity development in cooperation with the ESS Food Security team as a PoU/FBS package (financed by projects); and direct FBS capacity development based on specific direct country requests.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>High</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
 <p>Since 2017 FAO has reported separate estimates of PoU for 160 countries. </p>
 <p>While country-level estimates are presented as three-year averages, regional and global estimates are yearly estimates. </p>
 <p><strong>Time series: </strong></p>
@@ -1226,100 +2219,209 @@ data-event-label="Change to Table tab"
 <p>Due to reliance on national Food Balance Sheets data to estimate mean caloric consumption levels in the population, the global monitoring of MDG Target 1C and of the WFS target has been based on estimates of the PoU at national level only. </p>
 <p>In principle, the indicator can be computed for any specific population group, provided sufficient accurate information exists to characterize the model&#x2019;s parameters for that specific group, that is, if data on the group&#x2019;s food consumption levels, age/gender structure and &#x2013; possibly &#x2013; physical activity levels, exist. </p>
 <p>The scope for disaggregation thus crucially depends on the availability of surveys designed to be representative at the level of sub national population groups. Given prevailing practice in the design of national household surveys, sufficient reliable information is seldom available for disaggregation beyond the level of macro area of residence (urban-rural) and of the main Provinces/Divisions in a country. To the extent that most of the used surveys are designed to accurately capture the distribution of income, inference can be drawn on the PoU in different income classes of the population. Gender disaggregation is limited by the possibility to identify and group households by gender-related information (such as sex of the head of the household, or male/female ratio).</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies: </strong></p>
 <p>Many countries have produced and reported on estimates of the Prevalence of Undernourishment, including in their national MDG Reports, but almost invariably using a different methodology than the one developed by FAO, which makes national figures not comparable to those reported by FAO for global monitoring. </p>
 <p>The most common approach used in preparing national reports has been to calculate the percentage of households for which the average per capita daily dietary energy consumption is found to be below thresholds based on daily Recommended Dietary Intake, usually set at 2,100 kcal, based on household survey data. In some cases, also lower thresholds of around 1,400 kcal have been used, probably as a reaction to the fact that percentages of households reporting average daily consumption of less than 2,100 kcal per capita were implausibly high estimates of the prevalence of undernourishment. </p>
 <p>Almost without exception, no consideration related to the presence of excess variability in the dietary energy consumption data is made, and the reports reveal limited or no progress in the reduction of PoU over time. </p>
 <p>As discussed in the section on the method of computation, the results obtained through these alternative methods are highly unreliable and almost certainly biased toward overestimation. It is therefore advisable that a concerted effort is made to advocate for use of the FAO methods also in preparation of national reports. FAO stands ready to provide all necessary technical support.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>URL: </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p><strong>URL: </strong></p>
 <p><a href="https://www.fao.org/food-agriculture-statistics/statistical-domains/food-security-and-nutrition/en/">https://www.fao.org/food-agriculture-statistics/statistical-domains/food-security-and-nutrition/en/</a> </p>
 <p><strong>References: </strong></p>
 <p><a href="http://www.fao.org/docrep/012/w0931e/w0931e16.pdf">http://www.fao.org/docrep/012/w0931e/w0931e16.pdf</a></p>
 <p><a href="http://www.fao.org/docrep/005/Y4249E/y4249e06.htm#bm06">http://www.fao.org/docrep/005/Y4249E/y4249e06.htm#bm06</a></p>
 <p><a href="http://www.fao.org/3/a-i4060e.pdf">http://www.fao.org/3/a-i4060e.pdf</a></p>
 <p><a href="http://www.fao.org/3/a-i4046e.pdf">http://www.fao.org/3/a-i4046e.pdf</a></p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -1560,12 +2662,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

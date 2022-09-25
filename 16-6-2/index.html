@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925140127">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925143850">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -233,7 +233,6 @@ data-event-label="high"
 
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
-  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -258,16 +257,14 @@ data-event-label="high"
             <button data-type="clear">Clear all</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-              <label>
-                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-              </label>
-            <% }; %>
+            <label>
+              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+            </label>
           <% }); %>
         </fieldset>
       </div>
-      <% }%>
-      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
+
+      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">Available when '<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>' is selected
         </div>
         <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
@@ -311,21 +308,6 @@ data-event-label="high"
   
   <% } %>
   
-</script>
-
-<script type="text/template" id="categories_template">
-  <h4>Sub-categories</h4>
-  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
-  <select class="select" id="category-select" name="category-select">
-    <option value="total" data-field="total" selected>Headline</option>
-		<% _.each(fields, function(fieldItem) { %>
-			<% _.each(fieldItem.values, function(item) { %>
-				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
-					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
-				<% }; %>
-			<% }); %>
-		<% }); %>
-	</select>  
 </script>
 
 <script>translations['indicator'] = {"annotation_2030_target":"2030 indicator target","annotation_series_break":"Series break","announce_data_added":"Chart and table updated to include data.","announce_data_not_available":"Chart and table shows no data.","announce_data_removed":"Chart and table updated to exclude data.","apply":"Apply","cancel":"Cancel","change_breakdowns":"Change breakdowns","chart":"Chart","chart_annotation":"Chart annotation","clear_all":"Clear all","clear_selections":"Clear selections","data_keyboard_navigation":"Press enter to browse data points with left and right arrow keys.","data_not_available":"This data is not available. Please choose alternative data to display.","data_tabular_alternative":"For tabular data alternative see Table tab.","dataset_size_warning":"There are too many datasets to show on the chart. Not all will be shown until you remove some selections.","download_chart":"Download Chart CSV","download_chart_image":"Download Chart Image","download_chart_image_title":"Download chart as image","download_csv":"Download CSV","download_csv_title":"Download as CSV","download_geojson":"Download GeoJSON","download_geojson_title":"Download as GeoJSON","download_headline":"Download Headline CSV","download_headline_title":"Download headline data as CSV","download_source":"Download Source CSV","download_source_for_disaggregations":"Download source CSV for disaggregations","download_source_sdmx":"Download Source SDMX","download_source_sdmx_title":"Download source data as SDMX","download_source_title":"Download source data as CSV","download_table":"Download Table CSV","edit":"Edit","edit_configuration":"Edit Configuration","edit_data":"Edit Data","edit_metadata":"Edit Metadata","footnote":"Footnote","geographical_area":"Geographical Area","global_metadata":"Global Metadata","global_metadata_blurb":"This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href=\"https://unstats.un.org/sdgs/metadata/\">Complete global metadata</a> is provided by the UN Statistics Division.","headline_data":"Headline data","legend_help":"Click on the legend to remove individual lines from the chart.","loading":"Loading","loading_map":"Loading map","map":"Map","map_search":"Search","map_search_hide":"Hide search","map_search_show":"Show search","map_year_slider":"Year slider","national_metadata":"National Metadata","national_metadata_blurb":"This table provides metadata for the actual indicator available from %country.name statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from %country.adjective statistics, this table should be consulted for information on national methodology and other %country.adjective-specific metadata information.","next":"Next indicator","no_data_hint":"No options available because of filters above","no_headline_data":"No headline data available","plot_legend_description":"Plot legend: list of lines included in chart","previous":"Previous indicator","select_all":"Select all","series":"Series","series_help":"Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.","source":"Source","sources":"Sources","status":"Indicator status","sub_categories":"Sub-categories","sub_categories_show":"Show sub-categories:","table":"Table","table_column_sort":"Click to sort by this column","tags":"Tags","unit":"Unit","unit_of_measurement":"Unit of Measurement","units_type":"Units type","variable_hint":"Available when '%field' is selected","view_indicator_list":"View this goal's indicator list"};</script>
@@ -422,22 +404,6 @@ data-event-label="high"
   <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
     <div id="serieses"></div>
 <div id="units"></div>
-<div id="toggles" class="compare-toggle">
-  <h4 id="compare-toggle-title">Compare national and global data</h4>
-  <p>
-      National data refers to data reported by the UK.<br>
-      Global data refers to data reported for the UK by the custodian agency.<br><br>
-      Turning this on will limit the amount of subcategories you can view at one time.
-  </p>
-  <label class="toggle-switch">
-    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
-    <span aria-hidden="true" class="toggle-switch-bar">
-			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
-		</span>
-  </label>
-</div>
-
-<div id="categories"></div>
 <div id="toolbar">
   <span id="series-help">
     <h4>Sub-categories</h4>
@@ -776,37 +742,865 @@ data-event-label="Change to Table tab"
 </section>
 
   
-  </div>
-</div>
+  <div class="mt-4">
+<ul class="nav nav-tabs" role="tablist">
+    
+        <li role="presentation" class="nav-item">
+    <button type="button" class="nav-link active" data-bs-toggle="tab" id="tab-national" data-bs-target="#national" aria-controls="national" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to National Metadata tab"
+>National Metadata</button>
+</li>
 
-  <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
-</dd>
-            <dt>Target</dt>
-            <dd><p>Target 16.6: Develop effective, accountable and transparent institutions at all levels</p>
-</dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 16.6.2: Proportion of population satisfied with their last experience of public services</p>
-</dd>
-            <dt>Series</dt>
-            <dd>
-</dd>
-            <dt>Related indicators</dt>
-            <dd><p>SDG indicator 16.6.2, measured from citizen surveys, is an important complement to other SDG indicators assessing various aspects of public service provision that draw from administrative sources, such as SDG 3.8.1 on coverage of essential health services<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup> and SDG 4.a.1 on school facilities<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup>. While these indicators focus on similar attributes as those measured by SDG 16.6.2, such as &#x2018;accessibility&#x2019; and &#x2018;quality of facilities&#x2019;, they may not reflect people&#x2019;s actual experience of education facilities or healthcare services due to the methodological challenges of collecting quality data from administrative sources. </p>
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-global" data-bs-target="#global" aria-controls="global" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Global Metadata tab"
+>Global Metadata</button>
+</li>
+
+<li role="presentation" class="nav-item">
+    <button type="button" class="nav-link" data-bs-toggle="tab" id="tab-sources" data-bs-target="#sources" aria-controls="sources" role="tab" data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to Sources tab"
+>Sources</button>
+</li>
+  
+    
+    
+        <li role="presentation" class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">Edit</a>
+        </li>
+    
+</ul>
+
+<div class="tab-content">
+    
+        <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                
+                
+                This table provides metadata for the actual indicator available from UK statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from UK statistics, this table should be consulted for information on national methodology and other UK-specific metadata information.
+            </p>
+            <table class="table">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata last updated </th>
+        <td>
+          
+            
+            
+            
+            
+
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
+            <table class="table">
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator information </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>Goal 16: Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>Target 16.6: Develop effective, accountable and transparent institutions at all levels</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Indicator </th>
+        <td>
+          
+            <p>Indicator 16.6.2: Proportion of population satisfied with their last experience of public services</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Metadata update </th>
+        <td>
+          
+            <p>2021-04-19</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Related indicators </th>
+        <td>
+          
+            <p>SDG indicator 16.6.2, measured from citizen surveys, is an important complement to other SDG indicators assessing various aspects of public service provision that draw from administrative sources, such as SDG 3.8.1 on coverage of essential health services<sup><a href="#footnote-2" id="footnote-ref-2">[1]</a></sup> and SDG 4.a.1 on school facilities<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup>. While these indicators focus on similar attributes as those measured by SDG 16.6.2, such as &#x2018;accessibility&#x2019; and &#x2018;quality of facilities&#x2019;, they may not reflect people&#x2019;s actual experience of education facilities or healthcare services due to the methodological challenges of collecting quality data from administrative sources. </p>
 <p>Amongst SDG indicators assessing various aspects of public service provision, indicator 1.4.1, which measures the &#x201C;proportion of population living in households with access to basic services&#x201D; has particular relevance to indicator 16.6.2:</p>
 <p>&#x2022; Indicator 1.4.1 measures &#x2018;Access to Basic Health Care Services&#x2019; by drawing on readily available data reported on SDG indicator 3.7.1 on access to reproductive health (Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods). Indicator 16.6.2 therefore provides important additional information by (1) broadening the scope of measurement from reproductive health to &#x2018;basic healthcare services&#x2019; as internationally defined, and (2) by assessing five key attributes of healthcare service provision not assessed by 1.4.1, namely access, affordability, quality of facilities, equal treatment for everyone and doctor&#x2019;s attitude, and (3) by using survey data to measure people&#x2019;s satisfaction with healthcare services based on their last experience.</p>
 <p>&#x2022; Indicator 1.4.1 also measures &#x2018;Access to Basic Education&#x2019; by drawing on readily available data reported on SDG indicator 4.1.1 on educational achievements (Percentage of children/young people: (a) in grades 2/3; (b) at the end of primary; and (c) at the end of lower secondary achieving at least a minimum proficiency level in (i) reading and (ii) mathematics). Indicator 16.6.2 therefore provides important additional information by (1) assessing four key attributes of education service provision not assessed by 1.4.1, namely access, affordability, quality of facilities and equal treatment for everyone, and (2) by using survey data (SDG 4.1.1 uses test scores) to measure people&#x2019;s satisfaction with education services based on their first-hand experience with such services.</p>
@@ -814,79 +1608,160 @@ data-event-label="Change to Table tab"
 <p>Similarly, 16.6.2 can also be used to complement SDG target 10.3 on &#x201C;Ensuring equal opportunity and reduce inequalities of outcome, including by eliminating discriminatory laws, policies and practices and promoting appropriate legislation, policies and action in this regard&#x201D;, which only has one indicator measuring felt discrimination on various grounds (SDG 10.3.1 Proportion of the population reporting having personally felt discriminated against or harassed within the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law). Indicator 16.6.2 therefore provides important additional information to measure progress against this target by helping to identify in which service area the incidence of discrimination is highest. </p>
 <p>Finally, SDG 16.6.2, with its focus on &#x2018;accessibility&#x2019;, &#x2018;equal treatment&#x2019; and other important attributes of public services, provides important complementary information to analyze results on SDG 16.5.1 on the &#x2018;Proportion of persons who had at least one contact with a public official and who paid a bribe to a public official, or were asked for a bribe by those public officials, during the previous 12 months&#x2019;. In other words, people may resort to bribery when the quality of public service provision is too poor, as revealed by SDG 16.6.2. </p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> 3.8.1 Coverage of essential health services (defined as the average coverage of essential services based on tracer interventions that include reproductive, maternal, newborn and child health, infectious diseases, non-communicable diseases and service capacity and access, among the general and the most disadvantaged population) <a href="#footnote-ref-2">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-3">2</sup><p> 4.A.1 Proportion of schools with access to: (a) electricity; (b) the Internet for pedagogical purposes; (c) computers for pedagogical purposes; (d) adapted infrastructure and materials for students with disabilities; (e) basic drinking water; (f) single-sex basic sanitation facilities; and (g) basic handwashing facilities (as per the WASH indicator definitions) <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
-</dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>UNDP Oslo Governance Centre</p>
-</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UNDP Oslo Governance Centre</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not available for this indicator</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Definition:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">International organisations(s) responsible for global monitoring </th>
+        <td>
+          
+            <p>UNDP Oslo Governance Centre</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data reporter </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Organisation </th>
+        <td>
+          
+            <p>UNDP Oslo Governance Centre</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person(s) </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact organisation unit </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact person function </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact phone </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact mail </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Contact email </th>
+        <td>
+          
+            <p>Not available for this indicator</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition, concepts, and classifications </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Definition and concepts </th>
+        <td>
+          
+            <p><strong>Definition:</strong></p>
 <p>This indicator measures levels of public satisfaction with people&#x2019;s last experience with public services, in the three service areas of healthcare, education and government services (i.e. services to obtain government-issued identification documents and services for the civil registration of life events such as births, marriages and deaths)<sup><a href="#footnote-4" id="footnote-ref-4">[3]</a></sup>. This is a survey-based indicator which emphasizes citizens&#x2019; <em>experiences</em> over general perceptions, with an eye on measuring the availability and quality of services <em>as they were actually delivered to survey respondents</em>. </p>
 <p>Respondents are asked to reflect on their last experience with each service, and to provide a rating on five &#x2018;attributes&#x2019;, or service-specific standards, of healthcare, education and government services (such as access, affordability, quality of facilities, etc.). A final question asks respondents for their overall satisfaction level with each service. </p>
 <p>It is recommended that survey results, at a minimum, be disaggregated by sex, income and place of residence (urban/rural, administrative regions). To the extent possible, all efforts should be made to also disaggregate results by disability status and by &#x2018;nationally relevant population groups&#x2019;.</p>
@@ -911,123 +1786,177 @@ data-event-label="Change to Table tab"
   <li><em>Empirical analysis: </em>Statistical analysis of available datasets on citizen satisfaction with healthcare and education services<sup><a href="#footnote-11" id="footnote-ref-11">[10]</a></sup> shows that the demographic variables that are most strongly correlated with satisfaction with healthcare and education services are (1) income (by far the strongest determinant of satisfaction levels), (2) sex, and (3) place of residence (rural/urban). There is no statistically significant association between the age of respondents and satisfaction levels. </li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-4">3</sup><p> The formulation &#x2018;government services&#x2019; (also commonly called &#x2018;administrative services&#x2019;) is used in this metadata to mirror this more colloquial language used in the survey questionnaire. <a href="#footnote-ref-4">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-5">4</sup><p> <em>Good Governance Practices for the Protection of Human Rights</em> (United Nations publication, Sales No. E.07.XIV.10), p. 38 &#x2013; cited in Report of the United Nations High Commissioner for Human Rights on the role of the public service as an essential component of good governance in the promotion and protection of human rights, Human Rights Council, 25<sup>th</sup> Session, 23 December 2013, A/HRC/25/27 <a href="#footnote-ref-5">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-6">5</sup><p> European Commission&#x2019;s 2011 Communication regarding &#x2018;A Quality Framework for Services of General Interest in Europe&#x2019;, p. 3 <a href="#footnote-ref-6">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-7">6</sup><p> Report of the United Nations High Commissioner for Human Rights on the role of the public service as an essential component of good governance in the promotion and protection of human rights, Human Rights Council, 25<sup>th</sup> Session, 23 December 2013, A/HRC/25/27 <a href="#footnote-ref-7">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-8">7</sup><p> Committee on Economic, Social and Cultural Rights, General Comment No. 14 (2000) on the right to the highest attainable standard of health, para. 4. <a href="#footnote-ref-8">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-9">8</sup><p> Committee on Economic, Social and Cultural Rights, general comment No. 13 (1999) on the right to education, para. 1. <a href="#footnote-ref-9">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-10">9</sup><p> Report of the United Nations High Commissioner for Human Rights on the role of the public service as an essential component of good governance in the promotion and protection of human rights, Human Rights Council, 25<sup>th</sup> Session, 23 December 2013, A/HRC/25/27 <a href="#footnote-ref-10">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-11">10</sup><p> From the European Social Survey, the European Quality of Life Survey and the Afrobarometer &#x2013; see more information in the section on &#x201C;Data Availability&#x201D;. <a href="#footnote-ref-11">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Percentage</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not applicable</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Unit of measure </th>
+        <td>
+          
+            <p>Percentage</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Classifications </th>
+        <td>
+          
+            <p>Not applicable</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data source type and collection method </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data sources </th>
+        <td>
+          
+            <ul>
   <li>This indicator needs to be measured on the basis of data collected by NSOs through official household surveys.</li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>NSOs should identify suitable survey vehicles to incorporate the 16.6.2 batteries of question. Some countries may not have an integrated or unified survey covering various public services. In countries where each Ministry/Department/Agency conducts its respective satisfaction survey, the NSO should liaise with each entity to harmonize existing survey questions with this metadata. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>To ensure timely capture of changes in levels of citizen satisfaction with public services, NSOs should report data on indicator 16.6.2 at least once every two years. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection method </th>
+        <td>
+          
+            <p>NSOs should identify suitable survey vehicles to incorporate the 16.6.2 batteries of question. Some countries may not have an integrated or unified survey covering various public services. In countries where each Ministry/Department/Agency conducts its respective satisfaction survey, the NSO should liaise with each entity to harmonize existing survey questions with this metadata. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data collection calendar </th>
+        <td>
+          
+            <p>To ensure timely capture of changes in levels of citizen satisfaction with public services, NSOs should report data on indicator 16.6.2 at least once every two years. </p>
 <p>NSOs will need to choose the most appropriate time/period for administering the 16.6.2 batteries of questions. Electoral periods should be avoided, and NSOs should aim for the middle of an electoral term. Experience shows that surveys conducted at the beginning of an electoral term generate more positive responses than surveys conducted at the end of a term. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data will be reported at the international level in April each year. The first full release of data for the indicator will take place in April 2020.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>National Statistical Offices</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UNDP</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Recent evidence shows that citizens call for responsive and inclusive public institutions with capacity to efficiently deliver services. To advance these aspirations from societies, UNDP helps countries to strengthen responsive and accountable institutions. UNDP recognizes the foundational importance of effective and responsive governance to achieve sustainable development.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Governments have an obligation to provide a wide range of public services that should meet the expectations of their citizens in terms of access, responsiveness and reliability/quality. When citizens cannot afford some essential services, when their geographic or electronic access to services and information is difficult, when the services provided do not respond to their needs and are of poor quality, citizens will naturally tend to report lower satisfaction not only with these services, but also with public institutions and governments. In this regard, it has been shown that citizens&#x2019; experience with front-line public services affects their trust in public institutions (OECD 2017, <em>Trust and Public Policy &#x2013; How Better Governance Can Help Rebuild Public Trust; Eurofound 2018, Societal change and trust in institutions</em>). Mindful of this close connection between service provision/performance, citizen satisfaction and public trust, governments are increasingly interested in better understanding citizens&#x2019; needs, experiences and preferences to be able to provide better targeted services, including for underserved populations. </p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data release calendar </th>
+        <td>
+          
+            <p>Data will be reported at the international level in April each year. The first full release of data for the indicator will take place in April 2020.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data providers </th>
+        <td>
+          
+            <p>National Statistical Offices</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data compilers </th>
+        <td>
+          
+            <p>UNDP</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Institutional mandate </th>
+        <td>
+          
+            <p>Recent evidence shows that citizens call for responsive and inclusive public institutions with capacity to efficiently deliver services. To advance these aspirations from societies, UNDP helps countries to strengthen responsive and accountable institutions. UNDP recognizes the foundational importance of effective and responsive governance to achieve sustainable development.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Other methodological considerations </th>
+        <td>
+          
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Rationale </th>
+        <td>
+          
+            <p>Governments have an obligation to provide a wide range of public services that should meet the expectations of their citizens in terms of access, responsiveness and reliability/quality. When citizens cannot afford some essential services, when their geographic or electronic access to services and information is difficult, when the services provided do not respond to their needs and are of poor quality, citizens will naturally tend to report lower satisfaction not only with these services, but also with public institutions and governments. In this regard, it has been shown that citizens&#x2019; experience with front-line public services affects their trust in public institutions (OECD 2017, <em>Trust and Public Policy &#x2013; How Better Governance Can Help Rebuild Public Trust; Eurofound 2018, Societal change and trust in institutions</em>). Mindful of this close connection between service provision/performance, citizen satisfaction and public trust, governments are increasingly interested in better understanding citizens&#x2019; needs, experiences and preferences to be able to provide better targeted services, including for underserved populations. </p>
 <p>Measuring satisfaction with public services is at the heart of a citizen-centered approach to service delivery and an important outcome indicator of overall government performance. Yet while a large number of countries have experience with measuring citizen satisfaction with public services, there is also large variability in the ways national statistical offices and government agencies in individual countries collect data in this area, in terms of the range of services included, the specific attributes of services examined, question wording and response formats, among other methodological considerations. This variability poses a significant challenge for cross-country comparison of such data.</p>
 <p> </p>
 <p>SDG indicator 16.6.2 aims to generate globally comparable data on satisfaction with public services. To this end, SDG 16.6.2 focuses global reporting on the three service areas of (1) healthcare, (2) education and (3) government services (i.e. services to obtain government-issued identification documents and services for the civil registration of life events such as births, marriages and deaths.) </p>
@@ -1121,13 +2050,20 @@ data-event-label="Change to Table tab"
   <li>Attributes-specific questions aim to be specifically informative for national policymaking. The specificity of the information generated by such questions, as well as the focus on citizen <em>experiences</em> rather than simply perceptions, have greater policy use than stand-alone perception data on overall satisfaction, which may not reveal &#x201C;what needs to be fixed&#x201D;. </li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-12">11</sup><p> While drinking water and sanitation services are also &#x2018;services of consequence&#x2019;, they are already well covered by SDG indicator 6.1.1 &#x201C;Proportion of population using safely managed drinking water services&#x201D; and SDG indicator 6.2.1 &#x201C;<em>Proportion of population using safely managed sanitation services, including a hand-washing facility with soap and water&#x201D; </em>which also draw from citizen surveys (Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP) supported by UNICEF and WHO) and look at access, availability and quality. <a href="#footnote-ref-12">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-13">12</sup><p> See UNDP Oslo Governance Centre (Nov 2017), A Review of National Statistics Offices&#x2019; Practices </p><p>and Methodological Considerations in Measuring Citizen Satisfaction with Public Services &#x2013; Inputs for SDG Indicator 16.6.2 Measurement Methodology <a href="#footnote-ref-13">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-14">13</sup><p><sup> </sup>For health care services, 3.8.1, 3.5.1, 3.b.1 and 1.4.1, and for education services, 4.a.1 and 4.c.1. <a href="#footnote-ref-14">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-15">14</sup><p> See Ellen Lust et al., 2015; Nick Thijs, 2011, Van Ryzin, 2004, for instance. <a href="#footnote-ref-15">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-16">15</sup><p> Evidence from Mexico, National Survey of Quality and Governmental Impact (ENCIG) 2017 <a href="#footnote-ref-16">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-17">16</sup><p> Ibid. <a href="#footnote-ref-17">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-18">17</sup><p> Under the &#x2018;Access&#x2019; dimension, three attributes are considered: &#x2018;Affordability&#x2019;, &#x2018;Geographic proximity&#x2019; and &#x2018;Accessibility of information&#x2019;. <a href="#footnote-ref-18">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-19">18</sup><p> Under the &#x2018;Responsiveness&#x2019; dimension, three attributes are considered: &#x2018;Citizen-centred approach (courtesy, treatment and integrated services)&#x2019;, &#x2018;Match of services to special needs&#x2019; and &#x2018;Timeliness&#x2019;. <a href="#footnote-ref-19">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-20">19</sup><p> Under the &#x2018;Reliability/Quality&#x2019; dimension, three attributes are considered: &#x2018;Effective delivery of services and outcomes&#x2019;, &#x2018;Consistency in service delivery and outcomes&#x2019; and &#x2018;Security/safety&#x2019;. <a href="#footnote-ref-20">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-21">20</sup><p> In the absence of regional or global datasets on satisfaction with government services, the same empirical analysis could not be performed in this service area. To the extent possible, similar attributes are used to assess satisfaction with government services as those used for healthcare and education services, with a distinct focus on the attribute of &#x2018;timeliness&#x2019; in the case of government services. <a href="#footnote-ref-21">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Recommended set of complementary questions to address selection 16.6.2 bias towards &#x2018;<em>users&#x2019;</em> of public services </strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comment and limitations </th>
+        <td>
+          
+            <p><strong>Recommended set of complementary questions to address selection 16.6.2 bias towards &#x2018;<em>users&#x2019;</em> of public services </strong></p>
 <ul>
   <li>Since SDG 16.6.2 refers to people&#x2019;s &#x2018;last experience&#x2019; with public services, the indicator needs to focus on user experiences rather than on non-user perceptions. The experience of users is important, but it is equally important to understand the experiences and perceptions of those who turn elsewhere for services, or who do not access services altogether. </li>
   <li>For each service area, NSOs are therefore strongly encouraged to administer three complementary questions (see Methodology section) <em>prior </em>to the two &#x2018;priority questions&#x2019; to be used for global 16.6.2 reporting. These additional questions will help capture the experience of <em>both</em> users <em>and </em>non-users of public services. They will help identify which population sub-groups who needed healthcare, education and government services did <em>not </em>access the services they needed, and what barriers prevented them from doing so. While the information generated by these additional questions is critical for policymakers to design service provision programmes that &#x2018;leave no one behind&#x2019;, it is left to the discretion of each country to integrate them or not, as some may already be collecting similar information through existing surveys.</li>
@@ -1139,13 +2075,20 @@ data-event-label="Change to Table tab"
   <li>There are different schools of thought on whether an odd or even number of categories is best when using Likert scales. While taking away the middle category forces respondents to voice a positive or negative opinion, and some respondents might find this approach frustrating, several NSOs in developing country contexts favor a Likert scale <em>without </em>a neutral value (such as &#x201C;neither satisfied nor dissatisfied&#x201D;). Their preference is motivated by their long-standing survey experience which has shown that when a neutral value is provided, a large proportion (often a majority) of respondents will refrain from expressing their opinion &#x2018;hiding&#x2019; behind this middle-point. </li>
   <li>The survey methodology for 16.6.2 therefore uses a 4-point bipolar Likert scale for all questions (for internal consistency), with the following scale labels: &#x201C;strongly agree, agree, disagree, strongly disagree&#x201D; for attributes-based questions, and &#x201C;very satisfied, satisfied, dissatisfied, very dissatisfied&#x201D; for overall satisfaction questions. &#x201C;Don&#x2019;t know&#x201D; and &#x201C;refuse to answer&#x201D; options are also available, but <em>should not be read out loud</em>, so as to not provide an easy way for respondents to disengage from the subjects of the various questions. When respondents say they &#x201C;don&#x2019;t know&#x201D;, enumerators should repeat the question and simply ask them to provide their best guess. The &#x201C;don&#x2019;t know&#x201D; and &#x201C;refuse to answer&#x201D; options should be used only as a last resort.<strong> </strong></li>
 </ul>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Reporting on SDG 16.6.2 should be done separately for each of the three service areas. (NB: questions on education may refer to either primary or secondary education &#x2013; and separate computation of results is recommended for the two levels, resulting in <em>de facto</em> four service areas). Computation involves the computation and reporting of the following three estimates, for each service area:</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Method of computation </th>
+        <td>
+          
+            <p>Reporting on SDG 16.6.2 should be done separately for each of the three service areas. (NB: questions on education may refer to either primary or secondary education &#x2013; and separate computation of results is recommended for the two levels, resulting in <em>de facto</em> four service areas). Computation involves the computation and reporting of the following three estimates, for each service area:</p>
 <ol>
   <li>The share of respondents who responded positively (i.e. &#x2018;strongly agree &#x2018; or &#x2018;agree&#x2019;) to each of the five attributes questions;</li>
   <li>The simple average of positive reponses for the five attribute questions combined; and</li>
@@ -1329,90 +2272,140 @@ data-event-label="Change to Table tab"
 </table>
 <p><em>*<u>Note</u>: It is important for NSOs to clearly report, for each question, the number of respondents who selected &#x201C;don&#x2019;t know&#x201D; (DK), &#x201C;not applicable&#x201D; (NA) or &#x201C;refuse to answer&#x201D; (RA), and to exclude such respondents from the calculation of shares of positive responses. For instance, if 65 respondents out of 1000 respondents responded DK, NA or RA on the first attribute-based question, the share of positive responses for this attribute will be calculated out of a total of 935 respondents, and the reporting sheet will indicate that for this particular question, 65 respondents responded DK/NA/RA.</em></p>
 <p>While national-level reporting should cover all three estimates described above, global reporting on SDG indicator 16.6.2 will focus only on the last two estimates (i.e. the average share of positive responses across the five attribute questions; and the share of respondents who say they are satisfied in the overall satisfaction question), separately for each service area. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Not applicable.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>&#x2022; At country level</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Validation </th>
+        <td>
+          
+            <p>The countries are requested to input the indicators&#x2019; data and metadata in a reporting platform following the guidelines in the present metadata sheet. The platform encourages to provide separate information on the survey metadata, namely the source of information for the statistics, the survey instruments, the methodology and protocols and possible. Countries are also requested to insert the statistics on the two questions disaggregated by the pre-specified fields. All inputted information is verified for conformity with the metadata prior to submission.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Adjustments </th>
+        <td>
+          
+            <p>Not applicable.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level </th>
+        <td>
+          
+            <p><strong>&#x2022; At country level</strong></p>
 <p>There is no treatment of missing values.</p>
 <p><strong>&#x2022; At regional and global levels</strong></p>
 <p>There is no imputation of missing values.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Data points will be provided for each region, and globally (i.e. two data points for each service area: combined average % of those who responded positively to the five attributes questions, and % satisfied with the service overall).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Methods and guidance available to countries for the compilation of data at national level:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Regional aggregations </th>
+        <td>
+          
+            <p>Data points will be provided for each region, and globally (i.e. two data points for each service area: combined average % of those who responded positively to the five attributes questions, and % satisfied with the service overall).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level </th>
+        <td>
+          
+            <p><strong>Methods and guidance available to countries for the compilation of data at national level:</strong></p>
 <p>See <a href="http://documents.worldbank.org/curated/en/775701527003544796/pdf/126399-WP-PUBLIC-CitizenCentricGovernanceIndicatorsFinalReport.pdf">Indicators of Citizen-Centric Public Service Delivery</a>, World Bank (2018) </p>
 <p>To disaggregate survey results by disability status, it is recommended that countries use the <a href="http://www.washingtongroup-disability.com/washington-group-question-sets/short-set-of-disability-questions/">Short Set of Questions on<strong> </strong>Disability<strong> </strong>elaborated by the Washington Group</a>. </p>
 <p><strong>Methods and guidance available to countries for the compilation of data at international level:</strong></p>
 <p>See <a href="http://documents.worldbank.org/curated/en/775701527003544796/pdf/126399-WP-PUBLIC-CitizenCentricGovernanceIndicatorsFinalReport.pdf">Indicators of Citizen-Centric Public Service Delivery</a>, World Bank (2018) </p>
 <p>To disaggregate survey results by disability status, it is recommended that countries use the <a href="http://www.washingtongroup-disability.com/washington-group-question-sets/short-set-of-disability-questions/">Short Set of Questions on<strong> </strong>Disability<strong> </strong>elaborated by the Washington Group</a>. </p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>Statistics for this indicator is inputted in the reporting platform (<a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsdg16reporting.undp.org%2Flogin&amp;data=02%7C01%7Cmariana.neves%40undp.org%7C307a2d2600d64d5872e908d812bea69e%7Cb3e5db5e2944483799f57488ace54319%7C0%7C0%7C637279957333850920&amp;sdata=AI9rb2m1dE62v7zxpoPS6Kgk6m1Nvs3bspt4M4wATWw%3D&amp;reserved=0">https://sdg16reporting.undp.org/login</a>). UNDP has dedicated staff to verify the collected data and liaise with the data officers in the agency in the countries.</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>NSOs have the main responsibility to ensure the statistical quality of the data compiled for this indicator. One possible quality assurance mechanism would be to compare results obtained by the NSO with readily available survey results on satisfaction with public services generated by relevant national, regional or global non-official data producers (see potential non-official sources below).</p>
-</td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p>UNDP will make available a quality assessment protocol for national statistics office to be used at national level and intended to assess the alignment of data produced with users needs, the compliance with guidelines in terms of computations, the timeliness of data production, the accessibility of statistics produced, the consistent use of methodology both in terms of geographic representation and through time, the coherence in terms of data production, and the architecture of data production.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Data availability:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality management </th>
+        <td>
+          
+            <p>Statistics for this indicator is inputted in the reporting platform (<a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsdg16reporting.undp.org%2Flogin&amp;data=02%7C01%7Cmariana.neves%40undp.org%7C307a2d2600d64d5872e908d812bea69e%7Cb3e5db5e2944483799f57488ace54319%7C0%7C0%7C637279957333850920&amp;sdata=AI9rb2m1dE62v7zxpoPS6Kgk6m1Nvs3bspt4M4wATWw%3D&amp;reserved=0">https://sdg16reporting.undp.org/login</a>). UNDP has dedicated staff to verify the collected data and liaise with the data officers in the agency in the countries.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assurance </th>
+        <td>
+          
+            <p>NSOs have the main responsibility to ensure the statistical quality of the data compiled for this indicator. One possible quality assurance mechanism would be to compare results obtained by the NSO with readily available survey results on satisfaction with public services generated by relevant national, regional or global non-official data producers (see potential non-official sources below).</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Quality assessment </th>
+        <td>
+          
+            <p>UNDP will make available a quality assessment protocol for national statistics office to be used at national level and intended to assess the alignment of data produced with users needs, the compliance with guidelines in terms of computations, the timeliness of data production, the accessibility of statistics produced, the consistent use of methodology both in terms of geographic representation and through time, the coherence in terms of data production, and the architecture of data production.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Data availability and disaggregation </th>
+        <td>
+          
+            <p><strong>Data availability:</strong></p>
 <ul>
   <li>This indicator needs to be measured on the basis of data collected by NSOs through official household surveys.</li>
 </ul>
@@ -1629,61 +2622,35 @@ data-event-label="Change to Table tab"
   <li><strong>Age:</strong> Empirical analysis shows that there is no statistically significant association between the age of respondents and satisfaction levels. However, if countries choose to also disaggregate results by age, it is recommended to follow UN standards for the production of age-disaggregated national population statistics, using the following age groups: (1) below 25 years old, (2) 25-34, (3) 35-44, (4) 45-54, (5) 55-64 and (6) 65 years old and above. </li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-22">21</sup><p> The Afrobarometer is a pan-African, non-partisan research network that conducts public attitude surveys on democracy, governance, economic conditions, and related issues in more than 35 countries in Africa. <a href="#footnote-ref-22">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-23">22</sup><p> While the fifth round (2011/13) of the Afrobarometer survey included several attributes-based question on healthcare and education services, subsequent rounds only include a few: &#x201C;if there is a school or a health Clinic within easy walking distance&#x201D;; and &#x201C;how easy or difficult was it to obtain the medical care or services from teachers or school officials&#x201D;. <a href="#footnote-ref-23">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-24">23</sup><p> The European Social Survey (ESS) is a biennial cross-national survey of attitudes and behaviour established in 2001. In total, 37 countries have taken part in at least one round of the ESS since its inception. Surveys are conducted by leading academics and social research professionals. <a href="#footnote-ref-24">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-25">24</sup><p> Eurofound&#x2019;s European Quality of Life Survey (EQLS) documents living conditions and people&#x2019;s social situation, and explores issues pertinent to the lives of European citizens. In operation since 2003, the EQLS 2016 &#x2013; the fourth survey in the series &#x2013; covered 33 countries &#x2013; the 28 EU Member States and 5 candidate countries (Albania, the former Yugoslav Republic of Macedonia, Montenegro, Serbia and Turkey). provides detailed information on the quality of public services, including healthcare and education services. <a href="#footnote-ref-25">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-26">25</sup><p> <u>Note</u>: For healthcare services, EQLS data would allow for the separate reporting of results (across all questions) on (1) primary care services (GP / doctor&#x2019;s office / health centre) and (2) hospital or medical specialist services. Separate reporting on these two types of health care would be particularly relevant for the &#x2018;affordability&#x2019; attribute, given in European countries, primary care services typically cost little; more relevant would be to assess the affordability of hospital or medical specialist services, using question 67.e. <a href="#footnote-ref-26">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-27">26</sup><p> However, question HC100 on &#x2018;Affordability of formal education&#x2019; could be used in the European Union Statistics on Income and Living Conditions (EU-SILC) ad hoc module 2016. <a href="#footnote-ref-27">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-28">27</sup><p> Based on the premise that decentralization efforts are aimed at extending local rights and responsibilities across the national territory, indicator 16.6.2 can help detect unequal access to services and disparities in the quality of services across localities. There is a risk for erroneous conclusions to be drawn from national aggregates unable to detect variations at sub-national level. <a href="#footnote-ref-28">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-29">28</sup><p> UN General Assembly, Convention on the Rights of Persons with Disabilities: resolution / adopted by the General Assembly, 24 January 2007, A/RES/61/106, available at: http://www.refworld.org/docid/45f973632.html <a href="#footnote-ref-29">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-30">29</sup><p> The population of a country is a mosaic of different population groups that can be identified according to racial, ethnic, language, indigenous or migration status, religious affiliation, or sexual orientation, amongst other characteristics. For the purpose of this indicator, particular focus is placed on minorities. <em>Minority groups are </em>groups that are numerically inferior to the rest of the population of a state, in a non-dominant position, whose members&#x2014;being nationals of the state&#x2014;possess ethnic, religious or linguistic characteristics differing from those of the rest of the population and show, even if only implicitly, a sense of solidarity directed towards preserving their culture, traditions, religion or language. While the nationality criterion included in the above definition has often been challenged, the requirement to be in a non-dominant position remains important (OHCHR, 2010). Collecting survey data disaggregated by population groups should be subject to the legality of compiling such data in a particular national context and to a careful assessment of the potential risks of collecting such data for the safety of respondents. <a href="#footnote-ref-30">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">Comparability/deviation from international standards </th>
+        <td>
+          
+            <p><strong>Sources of discrepancies:</strong></p>
 <p>There is no internationally estimated data for this indicator.</p>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
-</td>
-                <td><ul>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      <tr>
+        <th scope="row">References and Documentation </th>
+        <td>
+          
+            <ul>
   <li>African Barometer (1999-2017). An African-led series of national public attitude surveys on democracy and governance in Africa. <a href="http://www.afrobarometer.org/surveys-and-methods/questionnaires">Survey Questionnaires</a></li>
   <li>American Customer Satisfaction Index LLC (2016). ACSI Federal Government Report 2016 <em>[in which 2,380 users randomly selected, contacted via email and asked about their recent experiences with federal government services]</em>. Available at <a href="http://www.theacsi.org/images/stories/images/reports/17jan-Gov-report-2016.pdf">http://www.theacsi.org/images/stories/images/reports/17jan-Gov-report-2016.pdf</a> </li>
   <li>Alvarez, R. Michael, and Brehm, John (2000). &#x201C;<a href="http://polmeth.wustl.edu/media/Paper/alvar00b.pdf">Binding the frame: how important are</a> <a href="http://polmeth.wustl.edu/media/Paper/alvar00b.pdf">frames for survey response?</a>&#x201D; Paper presented at the annual meeting of the American Political Science Association, Washington, DC, August 31&#x2013;September 2</li>
@@ -2605,36 +3572,171 @@ data-event-label="Change to Table tab"
   <li><strong>The aim of Q16 is to ask respondents to give their personal evaluation</strong> of their overall experience with the last government service they received in the past 12 months. </li>
 </ul>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-31">30</sup><p> For instance, some answer items may not apply to middle-income or high-income country settings, such as &#x201C;Healthcare facilities are not adequately equipped or lack medicine&#x201D; under Q3, or &#x201C;Children need to stay home to help with housework/farm work&#x201D; under Q8. <a href="#footnote-ref-31">&#x2191;</a></p></div><div><sup class="footnote-number" id="footnote-32">31</sup><p> The survey module for this indicator is undergoing further development and testing by UNDP, in line with this metadata. A slightly refined module will be finalised and ready for use in mid 2020. <a href="#footnote-ref-32">&#x2191;</a></p></div></div>
-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#toggleAll").click( function() {
-      let button = document.getElementById("toggleAll");
-      if(!$('.accordion-button').hasClass("collapsed")){
-          $('.accordion-button').removeClass("collapsed").addClass("collapsed");
-          $('.accordion-collapse').removeClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections'
           
-
-      } else {
-          $('.accordion-button').addClass("collapsed").removeClass("collapsed");
-          $('.accordion-collapse').addClass("show");
-          button.innerHTML = '<i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Hide all sections'
+        </td>
+        </tr>
         
-      }
-    });
-  });
-</script>
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+</div>
+    
+    
+        <div role="tabpanel" class="tab-pane" id="edit">
+            <div class="edit-container">
+  
+  
+
+  
+  
+
+
+  <a class="btn btn-primary" href="data">Edit Data</a>
+  
+
+  
+  <a class="btn btn-primary" href="metadata">Edit Metadata</a>
+  
+
+  
+
+</div>
+
+        </div>
+    
+</div>
+  
+</div>
+  </div>
+</div>
 
   <a href="#top">Back to top</a>
 </div>
@@ -2875,12 +3977,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925140127'></script>
+<script src='/site/assets/js/sdg.js?v=20220925143850'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925140127"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925143850"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
