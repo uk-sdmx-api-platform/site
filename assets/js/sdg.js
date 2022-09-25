@@ -1222,15 +1222,6 @@ function dataHasGeoCodes(columns) {
   return columns.includes(GEOCODE_COLUMN);
 }
 
-
-/**
- * @param {Array} reportingTypes
- * @return {boolean}
- */
-function dataHasGlobalValues(reportingTypes) {
-  return reportingTypes.includes("Global");
-}
-
 /**
  * @param {Array} rows
  * @return {Array} Columns from first row
@@ -1262,7 +1253,6 @@ function nonFieldColumns() {
     YEAR_COLUMN,
     VALUE_COLUMN,
     UNIT_COLUMN,
-    //REPORTINGTYPE_COLUMN,
     GEOCODE_COLUMN,
     'Observation status',
     'Unit multiplier',
@@ -3171,14 +3161,12 @@ var HIDE_SINGLE_UNIT = true;
  * @return null
  */
 function initialiseFields(args) {
-    console.log('FIELDS INITIALISED!!!')
-    console.log('allowedFields: ', args.allowedFields)
-    console.log("args.allowedFields == 'Reporting type': ",args.allowedFields == 'Reporting type')
     var fieldsContainValues = args.fields.some(function (field) {
         return field.values.length > 0;
     });
     if (fieldsContainValues) {
         var template = _.template($("#item_template").html());
+
         if (!$('button#clear').length) {
             $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
         }
@@ -3187,18 +3175,13 @@ function initialiseFields(args) {
             fields: args.fields,
             allowedFields: args.allowedFields,
             childFields: _.uniq(args.edges.map(function (edge) { return edge.To })),
-            edges: args.edges,
-            fieldValuesWithNationalReportingType: args.fieldValuesWithNationalReportingType
+            edges: args.edges
         }));
 
         $(OPTIONS.rootElement).removeClass('no-fields');
 
     } else {
         $(OPTIONS.rootElement).addClass('no-fields');
-    }
-    
-    if (args.allowedFields == 'Reporting type') {
-         $(OPTIONS.rootElement).addClass('no-fields');
     }
 }
 
@@ -3262,58 +3245,6 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
             $valueElement.show().text(translations.t(value));
         }
     });
-}
-
-  /**
- * @param {Object} args
- * @return null
- */
-
-function initialiseFieldsWithGlobalValues(args) {
-	
-	console.log('headlineIsComparable: '+args.headlineIsComparable);
-	var dataIsComparable = args.dataIsComparable
-	if (dataIsComparable === false) {
-		$('#toggles').hide()
-		$(OPTIONS.rootElement).addClass('no-global-data');
-	}
-	else {
-        	$(OPTIONS.rootElement).removeClass('no-global-data');
-    	}
-	
-	
-	$('.toggle-switch-check').change(function() {
-		if (this.checked) {
-			MODEL.comparisonToggle = true;
-			if (args.headlineIsComparable) {
-				 MODEL.updateHeadlineSelectedFields()
-			}
-			
-			console.log('Toggle on: ', this.checked);
-			console.log('dataIsComparable: '+args.dataIsComparable);
-			console.log('fieldsAreComparable: '+args.fieldsAreComparable)
-			$('#toolbar').hide();
-			if (args.fieldsAreComparable) {
-				var template = _.template($('#categories_template').html());
-				$('#categories').html(template({
-				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues
-			}));
-				console.log('fieldsAreComparable: ', args.fieldsAreComparable)
-				console.log('comparableFieldValues: ', args.comparableFieldValues)
-				$('#categories').show();
-                                $(OPTIONS.rootElement).on('change', '#category-select', function () {
-					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
-                                });
-			}	
-		} else {
-			MODEL.comparisonToggle = false;
-			MODEL.startValues = [{"field":"Reporting type","value":"National"}]
-			console.log('startValues: ', MODEL.startValues)
-			$('#categories').hide();
-			$('#toolbar').show()
-		}
-	});
 }
 
   /**
@@ -4591,7 +4522,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     HIDE_SINGLE_SERIES: HIDE_SINGLE_SERIES,
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     initialiseFields: initialiseFields,
-    initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     alterChartConfig: alterChartConfig,
@@ -4698,8 +4628,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
-    
-        helpers.initialiseFieldsWithGlobalValues(args);
+
         helpers.initialiseFields(args);
 
         if (args.hasGeoData && args.showMap) {
@@ -4716,7 +4645,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
             );
         }
     });
-
 
     MODEL.onUnitsComplete.attach(function (sender, args) {
 
@@ -4803,7 +4731,6 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
 
     $(OPTIONS.rootElement).on('click', '#clear', function () {
         MODEL.clearSelectedFields();
-        MODEL.selectedFields = [{field: "Reporting type", values: ["National"]}];
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
