@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925173406">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925174647">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -444,35 +444,34 @@ data-event-label="Change to National Metadata tab"
 <div class="tab-content">
     
         
-    <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 10: Reduce inequality within and among countries</p>
+    <div role="tabpanel" class="tab-pane active" id="national">
+        <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+<div class="accordion" id="accordionExample">
+  <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 10: Reduce inequality within and among countries</p>
 </dd>
-            <dt>Target</dt>
-            <dd><p>Target 10.7: Facilitate orderly, safe, regular and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies</p>
+          <dt>Target</dt>
+          <dd><p>Target 10.7: Facilitate orderly, safe, regular and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies</p>
 </dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 10.7.2: Number of countries with migration policies that facilitate orderly, safe, regular and responsible migration and mobility of people</p>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 10.7.2: Number of countries with migration policies that facilitate orderly, safe, regular and responsible migration and mobility of people</p>
 </dd>
-            <dt>Series</dt>
-            <dd><p>Proportion of countries with migration policies to facilitate orderly, safe, regular and responsible migration and mobility of people, by policy domain (%)</p>
+          <dt>Series</dt>
+          <dd><p>Proportion of countries with migration policies to facilitate orderly, safe, regular and responsible migration and mobility of people, by policy domain (%)</p>
 <p>Countries with migration policies to facilitate orderly, safe, regular and responsible migration and mobility of people, by policy domain (1 = Requires further progress; 2 = Partially meets; 3 = Meets; 4 = Fully meets)</p>
 </dd>
-            <dt>Related indicators</dt>
-            <dd><p>Indicator 10.7.2 is complementary to several related SDGs indicators. These include, but are not limited to: </p>
+          <dt>Related indicators</dt>
+          <dd><p>Indicator 10.7.2 is complementary to several related SDGs indicators. These include, but are not limited to: </p>
 <p>Indicator 8.8.1 &#x201C;Frequency rates of fatal and non-fatal occupational injuries, by sex and migrant status&#x201D;;</p>
 <p>Indicator 8.8.2. &#x201C;Level of national compliance of labour rights (freedom of association and collective bargaining) based on International Labour Organization (ILO) textual sources and national legislation, by sex and migrant status&#x201D;;</p>
 <p>Indicator 10.7.1. &#x201C;Recruitment cost borne by employee as a proportion of yearly income earned in country of destination&#x201D;;</p>
@@ -481,79 +480,79 @@ data-event-label="Change to National Metadata tab"
 <p>Indicator 10.c.1 &#x201C;Remittance costs as a proportion of the amount remitted&#x201D;.</p>
 <p>Indicator 10.7.2 is also complementary to other national migration monitoring frameworks, including IOM&#x2019;s MGI, which entered its third phase in 2018. The MGI operates as a policy-benchmarking framework and offers insights into policy levers that countries could use to further develop their migration governance. It contains nearly 90 questions related to countries&#x2019; national migration policies, which fall under the same six domains as indicator 10.7.2.</p>
 </dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>International Organization for Migration (IOM) and United Nations Department of Economic and Social Affairs (DESA) as custodian agencies</p>
+          <dt>Custodian agencies</dt>
+          <dd><p>International Organization for Migration (IOM) and United Nations Department of Economic and Social Affairs (DESA) as custodian agencies</p>
 </dd>
-          </dl>
-        </div>
+        </dl>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Data reporter
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>International Organization for Migration (IOM) and United Nations Department of Economic and Social Affairs (DESA) as custodian agencies</p>
+              <td><p>International Organization for Migration (IOM) and United Nations Department of Economic and Social Affairs (DESA) as custodian agencies</p>
 <p>Organisation for Economic Co-operation and Development (OECD) as partner agency</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Definition, concepts, and classifications
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Definitions:</strong></p>
+              <td><p><strong>Definitions:</strong></p>
 <p>SDG Indicator 10.7.2 aims to describe the state of national migration policies and how such policies change over time. The information collected seeks to identify both progress made and gaps, thus contributing to the evidence base for actionable recommendations for the implementation of SDG target 10.7. The indicator also serves for the future thematic reviews at the High-level Political Forum on Sustainable Development (HLPF). </p>
 <p>The conceptual framework for indicator 10.7.2 is IOM&#xB4;s Migration Governance Framework (MiGOF), which was welcomed by 157 countries (IOM Council Resolution C/106/RES/1310). The MiGOF has three principles and three objectives (figure 1). </p>
 <h2>Figure 1. Principles and objectives of the Migration Governance Framework</h2>
@@ -753,123 +752,123 @@ data-event-label="Change to National Metadata tab"
 <p>While the concept of &#x201C;well-managed migration policies&#x201D; is not explicitly defined, according to the IOM Glossary, it is included in references to migration management, migration governance and facilitated migration. Migration management refers to the planned approach to the development of policy, and legislative and administrative responses to key migration issues. Migration governance is defined as a system of institutions, legal frameworks, mechanisms and practices aimed at regulating migration and protecting migrants. Facilitated migration refers to fostering or encouraging regular migration, for example through streamlined visa application process.</p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-2">1</sup><p> IOM (2019). <em>Glossary on Migration</em>. Available at: <a href="https://publications.iom.int/system/files/pdf/iml_34_glossary.pdf">https://publications.iom.int/system/files/pdf/iml_34_glossary.pdf</a>. <a href="#footnote-ref-2">&#x2191;</a></p></div></div>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Percent (%) (refers to the proportion of countries with values between specific ranges for regional and global aggregates (see also 4.c. Method of computation)). </p>
+              <td><p>Percent (%) (refers to the proportion of countries with values between specific ranges for regional and global aggregates (see also 4.c. Method of computation)). </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not applicable</p>
+              <td><p>Not applicable</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The source of data is the UN Inquiry among Governments on Population and Development, which has been used to survey global population policies since 1963, including policies on international migration. The Inquiry is mandated by the General Assembly in its resolution 1838 (XVII) of 18 December 1962. The Inquiry consists mostly of multiple-choice questions. </p>
+              <td><p>The source of data is the UN Inquiry among Governments on Population and Development, which has been used to survey global population policies since 1963, including policies on international migration. The Inquiry is mandated by the General Assembly in its resolution 1838 (XVII) of 18 December 1962. The Inquiry consists mostly of multiple-choice questions. </p>
 <p>Two successive rounds of the Inquiry have been used to collect data on indicator 10.7.2: the Twelfth Inquiry, conducted between September 2018 and October 2019, and the Thirteenth Inquiry, conducted between November 2020 and October of 2021. The Twelfth Inquiry is divided into three thematic modules: Module I on population ageing and urbanization; Module II on fertility, family planning and reproductive health; and Module III on international migration. Module III of the Twelfth Inquiry has been updated to include core questions for all the six migration policy domains mentioned above. The Thirteenth Inquiry is divided into two thematic modules: Module I on reproductive health; and Module II on international migration.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The Inquiry is conducted on behalf of the Secretary-General and is sent to all Permanent Missions in New York: 193 Member States, 2 observer States, and 2 non-member States. As per past practice, the Permanent Missions redirect the three thematic modules of the Inquiry to the relevant line ministries or government departments who are tasked with answering the questions. The Inquiry modules can be completed either through an online questionnaire or a fillable questionnaire in PDF. Countries responses are transmitted back to UN DESA for basic consistency checking. The data are then compiled/integrated into the World Population Policies database. The results of the Inquiry are disseminated though the database, updated every two years. </p>
+              <td><p>The Inquiry is conducted on behalf of the Secretary-General and is sent to all Permanent Missions in New York: 193 Member States, 2 observer States, and 2 non-member States. As per past practice, the Permanent Missions redirect the three thematic modules of the Inquiry to the relevant line ministries or government departments who are tasked with answering the questions. The Inquiry modules can be completed either through an online questionnaire or a fillable questionnaire in PDF. Countries responses are transmitted back to UN DESA for basic consistency checking. The data are then compiled/integrated into the World Population Policies database. The results of the Inquiry are disseminated though the database, updated every two years. </p>
 <p>As part of the collaboration on SDG indicator 10.7.2, IOM assisted in garnering country responses to the international migration module of the Inquiry by following up through its respective country or regional counterparts. OECD, as partner agency for this indicator, supported these efforts for its member countries. The collaboration increased response rates from countries and improved the quality of the data. </p>
 <p>The data were collected biennially between 2019 and 2021, to ensure that there is sufficient information to monitor progress in the achievement of the target. In the future, the periodicity of the Inquiry will be modified to quadrennial. This will also allow for gathering benchmark data once within each HLPF 4-year cycle.</p>
 <p>No adjustments to standard classifications are envisioned. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data will be collected and compiled every four years starting in 2024.</p>
+              <td><p>Data will be collected and compiled every four years starting in 2024.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Fourth quarter every four years</p>
+              <td><p>Fourth quarter every four years</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Governments of 193 Member States, 2 observer States, and 2 non-member States</p>
+              <td><p>Governments of 193 Member States, 2 observer States, and 2 non-member States</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>United Nations Department of Economic and Social Affairs (UN DESA), International Organization for Migration (IOM) and Organisation for Economic Co-operation and Development (OECD)</p>
+              <td><p>United Nations Department of Economic and Social Affairs (UN DESA), International Organization for Migration (IOM) and Organisation for Economic Co-operation and Development (OECD)</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The Inquiry is conducted on behalf of the Secretary-General. Permanent Missions in New York facilitate the transmission of the Inquiry to the relevant line ministries or government departments. National Statistical Offices are also included in the correspondence from the Permanent Missions. </p>
+              <td><p>The Inquiry is conducted on behalf of the Secretary-General. Permanent Missions in New York facilitate the transmission of the Inquiry to the relevant line ministries or government departments. National Statistical Offices are also included in the correspondence from the Permanent Missions. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The main goal of the proposed methodology is to formulate a clear and simple indicator based on an existing data source which can produce meaningful, actionable and timely information on key trends and gaps in relation to migration policies to facilitate orderly, safe, regular and responsible migration and mobility of people (figure 2). The proposed indicator can be used as a synthetic measure for monitoring of SDG target 10.7 and is complementary to other national migration monitoring frameworks, including IOM&#x2019;s Migration Governance Indicators (MGI)<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup>.</p>
+              <td><p>The main goal of the proposed methodology is to formulate a clear and simple indicator based on an existing data source which can produce meaningful, actionable and timely information on key trends and gaps in relation to migration policies to facilitate orderly, safe, regular and responsible migration and mobility of people (figure 2). The proposed indicator can be used as a synthetic measure for monitoring of SDG target 10.7 and is complementary to other national migration monitoring frameworks, including IOM&#x2019;s Migration Governance Indicators (MGI)<sup><a href="#footnote-3" id="footnote-ref-3">[2]</a></sup>.</p>
 <p><strong>Figure 2. Scope and limitations of the proposed indicator</strong></p>
 <p><strong>SDG indicator 10.7.2</strong></p>
 <ul>
@@ -896,19 +895,19 @@ data-event-label="Change to National Metadata tab"
 <p><strong>DOES NOT:</strong></p>
 <div class="footnotes"><div><sup class="footnote-number" id="footnote-3">2</sup><p> For additional information on the MGI see: <a href="https://gmdac.iom.int/migration-governance-indicators">https://gmdac.iom.int/migration-governance-indicators</a>. <a href="#footnote-ref-3">&#x2191;</a></p></div></div>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Developing a synthetic, robust indicator with the breadth and scope of target 10.7 as formulated in the 2030 Agenda for Sustainable Development is challenging. As co-custodians of indicator 10.7.2, UN DESA and IOM recognize that the indicator is neither expected nor designed to be comprehensive (figure 2); hence the importance of other, complementary tools such as IOM&#x2019;s Migration Governance Indicators (MGI) Project.<sup>1</sup></p>
+              <td><p>Developing a synthetic, robust indicator with the breadth and scope of target 10.7 as formulated in the 2030 Agenda for Sustainable Development is challenging. As co-custodians of indicator 10.7.2, UN DESA and IOM recognize that the indicator is neither expected nor designed to be comprehensive (figure 2); hence the importance of other, complementary tools such as IOM&#x2019;s Migration Governance Indicators (MGI) Project.<sup>1</sup></p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The indicator includes a total of 30 sub-categories, under 6 questions/domains. All sub-categories, except for those under domain 1, have dichotomous &#x201C;Yes/No&#x201D; answers, coded &#x201C;1&#x201D; for &#x201C;Yes&#x201D; and &#x201C;0&#x201D; for &#x201C;No&#x201D;. For the sub-categories under domain 1, there are three possible answers: &#x201C;Yes, regardless of immigration status&#x201D;, coded &#x201C;1&#x201D;; &#x201C;Yes, only for those with legal immigration status&#x201D;, coded &#x201C;0.5&#x201D;; and &#x201C;No&#x201D; coded &#x201C;0&#x201D;.</p>
+              <td><p>The indicator includes a total of 30 sub-categories, under 6 questions/domains. All sub-categories, except for those under domain 1, have dichotomous &#x201C;Yes/No&#x201D; answers, coded &#x201C;1&#x201D; for &#x201C;Yes&#x201D; and &#x201C;0&#x201D; for &#x201C;No&#x201D;. For the sub-categories under domain 1, there are three possible answers: &#x201C;Yes, regardless of immigration status&#x201D;, coded &#x201C;1&#x201D;; &#x201C;Yes, only for those with legal immigration status&#x201D;, coded &#x201C;0.5&#x201D;; and &#x201C;No&#x201D; coded &#x201C;0&#x201D;.</p>
 <p>For each domain, the computational methodology is the unweighted average of the values across sub-categories :</p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <msub>
@@ -1002,53 +1001,53 @@ data-event-label="Change to National Metadata tab"
 <p>Data on country-level averages for the overall indicator and by domain used to compute indicator 10.7.2 are accessible through the SDG database, at the country level in the series 3230 (SG_CPA_MIGRS).</p>
 <p>The unit of measure of the country-level averages for the overall indicator and by domain is categorical/score (1 = Requires further progress; 2 = Partially meets; 3 = Meets; 4 = Fully meets).</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>No adjustments are made.</p>
+              <td><p>No adjustments are made.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
+              <td><p><strong>&#x2022;</strong> <strong>At country level</strong></p>
 <p>To ensure comparability of the indicator across countries and over time, missing values are assigned a value of &#x201C;0&#x201D;.</p>
 <p><strong>&#x2022;</strong> <strong>At regional and global levels</strong></p>
 <p>Not imputed.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The regional and global aggregates are calculated and reported as the proportion of countries in that region (or globally) that &#x201C;Require further progress&#x201D;, &#x201C;Partially meet&#x201D; and &#x201C;Meet or fully meet&#x201D; target 10.7 as conceptualized and measured by indicator 10.7.2, among those that responded to the Inquiry module on international migration. The regional and global aggregates can be presented for both the overall indicator and by domain.</p>
+              <td><p>The regional and global aggregates are calculated and reported as the proportion of countries in that region (or globally) that &#x201C;Require further progress&#x201D;, &#x201C;Partially meet&#x201D; and &#x201C;Meet or fully meet&#x201D; target 10.7 as conceptualized and measured by indicator 10.7.2, among those that responded to the Inquiry module on international migration. The regional and global aggregates can be presented for both the overall indicator and by domain.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ul>
+              <td><ul>
   <li>The Inquiry questionnaire includes guidance, definitions and instructions. UN DESA, IOM and OECD are available to respond to country queries and provide further clarifications. In addition, IOM and OECD have identified focal points/country offices available to assist with the implementation of the Inquiry at the country level. To facilitate responses and to accommodate requests for material in different languages, the survey tool was translated into the six official languages of the UN (Arabic, Chinese, English, French, Russian and Spanish).</li>
   <li>No new international recommendations and guidelines are proposed. As noted in the previous paragraphs, the methodology is based on an IOM Council resolution regarding the Migration Governance Framework, and an existing data collection mechanism, the Inquiry, mandated by the UN General Assembly. </li>
 </ul>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The Governments of the 193 Member States, 2 observer States, and 2 non-member States are responsible for the management of the quality of the data related to indicator 10.7.2.</p>
+              <td><p>The Governments of the 193 Member States, 2 observer States, and 2 non-member States are responsible for the management of the quality of the data related to indicator 10.7.2.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ul>
+              <td><ul>
   <li>Answers to the Inquiry are provided and validated directly by responding government entities. UN DESA, with support from IOM and OECD as needed, carried out basic consistency checking. Any inconsistencies are flagged to national counterparts for resolution.</li>
 </ul>
 <p> </p>
@@ -1056,39 +1055,39 @@ data-event-label="Change to National Metadata tab"
   <li>Since the indicator is informed directly by country responses to the Inquiry, no additional consultation process with countries on the national data submitted to the SDGs Indicators Database is envisaged. </li>
 </ul>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data are checked for internal consistency. In cases where there are concerns about the validity of national responses to the Inquiry, data providers at the country level are contacted and clarification is sought. If deemed necessary, the responding government entity is asked to submit revised data. </p>
+              <td><p>Data are checked for internal consistency. In cases where there are concerns about the validity of national responses to the Inquiry, data providers at the country level are contacted and clarification is sought. If deemed necessary, the responding government entity is asked to submit revised data. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Data availability:</strong></p>
+              <td><p><strong>Data availability:</strong></p>
 <p>Thirty countries were invited to take part in a pilot of the proposed methodology for indicator 10.7.2; six from each of the UN regional commissions. Ten countries responded to the pilot: Cote d&apos;Ivoire; Democratic Republic of the Congo; Finland; France; Lesotho; Lithuania; Mexico; Morocco; Sweden and Yemen. Results of the pilot are presented in the addendum &#x201C;Methodology development narrative&#x201D;.</p>
 <p>As of 31 October 2021, 138 Governments had provided data on SDG indicator 10.7.2 through the international migration module of the Inquiry; equivalent to 70 per cent of all countries globally. Of these, 49 countries responded to the Twelfth Inquiry only, 27 to the Thirteenth Inquiry only and 62 to both the Twelfth Inquiry and the Thirteenth Inquiry. </p>
 <p>Coverage of the indicator by SDG region is uneven. In terms of country coverage, three regions (Europe and Northern America, Northern Africa and Western Asia and sub-Saharan Africa) had data available for 75 per cent or more of countries. Although the coverage was lower for other regions, all regions had data for at least 50 per cent of countries. </p>
@@ -1256,60 +1255,60 @@ data-event-label="Change to National Metadata tab"
 <p><strong>Disaggregation:</strong></p>
 <p>Six policy domains: (i) migrant rights; (ii) whole-of-government/evidence-based policies; (iii) cooperation and partnerships; (iv) socioeconomic well-being; (v) mobility dimensions of crises; and (vi) safe, orderly and regular migration.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>No discrepancies are envisaged, since data are collected through the UN Inquiry among Governments on Population and Development (the &#x201C;Inquiry&#x201D;), directly from Governments.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><h2>URL: </h2>
+              <td><h2>URL: </h2>
 <p><u>UN DESA </u>: <a href="https://www.un.org/development/desa/pd/data/sdg-indicator-1072-migration-policies">https://www.un.org/development/desa/pd/data/sdg-indicator-1072-migration-policies</a></p>
 <p><u>IOM</u> : <a href="https://www.iom.int/">https://www.iom.int/</a> </p>
 <p><u>OECD </u>: <a href="http://www.oecd.org/migration/">http://www.oecd.org/migration/</a></p>
@@ -1319,14 +1318,13 @@ data-event-label="Change to National Metadata tab"
   <li>UN Inquiry among Governments on Population and Development: <a href="https://www.un.org/development/desa/pd/themes/population-policies/inquiry">https://www.un.org/development/desa/pd/themes/population-policies/inquiry</a> </li>
 </ul>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-<div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -1349,6 +1347,7 @@ data-event-label="Change to National Metadata tab"
   });
 </script>
 
+    </div>
 
 
     
@@ -1620,12 +1619,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925173406'></script>
+<script src='/site/assets/js/sdg.js?v=20220925174647'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925173406"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925174647"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

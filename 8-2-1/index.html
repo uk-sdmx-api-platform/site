@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925173406">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925174647">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -2128,108 +2128,107 @@ data-event-label="Change to National Metadata tab"
 <div class="tab-content">
     
         
-    <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p>
+    <div role="tabpanel" class="tab-pane active" id="national">
+        <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+<div class="accordion" id="accordionExample">
+  <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</p>
 </dd>
-            <dt>Target</dt>
-            <dd><p>Target 8.2: Achieve higher levels of economic productivity through diversification, technological upgrading and innovation, including through a focus on high-value added and labour-intensive sectors</p>
+          <dt>Target</dt>
+          <dd><p>Target 8.2: Achieve higher levels of economic productivity through diversification, technological upgrading and innovation, including through a focus on high-value added and labour-intensive sectors</p>
 </dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 8.2.1: Annual growth rate of real GDP per employed person</p>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 8.2.1: Annual growth rate of real GDP per employed person</p>
 </dd>
-            <dt>Series</dt>
-            <dd><p>Not applicable</p>
+          <dt>Series</dt>
+          <dd><p>Not applicable</p>
 </dd>
-            <dt>Related indicators</dt>
-            <dd><p>1.1.1, 8.3.1, 8.5.2, 10.4.1</p>
+          <dt>Related indicators</dt>
+          <dd><p>1.1.1, 8.3.1, 8.5.2, 10.4.1</p>
 </dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>International Labour Organization (ILO) </p>
+          <dt>Custodian agencies</dt>
+          <dd><p>International Labour Organization (ILO) </p>
 </dd>
-          </dl>
-        </div>
+        </dl>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Data reporter
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>International Labour Organization (ILO)</p>
+              <td><p>International Labour Organization (ILO)</p>
 <p> </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Definition, concepts, and classifications
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Definition:</strong> </p>
+              <td><p><strong>Definition:</strong> </p>
 <p>The annual growth rate of real Gross Domestic Product (GDP) per employed person conveys the annual percentage change in real GDP per employed person. </p>
 <p> </p>
 <p><strong>Concepts:</strong> </p>
@@ -2239,142 +2238,142 @@ data-event-label="Change to National Metadata tab"
 <p> </p>
 <p>Employment: All persons of working age who, during a short reference period (one week), were engaged in any activity to produce goods or provide services for pay or profit. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Percent (%)</p>
+              <td><p>Percent (%)</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data are based on the SNA. </p>
+              <td><p>Data are based on the SNA. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Description:</strong> </p>
+              <td><p><strong>Description:</strong> </p>
 <p>Output measures used in the numerator of this indicator Gross Domestic Product (GDP) are best obtained from the production side of national accounts and represent, as much as possible, GDP at market prices for the aggregate economy (adjusted for inflation, in constant prices). </p>
 <p> </p>
 <p>Employment data used in the denominator are preferably derived from labour force or other household surveys with an employment module. In the absence of a household survey, establishment surveys, administrative records or official estimates based on reliable sources can be used as well as population censuses. It is however important to note that employment data from establishment surveys will capture the number of jobs and not the number of persons employed as preferred for the denominator. Also, establishment surveys cover, in many cases, the formal sector and employers and employees only, not accounting for the whole economy. </p>
 <p> </p>
 <p>When calculating this indicator, it is important to ensure that the coverage of the employment data is consistent with that of the national accounts. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>For the purposes of international reporting on the SDG indicators, the ILO uses country-level estimates of GDP in constant 2010 US$ from the World Bank&#x2019;s World Development Indicators database and country-level estimates on employment from household surveys or derived from the ILO modelled estimates to calculate levels and growth rates of labour productivity at the country, regional and global levels. </p>
+              <td><p>For the purposes of international reporting on the SDG indicators, the ILO uses country-level estimates of GDP in constant 2010 US$ from the World Bank&#x2019;s World Development Indicators database and country-level estimates on employment from household surveys or derived from the ILO modelled estimates to calculate levels and growth rates of labour productivity at the country, regional and global levels. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Continuous</p>
+              <td><p>Continuous</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>ILO estimates of labour productivity are part of the ILO modelled estimates series, analysed in the ILO&apos;s World Employment and Social Outlook reports. The ILO estimates are released once per year alongside these reports. </p>
+              <td><p>ILO estimates of labour productivity are part of the ILO modelled estimates series, analysed in the ILO&apos;s World Employment and Social Outlook reports. The ILO estimates are released once per year alongside these reports. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Input GDP and employment data are provided by national statistical offices, and in some cases labour ministries or other related agencies. </p>
+              <td><p>Input GDP and employment data are provided by national statistical offices, and in some cases labour ministries or other related agencies. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>International Labour Organization (ILO) </p>
+              <td><p>International Labour Organization (ILO) </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The ILO is the UN focal point for labour statistics. It sets international standards for labour statistics through the International Conference of Labour Statisticians. It also compiles and produces labour statistics with the goal of disseminating internationally-comparable datasets, and provides technical assistance and training to ILO member States to support their efforts to produce high quality labour market data.</p>
+              <td><p>The ILO is the UN focal point for labour statistics. It sets international standards for labour statistics through the International Conference of Labour Statisticians. It also compiles and produces labour statistics with the goal of disseminating internationally-comparable datasets, and provides technical assistance and training to ILO member States to support their efforts to produce high quality labour market data.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Real GDP per employed person being a measure of labour productivity, this indicator represents a measure of labour productivity growth, thus providing information on the evolution, efficiency and quality of human capital in the production process. </p>
+              <td><p>Real GDP per employed person being a measure of labour productivity, this indicator represents a measure of labour productivity growth, thus providing information on the evolution, efficiency and quality of human capital in the production process. </p>
 <p> </p>
 <p>Economic growth in a country can be ascribed to many factors, including increased employment and more effective work by those who are employed. This indicator casts light on the latter effect, therefore being a key measure of economic performance. Labour productivity (and growth) estimates can support the formulation of labour market policies and monitor their effects. They can also contribute to the understanding of how labour market performance affects living standards. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Output measures are obtained from national accounts and represent, as much as possible, GDP at market prices for the aggregate economy. However, despite common principles that are mostly based on the United Nations System of National Accounts, there are still significant problems in international consistency of national accounts estimates, based on factors such as differences in the treatment of output in services sectors, differences in methods used to correct output measures for price changes (in particular, the use of different weighting systems to obtain deflators) and differences in the degree of coverage of informal economic activities. </p>
+              <td><p>Output measures are obtained from national accounts and represent, as much as possible, GDP at market prices for the aggregate economy. However, despite common principles that are mostly based on the United Nations System of National Accounts, there are still significant problems in international consistency of national accounts estimates, based on factors such as differences in the treatment of output in services sectors, differences in methods used to correct output measures for price changes (in particular, the use of different weighting systems to obtain deflators) and differences in the degree of coverage of informal economic activities. </p>
 <p> </p>
 <p>Data on employment used in the denominator of this indicator refer, as much as possible, to the average number of persons with one or more paid jobs during the year. That is, the reliability of the employment data is also dependent on the degree of coverage of informal activities by the statistical source used. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><math xmlns="http://www.w3.org/1998/Math/MathML">
+              <td><p><math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi mathvariant="normal">R</mi>
     <mi mathvariant="normal">e</mi>
     <mi mathvariant="normal">a</mi>
@@ -2582,19 +2581,19 @@ data-event-label="Change to National Metadata tab"
     <mn>100</mn>
   </math></p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Through the ILO Harmonized Microdata initiative, the ILO strives to produce internationally comparable labour statistics based on the indicator concepts and definitions adopted by the International Conference of Labour Statisticians.</p>
+              <td><p>Through the ILO Harmonized Microdata initiative, the ILO strives to produce internationally comparable labour statistics based on the indicator concepts and definitions adopted by the International Conference of Labour Statisticians.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ul>
+              <td><ul>
   <li><strong>At country level </strong></li>
 </ul>
 <p>Multivariate regression techniques are used to impute missing employment values at the country level. </p>
@@ -2605,19 +2604,19 @@ data-event-label="Change to National Metadata tab"
 </ul>
 <p> Regional and global figures are aggregates of the country-level figures including the imputed values.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>To address the problem of missing data, the ILO designed several econometric models which are used to produce estimates of labour market indicators in the countries and years for which real data are not available. The employment data derived from the ILO modelled estimates are used to produce estimates on labour productivity. These models use multivariate regression techniques to impute missing values at the country level, which are then aggregated to produce regional and global estimates. For further information on the estimates, please refer to the ILO modelled estimates methodological overview, available at <a href="https://www.ilo.org/ilostat-files/Documents/TEM.pdf">https://www.ilo.org/ilostat-files/Documents/TEM.pdf</a>. </p>
+              <td><p>To address the problem of missing data, the ILO designed several econometric models which are used to produce estimates of labour market indicators in the countries and years for which real data are not available. The employment data derived from the ILO modelled estimates are used to produce estimates on labour productivity. These models use multivariate regression techniques to impute missing values at the country level, which are then aggregated to produce regional and global estimates. For further information on the estimates, please refer to the ILO modelled estimates methodological overview, available at <a href="https://www.ilo.org/ilostat-files/Documents/TEM.pdf">https://www.ilo.org/ilostat-files/Documents/TEM.pdf</a>. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>See: </p>
+              <td><p>See: </p>
 <ul>
   <li>ILO Guidebook - Decent Work and the Sustainable Development Goals: A Guidebook on SDG Labour Market Indicators (<a href="https://www.ilo.org/stat/Publications/WCMS_647109/lang--en/index.htm" target="_blank"><u>https://www.ilo.org/stat/Publications/WCMS_647109/lang--en/index.htm</u></a>) </li>
   <li>ILO Manual &#x2013; Decent Work Indicators, Concepts and Definitions &#x2013; Chapter 1, Economic and social context for decent work <a href="http://www.ilo.org/integration/resources/pubs/WCMS_229374/lang--en/index.htm" target="_blank"><u>http://www.ilo.org/integration/resources/pubs/WCMS_229374/lang--en/index.htm</u></a> (second version, page 214) </li>
@@ -2628,116 +2627,116 @@ data-event-label="Change to National Metadata tab"
   <li>ILOSTAT Database &#x2013; Topics - Labour productivity (<a href="https://ilostat.ilo.org/topics/labour-productivity/" target="_blank"><u>https://ilostat.ilo.org/topics/labour-productivity/</u></a>). </li>
 </ul>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The processes of compilation, production, and publication of data, including its quality control, are carried out following the methodological framework and standards established by the ILO Department of Statistics, in compliance with the information technology and management standards of the ILO.</p>
+              <td><p>The processes of compilation, production, and publication of data, including its quality control, are carried out following the methodological framework and standards established by the ILO Department of Statistics, in compliance with the information technology and management standards of the ILO.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data consistency and quality checks are regularly conducted for validation of the data before dissemination in the ILOSTAT database. These checks consist of data and metadata revision of all the relevant inputs applying protocols to ensure that international comparability and time-series consistency are maintained. For the resulting modelled estimates, both statistical and judgmental assessments of the output data are carried out.</p>
+              <td><p>Data consistency and quality checks are regularly conducted for validation of the data before dissemination in the ILOSTAT database. These checks consist of data and metadata revision of all the relevant inputs applying protocols to ensure that international comparability and time-series consistency are maintained. For the resulting modelled estimates, both statistical and judgmental assessments of the output data are carried out.</p>
 <p> </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The final assessment of the quality of information is carried out by the Data Production and Analysis Unit of the ILO Department of Department. If any issues encountered cannot be clarified, the respective information is not published. </p>
+              <td><p>The final assessment of the quality of information is carried out by the Data Production and Analysis Unit of the ILO Department of Department. If any issues encountered cannot be clarified, the respective information is not published. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Data Availability: </strong></p>
+              <td><p><strong>Data Availability: </strong></p>
 <p>Data for this indicator is available for 188 countries and territories.</p>
 <p><strong>Time series:</strong></p>
 <p>Data for this indicator is available as of 2000 in the SDG Indicators Global Database, but time series going back to 1991 and including estimates up to 2021 are available in ILOSTAT. </p>
 <p><strong>Disaggregation:</strong></p>
 <p>No disaggregation required for this indicator. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>The main limitations of the use of labour productivity as a global indicator arise from problems in the international comparability of data, more specifically from methodological differences across countries. Even though national output measures, in particular GDP estimates, are derived mainly from national accounts which should be based on internationally-agreed principles consolidated in the United Nations SNA, there are still significant obstacles to the international consistency of national accounts estimates. These range from differences in the treatment of the output of service sectors to adjustments for price changes and variations in the coverage of informal activities and the underground economy. </p>
 <p>Employment or labour input figures also suffer from comparability issues, especially in terms of differences in age coverage, the definition of employment, geographical and institutional coverage, the treatment of special groups and the coverage of informal employment. </p>
 <p>In cases where the contribution to GDP of forms of work other than employment are expected to be significant, such as in the case of own-use production of goods (subsistence agriculture and fishing) or volunteer work, the exclusion of participation and time-spent in these productive activities can be an important source of bias in the resulting indicators.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ul>
+              <td><ul>
   <li>ILO Guidebook - Decent Work and the Sustainable Development Goals: A Guidebook on SDG Labour Market Indicators (<a href="https://www.ilo.org/stat/Publications/WCMS_647109/lang--en/index.htm" target="_blank"><u>https://www.ilo.org/stat/Publications/WCMS_647109/lang--en/index.htm</u></a>) </li>
   <li>Estimates and projections of labour market indicators (<a href="http://www.ilo.org/empelm/projects/WCMS_114246/lang--en/index.htm" target="_blank"><u>http://www.ilo.org/empelm/projects/WCMS_114246/lang--en/index.htm</u></a>) </li>
   <li>ILO Manual &#x2013; Decent Work Indicators, Concepts and Definitions &#x2013; Chapter 1, Economic and social context for decent work <a href="http://www.ilo.org/integration/resources/pubs/WCMS_229374/lang--en/index.htm" target="_blank"><u>http://www.ilo.org/integration/resources/pubs/WCMS_229374/lang--en/index.htm</u></a> (second version, page 2149) </li>
@@ -2748,14 +2747,13 @@ data-event-label="Change to National Metadata tab"
   <li>ILOSTAT Database &#x2013; Topics - Labour productivity (<a href="https://ilostat.ilo.org/topics/labour-productivity/" target="_blank"><u>https://ilostat.ilo.org/topics/labour-productivity/</u></a>). </li>
 </ul>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-<div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -2778,6 +2776,7 @@ data-event-label="Change to National Metadata tab"
   });
 </script>
 
+    </div>
 
 
     
@@ -3049,12 +3048,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925173406'></script>
+<script src='/site/assets/js/sdg.js?v=20220925174647'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925173406"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925174647"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

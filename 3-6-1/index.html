@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925173406">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925174647">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -1092,107 +1092,106 @@ data-event-label="Change to National Metadata tab"
 <div class="tab-content">
     
         
-    <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
+    <div role="tabpanel" class="tab-pane active" id="national">
+        <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+<div class="accordion" id="accordionExample">
+  <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 3: Ensure healthy lives and promote well-being for all at all ages</p>
 </dd>
-            <dt>Target</dt>
-            <dd><p>Target 3.6: By 2020, halve the number of global deaths and injuries from road traffic accidents</p>
+          <dt>Target</dt>
+          <dd><p>Target 3.6: By 2020, halve the number of global deaths and injuries from road traffic accidents</p>
 </dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 3.6.1: Death rate due to road traffic injuries</p>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 3.6.1: Death rate due to road traffic injuries</p>
 </dd>
-            <dt>Series</dt>
-            <dd>
+          <dt>Series</dt>
+          <dd>
 </dd>
-            <dt>Related indicators</dt>
-            <dd><p>3.5, 11.2 </p>
+          <dt>Related indicators</dt>
+          <dd><p>3.5, 11.2 </p>
 </dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>World Health Organization (WHO) </p>
+          <dt>Custodian agencies</dt>
+          <dd><p>World Health Organization (WHO) </p>
 </dd>
-          </dl>
-        </div>
+        </dl>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Data reporter
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>World Health Organization (WHO) </p>
+              <td><p>World Health Organization (WHO) </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Definition, concepts, and classifications
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Definition:</strong> </p>
+              <td><p><strong>Definition:</strong> </p>
 <p> </p>
 <p>Death rate due to road traffic injuries as defined as the number of road traffic fatal injury deaths per 100,000 population. </p>
 <p> </p>
@@ -1204,153 +1203,153 @@ data-event-label="Change to National Metadata tab"
 <p> </p>
 <p>Denominator: Population (number of people by country) </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Rate per 100 000 population </p>
+              <td><p>Rate per 100 000 population </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Road injuries are defined in terms of the International Classification of Diseases, Tenth Revision (ICD-10) (See Annex A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019) </p>
+              <td><p>Road injuries are defined in terms of the International Classification of Diseases, Tenth Revision (ICD-10) (See Annex A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019) </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>For the road traffic deaths we have two sources of data. Data from Global Status Report on Road Safety survey and Vital registration or certificate deaths data that WHO receive every year from member states (ministries of health). </p>
+              <td><p>For the road traffic deaths we have two sources of data. Data from Global Status Report on Road Safety survey and Vital registration or certificate deaths data that WHO receive every year from member states (ministries of health). </p>
 <p> </p>
 <p>For the population, we used data from the United Nations / Department of Economic and Social Affairs/ Population division. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The methodology involved collecting data from a number of different sectors and stakeholders in each country is as follows. National Data Coordinators (NDCs), who were nominated by their governments, were trained in the project methodology. As representatives of their ministries, they were required to identify up to eight other road safety experts within their country from different sectors (e.g. health, police, transport, nongovernmental organizations and/or academia) and to facilitate a consensus meeting of these respondents. While each expert responded to the questionnaire based on their expertise, the consensus meeting facilitated by NDCs allowed for discussion of all responses, and the group used this discussion to agree on one final set of information that best represented their country&#x2019;s situation at the time (up to 2014, using the most recent data available). This was then submitted to the World Health Organization (WHO). More details are in the Global Status Report on Road Safety 2018 and the WHO methods and data sources for global causes of death, 2000&#x2013;2019. </p>
+              <td><p>The methodology involved collecting data from a number of different sectors and stakeholders in each country is as follows. National Data Coordinators (NDCs), who were nominated by their governments, were trained in the project methodology. As representatives of their ministries, they were required to identify up to eight other road safety experts within their country from different sectors (e.g. health, police, transport, nongovernmental organizations and/or academia) and to facilitate a consensus meeting of these respondents. While each expert responded to the questionnaire based on their expertise, the consensus meeting facilitated by NDCs allowed for discussion of all responses, and the group used this discussion to agree on one final set of information that best represented their country&#x2019;s situation at the time (up to 2014, using the most recent data available). This was then submitted to the World Health Organization (WHO). More details are in the Global Status Report on Road Safety 2018 and the WHO methods and data sources for global causes of death, 2000&#x2013;2019. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>WHO annually requests tabulated death registration data (including all causes of death) from Member States. Countries may submit annual cause-of-death statistics to WHO on an ongoing basis.</p>
+              <td><p>WHO annually requests tabulated death registration data (including all causes of death) from Member States. Countries may submit annual cause-of-death statistics to WHO on an ongoing basis.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>End of 2020</p>
+              <td><p>End of 2020</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The road traffic deaths data were provided nationally by mainly three ministries, namely, ministry of health, ministry of interior and ministry of transport.</p>
+              <td><p>The road traffic deaths data were provided nationally by mainly three ministries, namely, ministry of health, ministry of interior and ministry of transport.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>WHO is the organization responsible for compilation and reporting on this indicator at the global level.</p>
+              <td><p>WHO is the organization responsible for compilation and reporting on this indicator at the global level.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>According to Article 64 of its constitution, WHO is mandated to request each Member State to provide statistics on mortality. Furthermore, the WHO Nomenclature Regulations of 1967 affirms the importance of compiling and publishing statistics of mortality and morbidity in comparable form. Member States started to report mortality data to WHO since the early fifties and this reporting activity is continuing until today. </p>
+              <td><p>According to Article 64 of its constitution, WHO is mandated to request each Member State to provide statistics on mortality. Furthermore, the WHO Nomenclature Regulations of 1967 affirms the importance of compiling and publishing statistics of mortality and morbidity in comparable form. Member States started to report mortality data to WHO since the early fifties and this reporting activity is continuing until today. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Road traffic injuries remain an important public health problem, particularly for low-income and middle-income countries.</p>
+              <td><p>Road traffic injuries remain an important public health problem, particularly for low-income and middle-income countries.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>There are no vital registration data for all countries to make comparison against the data received on the survey. Also we cannot collect road traffic data every year using this methodology outlined in the Global status report. </p>
+              <td><p>There are no vital registration data for all countries to make comparison against the data received on the survey. Also we cannot collect road traffic data every year using this methodology outlined in the Global status report. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The methods used for the analysis of causes of death depend on the type of data available from countries: </p>
+              <td><p>The methods used for the analysis of causes of death depend on the type of data available from countries: </p>
 <p> </p>
 <p>For countries with a high-quality vital registration system including information on cause of death, the vital registration that member states submit to the WHO Mortality Database were used, with adjustments where necessary, e.g. for under-reporting of deaths, unknown age and sex, and ill-defined causes of deaths. </p>
 <p> </p>
 <p>For countries without high-quality death registration data, cause of death estimates are calculated using other data, including household surveys with verbal autopsy, sample or sentinel registration systems, special studies.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Deaths of unknown sex were redistributed pro-rata within cause-age groups of known sexes, and then deaths of unknown age were redistributed pro-rata within cause-sex groups of known ages.</p>
+              <td><p>Deaths of unknown sex were redistributed pro-rata within cause-age groups of known sexes, and then deaths of unknown age were redistributed pro-rata within cause-sex groups of known ages.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ul>
+              <td><ul>
   <li><strong>At country level </strong></li>
 </ul>
 <p> </p>
@@ -1362,129 +1361,129 @@ data-event-label="Change to National Metadata tab"
 </ul>
 <p>NA</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Country estimates of number of deaths by cause are summed to obtain regional and global aggregates.</p>
+              <td><p>Country estimates of number of deaths by cause are summed to obtain regional and global aggregates.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The cause of death categories (including road injury) follow the definitions in terms of the International Classification of Diseases, Tenth Revision (ICD-10). Please see Annex Table A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
+              <td><p>The cause of death categories (including road injury) follow the definitions in terms of the International Classification of Diseases, Tenth Revision (ICD-10). Please see Annex Table A of the WHO methods and data sources for global causes of death, 2000&#x2013;2019 (https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf)</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The World Health Organization (WHO) established a Reference Group on Health Statistics in 2013 to provide advice on population health statistics to WHO with a focus on methodological and data issues related to the measurement of mortality and cause-of-death patterns. The group facilitated interaction between multilateral development institutions and other independent academic groups with WHO expert groups in specific subject areas including methods to the estimation on causes of death.</p>
+              <td><p>The World Health Organization (WHO) established a Reference Group on Health Statistics in 2013 to provide advice on population health statistics to WHO with a focus on methodological and data issues related to the measurement of mortality and cause-of-death patterns. The group facilitated interaction between multilateral development institutions and other independent academic groups with WHO expert groups in specific subject areas including methods to the estimation on causes of death.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The data principles of the World Health Organization (WHO) provide a foundation for continually reaffirming trust in WHO&#x2019;s information and evidence on public health. The five principles are designed to provide a framework for data governance for WHO. The principles are intended primarily for use by WHO staff across all parts of the Organization in order to help define the values and standards that govern how data that flows into, across and out of WHO is collected, processed, shared and used. These principles are made publicly available so that they may be used and referred to by Member States and non-state actors collaborating with WHO.</p>
+              <td><p>The data principles of the World Health Organization (WHO) provide a foundation for continually reaffirming trust in WHO&#x2019;s information and evidence on public health. The five principles are designed to provide a framework for data governance for WHO. The principles are intended primarily for use by WHO staff across all parts of the Organization in order to help define the values and standards that govern how data that flows into, across and out of WHO is collected, processed, shared and used. These principles are made publicly available so that they may be used and referred to by Member States and non-state actors collaborating with WHO.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>All statements and claims made officially by WHO headquarters about population-level (country, regional, global) estimates of health status (e.g. mortality, incidence, prevalence, burden of disease), are cleared by the Department of Data and Analytics (DNA) through the executive clearance process. This includes the GATHER statement. GATHER promotes best practices in reporting health estimates using a checklist of 18 items that should be reported every time new global health estimates are published, including descriptions of input data and estimation methods. Developed by a working group convened by the World Health Organization, the guidelines aim to define and promote good practice in reporting health estimates.</p>
+              <td><p>All statements and claims made officially by WHO headquarters about population-level (country, regional, global) estimates of health status (e.g. mortality, incidence, prevalence, burden of disease), are cleared by the Department of Data and Analytics (DNA) through the executive clearance process. This includes the GATHER statement. GATHER promotes best practices in reporting health estimates using a checklist of 18 items that should be reported every time new global health estimates are published, including descriptions of input data and estimation methods. Developed by a working group convened by the World Health Organization, the guidelines aim to define and promote good practice in reporting health estimates.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Data availability:</strong></p>
+              <td><p><strong>Data availability:</strong></p>
 <p>Almost 70 countries currently provide WHO with regular high-quality data on mortality by age, sex and causes of death, and another 58 countries submit data of lower quality. However, comprehensive cause-of-death estimates are calculated by WHO systematically for all of its Member States (with a certain population threshold) every 3 years. </p>
 <p><strong>Time series:</strong></p>
 <p>From 2000 to 2019</p>
 <p><strong>Disaggregation:</strong></p>
 <p>Sex, age group </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>WHO&apos;s estimation of road traffic rates are, in many countries, different to the official estimates for the reasons described above that relate to our methodology. </p>
 <p> </p>
 <p>There are also differences in the data used for population between the national data and the estimates produced by the United Nations department of population. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>URL:</strong> </p>
+              <td><p><strong>URL:</strong> </p>
 <p> </p>
 <p>http://www.who.int/violence_injury_prevention </p>
 <p> </p>
@@ -1494,14 +1493,13 @@ data-event-label="Change to National Metadata tab"
 <p>WHO methods and data sources for global causes of death, 2000&#x2013;2019 </p>
 <p>(https://www.who.int/docs/default-source/gho-documents/global-health-estimates/ghe2019_cod_methods.pdf) </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-<div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -1524,6 +1522,7 @@ data-event-label="Change to National Metadata tab"
   });
 </script>
 
+    </div>
 
 
     
@@ -1795,12 +1794,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925173406'></script>
+<script src='/site/assets/js/sdg.js?v=20220925174647'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925173406"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925174647"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

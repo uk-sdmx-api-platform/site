@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925173406">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925174647">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -444,109 +444,108 @@ data-event-label="Change to National Metadata tab"
 <div class="tab-content">
     
         
-    <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
+    <div role="tabpanel" class="tab-pane active" id="national">
+        <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+<div class="accordion" id="accordionExample">
+  <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 17: Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development</p>
 </dd>
-            <dt>Target</dt>
-            <dd><p>Target 17.7: Promote the development, transfer, dissemination and diffusion of environmentally sound technologies to developing countries on favourable terms, including on concessional and preferential terms, as mutually agreed</p>
+          <dt>Target</dt>
+          <dd><p>Target 17.7: Promote the development, transfer, dissemination and diffusion of environmentally sound technologies to developing countries on favourable terms, including on concessional and preferential terms, as mutually agreed</p>
 </dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 17.7.1: Total amount of funding for developing countries to promote the development, transfer, dissemination and diffusion of environmentally sound technologies</p>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 17.7.1: Total amount of funding for developing countries to promote the development, transfer, dissemination and diffusion of environmentally sound technologies</p>
 </dd>
-            <dt>Series</dt>
-            <dd>
+          <dt>Series</dt>
+          <dd>
 </dd>
-            <dt>Related indicators</dt>
-            <dd><p>UNEP has identified a number of SDGs where uptake of ESTs contributes to their achievement: Goal 7 on ensuring access to affordable, reliable, sustainable and modern energy for all; Goal 8 on the promotion of sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all; Goal 12 on sustainable consumption and production patterns, and Goal 13 on taking urgent action to combat climate change and its impacts.</p>
+          <dt>Related indicators</dt>
+          <dd><p>UNEP has identified a number of SDGs where uptake of ESTs contributes to their achievement: Goal 7 on ensuring access to affordable, reliable, sustainable and modern energy for all; Goal 8 on the promotion of sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all; Goal 12 on sustainable consumption and production patterns, and Goal 13 on taking urgent action to combat climate change and its impacts.</p>
 </dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>United Nations Environment Programme (UNEP)</p>
+          <dt>Custodian agencies</dt>
+          <dd><p>United Nations Environment Programme (UNEP)</p>
 <p>OECD</p>
 </dd>
-          </dl>
-        </div>
+        </dl>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Data reporter
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>United Nations Environment Programme (UNEP)</p>
+              <td><p>United Nations Environment Programme (UNEP)</p>
 <p>OECD</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Definition, concepts, and classifications
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Definition:</strong></p>
+              <td><p><strong>Definition:</strong></p>
 <p>The purpose of this indicator is to develop a methodology for tracking the total amount of approved funding to promote the development, transfer, dissemination and diffusion of environmentally sound technologies. A two-pronged approach is suggested: </p>
 <p>Level 1. Use globally available data to create a proxy of funding flowing to developing countries for environmentally sound technologies, or of trade in environmentally sound technologies </p>
 <p>Leve2. Collect national data on investment in environmentally sound technologies.</p>
@@ -558,137 +557,137 @@ data-event-label="Change to National Metadata tab"
 <p><strong>EST definition at national level</strong></p>
 <p>In deciding which technologies are most appropriate, there will always be trade-offs between cost and a range of economic, social, health and environmental impacts, to be determined based on national or local contexts and priorities. It would also not be feasible for all countries to strive towards the best available technologies globally if these are not appropriate in a domestic context. Given the highly contextual nature of ESTs, it is therefore something that is better defined at the national level, taking into account the national context and mainstream technologies nationally. However, there is a real need to support national, sub-national governments and other actors with decision-making and defining the most nationally or locally appropriate technologies. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Level 1: ComTrade database</p>
+              <td><p>Level 1: ComTrade database</p>
 <p>Level 2: NSOs and other members of the NSS</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data will be collected at national levels through a Questionnaire sent out to national governments every two years. </p>
+              <td><p>Data will be collected at national levels through a Questionnaire sent out to national governments every two years. </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>First data collection: Expected in early 2021.</p>
+              <td><p>First data collection: Expected in early 2021.</p>
 <p>And every 2 years thereafter.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>First reporting cycle: Fall 2021.</p>
+              <td><p>First reporting cycle: Fall 2021.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>NSOs and other members of the NSS, complemented by global modelling</p>
+              <td><p>NSOs and other members of the NSS, complemented by global modelling</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>United Nations Environment Programme.</p>
+              <td><p>United Nations Environment Programme.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Rational environmental management means making the best use of resources to meet basic human needs without destroying the sustaining and regenerative capacity of natural systems. This requires a good understanding of the intersecting elements within the larger frame of development and implies the adoption and use of alternative, environmentally sound development strategies and related technologies. ESTs play an important role to improve efficiency of resources (materials and energy), reduce pollution and waste from different sectors. The importance of Environmentally Sound Technology was first emphasized during Rio Earth Summit in 1992 and ever since it has become a major component of international environmental cooperation. Access to ESTs also play a central role in the ground-breaking agreement, the Addis Ababa Action Agenda &#x2013; which is an implementing mechanism for the global Sustainable Development Goals (2030 Agenda for Sustainable Development), the agreement was reached by the 193 UN Member States.</p>
+              <td><p>Rational environmental management means making the best use of resources to meet basic human needs without destroying the sustaining and regenerative capacity of natural systems. This requires a good understanding of the intersecting elements within the larger frame of development and implies the adoption and use of alternative, environmentally sound development strategies and related technologies. ESTs play an important role to improve efficiency of resources (materials and energy), reduce pollution and waste from different sectors. The importance of Environmentally Sound Technology was first emphasized during Rio Earth Summit in 1992 and ever since it has become a major component of international environmental cooperation. Access to ESTs also play a central role in the ground-breaking agreement, the Addis Ababa Action Agenda &#x2013; which is an implementing mechanism for the global Sustainable Development Goals (2030 Agenda for Sustainable Development), the agreement was reached by the 193 UN Member States.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Various definitions of &#x2018;environmentally sound technology&#x2019; exist and are in use. Terms such as &#x2018;environmental technology&#x2019;, &#x2018;clean technology&#x2019;, &#x2018;and cleantech &#x2019;or &#x2018;low- carbon technology&#x2019; are sometimes used, although low-carbon technology can be considered as a sub-set of green technology. Other less commonly used terms include climate-smart and climate-friendly technology.</p>
+              <td><p>Various definitions of &#x2018;environmentally sound technology&#x2019; exist and are in use. Terms such as &#x2018;environmental technology&#x2019;, &#x2018;clean technology&#x2019;, &#x2018;and cleantech &#x2019;or &#x2018;low- carbon technology&#x2019; are sometimes used, although low-carbon technology can be considered as a sub-set of green technology. Other less commonly used terms include climate-smart and climate-friendly technology.</p>
 <p>Additional limitation include: different baseline years in numerous available databases, and the different purposes of available databases.</p>
 <p>Many national statistical systems lack the capacity to compile information on &#x201C;Total amount of approved funding to promote the development, transfer, dissemination and diffusion of environmentally sound technologies&#x201D;. Compiling data on this indicator presents a challenge in terms of consistent definitions and approaches. However, this methodology recognizes these difficulties and provides an approach that can allow a comparability among countries.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The methodology for tracking the total amount of approved funding to promote the development, transfer, dissemination and diffusion of environmentally sound technologies has a two-pronged approach: </p>
+              <td><p>The methodology for tracking the total amount of approved funding to promote the development, transfer, dissemination and diffusion of environmentally sound technologies has a two-pronged approach: </p>
 <p><strong>Level 1</strong>. Use globally available data to create a proxy of funding flowing to developing countries for environmentally sound technologies, or of trade in environmentally sound technologies.</p>
 <p>The international proxy that provides the closest indicator of investment flows is that of trade (e.g. traded goods and services that have been internationally agreed to have a positive environmental benefit), using HS codes, preferably more than 6-digit level. </p>
 <p>The sectors deemed to be ESTs through historical research include:</p>
@@ -729,153 +728,152 @@ data-event-label="Change to National Metadata tab"
 <p>The guidelines: steps to identify, assess and priorities ESTs at the national or sub-national level</p>
 <p> </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Missing values will not be imputed.</p>
+              <td><p>Missing values will not be imputed.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>.</p>
+              <td><p>The data will be aggregated at the sub-regional, regional and global levels. For the aggregation methods, please see: <a href="http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf">http://wesr.unep.org/media/docs/graphs/aggregation_methods.pdf</a>.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Data availability:</strong></p>
+              <td><p><strong>Data availability:</strong></p>
 <p>All countries that reply to the Questionnaire.</p>
 <p><strong>Time series:</strong></p>
 <p>Data will be made available every two years.</p>
 <p><strong>Disaggregation</strong></p>
 <p>There is no disaggregation of the data.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Sources of discrepancies</strong></p>
+              <td><p><strong>Sources of discrepancies</strong></p>
 <p>Possible sources of discrepancies are caused by the highly contextual nature of ESTs.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>SDG methodology for 17.7.1; </strong></p>
+              <td><p><strong>SDG methodology for 17.7.1; </strong></p>
 <p>Identifying and Assessing Environmentally Sound Technologies (ESTs) at national level</p>
 <p>UNEP Policy Brief (2018) Trade in Environmentally Sound Technologies Implications for Developing Countries.</p>
 <p>UNEP (2018), Trade in environmentally sound technologies: Implications for Developing Countries. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-<div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -898,6 +896,7 @@ data-event-label="Change to National Metadata tab"
   });
 </script>
 
+    </div>
 
 
     
@@ -1169,12 +1168,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925173406'></script>
+<script src='/site/assets/js/sdg.js?v=20220925174647'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925173406"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925174647"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

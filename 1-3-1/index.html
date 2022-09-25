@@ -133,7 +133,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925173406">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20220925174647">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -1456,168 +1456,167 @@ data-event-label="Change to National Metadata tab"
 <div class="tab-content">
     
         
-    <div class="mt-4" id="metadata-section">
-  <h3>Indicator metadata</h3>
-  <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
-  <div class="accordion" id="accordionExample">
-    <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Indicator information
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <dl>
-            <dt>Goal</dt>
-            <dd><p>Goal 1: End poverty in all its forms everywhere</p>
+    <div role="tabpanel" class="tab-pane active" id="national">
+        <p>This section provides metadata for the data reported for this indicator at the national level and at the global level.</p>
+<div class="accordion" id="accordionExample">
+  <button class="btn btn-primary btn-toggle-all" id="toggleAll"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Show all sections</button>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Indicator information
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <dl>
+          <dt>Goal</dt>
+          <dd><p>Goal 1: End poverty in all its forms everywhere</p>
 </dd>
-            <dt>Target</dt>
-            <dd><p>Target 1.3: Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable</p>
+          <dt>Target</dt>
+          <dd><p>Target 1.3: Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable</p>
 </dd>
-            <dt>Indicator</dt>
-            <dd><p>Indicator 1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable</p>
+          <dt>Indicator</dt>
+          <dd><p>Indicator 1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable</p>
 </dd>
-            <dt>Series</dt>
-            <dd><p>Proportion of population covered by social insurance programs (%) SI_COV_SOCINS</p>
+          <dt>Series</dt>
+          <dd><p>Proportion of population covered by social insurance programs (%) SI_COV_SOCINS</p>
 <p>Proportion of population covered by social assistance programs (%) SI_COV_SOCAST</p>
 <p>Proportion of population covered by labour market programs (%) SI_COV_LMKT</p>
 </dd>
-            <dt>Related indicators</dt>
-            <dd><p>1.a.1 Proportion of resources allocated by the government directly to poverty reduction programs </p>
+          <dt>Related indicators</dt>
+          <dd><p>1.a.1 Proportion of resources allocated by the government directly to poverty reduction programs </p>
 <p>1.a.2. Proportion of total government spending on essential services (education, health and social protection) </p>
 <p>1.b.1. Proportion of government recurrent and capital spending in sectors that disproportionatly benefit women, the poor and vulnerable groups.</p>
 </dd>
-            <dt>Custodian agencies</dt>
-            <dd><p>World Bank (WB)</p>
+          <dt>Custodian agencies</dt>
+          <dd><p>World Bank (WB)</p>
 </dd>
-          </dl>
-        </div>
+        </dl>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Data reporter
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Organisation</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Data reporter
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Organisation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>World Bank (WB).</p>
+              <td><p>World Bank (WB).</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact organisation unit</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact organisation unit</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Contact email address</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Contact email address</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Definition, concepts, and classifications
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Definition and concepts</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Definition, concepts, and classifications
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Definition and concepts</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Definition:</strong></p>
+              <td><p><strong>Definition:</strong></p>
 <p>Coverage of social protection and labor programs (SPL) is the percentage of population participating in social insurance, social assistance, and labor market programs. Estimates include both direct and indirect beneficiaries.</p>
 <p><strong>Concepts:</strong></p>
 <p>This indicator is estimated by program type, for the entire population and by quintiles of post-transfer and pre-transfer per capita welfare distribution. Programs are aggregated into social insurance, social assistance, and labor market according to ASPIRE (Atlas of Social Protection &#x2013; Indicators of Resilience and Equity) classification. Indicators for all social protection and labor programs (SPL) are generated by aggregating the social assistance, social insurance and labor market figures, taking into account program overlaps. </p>
 <p>ASPIRE is the World Bank&apos;s premier compilation of indicators to analyze the scope and performance of social protection programs. Developed by the <a href="http://www.worldbank.org/en/topic/socialprotection">Social Protection and Jobs (SPJ) Global Practice</a>, ASPIRE provides indicators for 125 countries on social assistance, social insurance and labor market programs based on both program-level administrative data and national household survey data. ASPIRE is an ongoing project that aims to improve SPL data quality, comparability and availability to better inform SPL policies and programs.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Unit of measure</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Unit of measure</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Beneficiaries as percent of total population and population groups (quintiles of per capita welfare; poor and non poor)</p>
+              <td><p>Beneficiaries as percent of total population and population groups (quintiles of per capita welfare; poor and non poor)</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Classifications</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Classifications</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The World Bank&#x2019;s classification of social protection and labor programs includes 12 categories, as follows: </p>
+              <td><p>The World Bank&#x2019;s classification of social protection and labor programs includes 12 categories, as follows: </p>
 <p>Social insurance: (i) Contributory pensions, (ii) Other social insurance;</p>
 <p>Labor market: (i) Active LM programs, (ii) passive LM programs;</p>
 <p>Social assistance: (i) Unconditional cash transfers, (ii) Conditional cash transfers, (iii) Social pensions (non-contributory), (iv) Food and in-kind transfers, (v) School feeding, (vi) Public works, workfare and direct job creation, (vii) Fee waivers and targeted subsidies, (viii) Other social assistance</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Data source type and data collection method
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Data sources</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Data source type and data collection method
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data sources</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data are based on national representative household surveys. Data source is ASPIRE: The Atlas of Social Protection - Indicators of Resilience and Equity, The World Bank (see www.worldbank.org/aspire/)</p>
+              <td><p>Data are based on national representative household surveys. Data source is ASPIRE: The Atlas of Social Protection - Indicators of Resilience and Equity, The World Bank (see www.worldbank.org/aspire/)</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection method</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection method</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Unit-record data of nationally represenative household surveys are collected by National Statistical Offices (NSOs) and provided to the World Bank for analytical purposes. The ASPIRE team harmonizes social protection information captured by these household surveys to make the analysis reasonably comparable across countries and over time.</p>
+              <td><p>Unit-record data of nationally represenative household surveys are collected by National Statistical Offices (NSOs) and provided to the World Bank for analytical purposes. The ASPIRE team harmonizes social protection information captured by these household surveys to make the analysis reasonably comparable across countries and over time.</p>
 <p>The ASPIRE harmonization methodology for household survey data rests on the following three steps:</p>
 <p>1. <em>Identification and classification of social protection and labor (SPL) programs</em></p>
 <p>Household surveys are carefully reviewed to identify SPL program information. Once this information is identified, two levels of analysis are implemented: first, variables are created for each of the country specific programs found in the survey; second, program variables are aggregated and harmonized into 12 SPL program categories, and 2 private transfer categories. The country specific programs included into these main SPL categories are documented in detail and validated with WB country task teams in close coordination with national counterparts.</p>
@@ -1628,102 +1627,102 @@ data-event-label="Change to National Metadata tab"
 <p>All monetary variables (transfer amounts) and welfare aggregates are deflated to 2011 values and then expressed in 2011 purchasing power parity (PPP) terms. To this effect, the private consumption PPP conversion factor is used.</p>
 <p>Once the information is harmonized performance indicators are generated using ADePT social protection software.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data collection calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data collection calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Ongoing process </p>
+              <td><p>Ongoing process </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data release calendar</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data release calendar</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Ongoing process</p>
+              <td><p>Ongoing process</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data providers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data providers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>World Bank</p>
+              <td><p>World Bank</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Data compilers</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Data compilers</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>World Bank</p>
+              <td><p>World Bank</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Institutional mandate</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Institutional mandate</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The World Bank supports social protection and labor (SPL) systems in client countries as central part of its mission to reduce poverty through sustainable and inclusive growth. The World Bank&#x2019;s SPL strategy lays out ways to deepen World Bank&#x2019;s involvement, capacity, knowledge and impact in SPL. In this context ASPIRE is the main World Bank tool to track the outcomes of the SPL strategy. </p>
+              <td><p>The World Bank supports social protection and labor (SPL) systems in client countries as central part of its mission to reduce poverty through sustainable and inclusive growth. The World Bank&#x2019;s SPL strategy lays out ways to deepen World Bank&#x2019;s involvement, capacity, knowledge and impact in SPL. In this context ASPIRE is the main World Bank tool to track the outcomes of the SPL strategy. </p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Other methodological considerations
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 10%;">Field</th>
-                <th scope="col" style="width: 45%;">National</th>
-                <th scope="col" style="width: 45%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Rationale</th>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Other methodological considerations
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Field</th>
+              <th scope="col" style="width: 45%;">National</th>
+              <th scope="col" style="width: 45%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rationale</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>ASPIRE coverage indicators refer to the &#x2018;effective&#x2019; coverage definition, measuring the direct and indirect beneficiaries who are receiving social protection benefits at the time when nationally representative household survey data are collected. Coverage of SPL programs is estimated for the total population and for different population groups (income/consumption quintiles, urban and rural populations, and poor and non poor defined by the relative and international poverty lines. &#x2018;Effective&#x2019; coverage is directly relevant to SDG 1 of ending poverty in all its forms. </p>
+              <td><p>ASPIRE coverage indicators refer to the &#x2018;effective&#x2019; coverage definition, measuring the direct and indirect beneficiaries who are receiving social protection benefits at the time when nationally representative household survey data are collected. Coverage of SPL programs is estimated for the total population and for different population groups (income/consumption quintiles, urban and rural populations, and poor and non poor defined by the relative and international poverty lines. &#x2018;Effective&#x2019; coverage is directly relevant to SDG 1 of ending poverty in all its forms. </p>
 <p>ASPIRE indicators do not include individuals who have benefits guaranteed but are not receiving them at the time when the survey is administered &#x2013; for example people who actively contribute to old age pensions and are entitled to the benefits when reaching retirement age.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Comments and limitations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Comments and limitations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>It is important to note that the extent to which information on specific SPL programs is captured in the household surveys can vary significantly across countries. Often household surveys do not capture the universe of social protection and labor (SPL) programs in the country, in best practice cases, just the largest programs. Many household surveys have limited information on SPL programs, some surveys collect data only on participation without including the transfer amounts; and others include program information mixed with private transfers, making it difficult to isolate individual SPL programs.</p>
+              <td><p>It is important to note that the extent to which information on specific SPL programs is captured in the household surveys can vary significantly across countries. Often household surveys do not capture the universe of social protection and labor (SPL) programs in the country, in best practice cases, just the largest programs. Many household surveys have limited information on SPL programs, some surveys collect data only on participation without including the transfer amounts; and others include program information mixed with private transfers, making it difficult to isolate individual SPL programs.</p>
 <p>Therefore information on country SPL programs included in ASPIRE is limited to what is captured in the respective national household survey and does not necessarily represent the universe of programs existing in the country. In addition, the availability of ASPIRE indicators depends on the type of questions included in the survey. If transfer amounts are available, for example, adequacy and impact on poverty indicators can be generated. If only program participation questions are included in the survey, only non-monetary indicators can be generated such as coverage or beneficiary incidence. As a consequence, ASPIRE performance indicators are not fully comparable across harmonized program categories and countries.</p>
 <p>However, household surveys have the unique advantages of allowing analysis of program impact on household welfare. With such caveats in mind, ASPIRE indicators based on household surveys provide an approximate measure of social protection systems performance.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Method of computation</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Method of computation</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Data are calculated from national representative household surveys using ASPIRE: The Atlas of Social Protection - Indicators of Resilience and Equity, The World Bank (see datatopics.worldbank.org/aspire/). </p>
+              <td><p>Data are calculated from national representative household surveys using ASPIRE: The Atlas of Social Protection - Indicators of Resilience and Equity, The World Bank (see datatopics.worldbank.org/aspire/). </p>
 <p>Coverage = Number of beneficiaries in the total population (or group) / Total population (or group). </p>
 <p>Generally, ASPIRE indicators are based on a first level analysis of original household survey data (with no imputations) and a unified methodology that does not necessarily reflect country-specific knowledge or in depth country analysis relying on different data sources (administrative program level data).</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Adjustments</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Adjustments</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>For regional and global comparisons, monetary variables and welfare aggregates are deflated to 2011 values and then converted to international PPP values as explained above (see 3.b. Data Collection method). </p>
+              <td><p>For regional and global comparisons, monetary variables and welfare aggregates are deflated to 2011 values and then converted to international PPP values as explained above (see 3.b. Data Collection method). </p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Treatment of missing values (i) at country level and (ii) at regional level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><ol>
+              <td><ol>
   <li><strong>At country level</strong></li>
 </ol>
 <p>No imputation</p>
@@ -1732,67 +1731,67 @@ data-event-label="Change to National Metadata tab"
 </ol>
 <p>The regional and global aggregates are calculated from the most recent values of country data within the last 10 years. No imputation is performed.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Regional aggregations</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Regional aggregations</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Methods and guidance available to countries for the compilation of the data at the national level</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>ASPIRE uses national representative household surveys conducted by the NSOs. These institutions have their own methodologies for the collection and compilation of the data.</p>
+              <td><p>ASPIRE uses national representative household surveys conducted by the NSOs. These institutions have their own methodologies for the collection and compilation of the data.</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality management</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality management</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>The raw data that ASPIRE uses to estimate SPL performance indicators are already validated and curated by the NSOs. Data with harmonized welfares aggregates are produced and validated by the World Bank&#x2019;s Poverty and Equity practice based on their own standards. Furthermore, ASPIRE team ensures the quality of performance indicators following the process described above (see 4.d. Validation).</p>
+              <td><p>The raw data that ASPIRE uses to estimate SPL performance indicators are already validated and curated by the NSOs. Data with harmonized welfares aggregates are produced and validated by the World Bank&#x2019;s Poverty and Equity practice based on their own standards. Furthermore, ASPIRE team ensures the quality of performance indicators following the process described above (see 4.d. Validation).</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assurance</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assurance</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-              <tr>
-                <th scope="row">Quality assessment</th>
-                <td><p>Not available for this indicator</p>
+            </tr>
+            <tr>
+              <th scope="row">Quality assessment</th>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p>Not available for this indicator</p>
+              <td><p>Not available for this indicator</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Data availability and disaggregation
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Data availability and disaggregation
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Data Availability (1998 &#x2013; 2019) </strong></p>
+              <td><p><strong>Data Availability (1998 &#x2013; 2019) </strong></p>
 <p>East Asia &amp; Pacific: 20; Europe &amp; Central Asia: 25; Latin America &amp; Caribbean: 22; Middle East &amp; North Africa: 10; Sub-Saharan Africa: 40; South Asia: 8.</p>
 <p><strong>Time series: </strong></p>
 <p>Unbalanced panels, data depends on survey availability. Panel data by region: </p>
@@ -1805,72 +1804,71 @@ data-event-label="Change to National Metadata tab"
 <p><strong>Disaggregation:</strong></p>
 <p>Disaggregation of the indicators is done by income/consumption quintiles, rural and urban populations and poor and non poor defined by the relative and international poverty lines.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          Comparability/deviation from international standards
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Comparability/deviation from international standards
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>Sources of discrepancies:</strong></p>
+              <td><p><strong>Sources of discrepancies:</strong></p>
 <p>While efforts are made to ensure consistency between ASPIRE indicators and World Bank&apos;s regional and country reports/national estimates, there may still be cases where ASPIRE performance indicators differ from official WB country reports/national estimates given methodological differences.</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          References and documentation
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" style="width: 50%;">National</th>
-                <th scope="col" style="width: 50%;">Global</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><p>Not available for this indicator</p>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        References and documentation
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50%;">National</th>
+              <th scope="col" style="width: 50%;">Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Not available for this indicator</p>
 </td>
-                <td><p><strong>URL:</strong></p>
+              <td><p><strong>URL:</strong></p>
 <p>www.worldbank.org</p>
 <p><strong>References:</strong></p>
 <p>ASPIRE: The Atlas of Social Protection - Indicators of Resilience and Equity, The World Bank (www.worldbank.org/aspire).</p>
 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-<div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -1893,6 +1891,7 @@ data-event-label="Change to National Metadata tab"
   });
 </script>
 
+    </div>
 
 
     
@@ -2164,12 +2163,12 @@ if (allRequired) {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/site/assets/js/sdg.js?v=20220925173406'></script>
+<script src='/site/assets/js/sdg.js?v=20220925174647'></script>
 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20220925173406"></script><script>
+    <script src="/site/assets/js/custom.js?v=20220925174647"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
